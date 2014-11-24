@@ -46,6 +46,11 @@ gem 'better_errors', group: :development
 
 gem 'figaro'
 
+# Boostrap
+gem 'bootstrap-sass', '~> 3.3.1'
+
+#Font awesome
+gem 'font-awesome-sass', '~> 4.2.0'
 
 
 
