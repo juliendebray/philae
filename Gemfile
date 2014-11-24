@@ -53,4 +53,9 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'font-awesome-sass', '~> 4.2.0'
 
 
+# Devise with fb-omniauth extension
+gem 'devise'
+gem 'omniauth-facebook'
 
+# For extended use of fb API (getting user's friends infos, posting on his wall..)
+gem 'koala'
