@@ -11,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-<!-- form -->
+<!-- Form -->
   <div class="actions">
     <%= f.text_field :name %>
     <%= f.text_field :address %>
@@ -19,4 +19,8 @@
     <%= f.collection_select(:category_id, Category.all, :id, :name) %>
     <%= f.submit 'Create' %>
   </div>
+<% end %>
+
+<% content_for(:before_js) do %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
 <% end %>
