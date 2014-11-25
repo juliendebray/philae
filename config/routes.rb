@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
+
+
+  get 'story/index', as: :story
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root 'home#index'
+
+  resources :users, only: [:show]
+
+  resources :story, only: [:index]
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
