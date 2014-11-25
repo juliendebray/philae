@@ -16,7 +16,7 @@
     <%= f.text_field :name %>
     <%= f.text_field :address %>
     <%= f.text_area :description %>
-    <%= f.collection_select(:category, ['sports', 'landscape', 'sea', 'desert']) %>
+    <%= f.collection_select(:category, ['sports', 'landscape', 'sea', 'desert'], ) %>
     <%= f.submit 'Create' %>
   </div>
 <% end %>
