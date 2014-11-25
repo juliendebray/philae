@@ -31,7 +31,8 @@ function initializeAutocomplete(id) {
 //     }
 //   }
 // }
-
-google.maps.event.addDomListener(window, 'load', function() {
-  initializeAutocomplete('experience_address');
-});
+if(typeof google !== "undefined") {
+  google.maps.event.addDomListener(window, 'load', function() {
+    initializeAutocomplete('experience_address');
+  });
+}
