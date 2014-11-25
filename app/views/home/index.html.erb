@@ -2,6 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2">
+        <div class="title text-center">
+          <h1>'Brand'</h1>
+          <%= t 'baseline' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
         <div class="form text-center">
           <%= form_tag(experiences_path, method: "get") do %>
             <%= text_field_tag(:q, nil, placeholder: 'Where do you go?') %>

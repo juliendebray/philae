@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-
-  root 'home#index'
-
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  resources :experiences
-
-  resources :users, only: [:show]
-
-  resources :story, only: [:index]
-
+  scope '(:locale)', locale: /fr|en/ do
+    root 'home#index'
+    resources :experiences
+    resources :users, only: [:show]
+    resources :story, only: [:index]
+  end
 end
 
 
@@ -68,3 +65,4 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+

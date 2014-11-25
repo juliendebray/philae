@@ -1,0 +1,20 @@
+fr:
+  hello: "Bonjour à tous"
+
+  #home
+  baseline: "Cette baseline est un peu bof"
+
+  #navbar
+  language: "Langue"
+  ourstorynav: "Notre histoire"
+  fbconnect: "Login Facebook"
+  signin: "Connexion"
+  signup: "Inscription"
+  signout: "Déconnexion"
+  tripsnav: "Mes voyages"
+
+
+
+  story:
+    index:
+      title: "Notre histoire"
