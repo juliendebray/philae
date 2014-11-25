@@ -1,10 +1,8 @@
-<div class="wrapper">
-  <div class="container">
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2">
         <div class="title text-center">
-          <h1>'Brand'</h1>
-          <%= t 'baseline' %>
+          <h1><%= t '.brand' %></h1>
+          <%= t '.baseline' %>
         </div>
       </div>
     </div>
@@ -12,11 +10,9 @@
       <div class="col-xs-8 col-xs-offset-2">
         <div class="form text-center">
           <%= form_tag(experiences_path, method: "get") do %>
-            <%= text_field_tag(:q, nil, placeholder: 'Where do you go?') %>
-            <%= submit_tag("Search", class: 'btn btn-primary') %>
+            <%= text_field_tag(:q, nil, placeholder: t('.searchplaceholder')) %>
+            <%= submit_tag(t ('.searchbutton'), class: 'btn btn-primary') %>
           <% end %>
         </div>
       </div>
     </div>
-  </div>
-</div>

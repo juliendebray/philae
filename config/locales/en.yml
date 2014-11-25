@@ -21,8 +21,7 @@
 
 en:
   hello: "Hello"
-  #home
-  baseline: "Take a walk on the wild side"
+
   #navbar
   ourstorynav: "Our story"
   fbconnect: "Login Facebook"
@@ -30,6 +29,13 @@ en:
   signup: "Sign up"
   signout: "Sign out"
   tripsnav: "My trips"
+
+  home:
+    index:
+      brand: "Brand"
+      baseline: "Take a walk on the wild side"
+      searchplaceholder: "Your next destination is ..."
+      searchbutton: "Go there"
 
 
 

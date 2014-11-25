@@ -1,4 +1,9 @@
-<h2><%= t('.sign_in', :default => "Sign in") %></h2>
+<div class="container content">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2><%= t('.sign_in', :default => "Sign in") %></h2>
+    </div>
+  </div>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />

@@ -1,9 +1,6 @@
 fr:
   hello: "Bonjour à tous"
 
-  #home
-  baseline: "Cette baseline est un peu bof"
-
   #navbar
   language: "Langue"
   ourstorynav: "Notre histoire"
@@ -12,6 +9,14 @@ fr:
   signup: "Inscription"
   signout: "Déconnexion"
   tripsnav: "Mes voyages"
+
+
+  home:
+    index:
+      brand: "Brand"
+      baseline: "Cette baseline est un peu bof"
+      searchplaceholder: "Votre prochaine destination de voyage"
+      searchbutton: "Allez-y"
 
 
 
