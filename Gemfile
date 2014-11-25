@@ -63,3 +63,6 @@ gem 'koala'
 # For use bootstrap easily in form_fo
 gem 'bootstrap_form'
 
+# Geocoder
+gem "geocoder"
+
