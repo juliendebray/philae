@@ -63,3 +63,10 @@ gem 'omniauth-facebook'
 
 # For extended use of fb API (getting user's friends infos, posting on his wall..)
 gem 'koala'
+
+# For use bootstrap easily in form_fo
+gem 'bootstrap_form'
+
+# Geocoder
+gem "geocoder"
+

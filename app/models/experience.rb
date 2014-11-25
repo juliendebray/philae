@@ -9,4 +9,6 @@ class Experience < ActiveRecord::Base
   has_many :trip_experiences
   has_many :trips , through: :trip_experiences
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end

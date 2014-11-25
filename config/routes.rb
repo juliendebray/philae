@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
-
-devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   scope '(:locale)', locale: /fr|en/ do
-
-
-    get 'story/index', as: :story
-
-
-    resources :users, only: [:show]
-
-    resources :story, only: [:index]
-
     root 'home#index'
+    resources :experiences
+    resources :users, only: [:show]
+    resources :story, only: [:index]
+  end
+end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -68,5 +65,4 @@ devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  end
-end
+
