@@ -11,10 +11,90 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124162416) do
+ActiveRecord::Schema.define(version: 20141124171054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "experience_reviews", force: true do |t|
+    t.integer  "experience_id"
+    t.text     "comment"
+    t.float    "rating"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "experience_reviews", ["experience_id"], name: "index_experience_reviews_on_experience_id", using: :btree
+  add_index "experience_reviews", ["user_id"], name: "index_experience_reviews_on_user_id", using: :btree
+
+  create_table "experiences", force: true do |t|
+    t.text     "address"
+    t.string   "name"
+    t.text     "description"
+    t.string   "category"
+    t.boolean  "published"
+    t.integer  "user_id"
+    t.boolean  "private"
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
+
+  create_table "providers", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services", force: true do |t|
+    t.integer  "experience_id"
+    t.integer  "provider_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "services", ["experience_id"], name: "index_services_on_experience_id", using: :btree
+  add_index "services", ["provider_id"], name: "index_services_on_provider_id", using: :btree
+
+  create_table "trip_comments", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "address"
+    t.string   "description"
+    t.integer  "trip_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "trip_comments", ["trip_id"], name: "index_trip_comments_on_trip_id", using: :btree
+  add_index "trip_comments", ["user_id"], name: "index_trip_comments_on_user_id", using: :btree
+
+  create_table "trip_experiences", force: true do |t|
+    t.integer  "trip_id"
+    t.integer  "experience_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "trip_experiences", ["experience_id"], name: "index_trip_experiences_on_experience_id", using: :btree
+  add_index "trip_experiences", ["trip_id"], name: "index_trip_experiences_on_trip_id", using: :btree
+
+  create_table "trips", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
