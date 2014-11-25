@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
-
-  get 'story/index', as: :story
+  root 'home#index'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-  root 'home#index'
+
+  resources :experiences
 
   resources :users, only: [:show]
 
   resources :story, only: [:index]
+
+end
 
 
 
@@ -66,4 +68,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
