@@ -1,4 +1,5 @@
-<%= form_for(@experience) do |f| %>
+<%= bootstrap_form_for(@experience) do |f| %>
+  <!-- Errors explanation -->
   <% if @experience.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
@@ -10,8 +11,12 @@
       </ul>
     </div>
   <% end %>
-
+<!-- form -->
   <div class="actions">
-    <%= f.submit %>
+    <%= f.text_field :name %>
+    <%= f.text_field :address %>
+    <%= f.text_area :description %>
+    <%= f.collection_select(:category, ['sports', 'landscape', 'sea', 'desert']) %>
+    <%= f.submit 'Create' %>
   </div>
 <% end %>
