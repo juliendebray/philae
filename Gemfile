@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+source 'https://rails-assets.org'  # Add this at line 2 for gmaps4rails gem
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
@@ -65,4 +65,8 @@ gem 'bootstrap_form'
 
 # Geocoder
 gem "geocoder"
+
+#Gmaps4Rails
+gem "gmaps4rails"
+gem "rails-assets-underscore"
 
