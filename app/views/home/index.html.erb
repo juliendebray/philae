@@ -3,6 +3,18 @@
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2">
         <div class="form text-center">
+          <p>'Brand'</p>
+          <%= t 'baseline' %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="form text-center">
           <%= form_tag("/search", method: "get") do %>
             <%= text_field_tag(:q, nil, placeholder: 'Where do you go?') %>
             <%= submit_tag("Search", class: 'btn btn-primary') %>
@@ -11,4 +23,5 @@
       </div>
     </div>
   </div>
+
 </div>
