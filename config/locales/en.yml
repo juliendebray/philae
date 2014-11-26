@@ -43,6 +43,10 @@ en:
   contact:
     index:
       title: "Talk to us"
+      name: "Your name"
+      email: "Your email address"
+      message: "Enter your message here. We will get back to you very soon. Thanks."
+      submit: "Submit"
 
 
   #story

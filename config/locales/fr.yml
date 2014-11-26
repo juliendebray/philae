@@ -23,6 +23,10 @@ fr:
   contact:
     index:
       title: "Contactez-nous"
+      name: "Votre nom"
+      email: "Votre adresse email"
+      message: "Entrez votre message ici, nous reviendrons vers vous très vite"
+      submit: "Envoyer"
 
   #story:
   story:
