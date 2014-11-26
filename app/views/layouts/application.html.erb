@@ -11,12 +11,21 @@
 <body>
 
   <%= render partial: "shared/navbar" %>
+  <div class="wrapper">
+    <div class="container">
 
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
 
-  <%= yield %>
+      <%= yield %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+    </div>
+  </div>
+
 
 
   <%= yield(:before_js) %>

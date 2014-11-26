@@ -1,0 +1,25 @@
+fr:
+  hello: "Bonjour à tous"
+
+  #navbar
+  language: "Langue"
+  ourstorynav: "Notre histoire"
+  fbconnect: "Login Facebook"
+  signin: "Connexion"
+  signup: "Inscription"
+  signout: "Déconnexion"
+  tripsnav: "Mes voyages"
+
+
+  home:
+    index:
+      brand: "Brand"
+      baseline: "Cette baseline est un peu bof"
+      searchplaceholder: "Votre prochaine destination de voyage"
+      searchbutton: "Allez-y"
+
+
+
+  story:
+    index:
+      title: "Notre histoire"

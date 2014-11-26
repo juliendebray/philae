@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'  # Add this at line 2 for gmaps4rails gem
 
+gem "rails-i18n", '~> 4.0.0'
+
+gem 'devise-i18n'
+
+gem 'devise-i18n-views'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 # Use postgresql as the database for Active Record

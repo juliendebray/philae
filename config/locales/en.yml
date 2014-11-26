@@ -20,4 +20,27 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: "Hello"
+
+  #navbar
+  ourstorynav: "Our story"
+  fbconnect: "Login Facebook"
+  signin: "Log in"
+  signup: "Sign up"
+  signout: "Sign out"
+  tripsnav: "My trips"
+
+  home:
+    index:
+      brand: "Brand"
+      baseline: "Take a walk on the wild side"
+      searchplaceholder: "Your next destination is ..."
+      searchbutton: "Go there"
+
+
+
+
+  #story
+  story:
+    index:
+      title: "Our story"

@@ -9,7 +9,7 @@ class ExperiencesController < ApplicationController
       marker.lat experience.latitude
       marker.lng experience.longitude
       marker.infowindow render_to_string(partial: "/experiences/infowindow.html.erb", locals: { experience: experience})
-      marker.title   experience.name
+      marker.title experience.name
     end
   end
 
