@@ -29,6 +29,7 @@ en:
   signup: "Sign up"
   signout: "Sign out"
   tripsnav: "My trips"
+  ourcontact: "Talk to us"
 
   home:
     index:
@@ -38,6 +39,10 @@ en:
       searchbutton: "Go there"
 
 
+  #contact
+  contact:
+    index:
+      title: "Talk to us"
 
 
   #story
