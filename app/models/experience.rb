@@ -1,5 +1,6 @@
 class Experience < ActiveRecord::Base
   belongs_to :user
+  belongs_to :category
 
   has_many :services
   has_many :providers, through: :services
