@@ -9,6 +9,7 @@ fr:
   signup: "Inscription"
   signout: "Déconnexion"
   tripsnav: "Mes voyages"
+  ourcontact: "Contact"
 
 
   home:
@@ -18,8 +19,12 @@ fr:
       searchplaceholder: "Votre prochaine destination de voyage"
       searchbutton: "Allez-y"
 
+  #contact
+  contact:
+    index:
+      title: "Contactez-nous"
 
-
+  #story:
   story:
     index:
       title: "Notre histoire"
