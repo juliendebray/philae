@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
-    resources :experiences
+    resources :experiences do
+      resources :experience_reviews, only: [:new, :create]
+    end
+
     resources :users, only: [:show]
     resources :story, only: [:index]
   end
