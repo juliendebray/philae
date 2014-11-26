@@ -1,6 +1,7 @@
 <p><%=experience.name%></p>
 <p><strong><%= image_tag 'http://placehold.it/130x60' %></strong></p>
 <p><em><%=experience.description%></em></p>
+<p>rating: <%= experience.experience_reviews.average(:rating).to_f %> </p>
 <p>
   <%= link_to 'show details', experience_path(experience) %>
   /
