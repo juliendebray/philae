@@ -13,6 +13,11 @@ class ExperiencesController < ApplicationController
     end
   end
 
+  def markers
+    @markers = {}
+    render json: @markers
+  end
+
   # GET /experiences/1
   # GET /experiences/1.json
   def show

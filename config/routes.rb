@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
     resources :experiences do
+      collection do
+        get :markers
+      end
       resources :experience_reviews, only: [:new, :create]
     end
 

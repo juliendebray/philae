@@ -42,13 +42,46 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
+
     $(document).on('ready', function() {
-      handler = Gmaps.build('Google');
+
+      var handler = Gmaps.build('Google');
+
       handler.buildMap({ internal: { id: 'map' } }, function(){
         markers = handler.addMarkers(<%= raw @markers.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
       });
+
+      var map = handler.getMap();
+      google.maps.event.addListenerOnce(map, 'idle', function(){
+          // do something only the first time the map is loaded
+        google.maps.event.addListener(map, 'bounds_changed', function() {
+          var bounds = map.getBounds();
+          var northEastLat = bounds.getNorthEast().lat();
+          var northEastLng = bounds.getNorthEast().lng();
+          var southWestLat = bounds.getSouthWest().lat();
+          var southWestLng = bounds.getSouthWest().lng();
+
+          var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&NELO=" + southWestLng ;
+          $.get(url, function(data) {
+            console.log("Page chargée !");
+            console.log(data);
+          });
+          //   {
+          //     bounds.to_json
+          //   },
+          //   function(data) {
+          //     console.log("reponse du post")
+          //   }
+          //   );
+          // console.log('NE lat debut 1')
+          // console.log('NE-lat: ' + bounds.getNorthEast().lat());
+          // console.log('NE lont debut 1')
+          // console.log('NE-lng: ' +bounds.getNorthEast().lng());
+        });
+      });
     })
+
   <% end %>
 <% end %>
