@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   scope '(:locale)', locale: /fr|en/ do
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
     resources :experiences
     resources :users, only: [:show]
     resources :story, only: [:index]
+    resources :trip, except: [:update]
   end
 end
 

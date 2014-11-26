@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   # validates :first_name, presence: true
 
+  has_many :trips
+
 
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
