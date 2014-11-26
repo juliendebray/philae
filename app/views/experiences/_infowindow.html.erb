@@ -1,0 +1,8 @@
+<p><%=experience.name%></p>
+<p><strong><%= image_tag 'http://placehold.it/130x60' %></strong></p>
+<p><em><%=experience.description%></em></p>
+<p>
+  <%= link_to 'show details', experience_path(experience) %>
+  ---
+  <%= link_to 'add to itinerary', '#' %>
+</p>
