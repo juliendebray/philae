@@ -16,14 +16,16 @@
             </tr>
           </thead>
           <tbody>
-            <% @experiences.each do |experience| %>
-              <tr>
-                <td><%= experience.name %></td>
-                <td><%= link_to 'Show', experience %></td>
-                <td><%= link_to 'Edit', edit_experience_path(experience) %></td>
-                <td><%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
+            <% if @experiences %>
+              <% @experiences.each do |experience| %>
+                <tr>
+                  <td><%= experience.name %></td>
+                  <td><%= link_to 'Show', experience %></td>
+                  <td><%= link_to 'Edit', edit_experience_path(experience) %></td>
+                  <td><%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            <%end%>
           </tbody>
         </table>
       </div>
@@ -63,10 +65,13 @@
           var southWestLat = bounds.getSouthWest().lat();
           var southWestLng = bounds.getSouthWest().lng();
 
-          var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&NELO=" + southWestLng ;
+          var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
           $.get(url, function(data) {
             console.log("Page chargée !");
             console.log(data);
+            handler.buildMap({ internal: { id: 'map' } }, function(){
+              markers = handler.addMarkers(<%= raw @markers.to_json %>);
+            });
           });
           //   {
           //     bounds.to_json
