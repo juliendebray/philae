@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'  # Add this at line 2 for gmaps4rails gem
 
+ruby '2.1.2'
+
 
 gem 'jquery-ui-rails'
 
@@ -81,6 +83,4 @@ gem "geocoder"
 gem "gmaps4rails"
 gem "rails-assets-underscore"
 
-ruby '2.1.2'
-gem 'rails_12factor', group: :production
 
