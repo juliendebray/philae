@@ -47,18 +47,42 @@
 
     $(document).on('ready', function() {
 
+      var mapOptions = {
+      center: new google.maps.LatLng(32.278871, -6.140109), // Set center to Morocco
+      zoom: 6
+      };
+
       var handler = Gmaps.build('Google');
+      var requestingMarkers = false;
+      var previousMarkers = {};
 
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
+      handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
 
-      var map = handler.getMap();
-      google.maps.event.addListenerOnce(map, 'idle', function(){
-          // do something only the first time the map is loaded
+        var map = handler.getMap();
+
+       // Set markers on loading
+
+        var bounds = map.getBounds();
+        var northEastLat = bounds.getNorthEast().lat();
+        var northEastLng = bounds.getNorthEast().lng();
+        var southWestLat = bounds.getSouthWest().lat();
+        var southWestLng = bounds.getSouthWest().lng();
+
+        var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+        $.get(url, function(data) {
+          handler.removeMarkers(previousMarkers);
+          previousMarkers = handler.addMarkers(data);
+          handler.bounds.extendWith(previousMarkers);
+          requestingMarkers = false;
+        });
+
+       // Set markers when bounds changing
+
         google.maps.event.addListener(map, 'bounds_changed', function() {
+          if (requestingMarkers) {
+            return;
+          }
+          requestingMarkers = true;
           var bounds = map.getBounds();
           var northEastLat = bounds.getNorthEast().lat();
           var northEastLng = bounds.getNorthEast().lng();
@@ -67,26 +91,13 @@
 
           var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
           $.get(url, function(data) {
-            console.log("Page chargée !");
-            console.log(data);
-            handler.buildMap({ internal: { id: 'map' } }, function(){
-              markers = handler.addMarkers(<%= raw @markers.to_json %>);
-            });
+            handler.removeMarkers(previousMarkers);
+            previousMarkers = handler.addMarkers(data);
+            handler.bounds.extendWith(previousMarkers);
+            requestingMarkers = false;
           });
-          //   {
-          //     bounds.to_json
-          //   },
-          //   function(data) {
-          //     console.log("reponse du post")
-          //   }
-          //   );
-          // console.log('NE lat debut 1')
-          // console.log('NE-lat: ' + bounds.getNorthEast().lat());
-          // console.log('NE lont debut 1')
-          // console.log('NE-lng: ' +bounds.getNorthEast().lng());
         });
       });
-    })
-
+    });
   <% end %>
 <% end %>
