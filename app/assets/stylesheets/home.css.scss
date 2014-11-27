@@ -3,10 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .wrapper {
-  background-image: url("worldgrey.jpg");
+  background-image: url("lonely.jpg");
   background-size: cover;
   background-attachment: fixed;
-  color: black;
+  color: lightgrey;
   height: 800px;
   padding-top: 200px;
   }
+
+
+#hp-form {
+background: rgba(0,0,0,0.4);
+color: white;
+width: 80%;
+margin: 0 auto;
+padding: 25px 10px;
+border-radius: 5px;
+text-align: center;
+}
+
+#q {
+width: 80%;
+padding: 5px;
+color: black;
+}
+
+input[name=commit] {
+  padding: 6px;
+  background-color: transparent;
+  border-radius: 5px;
+  color: lightgrey;
+}
+
+// input[class=btn btn-primary] {
+//   color: transparent;
+// }
+
