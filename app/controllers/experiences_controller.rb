@@ -4,13 +4,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences
   # GET /experiences.json
   def index
-    # @experiences = Experience.all
-    # @markers = Gmaps4rails.build_markers(@experiences) do |experience, marker|
-    #   marker.lat experience.latitude
-    #   marker.lng experience.longitude
-    #   marker.infowindow render_to_string(partial: "/experiences/infowindow.html.erb", locals: { experience: experience})
-    #   marker.title experience.name
-    # end
+    @trip = Trip.create
   end
 
   def markers
