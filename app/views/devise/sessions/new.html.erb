@@ -1,22 +1,43 @@
 <div class="container content">
+
   <div class="row">
     <div class="col-md-12 text-center">
       <h2><%= t('.sign_in', :default => "Sign in") %></h2>
+
     </div>
   </div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <div class="row">
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+    <div class="col-sm-4 col-sm-offset-1 text-center">
+      <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-lg btn-facebook" do %>
+        <i class="fa fa-facebook"></i> Login with Facebook
+      <% end %>
+    </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+    <div class="col-sm-4 col-sm-offset-1 text-center">
+      <div id="sign-form">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <div><%= f.label :email %><br />
+          <%= f.email_field :email %></div>
 
-  <div><%= f.submit t('.sign_in', :default => "Sign in") %></div>
-<% end %>
+          <div><%= f.label :password %><br />
+          <%= f.password_field :password %></div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+          <% end -%>
+
+          <div><%= f.submit t('.sign_in', :default => "Sign in") %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <%= render "devise/shared/links" %>
+
+
+
