@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'trip_experiences/create'
-
-  get 'trip_experiences/destroy'
-
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   scope '(:locale)', locale: /fr|en/ do

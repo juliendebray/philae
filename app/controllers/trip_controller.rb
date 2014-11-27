@@ -1,29 +1,11 @@
 class TripController < ApplicationController
-  before_action :find_trip
+  before_action :authenticate_user!
+  before_action :set_trip_from_session, only: [:update]
 
-  def index
-    # lister les trips
-  end
-
-  def new
-    #creer un nouveau trip
-    @user = current_user
-    @trip = @user.trips.new(trip_params)
-  #   @user = current_user
-  #   if @user
-  #     @trip = @user.trips.new
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
-
-  end
-
-  def create
-    #creer un nouveau
-    trip = @trip.new(user_id:current_user.id)
-    trip.save
-    redirect_to trip_path(@trip)
+  def update
+    @trip.user_id = current_user.id
+    @trip.save
+    render :show
   end
 
   def show
@@ -40,8 +22,8 @@ class TripController < ApplicationController
 
   private
 
-  def find_trip
-    @trip = Trip.find(params[:trip_id])
+  def set_trip_from_session
+    @trip = Trip.find(session[:trip_id])
   end
 
 end

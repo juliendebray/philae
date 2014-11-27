@@ -5,6 +5,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences.json
   def index
     @trip = Trip.create
+    session[:trip_id] = @trip.id
   end
 
   def markers
