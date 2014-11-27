@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
     resources :story, only: [:index]
     resources :trip, except: [:update]
-    resources :contact, only: [:index]
+    resources :contacts, only: [:new, :create]
   end
 end
 

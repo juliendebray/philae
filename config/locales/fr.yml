@@ -20,8 +20,8 @@ fr:
       searchbutton: "Allez-y"
 
   #contact
-  contact:
-    index:
+  contacts:
+    new:
       title: "Contactez-nous"
       name: "Votre nom"
       email: "Votre adresse email"

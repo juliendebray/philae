@@ -49,6 +49,7 @@ gem 'spring',        group: :development
 
 # General gems
 gem 'rails_12factor', group: :production
+gem 'letter_opener', group: :development
 gem 'binding_of_caller', group: :development
 gem 'better_errors', group: :development
 
