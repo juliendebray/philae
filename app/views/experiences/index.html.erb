@@ -9,9 +9,9 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-3">
-        <!-- Ajouter un trip_experience do |t|
-        bloc créé avec titre de l'expérience et photo
-        au clic sur la croix, methode delete -->
+        <!-- Ajouter un trip_experience do |t| -->
+        <!-- bloc créé avec titre de l'expérience et photo -->
+        <!-- au clic sur la croix, methode delete -->
           <ul id="draggablePanelList" class="list-unstyled">
             <li class="panel panel-info">
               <div class="panel-heading">
@@ -31,15 +31,25 @@
       </div>
     </div>
     <div class="row">
-      <% @experiences.each do |experience| %>
-
-        <tr>
-          <td><%= experience.name %></td>
-          <td><%= link_to 'Show', experience %></td>
-          <td><%= link_to 'Edit', edit_experience_path(experience) %></td>
-          <td><%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
+      <table>
+          <thead>
+            <tr>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @experiences %>
+              <% @experiences.each do |experience| %>
+                <tr>
+                  <td><%= experience.name %></td>
+                  <td><%= link_to 'Show', experience %></td>
+                  <td><%= link_to 'Edit', edit_experience_path(experience) %></td>
+                  <td><%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            <%end%>
+          </tbody>
+        </table>
 
     </div>
     <div class="row">
@@ -56,14 +66,60 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
+
     $(document).on('ready', function() {
-      handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        <!-- console.log(markers) -->
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
+
+      var mapOptions = {
+      center: new google.maps.LatLng(32.278871, -6.140109), // Set center to Morocco
+      zoom: 6
+      };
+
+      var handler = Gmaps.build('Google');
+      var requestingMarkers = false;
+      var previousMarkers = {};
+
+      handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
+
+        var map = handler.getMap();
+
+       // Set markers on loading
+
+        var bounds = map.getBounds();
+        var northEastLat = bounds.getNorthEast().lat();
+        var northEastLng = bounds.getNorthEast().lng();
+        var southWestLat = bounds.getSouthWest().lat();
+        var southWestLng = bounds.getSouthWest().lng();
+
+        var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+        $.get(url, function(data) {
+          handler.removeMarkers(previousMarkers);
+          previousMarkers = handler.addMarkers(data);
+          handler.bounds.extendWith(previousMarkers);
+          requestingMarkers = false;
+        });
+
+       // Set markers when bounds changing
+
+        google.maps.event.addListener(map, 'bounds_changed', function() {
+          if (requestingMarkers) {
+            return;
+          }
+          requestingMarkers = true;
+          var bounds = map.getBounds();
+          var northEastLat = bounds.getNorthEast().lat();
+          var northEastLng = bounds.getNorthEast().lng();
+          var southWestLat = bounds.getSouthWest().lat();
+          var southWestLng = bounds.getSouthWest().lng();
+
+          var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+          $.get(url, function(data) {
+            handler.removeMarkers(previousMarkers);
+            previousMarkers = handler.addMarkers(data);
+            handler.bounds.extendWith(previousMarkers);
+            requestingMarkers = false;
+          });
+        });
       });
-    })
+    });
   <% end %>
 <% end %>
