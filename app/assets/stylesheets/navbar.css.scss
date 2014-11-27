@@ -1,6 +1,7 @@
 #navbar {
   background: transparent;
   position: fixed;
+  font-weight: 500;
 }
 
 
@@ -9,7 +10,7 @@ $color: red;
 $bg: transparent;
 $position: fixed;
 
-$height: 30px;
+$height: 40px;
 $vertical-padding: 20px;
 $horizontal-padding: 20px;
 $border-bottom-width: 0;
@@ -96,7 +97,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   border-right: $btn-right-border-width solid $btn-right-border-color;
   border-bottom: $btn-bottom-border-width solid $btn-bottom-border-color;
   border-left: $btn-left-border-width solid $btn-left-border-color;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 

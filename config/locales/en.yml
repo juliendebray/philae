@@ -29,15 +29,24 @@ en:
   signup: "Sign up"
   signout: "Sign out"
   tripsnav: "My trips"
+  ourcontact: "Talk to us"
 
   home:
     index:
-      brand: "Brand"
-      baseline: "Take a walk on the wild side"
+      brand: "WooHoo"
+      baseline: "Prepare for take-off"
       searchplaceholder: "Your next destination is ..."
       searchbutton: "Go there"
 
 
+  #contact
+  contact:
+    index:
+      title: "Talk to us"
+      name: "Your name"
+      email: "Your email address"
+      message: "Enter your message here, we'll get back to you shorty. Thanks."
+      submit: "Send"
 
 
   #story

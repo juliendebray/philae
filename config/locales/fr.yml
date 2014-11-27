@@ -9,17 +9,26 @@ fr:
   signup: "Inscription"
   signout: "Déconnexion"
   tripsnav: "Mes voyages"
+  ourcontact: "Contact"
 
 
   home:
     index:
-      brand: "Brand"
-      baseline: "Cette baseline est un peu bof"
+      brand: "WooHoo"
+      baseline: "Préparez-vous au décollage"
       searchplaceholder: "Votre prochaine destination de voyage"
       searchbutton: "Allez-y"
 
+  #contact
+  contact:
+    index:
+      title: "Contactez-nous"
+      name: "Votre nom"
+      email: "Votre adresse email"
+      message: "Entrez votre message ici, nous reviendrons vers vous très vite"
+      submit: "Envoyer"
 
-
+  #story:
   story:
     index:
       title: "Notre histoire"

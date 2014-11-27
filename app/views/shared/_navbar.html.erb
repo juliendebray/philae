@@ -9,13 +9,20 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to root_path, {class: "navbar-brand"} do %>
-        <%= image_tag("earth.png", id: "logo") %>
+        <%= image_tag("heartbeat.png", id: "logo") %>
       <% end %>
 
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t('ourstorynav'), story_index_path %></li>
       </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to t('ourcontact'), contact_index_path %></li>
+      </ul>
+
     </div>
+
+
 
 
 
