@@ -40,8 +40,8 @@ en:
 
 
   #contact
-  contact:
-    index:
+  contacts:
+    new:
       title: "Talk to us"
       name: "Your name"
       email: "Your email address"
