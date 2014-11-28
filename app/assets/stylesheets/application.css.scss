@@ -14,3 +14,12 @@
 @import "signup-login";
 
 // General customized styles
+
+.wrapper {
+  background-image: image-url("lonely.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  color: lightgrey;
+  height: 800px;
+  padding-top: 40px;
+  }
