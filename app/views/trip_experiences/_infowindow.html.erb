@@ -2,10 +2,14 @@
 <p><strong><%= image_tag 'http://placehold.it/130x60' %></strong></p>
 <p><em><%=experience.description%></em></p>
 <p>rating: <%= experience.experience_reviews.average(:rating).to_f %> </p>
+
 <p>
   <%= link_to 'show details', experience_path(experience) %>
   /
-  <%= link_to 'add to itinerary', '#' %>
-  /
   <%= link_to 'add a review', new_experience_experience_review_path(experience) %>
+  /
+  <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
+    <%= f.hidden_field :experience_id, value: experience.id %>
+    <%= f.submit 'add to itinerary' %>
+  <% end %>
 </p>

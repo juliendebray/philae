@@ -4,16 +4,16 @@
       <h1><%= t '.brand' %></h1>
       <h2><%= t '.baseline' %></h2>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
-    <div id="hp-form">
-      <div class="form text-center">
-        <%= form_tag(experiences_path, method: "get") do %>
-          <%= text_field_tag(:q, nil, placeholder: t('.searchplaceholder')) %>
-          <%= submit_tag(t ('.searchbutton'), class: 'btn btn-primary') %>
-        <% end %>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <div id="hp-form">
+          <div class="form text-center">
+            <%= form_tag(trips_path, method: "post") do %>
+              <%= text_field_tag(:q, nil, placeholder: t('.searchplaceholder')) %>
+              <%= submit_tag(t ('.searchbutton'), class: 'btn btn-primary') %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

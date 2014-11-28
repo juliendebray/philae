@@ -1,0 +1,71 @@
+function buildMap(mapOptions, trip_id) {
+  var handler = Gmaps.build('Google');
+  var requestingMarkers = false;
+  var infoWindowOpened = false;
+  var previousMarkers = {};
+
+  handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
+
+    var map = handler.getMap();
+
+   // Set markers on map loading
+
+    var bounds = map.getBounds();
+    var northEastLat = bounds.getNorthEast().lat();
+    var northEastLng = bounds.getNorthEast().lng();
+    var southWestLat = bounds.getSouthWest().lat();
+    var southWestLng = bounds.getSouthWest().lng();
+
+    var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+    $.get(url, function(data) {
+      handler.removeMarkers(previousMarkers);
+      previousMarkers = handler.addMarkers(data);
+      handler.bounds.extendWith(previousMarkers);
+      requestingMarkers = false;
+    });
+
+   // Set markers when drag ends
+
+    google.maps.event.addListener(map, 'dragend', function() {
+      if (requestingMarkers) {
+        return;
+      }
+      requestingMarkers = true;
+      var bounds = map.getBounds();
+      var northEastLat = bounds.getNorthEast().lat();
+      var northEastLng = bounds.getNorthEast().lng();
+      var southWestLat = bounds.getSouthWest().lat();
+      var southWestLng = bounds.getSouthWest().lng();
+
+      var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+      $.get(url, function(data) {
+        handler.removeMarkers(previousMarkers);
+        previousMarkers = handler.addMarkers(data);
+        handler.bounds.extendWith(previousMarkers);
+        requestingMarkers = false;
+      });
+    });
+
+    // Set markers when zoom changes
+
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+      if (requestingMarkers) {
+        return;
+      }
+      requestingMarkers = true;
+      var bounds = map.getBounds();
+      var northEastLat = bounds.getNorthEast().lat();
+      var northEastLng = bounds.getNorthEast().lng();
+      var southWestLat = bounds.getSouthWest().lat();
+      var southWestLng = bounds.getSouthWest().lng();
+
+      var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+      $.get(url, function(data) {
+        handler.removeMarkers(previousMarkers);
+        previousMarkers = handler.addMarkers(data);
+        handler.bounds.extendWith(previousMarkers);
+        requestingMarkers = false;
+      });
+    });
+  });
+}

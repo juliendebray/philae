@@ -6,16 +6,22 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
-    resources :experiences do
-      collection do
-        get :markers
-      end
+    resources :experiences, except: [:index] do
       resources :experience_reviews, only: [:new, :create]
     end
 
     resources :users, only: [:show]
     resources :story, only: [:index]
-    resources :trip, except: [:update]
+    resources :trips, only: [:update, :show, :create] do
+      member do
+        get :start
+      end
+      resources :trip_experiences, only: [:create] do
+        collection do
+          get :markers
+        end
+      end
+    end
     resources :contacts, only: [:new, :create]
   end
 end
