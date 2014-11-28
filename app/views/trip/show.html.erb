@@ -1,5 +1,13 @@
 <h1>Trip#show</h1>
-<p>Find me in app/views/trip/show.html.erb</p>
+
+<%= @trip.trip_experiences.each do |te| %>
+  <ul>
+    <li>
+      <%= te.experience.name %>
+    </li>
+  </ul>
+<% end %>
+
 
 
 

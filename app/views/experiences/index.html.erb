@@ -26,7 +26,9 @@
             </li>
           </ul>
         <div class="btn btn-primary">
-          <%= submit_tag('Save')%>
+          <%= form_for(@trip) do |f| %>
+            <%= f.submit('Save') %>
+          <% end %>
         </div>
       </div>
     </div>
