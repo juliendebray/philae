@@ -10,6 +10,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences/new
   def new
     @experience = Experience.new
+    3.times { @experience.experience_pictures.build }
   end
 
   # GET /experiences/1/edit
@@ -64,6 +65,6 @@ class ExperiencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:name, :address, :description, :category_id)
+      params.require(:experience).permit(:name, :address, :description, :category_id, experience_pictures_attributes: [:picture])
     end
 end

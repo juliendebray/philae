@@ -8,13 +8,20 @@
 
 
 # Seed experiences
+
+#tableau_adresse
+#experience.create(address: adresse, name: , description: , user_id: 1, category_id: , image: url(../lattitude_longitude.jpg))
+
 Experience.create(
   address: 'Merzouga, Morocco',
   name: 'merzouga',
   description: 'test',
   user_id: 1,
-  category_id: rand(1..3)
+  category_id: rand(1..3),
   )
+
+
+
 Experience.create(
   address: 'marrakech, Morocco',
   name: 'marra',
