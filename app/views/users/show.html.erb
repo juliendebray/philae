@@ -1,1 +1,38 @@
-<h1>My trips</h1>
+<div class="container content">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h1>My account</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>My trips</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="tripbox">
+        <% @user.trips.each do |trip| %>
+          <%= trip.title %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>My friends</h2>
+      </div>
+    </div>
+  </div>
+</div>

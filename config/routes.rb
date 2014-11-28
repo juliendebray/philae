@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'connections/new'
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   scope '(:locale)', locale: /fr|en/ do

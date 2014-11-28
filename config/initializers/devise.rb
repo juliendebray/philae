@@ -2,6 +2,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
+
   config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"]
 
   # The secret key used by Devise. Devise uses this key to generate
