@@ -10,7 +10,7 @@
       <div class="col-xs-6 col-xs-offset-3">
         <div id="hp-form">
           <div class="form text-center">
-            <%= form_tag(experiences_path, method: "get") do %>
+            <%= form_tag(trips_path, method: "post") do %>
               <%= text_field_tag(:q, nil, placeholder: t('.searchplaceholder')) %>
               <%= submit_tag(t ('.searchbutton'), class: 'btn btn-primary') %>
             <% end %>

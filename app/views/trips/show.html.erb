@@ -1,15 +1,9 @@
 <h1>Trip#show</h1>
 
-<%= @trip.trip_experiences.each do |te| %>
+<% @trip.trip_experiences.each do |te| %>
   <ul>
     <li>
       <%= te.experience.name %>
     </li>
   </ul>
 <% end %>
-
-
-
-
-<!-- page du trip
- -->

@@ -1,24 +1,6 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
 
-  # GET /experiences
-  # GET /experiences.json
-  def index
-    @trip = Trip.create
-    session[:trip_id] = @trip.id
-  end
-
-  def markers
-    @experiences = Experience.within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
-    @experiences.sort_by{ |e| e.experience_reviews.average(:rating) }
-    @markers = Gmaps4rails.build_markers(@experiences.reverse[0..2]) do |experience, marker|
-      marker.lat experience.latitude
-      marker.lng experience.longitude
-      marker.infowindow render_to_string(partial: "/experiences/infowindow.html.erb", locals: { experience: experience})
-      marker.title experience.name
-    end
-    render json: @markers
-  end
 
   # GET /experiences/1
   # GET /experiences/1.json

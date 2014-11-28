@@ -1,6 +1,16 @@
-class TripController < ApplicationController
+class TripsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trip, only: [:update, :show]
+  before_action :set_trip, only: [:start, :update, :show]
+
+
+  def create
+     @trip = Trip.create  # TODO: store query?
+     redirect_to start_trip_path(@trip)
+  end
+
+  def start
+
+  end
 
   def update
     @trip.update(user_id: current_user.id)
@@ -8,7 +18,6 @@ class TripController < ApplicationController
   end
 
   def show
-    #aller sur la page d'un trip
   end
 
   def edit
@@ -21,9 +30,6 @@ class TripController < ApplicationController
 
   private
 
-  def set_trip_from_session
-    @trip = Trip.find(session[:trip_id])
-  end
 
   def set_trip
     @trip = Trip.find(params[:id])
