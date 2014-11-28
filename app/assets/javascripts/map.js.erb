@@ -37,7 +37,7 @@ function buildMap(mapOptions, trip_id) {
       var southWestLat = bounds.getSouthWest().lat();
       var southWestLng = bounds.getSouthWest().lng();
 
-      var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+      var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
       $.get(url, function(data) {
         handler.removeMarkers(previousMarkers);
         previousMarkers = handler.addMarkers(data);
@@ -59,7 +59,7 @@ function buildMap(mapOptions, trip_id) {
       var southWestLat = bounds.getSouthWest().lat();
       var southWestLng = bounds.getSouthWest().lng();
 
-      var url = "/experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+      var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
       $.get(url, function(data) {
         handler.removeMarkers(previousMarkers);
         previousMarkers = handler.addMarkers(data);
