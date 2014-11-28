@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       member do
         get :start
       end
-      resources :trip_experiences, only: [:create] do
+      resources :trip_experiences, only: [:create, :destroy] do
         collection do
           get :markers
         end
