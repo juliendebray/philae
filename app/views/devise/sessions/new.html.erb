@@ -3,34 +3,50 @@
   <div class="row">
     <div class="col-md-12 text-center">
       <h2><%= t('.sign_in', :default => "Sign in") %></h2>
-
     </div>
   </div>
 
-  <div class="row">
 
-    <div class="col-sm-4 col-sm-offset-1 text-center">
-      <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-lg btn-facebook" do %>
-        <i class="fa fa-facebook"></i> Login with Facebook
-      <% end %>
-    </div>
+  <div class="col-sm-6 col-sm-offset-3 text-center">
 
-    <div class="col-sm-4 col-sm-offset-1 text-center">
-      <div id="sign-form">
-        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-          <div><%= f.label :email %><br />
-          <%= f.email_field :email %></div>
+    <div id="sign-form">
 
-          <div><%= f.label :password %><br />
-          <%= f.password_field :password %></div>
+      <div class="col-xs-12 text-center">
 
-          <% if devise_mapping.rememberable? -%>
-            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-          <% end -%>
+        <div id="fb-login">
+
+          <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-lg btn-facebook" do %>
+            <i class="fa fa-facebook"></i> <%= t('fbbutton') %>
+          <% end %>
+        </div>
+
+      </div>
+
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div><%= f.label :email do %>
+          <br />
+          <i class="fa fa-envelope-o fa-2x"></i>
+          <%= f.email_field :email, placeholder: "Email" %>
+          <% end %>
+        </div>
+
+        <div><%= f.label :password do %>
+          <br />
+          <i class="fa fa-key fa-2x"></i>
+          <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
+        <% end %>
+
+        <% if devise_mapping.rememberable? -%>
+          <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+        <% end %>
 
           <div><%= f.submit t('.sign_in', :default => "Sign in") %></div>
         <% end %>
+
+        <%= link_to t('noaccount'), new_user_registration_path %>
+
       </div>
+
     </div>
   </div>
 </div>

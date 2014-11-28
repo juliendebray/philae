@@ -1,9 +1,37 @@
 #sign-form {
 background: rgba(0,0,0,0.4);
-color: white;
+color: lightgrey;
 width: 80%;
-margin: 0 auto;
+margin: 10px auto;
 padding: 10px 10px;
 border-radius: 5px;
 text-align: center;
+}
+
+#fb-login {
+padding: 10px 10px;
+text-align: center;
+margin: 5px;
+border-bottom: 1px dotted lightgrey;
+padding-bottom: 20px;
+}
+
+.fa-envelope-o {
+  margin-right: 10px;
+  vertical-align: bottom;
+}
+
+.fa-key {
+  margin-right: 10px;
+  vertical-align: bottom;
+}
+
+#user_email {
+  color: grey;
+  font-weight: normal;
+}
+
+#user_password {
+  color: grey;
+  font-weight: normal;
 }
