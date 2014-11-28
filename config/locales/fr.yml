@@ -5,12 +5,19 @@ fr:
   language: "Langue"
   ourstorynav: "Notre histoire"
   fbconnect: "Login Facebook"
-  signin: "Connexion"
+  signin: "Déjà inscrit ?"
   signup: "Inscription"
   signout: "Déconnexion"
   tripsnav: "Mes voyages"
   ourcontact: "Contact"
 
+  passwordplaceholder: "Mot de passe"
+  passwordconfirmplaceholder: "Confirmer mot de passe"
+  fbbutton: "Se connecter avec Facebook"
+  noaccount: "Pas encore inscrit ?"
+  alreadyaccount: "Déjà inscrit ?"
+  fbencourage: "Pour partager et recueillir les avis de vos amis, inscrivez-avec Facebook."
+  emailsignup: "Ou inscrivez-vous avez votre email"
 
   home:
     index:

@@ -2,44 +2,52 @@
 
   <div class="row">
     <div class="col-md-12 text-center">
-      <h2><%= t('.sign_up', :default => "Sign up") %></h2>
+      <h2><%= t('sign_up', :default => "Sign up") %></h2>
     </div>
   </div>
 
-  <div class="row">
 
-    <div class="col-sm-4 col-sm-offset-1 text-center">
-      <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-lg btn-facebook" do %>
-        <i class="fa fa-facebook"></i> Sign up with Facebook
-      <% end %>
-      <p>We've made it possible to sign up with Facebook. It will make it easier for you to share the cool stuff you'll find here.</p>
-    </div>
-   </div>
+  <div class="col-sm-6 col-sm-offset-3 text-center">
 
-  <div class="row">
-<!--     <div class="col-sm-4 col-sm-offset-1 text-center"> -->
     <div id="sign-form">
+
+      <div class="col-xs-12 text-center">
+
+        <div id="fb-login">
+
+          <p><%= t('fbencourage') %></p>
+          <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-facebook" do %>
+          <i class="fa fa-facebook"></i> <%= t('fbbutton') %>
+          <% end %>
+
+        </div>
+
+      </div>
+
+      <p><%= t('emailsignup') %></p>
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
         <div><%= f.label :email %><br />
-        <%= f.email_field :email %></div>
+        <%= f.email_field :email, placeholder: "Email" %></div>
 
         <div><%= f.label :password %><br />
-        <%= f.password_field :password %></div>
+        <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
 
         <div><%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation %></div>
+        <%= f.password_field :password_confirmation, placeholder: t('passwordconfirmplaceholder') %></div>
 
         <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
+
+        <%= link_to t('alreadyaccount'), new_user_session_path %>
+
       <% end %>
-<!--       </div> -->
+
     </div>
+
   </div>
 
-
-
-
 </div>
+
 
 
 <%= render "devise/shared/links" %>
