@@ -9,20 +9,13 @@ class TripController < ApplicationController
     #creer un nouveau trip
     @user = current_user
     @trip = @user.trips.new(trip_params)
-  #   @user = current_user
-  #   if @user
-  #     @trip = @user.trips.new
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
-
   end
 
   def create
     #creer un nouveau
     trip = @trip.new(user_id:current_user.id)
     trip.save
+
     redirect_to trip_path(@trip)
   end
 
