@@ -9,11 +9,28 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-3">
+        <ul id="draggablePanelList" class="list-unstyled">
+          <% @trip.trip_experiences.each do |tex| %>
+  <!--           <div class="col-xs-12 sm-3">
+   --><!--             <div class="experience-box"> -->
+              <li class="panel panel-info">
+              <div class="panel-heading"><%= tex.name %>
+                <i class= "pull-right fa fa-times"></i>
+              </div>
+              <div class="panel-body"><%= tex.description %>
+              </div>
+            </li>
+  <!--
+            </div> -->
+          <% end %>
+        </ul>
+      </div>
+
         <!-- Ajouter un trip_experience do |t| -->
         <!-- bloc créé avec titre de l'expérience et photo -->
         <!-- au clic sur la croix, methode delete -->
-          <ul id="draggablePanelList" class="list-unstyled">
-            <li class="panel panel-info">
+         <!--  <ul id="draggablePanelList" class="list-unstyled"> -->
+            <!-- <li class="panel panel-info">
               <div class="panel-heading">
                   Titre de l'expérience
                 <i class= "pull-right fa fa-times"></i>
@@ -24,7 +41,7 @@
                 <div class="panel-heading">Awesome</div>
                 <div class="panel-body">Content ...</div>
             </li>
-          </ul>
+          </ul> -->
         <div class="btn btn-primary">
           <%= form_for(@trip) do |f| %>
             <%= f.submit('Save') %>

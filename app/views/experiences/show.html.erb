@@ -1,4 +1,17 @@
 <p id="notice"><%= notice %></p>
+<p>test</p>
+
+<%= @experience.experience_pictures.each do |pic| %>
+  <ul>
+    <li>
+      TEST
+      <%= image_tag pic.picture.url(:small) %>
+    </li>
+  </ul>
+<% end %>
+
 
 <%= link_to 'Edit', edit_experience_path(@experience) %> |
 <%= link_to 'Back', experiences_path %>
+
+
