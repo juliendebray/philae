@@ -1,6 +1,6 @@
 class TripExperiencesController < ApplicationController
   before_action :set_trip, only: [:markers, :create]
-  respond_to :js, only: [:create]
+  respond_to :js, only: [:create, :destroy]
 
   def markers
 
@@ -24,15 +24,23 @@ class TripExperiencesController < ApplicationController
     @trip_experience.save
   end
 
-  def destroy
+  def update
   end
 
-   private
-   def trip_experience_params
-      params.require(:trip_experience).permit(:experience_id)
-    end
+  def destroy
+    @trip_experience = TripExperience.find(params[:id])
+    @trip_experience.destroy
+  end
 
-    def set_trip
-      @trip = Trip.find(params[:trip_id])
-    end
+  def orders
+  end
+
+ private
+ def trip_experience_params
+    params.require(:trip_experience).permit(:experience_id)
+  end
+
+  def set_trip
+    @trip = Trip.find(params[:trip_id])
+  end
 end

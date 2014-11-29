@@ -12,11 +12,11 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show]
     resources :story, only: [:index]
-    resources :trips, only: [:update, :show, :create] do
+    resources :trips, only: [:update, :show, :create, :orders] do
       member do
         get :start
       end
-      resources :trip_experiences, only: [:create] do
+      resources :trip_experiences, only: [:create, :update, :destroy] do
         collection do
           get :markers
         end
