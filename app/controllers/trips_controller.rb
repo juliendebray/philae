@@ -14,6 +14,8 @@ class TripsController < ApplicationController
 
   def update
     @trip.update(user_id: current_user.id)
+    order_hash = JSON.parse(params[:order])
+    update_trip_experience_order(order_hash)
     redirect_to trip_path(@trip)
   end
 
@@ -28,6 +30,10 @@ class TripsController < ApplicationController
     #sur la liste des trips
   end
 
+  def orders
+
+  end
+
   private
 
 
@@ -35,5 +41,10 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
+  def update_trip_experience_order(order_hash)
+    order_hash.each do |k, v|
+      TripExperience.find(v.to_i).update(order: k.to_i)
+    end
+  end
 
 end

@@ -14,8 +14,9 @@
         <!-- au clic sur la croix, methode delete -->
           <ul id="draggablePanelList" class="list-unstyled">
           </ul>
-        <div class="btn btn-primary">
+        <div id="set-orders" class="btn btn-primary">
           <%= form_for(@trip) do |f| %>
+            <%= hidden_field_tag :order %>
             <%= f.submit('Save') %>
           <% end %>
         </div>
@@ -65,17 +66,15 @@
 
       buildMap(mapOptions, <%= @trip.id %>);
 
-      var order = {};
-      for (var i = 0; i < $('.panel.panel-info').length; i++){
-        order[i+1] =  $('.panel.panel-info')[i].id;
-      }
 
-      $('form#edit_trip_24').on("click", function() {
-        var url = "/trips/" + <%= @trip.id %> + "/trip_experiences/orders";
-        $.get(url, order, function(data) {
-          console.log(url);
-          console.log(data);
-        });
+
+      $('#set-orders').on("mousedown", function() {
+        console.log('enter dans event');
+        var order = {};
+        for (var i = 0; i < $('.panel.panel-info').length; i++){
+          order[i+1] =  $('.panel.panel-info')[i].id;
+        }
+        $('#order').attr('value', JSON.stringify(order));
       });
     });
   <% end %>
