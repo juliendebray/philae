@@ -3,9 +3,9 @@ class ExperiencePicture < ActiveRecord::Base
 
   has_attached_file :picture,
     styles: {
-      banner: "1400x550#>",
-      small: "220x170#>",
-      thumb: "100x100#>",
+      banner: "1400x550#",
+      small: "220x170#",
+      thumb: "100x100#",
     }
 
   validates_attachment_content_type :picture,
