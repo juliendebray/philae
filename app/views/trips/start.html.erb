@@ -64,6 +64,19 @@
       };
 
       buildMap(mapOptions, <%= @trip.id %>);
+
+      var order = {};
+      for (var i = 0; i < $('.panel.panel-info').length; i++){
+        order[i+1] =  $('.panel.panel-info')[i].id;
+      }
+
+      $('form#edit_trip_24').on("click", function() {
+        var url = "/trips/" + <%= @trip.id %> + "/trip_experiences/orders";
+        $.get(url, order, function(data) {
+          console.log(url);
+          console.log(data);
+        });
+      });
     });
   <% end %>
 <% end %>

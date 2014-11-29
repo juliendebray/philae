@@ -24,17 +24,23 @@ class TripExperiencesController < ApplicationController
     @trip_experience.save
   end
 
+  def update
+  end
+
   def destroy
     @trip_experience = TripExperience.find(params[:id])
     @trip_experience.destroy
   end
 
-   private
-   def trip_experience_params
-      params.require(:trip_experience).permit(:experience_id)
-    end
+  def orders
+  end
 
-    def set_trip
-      @trip = Trip.find(params[:trip_id])
-    end
+ private
+ def trip_experience_params
+    params.require(:trip_experience).permit(:experience_id)
+  end
+
+  def set_trip
+    @trip = Trip.find(params[:trip_id])
+  end
 end
