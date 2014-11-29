@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@experience) do |f| %>
+<%= bootstrap_form_for(@experience, html: { multipart: true }) do |f| %>
   <!-- Errors explanation -->
   <% if @experience.errors.any? %>
     <div id="error_explanation">
@@ -17,7 +17,15 @@
     <%= f.text_field :address %>
     <%= f.text_area :description %>
     <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+    <label>Photos</label>
+    <%= f.fields_for :experience_pictures do |p| %>
+      <div class="field form-group">
+      <%= p.file_field :picture %>
+      </div>
+    <% end %>
+
     <%= f.submit 'Create' %>
+
   </div>
 <% end %>
 

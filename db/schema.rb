@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20141129132952) do
     t.datetime "updated_at"
   end
 
+  create_table "experience_pictures", force: true do |t|
+    t.integer  "experience_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "experience_pictures", ["experience_id"], name: "index_experience_pictures_on_experience_id", using: :btree
+
   create_table "experience_reviews", force: true do |t|
     t.integer  "experience_id"
     t.text     "comment"
