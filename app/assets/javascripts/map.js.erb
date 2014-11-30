@@ -24,48 +24,62 @@ function buildMap(mapOptions, trip_id) {
       requestingMarkers = false;
     });
 
-   // Set markers when drag ends
+    // TODO: Set initailization and set googles maps
 
-    google.maps.event.addListener(map, 'dragend', function() {
-      if (requestingMarkers) {
-        return;
+    $('#checkbox').on("click", function() {
+      if ($('#checkbox').prop('checked')){
+        // Set map with booked experiences;
+        google.maps.event.clearListeners(map, 'dragend');
+        google.maps.event.clearListeners(map, 'zoom_changed');
+        var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
+        $.get(url, function(data) {
+          handler.removeMarkers(previousMarkers);
+          previousMarkers = handler.addMarkers(data);
+          handler.bounds.extendWith(previousMarkers);
+        });
+      } else {
+        // Set markers when drag ends
+        google.maps.event.addListener(map, 'dragend', function() {
+          if (requestingMarkers) {
+          return;
+          }
+          requestingMarkers = true;
+          var bounds = map.getBounds();
+          var northEastLat = bounds.getNorthEast().lat();
+          var northEastLng = bounds.getNorthEast().lng();
+          var southWestLat = bounds.getSouthWest().lat();
+          var southWestLng = bounds.getSouthWest().lng();
+
+          var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+          $.get(url, function(data) {
+            handler.removeMarkers(previousMarkers);
+            previousMarkers = handler.addMarkers(data);
+            handler.bounds.extendWith(previousMarkers);
+            requestingMarkers = false;
+          });
+        });
+
+        // Set markers when zoom changes
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+          if (requestingMarkers) {
+            return;
+          }
+          requestingMarkers = true;
+          var bounds = map.getBounds();
+          var northEastLat = bounds.getNorthEast().lat();
+          var northEastLng = bounds.getNorthEast().lng();
+          var southWestLat = bounds.getSouthWest().lat();
+          var southWestLng = bounds.getSouthWest().lng();
+
+          var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+          $.get(url, function(data) {
+            handler.removeMarkers(previousMarkers);
+            previousMarkers = handler.addMarkers(data);
+            handler.bounds.extendWith(previousMarkers);
+            requestingMarkers = false;
+          });
+        });
       }
-      requestingMarkers = true;
-      var bounds = map.getBounds();
-      var northEastLat = bounds.getNorthEast().lat();
-      var northEastLng = bounds.getNorthEast().lng();
-      var southWestLat = bounds.getSouthWest().lat();
-      var southWestLng = bounds.getSouthWest().lng();
-
-      var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
-      $.get(url, function(data) {
-        handler.removeMarkers(previousMarkers);
-        previousMarkers = handler.addMarkers(data);
-        handler.bounds.extendWith(previousMarkers);
-        requestingMarkers = false;
-      });
-    });
-
-    // Set markers when zoom changes
-
-    google.maps.event.addListener(map, 'zoom_changed', function() {
-      if (requestingMarkers) {
-        return;
-      }
-      requestingMarkers = true;
-      var bounds = map.getBounds();
-      var northEastLat = bounds.getNorthEast().lat();
-      var northEastLng = bounds.getNorthEast().lng();
-      var southWestLat = bounds.getSouthWest().lat();
-      var southWestLng = bounds.getSouthWest().lng();
-
-      var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
-      $.get(url, function(data) {
-        handler.removeMarkers(previousMarkers);
-        previousMarkers = handler.addMarkers(data);
-        handler.bounds.extendWith(previousMarkers);
-        requestingMarkers = false;
-      });
     });
   });
 }

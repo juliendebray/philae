@@ -71,19 +71,7 @@
 
       buildMap(mapOptions, <%= @trip.id %>);
 
-      $('#checkbox').on("click", function() {
-        if ($('#checkbox').prop('checked')){
-          // Set map with booked experiences;
-        } else {
-          buildMap(mapOptions, <%= @trip.id %>);
-        }
-      });
-
-
-
-
       $('#set-orders').on("mousedown", function() {
-        console.log('enter dans event');
         var order = {};
         for (var i = 0; i < $('.panel.panel-info').length; i++){
           order[i+1] =  $('.panel.panel-info')[i].id;
