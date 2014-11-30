@@ -17,13 +17,13 @@
     </div>
 
     <div class="row">
-      <div class="col-md-3">
-        <div class="tripbox">
-        <% @user.trips.each do |trip| %>
-        <li><%= link_to trip.title, start_trip_path(trip) %></li>
-        <% end %>
+      <% @user.trips.each do |trip| %>
+        <div class="col-md-3">
+          <div class="tripbox">
+            <%= link_to trip.title, start_trip_path(trip) %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 
