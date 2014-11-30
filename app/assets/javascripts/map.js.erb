@@ -8,36 +8,22 @@ function buildMap(mapOptions, trip_id) {
 
     var map = handler.getMap();
 
-   // Set markers on map loading
-
-    var bounds = map.getBounds();
-    var northEastLat = bounds.getNorthEast().lat();
-    var northEastLng = bounds.getNorthEast().lng();
-    var southWestLat = bounds.getSouthWest().lat();
-    var southWestLng = bounds.getSouthWest().lng();
-
-    var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+   // SET MARKERS ON MAP LOADING AND KEEP LISTENING
+   // Set markers on loading
+    var url = buildUrlWithBounds(map, trip_id);
     $.get(url, function(data) {
       handler.removeMarkers(previousMarkers);
       previousMarkers = handler.addMarkers(data);
       handler.bounds.extendWith(previousMarkers);
       requestingMarkers = false;
     });
-
-   // Set markers when drag ends
-
+    // Set markers when drag ends
     google.maps.event.addListener(map, 'dragend', function() {
       if (requestingMarkers) {
-        return;
+      return;
       }
       requestingMarkers = true;
-      var bounds = map.getBounds();
-      var northEastLat = bounds.getNorthEast().lat();
-      var northEastLng = bounds.getNorthEast().lng();
-      var southWestLat = bounds.getSouthWest().lat();
-      var southWestLng = bounds.getSouthWest().lng();
-
-      var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+      var url = buildUrlWithBounds(map, trip_id);
       $.get(url, function(data) {
         handler.removeMarkers(previousMarkers);
         previousMarkers = handler.addMarkers(data);
@@ -45,21 +31,13 @@ function buildMap(mapOptions, trip_id) {
         requestingMarkers = false;
       });
     });
-
     // Set markers when zoom changes
-
     google.maps.event.addListener(map, 'zoom_changed', function() {
       if (requestingMarkers) {
         return;
       }
       requestingMarkers = true;
-      var bounds = map.getBounds();
-      var northEastLat = bounds.getNorthEast().lat();
-      var northEastLng = bounds.getNorthEast().lng();
-      var southWestLat = bounds.getSouthWest().lat();
-      var southWestLng = bounds.getSouthWest().lng();
-
-      var url = "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
+      var url = buildUrlWithBounds(map, trip_id);
       $.get(url, function(data) {
         handler.removeMarkers(previousMarkers);
         previousMarkers = handler.addMarkers(data);
@@ -67,5 +45,67 @@ function buildMap(mapOptions, trip_id) {
         requestingMarkers = false;
       });
     });
+
+    // SET MARKERS DEPENDING ON USER CHOICE
+    $('#checkbox').on("click", function() {
+      if ($('#checkbox').prop('checked')){
+        // Set map with booked experiences;
+        google.maps.event.clearListeners(map, 'dragend');
+        google.maps.event.clearListeners(map, 'zoom_changed');
+        var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
+        $.get(url, function(data) {
+          handler.removeMarkers(previousMarkers);
+          previousMarkers = handler.addMarkers(data);
+          handler.bounds.extendWith(previousMarkers);
+        });
+      } else {
+        // Set markers on loading
+        var url = buildUrlWithBounds(map, trip_id);
+        $.get(url, function(data) {
+          handler.removeMarkers(previousMarkers);
+          previousMarkers = handler.addMarkers(data);
+          handler.bounds.extendWith(previousMarkers);
+          requestingMarkers = false;
+        });
+        // Set markers when drag ends
+        google.maps.event.addListener(map, 'dragend', function() {
+          if (requestingMarkers) {
+          return;
+          }
+          requestingMarkers = true;
+          var url = buildUrlWithBounds(map, trip_id);
+          $.get(url, function(data) {
+            handler.removeMarkers(previousMarkers);
+            previousMarkers = handler.addMarkers(data);
+            handler.bounds.extendWith(previousMarkers);
+            requestingMarkers = false;
+          });
+        });
+
+        // Set markers when zoom changes
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+          if (requestingMarkers) {
+            return;
+          }
+          requestingMarkers = true;
+          var url = buildUrlWithBounds(map, trip_id);
+          $.get(url, function(data) {
+            handler.removeMarkers(previousMarkers);
+            previousMarkers = handler.addMarkers(data);
+            handler.bounds.extendWith(previousMarkers);
+            requestingMarkers = false;
+          });
+        });
+      }
+    });
   });
+}
+
+function  buildUrlWithBounds(map, trip_id) {
+  var bounds = map.getBounds();
+  var northEastLat = bounds.getNorthEast().lat();
+  var northEastLng = bounds.getNorthEast().lng();
+  var southWestLat = bounds.getSouthWest().lat();
+  var southWestLng = bounds.getSouthWest().lng();
+  return "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
 }

@@ -5,32 +5,18 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-9">
+        <div class="map-checkbox">
+            <label>
+              <input id="checkbox" type="checkbox" class="map-checkbox-input">
+              <small>Only show my experiences</small>
+            </label>
+        </div>
         <div id="map">
         </div>
       </div>
       <div class="col-xs-12 col-sm-3">
         <ul id="draggablePanelList" class="list-unstyled">
-          <% @trip.trip_experiences.each do |tex| %>
-  <!--           <div class="col-xs-12 sm-3">
-   --><!--             <div class="experience-box"> -->
-              <li class="panel panel-info">
-              <div class="panel-heading"><%= tex.name %>
-                <i class= "pull-right fa fa-times"></i>
-              </div>
-              <div class="panel-body"><%= tex.description %>
-              </div>
-            </li>
-  <!--
-            </div> -->
-          <% end %>
         </ul>
-      </div>
-
-        <!-- Ajouter un trip_experience do |t| -->
-        <!-- bloc créé avec titre de l'expérience et photo -->
-        <!-- au clic sur la croix, methode delete -->
-          <ul id="draggablePanelList" class="list-unstyled">
-          </ul>
         <div id="set-orders" class="btn btn-primary">
           <%= form_for(@trip) do |f| %>
             <%= hidden_field_tag :order %>
@@ -68,6 +54,8 @@
 </div>
 
 
+
+
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false" %>
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
@@ -83,10 +71,7 @@
 
       buildMap(mapOptions, <%= @trip.id %>);
 
-
-
       $('#set-orders').on("mousedown", function() {
-        console.log('enter dans event');
         var order = {};
         for (var i = 0; i < $('.panel.panel-info').length; i++){
           order[i+1] =  $('.panel.panel-info')[i].id;

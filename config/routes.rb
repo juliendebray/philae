@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :trip_experiences, only: [:create, :update, :destroy] do
         collection do
           get :markers
+          get :trip_markers
         end
       end
     end
