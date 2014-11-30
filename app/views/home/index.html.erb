@@ -10,7 +10,7 @@
           <div id="hp-form">
             <div class="form text-center">
               <%= form_tag(trips_path, method: "post") do %>
-                <%= text_field_tag(:q, nil, placeholder: t('.searchplaceholder')) %>
+                <%= text_field_tag(:q, nil, id: 'experience_address', placeholder: t('.searchplaceholder')) %>
                 <%= submit_tag(t ('.searchbutton'), class: 'btn btn-primary') %>
               <% end %>
             </div>
@@ -20,3 +20,7 @@
     </div>
   </div>
 </div>
+
+<% content_for(:before_js) do %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
+<% end %>
