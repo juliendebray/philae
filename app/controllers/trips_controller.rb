@@ -5,7 +5,6 @@ class TripsController < ApplicationController
 
   def create
      @trip = Trip.create(query: params[:q])
-     raise
      redirect_to start_trip_path(@trip)
   end
 

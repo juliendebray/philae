@@ -64,8 +64,14 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).on('ready', function() {
+      var LatLng = {}
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({address: '<%= @trip.query %> '}, function(data){
+        LatLng = data[0]['geometry']['location'];
+      });
+
       var mapOptions = {
-        center: new google.maps.LatLng(32.278871, -6.140109), // Set center to Morocco
+        center: LatLng,
         zoom: 6
       };
 
