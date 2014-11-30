@@ -25,7 +25,7 @@ en:
   #navbar
   ourstorynav: "Our story"
   fbconnect: "Login Facebook"
-  signin: "Have an account ?"
+  signin: "Already an account?"
   signup: "Sign up"
   signout: "Sign out"
   tripsnav: "My trips"
@@ -36,8 +36,8 @@ en:
   passwordplaceholder: "Password"
   passwordconfirmplaceholder: "Confirm password"
   fbbutton: "Connect with Facebook"
-  noaccount: "Not registered yet ?"
-  alreadyaccount: "Already have an account ?"
+  noaccount: "Not registered yet?"
+  alreadyaccount: "Already have an account?"
   fbencourage: "To share the fun stuff you'll find here and get your friends' tips, we've made it possible to sign up with Facebook."
   emailsignup: "Or sign up just with your email"
 
@@ -52,7 +52,7 @@ en:
   #contact
   contacts:
     new:
-      title: "How can we help ?"
+      title: "How can we help?"
       name: "Your name"
       email: "Your email address"
       message: "Enter your message here, we'll get back to you shorty. Thanks."
