@@ -4,29 +4,42 @@
 
 #homeblock {
   padding-top: 120px;
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .form-group{
+    width: 350px;
+  }
+
+  .form-control{
+    width: 350px;
+  }
+
 }
 
-#hp-form {
-background: rgba(0,0,0,0.4);
-color: white;
-width: 140%;
-margin: 0 auto;
-padding: 25px 10px;
-border-radius: 5px;
-}
+// #hp-form {
+//   background: rgba(0,0,0,0.4);
+//   color: white;
+//   width: 140%;
+//   margin: 0 auto;
+//   padding: 25px 10px;
+//   border-radius: 5px;
+// }
 
-#q {
-width: 80%;
-padding: 5px;
-color: black;
-}
+// #q {
+// width: 80%;
+// padding: 5px;
+// color: black;
+// }
 
-input[name=commit] {
-  padding: 6px;
-  background-color: transparent;
-  border-radius: 5px;
-  color: lightgrey;
-}
+// input[name=commit] {
+//   padding: 6px;
+//   background-color: transparent;
+//   border-radius: 5px;
+//   color: lightgrey;
+// }
 
 // input[class=btn btn-primary] {
 //   color: transparent;

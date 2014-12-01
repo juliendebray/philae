@@ -1,26 +1,16 @@
-<div id="homeblock">
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <div class="title text-center">
-        <h1><%= t '.brand' %></h1>
-        <h2><%= t '.baseline' %></h2>
-      </div>
-      <div class="row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <div id="hp-form">
-            <div class="form text-center">
-              <%= form_tag(trips_path, method: "post") do %>
-                <%= text_field_tag(:q, nil, id: 'experience_address', placeholder: t('.searchplaceholder')) %>
-                <%= hidden_field_tag(:latitude) %>
-                <%= hidden_field_tag(:longitude) %>
-                <%= submit_tag(t ('.searchbutton'), class: 'btn btn-primary') %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div id="homeblock" class="text-center">
+  <div class="title">
+    <h1><%= t '.brand' %></h1>
+    <h2><%= t '.baseline' %></h2>
   </div>
+  <%= form_tag(trips_path, method: "post", class: "form-inline") do %>
+  <div class="form-group">
+    <%= text_field_tag(:q, nil, id: 'experience_address', placeholder: t('.searchplaceholder')) %>
+    <%= hidden_field_tag(:latitude) %>
+    <%= hidden_field_tag(:longitude) %>
+  </div>
+    <%= submit_tag(t('.searchbutton'), class: 'btn btn-primary') %>
+  <% end %>
 </div>
 
 <% content_for(:before_js) do %>

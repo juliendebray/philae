@@ -1,5 +1,12 @@
+// over-ride Bootstrap theme with Sass variables
+$btn-primary-bg: #3598DB;
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700");
+$font-family-sans-serif: 'Open Sans';
+
+
 // SCSS files installed with gems
 @import "bootstrap";
+@import "bootstrap-social";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
@@ -10,12 +17,20 @@
 @import "contacts";
 @import "experiences_index";
 @import "jquery-ui";
-@import "bootstrap-social";
 @import "signup-login";
 @import "exp-rm";
 @import "myaccount";
 
 // General customized styles
+
+#titleblock {
+  padding-top: 120px;
+
+  .title {
+    margin-bottom: 30px;
+  }
+}
+
 
 .wrapper {
   background-image: image-url("lonely.jpg");
@@ -24,4 +39,4 @@
   color: lightgrey;
   height: 800px;
   padding-top: 40px;
-  }
+}

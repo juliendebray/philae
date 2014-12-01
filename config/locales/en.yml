@@ -28,7 +28,7 @@ en:
   signin: "Already an account?"
   signup: "Sign up"
   signout: "Sign out"
-  tripsnav: "My trips"
+  tripsnav: "My account"
   ourcontact: "Talk to us"
 
   #sign up / sign in
@@ -46,7 +46,7 @@ en:
     index:
       brand: "WooHoo"
       baseline: "Prepare for take-off"
-      searchplaceholder: "Your next destination is ..."
+      searchplaceholder: "Type your next destination here"
       searchbutton: "Go there"
 
   #contact
