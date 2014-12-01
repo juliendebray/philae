@@ -3,11 +3,19 @@
     <h1><%= t '.brand' %></h1>
     <h2><%= t '.baseline' %></h2>
   </div>
-
   <%= form_tag(trips_path, method: "post", class: "form-inline") do %>
-    <div class="form-group">
-      <%= text_field_tag(:q, nil, placeholder: t('.searchplaceholder'), class: "form-control") %>
-    </div>
+  <div class="form-group">
+    <%= text_field_tag(:q, nil, id: 'experience_address', placeholder: t('.searchplaceholder')) %>
+    <%= hidden_field_tag(:latitude) %>
+    <%= hidden_field_tag(:longitude) %>
+  </div>
     <%= submit_tag(t('.searchbutton'), class: 'btn btn-primary') %>
   <% end %>
 </div>
+
+<% content_for(:before_js) do %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
+<% end %>
+
+
+

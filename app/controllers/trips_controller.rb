@@ -4,8 +4,11 @@ class TripsController < ApplicationController
 
 
   def create
-     @trip = Trip.create  # TODO: store query?
-     redirect_to start_trip_path(@trip)
+    @trip = Trip.new(query: params[:q])
+    @trip.query_lat = params[:latitude]
+    @trip.query_lng = params[:longitude]
+    @trip.save
+    redirect_to start_trip_path(@trip)
   end
 
   def start
@@ -46,5 +49,9 @@ class TripsController < ApplicationController
       TripExperience.find(v.to_i).update(order: k.to_i)
     end
   end
+
+  def trip_params
+  end
+
 
 end
