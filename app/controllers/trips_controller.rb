@@ -7,7 +7,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(query: params[:q])
     @trip.query_lat = params[:latitude]
     @trip.query_lng = params[:longitude]
-    @trip.title = "My trip to #{params[:q]}"
+    @trip.title = "My trip - #{params[:q]}"
     @trip.save
     redirect_to start_trip_path(@trip)
   end
