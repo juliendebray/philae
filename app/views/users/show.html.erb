@@ -17,6 +17,9 @@
         <div class="col-md-3">
           <div class="tripbox">
             <%= link_to trip.title, start_trip_path(trip) %>
+            <%= link_to [trip], method: :delete do %>
+              <i class= "pull-right fa fa-times"></i>
+            <% end %>
           </div>
         </div>
       <% end %>

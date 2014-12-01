@@ -33,7 +33,9 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    #sur la liste des trips
+    trip = Trip.find(params[:id])
+    trip.destroy
+    redirect_to user_path(current_user)
   end
 
   def orders
