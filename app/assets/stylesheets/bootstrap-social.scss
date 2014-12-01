@@ -15,7 +15,7 @@ $bs-height-xs:   (floor($font-size-small * 1.2) + $padding-small-vertical + 1);
 .btn-social {
   position: relative;
   padding-left: ($bs-height-base + $padding-base-horizontal);
-  text-align: left;
+  text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
