@@ -15,6 +15,7 @@ class ExperiencesController < ApplicationController
 
   # GET /experiences/1/edit
   def edit
+    @experience.experience_pictures.build
   end
 
   # POST /experiences

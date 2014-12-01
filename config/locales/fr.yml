@@ -16,7 +16,7 @@ fr:
   sign_up: "Inscription"
   passwordplaceholder: "Mot de passe"
   passwordconfirmplaceholder: "Confirmer mot de passe"
-  fbbutton: "Se connecter avec Facebook"
+  fbbutton: "Connexion"
   noaccount: "Pas encore inscrit?"
   alreadyaccount: "Déjà inscrit?"
   fbencourage: "Pour partager et recueillir les avis de vos amis, inscrivez-avec Facebook."

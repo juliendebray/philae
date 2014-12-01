@@ -5,7 +5,7 @@
   </div>
   <%= form_tag(trips_path, method: "post", class: "form-inline") do %>
   <div class="form-group">
-    <%= text_field_tag(:q, nil, id: 'experience_address', placeholder: t('.searchplaceholder')) %>
+    <%= text_field_tag(:q, nil, id: 'experience_address', placeholder: t('.searchplaceholder'), class: "form-control") %>
     <%= hidden_field_tag(:latitude) %>
     <%= hidden_field_tag(:longitude) %>
   </div>
