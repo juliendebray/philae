@@ -64,14 +64,25 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).on('ready', function() {
-      var LatLng = {}
+      var stat = {};
+      var Lat = {};
+      var Lng = {};
       var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({address: '<%= @trip.query %> '}, function(data){
-        LatLng = data[0]['geometry']['location'];
+      geocoder.geocode({address: '<%= @trip.query %>'}, function(results, status) {
+        stat = status;
+        Lat = results[0].geometry.location.k;
+        Lng = results[0].geometry.location.B;
       });
 
+      // Code bugging
+      // var mapOptions = {
+        // center: new google.maps.LatLng(parseFloat(Lat), parseFloat(Lng)),
+        // zoom: 6
+      // };
+
+      // Code working but need to specify center manually
       var mapOptions = {
-        center: LatLng,
+        center: new google.maps.LatLng(31.791702, -7.092620000000011),
         zoom: 6
       };
 
