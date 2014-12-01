@@ -9,10 +9,10 @@
 <p>rating: <%= experience.experience_reviews.average(:rating).to_f %> </p>
 
 <p>
-  <%= link_to 'add a review', new_experience_experience_review_path(experience) %>
+  <%= link_to t('addreview'), new_experience_experience_review_path(experience) %>
   /
   <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
     <%= f.hidden_field :experience_id, value: experience.id %>
-    <%= f.submit 'Add to my trip' %>
+    <%= f.submit t('addtotrip') %>
   <% end %>
 </p>

@@ -41,14 +41,29 @@ en:
   fbencourage: "To share the fun stuff you'll find here and get your friends' tips, we've made it possible to sign up with Facebook."
   emailsignup: "Or sign up just with your email"
 
-  mytrip: "My trip"
-
   home:
     index:
       brand: "WooHoo"
       baseline: "Prepare for take-off"
       searchplaceholder: "Type your next destination here"
       searchbutton: "Go there"
+
+  addreview: "Add a review"
+  addtotrip: "Add to my trip"
+
+  #trips
+  trips:
+    start:
+      title: "Design your trip"
+      myexp: "Only show my own selection"
+      newexp: "Click on the map to add a new experience"
+
+  #users
+  users:
+    show:
+      title: "My personal page"
+      mytrips: "My trips"
+      myfriends: "My friends"
 
   #contact
   contacts:
