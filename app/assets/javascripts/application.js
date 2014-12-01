@@ -25,6 +25,8 @@ $(function(){
         event.preventDefault();
     }
   });
+
   var s = skrollr.init();
+
 });
 

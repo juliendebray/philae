@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show]
     resources :story, only: [:index]
-    resources :trips, only: [:update, :show, :create, :orders] do
+    resources :trips, only: [:update, :show, :create, :orders, :destroy] do
       member do
         get :start
       end
