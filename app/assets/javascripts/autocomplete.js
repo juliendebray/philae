@@ -12,12 +12,14 @@ function initializeAutocomplete(id) {
 
   if (input) {
     var autocomplete = new google.maps.places.Autocomplete(input, options);
-    // google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
   }
 }
 
-// function onPlaceChanged() {
-//   var place = this.getPlace();
+function onPlaceChanged() {
+  var place = this.getPlace();
+  $('#latitude').attr('value', place.geometry.location.k);
+  $('#longitude').attr('value', place.geometry.location.B);
 
 //   // console.log(place);  // Uncomment this line to view the full object returned by Google API.
 
@@ -30,7 +32,7 @@ function initializeAutocomplete(id) {
 //       }
 //     }
 //   }
-// }
+}
 if(typeof google !== "undefined") {
   google.maps.event.addDomListener(window, 'load', function() {
     initializeAutocomplete('experience_address');

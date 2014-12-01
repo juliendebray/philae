@@ -82,7 +82,7 @@
 
       // Code working but need to specify center manually
       var mapOptions = {
-        center: new google.maps.LatLng(31.791702, -7.092620000000011),
+        center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
         zoom: 6
       };
 
