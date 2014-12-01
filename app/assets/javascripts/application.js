@@ -26,5 +26,7 @@ $(function(){
     }
   });
   var s = skrollr.init();
+
+  $('.carousel').carousel()
 });
 
