@@ -1,6 +1,6 @@
 <p><%=experience.name%></p>
 
-<p><strong><%= image_tag experience.experience_pictures.first.picture.url(:thumbnail) %></strong></p>
+<p><strong><%= image_tag experience.experience_pictures.first.picture.url(:thumb) %></strong></p>
 
 <p><em><%=experience.description%></em></p>
 <p>rating: <%= experience.experience_reviews.average(:rating).to_f %> </p>
