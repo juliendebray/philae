@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= @experience.experience_pictures.each do |pic| %>
+<% @experience.experience_pictures.each do |pic| %>
   <ul>
     <li>
       <%= image_tag pic.picture.url(:small) %>
