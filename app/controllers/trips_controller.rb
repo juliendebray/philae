@@ -12,7 +12,9 @@ class TripsController < ApplicationController
   end
 
   def start
-
+    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
   end
 
   def update
