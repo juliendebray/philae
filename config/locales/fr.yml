@@ -8,9 +8,12 @@ fr:
   signin: "Déjà inscrit?"
   signup: "Inscription"
   signout: "Déconnexion"
-  tripsnav: "Mes voyages"
+  tripsnav: "Mon compte"
   ourcontact: "Contact"
 
+
+  #sign up / sign in
+  sign_up: "Inscription"
   passwordplaceholder: "Mot de passe"
   passwordconfirmplaceholder: "Confirmer mot de passe"
   fbbutton: "Se connecter avec Facebook"
@@ -23,7 +26,7 @@ fr:
     index:
       brand: "WooHoo"
       baseline: "Préparez-vous au décollage"
-      searchplaceholder: "Votre prochaine destination de voyage"
+      searchplaceholder: "Saisissez votre prochaine destination de voyage"
       searchbutton: "Allez-y"
 
   #contact
