@@ -64,30 +64,32 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).on('ready', function() {
-      var stat = {};
-      var Lat = {};
-      var Lng = {};
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({address: '<%= @trip.query %>'}, function(results, status) {
-        stat = status;
-        Lat = results[0].geometry.location.k;
-        Lng = results[0].geometry.location.B;
-      });
 
-      // Code bugging
-      // var mapOptions = {
-        // center: new google.maps.LatLng(parseFloat(Lat), parseFloat(Lng)),
-        // zoom: 6
-      // };
-
-      // Code working but need to specify center manually
+      // Generate map
       var mapOptions = {
         center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
         zoom: 6
       };
-
       buildMap(mapOptions, <%= @trip.id %>);
 
+      // Display existing trip_experiences
+      <% if @trip_exp_tab.size > 0 %>
+        <% @trip_exp_tab.each do |trip_exp| %>
+          var tmpl =
+          '<li class="panel panel-info" id="<%= trip_exp.id %>">' +
+            '<div class="panel-heading"><%= trip_exp.experience.name %>' +
+              '<%= form_tag trip_trip_experience_path(trip_exp.trip, trip_exp), remote: true, method: :delete, class: "form-inline pull-right" do %>'+
+                '<%= submit_tag "X", class: "exp-rm-btn" %>' +
+              '<% end %>' +
+            '</div>'+
+            '<div class="panel-body"><%= trip_exp.experience.description %></div>'+
+          '</li>';
+
+          $('#draggablePanelList').append(tmpl);
+        <% end %>
+      <% end %>
+
+      // Send experiences order to trip-experiences controller
       $('#set-orders').on("mousedown", function() {
         var order = {};
         for (var i = 0; i < $('.panel.panel-info').length; i++){
