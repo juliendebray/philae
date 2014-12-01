@@ -1,14 +1,16 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <h1>Listing experiences</h1>
+      <h2><%= t('.title', :default => "Design your trip") %></h2>
     </div>
+  </br>
     <div class="row">
       <div class="col-xs-12 col-sm-9">
+        <%= link_to t('.newexp'), new_experience_path %>
         <div class="map-checkbox">
             <label>
               <input id="checkbox" type="checkbox" class="map-checkbox-input">
-              <small>Only show my experiences</small>
+              <small><%= t('.myexp') %></small>
             </label>
         </div>
         <div id="map">
@@ -46,9 +48,6 @@
           </tbody>
         </table>
 
-    </div>
-    <div class="row">
-      <%= link_to 'New Experience', new_experience_path %>
     </div>
   </div>
 </div>

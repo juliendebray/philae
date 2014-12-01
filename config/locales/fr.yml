@@ -22,7 +22,7 @@ fr:
   fbencourage: "Pour partager et recueillir les avis de vos amis, inscrivez-avec Facebook."
   emailsignup: "Ou inscrivez-vous avez votre email"
 
-  mytrip: "Mon voyage"
+  mytrip: "Mes voyages"
 
   home:
     index:
@@ -30,6 +30,24 @@ fr:
       baseline: "Préparez-vous au décollage"
       searchplaceholder: "Saisissez votre prochaine destination de voyage"
       searchbutton: "Allez-y"
+
+  addreview: "Donnez votre avis!"
+  addtotrip: "Ajouter à mon voyage"
+
+  #trips
+  trips:
+    start:
+      title: "Créez votre voyage"
+      myexp: "Montrer seulement ma sélection"
+      newexp: "Cliquer sur la carte pour ajouter une nouvelle expérience"
+
+  #users
+  users:
+    show:
+      title: "Mon espace"
+      mytrips: "Mes voyages"
+      myfriends: "Mes amis"
+
 
   #contact
   contacts:
