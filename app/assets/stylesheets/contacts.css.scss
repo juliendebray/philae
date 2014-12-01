@@ -3,12 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .header {
-        color: #36A0FF;
-        font-size: 27px;
-        padding: 10px;
-    }
+  color: #36A0FF;
+  font-size: 27px;
+  padding: 10px;
+}
 
 .bigicon {
-        font-size: 35px;
-        color: #36A0FF;
-    }
+  font-size: 35px;
+  color: #36A0FF;
+}
+
+.well-sm {
+  width: 700px;
+  margin-top: 120px;
+}

@@ -1,51 +1,44 @@
 <div class="container content">
 
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h2><%= t('sign_up', :default => "Sign up") %></h2>
-    </div>
+  <div id="titleblock" class="text-center">
+    <h2><%= t('sign_up', :default => "Sign up") %></h2>
   </div>
 
+  <div id="sign-form">
 
-  <div class="col-sm-6 col-sm-offset-3 text-center">
+    <div class="col-xs-12 text-center">
 
-    <div id="sign-form">
+      <div id="fb-login">
 
-      <div class="col-xs-12 text-center">
-
-        <div id="fb-login">
-
-          <p><%= t('fbencourage') %></p>
-          <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-facebook" do %>
-          <i class="fa fa-facebook"></i> <%= t('fbbutton') %>
-          <% end %>
-
-        </div>
+        <p><%= t('fbencourage') %></p>
+        <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-block btn-social btn-facebook" do %>
+        <i class="fa fa-facebook"></i> <%= t('fbbutton') %>
+        <% end %>
 
       </div>
 
-      <p><%= t('emailsignup') %></p>
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
-        <div><%= f.label :email %><br />
-        <%= f.email_field :email, placeholder: "Email" %></div>
-
-        <div><%= f.label :password %><br />
-        <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
-
-        <div><%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, placeholder: t('passwordconfirmplaceholder') %></div>
-
-        <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
-
-        <div><%- if controller_name != 'sessions' %>
-        <%= link_to t('alreadyaccount'), new_session_path(resource_name) %><br />
-        <% end -%>
-        </div>
-
-      <% end %>
-
     </div>
+
+    <p><%= t('emailsignup') %></p>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email, placeholder: "Email" %></div>
+
+      <div><%= f.label :password %><br />
+      <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
+
+      <div><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, placeholder: t('passwordconfirmplaceholder') %></div>
+
+      <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
+
+      <div><%- if controller_name != 'sessions' %>
+      <%= link_to t('alreadyaccount'), new_session_path(resource_name) %><br />
+      <% end -%>
+      </div>
+
+    <% end %>
 
   </div>
 
