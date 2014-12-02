@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
   get 'connections/new'
-
+  post '/trips/:trip_id/trip_experiences/create_with_new_experience', to: 'trip_experiences#create_with_new_experience', as: 'experience_within_trip'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
+
     resources :experiences, except: [:index] do
       resources :experience_reviews, only: [:new, :create]
     end
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     end
     resources :contacts, only: [:new, :create]
   end
+
 end
 
 

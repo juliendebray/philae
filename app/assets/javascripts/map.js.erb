@@ -1,5 +1,7 @@
+var handler; // Need to retrieve the google maps object
+
 function buildMap(mapOptions, trip_id) {
-  var handler = Gmaps.build('Google');
+  handler = Gmaps.build('Google');
   var requestingMarkers = false;
   var infoWindowOpened = false;
   var previousMarkers = {};
