@@ -1,10 +1,15 @@
-.tripbox{
-  border-top: 1px solid lightgrey;
+.tripbox {
+  background: rgba(0,0,0,0.4);
+  color: lightgrey;
+  margin: 10px auto;
+  padding: 10px 10px;
+  border-radius: 5px;
   text-align: center;
-  color: grey;
-  width: 250px;
-  height: 30px;
+
+  // border-top: 1px solid lightgrey;
+  // width: 250px;
+  // height: 30px;
   font-weight: 500;
-  // background-color: lightgrey;
-  font-size: 20px
+  font-size: 15px;
 }
+

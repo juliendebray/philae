@@ -7,7 +7,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(query: params[:q])
     @trip.query_lat = params[:latitude]
     @trip.query_lng = params[:longitude]
-    @trip.title = "My trip to #{params[:q]}"
+    @trip.title = "#{params[:q]}"
     @trip.save
     redirect_to start_trip_path(@trip)
   end
@@ -33,7 +33,9 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    #sur la liste des trips
+    trip = Trip.find(params[:id])
+    trip.destroy
+    redirect_to user_path(current_user)
   end
 
   def orders

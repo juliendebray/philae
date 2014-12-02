@@ -1,22 +1,25 @@
 <div class="container content">
 
   <div id="titleblock" class="text-center">
-    <h1>My account</h1>
+    <h2><%= t('.title', :default => "My account") %></h2>
   </div>
 
   <div class="container">
 
     <div class="row">
-      <div class="col-md-12">
-        <h2>My trips</h2>
+      <div class="col-xs-9 col-sm-4 col-md-4">
+        <h3><%= t('.mytrips', :default => "My trips") %></h3>
       </div>
     </div>
 
     <div class="row">
       <% @user.trips.each do |trip| %>
-        <div class="col-md-3">
+        <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="tripbox">
             <%= link_to trip.title, start_trip_path(trip) %>
+            <%= link_to [trip], method: :delete do %>
+              <i class= "pull-right fa fa-trash-o"></i>
+            <% end %>
           </div>
         </div>
       <% end %>
@@ -25,8 +28,8 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <h2>My friends</h2>
+      <div class="col-xs-9 col-sm-4 col-md-3">
+        <h3><%= t('.myfriends', :default => "My friends") %></h3>
       </div>
     </div>
   </div>
