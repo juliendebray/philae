@@ -1,7 +1,11 @@
 class TripsController < ApplicationController
+  before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:create, :start]
   before_action :set_trip, only: [:start, :update, :show]
 
+  def has_current_guest
+    @current_guest
+  end
 
   def create
     @trip = Trip.new(query: params[:q])
@@ -42,16 +46,13 @@ class TripsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def destroy
     trip = Trip.find(params[:id])
     trip.destroy
     redirect_to user_path(current_user)
   end
 
-  def orders
+  def show_guest_user
   end
 
   private
@@ -66,8 +67,7 @@ class TripsController < ApplicationController
     end
   end
 
-  def trip_params
+  def authenticate_guest!
+    @guest_user = true if @trip.token == params[:token]
   end
-
-
 end
