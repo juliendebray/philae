@@ -1,0 +1,8 @@
+<%= bootstrap_form_for(@trip.experiences.new, html: { multipart: true }) do |f| %>
+  <div class="actions">
+    <%= f.text_field :name %>
+    <%= f.text_field :address %>
+    <%= f.text_area :description %>
+    <%= f.submit 'Add it to my itinerary' %>
+  </div>
+<% end %>
