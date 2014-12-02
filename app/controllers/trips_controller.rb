@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:create, :start]
-  before_action :set_trip, only: [:start, :update, :show]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user]
 
   def has_current_guest
     @current_guest
@@ -68,6 +68,7 @@ class TripsController < ApplicationController
   end
 
   def authenticate_guest!
+    @trip = Trip.find(params[:id])
     @guest_user = true if @trip.token == params[:token]
   end
 end

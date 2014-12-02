@@ -36,6 +36,11 @@ $font-family-sans-serif: 'Open Sans';
   }
 }
 
+.scrollable{
+ overflow: scroll;
+ height: 80%;
+}
+
 .wrapper {
   background-image: image-url("lonely.jpg");
   background-size: cover;

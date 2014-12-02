@@ -8,6 +8,11 @@ class Trip < ActiveRecord::Base
 
   after_save :generate_token, if: :user_id_changed?
 
+  def generate_url_with_token
+  "/trips/#{self.id}/#{self.token}"
+  end
+
+
   private
   def generate_token
     unless self.token
