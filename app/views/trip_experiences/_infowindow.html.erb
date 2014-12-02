@@ -3,7 +3,7 @@
 <% if experience.experience_pictures.size > 0 %>
   <div class="owl-carousel">
     <% experience.experience_pictures.each do |pic| %>
-      <div class="owl-carousel">
+      <div>
         <%= image_tag pic.picture.url(:thumb) %>
       </div>
     <% end %>
