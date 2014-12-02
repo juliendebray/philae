@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require owl.carousel
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
@@ -28,5 +29,14 @@ $(function(){
 
   var s = skrollr.init();
 
-});
 
+   $(".owl-carousel").owlCarousel({
+
+   // navigation : true, // Show next and prev buttons
+   slideSpeed : 300,
+   paginationSpeed : 400,
+   singleItem:true
+
+ });
+
+});

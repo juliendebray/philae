@@ -10,6 +10,9 @@ $font-family-sans-serif: 'Open Sans';
 @import "bootstrap-social";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "owl.carousel";
+@import "owl.theme";
+
 
 // SCSS stylesheets files
 @import "navbar";
@@ -21,6 +24,7 @@ $font-family-sans-serif: 'Open Sans';
 @import "signup-login";
 @import "exp-rm";
 @import "myaccount";
+
 
 // General customized styles
 

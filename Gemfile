@@ -86,4 +86,6 @@ gem "rails-assets-underscore"
 gem 'aws-sdk'
 gem 'paperclip'
 
+gem 'owlcarousel-rails'
+
 
