@@ -124,11 +124,18 @@
 
 
       // Add experience on map click
-
+      var map = handler.getMap();
+      google.maps.event.addListener(handler.getMap(), "click", function(e) {
+        var geocoder = new google.maps.Geocoder();
+          geocoder.geocode({'latLng': e.latLng}, function(results, status){
+          $('#myModal').modal('show');
+          $('#experience_address').val(results[1].formatted_address);
+          });
+        });
 
       // Display google maps pac-container
       $('#experience_address').on("click", function(e) {
-        $('.pac-container').zIndex(1000000);
+        $('.pac-container').zIndex(100000);
       });
 
     });

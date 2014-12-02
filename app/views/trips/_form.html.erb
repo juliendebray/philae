@@ -1,4 +1,6 @@
-<%= bootstrap_form_for(@trip.experiences.new, html: { multipart: true }) do |f| %>
+<%= bootstrap_form_for([@trip, @trip.experiences.new],
+  url: experience_within_trip_path(@trip),
+  remote: true) do |f| %>
   <div class="actions">
     <%= f.text_field :name %>
     <%= f.text_field :address %>
