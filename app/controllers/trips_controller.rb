@@ -9,12 +9,21 @@ class TripsController < ApplicationController
     @trip.query_lng = params[:longitude]
     @trip.title = "#{params[:q]}"
     @trip.save
+
     redirect_to start_trip_path(@trip)
   end
 
   def start
-    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
-      te.order
+    @trip = Trip.find(params[:id])
+    if @trip.user
+      redirect_to @trip
+    else
+      if TripExperience.find_by(trip_id: params[:id])
+        @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+          te.order
+        end
+      end
+      render :show
     end
   end
 
@@ -22,14 +31,18 @@ class TripsController < ApplicationController
     @trip.update(user_id: current_user.id)
     order_hash = JSON.parse(params[:order])
     update_trip_experience_order(order_hash)
+
     redirect_to trip_path(@trip)
   end
 
   def show
+    @trip = current_user.trips.find(params[:id])
+    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
   end
 
   def edit
-    #Modifier l'itinéraire
   end
 
   def destroy
@@ -39,11 +52,9 @@ class TripsController < ApplicationController
   end
 
   def orders
-
   end
 
   private
-
 
   def set_trip
     @trip = Trip.find(params[:id])

@@ -1,0 +1,15 @@
+<h1>Trip#show</h1>
+
+<div class="owl-carousel">
+  <div><img src="http://lorempixel.com/150/100/" alt="Owl Image"></div>
+  <div><img src="http://lorempixel.com/150/100/" alt="Owl Image"></div>
+  <div><img src="http://lorempixel.com/150/100/" alt="Owl Image"></div>
+</div>
+
+<% @trip.trip_experiences.each do |te| %>
+  <ul>
+    <li>
+      <%= te.experience.name %>
+    </li>
+  </ul>
+<% end %>
