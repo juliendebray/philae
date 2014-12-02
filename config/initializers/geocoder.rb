@@ -4,7 +4,3 @@ Geocoder.configure(
   use_https: true,
   units:     :km
 )
-
-puts "---------"
-puts ENV['GOOGLE_API_KEY']
-puts "---------"
