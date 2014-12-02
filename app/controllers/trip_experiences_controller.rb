@@ -1,6 +1,6 @@
 class TripExperiencesController < ApplicationController
   before_action :set_trip, only: [:markers, :trip_markers, :create, :create_with_new_experience]
-  respond_to :js, only: [:create, :trip_markers, :destroy]
+  respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience]
 
   def markers
     @experiences = Experience.within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
@@ -21,8 +21,7 @@ class TripExperiencesController < ApplicationController
   end
 
   def create
-    @trip_experience = @trip.trip_experiences.new(trip_experience_params)
-    @trip_experience.save
+    @trip_experience = @trip.trip_experiences.create(trip_experience_params)
   end
 
   def update
@@ -34,7 +33,7 @@ class TripExperiencesController < ApplicationController
 
   def create_with_new_experience
     @experience = Experience.create(experience_params)
-    @trip.trip_experiences.create(experience_id: @experience.id)
+    @trip_experience = @trip.trip_experiences.create(experience_id: @experience.id)
   end
 
  private
