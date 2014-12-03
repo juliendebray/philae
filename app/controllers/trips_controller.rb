@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
-  before_action :authenticate_user!, except: [:create, :start]
+  before_action :authenticate_user!, except: [:create, :start, :show_guest_user]
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email]
 
   def has_current_guest
