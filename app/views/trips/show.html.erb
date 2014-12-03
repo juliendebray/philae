@@ -29,6 +29,13 @@
   </div>
 </div>
 
+<div>
+  <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
+    <%= hidden_field_tag :id, value = @trip.id %>
+    <%= f.submit('Share my trip by email', class:'btn btn-primary') %>
+  <% end %>
+</div>
+
 <!-- Modal: add-experience -->
 
 <!-- Button trigger modal -->

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hi <%= @user.email %></p>
+    <p>Transfer this URL to your friends, they will be able to give you travel tips.<br>
+    </p>
+    <p>
+      <%= @trip.generate_url_with_token %> <br>
+    </p>
+    <p>Enjoy !</p>
+  </body>
+</html>

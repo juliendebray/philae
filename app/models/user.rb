@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def send_trip_email(trip)
+    UserMailer.share_trip(self, trip).deliver
+  end
+
   private
 
   def send_welcome_email

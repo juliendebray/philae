@@ -13,4 +13,10 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Welcome to Woohoo')
     # This will render a view in `app/views/user_mailer`!
   end
+
+  def share_trip(user, trip)
+    @user = user
+    @trip = trip
+    mail(to: @user.email, subject: 'Share my trip')
+  end
 end

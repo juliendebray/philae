@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do
       member do
         get :start
-        get '/:token' => "trips#show_guest_user", as: :guest_trip
+        get ':token' => "trips#show_guest_user", as: :guest_trip
+        patch 'share' => "trips#share_trip_email"
       end
       resources :trip_experiences, only: [:create, :update, :destroy] do
         collection do
