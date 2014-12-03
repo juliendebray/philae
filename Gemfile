@@ -86,6 +86,10 @@ gem "rails-assets-underscore"
 gem 'aws-sdk'
 gem 'paperclip'
 
+# Carousel
 gem 'owlcarousel-rails'
+
+# Metatag
+gem 'metamagic'
 
 

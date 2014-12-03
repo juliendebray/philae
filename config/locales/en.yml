@@ -53,7 +53,7 @@ en:
 
   #trips
   trips:
-    start:
+    show:
       title: "Design your trip"
       myexp: "Only show my own selection"
       newexp: "Click on the map to add a new experience"
