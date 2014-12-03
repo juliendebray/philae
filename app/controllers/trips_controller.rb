@@ -51,13 +51,13 @@ class TripsController < ApplicationController
     end
   end
 
+  def show_guest_user
+  end
+
   def destroy
     trip = Trip.find(params[:id])
     trip.destroy
     redirect_to user_path(current_user)
-  end
-
-  def show_guest_user
   end
 
   def share_trip_email
