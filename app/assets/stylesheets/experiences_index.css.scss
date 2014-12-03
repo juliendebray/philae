@@ -5,3 +5,8 @@
 #draggablePanelList .panel-heading {
   cursor: move;
 }
+
+.scrollable {
+  overflow: scroll;
+  height: 450px;
+}
