@@ -3,11 +3,10 @@ class TripExperiencesController < ApplicationController
   respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience]
 
   def markers
-    @experiences = Experience.within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
-    @experiences.sort_by{ |e| e.experience_reviews.average(:rating) }
-
-    @markers = build_markers(@experiences.reverse[0..2], @trip)
-
+    markers_number = 5
+    experiences_within_bounds = Experience.within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
+    @experiences = select_experiences_to_show(experiences_within_bounds)
+    @markers = build_markers(@experiences[0..markers_number - 1], @trip)
     render json: @markers
   end
 
@@ -58,6 +57,21 @@ class TripExperiencesController < ApplicationController
   end
 
   def experience_params
-      params.require(:experience).permit(:name, :address, :description, :category_id, experience_pictures_attributes: [:picture])
+    params.require(:experience).permit(:name, :address, :description, :category_id, experience_pictures_attributes: [:picture])
+  end
+
+  def select_experiences_to_show(experiences)
+    experiences_with_rating = []
+    experiences_to_show = []
+    experiences.each do |exp|
+      experiences_with_rating << exp if exp.experience_reviews.any?
     end
+    experiences_to_show = experiences_with_rating.sort_by { |e| e.experience_reviews.average(:rating) }
+    experiences_to_show = experiences_to_show.reverse
+    experiences.each do |exp|
+      experiences_to_show << exp if exp.experience_reviews.empty?
+    end
+    experiences_to_show
+  end
+
 end
