@@ -1,41 +1,55 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <h2><%= t('.title', :default => "Design your trip") %></h2>
+      <% if @guest_user %>
+        <h2>Thank you for your comments!!</h2>
+      <% else %>
+        <h2><%= t('.title', :default => "Design your trip")%> </h2>
+      <% end %>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-9">
-        <%= link_to t('.newexp'), new_experience_path %>
-        <div class="map-checkbox">
-            <label>
-              <input id="checkbox" type="checkbox" class="map-checkbox-input">
-              <small><%= t('.myexp') %></small>
-            </label>
-        </div>
+        <% unless @guest_user %>
+          <div class="map-checkbox">
+              <label>
+                <input id="checkbox" type="checkbox" class="map-checkbox-input">
+                <small><%= t('.myexp') %></small>
+              </label>
+          </div>
+        <% end %>
         <div id="map">
         </div>
       </div>
       <div class="col-xs-12 col-sm-3">
         <ul id="draggablePanelList" class="list-unstyled scrollable">
         </ul>
-        <div id="set-orders" class="btn btn-primary">
-          <%= form_for @trip, url: {action: "update"} do |f|%>
-            <%= hidden_field_tag :order %>
-            <%= f.submit('Save') %>
-          <% end %>
-        </div>
+        <% unless @guest_user %>
+          <div id="set-orders" class="btn btn-primary">
+            <%= form_for @trip, url: {action: "update"} do |f|%>
+              <%= hidden_field_tag :order %>
+              <%= f.submit('Save') %>
+            <% end %>
+          </div>
+        <% else %>
+          <div id="set-orders" class="btn btn-primary">
+            <%= form_for @trip, url: {action: "update"} do |f|%>
+              <%= hidden_field_tag :order %>
+              <%= f.submit('Send my comments') %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<div>
-  <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
-    <%= hidden_field_tag :id, value = @trip.id %>
-    <%= f.submit('Share my trip by email', class:'btn btn-primary') %>
-  <% end %>
-</div>
-
+<% unless @guest_user %>
+  <div>
+    <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
+      <%= hidden_field_tag :id, value = @trip.id %>
+      <%= f.submit('Share my trip by email', class:'btn btn-primary') %>
+    <% end %>
+  </div>
+<% end %>
 <!-- Modal: add-experience -->
 
 <!-- Button trigger modal -->
@@ -68,13 +82,29 @@
   <%= javascript_tag do %>
     $(document).on('ready', function() {
 
+      <% unless @guest_user %>
+        // Generate map
+        var mapOptions = {
+          center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
+          zoom: 6
+        };
+        buildMap(mapOptions, <%= @trip.id %>);
+      <% end %>
 
-      // Generate map
-      var mapOptions = {
-        center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
-        zoom: 6
-      };
-      buildMap(mapOptions, <%= @trip.id %>);
+      <% if @guest_user %>
+        // Build google maps extend to user experience
+        var handler = Gmaps.build('Google');
+        var markers = {}
+        var url = "/trips/"+<%= @trip.id %>+"/trip_experiences/trip_markers";
+        handler.buildMap({ internal: {id: 'map'}}, function(){
+          $.get(url, function(data) {
+            markers = handler.addMarkers(data)
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+          });
+        });
+      <% end %>
+
 
       // Display existing trip_experiences
       <% if @trip_exp_tab %>
@@ -96,6 +126,7 @@
         <% end %>
       <% end %>
 
+      <% unless @guest_user %>
       // Send experiences order to trip-experiences controller
       $('#set-orders').on("mousedown", function() {
         var order = {};
@@ -104,7 +135,9 @@
         }
         $('#order').attr('value', JSON.stringify(order));
       });
+      <% end %>
 
+      <% unless @guest_user %>
       // Add experience on map click
       var map = handler.getMap();
       google.maps.event.addListener(handler.getMap(), "click", function(e) {
@@ -114,12 +147,36 @@
           $('#experience_address').val(results[1].formatted_address);
           });
         });
+      <% end %>
+
+
+      <% unless @guest_user %>
+        // Dragable list for trip experiences order
+        var panelList = $('#draggablePanelList');
+        panelList.sortable({
+        // Only make the .panel-heading child elements support dragging.
+        // Omit this to make the entire <li>...</li> draggable.
+          handle: '.panel-heading',
+          update: function() {
+            $('.panel', panelList).each(function(index, elem) {
+              var $listItem = $(elem),
+                newIndex = $listItem.index();
+                // Persist the new indices.
+            });
+          }
+        });
+      <% end %>
+
+      <% if @guest_user %>
+        // Remove cursor css on panel heading and remove submit btn
+        $('#draggablePanelList .panel-heading').css('cursor', 'auto')
+        $('.panel-heading input.exp-rm-btn').remove()
+      <% end %>
 
       // Display google maps pac-container
       $('#experience_address').on("click", function(e) {
         $('.pac-container').zIndex(100000);
       });
-    });
 
       // Reset modal on hide
       $('#myModal').on('hidden.bs.modal', function(){
@@ -136,5 +193,6 @@
         // singleItem:true
       // });
    // });
+    });
   <% end %>
 <% end %>

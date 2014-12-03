@@ -3,17 +3,12 @@ class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:create, :start, :show_guest_user]
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email]
 
-  def has_current_guest
-    @current_guest
-  end
-
   def create
     @trip = Trip.new(query: params[:q])
     @trip.query_lat = params[:latitude]
     @trip.query_lng = params[:longitude]
     @trip.title = "#{params[:q]}"
     @trip.save
-
     redirect_to start_trip_path(@trip)
   end
 
@@ -44,6 +39,7 @@ class TripsController < ApplicationController
   end
 
   def show
+    @guest_user = false
     @trip = current_user.trips.find(params[:id])
     set_orders_if_nil!(@trip.trip_experiences)
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
@@ -52,6 +48,10 @@ class TripsController < ApplicationController
   end
 
   def show_guest_user
+    @guest_user = true
+    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
   end
 
   def destroy
