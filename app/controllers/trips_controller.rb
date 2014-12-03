@@ -19,7 +19,10 @@ class TripsController < ApplicationController
 
   def start
     @trip = Trip.find(params[:id])
-    if @trip.user
+    if current_user
+      @trip.update(user_id: current_user.id) unless @trip.user
+      redirect_to @trip
+    elsif @trip.user
       redirect_to @trip
     else
       if TripExperience.find_by(trip_id: params[:id])

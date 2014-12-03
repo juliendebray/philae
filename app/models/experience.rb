@@ -4,8 +4,6 @@ class Experience < ActiveRecord::Base
 
   validates :name, presence: true
   validates :address, presence: true
-  # validates :description, presence: true
-  # validates :experience_pictures, presence: true
 
   has_many :services
   has_many :providers, through: :services

@@ -77,18 +77,21 @@
 
       // Display existing trip_experiences
       <% if @trip_exp_tab %>
-        <% @trip_exp_tab.each do |trip_exp| %>
-          var tmpl =
-          '<li class="panel panel-info" id="<%= trip_exp.id %>">' +
-            '<div class="panel-heading"><%= trip_exp.experience.name %>' +
-              '<%= form_tag trip_trip_experience_path(trip_exp.trip, trip_exp), remote: true, method: :delete, class: "form-inline pull-right" do %>'+
-                '<%= submit_tag "X", class: "exp-rm-btn" %>' +
-              '<% end %>' +
-            '</div>'+
-            '<div class="panel-body"><%= trip_exp.experience.description %></div>'+
-          '</li>';
-
-          $('#draggablePanelList').append(tmpl);
+        <% if @trip_exp_tab.size > 0 %>
+          <% @trip_exp_tab.each do |trip_exp| %>
+            <% if trip_exp.experience %>
+              var tmpl =
+              '<li class="panel panel-info" id="<%= trip_exp.id %>">' +
+                '<div class="panel-heading"><%= trip_exp.experience.name %>' +
+                  '<%= form_tag trip_trip_experience_path(trip_exp.trip, trip_exp), remote: true, method: :delete, class: "form-inline pull-right" do %>'+
+                    '<%= submit_tag "X", class: "exp-rm-btn" %>' +
+                  '<% end %>' +
+                '</div>'+
+                '<div class="panel-body"><%= trip_exp.experience.description %></div>'+
+              '</li>';
+              $('#draggablePanelList').append(tmpl);
+            <% end %>
+          <% end %>
         <% end %>
       <% end %>
 
@@ -116,6 +119,13 @@
         $('.pac-container').zIndex(100000);
       });
     });
+
+      // Reset modal on hide
+      $('#myModal').on('hidden.bs.modal', function(){
+        $('#experience_name').val('');
+        $('#experience_address').val('');
+        $('#experience_description').val('');
+      });
 
       // Set carousel on infowindow show up
       // $(".owl-carousel").owlCarousel({
