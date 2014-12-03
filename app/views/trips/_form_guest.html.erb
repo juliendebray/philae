@@ -1,6 +1,4 @@
-<%= bootstrap_form_for([@trip, @trip.trip_comments.new],
-  url: experience_within_trip_path(@trip),
-  remote: true) do |f| %>
+<%= bootstrap_form_for([@trip, @trip.trip_comments.new], remote: true) do |f| %>
   <div class="actions">
     <%= f.text_field :name, placeholder:'Please fill in with your name' %>
     <%= f.text_field :address, placeholder:'If you remember the address' %>

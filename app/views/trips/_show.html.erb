@@ -177,6 +177,18 @@
         });
       <% end %>
 
+      <% if @guest_user %>
+      // Add trip_comment on map click
+      var map = handler.getMap();
+      google.maps.event.addListener(handler.getMap(), "click", function(e) {
+        var geocoder = new google.maps.Geocoder();
+          geocoder.geocode({'latLng': e.latLng}, function(results, status){
+          $('#myModalGuest').modal('show');
+          $('#trip_comment_address').val(results[1].formatted_address);
+          });
+        });
+      <% end %>
+
 
       <% unless @guest_user %>
         // Dragable list for trip experiences order
@@ -212,6 +224,11 @@
         $('#experience_address').val('');
         $('#experience_description').val('');
       });
+      $('#myModalGuest').on('hidden.bs.modal', function(){
+        $('#trip_comment_name').val('');
+        $('#trip_comment_address').val('');
+        $('#trip_comment_description').val('');
+      });
 
       // Set carousel on infowindow show up
       // $(".owl-carousel").owlCarousel({
@@ -220,7 +237,6 @@
         // paginationSpeed : 400,
         // singleItem:true
       // });
-   // });
     });
   <% end %>
 <% end %>
