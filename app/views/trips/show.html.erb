@@ -5,7 +5,6 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-9">
-        <%= link_to t('.newexp'), new_experience_path %>
         <div class="map-checkbox">
             <label>
               <input id="checkbox" type="checkbox" class="map-checkbox-input">
@@ -27,21 +26,28 @@
       </div>
     </div>
   </div>
+
+  <div>
+    <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
+      <%= hidden_field_tag :id, value = @trip.id %>
+      <%= f.submit('Share my trip by email', class:'btn btn-primary') %>
+    <% end %>
+  </div>
+
+
+  <button id="sharefb" class="btn btn-primary btn-lg">Share on Facebook</button>
+
 </div>
 
-<div>
-  <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
-    <%= hidden_field_tag :id, value = @trip.id %>
-    <%= f.submit('Share my trip by email', class:'btn btn-primary') %>
-  <% end %>
+
+
+  <!-- Modal: add-experience -->
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Add an experience
+  </button>
 </div>
-
-<!-- Modal: add-experience -->
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Add an experience
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -63,6 +69,7 @@
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
 <% end %>
+
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -117,6 +124,23 @@
       // Display google maps pac-container
       $('#experience_address').on("click", function(e) {
         $('.pac-container').zIndex(100000);
+      });
+
+
+      $("#sharefb").on('click', function() {
+        FB.ui(
+          {
+            method: 'share',
+            href: 'http://5e752187.ngrok.com/trips/<%= "#{@trip.id}/{@trip.token}" %>'
+          },
+          function(response) {
+            if (response && !response.error_code) {
+              alert('Posting completed.');
+            } else {
+              alert('Error while posting.');
+            }
+          }
+        );
       });
     });
 
