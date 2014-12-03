@@ -19,12 +19,13 @@ Rails.application.routes.draw do
         get ':token' => "trips#show_guest_user", as: :guest_trip
         patch 'share' => "trips#share_trip_email"
       end
-      resources :trip_experiences, only: [:create, :update, :destroy] do
+      resources :trip_experiences, only: [:create, :destroy] do
         collection do
           get :markers
           get :trip_markers
         end
       end
+      resources :trip_comments, only: [:create, :destroy]
     end
     resources :contacts, only: [:new, :create]
   end

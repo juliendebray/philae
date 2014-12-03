@@ -23,9 +23,6 @@ class TripExperiencesController < ApplicationController
     @trip_experience = @trip.trip_experiences.create(trip_experience_params)
   end
 
-  def update
-  end
-
   def destroy
     @trip_experience = TripExperience.find(params[:id])
   end

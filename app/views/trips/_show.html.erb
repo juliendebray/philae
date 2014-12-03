@@ -50,7 +50,9 @@
     <% end %>
   </div>
 <% end %>
-<!-- Modal: add-experience -->
+
+<% unless @guest_user %>
+<!-- Modal: add experience for  user-->
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
@@ -72,6 +74,32 @@
   </div>
 </div>
 
+<% end %>
+
+<% if @guest_user %>
+<!-- Modal: add experience for  user-->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalGuest">
+  Share your experience
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModalGuest" tabindex="-1" role="dialog" aria-labelledby="myModalGuestLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalGuestLabel">Share your experiences!</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'form_guest' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
 
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
