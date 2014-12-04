@@ -10,11 +10,19 @@
     <div class="row">
       <div class="col-xs-12 col-sm-9">
         <% unless @guest_user %>
-          <div class="map-checkbox">
-              <label>
-                <input id="checkbox" type="checkbox" class="map-checkbox-input">
-                <small><%= t('.myexp') %></small>
-              </label>
+          <div id="user-choices">
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
+              <small>Show me what to do</small>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
+              <small>Show me what I selected</small>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
+              <small>Show me my friends comments</small>
+            </label>
           </div>
         <% end %>
         <div id="map">
@@ -120,7 +128,7 @@
       <% end %>
 
       <% if @guest_user %>
-        // Build google maps extend to user experience
+        // Build google maps extend to user experiences
         var handler = Gmaps.build('Google');
         var markers = {}
         var url = "/trips/"+<%= @trip.id %>+"/trip_experiences/trip_markers";
