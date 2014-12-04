@@ -27,27 +27,28 @@
     </div>
   </div>
 
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Add an experience
+  </button>
+
   <div>
     <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
       <%= hidden_field_tag :id, value = @trip.id %>
       <%= f.submit('Share my trip by email', class:'btn btn-primary') %>
     <% end %>
   </div>
-
-
-  <button id="sharefb" class="btn btn-primary btn-lg">Share on Facebook</button>
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+      <a class="btn btn-block btn-social btn-facebook" id="sharefb">
+        <i class="fa fa-facebook"></i> Share
+      </a>
+    </div>
+  </div>
 
 </div>
 
-
-
-  <!-- Modal: add-experience -->
-
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Add an experience
-  </button>
-</div>
+<!-- Modal: add-experience -->
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
