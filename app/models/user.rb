@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :trips
 
+  has_many :relationships
+
   after_create :send_welcome_email
 
 
