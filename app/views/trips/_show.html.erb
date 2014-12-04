@@ -13,15 +13,15 @@
           <div id="user-choices">
             <label class="radio-inline">
               <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
-              <small>Show me what to do</small>
+              <small>Best experiences</small>
             </label>
             <label class="radio-inline">
               <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
-              <small>Show me what I selected</small>
+              <small>My selection</small>
             </label>
             <label class="radio-inline">
               <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
-              <small>Show me my friends comments</small>
+              <small>My friends' tips</small>
             </label>
           </div>
         <% end %>
@@ -42,7 +42,7 @@
           <div id="set-orders" class="btn btn-primary">
             <%= form_for @trip, url: {action: "update"} do |f|%>
               <%= hidden_field_tag :order %>
-              <%= f.submit('Send my comments') %>
+              <%= f.submit('Save my comments') %>
             <% end %>
           </div>
         <% end %>
