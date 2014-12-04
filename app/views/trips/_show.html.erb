@@ -49,7 +49,6 @@
       </div>
     </div>
   </div>
-</div>
 <% unless @guest_user %>
   <div>
     <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
@@ -108,6 +107,16 @@
 </div>
 
 <% end %>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+      <a class="btn btn-block btn-social btn-facebook" id="sharefb">
+        <i class="fa fa-facebook"></i> Share
+      </a>
+    </div>
+  </div>
+</div>
+
 
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
@@ -236,6 +245,23 @@
         // $('#trip_comment_name').val('');
         $('#trip_comment_address').val('');
         $('#trip_comment_description').val('');
+      });
+
+      // Publish a post on your wall
+      $("#sharefb").on('click', function() {
+        FB.ui(
+          {
+            method: 'share',
+            href: 'http://5e752187.ngrok.com/trips/<%= "#{@trip.id}/{@trip.token}" %>'
+          },
+          function(response) {
+            if (response && !response.error_code) {
+              alert('Posting completed.');
+            } else {
+              alert('Error while posting.');
+            }
+          }
+        );
       });
 
       // Set carousel on infowindow show up
