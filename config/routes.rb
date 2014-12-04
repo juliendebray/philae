@@ -11,7 +11,8 @@ Rails.application.routes.draw do
       resources :experience_reviews, only: [:new, :create]
     end
 
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+    end
     resources :story, only: [:index]
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do
       member do

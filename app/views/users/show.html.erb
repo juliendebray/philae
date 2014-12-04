@@ -36,3 +36,17 @@
     </div>
   </div>
 </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <h3>Send a friend request by email</h3>
+      <% form_for([current_user, current_user.relationships.new]) do |f| %>
+        <%= f.search_field :friend_id %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h3>My requests</h3>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h3>My friends</h3>
+    </div>
+  </div>
