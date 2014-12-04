@@ -39,8 +39,9 @@
   <div class="row">
     <div class="col-xs-12 col-sm-3">
       <h3>Send a friend request by email</h3>
-      <% form_for([current_user, current_user.relationships.new]) do |f| %>
-        <%= f.search_field :friend_id %>
+      <% form_tag(user_relationships(current_user) do |f| %>
+        <%= f.text_field :email %>
+        <%= f.submit 'Send request' %>
       <% end %>
     </div>
     <div class="col-xs-12 col-sm-3">

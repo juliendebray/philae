@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:show] do
+      resources :relationships, only: [:create]
     end
     resources :story, only: [:index]
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do

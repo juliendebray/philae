@@ -7,14 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <meta property="og:title" content="I need YOU - to help me design the best trip ever!" />
-  <meta property="og:site_name" content="Woohoo.com" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="http://philae.herokuapp.com/trips/<%= "#{@trip.id}/{@trip.token}" %>" />
-  <meta property="og:image" content="http://unsplash.imgix.net/uploads/1412231250505b65c703c/1fa14fb0?dpr=0.33&fit=crop&fm=jpg&h=700&q=75&w=1075" />
-  <meta property="og:description" content="WooHoo is a platform where you design your trip - with the help of your trusted friends" />
-
+  <% if @trip %>
+    <meta property="og:title" content="I need YOU - to help me design the best trip ever!" />
+    <meta property="og:site_name" content="Woohoo.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://philae.herokuapp.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>" />
+    <meta property="og:image" content="http://unsplash.imgix.net/uploads/1412231250505b65c703c/1fa14fb0?dpr=0.33&fit=crop&fm=jpg&h=700&q=75&w=1075" />
+    <meta property="og:description" content="WooHoo is a platform where you design your trip - with the help of your trusted friends" />
+  <% end %>
 
 </head>
 <body>
