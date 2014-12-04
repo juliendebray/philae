@@ -42,7 +42,7 @@ class TripExperiencesController < ApplicationController
   end
 
   def build_markers(experiences, trip)
-    Gmaps4rails.build_markers(experiences.reverse) do |experience, marker|
+    Gmaps4rails.build_markers(experiences) do |experience, marker|
       marker.lat experience.latitude
       marker.lng experience.longitude
       marker.infowindow render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
