@@ -25,7 +25,11 @@ Rails.application.routes.draw do
           get :trip_markers
         end
       end
-      resources :trip_comments, only: [:create, :destroy]
+      resources :trip_comments, only: [:create, :destroy] do
+        collection do
+          get :comments_markers
+        end
+      end
     end
     resources :contacts, only: [:new, :create]
   end

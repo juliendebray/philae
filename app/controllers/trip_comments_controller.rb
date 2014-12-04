@@ -10,6 +10,10 @@ class TripCommentsController < ApplicationController
     @trip_comment.destroy
   end
 
+  def comments_markers
+    raise
+  end
+
   private
   def set_trip
     @trip = Trip.find(params[:trip_id])

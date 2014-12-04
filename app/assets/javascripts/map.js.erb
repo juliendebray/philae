@@ -48,7 +48,7 @@ function buildMap(mapOptions, trip_id) {
     });
 
     // SET MARKERS DEPENDING ON USER CHOICE
-    $('#user-choices').on("click", function() {
+    $('#user-choices').on("change", function() {
       if ($('#user-experiences').prop('checked')){
         // Set map with booked experiences;
         google.maps.event.clearListeners(map, 'dragend');
@@ -59,11 +59,11 @@ function buildMap(mapOptions, trip_id) {
           previousMarkers = handler.addMarkers(data);
           handler.bounds.extendWith(previousMarkers);
         });
-      } else if ($('#checkbox-guests-comments').prop('checked')) {
+      } else if ($('#guests-comments').prop('checked')) {
         // Set map with trip_comments;
         google.maps.event.clearListeners(map, 'dragend');
         google.maps.event.clearListeners(map, 'zoom_changed');
-        var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
+        var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
         $.get(url, function(data) {
           handler.removeMarkers(previousMarkers);
           previousMarkers = handler.addMarkers(data);
