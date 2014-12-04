@@ -252,7 +252,7 @@
         FB.ui(
           {
             method: 'share',
-            href: 'http://philae.herokuapp.com/trips/<%= "#{@trip.id}/{@trip.token}" %>'
+            href: '<%= share_url("/trips/#{@trip.id}/#{@trip.token}") %>'
           },
           function(response) {
             if (response && !response.error_code) {
