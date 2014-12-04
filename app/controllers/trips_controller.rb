@@ -3,17 +3,12 @@ class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:create, :start, :show_guest_user]
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email]
 
-  def has_current_guest
-    @current_guest
-  end
-
   def create
     @trip = Trip.new(query: params[:q])
     @trip.query_lat = params[:latitude]
     @trip.query_lng = params[:longitude]
     @trip.title = "#{params[:q]}"
     @trip.save
-
     redirect_to start_trip_path(@trip)
   end
 
@@ -36,14 +31,24 @@ class TripsController < ApplicationController
 
   def update
     @trip.update(user_id: current_user.id)
-    order_hash = JSON.parse(params[:order])
-    update_trip_experience_order(order_hash)
-
+    if params[:order]
+      order_hash = JSON.parse(params[:order])
+      update_trip_experience_order(order_hash)
+    end
     redirect_to trip_path(@trip)
   end
 
   def show
+    @guest_user = false
     @trip = current_user.trips.find(params[:id])
+    set_orders_if_nil!(@trip.trip_experiences)
+    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
+  end
+
+  def show_guest_user
+    @guest_user = true
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
       te.order
     end
@@ -53,9 +58,6 @@ class TripsController < ApplicationController
     trip = Trip.find(params[:id])
     trip.destroy
     redirect_to user_path(current_user)
-  end
-
-  def show_guest_user
   end
 
   def share_trip_email
@@ -77,5 +79,12 @@ class TripsController < ApplicationController
   def authenticate_guest!
     @trip = Trip.find(params[:id])
     @guest_user = true if @trip.token == params[:token]
+  end
+
+  def set_orders_if_nil!(trip_experiences)
+    trip_experiences.map do |trip_exp|
+      count = trip_experiences.reject {|te| te.order.nil?}.size
+      trip_exp.order = count + 1 if trip_exp.order.nil?
+    end
   end
 end

@@ -7,7 +7,7 @@ var tmpl =
       '<%= submit_tag "X", class: "exp-rm-btn" %>' +
     '<% end %>' +
   '</div>'+
-  '<div class="panel-body"><%= @trip_experience.experience.description %></div>'+
+  '<div class="panel-body"><%= @trip_experience.experience.description if @trip_experience.experience %></div>'+
 '</li>';
 
 $('#draggablePanelList').append(tmpl);
