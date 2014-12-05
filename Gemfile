@@ -94,4 +94,9 @@ gem 'metamagic'
 
 gem 'fb_graph'
 
+# Unicorn server
+gem 'unicorn'
+
+# Newrelic
+gem 'newrelic_rpm'
 

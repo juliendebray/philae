@@ -4,10 +4,8 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email]
 
   def create
-    @trip = Trip.new(query: params[:q])
-    @trip.query_lat = params[:latitude]
-    @trip.query_lng = params[:longitude]
-    @trip.title = "#{params[:q]}"
+    @trip = Trip.new(trip_params)
+    @trip.title = "#{params[:query]}"
     @trip.save
     redirect_to start_trip_path(@trip)
   end
@@ -65,6 +63,10 @@ class TripsController < ApplicationController
   end
 
   private
+
+  def trip_params
+    params.require(:trip).permit(:query, :query_lat, :query_lng)
+  end
 
   def set_trip
     @trip = Trip.find(params[:id])

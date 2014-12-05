@@ -19,7 +19,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      resources :relationships, only: [:create, :update, :destroy]
+    end
+
     resources :story, only: [:index]
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do
       member do

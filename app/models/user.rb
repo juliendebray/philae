@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :trips
   has_many :friends
 
+  has_many :relationships
+
   after_create :send_welcome_email
 
   def self.find_for_facebook_oauth(auth)
