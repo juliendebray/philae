@@ -1,7 +1,7 @@
 <%= bootstrap_form_for([@trip, @trip.trip_comments.new], remote: true) do |f| %>
   <div class="actions">
-    <%= f.text_field :name, placeholder:'Please fill in with your name' %>
-    <%= f.text_field :address, placeholder:'If you remember the address' %>
+    <%= f.text_field :name, placeholder:'Write your name here' %>
+    <%= f.text_field :address, placeholder:'What is the address' %>
     <%= f.text_area :description, placeholder: 'What it is about?' %>
     <%= f.submit 'Share it' %>
   </div>

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <% if @guest_user %>
-        <h2>Thank you for your comments!!</h2>
+        <h2>Thank you for your tips!!</h2>
       <% else %>
         <h2><%= t('.title', :default => "Design your trip")%> </h2>
       <% end %>
@@ -13,15 +13,15 @@
           <div id="user-choices">
             <label class="radio-inline">
               <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
-              <small>Show me what to do</small>
+              <small>Best experiences</small>
             </label>
             <label class="radio-inline">
               <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
-              <small>Show me what I selected</small>
+              <small>My selection</small>
             </label>
             <label class="radio-inline">
               <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
-              <small>Show me my friends comments</small>
+              <small>My friends' tips</small>
             </label>
           </div>
         <% end %>
@@ -32,89 +32,95 @@
         <ul id="draggablePanelList" class="list-unstyled scrollable">
         </ul>
         <% unless @guest_user %>
-          <div id="set-orders" class="btn btn-primary">
+          <div id="set-orders">
             <%= form_for @trip, url: {action: "update"} do |f|%>
               <%= hidden_field_tag :order %>
-              <%= f.submit('Save') %>
+              <%= f.submit('Save', class: "btn btn-primary") %>
             <% end %>
           </div>
         <% else %>
-          <div id="set-orders" class="btn btn-primary">
+          <div id="set-orders">
             <%= form_for @trip, url: {action: "update"} do |f|%>
               <%= hidden_field_tag :order %>
-              <%= f.submit('Send my comments') %>
+              <%= f.submit('Save my comments', class: "btn btn-primary") %>
             <% end %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-<% unless @guest_user %>
-  <div>
+
+  <% unless @guest_user %>
+    <!-- Modal: add experience for  user-->
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      Add an experience
+    </button></br>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Do you want to add your own experience?</h4>
+          </div>
+          <div class="modal-body">
+            <%= render 'form' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+  <% unless @guest_user %>
+    <a class="btn btn-social btn-facebook" id="sharefb">
+      <i class="fa fa-facebook"></i> Ask your friends on Facebook
+    </a>
+
     <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
       <%= hidden_field_tag :id, value = @trip.id %>
-      <%= f.submit('Share my trip by email', class:'btn btn-primary') %>
+
+      <%= f.submit('Ask your friends by email', class:'btn btn-primary') %>
     <% end %>
-  </div>
-<% end %>
 
-<% unless @guest_user %>
-<!-- Modal: add experience for  user-->
+  <% end %>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Add an experience
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Do you want to add your own experience?</h4>
-      </div>
-      <div class="modal-body">
-        <%= render 'form' %>
-      </div>
-    </div>
-  </div>
-</div>
+  <% if @guest_user %>
+  <!-- Modal: add experience for  user-->
 
-<% end %>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalGuest">
+    Add a tip
+  </button>
 
-<% if @guest_user %>
-<!-- Modal: add experience for  user-->
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalGuest">
-  Share your experience
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModalGuest" tabindex="-1" role="dialog" aria-labelledby="myModalGuestLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalGuestLabel">Share your experiences!</h4>
-      </div>
-      <div class="modal-body">
-        <%= render 'form_guest' %>
+  <!-- Modal -->
+  <div class="modal fade" id="myModalGuest" tabindex="-1" role="dialog" aria-labelledby="myModalGuestLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalGuestLabel">Share your experiences!</h4>
+        </div>
+        <div class="modal-body">
+          <%= render 'form_guest' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<% end %>
+  <% end %>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-2">
-      <a class="btn btn-block btn-social btn-facebook" id="sharefb">
-        <i class="fa fa-facebook"></i> Share
-      </a>
+  <% if @guest_user %>
+    <div id="trip-comments" class="in-line">
+      <ul id="trip-comments-list">
+      </ul>
     </div>
-  </div>
+  <% end %>
+
 </div>
 
 
