@@ -29,7 +29,6 @@ before_action :set_relationship, only: [:update, :destroy]
       user_id: @relationship.sender_id,
       friend_id: current_user.id
     ).first.update(status: 'accepted')
-    relation_to_update.update(status: 'accepted')
     flash[:notice] = 'You have a new friend'
     redirect_to user_path(current_user)
   end

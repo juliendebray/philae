@@ -95,3 +95,6 @@ gem 'metamagic'
 # Unicorn server
 gem 'unicorn'
 
+# Newrelic
+gem 'newrelic_rpm'
+
