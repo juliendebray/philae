@@ -28,4 +28,7 @@ $(function(){
   });
 
   // var s = skrollr.init();
+
+  // CSRF authenticity token problem on mobile
+  $('input[name=authenticity_token]').val($('meta[name=csrf-token]').attr('content'))
 });
