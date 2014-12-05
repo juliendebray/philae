@@ -10,14 +10,14 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui
-//= require owl.carousel
-//= require bootstrap-sprockets
-//= require underscore
-//= require gmaps/google
-//= require_tree .
+// = require jquery
+// = require jquery_ujs
+// = require jquery-ui
+// = require owl.carousel
+// = require bootstrap-sprockets
+// = require underscore
+// = require gmaps/google
+// = require_tree .
 
 $(function(){
   // Removes form submission on enter key in inputs
