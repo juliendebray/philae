@@ -9,9 +9,10 @@ class RelationshipsController < ApplicationController
         friend_id: current_user.id,
         sender_id: current_user.id,
         )
+      redirect_to user_path(current_user)
     else
-      flash[:notice] = 'no such email found in our database'
-      redirect_to :back
+      flash[:notice] = 'No such email found in our database'
+      redirect_to user_path(current_user)
     end
   end
 

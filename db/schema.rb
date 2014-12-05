@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204143951) do
+ActiveRecord::Schema.define(version: 20141205102544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20141204143951) do
     t.integer  "user_id"
     t.integer  "friend_id"
     t.integer  "sender_id"
-    t.string   "status"
+    t.string   "status",     default: "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

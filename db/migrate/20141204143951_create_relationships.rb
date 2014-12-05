@@ -4,7 +4,7 @@ class CreateRelationships < ActiveRecord::Migration
       t.references :user, index: true
       t.integer :friend_id
       t.integer :sender_id
-      t.string :status, default: 'pending'
+      t.string :status
 
       t.timestamps
     end
