@@ -92,4 +92,6 @@ gem 'owlcarousel-rails'
 # Metatag
 gem 'metamagic'
 
+# Unicorn server
+gem 'unicorn'
 
