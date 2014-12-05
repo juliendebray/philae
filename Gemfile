@@ -92,6 +92,8 @@ gem 'owlcarousel-rails'
 # Metatag
 gem 'metamagic'
 
+gem 'fb_graph'
+
 # Unicorn server
 gem 'unicorn'
 

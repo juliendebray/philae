@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'friends/index'
+
   get 'connections/new'
   post '/trips/:trip_id/trip_experiences/create_with_new_experience', to: 'trip_experiences#create_with_new_experience', as: 'experience_within_trip'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
@@ -11,9 +13,16 @@ Rails.application.routes.draw do
       resources :experience_reviews, only: [:new, :create]
     end
 
+    resources :friends, only: [:index] do
+      collection do
+        post :fb_friends
+      end
+    end
+
     resources :users, only: [:show] do
       resources :relationships, only: [:create, :update, :destroy]
     end
+
     resources :story, only: [:index]
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do
       member do
