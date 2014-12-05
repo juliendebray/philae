@@ -92,4 +92,6 @@ gem 'owlcarousel-rails'
 # Metatag
 gem 'metamagic'
 
+gem 'fb_graph'
+
 

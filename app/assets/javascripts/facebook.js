@@ -1,3 +1,5 @@
+// Share on Facebook
+
 window.fbAsyncInit = function() {
     FB.init({
       appId      : 476354419169210,
