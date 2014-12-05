@@ -3,7 +3,7 @@
     <h1><%= t '.brand' %></h1>
     <h2><%= t '.baseline' %></h2>
   </div>
-  <%= form_tag(trips_path, method: "post", class: "form-inline") do %>
+  <%= form_tag(trips_path, multipart: true, authenticity_token: true, class: "form-inline") do %>
   <div class="form-group">
     <%= text_field_tag(:q, nil, id: 'experience_address', placeholder: t('.searchplaceholder'), class: "form-control") %>
     <%= hidden_field_tag(:latitude) %>
