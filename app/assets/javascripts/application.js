@@ -26,5 +26,6 @@ $(function(){
         event.preventDefault();
     }
   });
-  var s = skrollr.init();
+
+  // var s = skrollr.init();
 });
