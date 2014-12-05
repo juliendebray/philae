@@ -127,6 +127,10 @@
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
+  <script>
+    // Utiliser une variable globale à utiliser dans tous le code du js
+    // var AUTHENTICATED_USER = <%= current_user ? 'true' : 'false' %>;
+  </script>
 <% end %>
 
 <% content_for(:after_js) do %>
@@ -179,6 +183,7 @@
 
       <% unless @guest_user %>
       // Send experiences order to trip-experiences controller
+      // Rajouter un selecteur plus précis qui ne s'affiche pas lorsque le guest user est connecté
       $('#set-orders').on("mousedown", function() {
         var order = {};
         for (var i = 0; i < $('.panel.panel-info').length; i++){
