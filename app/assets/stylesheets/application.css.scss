@@ -28,19 +28,40 @@ $font-family-sans-serif: 'Open Sans';
 
 // General customized styles
 
-#titleblock {
-  padding-top: 120px;
 
-  .title {
-    margin-bottom: 30px;
-  }
+body.wrapper {
+  background-color: #E0DDDB;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: grey;
+  height: 800px;
+  padding-top: 100px;
 }
 
-.wrapper {
+.title {
+  padding-bottom: 20px;
+}
+
+body.homepage_story {
   background-image: image-url("lonely.jpg");
   background-size: cover;
+  background-position: center top;
   background-attachment: fixed;
-  color: lightgrey;
+  color: #238BFF;
   height: 800px;
-  padding-top: 40px;
+  padding-top: 120px;
 }
+
+body.signup-signin {
+  background-image: image-url("deck.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: grey;
+  height: 800px;
+  padding-top: 80px;
+}
+
+
+

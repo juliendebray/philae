@@ -2,14 +2,14 @@
 $color: #3598DB;
 $bg: #0E1D3A;
 
-$height: 40px;
-$vertical-padding: 20px;
-$horizontal-padding: 20px;
+$height: 25px;
+$vertical-padding: 15px;
+$horizontal-padding: 15px;
 $border-bottom-width: 0;
 $border-bottom-color: grey;
 
 // Set your navbar button
-$btn-height: 30px;
+$btn-height: 25px;
 $btn-bg: $btn-primary-bg;
 $btn-color: white;
 $btn-horizontal-padding: 5px;
@@ -24,9 +24,9 @@ $btn-left-border-color: transparent;
 
 
 // Set your profile picture
-$profile-radius: 20%;
+$profile-radius: 100%;
 $profile-border-color: white;
-$profile-border-width: 2px;
+$profile-border-width: 0px;
 
 @media (max-width: $screen-sm-min) {
   .navbar-wagon {
@@ -121,7 +121,7 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 .navbar-wagon #profile-pic{
   border: $profile-border-width solid $profile-border-color;
   box-shadow: 0 0 2px rgb(200, 200, 200);
-  height: $height - (2 * $profile-border-width);
+  height: $height;
   margin-right: 10px;
   border-radius: $profile-radius;
 }

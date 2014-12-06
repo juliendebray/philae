@@ -2,8 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// .wrapper {
+//   background-image: image-url("lonely.jpg");
+// }
+
+
 #homeblock {
-  padding-top: 120px;
+  padding-top: 80px;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   .title {
     margin-bottom: 30px;
@@ -18,20 +27,5 @@
   }
 
 }
-
-// #hp-form {
-//   background: rgba(0,0,0,0.4);
-//   color: white;
-//   width: 140%;
-//   margin: 0 auto;
-//   padding: 25px 10px;
-//   border-radius: 5px;
-// }
-
-// #q {
-// width: 80%;
-// padding: 5px;
-// color: black;
-// }
 
 

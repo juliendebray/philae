@@ -5,7 +5,7 @@ class ExperiencePicture < ActiveRecord::Base
     styles: {
       banner: "1400x550#",
       small: "220x170#",
-      thumb: "150x100#",
+      thumb: "160x100#",
     }
 
   validates_attachment_content_type :picture,

@@ -33,6 +33,7 @@ en:
 
   #sign up / sign in
   sign_up: "Sign up - it's easy and free"
+  sign_in: "Connexion"
   passwordplaceholder: "Password"
   passwordconfirmplaceholder: "Confirm password"
   fbbutton: "Connect"
