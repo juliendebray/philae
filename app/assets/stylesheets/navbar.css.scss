@@ -30,7 +30,7 @@ $profile-border-width: 0px;
 
 @media (max-width: $screen-sm-min) {
   .navbar-wagon {
-    position: relative;
+    position: fixed;
     background-color: white;
     margin-bottom: 0;
     color: black;
@@ -154,16 +154,17 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   z-index: -1;
 }
 
-@media screen and (max-width: 768px) {
-  #logo {
-    height: 50px;
-  }
-  .navbar-wagon .navbar-brand,
-  .navbar-wagon .navbar-brand:hover
-   {
-    display: block;
-    color: $color;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-}
+// Fait par Boris : quelle différence avec le paramétrage lignes 31-38 ??
+// @media screen and (max-width: 768px) {
+//   #logo {
+//     height: 50px;
+//   }
+//   .navbar-wagon .navbar-brand,
+//   .navbar-wagon .navbar-brand:hover
+//    {
+//     display: block;
+//     color: $color;
+//     padding-top: 0;
+//     padding-bottom: 0;
+//   }
+// }

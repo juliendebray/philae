@@ -2,14 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// .wrapper {
-//   background-image: image-url("lonely.jpg");
-// }
-
 
 #homeblock {
   padding-top: 80px;
   position: fixed;
+  width: 60%;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -25,7 +22,19 @@
   .form-control{
     width: 350px;
   }
-
 }
 
+@media screen and (max-width: 410px) {
+  #homeblock {
+   padding-top: 20%;
+   width: 100%;
+   top: 0%;
+   left: 0%;
+   transform: translate(0%, 0%);
+    .form-group {
+      width: 250px;
+      padding-left: 2%;
+    }
+  }
+}
 
