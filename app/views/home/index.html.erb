@@ -6,7 +6,7 @@
     <h2><%= t '.baseline' %></h2>
   </div>
   <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
-  <div class="form-group">
+  <div class="form-group" class="text-center">
     <%= f.text_field(:query, id: 'experience_address', placeholder: t('.searchplaceholder'), class: "form-control") %>
     <%= f.hidden_field(:query_lat) %>
     <%= f.hidden_field(:query_lng) %>
