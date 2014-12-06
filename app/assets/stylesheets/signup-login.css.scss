@@ -5,14 +5,14 @@
 // }
 
 #sign-form {
-background: rgba(0,0,0,0.4);
+background: rgba(0,0,0,0.6);
 color: lightgrey;
 width: 60%;
 margin: 10px auto;
 padding: 10px 10px;
 border-radius: 5px;
 text-align: center;
-// padding-left: 15px;
+
 }
 
 #fb-login {
@@ -41,4 +41,15 @@ padding-bottom: 20px;
 #user_password {
   color: grey;
   font-weight: normal;
+}
+
+#user_password_confirmation {
+  color: grey;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 580px) {
+  #sign-form {
+   width: 90%;
+  }
 }

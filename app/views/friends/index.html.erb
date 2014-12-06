@@ -1,4 +1,4 @@
-<div class="span6">
+
 <!--   <div class="portlet box yellow">
     <div class="portlet-title">
       <h4 class="glyphicons no-js facebook">
@@ -10,7 +10,6 @@
         <a class="reload" href="javascript:;"></a>
       </div>
  -->
-
   <% unless @user_fb_token.blank?%>
   <% unless @fb_friends.blank? %>
 
@@ -31,5 +30,3 @@
   <% else %>
     <%= link_to('Connect to facebook', user_omniauth_authorize_path('facebook'), class:'display-block ') %>
   <% end %>
-
-</div>

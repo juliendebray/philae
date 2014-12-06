@@ -1,3 +1,5 @@
+<body class="wrapper">
+
 <%= bootstrap_form_for(@experience, html: { multipart: true }) do |f| %>
   <!-- Errors explanation -->
   <% if @experience.errors.any? %>
@@ -28,6 +30,8 @@
 
   </div>
 <% end %>
+
+</body>
 
 <% content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
