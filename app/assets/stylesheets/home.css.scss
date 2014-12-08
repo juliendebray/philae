@@ -4,19 +4,15 @@
 
 
 #homeblock {
-  padding-top: 80px;
-  position: fixed;
-  width: 60%;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding-top: 7%;
+  height: 73%;
+}
 
-  .title {
-    margin-bottom: 30px;
-  }
+#homeblock {
 
   .form-group{
     width: 350px;
+    margin: 10px auto;
   }
 
   .form-control{
@@ -24,17 +20,26 @@
   }
 }
 
-@media screen and (max-width: 410px) {
-  #homeblock {
-   padding-top: 20%;
-   width: 100%;
-   top: 0%;
-   left: 0%;
-   transform: translate(0%, 0%);
-    .form-group {
-      width: 250px;
-      padding-left: 2%;
-    }
-  }
+#homepage-content {
+  background: rgba(0,0,0,0.2);
+  padding: 35px;
 }
+
+.img-responsive {
+  margin: 0 auto;
+  height: 150px;
+}
+
+.feature {
+  padding: 10px;
+  background: #EDEFED;
+  border-radius: 10px;
+  margin: 15px;
+}
+.effect-white-shadow{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+}
+
 
