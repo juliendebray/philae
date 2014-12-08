@@ -23,26 +23,13 @@
   </head>
   <body>
 
+    <%= render partial: "layouts/flash" %>
     <%= render partial: "shared/navbar" %>
-    <div class="wrapper">
-      <div class="container">
 
-        <% if notice %>
-          <p class="notice text-center"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert"><%= alert %></p>
-        <% end %>
-
-        <%= yield %>
-
-      </div>
-    </div>
-
+    <%= yield %>
 
     <%= yield(:before_js) %>
     <%= javascript_include_tag 'application' %>
     <%= yield(:after_js) %>
-
   </body>
 </html>
