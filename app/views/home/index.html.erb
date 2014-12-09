@@ -1,6 +1,5 @@
 <body class="homepage_story">
-
-<div id="homeblock" class="text-center">
+<div id="homeblock" class="banner text-center">
   <div class="title">
     <h1><%= t '.brand' %></h1>
     <h2><%= t '.baseline' %></h2>
@@ -14,6 +13,34 @@
     <%= f.submit(t('.searchbutton'), class: 'btn btn-primary') %>
   <% end %>
 </div>
+<div id="homepage-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div class="feature text-center effect-white-shadow">
+          <%= image_tag 'noun_test.png', class: "img-responsive" %>
+          <h4>Changing the travel experience</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quam laudantium, soluta maiores quia suscipit. Adipisci, hic aliquam magnam, dicta, vero quisquam nobis soluta in quidem fugiat omnis assumenda nostrum.</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="feature text-center effect-white-shadow">
+          <%= image_tag 'noun_test.png', class: "img-responsive" %>
+          <h4>Changing the travel experience</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quam laudantium, soluta maiores quia suscipit. Adipisci, hic aliquam magnam, dicta, vero quisquam nobis soluta in quidem fugiat omnis assumenda nostrum.</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="feature text-center effect-white-shadow">
+          <%= image_tag 'noun_test.png', class: "img-responsive" %>
+          <h4>Changing the travel experience</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quam laudantium, soluta maiores quia suscipit. Adipisci, hic aliquam magnam, dicta, vero quisquam nobis soluta in quidem fugiat omnis assumenda nostrum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <% content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>

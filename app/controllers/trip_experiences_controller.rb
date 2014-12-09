@@ -48,7 +48,7 @@ class TripExperiencesController < ApplicationController
       marker.infowindow render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
         experience: experience,
         trip: trip
-      })
+        })
       marker.title experience.name
     end
   end
