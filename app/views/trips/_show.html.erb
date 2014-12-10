@@ -130,8 +130,8 @@
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
 
   <script>
-    // Utiliser une variable globale à utiliser dans tous le code du js
-    // var AUTHENTICATED_USER = <%= current_user ? 'true' : 'false' %>;
+    // Use of a global variable to know if the user is authentificated or guest
+    var GUEST_USER = <%= @guest_user ? 'true' : 'false' %>;
   </script>
 <% end %>
 
@@ -140,6 +140,22 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).on('ready', function() {
+      if (GUEST_USER) {
+        var guestUserMapOptions = {
+        // Retrieve options
+        }
+        // buildMapForGuestUser(guestUserMapOptions, <%= @trip.id %>);
+      } else {
+        // Generate map
+        // Set options to generate map
+        var userMapOptions = {
+          center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
+          zoom: 6,
+          disableDoubleClickZoom: true
+        };
+        buildMapForUser(userMapOptions, <%= @trip.id %>);
+      }
+
 
       <% unless @guest_user %>
         // Generate map
