@@ -146,14 +146,16 @@
         }
         // buildMapForGuestUser(guestUserMapOptions, <%= @trip.id %>);
       } else {
-        // Generate map
+        // map
         // Set options to generate map
         var userMapOptions = {
           center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
           zoom: 6,
           disableDoubleClickZoom: true
         };
+        // Generate maps
         buildMapForUser(userMapOptions, <%= @trip.id %>);
+        //
       }
 
 
