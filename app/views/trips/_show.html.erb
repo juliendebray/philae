@@ -142,11 +142,11 @@
     $(document).on('ready', function() {
       if (GUEST_USER) {
         var guestUserMapOptions = {
-        // Retrieve options
+          disableDoubleClickZoom: true
         }
-        // buildMapForGuestUser(guestUserMapOptions, <%= @trip.id %>);
+        buildMapForGuestUser(guestUserMapOptions, <%= @trip.id %>);
       } else {
-        // map
+        // Map
         // Set options to generate map
         var userMapOptions = {
           center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
@@ -157,31 +157,6 @@
         buildMapForUser(userMapOptions, <%= @trip.id %>);
         //
       }
-
-
-      <% unless @guest_user %>
-        // Generate map
-        var mapOptions = {
-          center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
-          zoom: 6,
-          disableDoubleClickZoom: true
-        };
-        buildMap(mapOptions, <%= @trip.id %>);
-      <% end %>
-
-      <% if @guest_user %>
-        // Build google maps extend to user experiences
-        var handler = Gmaps.build('Google');
-        var markers = {}
-        var url = "/trips/"+<%= @trip.id %>+"/trip_experiences/trip_markers";
-        handler.buildMap({ internal: {id: 'map'}}, function(){
-          $.get(url, function(data) {
-            markers = handler.addMarkers(data)
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-          });
-        });
-      <% end %>
 
 
       // Display existing trip_experiences

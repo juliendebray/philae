@@ -1,6 +1,17 @@
-// Needed objects to acess to the google maps object
+// Variables gloablly needed to retrieve google maps objects
 var handler;
 var markers = {};
+
+function buildMapForGuestUser(mapOptions, trip_id) {
+  handler = Gmaps.build('Google');
+  handler.buildMap({provider: mapOptions, internal: {id: 'map'}}, function(){
+    requestingMarkers = true;
+    var url = "/trips/" + trip_id + "/trip_experiences/trip_markers";
+    setMarkersAccordingToApi(url, function(r) {
+      handler.fitMapToBounds();
+    });
+  });
+}
 
 function buildMapForUser(mapOptions, trip_id) {
   handler = Gmaps.build('Google');
@@ -89,6 +100,3 @@ function buildUrlWithBounds(map, trip_id) {
   var southWestLng = bounds.getSouthWest().lng();
   return "/trips/"+trip_id+"/trip_experiences/markers?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
 }
-
-
-
