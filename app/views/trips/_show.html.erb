@@ -122,7 +122,7 @@
     </ul>
   </div>
 <% end %>
-
+</body>
 
 
 <%= content_for(:before_js) do %>
@@ -130,155 +130,43 @@
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
 
   <script>
-    // Utiliser une variable globale à utiliser dans tous le code du js
-    // var AUTHENTICATED_USER = <%= current_user ? 'true' : 'false' %>;
+    // Use of a global variable to know if the user is authentificated or guest
+    var GUEST_USER = <%= @guest_user ? 'true' : 'false' %>;
   </script>
 <% end %>
 
-</body>
+
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
     $(document).on('ready', function() {
-
-      <% unless @guest_user %>
-        // Generate map
-        var mapOptions = {
-          center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
-          zoom: 6,
-          disableDoubleClickZoom: true
-        };
-        buildMap(mapOptions, <%= @trip.id %>);
-      <% end %>
-
-      <% if @guest_user %>
-        // Build google maps extend to user experiences
-        var handler = Gmaps.build('Google');
-        var markers = {}
-        var url = "/trips/"+<%= @trip.id %>+"/trip_experiences/trip_markers";
-        handler.buildMap({ internal: {id: 'map'}}, function(){
-          $.get(url, function(data) {
-            markers = handler.addMarkers(data)
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-          });
-        });
-      <% end %>
-
-
       // Display existing trip_experiences
-      <% if @trip_exp_tab %>
-        <% if @trip_exp_tab.size > 0 %>
-          <% @trip_exp_tab.each do |trip_exp| %>
-            <% if trip_exp.experience %>
-              var tmpl =
-              '<li class="panel panel-info" id="<%= trip_exp.id %>">' +
-                '<div class="panel-heading"><%= trip_exp.experience.name %>' +
-                  '<%= form_tag trip_trip_experience_path(trip_exp.trip, trip_exp), remote: true, method: :delete, class: "form-inline pull-right" do %>'+
-                    '<%= submit_tag "X", class: "exp-rm-btn" %>' +
-                  '<% end %>' +
-                '</div>'+
-                '<div class="panel-body"><%= trip_exp.experience.description %></div>'+
-              '</li>';
-              $('#draggablePanelList').append(tmpl);
-            <% end %>
+      <% if @trip_exp_tab &&  @trip_exp_tab.size > 0 %>
+        <% @trip_exp_tab.each do |trip_exp| %>
+          <% if trip_exp.experience %>
+            $('#draggablePanelList').append('<%= j render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>');
           <% end %>
         <% end %>
       <% end %>
 
-      <% unless @guest_user %>
-      // Send experiences order to trip-experiences controller
-      // Rajouter un selecteur plus précis qui ne s'affiche pas lorsque le guest user est connecté
-      $('#set-orders').on("mousedown", function() {
-        var order = {};
-        for (var i = 0; i < $('.panel.panel-info').length; i++){
-          order[i+1] =  $('.panel.panel-info')[i].id;
-        }
-        $('#order').attr('value', JSON.stringify(order));
-      });
-      <% end %>
-
-      <% unless @guest_user %>
-      // Add experience on map click
-      var map = handler.getMap();
-      google.maps.event.addListener(handler.getMap(), "click", function(e) {
-        var geocoder = new google.maps.Geocoder();
-          geocoder.geocode({'latLng': e.latLng}, function(results, status){
-          $('#myModal').modal('show');
-          $('#experience_address').val(results[1].formatted_address);
-          });
-        });
-      <% end %>
-
-      <% if @guest_user %>
-      // Add trip_comment on map click
-      var map = handler.getMap();
-      google.maps.event.addListener(handler.getMap(), "click", function(e) {
-        var geocoder = new google.maps.Geocoder();
-          geocoder.geocode({'latLng': e.latLng}, function(results, status){
-          $('#myModalGuest').modal('show');
-          $('#trip_comment_address').val(results[1].formatted_address);
-          });
-        });
-      <% end %>
-
-
-      <% unless @guest_user %>
-        // Dragable list for trip experiences order
-        var panelList = $('#draggablePanelList');
-        panelList.sortable({
-        // Only make the .panel-heading child elements support dragging.
-        // Omit this to make the entire <li>...</li> draggable.
-          handle: '.panel-heading',
-          update: function() {
-            $('.panel', panelList).each(function(index, elem) {
-              var $listItem = $(elem),
-                newIndex = $listItem.index();
-                // Persist the new indices.
-            });
-          }
-        });
-      <% end %>
-
-      <% if @guest_user %>
+      if (GUEST_USER) {
+        var guestUserMapOptions = {
+          disableDoubleClickZoom: false
+        };
+        buildMapForGuestUser(guestUserMapOptions, <%= @trip.id %>);
         // Remove cursor css on panel heading and remove submit btn
         $('#draggablePanelList .panel-heading').css('cursor', 'auto')
-        $('.panel-heading input.exp-rm-btn').remove()
-      <% end %>
-
-      // Display google maps pac-container
-      $('#experience_address').on("click", function(e) {
-        $('.pac-container').zIndex(100000);
-      });
-
-      // Reset modal on hide
-      $('#myModal').on('hidden.bs.modal', function(){
-        $('#experience_name').val('');
-        $('#experience_address').val('');
-        $('#experience_description').val('');
-      });
-      $('#myModalGuest').on('hidden.bs.modal', function(){
-        // $('#trip_comment_name').val('');
-        $('#trip_comment_address').val('');
-        $('#trip_comment_description').val('');
-      });
-
-      // Publish a post on your wall
-      $("#sharefb").on('click', function() {
-        FB.ui(
-          {
-            method: 'share',
-            href: "http://philae.herokuapp.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>"
-          },
-          function(response) {
-            if (response && !response.error_code) {
-              alert('Posting completed.');
-            } else {
-              alert('Error while posting.');
-            }
-          }
-        );
-      });
+      } else {
+        var userMapOptions = {
+          center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
+          zoom: 6,
+          disableDoubleClickZoom: false
+        };
+        buildMapForUser(userMapOptions, <%= @trip.id %>);
+        makeExperiencesSortable();
+        setExperiencesOrderByClickingOnSave();
+        publishPostOnFbWall("#sharefb", "<%= j share_url("/trips/#{@trip.id}/#{@trip.token}") %>");
+      }
 
       // Set carousel on infowindow show up
       // $(".owl-carousel").owlCarousel({
@@ -288,5 +176,5 @@
         // singleItem:true
       // });
     });
-  <% end %>
+  </script>
 <% end %>

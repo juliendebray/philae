@@ -1,125 +1,179 @@
-var handler; // Need to retrieve the google maps object
+// Variables gloablly needed to retrieve google maps objects
+var handler;
+var markers = {};
 
-function buildMap(mapOptions, trip_id) {
+function makeExperiencesSortable() {
+  // Dragable list for trip experiences order
+  var panelList = $('#draggablePanelList');
+  panelList.sortable({
+  // Only make the .panel-heading child elements support dragging.
+  // Omit this to make the entire <li>...</li> draggable.
+    handle: '.panel-heading',
+    update: function() {
+      $('.panel', panelList).each(function(index, elem) {
+        var $listItem = $(elem),
+          newIndex = $listItem.index(); // Persist the new indices.
+      });
+    }
+  });
+}
+
+function setExperiencesOrderByClickingOnSave() {
+  $('#set-orders').on("mousedown", function() {
+    var order = {};
+    for (var i = 0; i < $('.panel.panel-info').length; i++){
+      order[i+1] =  $('.panel.panel-info')[i].id;
+    }
+    $('#order').attr('value', JSON.stringify(order));
+  });
+}
+
+function buildMapForGuestUser(mapOptions, trip_id) {
   handler = Gmaps.build('Google');
+  requestingMarkers = false;
+  handler.buildMap({provider: mapOptions, internal: {id: 'map'}}, function(){
+    var map = handler.getMap();
+    requestingMarkers = true;
+    var url = "/trips/" + trip_id + "/trip_experiences/trip_markers";
+    setMarkersAccordingToApi(url, function(r) {
+      handler.fitMapToBounds();
+    });
+    showModalByClikingOnMap(map, '#myModalGuest', '#trip_comment_address');
+    // Reset modal process
+    $('#myModalGuest').on('hidden.bs.modal', function(){
+        $('#trip_comment_address').val('');
+        $('#trip_comment_description').val('');
+      });
+  });
+}
 
-
-
+function buildMapForUser(mapOptions, trip_id) {
+  handler = Gmaps.build('Google');
   var requestingMarkers = false;
-  var previousMarkers = {};
-
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
-
-
-
-
-
-   // SET MARKERS ON MAP LOADING AND KEEP LISTENING
-   // Set markers on loading
-    var url = buildUrlWithBounds(map, trip_id);
-    $.get(url, function(data) {
-      handler.removeMarkers(previousMarkers);
-      previousMarkers = handler.addMarkers(data);
-      handler.bounds.extendWith(previousMarkers);
-      requestingMarkers = false;
-    });
-    // Set markers when drag ends
-    google.maps.event.addListener(map, 'dragend', function() {
-      if (requestingMarkers) {
-      return;
-      }
-      requestingMarkers = true;
-      var url = buildUrlWithBounds(map, trip_id);
-      $.get(url, function(data) {
-        handler.removeMarkers(previousMarkers);
-        previousMarkers = handler.addMarkers(data);
-        handler.bounds.extendWith(previousMarkers);
-        requestingMarkers = false;
-      });
-    });
-    // Set markers when zoom changes
-    google.maps.event.addListener(map, 'zoom_changed', function() {
-      if (requestingMarkers) {
-        return;
-      }
-      requestingMarkers = true;
-      var url = buildUrlWithBounds(map, trip_id);
-      $.get(url, function(data) {
-        handler.removeMarkers(previousMarkers);
-        previousMarkers = handler.addMarkers(data);
-        handler.bounds.extendWith(previousMarkers);
-        requestingMarkers = false;
-      });
-    });
-
+    // SET MARKERS ON MAP LOADING AND KEEP LISTENING
+    setMarkersAndKeepListening(map, trip_id);
     // SET MARKERS DEPENDING ON USER CHOICE
     $('#user-choices').on("change", function() {
       if ($('#user-experiences').prop('checked')){
         // Set map with booked experiences;
         google.maps.event.clearListeners(map, 'dragend');
         google.maps.event.clearListeners(map, 'zoom_changed');
+        requestingMarkers = true;
         var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
-        $.get(url, function(data) {
-          handler.removeMarkers(previousMarkers);
-          previousMarkers = handler.addMarkers(data);
-          handler.bounds.extendWith(previousMarkers);
+        setMarkersAccordingToApi(url, function(r) {
+          requestingMarkers = r;
         });
       } else if ($('#guests-comments').prop('checked')) {
         // Set map with trip_comments;
         google.maps.event.clearListeners(map, 'dragend');
         google.maps.event.clearListeners(map, 'zoom_changed');
+        requestingMarkers = true;
         var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
-        $.get(url, function(data) {
-          handler.removeMarkers(previousMarkers);
-          previousMarkers = handler.addMarkers(data);
-          handler.bounds.extendWith(previousMarkers);
+        setMarkersAccordingToApi(url, function(r) {
+          requestingMarkers = r;
         });
-
       } else if ($('#all-experiences').prop('checked')) {
-        // Set markers on loading
-        var url = buildUrlWithBounds(map, trip_id);
-        $.get(url, function(data) {
-          handler.removeMarkers(previousMarkers);
-          previousMarkers = handler.addMarkers(data);
-          handler.bounds.extendWith(previousMarkers);
-          requestingMarkers = false;
-        });
-        // Set markers when drag ends
-        google.maps.event.addListener(map, 'dragend', function() {
-          if (requestingMarkers) {
-          return;
-          }
-          requestingMarkers = true;
-          var url = buildUrlWithBounds(map, trip_id);
-          $.get(url, function(data) {
-            handler.removeMarkers(previousMarkers);
-            previousMarkers = handler.addMarkers(data);
-            handler.bounds.extendWith(previousMarkers);
-            requestingMarkers = false;
-          });
-        });
-
-        // Set markers when zoom changes
-        google.maps.event.addListener(map, 'zoom_changed', function() {
-          if (requestingMarkers) {
-            return;
-          }
-          requestingMarkers = true;
-          var url = buildUrlWithBounds(map, trip_id);
-          $.get(url, function(data) {
-            handler.removeMarkers(previousMarkers);
-            previousMarkers = handler.addMarkers(data);
-            handler.bounds.extendWith(previousMarkers);
-            requestingMarkers = false;
-          });
-        });
+        setMarkersAndKeepListening(map, trip_id);
       }
     });
+    showModalByClikingOnMap(map, '#myModal', '#experience_address');
+    // Reset modal process
+    $('#myModal').on('hidden.bs.modal', function(){
+        $('#experience_name').val('');
+        $('#experience_address').val('');
+        $('#experience_description').val('');
+      });
+  });
+};
+
+function publishPostOnFbWall(fb_element_id, url) {
+  $(fb_element_id).on('click', function() {
+    FB.ui(
+      {
+        method: 'share',
+        href: url
+      },
+      function(response) {
+        if (response && !response.error_code) {
+          alert('Posting completed.');
+        } else {
+          alert('Error while posting.');
+        }
+      });
   });
 }
 
-function  buildUrlWithBounds(map, trip_id) {
+function showModalByClikingOnMap(map, modal_id, address_field_id) {
+  // Show modal with address field prefilled
+  var updateTimeout = null;
+  google.maps.event.addListener(map, "click", function(e) {
+    updateTimeout = setTimeout(function() {
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({'latLng': e.latLng}, function(results, status){
+        $(modal_id).modal('show');
+        $(address_field_id).val(results[1].formatted_address);
+        });
+    }, 200);
+  });
+  google.maps.event.addListener(map, 'dblclick', function(event) {
+      clearTimeout(updateTimeout);
+  });
+  // Display google maps pac-container
+  $(address_field_id).on("click", function(e) {
+    $('.pac-container').zIndex(100000);
+  });
+}
+
+function setMarkersAndKeepListening(map, trip_id) {
+  // SET MARKERS ON MAP LOADING AND KEEP LISTENING
+  // Set markers on loading
+  requestingMarkers = true;
+  setMarkersAccordingToBounds(map, trip_id, function(r) {
+   requestingMarkers = r;
+  });
+  // Set markers when drag ends
+  google.maps.event.addListener(map, 'dragend', function() {
+   google.maps.event.addListener(map, 'idle', function() {
+     if (requestingMarkers) {
+     return;
+     }
+     requestingMarkers = true;
+     setMarkersAccordingToBounds(map, trip_id, function(r) {
+       requestingMarkers = r;
+     });
+   });
+  });
+  // Set markers when zoom changes
+  google.maps.event.addListener(map, 'zoom_changed', function() {
+   google.maps.event.addListener(map, 'idle', function() {
+     if (requestingMarkers) {
+       return;
+     }
+     requestingMarkers = true;
+     setMarkersAccordingToBounds(map, trip_id, function(r) {
+       requestingMarkers = r;
+     });
+   });
+  });
+}
+
+function setMarkersAccordingToBounds(map, trip_id, callback) {
+  var url = buildUrlWithBounds(map, trip_id);
+  setMarkersAccordingToApi(url, callback);
+}
+
+function setMarkersAccordingToApi(url, callback) {
+  $.get(url, function(data) {
+    handler.removeMarkers(markers);
+    markers = handler.addMarkers(data);
+    handler.bounds.extendWith(markers);
+    callback(false);
+  });
+}
+
+function buildUrlWithBounds(map, trip_id) {
   var bounds = map.getBounds();
   var northEastLat = bounds.getNorthEast().lat();
   var northEastLng = bounds.getNorthEast().lng();

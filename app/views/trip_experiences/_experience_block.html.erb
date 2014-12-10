@@ -1,0 +1,11 @@
+<li class="panel panel-info" id="<%= trip_exp.id %>">
+  <div class="panel-heading"><%= trip_exp.experience.name %>
+    <% unless guest_user %>
+      <%= form_tag trip_trip_experience_path(trip_exp.trip, trip_exp), remote: true, method: :delete, class: "form-inline pull-right" do %>
+      <%= submit_tag "X", class: "exp-rm-btn" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="panel-body"><%= trip_exp.experience.description %>
+  </div>
+</li>

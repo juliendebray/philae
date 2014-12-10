@@ -28,6 +28,7 @@
 
     <%= yield %>
 
+    <div id="fb-root"></div>
     <%= yield(:before_js) %>
     <%= javascript_include_tag 'application' %>
     <%= yield(:after_js) %>
