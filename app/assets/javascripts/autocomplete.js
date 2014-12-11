@@ -21,7 +21,7 @@ function onPlaceChanged() {
   $('#trip_query_lat').attr('value', place.geometry.location.k);
   $('#trip_query_lng').attr('value', place.geometry.location.D);
 
-   // console.log(place);  // Uncomment this line to view the full object returned by Google API.
+  // console.log(place);  // Uncomment this line to view the full object returned by Google API.
 
 //   for (var i in place.address_components) {
 //     var component = place.address_components[i];

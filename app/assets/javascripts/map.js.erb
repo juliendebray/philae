@@ -135,7 +135,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   });
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {
-   google.maps.event.addListener(map, 'idle', function() {
+    google.maps.event.addListener(map, 'idle', function() {
      if (requestingMarkers) {
      return;
      }
