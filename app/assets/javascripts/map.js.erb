@@ -136,7 +136,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {
     google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers) {
+     if (requestingMarkers || handler.currentInfowindow().getMap()) {
      return;
      }
      requestingMarkers = true;
@@ -148,7 +148,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when zoom changes
   google.maps.event.addListener(map, 'zoom_changed', function() {
    google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers) {
+     if (requestingMarkers || handler.currentInfowindow().getMap()) {
        return;
      }
      requestingMarkers = true;
