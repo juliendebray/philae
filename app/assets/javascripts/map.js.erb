@@ -55,7 +55,7 @@ function setExperiencesOrderByClickingOnSave() {
 }
 
 function buildMapForGuestUser(mapOptions, trip_id) {
-  handler = Gmaps.build('Google');
+  handler = Gmaps.build('Google', { builders: { Marker: InfoBoxBuilder} });
   requestingMarkers = false;
   handler.buildMap({provider: mapOptions, internal: {id: 'map'}}, function(){
     var map = handler.getMap();
@@ -74,7 +74,7 @@ function buildMapForGuestUser(mapOptions, trip_id) {
 }
 
 function buildMapForUser(mapOptions, trip_id) {
-  handler = Gmaps.build('Google');
+  handler = Gmaps.build('Google', { builders: { Marker: InfoBoxBuilder} });
   var requestingMarkers = false;
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
