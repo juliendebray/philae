@@ -9,6 +9,7 @@ function setCarouselOnInfowindow() {
   for (var i = 0; i < markers.length; i++) {
     google.maps.event.addListener(markers[i].getServiceObject(), 'click', function() {
       var infowindow = handler.currentInfowindow();
+      infowindow.setOptions({maxWidth:250, disableAutoPan: true});
       google.maps.event.addListener(infowindow, 'domready', function(){
         $(".owl-carousel").owlCarousel({
           items: 1,
