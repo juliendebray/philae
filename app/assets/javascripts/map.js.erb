@@ -11,13 +11,16 @@ function setCarouselOnInfowindow() {
       var infowindow = handler.currentInfowindow();
       google.maps.event.addListener(infowindow, 'domready', function(){
         $(".owl-carousel").owlCarousel({
+          items: 1,
+          singleItem: true,
           navigation : true,
           navigationText : ["<",">"],
           pagination : false,
           slideSpeed : 300,
           paginationSpeed : 400,
-          singleItem:true,
-          lazyLoad : true
+          rewindSpeed: 1,
+          slideSpeed: 1
+          // lazyLoad : true, // TODO: set img class and data-src  and css accordingly
         });
       });
     });
