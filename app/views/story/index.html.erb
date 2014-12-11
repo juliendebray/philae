@@ -27,5 +27,26 @@
   </div>
 </div>
 
+<div id="owl-example" class="owl-carousel text-center">
+  <div> Your Content 1 </div>
+  <div> Your Content 2</div>
+  <div> Your Content 3</div>
+  <div> Your Content 4</div>
+</div>
 
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $(".owl-carousel").owlCarousel({
+        navigation : true, // Show next and prev buttons
+        navigationText : ["<",">"],
+        pagination : false,
+        slideSpeed : 300,
+        paginationSpeed : 400,
+        singleItem:true,
+        lazyLoad : true
+      });
+    });
+  <% end %>
+<% end %>
 </body>
