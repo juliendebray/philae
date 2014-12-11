@@ -1,17 +1,20 @@
 <div id="experience-infowindow">
   <p><%=experience.name%></p>
   <% if experience.experience_pictures.size > 0 %>
-    <div>
-    <%= image_tag experience.experience_pictures.first.picture.url(:thumb) %>
+    <div id="owl-experiences" class="owl-carousel">
+      <% experience.experience_pictures.each do |pic| %>
+        <div class="item">
+          <%= image_tag(pic.picture.url(:thumb)) %>
+        </div>
+      <% end %>
     </div>
   <% end %>
   <p><em><%=experience.description%></em></p>
   <p>rating: <%= experience.experience_reviews.average(:rating).to_f %> </p>
-
   <p>
     <%= link_to t('addreview'), new_experience_experience_review_path(experience) %>
     /
-    <% if current_user %>
+    <% if current_user || trip.token.nil? %>
       <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
         <%= f.hidden_field :experience_id, value: experience.id %>
         <%= f.submit t('addtotrip') %>

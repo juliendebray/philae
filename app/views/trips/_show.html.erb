@@ -167,14 +167,6 @@
         setExperiencesOrderByClickingOnSave();
         publishPostOnFbWall("#sharefb", "<%= j share_url("/trips/#{@trip.id}/#{@trip.token}") %>");
       }
-
-      // Set carousel on infowindow show up
-      // $(".owl-carousel").owlCarousel({
-        // navigation : true, // Show next and prev buttons
-        // slideSpeed : 300,
-        // paginationSpeed : 400,
-        // singleItem:true
-      // });
     });
   </script>
 <% end %>

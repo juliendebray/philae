@@ -2,6 +2,32 @@
 var handler;
 var markers = {};
 
+function setCarouselOnInfowindow() {
+  if (markers.length == 0) {
+    return;
+  }
+  for (var i = 0; i < markers.length; i++) {
+    google.maps.event.addListener(markers[i].getServiceObject(), 'click', function() {
+      var infowindow = handler.currentInfowindow();
+      infowindow.setOptions({maxWidth:250, disableAutoPan: true});
+      google.maps.event.addListener(infowindow, 'domready', function(){
+        $(".owl-carousel").owlCarousel({
+          items: 1,
+          singleItem: true,
+          navigation : true,
+          navigationText : ["<",">"],
+          pagination : false,
+          slideSpeed : 300,
+          paginationSpeed : 400,
+          rewindSpeed: 1,
+          slideSpeed: 1
+          // lazyLoad : true, // TODO: set img class and data-src  and css accordingly
+        });
+      });
+    });
+  }
+}
+
 function makeExperiencesSortable() {
   // Dragable list for trip experiences order
   var panelList = $('#draggablePanelList');
@@ -135,8 +161,8 @@ function setMarkersAndKeepListening(map, trip_id) {
   });
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {
-   google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers) {
+    google.maps.event.addListener(map, 'idle', function() {
+     if (requestingMarkers || handler.currentInfowindow().getMap()) {
      return;
      }
      requestingMarkers = true;
@@ -148,7 +174,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when zoom changes
   google.maps.event.addListener(map, 'zoom_changed', function() {
    google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers) {
+     if (requestingMarkers || handler.currentInfowindow().getMap()) {
        return;
      }
      requestingMarkers = true;
@@ -169,6 +195,7 @@ function setMarkersAccordingToApi(url, callback) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
     handler.bounds.extendWith(markers);
+    setCarouselOnInfowindow()
     callback(false);
   });
 }
