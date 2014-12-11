@@ -65,9 +65,27 @@ body.signup-signin {
 }
 
 
-.vertical-spacer{
+.vertical-spacer {
   height: 6em;
 }
 
+.infobox-container {
+  border: 1px solid white;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.infoBox::before {
+  border-color: #fff transparent transparent transparent;
+  border-width: 15px;
+  border-style: solid;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: -30px;
+  margin: 0 0 0 124px;
+}
 
-
+#experience-infowindow {
+  margin: 10px;
+}
