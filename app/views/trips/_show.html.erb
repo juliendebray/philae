@@ -35,6 +35,21 @@
     <ul id="draggablePanelList" class="list-unstyled scrollable">
     </ul>
     <% unless @guest_user %>
+
+<!--       <div class="btn-group" role="group">
+
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Ask your friends<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Email</a></li>
+        </ul>
+
+        <button type="button" class="btn btn-default">Save</button>
+
+      </div> -->
+
+
       <div id="set-orders">
         <%= form_for @trip, url: {action: "update"} do |f|%>
           <%= hidden_field_tag :order %>

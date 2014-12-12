@@ -23,59 +23,5 @@
   <% end %>
 </div>
 
-<div class="row">
-  <div class="col-xs-9 col-sm-4 col-md-3">
-    <h3><%= t('.myfriends', :default => "My friends") %></h3>
-   <!--  liste des pending friend requests en tant que receiver, avec possibilité de les accepter ou les refuser -->
-    <!-- Liste des amis avec possibilité de supprimer l'amitié -->
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12 col-sm-3">
-    <h3>Send a friend request by email</h3>
-    <%= form_tag(user_relationships_path(current_user)) do %>
-      <%= text_field_tag :email %>
-      <%= submit_tag 'Send request' %>
-    <% end %>
-  </div>
-</div>
-
-<div class="col-xs-12 col-sm-3">
-  <h3>My requests</h3>
-  <h4>Sent</h4>
-  <ul>
-    <% current_user.relationships.where(sender_id: current_user.id).where(status: 'pending').each do |r| %>
-      <li>
-        <%= "#{User.find(r.friend_id).email} - #{r.created_at}" %>
-      </li>
-    <% end %>
-  </ul>
-  <h4>Received</h4>
-  <ul>
-    <% current_user.relationships.where.not(sender_id: current_user).where(status: 'pending').each do |r| %>
-      <li>
-        <%= "#{User.find(r.sender_id).email} - #{r.created_at}" %>
-        <%= link_to 'Accept', user_relationship_path(current_user, r),
-          method: :patch %>
-        <%= link_to 'Decline', user_relationship_path(current_user, r),
-          method: :delete,
-          data: { confirm: 'Are you sure?' } %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<div class="col-xs-12 col-sm-3">
-  <h3>My friends</h3>
-  <ul>
-    <% current_user.relationships.where(status: 'accepted').each do |r| %>
-      <li>
-        <%= "#{User.find(r.friend_id).email} - #{r.created_at}" %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
 </body>
 
