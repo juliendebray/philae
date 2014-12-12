@@ -113,7 +113,33 @@ body.signup-signin {
 .owl-theme .owl-controls .owl-buttons div {
   font-size: 40px;
   background: transparent;
+  opacity: 0;
 }
+
+#owl-experiences:hover{
+  .owl-buttons div {
+  opacity: 0.5;
+  }
+  .owl-buttons div:hover {
+  opacity: 1;
+  }
+}
+
+// .owl-buttons div .fa-angle-right i ::before:hover {
+//     opacity: 1;
+//     color: rgba(255,255,255,1);
+//   }
+
+.owl-theme .owl-controls.clickable .owl-buttons .owl-next:hover {
+  opacity: 1;
+}
+
+
+// #owl-experiences:hover {
+//   .owl-theme .owl-controls .owl-buttons div {
+//     display: block;
+//   }
+// }
 
 
 
