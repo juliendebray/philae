@@ -87,16 +87,17 @@ body.signup-signin {
 
 #experience-infowindow {
   margin: 10px;
+  padding-top: 10px;
 }
 
 #owl-experiences {
-  height: 195px;
+  height: 174px;
 }
 
 .owl-controls.clickable {
   margin: 0px;
   position: relative;
-  top: -100px;
+  top: -125px;
 
 
   .owl-prev {
@@ -110,7 +111,7 @@ body.signup-signin {
 }
 
 .owl-theme .owl-controls .owl-buttons div {
-  font-size: 25px;
+  font-size: 40px;
   background: transparent;
 }
 

@@ -2,6 +2,17 @@
 var handler;
 var markers = {};
 
+
+function checkIfInfoWindowIsOpened() {
+  if (handler.currentInfowindow() == null) {
+    return false;
+  } else if (handler.currentInfowindow().getMap() == null) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function setCarouselOnInfowindow() {
   if (markers.length == 0) {
     return;
@@ -9,15 +20,14 @@ function setCarouselOnInfowindow() {
   for (var i = 0; i < markers.length; i++) {
     google.maps.event.addListener(markers[i].getServiceObject(), 'click', function() {
       var infowindow = handler.currentInfowindow();
-      infowindow.setOptions({maxWidth:250, disableAutoPan: true});
       google.maps.event.addListener(infowindow, 'domready', function(){
         $(".owl-carousel").owlCarousel({
           items: 1,
           singleItem: true,
           navigation : true,
           navigationText : [
-            "<",
-            ">"
+            "<i class='fa fa-angle-left'></i>",
+            "<i class='fa fa-angle-right'></i>"
           ],
           pagination : false,
           slideSpeed : 300,
@@ -138,13 +148,17 @@ function showModalByClikingOnMap(map, modal_id, address_field_id) {
   // Show modal with address field prefilled
   var updateTimeout = null;
   google.maps.event.addListener(map, "click", function(e) {
-    updateTimeout = setTimeout(function() {
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({'latLng': e.latLng}, function(results, status){
-        $(modal_id).modal('show');
-        $(address_field_id).val(results[1].formatted_address);
-        });
-    }, 200);
+    if (checkIfInfoWindowIsOpened()) {
+      handler.currentInfowindow().close();
+    } else {
+      updateTimeout = setTimeout(function() {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'latLng': e.latLng}, function(results, status){
+          $(modal_id).modal('show');
+          $(address_field_id).val(results[1].formatted_address);
+          });
+      }, 200);
+    }
   });
   google.maps.event.addListener(map, 'dblclick', function(event) {
       clearTimeout(updateTimeout);

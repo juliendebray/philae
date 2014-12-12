@@ -13,7 +13,7 @@ class @InfoBoxBuilder extends Gmaps.Google.Builders.Marker # inherit from base b
     alignBottom: true,
     pixelOffset: new google.maps.Size(-140, -40),
     infoBoxClearance: 20,
-    closeBoxMargin: "12px 2px 2px 2px"
+    closeBoxURL: "",
     boxStyle:
       width: "280px",
       opacity: 0.95,
