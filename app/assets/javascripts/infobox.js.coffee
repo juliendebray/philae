@@ -9,12 +9,18 @@ class @InfoBoxBuilder extends Gmaps.Google.Builders.Marker # inherit from base b
     @infowindow = new InfoBox(@infobox(boxText))
 
   infobox: (boxText)->
-    content: boxText,
-    alignBottom: true,
-    pixelOffset: new google.maps.Size(-140, -40),
-    infoBoxClearance: 20,
-    closeBoxURL: "",
-    boxStyle:
-      width: "280px",
-      opacity: 0.95,
-      infoBoxClearance: new google.maps.Size(1, 1)
+    content: boxText
+    ,disableAutoPan: true
+    ,pixelOffset: new google.maps.Size(-140, -40)
+    ,alignBottom: true
+    ,zIndex: null
+    ,disableAutoPan: true
+    ,closeBoxURL: ""
+    ,boxStyle: {
+      width: "280px"
+      ,opacity: 1
+    }
+    ,infoBoxClearance: new google.maps.Size(1, 1)
+    ,isHidden: false
+    ,pane: "floatPane"
+    ,enableEventPropagation: false

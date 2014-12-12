@@ -3,6 +3,50 @@ var handler;
 var markers = {};
 
 
+function mapPanToContainInfoBox(infoBox, minTop, minRight, minBottom, minLeft) {
+  var map = handler.getMap();
+  var mapZoom = map.getZoom();
+  var mapBounds = map.getBounds();
+  var infoBoxCoordinates = latlngToPoint(map, handler.currentInfowindow.getPosition(), mapZoom);
+  var mapNECoordinates = latlngToPoint(map, mapBounds.getNorthEast(), mapZoom);
+  var mapSWCoordinates = latlngToPoint(map, mapBounds.getSouthWest(), mapZoom);
+
+
+  var topDistance = infoBoxCoordinates.y - $('.infoBox').height() - mapNECoordinates.y;
+  var bottomDistance = infoBoxCoordinates.y - mapSWCoordinates.y;
+  var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x;
+  var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x;
+
+  // if (topDistance < 0) {
+  //   if (leftDistance < 0) {
+  //     map.panBy(0, topDistance);
+  //   } else if () {
+
+  //   } else {
+
+  //   }
+
+  // } else if (bottomDistance < 0) {
+  //   if (leftDistance < 0) {
+  //     map.panBy(0, topDistance);
+  //   } else if {
+
+  //   } else {
+
+  //   }
+  // } else {
+  //   map.panBy(0,0);
+  // }
+}
+
+function latlngToPoint(map, latlng, z) {
+  var normalizedPoint = map.getProjection().fromLatLngToPoint(latlng); // returns x,y normalized to 0~255
+  var scale = Math.pow(2, z);
+  var pixelCoordinate = new google.maps.Point(normalizedPoint.x * scale, normalizedPoint.y * scale);
+  return pixelCoordinate;
+}
+
+
 function checkIfInfoWindowIsOpened() {
   if (handler.currentInfowindow() == null) {
     return false;
@@ -19,8 +63,10 @@ function setCarouselOnInfowindow() {
   }
   for (var i = 0; i < markers.length; i++) {
     google.maps.event.addListener(markers[i].getServiceObject(), 'click', function() {
+      handler.getMap().panTo(new google.maps.LatLng(22.523647, 97.593891));
       var infowindow = handler.currentInfowindow();
       google.maps.event.addListener(infowindow, 'domready', function(){
+        //mapPanToContainInfoBox(infowindow, 60, 0, 0, 0);
         $(".owl-carousel").owlCarousel({
           items: 1,
           singleItem: true,
@@ -34,7 +80,7 @@ function setCarouselOnInfowindow() {
           paginationSpeed : 400,
           rewindSpeed: 1,
           slideSpeed: 1
-          // lazyLoad : true, // TODO: set img class and data-src  and css accordingly
+          // lazyLoad : true, // TODO: set img class and data-src and css accordingly (if needed)
         });
       });
     });
@@ -179,7 +225,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {
     google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || handler.currentInfowindow().getMap()) {
+     if (requestingMarkers || checkIfInfoWindowIsOpened()) {
      return;
      }
      requestingMarkers = true;
@@ -191,7 +237,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when zoom changes
   google.maps.event.addListener(map, 'zoom_changed', function() {
    google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || handler.currentInfowindow().getMap()) {
+     if (requestingMarkers || checkIfInfoWindowIsOpened()) {
        return;
      }
      requestingMarkers = true;

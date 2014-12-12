@@ -152,7 +152,12 @@
 
       if (GUEST_USER) {
         var guestUserMapOptions = {
-          disableDoubleClickZoom: false
+          disableDoubleClickZoom: false,
+          panControl: false,
+          zoomControl: true,
+          zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+          }
         };
         buildMapForGuestUser(guestUserMapOptions, <%= @trip.id %>);
         // Remove cursor css on panel heading and remove submit btn
@@ -161,7 +166,12 @@
         var userMapOptions = {
           center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
           zoom: 6,
-          disableDoubleClickZoom: false
+          disableDoubleClickZoom: false,
+          panControl: false,
+          zoomControl: true,
+          zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+          }
         };
         buildMapForUser(userMapOptions, <%= @trip.id %>);
         makeExperiencesSortable();
