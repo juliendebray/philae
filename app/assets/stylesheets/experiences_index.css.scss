@@ -2,8 +2,14 @@
   height: 500px;
 }
 
-#draggablePanelList .panel-heading {
-  cursor: move;
+#draggablePanelList {
+  .panel {
+    margin-bottom: 11px;
+  }
+  .panel-heading {
+    cursor: move;
+    padding: 7px;
+  }
 }
 
 .scrollable {
