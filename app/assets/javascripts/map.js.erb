@@ -1,42 +1,46 @@
 // Variables gloablly needed to retrieve google maps objects
 var handler;
 var markers = {};
+var ibOpened = false;
+var ib  = {};
 
 
-function mapPanToContainInfoBox(infoBox, minTop, minRight, minBottom, minLeft) {
+function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, rightOffset) {
   var map = handler.getMap();
   var mapZoom = map.getZoom();
   var mapBounds = map.getBounds();
-  var infoBoxCoordinates = latlngToPoint(map, handler.currentInfowindow.getPosition(), mapZoom);
+  var infoBoxCoordinates = latlngToPoint(map, infobox.getPosition(), mapZoom);
   var mapNECoordinates = latlngToPoint(map, mapBounds.getNorthEast(), mapZoom);
   var mapSWCoordinates = latlngToPoint(map, mapBounds.getSouthWest(), mapZoom);
 
 
-  var topDistance = infoBoxCoordinates.y - $('.infoBox').height() - mapNECoordinates.y;
-  var bottomDistance = infoBoxCoordinates.y - mapSWCoordinates.y;
-  var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x;
-  var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x;
-
-  // if (topDistance < 0) {
-  //   if (leftDistance < 0) {
-  //     map.panBy(0, topDistance);
-  //   } else if () {
-
-  //   } else {
-
-  //   }
-
-  // } else if (bottomDistance < 0) {
-  //   if (leftDistance < 0) {
-  //     map.panBy(0, topDistance);
-  //   } else if {
-
-  //   } else {
-
-  //   }
-  // } else {
-  //   map.panBy(0,0);
-  // }
+  var topDistance = infoBoxCoordinates.y - $('.infoBox').height() - mapNECoordinates.y - topOffset;
+  var bottomDistance = infoBoxCoordinates.y - mapSWCoordinates.y - bottomOffset;
+  var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x - leftOffset;
+  var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x - rightOffset;
+  if (topDistance  < 0) {
+    if (leftDistance < 0) {
+      map.panBy(leftDistance, topDistance);
+    } else if (rightDistance > 0) {
+      map.panBy(rightDistance, topDistance);
+    } else {
+      map.panBy(0, topDistance);
+    }
+  } else if (bottomDistance > 0) {
+      if (leftDistance < 0) {
+        map.panBy(leftDistance, bottomDistance);
+      } else if (rightDistance > 0) {
+        map.panBy(rightDistance, bottomDistance);
+      } else {
+      map.panBy(0, bottomDistance);
+    }
+  } else if (leftDistance < 0) {
+    map.panBy(leftDistance, 0);
+  } else if (rightDistance > 0) {
+    map.panBy(rightDistance, 0);
+  } else {
+    return;
+  }
 }
 
 function latlngToPoint(map, latlng, z) {
@@ -57,32 +61,65 @@ function checkIfInfoWindowIsOpened() {
   }
 }
 
-function setCarouselOnInfowindow() {
+function setCarouselOnInfowindow(data) {
   if (markers.length == 0) {
     return;
   }
+  var map = handler.getMap();
+var data = data;
   for (var i = 0; i < markers.length; i++) {
-    google.maps.event.addListener(markers[i].getServiceObject(), 'click', function() {
-      handler.getMap().panTo(new google.maps.LatLng(22.523647, 97.593891));
-      var infowindow = handler.currentInfowindow();
-      google.maps.event.addListener(infowindow, 'domready', function(){
-        //mapPanToContainInfoBox(infowindow, 60, 0, 0, 0);
-        $(".owl-carousel").owlCarousel({
-          items: 1,
-          singleItem: true,
-          navigation : true,
-          navigationText : [
-            "<i class='fa fa-angle-left'></i>",
-            "<i class='fa fa-angle-right'></i>"
-          ],
-          pagination : false,
-          slideSpeed : 300,
-          paginationSpeed : 400,
-          rewindSpeed: 1,
-          slideSpeed: 1
-          // lazyLoad : true, // TODO: set img class and data-src and css accordingly (if needed)
+    markers[i].serviceObject.set('id',i);
+    google.maps.event.clearListeners(markers[i].serviceObject);
+    google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
+      if (ibOpened) {
+        ib.close();
+        ibOpened = false;
+      } else {
+        var boxText = document.createElement("div");
+        boxText.setAttribute("class", 'infobox-container');
+
+        boxText.innerHTML = data[this.id].infobox;
+
+        var infoboxOptions = {
+          content: boxText
+          ,disableAutoPan: false
+          ,pixelOffset: new google.maps.Size(-140, -40)
+          ,alignBottom: true
+          ,zIndex: null
+          ,disableAutoPan: true
+          ,closeBoxURL: ""
+          ,boxStyle: {
+            width: "280px"
+            ,opacity: 1
+          }
+          ,infoBoxClearance: new google.maps.Size(1, 1)
+          ,isHidden: false
+          ,pane: "floatPane"
+          ,enableEventPropagation: false
+        };
+
+        ib = new InfoBox(infoboxOptions);
+        ib.open(map, this);
+        ibOpened = true;
+        google.maps.event.addListener(ib, 'domready', function(){
+          $(".owl-carousel").owlCarousel({
+            items: 1,
+            singleItem: true,
+            navigation : true,
+            navigationText : [
+              "<i class='fa fa-angle-left'></i>",
+              "<i class='fa fa-angle-right'></i>"
+            ],
+            pagination : false,
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            rewindSpeed: 1,
+            slideSpeed: 1
+            // lazyLoad : true, // TODO: set img class and data-src and css accordingly (if needed)
+          });
+          mapPanToContainInfoBox(ib, 57.0052486399336, -17.994751360066402, -431.7150826666675, 456.2849173333325);
         });
-      });
+      }
     });
   }
 }
@@ -194,8 +231,9 @@ function showModalByClikingOnMap(map, modal_id, address_field_id) {
   // Show modal with address field prefilled
   var updateTimeout = null;
   google.maps.event.addListener(map, "click", function(e) {
-    if (checkIfInfoWindowIsOpened()) {
-      handler.currentInfowindow().close();
+    if (ibOpened) {
+      ib.close();
+      ibOpened = false;
     } else {
       updateTimeout = setTimeout(function() {
         var geocoder = new google.maps.Geocoder();
@@ -225,7 +263,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {
     google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || checkIfInfoWindowIsOpened()) {
+     if (requestingMarkers || ibOpened) {
      return;
      }
      requestingMarkers = true;
@@ -237,7 +275,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when zoom changes
   google.maps.event.addListener(map, 'zoom_changed', function() {
    google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || checkIfInfoWindowIsOpened()) {
+     if (requestingMarkers || ibOpened) {
        return;
      }
      requestingMarkers = true;
@@ -257,8 +295,8 @@ function setMarkersAccordingToApi(url, callback) {
   $.get(url, function(data) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
+    setCarouselOnInfowindow(data);
     handler.bounds.extendWith(markers);
-    setCarouselOnInfowindow()
     callback(false);
   });
 }
