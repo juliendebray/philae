@@ -13,11 +13,11 @@ function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, ri
   var mapNECoordinates = latlngToPoint(map, mapBounds.getNorthEast(), mapZoom);
   var mapSWCoordinates = latlngToPoint(map, mapBounds.getSouthWest(), mapZoom);
 
-
   var topDistance = infoBoxCoordinates.y - $('.infoBox').height() - mapNECoordinates.y - topOffset;
   var bottomDistance = infoBoxCoordinates.y - mapSWCoordinates.y - bottomOffset;
-  var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x - leftOffset;
-  var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x - rightOffset;
+  var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x - leftOffset*$('#map').width();
+  var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x - rightOffset*$('#map').width();
+
   if (topDistance  < 0) {
     if (leftDistance < 0) {
       map.panBy(leftDistance, topDistance);
@@ -50,7 +50,6 @@ function latlngToPoint(map, latlng, z) {
   return pixelCoordinate;
 }
 
-
 function checkIfInfoWindowIsOpened() {
   if (handler.currentInfowindow() == null) {
     return false;
@@ -82,7 +81,7 @@ var data = data;
 
         var infoboxOptions = {
           content: boxText
-          ,disableAutoPan: false
+          ,disableAutoPan: true
           ,pixelOffset: new google.maps.Size(-140, -40)
           ,alignBottom: true
           ,zIndex: null
@@ -117,7 +116,13 @@ var data = data;
             slideSpeed: 1
             // lazyLoad : true, // TODO: set img class and data-src and css accordingly (if needed)
           });
-          mapPanToContainInfoBox(ib, 57.0052486399336, -17.994751360066402, -431.7150826666675, 456.2849173333325);
+          mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -0.947300072, 0.9909910672);
+          // Wide screen (width: 930 / heigth: 500)
+          // mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -896.6936455111118, 924.3063544888882);
+          // Small screen (width: 632 / heigth: 500))
+          // mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -598.6936455111136, 626.3063544888864);
+          // Very Small (width: 370 / heigth: 500)
+          // mapPanToContainInfoBox(ib, 54.70033307669564, -17.994751360066402, -338.6936455111136, 364.3063544888864);
         });
       }
     });
