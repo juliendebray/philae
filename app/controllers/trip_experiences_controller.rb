@@ -45,10 +45,12 @@ class TripExperiencesController < ApplicationController
     Gmaps4rails.build_markers(experiences) do |experience, marker|
       marker.lat experience.latitude
       marker.lng experience.longitude
-      marker.infowindow render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+      marker.json({
+        infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
         experience: experience,
         trip: trip
         })
+      })
       marker.title experience.name
     end
   end

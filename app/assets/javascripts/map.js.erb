@@ -1,29 +1,130 @@
 // Variables gloablly needed to retrieve google maps objects
 var handler;
 var markers = {};
+var ibOpened = false;
+var ib  = {};
 
-function setCarouselOnInfowindow() {
+
+function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, rightOffset) {
+  var map = handler.getMap();
+  var mapZoom = map.getZoom();
+  var mapBounds = map.getBounds();
+  var infoBoxCoordinates = latlngToPoint(map, infobox.getPosition(), mapZoom);
+  var mapNECoordinates = latlngToPoint(map, mapBounds.getNorthEast(), mapZoom);
+  var mapSWCoordinates = latlngToPoint(map, mapBounds.getSouthWest(), mapZoom);
+
+  var topDistance = infoBoxCoordinates.y - $('.infoBox').height() - mapNECoordinates.y - topOffset;
+  var bottomDistance = infoBoxCoordinates.y - mapSWCoordinates.y - bottomOffset;
+  var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x - leftOffset*$('#map').width();
+  var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x - rightOffset*$('#map').width();
+
+  if (topDistance  < 0) {
+    if (leftDistance < 0) {
+      map.panBy(leftDistance, topDistance);
+    } else if (rightDistance > 0) {
+      map.panBy(rightDistance, topDistance);
+    } else {
+      map.panBy(0, topDistance);
+    }
+  } else if (bottomDistance > 0) {
+      if (leftDistance < 0) {
+        map.panBy(leftDistance, bottomDistance);
+      } else if (rightDistance > 0) {
+        map.panBy(rightDistance, bottomDistance);
+      } else {
+      map.panBy(0, bottomDistance);
+    }
+  } else if (leftDistance < 0) {
+    map.panBy(leftDistance, 0);
+  } else if (rightDistance > 0) {
+    map.panBy(rightDistance, 0);
+  } else {
+    return;
+  }
+}
+
+function latlngToPoint(map, latlng, z) {
+  var normalizedPoint = map.getProjection().fromLatLngToPoint(latlng); // returns x,y normalized to 0~255
+  var scale = Math.pow(2, z);
+  var pixelCoordinate = new google.maps.Point(normalizedPoint.x * scale, normalizedPoint.y * scale);
+  return pixelCoordinate;
+}
+
+function checkIfInfoWindowIsOpened() {
+  if (handler.currentInfowindow() == null) {
+    return false;
+  } else if (handler.currentInfowindow().getMap() == null) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function setCarouselOnInfowindow(data) {
   if (markers.length == 0) {
     return;
   }
+  var map = handler.getMap();
+var data = data;
   for (var i = 0; i < markers.length; i++) {
-    google.maps.event.addListener(markers[i].getServiceObject(), 'click', function() {
-      var infowindow = handler.currentInfowindow();
-      infowindow.setOptions({maxWidth:250, disableAutoPan: true});
-      google.maps.event.addListener(infowindow, 'domready', function(){
-        $(".owl-carousel").owlCarousel({
-          items: 1,
-          singleItem: true,
-          navigation : true,
-          navigationText : ["<",">"],
-          pagination : false,
-          slideSpeed : 300,
-          paginationSpeed : 400,
-          rewindSpeed: 1,
-          slideSpeed: 1
-          // lazyLoad : true, // TODO: set img class and data-src  and css accordingly
+    markers[i].serviceObject.set('id',i);
+    google.maps.event.clearListeners(markers[i].serviceObject);
+    google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
+      if (ibOpened) {
+        ib.close();
+        ibOpened = false;
+      } else {
+        var boxText = document.createElement("div");
+        boxText.setAttribute("class", 'infobox-container');
+
+        boxText.innerHTML = data[this.id].infobox;
+
+        var infoboxOptions = {
+          content: boxText
+          ,disableAutoPan: true
+          ,pixelOffset: new google.maps.Size(-140, -40)
+          ,alignBottom: true
+          ,zIndex: null
+          ,disableAutoPan: true
+          ,closeBoxURL: ""
+          ,boxStyle: {
+            width: "280px"
+            ,opacity: 1
+          }
+          ,infoBoxClearance: new google.maps.Size(1, 1)
+          ,isHidden: false
+          ,pane: "floatPane"
+          ,enableEventPropagation: false
+        };
+
+        ib = new InfoBox(infoboxOptions);
+        ib.open(map, this);
+        ibOpened = true;
+        google.maps.event.addListener(ib, 'domready', function(){
+          $(".owl-carousel").owlCarousel({
+            items: 1,
+            singleItem: true,
+            navigation : true,
+            navigationText : [
+              "<i class='fa fa-angle-left'></i>",
+              "<i class='fa fa-angle-right'></i>"
+            ],
+            pagination : false,
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            rewindSpeed: 1,
+            slideSpeed: 1
+            // lazyLoad : true, // TODO: set img class and data-src and css accordingly (if needed)
+          });
+          mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -0.947300072, 0.9909910672);
+          // Wide screen (width: 930 / heigth: 500)
+          // mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -896.6936455111118, 924.3063544888882);
+          // Small screen (width: 632 / heigth: 500))
+          // mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -598.6936455111136, 626.3063544888864);
+          // Very Small (width: 370 / heigth: 500)
+          // mapPanToContainInfoBox(ib, 54.70033307669564, -17.994751360066402, -338.6936455111136, 364.3063544888864);
         });
-      });
+      }
     });
   }
 }
@@ -55,7 +156,7 @@ function setExperiencesOrderByClickingOnSave() {
 }
 
 function buildMapForGuestUser(mapOptions, trip_id) {
-  handler = Gmaps.build('Google');
+  handler = Gmaps.build('Google', { builders: { Marker: InfoBoxBuilder} });
   requestingMarkers = false;
   handler.buildMap({provider: mapOptions, internal: {id: 'map'}}, function(){
     var map = handler.getMap();
@@ -74,7 +175,7 @@ function buildMapForGuestUser(mapOptions, trip_id) {
 }
 
 function buildMapForUser(mapOptions, trip_id) {
-  handler = Gmaps.build('Google');
+  handler = Gmaps.build('Google', { builders: { Marker: InfoBoxBuilder} });
   var requestingMarkers = false;
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
@@ -135,13 +236,18 @@ function showModalByClikingOnMap(map, modal_id, address_field_id) {
   // Show modal with address field prefilled
   var updateTimeout = null;
   google.maps.event.addListener(map, "click", function(e) {
-    updateTimeout = setTimeout(function() {
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({'latLng': e.latLng}, function(results, status){
-        $(modal_id).modal('show');
-        $(address_field_id).val(results[1].formatted_address);
-        });
-    }, 200);
+    if (ibOpened) {
+      ib.close();
+      ibOpened = false;
+    } else {
+      updateTimeout = setTimeout(function() {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'latLng': e.latLng}, function(results, status){
+          $(modal_id).modal('show');
+          $(address_field_id).val(results[1].formatted_address);
+          });
+      }, 200);
+    }
   });
   google.maps.event.addListener(map, 'dblclick', function(event) {
       clearTimeout(updateTimeout);
@@ -162,7 +268,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {
     google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || handler.currentInfowindow().getMap()) {
+     if (requestingMarkers || ibOpened) {
      return;
      }
      requestingMarkers = true;
@@ -174,7 +280,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when zoom changes
   google.maps.event.addListener(map, 'zoom_changed', function() {
    google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || handler.currentInfowindow().getMap()) {
+     if (requestingMarkers || ibOpened) {
        return;
      }
      requestingMarkers = true;
@@ -194,8 +300,8 @@ function setMarkersAccordingToApi(url, callback) {
   $.get(url, function(data) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
+    setCarouselOnInfowindow(data);
     handler.bounds.extendWith(markers);
-    setCarouselOnInfowindow()
     callback(false);
   });
 }
