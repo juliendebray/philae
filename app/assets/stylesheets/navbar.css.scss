@@ -28,6 +28,10 @@ $profile-radius: 100%;
 $profile-border-color: white;
 $profile-border-width: 0px;
 
+.navbar {
+  position: absolute;
+}
+
 @media (max-width: $screen-sm-min) {
   .navbar-wagon {
     position: fixed;
