@@ -1,8 +1,8 @@
 // over-ride Bootstrap theme with Sass variables
-$btn-primary-bg: #3598DB;
-
+$btn-primary-bg: #333333;
+@import url(http://fonts.googleapis.com/css?family=Roboto:400italic,300,700,300italic,400,100,100italic);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700");
-$font-family-sans-serif: 'Open Sans';
+$font-family-sans-serif: 'Roboto';
 
 
 // SCSS files installed with gems
@@ -28,8 +28,7 @@ $font-family-sans-serif: 'Open Sans';
 
 // General customized styles
 
-
-body.wrapper {
+.wrapper {
   background-color: #E0DDDB;
   background-size: cover;
   background-position: center top;
@@ -44,13 +43,13 @@ body.wrapper {
   padding-bottom: 20px;
 }
 
-body.homepage_story {
+div.homepage_story {
   background-image: image-url("lonely.jpg");
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
   color: #238BFF;
-  height: 800px;
+  height: 80%;
   padding-top: 56px;
 }
 

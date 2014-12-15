@@ -1,49 +1,50 @@
-<body class="homepage_story">
-<div id="homeblock" class="banner text-center">
-  <div class="title">
-    <h1><%= t '.brand' %></h1>
-    <h2><%= t '.baseline' %></h2>
+<div class="homepage_story">
+  <div id="homeblock" class="banner text-center">
+    <div class="title">
+      <h1><%= 'VOTRE VOYAGE AU MAROC COMMENCE ICI' %></h1>
+      <h2><%= "Choississez l'aventure et sortez des sentiers battus" %></h2>
+    </div>
+    <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
+    <div class="form-group" class="text-center">
+      <%= f.hidden_field(:query_lat, value: 31.943808) %>
+      <%= f.hidden_field(:query_lng, value: -6.271945) %>
+      <%= f.submit("Rechercher", class: 'btn btn-primary') %>
+    </div>
+    <% end %>
   </div>
-  <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
-  <div class="form-group" class="text-center">
-    <%= f.text_field(:query, id: 'experience_address', placeholder: t('.searchplaceholder'), class: "form-control") %>
-    <%= f.hidden_field(:query_lat) %>
-    <%= f.hidden_field(:query_lng) %>
+  <div class="arrow-down text-center">
+    <i class="fa fa-angle-down"></i>
   </div>
-    <%= f.submit(t('.searchbutton'), class: 'btn btn-primary') %>
-  <% end %>
-</div>
-<div id="homepage-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-4">
-        <div class="feature text-center effect-white-shadow">
-          <%= image_tag 'noun_test.png', class: "img-responsive" %>
-          <h4>Changing the travel experience</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quam laudantium, soluta maiores quia suscipit. Adipisci, hic aliquam magnam, dicta, vero quisquam nobis soluta in quidem fugiat omnis assumenda nostrum.</p>
+  <div id="homepage-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <div class="feature text-center effect-white-shadow">
+            <%= image_tag 'noun_test.png', class: "img-responsive" %>
+            <h4>Changing the travel experience</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quam laudantium, soluta maiores quia suscipit. Adipisci, hic aliquam magnam, dicta, vero quisquam nobis soluta in quidem fugiat omnis assumenda nostrum.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-md-4">
-        <div class="feature text-center effect-white-shadow">
-          <%= image_tag 'noun_test.png', class: "img-responsive" %>
-          <h4>Changing the travel experience</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quam laudantium, soluta maiores quia suscipit. Adipisci, hic aliquam magnam, dicta, vero quisquam nobis soluta in quidem fugiat omnis assumenda nostrum.</p>
+        <div class="col-xs-12 col-md-4">
+          <div class="feature text-center effect-white-shadow">
+            <%= image_tag 'noun_test.png', class: "img-responsive" %>
+            <h4>Changing the travel experience</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quam laudantium, soluta maiores quia suscipit. Adipisci, hic aliquam magnam, dicta, vero quisquam nobis soluta in quidem fugiat omnis assumenda nostrum.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-md-4">
-        <div class="feature text-center effect-white-shadow">
-          <%= image_tag 'noun_test.png', class: "img-responsive" %>
-          <h4>Changing the travel experience</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quam laudantium, soluta maiores quia suscipit. Adipisci, hic aliquam magnam, dicta, vero quisquam nobis soluta in quidem fugiat omnis assumenda nostrum.</p>
+        <div class="col-xs-12 col-md-4">
+          <div class="feature text-center effect-white-shadow">
+            <%= image_tag 'noun_test.png', class: "img-responsive" %>
+            <h4>Changing the travel experience</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quam laudantium, soluta maiores quia suscipit. Adipisci, hic aliquam magnam, dicta, vero quisquam nobis soluta in quidem fugiat omnis assumenda nostrum.</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-12">
+          <div class="feature text-center effect-white-shadow">
+            <%= render 'shared/story.html.erb' %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<% content_for(:before_js) do %>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
-<% end %>
-
-</body>

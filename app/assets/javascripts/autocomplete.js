@@ -18,8 +18,8 @@ function initializeAutocomplete(id) {
 
 function onPlaceChanged() {
   var place = this.getPlace();
-  $('#trip_query_lat').attr('value', place.geometry.location.k);
-  $('#trip_query_lng').attr('value', place.geometry.location.D);
+  // $('#trip_query_lat').attr('value', place.geometry.location.k);
+  // $('#trip_query_lng').attr('value', place.geometry.location.D);
 
   // console.log(place);  // Uncomment this line to view the full object returned by Google API.
 

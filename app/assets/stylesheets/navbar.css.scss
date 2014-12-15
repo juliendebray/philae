@@ -1,6 +1,6 @@
 //Set your navbar general settings
-$color: #3598DB;
-$bg: #0E1D3A;
+$color: white;
+$bg: transparent;
 
 $height: 25px;
 $vertical-padding: 15px;
@@ -28,6 +28,22 @@ $profile-radius: 100%;
 $profile-border-color: white;
 $profile-border-width: 0px;
 
+.navbar {
+  position: absolute;
+}
+
+
+.navbar-brand{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.navbar-wagon .brandname > li > a {
+  font-weight: 100;
+  font-size: 20px;
+  font-style: italic;
+}
+
 @media (max-width: $screen-sm-min) {
   .navbar-wagon {
     position: fixed;
@@ -43,7 +59,7 @@ $profile-border-width: 0px;
 .navbar-wagon{
   background: $bg;
   border: none;
-  font-weight: 400;
+  font-weight: 300;
   padding-left: $horizontal-padding;
   padding-right: $horizontal-padding;
   border-bottom: $border-bottom-width solid $border-bottom-color;
