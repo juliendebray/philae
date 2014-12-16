@@ -1,63 +1,85 @@
 <%= content_for(:navbar) do %>
   <%= 'shared/navbar2.html.erb' %>
 <% end %>
-<body class="wrapper">
-
-<div id="titleblock" class="text-center">
-  <% if @guest_user %>
-    <h2>Thank you for your tips!!</h2>
-  <% else %>
-    <h2><%= t('.title', :default => "Design your trip")%> </h2>
-  <% end %>
-</div>
-
-<div class="row">
-  <div class="col-xs-12 col-sm-9">
+<div class="wrapper">
+  <div class="map-container">
+    <div id="map">
+    </div>
     <% unless @guest_user %>
       <div id="user-choices">
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
-          <small>Best experiences</small>
+          <small>Les meilleures expériences</small>
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
-          <small>My selection</small>
+          <small>Ma sélection</small>
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
-          <small>My friends' tips</small>
+          <small>Les conseils de mes amis</small>
         </label>
       </div>
+      <!-- User Modal to let him add his own experience -->
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+        <small>Ajouter ma propre experience</small>
+      </button>
+      <!-- User Modal to display -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Do you want to add your own experience?</h4>
+            </div>
+            <div class="modal-body">
+              <%= render 'form' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <!-- Guest Modal to let him add his own experience -->
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalGuest">
+        Add a tip
+      </button>
+      <!-- Guest Modal to display -->
+      <div class="modal fade" id="myModalGuest" tabindex="-1" role="dialog" aria-labelledby="myModalGuestLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalGuestLabel">Share your experiences!</h4>
+            </div>
+            <div class="modal-body">
+              <%= render 'form_guest' %>
+            </div>
+          </div>
+        </div>
     <% end %>
   </div>
-  <div class="col-xs-12 col-sm-9">
-    <div id="map">
+  <div class="sidebar">
+    <div class="selection-header text-center">
+      <h4>Expériences sélectionnées</h4>
+      <i class="fa fa-angle-double-down"></i>
     </div>
-  </div>
-  <div class="col-xs-12 col-sm-3">
-    <ul id="draggablePanelList" class="list-unstyled scrollable">
-    </ul>
+    <div class="selection-content">
+      <ul id="draggablePanelList" class="list-unstyled scrollable">
+      </ul>
+    </div>
     <% unless @guest_user %>
-
-<!--       <div class="btn-group" role="group">
-
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Ask your friends<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Email</a></li>
-        </ul>
-
-        <button type="button" class="btn btn-default">Save</button>
-
-      </div> -->
-
-
-      <div id="set-orders">
-        <%= form_for @trip, url: {action: "update"} do |f|%>
-          <%= hidden_field_tag :order %>
-          <%= f.submit('Save', class: "btn btn-primary") %>
-        <% end %>
+      <div class="btn-container">
+        <div id="set-orders" class="border-box">
+          <%= form_for @trip, url: {action: "update"} do |f|%>
+            <%= hidden_field_tag :order %>
+            <%= f.submit('Sauvegarder', class: "btn btn-primary") %>
+          <% end %>
+        </div>
+        <div id="share-btn" class="border-box">
+          <button class='btn btn-sucess'>Demander des conseils à mes amis</button>
+        </div>
       </div>
     <% else %>
       <div id="set-orders">
@@ -66,95 +88,24 @@
           <%= f.submit('Save my comments', class: "btn btn-group-lg btn-primary") %>
         <% end %>
       </div>
+      <!-- Guest comments list -->
+        <div id="trip-comments" class="in-line">
+          <ul id="trip-comments-list">
+          </ul>
+        </div>
+      </div>
     <% end %>
   </div>
-</div>
-
-<% unless @guest_user %>
-  <!-- Modal: add experience for  user-->
-
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Add an experience
-  </button></br>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Do you want to add your own experience?</h4>
-        </div>
-        <div class="modal-body">
-          <%= render 'form' %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<% end %>
-
-<% unless @guest_user %>
-  <a class="btn btn-social btn-facebook" id="sharefb">
-    <i class="fa fa-facebook"></i> Ask your friends on Facebook
-  </a>
-
-  <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
-    <%= hidden_field_tag :id, value = @trip.id %>
-
-    <%= f.submit('Ask your friends by email', class:'btn btn-primary') %>
-  <% end %>
-
-<% end %>
-
-
-<% if @guest_user %>
-<!-- Modal: add experience for  user-->
-
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalGuest">
-    Add a tip
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModalGuest" tabindex="-1" role="dialog" aria-labelledby="myModalGuestLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalGuestLabel">Share your experiences!</h4>
-        </div>
-        <div class="modal-body">
-          <%= render 'form_guest' %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<% end %>
-
-<% if @guest_user %>
-  <div id="trip-comments" class="in-line">
-    <ul id="trip-comments-list">
-    </ul>
-  </div>
-<% end %>
-</body>
-
 
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
   <%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js" %>
-
   <script>
     // Use of a global variable to know if the user is authentificated or guest
     var GUEST_USER = <%= @guest_user ? 'true' : 'false' %>;
   </script>
 <% end %>
-
-
 
 <% content_for(:after_js) do %>
   <script>
