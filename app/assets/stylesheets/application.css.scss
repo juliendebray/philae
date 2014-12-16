@@ -1,6 +1,9 @@
 // over-ride Bootstrap theme with Sass variables
 $btn-primary-bg: #333333;
 $btn-info-bg: #FF5A5F;
+$btn-success-bg: #1FBAD6;
+$btn-warning-bg: #4C67A1;
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400italic,300,700,300italic,400,100,100italic);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700");
 $font-family-sans-serif: 'Roboto';
@@ -30,7 +33,7 @@ $font-family-sans-serif: 'Roboto';
 // General customized styles
 
 .wrapper {
-  background-color: #E0DDDB;
+  background-color: #F0F1F5;
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
