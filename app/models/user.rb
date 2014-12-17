@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
   end
 
   private
-
   def send_welcome_email
     UserMailer.welcome(self).deliver
   end

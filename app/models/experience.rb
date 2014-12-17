@@ -18,4 +18,11 @@ class Experience < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  after_validation :update_published_date, if: :published_changed?
+
+  private
+  def update_published_date
+    self.published_at = DateTime.now
+  end
 end
