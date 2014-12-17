@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'friends/index'
-
   get 'connections/new'
   post '/trips/:trip_id/trip_experiences/create_with_new_experience', to: 'trip_experiences#create_with_new_experience', as: 'experience_within_trip'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
@@ -25,6 +23,7 @@ Rails.application.routes.draw do
 
     resources :story, only: [:index]
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do
+      resources :ask_your_friends, only: [:index]
       member do
         get :start
         get ':token' => "trips#show_guest_user", as: :guest_trip

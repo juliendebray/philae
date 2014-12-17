@@ -51,7 +51,7 @@
           <% end %>
         </div>
         <div id="share-btn" class="border-box">
-          <button class='btn btn-warning'>Demander des conseils</button>
+          <%= link_to 'Demander des conseils', trip_ask_your_friends_path(@trip), class: "btn btn-warning" %>
         </div>
       </div>
     <% else %>
@@ -151,7 +151,6 @@
         buildMapForUser(userMapOptions, <%= @trip.id %>);
         makeExperiencesSortable();
         setExperiencesOrderByClickingOnSave();
-        publishPostOnFbWall("#sharefb", "<%= j share_url("/trips/#{@trip.id}/#{@trip.token}") %>");
       }
     });
   </script>

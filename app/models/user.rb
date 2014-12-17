@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   after_create :send_welcome_email
 
-  private
+
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
     UserMailer.share_trip(self, trip).deliver
   end
 
+  private
   def send_welcome_email
     UserMailer.welcome(self).deliver
   end

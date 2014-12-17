@@ -15,3 +15,22 @@ window.fbAsyncInit = function() {
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
 
+
+
+// Publish the url on facebook wall
+function publishPostOnFbWall(fb_element_id, url) {
+  $(fb_element_id).on('click', function() {
+    FB.ui(
+      {
+        method: 'share',
+        href: url
+      },
+      function(response) {
+        if (response && !response.error_code) {
+          alert('Posting completed.');
+        } else {
+          alert('Error while posting.');
+        }
+      });
+  });
+}
