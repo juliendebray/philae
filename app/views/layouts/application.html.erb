@@ -24,7 +24,7 @@
   <body>
 
     <%= render partial: "layouts/flash" %>
-    <%= render partial: "shared/navbar" %>
+    <%= render yield_with_default(:navbar, "shared/navbar") %>
 
     <%= yield %>
 

@@ -25,6 +25,7 @@ class TripExperiencesController < ApplicationController
 
   def destroy
     @trip_experience = TripExperience.find(params[:id])
+    @trip_experience.destroy
   end
 
   def create_with_new_experience

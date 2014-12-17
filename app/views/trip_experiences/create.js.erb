@@ -1,12 +1,5 @@
-var tmpl =
-'<li class="panel panel-info" id="<%= @trip_experience.id %>">' +
-  '<div class="panel-heading"><%= @trip_experience.experience.name %>' +
-    '<%= form_tag trip_trip_experience_path(@trip_experience.trip, @trip_experience), remote: true, method: :delete, class: "form-inline pull-right" do %>'+
-      '<%= submit_tag "X", class: "exp-rm-btn" %>' +
-    '<% end %>' +
-  '</div>'+
-  '<div class="panel-body"><%= @trip_experience.experience.description %></div>'+
-'</li>';
-
-$('#draggablePanelList').append(tmpl);
+$('#draggablePanelList').append(
+  '<%= j render("/trip_experiences/experience_block.html.erb",
+  {trip_exp: @trip_experience, guest_user: false} ) %>'
+);
 
