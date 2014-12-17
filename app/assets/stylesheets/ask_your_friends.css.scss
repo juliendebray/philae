@@ -1,0 +1,18 @@
+// Place all the styles related to the AskYourFriends controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.box-content {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  background: white;
+  font-weight: 100;
+  padding: 15px;
+  margin: 10px;
+  heigth: 50%;
+
+  .btn {
+    font-size: 12px;
+    font-weight: 300;
+  }
+}
