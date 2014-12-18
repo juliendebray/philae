@@ -1,6 +1,11 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
+  respond_to :js
 
+
+  def detail
+    @experience = Experience.find(params[:experience_id])
+  end
 
   # GET /experiences/1
   # GET /experiences/1.json
@@ -16,6 +21,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1/edit
   def edit
     @experience.experience_pictures.build
+    3.times { @experience.experience_pictures.build }
   end
 
   # POST /experiences

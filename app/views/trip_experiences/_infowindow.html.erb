@@ -18,7 +18,10 @@
           <%= f.submit t('addtotrip') %>
         <% end %>
       <% end %>
-      <a data-toggle="modal" href="#showExp" id="567">Link 1</a>
+      <%= link_to experience_detail_path(experience.id), remote: true do %>
+        <i class="fa fa-search"></i>
+      <% end %>
+      <!-- TODO: Show directly modal with a data-toggle without waiting the controller-->
     </p>
   </div>
 </div>

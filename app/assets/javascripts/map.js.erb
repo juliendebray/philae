@@ -123,10 +123,19 @@ var data = data;
           // mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -598.6936455111136, 626.3063544888864);
           // Very Small (width: 370 / heigth: 500)
           // mapPanToContainInfoBox(ib, 54.70033307669564, -17.994751360066402, -338.6936455111136, 364.3063544888864);
+
+          initalizeLinkWithRemoteTrue();
         });
       }
     });
   }
+}
+
+function initalizeLinkWithRemoteTrue() {
+  $('.infobox-content > a').on('click', function(e){
+    e.preventDefault();
+    $.rails.handleRemote($(this));
+  });
 }
 
 function makeExperiencesSortable() {
