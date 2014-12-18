@@ -1,6 +1,6 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
-  respond_to :js
+  respond_to :js, only: [:detail]
 
 
   def detail

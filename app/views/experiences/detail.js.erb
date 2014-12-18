@@ -1,4 +1,8 @@
-alert('Show js view from the controller open');
+$('#myExperienceModal').modal('show');
+$('.modal-body').html(
+  '<%= j render("experience_modal.html.erb",
+  {experience: @experience} ) %>'
+);
+$('.modal-title').html('<%= j @experience.name %>');
 
 
-// $('').html("<%= j render 'experience_modal' %>")
