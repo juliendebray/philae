@@ -4,5 +4,17 @@ $('.modal-body').html(
   {experience: @experience} ) %>'
 );
 $('.modal-title').html('<%= j @experience.name %>');
+$(".owl-carousel.banner").owlCarousel({
+  items: 1,
+  singleItem: true,
+  navigation : false,
+  pagination : true,
+  slideSpeed : 300,
+  paginationSpeed : 400,
+  rewindSpeed: 1,
+  slideSpeed: 300
+  // lazyLoad : true, // TODO: set img class and data-src and css accordingly (if needed)
+});
+
 
 

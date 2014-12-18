@@ -1,6 +1,6 @@
 <div id="experience-infowindow">
   <% if experience.experience_pictures.size > 0 %>
-    <div id="owl-experiences" class="owl-carousel text-center">
+    <div id="owl-experiences" class="owl-carousel small text-center">
       <% experience.experience_pictures.each do |pic| %>
         <div class="item">
           <%= image_tag(pic.picture.url(:small)) %>
