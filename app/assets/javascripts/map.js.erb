@@ -101,7 +101,7 @@ var data = data;
         ib.open(map, this);
         ibOpened = true;
         google.maps.event.addListener(ib, 'domready', function(){
-          $(".owl-carousel").owlCarousel({
+          $(".owl-carousel.small").owlCarousel({
             items: 1,
             singleItem: true,
             navigation : true,
@@ -123,10 +123,19 @@ var data = data;
           // mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -598.6936455111136, 626.3063544888864);
           // Very Small (width: 370 / heigth: 500)
           // mapPanToContainInfoBox(ib, 54.70033307669564, -17.994751360066402, -338.6936455111136, 364.3063544888864);
+
+          initalizeLinkWithRemoteTrue();
         });
       }
     });
   }
+}
+
+function initalizeLinkWithRemoteTrue() {
+  $('.infobox-content > a').on('click', function(e){
+    e.preventDefault();
+    $.rails.handleRemote($(this));
+  });
 }
 
 function makeExperiencesSortable() {
@@ -143,8 +152,11 @@ function makeExperiencesSortable() {
       });
     }
   });
+  addBoxShadowEffectWhileDraggingBox();
+}
 
-  // Change the borer-shadow while dragging
+function addBoxShadowEffectWhileDraggingBox() {
+  // Change the border-shadow while dragging
   $('.panel-heading').on('mousedown', function(){
     $(this).parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.5)');
     $(document).on('mouseup', function(){

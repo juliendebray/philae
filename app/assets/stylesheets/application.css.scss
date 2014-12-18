@@ -73,57 +73,69 @@ body.signup-signin {
   height: 6em;
 }
 
+
+// Infobox design
+
 .infobox-container {
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-.infoBox::before {
-  border-color: #fff transparent transparent transparent;
-  border-width: 15px;
-  border-style: solid;
-  content: '';
-  display: inline-block;
-  position: absolute;
-  bottom: -20px;
-  margin: 0 0 0 124px;
-}
 
-#experience-infowindow {
-  margin: 10px;
-  padding-top: 10px;
-}
+  .infoBox::before {
+    border-color: #fff transparent transparent transparent;
+    border-width: 15px;
+    border-style: solid;
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: -20px;
+    margin: 0 0 0 124px;
+  }
 
-#owl-experiences {
-  height: 174px;
-}
+  #experience-infowindow {
+    margin: 10px;
+    padding-top: 10px;
+  }
 
-.owl-controls.clickable {
-  margin: 0px;
-  position: relative;
-  top: -125px;
+  #owl-experiences {
+    height: 174px;
+  }
 
-  .owl-prev {
+  .owl-controls.clickable {
+    margin: 0px;
     position: relative;
-    left: -95px;
+    top: -125px;
+
+    .owl-prev {
+      position: relative;
+      left: -95px;
+    }
+    .owl-next {
+      position: relative;
+      right: -95px;
+    }
   }
-  .owl-next {
-    position: relative;
-    right: -95px;
+
+  .owl-theme .owl-controls .owl-buttons div {
+    font-size: 40px;
+    background: transparent;
+    opacity: 0;
+  }
+
+  #owl-experiences:hover{
+    .owl-buttons div {
+    opacity: 0.5;
+    }
+    .owl-buttons div:hover {
+    opacity: 1;
+    }
   }
 }
 
-.owl-theme .owl-controls .owl-buttons div {
-  font-size: 40px;
-  background: transparent;
-  opacity: 0;
+// Experience display design
+
+.item-banner img {
+  max-width: 100%;
 }
 
-#owl-experiences:hover{
-  .owl-buttons div {
-  opacity: 0.5;
-  }
-  .owl-buttons div:hover {
-  opacity: 1;
-  }
-}
+

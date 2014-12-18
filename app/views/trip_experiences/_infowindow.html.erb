@@ -1,6 +1,6 @@
 <div id="experience-infowindow">
   <% if experience.experience_pictures.size > 0 %>
-    <div id="owl-experiences" class="owl-carousel text-center">
+    <div id="owl-experiences" class="owl-carousel small text-center">
       <% experience.experience_pictures.each do |pic| %>
         <div class="item">
           <%= image_tag(pic.picture.url(:small)) %>
@@ -18,6 +18,10 @@
           <%= f.submit t('addtotrip') %>
         <% end %>
       <% end %>
+      <%= link_to experience_detail_path(experience.id), remote: true do %>
+        <i class="fa fa-search"></i>
+      <% end %>
+      <!-- TODO: Show directly modal with a data-toggle without waiting the controller-->
     </p>
   </div>
 </div>
