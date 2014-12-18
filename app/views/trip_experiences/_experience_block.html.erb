@@ -5,6 +5,9 @@
         <i class="fa fa-times pull-right"></i>
       <% end %>
     <% end %>
+    <%= link_to experience_detail_path(trip_exp.experience.id), remote: true do %>
+      <i class="fa fa-search pull-right"></i>
+    <% end %>
   </div>
   <div class="panel-body">
     <div class="panel-body-pic">
