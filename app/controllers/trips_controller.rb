@@ -5,7 +5,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    @trip.title = "#{params[:query]}"
+    @trip.title = "Voyage au Maroc"
     @trip.save
     redirect_to start_trip_path(@trip)
   end
@@ -33,6 +33,7 @@ class TripsController < ApplicationController
       order_hash = JSON.parse(params[:order])
       update_trip_experience_order(order_hash)
     end
+    flash[:sucess] = 'Voyage sauvegardé!'
     redirect_to trip_path(@trip)
   end
 
