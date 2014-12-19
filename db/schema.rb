@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217113637) do
+ActiveRecord::Schema.define(version: 20141219123234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20141217113637) do
     t.text     "address"
     t.string   "name"
     t.text     "description"
-    t.boolean  "published",    default: false
+    t.boolean  "published",      default: false
     t.integer  "user_id"
     t.boolean  "private"
     t.datetime "published_at"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20141217113637) do
     t.integer  "category_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.float    "average_rating"
   end
 
   add_index "experiences", ["category_id"], name: "index_experiences_on_category_id", using: :btree
