@@ -1,10 +1,14 @@
+html, body {
+  overflow: hidden;
+}
+
 .map-container {
   position: fixed;
-  width: 70%;
+  width: 65%;
   left: 0px;
-  height: 100%;
+  bottom: 60px;
   padding-left: 0px;
-  top: 55px;
+  top: 54px;
 
   #map {
     height: 100%;
@@ -24,9 +28,9 @@
   }
 
   .btn {
-  bottom: 70px;
+  bottom: 2px;
   position: absolute;
-  left: 13px;
+  left: 7px;
 
   small {
     font-size: 12px;
@@ -37,13 +41,16 @@
 
 .sidebar {
   position: fixed;
-  width: 30%;
+  width: 35%;
   right: 0px;
-  top: 55px;
+  top: 54px;
+  bottom: 60px;
+
 
   .selection-content {
     margin: 10px;
-    height: 470px;
+    height: 100%;
+    overflow: auto;
 
     .panel{
       margin: 5px;
@@ -91,24 +98,32 @@
       }
     }
   }
+}
 
-  .border-box {
-    box-sizing: border-box;
-    width: 50%;
-    border: 0.5em solid transparent;
-    float: left;
+
+.nav-footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border-top: 1px solid whitesmoke;
+  height: 60px;
+  background: #F0F1F5;
+
+  .vertically-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 
     .btn {
       width: 100%;
-      height: 50px;
-      height: 50px;
+      height: 100%px;
       font-weight: 300;
       font-size: 13px;
       white-space: normal;
     }
   }
 }
-
 
 #draggablePanelList {
   .panel {
@@ -120,12 +135,65 @@
   }
 }
 
-.scrollable {
-  overflow: scroll;
-  height: 100%;
+// Infobox design
+.infoBox::before {
+  border-color: #fff transparent transparent transparent;
+  border-width: 15px;
+  border-style: solid;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: -18px;
+  margin: 0 0 0 126px;
 }
 
-.dragging {
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+.infobox-container {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+
+  #experience-infowindow {
+    margin: 10px;
+    padding-top: 10px;
+  }
+
+  #owl-experiences {
+    height: 174px;
+  }
+
+  .owl-controls.clickable {
+    margin: 0px;
+    position: relative;
+    top: -125px;
+
+    .owl-prev {
+      position: relative;
+      left: -95px;
+    }
+    .owl-next {
+      position: relative;
+      right: -95px;
+    }
+  }
+
+  .owl-theme .owl-controls .owl-buttons div {
+    font-size: 40px;
+    background: transparent;
+    opacity: 0;
+  }
+
+  #owl-experiences:hover{
+    .owl-buttons div {
+    opacity: 0.5;
+    }
+    .owl-buttons div:hover {
+    opacity: 1;
+    }
+  }
 }
 
+// Experience display design
+
+.item-banner img {
+  max-width: 100%;
+}
