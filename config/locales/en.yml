@@ -44,10 +44,21 @@ en:
 
   home:
     index:
-      brand: "Philae"
+      brand: "E X P L O R I Z E R S"
+      firstline: "YOUR TRIP TO MOROCCO STARTS HERE"
+      secondline: "Get inspired, and travel your way !"
       baseline: "Prepare for take-off"
       searchplaceholder: "Type your next destination here"
-      searchbutton: "Go there"
+      searchbutton: "Start"
+      subtitle1: "1. Design your own trip"
+      text1: "Explorizers doesn't tell you what to do. It tells you what you CAN do, based on descriptions, photos et reviews from other travelers."
+      subtitle2: "Need an advice ?"
+      text2: "2. Ask your friends to give you tips. Because they know you even better than we do."
+      subtitle3: "3. Ask for local help"
+      text3: "Because you probably don't own a camel (and you'll need one to go in the desert), we introduce you to trusted local providers. They're good, safe, and nice."
+      concept: "Explorizers is a travel experience provider. Intuitive and personal, it helps you design your next trip, with the help of your friends and our trusted community."
+      contact: "Contact us"
+
 
   addreview: "Add a review"
   addtotrip: "Add to my trip"
@@ -75,8 +86,21 @@ en:
       message: "Enter your message here, we'll get back to you shorty. Thanks."
       submit: "Send"
 
-
-  #story
   story:
     index:
-      title: "Our story"
+      title: "Our concept"
+      story1: "At Explorizers, we believe life is an extraordinary adventure, and travels make it even more exciting. That's why the Explorizers community recommends outstanding experiences that are worth going to do, and inspiring places that are worth going to see."
+      story2: "And because our friends inspire us, we've made it possible to ask them for tips in an easy and fun way."
+      story3: "Our project begins with Morocco, with the ambition of covering more and more countries throughout 2015."
+      contact: "Contact us"
+
+
+  #ask_your_friends:
+  ask_your_friends:
+    index:
+      title: "Ask your friends their best tips!"
+      intro1: "Share your roadmap so that your friends can add their tips."
+      intro2: "Then, you decide to include their tips or not!"
+      share_fb: "Post a link on Facebook, and specify your friends' name to get their attention"
+      share_email: "Get an email to transfer the link to my friends"
+

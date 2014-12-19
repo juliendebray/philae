@@ -27,10 +27,20 @@ fr:
 
   home:
     index:
-      brand: "Philae"
+      brand: "E X P L O R I Z E R S"
+      firstline: "VOTRE VOYAGE AU MAROC COMMENCE ICI"
+      secondline: "Choisissez l'aventure et sortez des sentiers battus"
       baseline: "Préparez-vous au décollage"
       searchplaceholder: "Saisissez votre prochaine destination de voyage"
-      searchbutton: "Allez-y"
+      searchbutton: "Démarrer"
+      subtitle1: "1. Faites votre propre voyage"
+      text1: "Explorizers préfère vous dire ce que vous pouvez faire, plutôt que ce que vous devez faire. C'est vous qui décidez, sur la base des descriptions, photos et avis d'autres voyageurs."
+      subtitle2: "2. Appel à un ami ?"
+      text2: "Demandez à vos amis de compléter avec leurs conseils. Ils vous connaissent bien mieux que nous."
+      subtitle3: "3. Trouvez un support local"
+      text3: "Sauf si vous avez un dromadaire, il sera difficile d'aller tout seul dans le désert. On vous présente donc des agences et guides locaux. Ils sont bons, sûrs, et sympas."
+      concept: "Explorizers apporte des expériences de voyage uniques et étonnantes. Créez votre propre voyage, avec l'aide de vos amis et de notre communauté d'explorateurs."
+      contact: "Nous contacter"
 
   addreview: "Donnez votre avis!"
   addtotrip: "Ajouter à mon voyage"
@@ -62,4 +72,22 @@ fr:
   #story:
   story:
     index:
-      title: "Notre histoire"
+      title: "Notre concept"
+      story1: "Chez Explorizers, nous pensons que la vie est une aventure extraordinaire, et que les voyages la rendent encore plus passionnante. C'est pour cela que nous recommandons uniquement des expériences exceptionnelles et des lieux étonnants, qui méritent le voyage."
+      story2: "Et parce que nos amis sont une source d'inspiration, nous avons conçu Explorizers pour leur permettre de donner leurs conseils très facilement."
+      story3: "Notre projet commence avec le Maroc, avec l'ambition de couvrir de plus en plus de pays en 2015."
+      contact: "Nous contacter"
+
+  #ask_your_friends:
+  ask_your_friends:
+    index:
+      title: "Demandez les bons plans de vos amis!"
+      intro1: "Partagez votre roadmap pour que vos amis y ajoutent leurs conseils."
+      intro2: "Ensuite, à vous de décider de les inclure ou non dans votre voyage!"
+      share_fb: "Sur Facebook, postez un lien vers votre roadmap"
+      share_email: "Recevez le lien par email, pour le transférer à vos amis"
+      ask_email_btn: "Demander par email"
+      ask_fb_btn: "Demander sur Facebook"
+
+
+

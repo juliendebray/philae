@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>
-      <%= yield_with_default(:title, "Philae | Travel like no other") %>
+      <%= yield_with_default(:title, "Explorizers | Travel like no other") %>
     </title>
-    <meta name="description" content="<%= yield_with_default(:description,"Philae is the best easy-to-use plateform for discovering inspiring places around the world")%>" >
+    <meta name="description" content="<%= yield_with_default(:description,"Explorizers is the best easy-to-use plateform for discovering inspiring places around the world")%>" >
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= yield :map_css %>
@@ -15,11 +15,11 @@
 
     <% if @trip %>
       <meta property="og:title" content="I need YOU - to help me design the best trip ever!" />
-      <meta property="og:site_name" content="Woohoo.com" />
+      <meta property="og:site_name" content="explorizers.com" />
       <meta property="og:type" content="article" />
       <meta property="og:url" content="http://philae.herokuapp.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>" />
       <meta property="og:image" content="http://unsplash.imgix.net/uploads/1412231250505b65c703c/1fa14fb0?dpr=0.33&fit=crop&fm=jpg&h=700&q=75&w=1075" />
-      <meta property="og:description" content="WooHoo is a platform where you design your trip - with the help of your trusted friends" />
+      <meta property="og:description" content="Explorizers is a platform where you design your trip - with the help of your trusted friends" />
     <% end %>
   </head>
   <body>
