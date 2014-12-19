@@ -135,12 +135,65 @@ html, body {
   }
 }
 
-.scrollable {
-  overflow: scroll;
-  height: 100%;
+// Infobox design
+.infoBox::before {
+  border-color: #fff transparent transparent transparent;
+  border-width: 15px;
+  border-style: solid;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: -18px;
+  margin: 0 0 0 126px;
 }
 
-.dragging {
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+.infobox-container {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+
+  #experience-infowindow {
+    margin: 10px;
+    padding-top: 10px;
+  }
+
+  #owl-experiences {
+    height: 174px;
+  }
+
+  .owl-controls.clickable {
+    margin: 0px;
+    position: relative;
+    top: -125px;
+
+    .owl-prev {
+      position: relative;
+      left: -95px;
+    }
+    .owl-next {
+      position: relative;
+      right: -95px;
+    }
+  }
+
+  .owl-theme .owl-controls .owl-buttons div {
+    font-size: 40px;
+    background: transparent;
+    opacity: 0;
+  }
+
+  #owl-experiences:hover{
+    .owl-buttons div {
+    opacity: 0.5;
+    }
+    .owl-buttons div:hover {
+    opacity: 1;
+    }
+  }
 }
 
+// Experience display design
+
+.item-banner img {
+  max-width: 100%;
+}
