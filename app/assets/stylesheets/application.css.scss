@@ -53,9 +53,19 @@ div.homepage_story {
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
-  color: #238BFF;
+  // color: #238BFF;
   height: 80%;
   padding-top: 56px;
+
+  .story {
+    color: lightgrey;
+    height: 800px;
+  }
+
+  h3 {
+    padding-bottom: 40px;
+  }
+
 }
 
 body.signup-signin {

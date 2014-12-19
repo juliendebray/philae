@@ -1,10 +1,28 @@
 <% content_for(:title) do %>
-  <%= "Philae | Notre histoire" %>
+  <%= "Explorizers | Notre histoire" %>
 <% end %>
 
 <% content_for(:description) do %>
   <%= "With more and more people joining the project, most of our story belongs to the future" %>
 <% end %>
 <div class="homepage_story">
-  <%= render 'shared/story.html.erb' %>
+  <div class="story">
+
+    <div id="titleblock" class="text-center">
+      <div class="title">
+        <h2><%= t('.title', :default => "Concept") %></h2>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <h4> <%= t('.story1') %></h4><br>
+        <h4> <%= t('.story2') %></h4><br>
+        <h4> <%= t('.story3') %></h4><br>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <%= link_to t('.contact'), new_contact_path, {class: "btn btn-primary"} %>
+      </div>
+    </div>
+  </div>
 </div>

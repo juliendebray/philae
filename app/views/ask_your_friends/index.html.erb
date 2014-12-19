@@ -7,28 +7,27 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
       <div class="vertical-spacer"></div>
-        <h2>DEMANDER CONSEILS A VOS AMIS</h2>
-        <p>Vous pouvez communiquer votre itinéraire à vos amis afin qu'ils vous donne leur conseil d'un simple clic. Ensuite vous accédez depuis la page de votre trip à tous leurs conseil.</p>
-        <p>Pour profiter de ce service, rien de simple! Vous pouvez soit poster directement sur facebook votre itinéraire soit envoyer envoyer par email un lien vers votre itinéraire.</p>
+        <h2><%= t('.title') %></h2>
+        <p><%= t('.intro1') %></p>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-2">
         <div class="box-content text-center">
-          <h4>Poster sur facebook mon itinéraire et permettre à mes amis de donner leur avis</h4>
-           <i class="fa fa-facebook"></i><br>
+          <i class="fa fa-facebook"></i><br>
+          <h4><%= t('.share_fb') %></h4>
           <a class="btn btn-facebook" id="sharefb">
-            Demander sur facebook
+            <%= t('.ask_fb_btn') %>
           </a>
         </div>
       </div>
       <div class="col-xs-12 col-sm-4">
         <div class="box-content text-center">
-          <h4>Envoyer par email un lien vers mon itinéraire pour que me amis me donnent leur conseil</h4>
           <i class="fa fa-envelope"></i>
+          <h4><%= t('.share_email') %></h4>
           <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
             <%= hidden_field_tag :id, value = @trip.id %>
-            <%= f.submit('Demander par email', class:'btn btn-primary') %>
+            <%= f.submit( t('.ask_email_btn'), class:'btn btn-primary') %>
           <% end %>
         </div>
       </div>

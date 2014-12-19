@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: 'crew@woohoo.com'
+  default from: 'crew@wexplorizers.com'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     @user = user  # Instance variable => available in view
     @greeting = "Hi"
 
-    mail(to: @user.email, subject: 'Welcome to Woohoo')
+    mail(to: @user.email, subject: 'Welcome to Explorizers')
     # This will render a view in `app/views/user_mailer`!
   end
 
