@@ -1,3 +1,6 @@
+<% content_for :map_css do %>
+  <%= stylesheet_link_tag 'map' %>
+<% end %>
 <%= content_for(:navbar) do %>
   <%= 'shared/navbar2.html.erb' %>
 <% end %>
@@ -22,14 +25,14 @@
       </div>
       <!-- User Modal to let him add his own experience -->
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
         <small>Ajouter ma propre experience</small>
       </button>
     <% else %>
       <!-- Guest Modal to let him add his own experience -->
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalGuest">
-        Add a tip
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalGuest">
+        Ajouter un commentaire
       </button>
     <% end %>
   </div>
@@ -39,35 +42,44 @@
       <i class="fa fa-angle-double-down"></i>
     </div>
     <div class="selection-content">
-      <ul id="draggablePanelList" class="list-unstyled scrollable">
+      <ul id="draggablePanelList" class="list-unstyled">
       </ul>
     </div>
-    <% unless @guest_user %>
-      <div class="btn-container">
-        <div id="set-orders" class="border-box">
-          <%= form_for @trip, url: {action: "update"} do |f|%>
-            <%= hidden_field_tag :order %>
-            <%= f.submit('Sauvegarder', class: "btn btn-success") %>
+  </div>
+  <div class="nav-footer text-center">
+    <div class="container vertically-center">
+      <div class="row">
+        <div class="col-xs-4 col-sm-4">
+          <% unless @guest_user %>
+            <div id="set-orders" class="button-action">
+              <%= form_for @trip, url: {action: "update"} do |f|%>
+                <%= hidden_field_tag :order %>
+                <%= f.submit('Sauver mon itinéraire', class: "btn btn-info") %>
+              <% end %>
+            </div>
+          <% else %>
+            <div id="set-orders" class="button-action">
+              <%= form_for @trip, url: {action: "update"} do |f|%>
+                <%= hidden_field_tag :order %>
+                <%= f.submit('Sauver mes commentaires', class: "btn btn-group-lg btn-info") %>
+              <% end %>
+            </div>
           <% end %>
         </div>
-        <div id="share-btn" class="border-box">
-          <%= link_to 'Demander des conseils', trip_ask_your_friends_path(@trip), class: "btn btn-warning" %>
-        </div>
-      </div>
-    <% else %>
-      <div id="set-orders">
-        <%= form_for @trip, url: {action: "update"} do |f|%>
-          <%= hidden_field_tag :order %>
-          <%= f.submit('Save my comments', class: "btn btn-group-lg btn-primary") %>
+        <% unless @guest_user %>
+          <div class="col-xs-4 col-sm-4">
+            <div class="button-action">
+              <%= link_to 'Demander des conseils', trip_ask_your_friends_path(@trip), class: "btn btn-primary" %>
+            </div>
+          </div>
+          <div class="col-xs-4 col-sm-4">
+            <div class="button-action">
+              <button type="button" class="btn btn-default" disabled="disabled">Voir les prestataires</button>
+            </div>
+          </div>
         <% end %>
       </div>
-      <!-- Guest comments list -->
-        <div id="trip-comments" class="in-line">
-          <ul id="trip-comments-list">
-          </ul>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
 
