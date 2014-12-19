@@ -1,27 +1,22 @@
-<body class="wrapper">
-
-<div id="titleblock" class="text-center">
-  <h2><%= t('.title', :default => "My account") %></h2>
-</div>
-
-<div class="row">
-  <div class="col-xs-9 col-sm-4 col-md-4">
-    <h3><%= t('.mytrips', :default => "My trips") %></h3>
+<%= content_for(:navbar) do %>
+  <%= 'shared/navbar2.html.erb' %>
+<% end %>
+<div class="wrapper">
+  <div id="titleblock" class="text-center">
+    <h2><%= t('.mytrips', :default => "My trips") %></h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @user.trips.each do |trip| %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="tripbox">
+            <%= link_to "#{trip.title} (créé le #{trip.created_at.strftime('%d-%m-%Y')})", start_trip_path(trip) %>
+            <%= link_to [trip], { method: :delete, data: {confirm: "Etes-vous sûr de vouloir supprimer ce voyage?"} } do %>
+              <i class= "pull-right fa fa-trash-o"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
-<div class="row">
-  <% @user.trips.each do |trip| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tripbox">
-        <%= link_to trip.title, start_trip_path(trip) %>
-        <%= link_to [trip], method: :delete do %>
-          <i class= "pull-right fa fa-trash-o"></i>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-</body>
-
