@@ -11,10 +11,8 @@
     <p><%= t('.hi') %></p>
 
     <p><%= t('.s_line2') %></p>
-
     <p>
-      <%= t('.s_line3') %>
-      <a href= "#{explorizers.com} <%= @trip.generate_url_with_token %>"></a>
+      <a href= "<%= ROOT_URL + "/trips/#{@trip.id}/#{@trip.token}" %>"> <%= t('.s_line3') %></a>
     </p>
     <p><%= t('.s_line4') %></p><br><br>
     <p><%= t('.s_line5') %></p>
