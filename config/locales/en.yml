@@ -25,7 +25,7 @@ en:
   #navbar
   ourstorynav: "Our concept"
   fbconnect: "Login Facebook"
-  signin: "Already an account?"
+  login: "Log in"
   signup: "Sign up"
   signout: "Sign out"
   tripsnav: "My account"
@@ -104,4 +104,22 @@ en:
       intro2: "Then, you decide to include their tips or not!"
       share_fb: "Post a link on Facebook, and specify your friends' name to get their attention"
       share_email: "Get an email to transfer the link to my friends"
+
+  #emails
+  user_mailer:
+    welcome:
+      hi: "Welcome aboard !"
+      w_line1: "On Explorizers, you will find what's great in your destination, and will ask your friends to give you their best tips."
+      w_line2: "For now we focus our recommendations on Morocco, to make sure we offer what's best. We intend to spread very quickly !"
+      w_line3: "Feel free to talk to us. For example, reply to this email and tell us what is the ONE THING you want to have on the site !"
+      w_line4: "See you soon on explorizers.com !"
+    share_trip:
+      hi: "Hi,"
+      s_line1: "Transfer this email to your friends, they will access your trip page and give you tips."
+      s_line2: "I need your tips for my next trip !"
+      s_line3: "Click right here to give your recommendations"
+      s_line4: "Thanks !"
+      s_line5: "Explorizers is a travel experience provider. Intuitive and personal, it helps you design your next trip, with the help of your friends and our trusted community."
+
+
 

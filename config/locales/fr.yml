@@ -5,7 +5,7 @@ fr:
   language: "Langue"
   ourstorynav: "Notre projet"
   fbconnect: "Login Facebook"
-  signin: "Déjà inscrit?"
+  login: "Connexion"
   signup: "Inscription"
   signout: "Déconnexion"
   tripsnav: "Mon compte"
@@ -93,8 +93,18 @@ fr:
   #emails
   user_mailer:
     welcome:
-      hi: "Bonjour"
+      hi: "Bienvenue !"
+      w_line1: "Avec Explorizers, vous trouverez ce qu'il y a de mieux pour votre prochain voyage, grâce aux recommandations de notre communauté et celles de vos amis."
+      w_line2: "Nous nous concentrons d'abord sur le Maroc pour offrir la meilleure qualité, et nous allons ajouter d'autres pays très rapidement."
+      w_line3: "Parlez-nous ! Par exemple, répondez à cet email en nous disant quelle est LA chose que vous voulez absolument avoir sur le site ?"
+      w_line4: "A très vite sur explorizers.com !"
     share_trip:
+      hi: "Bonjour,"
+      s_line1: "Transférer l'email à vos amis, ils pourront accéder à votre roadmap et ajouter des conseils."
+      s_line2: "J'ai besoin de tes conseils pour mon prochain voyage!"
+      s_line3: "Clique ici pour donner tes recommandations"
+      s_line4: "Merci !"
+      s_line5: "Explorizers apporte des expériences de voyage uniques et étonnantes. Créez votre propre voyage, avec l'aide de vos amis et de notre communauté d'explorateurs."
 
 
 
