@@ -87,5 +87,5 @@ Rails.application.configure do
 
   ActionMailer::Base.delivery_method = :smtp
 
-  ROOT_URL = "http://philae.herokuapp.com"
+  ROOT_URL = "http://www.explorizers.com"
 end

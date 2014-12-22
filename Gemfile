@@ -100,3 +100,7 @@ gem 'unicorn'
 # Newrelic
 gem 'newrelic_rpm'
 
+# Active admin
+gem 'activeadmin', github: 'activeadmin'
+
+
