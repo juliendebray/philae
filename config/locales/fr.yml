@@ -86,7 +86,7 @@ fr:
       intro1: "Partagez votre roadmap pour que vos amis y ajoutent leurs conseils."
       intro2: "Ensuite, à vous de décider de les inclure ou non dans votre voyage!"
       share_fb: "Sur Facebook, postez un lien vers votre roadmap"
-      share_email: "Recevez le lien par email, pour le transférer à vos amis"
+      share_email: "Par email : cliquez ci-dessous et vérifiez vos emails"
       ask_email_btn: "Demander par email"
       ask_fb_btn: "Demander sur Facebook"
 
@@ -100,9 +100,9 @@ fr:
       w_line4: "A très vite sur explorizers.com !"
     share_trip:
       hi: "Bonjour,"
-      s_line1: "Transférer l'email à vos amis, ils pourront accéder à votre roadmap et ajouter des conseils."
+      s_line1: "Transférer l'email ci-dessous à vos amis, ils pourront accéder à votre roadmap et ajouter des conseils."
       s_line2: "J'ai besoin de tes conseils pour mon prochain voyage!"
-      s_line3: "Clique ici pour donner tes recommandations"
+      s_line3: "Clique ici pour donner tes recommandations."
       s_line4: "Merci !"
       s_line5: "Explorizers apporte des expériences de voyage uniques et étonnantes. Créez votre propre voyage, avec l'aide de vos amis et de notre communauté d'explorateurs."
 
