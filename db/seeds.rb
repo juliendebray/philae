@@ -18,7 +18,7 @@ data_hash['feed']['entry'].each do |exp_data|
     longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
     description: exp_data['gsx$description']['$t']
   )
-  root_path = "/Users/Julien/Desktop/photos_maroc/"
+  root_path = "#{Rails.root}/assets/photos_maroc/"
   code = exp_data['gsx$code']['$t']
   (1..4).each do |i|
     complete_path = root_path + code + "_#{i}.jpg"

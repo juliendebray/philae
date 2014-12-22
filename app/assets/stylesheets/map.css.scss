@@ -122,6 +122,9 @@ html, body {
       font-size: 13px;
       white-space: normal;
     }
+    .disabled:hover {
+      cursor: not-allowed;
+    }
   }
 }
 
