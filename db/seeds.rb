@@ -18,13 +18,16 @@ data_hash['feed']['entry'].each do |exp_data|
     longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
     description: exp_data['gsx$description']['$t']
   )
-  root_path = "#{Rails.root}/assets/photos_maroc/"
+  gen_url = "http://philae-floju.s3.amazonaws.com/photos_maroc/"
   code = exp_data['gsx$code']['$t']
   (1..4).each do |i|
-    complete_path = root_path + code + "_#{i}.jpg"
-    if File.exist?(complete_path)
-      exp.experience_pictures.create(picture: File.open(complete_path))
+    complete_url = gen_url + code + "_#{i}.jpg"
+    begin
+      doc = open(complete_url)
+    rescue OpenURI::HTTPError
+      next
     end
+    exp.experience_pictures.create(picture: complete_url)
   end
 end
 
