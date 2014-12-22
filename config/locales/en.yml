@@ -23,13 +23,14 @@ en:
   hello: "Hello"
 
   #navbar
-  ourstorynav: "Our story"
+  ourstorynav: "Our concept"
   fbconnect: "Login Facebook"
   signin: "Already an account?"
   signup: "Sign up"
   signout: "Sign out"
   tripsnav: "My account"
   ourcontact: "Talk to us"
+  contribute: "Contribute"
 
   #sign up / sign in
   sign_up: "Sign up - it's easy and free"
