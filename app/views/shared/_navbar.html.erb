@@ -43,10 +43,10 @@
           </li>
         <% else %>
         <li >
-          <%= link_to 'Inscription', new_user_registration_path %>
+          <%= link_to t('signup'), new_user_registration_path %>
         </li>
         <li>
-          <%= link_to 'Connexion', new_user_session_path %>
+          <%= link_to t('login'), new_user_session_path %>
         </li>
         <% end -%>
         <li class="dropdown">
