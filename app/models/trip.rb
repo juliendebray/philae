@@ -9,9 +9,7 @@ class Trip < ActiveRecord::Base
   after_save :generate_token, if: :user_id_changed?
 
   def generate_url_with_token
-  puts 'triiiiip'
-  "/trips/#{self.id}/#{self.token}"
-  puts "/trips/#{self.id}/#{self.token}"
+    ROOT_URL + "/trips/#{self.id}/#{self.token}"
   end
 
 

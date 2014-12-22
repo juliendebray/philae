@@ -121,6 +121,8 @@
 
       if (GUEST_USER) {
         var guestUserMapOptions = {
+          center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
+          zoom: 6,
           disableDoubleClickZoom: false,
           panControl: false,
           zoomControl: true,
