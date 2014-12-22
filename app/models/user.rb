@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   # validates :first_name, presence: true
 
   has_many :trips
-  has_many :friends
 
   has_many :relationships
 
