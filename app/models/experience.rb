@@ -13,11 +13,11 @@ class Experience < ActiveRecord::Base
   has_many :trip_experiences
   has_many :trips, through: :trip_experiences
 
-  has_many :experience_pictures
+  has_many :experience_pictures, dependent: :destroy
   accepts_nested_attributes_for :experience_pictures
 
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  # geocoded_by :address
+  # after_validation :geocode, if: :address_changed?
 
   after_validation :update_published_date, if: :published_changed?
 
