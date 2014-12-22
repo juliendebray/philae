@@ -4,12 +4,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Hi <%= @user.email %></p>
-    <p>Transfer this URL to your friends, they will be able to give you travel tips.<br>
+    <p><%= t('.hi') %></p>
+    <p><%= t('.s_line1') %><br>
     </p>
+
+    <p>Hi</p>
+
+    <p><%= t('.s_line2') %></p>
+
     <p>
-      <a href="<%= explorizers.com@trip.generate_url_with_token %>">Cliquer ici pour commenter mon itinéraire</a>
+      <%= t('.s_line3') %>
+      <a href="<%= explorizers.com@trip.generate_url_with_token %>"></a>
     </p>
-    <p>Enjoy !</p>
+    <p><%= t('.s_line4') %></p><br><br>
+    <p><%= t('.s_line5') %></p>
   </body>
 </html>

@@ -43,20 +43,21 @@
           </li>
         <% else %>
         <li >
-          <%= link_to 'Inscription', new_user_registration_path %>
+          <%= link_to t('signup'), new_user_registration_path %>
         </li>
         <li>
-          <%= link_to 'Connexion', new_user_session_path %>
+          <%= link_to t('login'), new_user_session_path %>
         </li>
         <% end -%>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            Informations
+            Explorizers
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><%= link_to 'Qui sommes-nous?', story_index_path %></li>
-            <li><%= link_to 'Nous contacter', new_contact_path %></li>
+            <li><%= link_to t('ourstorynav'), story_index_path %></li>
+            <li><%= link_to t('contribute'), story_index_path %></li>
+            <li><%= link_to t('ourcontact'), new_contact_path %></li>
           </ul>
         </li>
       </ul>
