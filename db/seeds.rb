@@ -5,62 +5,86 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1LDNbW3RTptGwXFFCTCuDmOT2xeYFynkV7HDk384bgqM/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |exp_data|
+  exp = Experience.create(
+    average_rating: exp_data['gsx$rating']['$t'].to_f,
+    name: exp_data['gsx$nom']['$t'],
+    address: exp_data['gsx$lieu']['$t'],
+    latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
+    longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
+    description: exp_data['gsx$description']['$t']
+  )
+  root_path = "/Users/Julien/Desktop/photos_maroc/"
+  code = exp_data['gsx$code']['$t']
+  (1..4).each do |i|
+    complete_path = root_path + code + "_#{i}.jpg"
+    if File.exist?(complete_path)
+      exp.experience_pictures.create(picture: File.open(complete_path))
+    end
+  end
+end
+
+
 
 
 # Seed experiences
 
-#tableau_adresse
-#experience.create(address: adresse, name: , description: , user_id: 1, category_id: , image: url(../lattitude_longitude.jpg))
+# #tableau_adresse
+# #experience.create(address: adresse, name: , description: , user_id: 1, category_id: , image: url(../lattitude_longitude.jpg))
 
-Experience.create(
-  address: 'Merzouga, Morocco',
-  name: 'merzouga',
-  description: 'test',
-  user_id: 1,
-  category_id: rand(1..3),
-  )
-
-
-
-Experience.create(
-  address: 'marrakech, Morocco',
-  name: 'marra',
-  description: 'test',
-  user_id: 1,
-  category_id: rand(1..3)
-  )
-Experience.create(
-  address: 'fes, Morocco',
-  name: 'fes',
-  description: 'test',
-  user_id: 1,
-  category_id: rand(1..3)
-  )
-Experience.create(
-  address: 'casablanca, Morocco',
-  name: 'casa',
-  description: 'test',
-  user_id: 1,
-  category_id: rand(1..3)
-  )
-Experience.create(
-  address: 'rabat, Morocco',
-  name: 'rabat',
-  description: 'test',
-  user_id: 1,
-  category_id: rand(1..3)
-  )
+# Experience.create(
+#   address: 'Merzouga, Morocco',
+#   name: 'merzouga',
+#   description: 'test',
+#   user_id: 1,
+#   category_id: rand(1..3),
+#   )
 
 
 
-# Seed  experience_reviews
+# Experience.create(
+#   address: 'marrakech, Morocco',
+#   name: 'marra',
+#   description: 'test',
+#   user_id: 1,
+#   category_id: rand(1..3)
+#   )
+# Experience.create(
+#   address: 'fes, Morocco',
+#   name: 'fes',
+#   description: 'test',
+#   user_id: 1,
+#   category_id: rand(1..3)
+#   )
+# Experience.create(
+#   address: 'casablanca, Morocco',
+#   name: 'casa',
+#   description: 'test',
+#   user_id: 1,
+#   category_id: rand(1..3)
+#   )
+# Experience.create(
+#   address: 'rabat, Morocco',
+#   name: 'rabat',
+#   description: 'test',
+#   user_id: 1,
+#   category_id: rand(1..3)
+#   )
 
-Experience.all.each do |exp|
-  ExperienceReview.create(
-    user_id: 1,
-    experience_id: exp.id,
-    comment: 'test for experience with id #{exp.id}',
-    rating: rand(0..5)
-  )
-end
+
+
+# # Seed  experience_reviews
+
+# Experience.all.each do |exp|
+#   ExperienceReview.create(
+#     user_id: 1,
+#     experience_id: exp.id,
+#     comment: 'test for experience with id #{exp.id}',
+#     rating: rand(0..5)
+#   )
+# end
 

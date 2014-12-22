@@ -3,7 +3,7 @@ class TripExperiencesController < ApplicationController
   respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience]
 
   def markers
-    markers_number = 5
+    markers_number = 15
     experiences_within_bounds = Experience.within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
     @experiences = select_experiences_to_show(experiences_within_bounds)
     @markers = build_markers(@experiences[0..markers_number - 1], @trip)
@@ -64,12 +64,12 @@ class TripExperiencesController < ApplicationController
     experiences_with_rating = []
     experiences_to_show = []
     experiences.each do |exp|
-      experiences_with_rating << exp if exp.experience_reviews.any?
+      experiences_with_rating << exp if exp.average_rating
     end
-    experiences_to_show = experiences_with_rating.sort_by { |e| e.experience_reviews.average(:rating) }
+    experiences_to_show = experiences_with_rating.sort_by { |e| e.average_rating }
     experiences_to_show = experiences_to_show.reverse
     experiences.each do |exp|
-      experiences_to_show << exp if exp.experience_reviews.empty?
+      experiences_to_show << exp unless exp.average_rating
     end
     experiences_to_show
   end
