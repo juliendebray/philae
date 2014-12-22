@@ -14,7 +14,7 @@
       <%= image_tag trip_exp.experience.experience_pictures.first.picture.url(:thumb) if trip_exp.experience.experience_pictures.first %>
     </div>
     <div class="panel-body-content">
-      <%= trip_exp.experience.description %>
+      <%= trip_exp.experience.description[0..250] + "..." %>
     </div>
   </div>
 </li>

@@ -47,9 +47,13 @@ class TripsController < ApplicationController
   end
 
   def show_guest_user
-    @guest_user = true
-    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
-      te.order
+    if params[:token] == @trip.token
+      @guest_user = true
+      @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+        te.order
+      end
+    else
+      render "public/422.html"
     end
   end
 
@@ -61,6 +65,8 @@ class TripsController < ApplicationController
 
   def share_trip_email
     current_user.send_trip_email(@trip)
+    flash[:sucess] = 'Un email vous a été envoyé avec le lien vers votre voyage.'
+    redirect_to trip_ask_your_friends_path(@trip)
   end
 
   private
