@@ -23,6 +23,7 @@ fr:
   alreadyaccount: "Déjà inscrit?"
   fbencourage: "Avec Facebook : plus facile pour obtenir les avis de vos amis"
   emailsignup: "Ou inscrivez-vous avez votre email"
+  forgot: "Mot de passe oublié?"
 
   my_trips: "Mes voyages"
 
@@ -73,11 +74,18 @@ fr:
   #story:
   story:
     index:
-      title: "Notre concept"
+      title: "Notre projet"
       story1: "Chez Explorizers, nous pensons que la vie est une aventure extraordinaire, et que les voyages la rendent encore plus passionnante. C'est pour cela que nous recommandons uniquement des expériences exceptionnelles et des lieux étonnants, qui méritent le voyage."
       story2: "Et parce que nos amis sont une source d'inspiration, nous avons conçu Explorizers pour leur permettre de donner leurs conseils très facilement."
       story3: "Notre projet commence avec le Maroc, avec l'ambition de couvrir de plus en plus de pays en 2015."
       contact: "Nous contacter"
+
+  #newexperience
+  experiences:
+    new:
+      title: "Nouvelle experience"
+      text1: "Le projet Explorizers repose sur votre contribution. Merci de nous aider à le faire grandir."
+      text2: "Pour assurer une qualité maximale sur Explorizers, les contributions sont validées par notre équipe. Cela évite les doublons, la pub, les trolls, les pirates et les clowns en tous genres. Pour toute question, écrivez à dora@explorizers.com."
 
   #ask_your_friends:
   ask_your_friends:
@@ -100,7 +108,7 @@ fr:
       w_line4: "A très vite sur explorizers.com !"
     share_trip:
       hi: "Bonjour,"
-      s_line1: "Transférer l'email ci-dessous à vos amis, ils pourront accéder à votre roadmap et ajouter des conseils."
+      s_line1: "Transférez l'email ci-dessous à vos amis, ils pourront accéder à votre roadmap et ajouter des conseils."
       s_line2: "J'ai besoin de tes conseils pour mon prochain voyage!"
       s_line3: "Clique ici pour donner tes recommandations."
       s_line4: "Merci !"

@@ -6,6 +6,7 @@
   <body>
     <p><%= t('.hi') %></p>
     <p><%= t('.s_line1') %><br>
+      ----
     </p>
 
     <p><%= t('.hi') %></p>
@@ -14,7 +15,7 @@
 
     <p>
       <%= t('.s_line3') %>
-      <a href= "#{explorizers.com} <%= @trip.generate_url_with_token %>"></a>
+    <a href= "<%= @trip.generate_url_with_token %>"></a>
     </p>
     <p><%= t('.s_line4') %></p><br><br>
     <p><%= t('.s_line5') %></p>
