@@ -104,6 +104,8 @@ en:
       intro2: "Then, you decide to include their tips or not!"
       share_fb: "Post a link on Facebook, and specify your friends' name to get their attention"
       share_email: "Get an email to transfer the link to my friends"
+      ask_email_btn: "Ask by email"
+      ask_fb_btn: "Ask on Facebook"
 
   #emails
   user_mailer:
