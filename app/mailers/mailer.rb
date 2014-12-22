@@ -10,7 +10,7 @@ class Mailer < ActionMailer::Base
     @name = name
     @message = message
 
-    mail to: ["florian.joulie@gmail.com", "julien.debray.pro@gmail.com"],
-          subject: " #{name} contact via notre site", from: user_email
+    mail to: ["florian.joulie@explorizers.com", "julien.debray@explorizers.com"],
+          subject: " #{name} / contact sur explorizers.com", from: user_email
   end
 end

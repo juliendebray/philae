@@ -3,13 +3,14 @@ fr:
 
   #navbar
   language: "Langue"
-  ourstorynav: "Notre histoire"
+  ourstorynav: "Notre projet"
   fbconnect: "Login Facebook"
   signin: "Déjà inscrit?"
   signup: "Inscription"
   signout: "Déconnexion"
   tripsnav: "Mon compte"
   ourcontact: "Contact"
+  contribute: "Contribuer"
 
 
   #sign up / sign in
@@ -20,7 +21,7 @@ fr:
   fbbutton: "Connexion"
   noaccount: "Pas encore inscrit?"
   alreadyaccount: "Déjà inscrit?"
-  fbencourage: "Pour partager et recueillir les avis de vos amis, inscrivez-avec Facebook."
+  fbencourage: "Avec Facebook : plus facile pour obtenir les avis de vos amis"
   emailsignup: "Ou inscrivez-vous avez votre email"
 
   mytrip: "Mes voyages"
@@ -88,6 +89,17 @@ fr:
       share_email: "Recevez le lien par email, pour le transférer à vos amis"
       ask_email_btn: "Demander par email"
       ask_fb_btn: "Demander sur Facebook"
+
+  #emails
+  user_mailer:
+    welcome:
+      hi: "Bonjour"
+    share_trip:
+
+
+
+
+
 
 
 
