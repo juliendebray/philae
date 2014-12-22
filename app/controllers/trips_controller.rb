@@ -47,9 +47,13 @@ class TripsController < ApplicationController
   end
 
   def show_guest_user
-    @guest_user = true
-    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
-      te.order
+    if params[:token] == @trip.token
+      @guest_user = true
+      @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+        te.order
+      end
+    else
+      render "public/422.html"
     end
   end
 
