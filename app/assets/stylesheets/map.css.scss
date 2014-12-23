@@ -75,7 +75,6 @@ html, body {
           color: black;
         }
       }
-
       .panel-body {
         padding: 0px 7px 10px 7px;
         border: none;
@@ -161,6 +160,17 @@ html, body {
   #experience-infowindow {
     margin: 10px;
     padding-top: 10px;
+
+    .infobox-content {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 13px;
+      a {
+        color: #808080;
+        font-family: 'Roboto';
+        font-weight: 300;
+      }
+    }
   }
 
   #owl-experiences {
@@ -194,6 +204,25 @@ html, body {
     }
     .owl-buttons div:hover {
     opacity: 1;
+    }
+  }
+
+  .rating {
+    position: relative;
+    padding: 3px;
+    font-size: 15px;
+    background-color: #808080;
+    color: white;
+    .best {
+      font-size: 10px;
+    }
+    .pull-right input {
+      background: transparent;
+      border-color: transparent;
+      font-size: 12px;
+    }
+    .pull-right input:focus {
+      outline: none;
     }
   }
 }
