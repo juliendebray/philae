@@ -126,6 +126,15 @@ html, body {
     .disabled:hover {
       cursor: not-allowed;
     }
+    .tooltip > .tooltip-inner, .tooltip-arrow {
+      background-color: white;
+      font-weight: 100;
+      font-style: italic;
+      color: #808080;
+    }
+    .tooltip > .tooltip-arrow {
+      // TODO: customize teh arow
+    }
   }
 }
 
