@@ -60,6 +60,12 @@ function checkIfInfoWindowIsOpened() {
   }
 }
 
+function closeInfoWindowIfOpened() {
+  if (checkIfInfoWindowIsOpened()) {
+    handler.currentInfowindow().close();
+  }
+}
+
 function setCarouselOnInfowindow(data) {
   if (markers.length == 0) {
     return;
@@ -203,6 +209,7 @@ function buildMapForUser(mapOptions, trip_id) {
     setMarkersAndKeepListening(map, trip_id);
     // SET MARKERS DEPENDING ON USER CHOICE
     $('#user-choices').on("change", function() {
+      closeInfoWindowIfOpened();
       if ($('#user-experiences').prop('checked')){
         // Set map with booked experiences;
         google.maps.event.clearListeners(map, 'dragend');
@@ -218,8 +225,11 @@ function buildMapForUser(mapOptions, trip_id) {
         google.maps.event.clearListeners(map, 'zoom_changed');
         requestingMarkers = true;
         var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
-        setMarkersAccordingToApi(url, function(r) {
-          requestingMarkers = r;
+        $.get(url, function(data) {
+          handler.removeMarkers(markers);
+          markers = handler.addMarkers(data);
+          handler.bounds.extendWith(markers);
+          requestingMarkers = false;
         });
       } else if ($('#all-experiences').prop('checked')) {
         setMarkersAndKeepListening(map, trip_id);
@@ -242,7 +252,10 @@ function showModalByClikingOnMap(map, modal_id, address_field_id) {
     if (ibOpened) {
       ib.close();
       ibOpened = false;
-    } else {
+    } else if (checkIfInfoWindowIsOpened()) {
+      handler.currentInfowindow().close();
+    }else {
+      closeInfoWindowIfOpened();
       updateTimeout = setTimeout(function() {
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({'latLng': e.latLng}, function(results, status){
