@@ -2,7 +2,7 @@
 $color: white;
 $bg: transparent;
 
-$color2: lightgrey;
+$color2: grey;
 $bg2: white;
 
 $height: 25px;
@@ -35,9 +35,6 @@ $profile-border-width: 0px;
   position: absolute;
 }
 
-
-
-
 .navbar-brand{
   padding-left: 0px;
   padding-right: 0px;
@@ -49,12 +46,10 @@ $profile-border-width: 0px;
   font-style: italic;
 }
 
-@media (max-width: $screen-sm-min) {
-  .navbar-wagon {
-    position: fixed;
+@media screen and (max-width: $screen-sm-min) {
+  .navbar-collapse {
+    position: relative;
     background-color: white;
-    margin-bottom: 0;
-    color: black;
   }
 }
 
