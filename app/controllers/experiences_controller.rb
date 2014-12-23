@@ -1,7 +1,7 @@
 class ExperiencesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   respond_to :js, only: [:detail]
-
 
   def detail
     @experience = Experience.find(params[:experience_id])
@@ -15,13 +15,13 @@ class ExperiencesController < ApplicationController
   # GET /experiences/new
   def new
     @experience = Experience.new
-    3.times { @experience.experience_pictures.build }
+    # 3.times { @experience.experience_pictures.build }
   end
 
   # GET /experiences/1/edit
   def edit
     @experience.experience_pictures.build
-    3.times { @experience.experience_pictures.build }
+    # 3.times { @experience.experience_pictures.build }
   end
 
   # POST /experiences
@@ -31,8 +31,7 @@ class ExperiencesController < ApplicationController
 
     respond_to do |format|
       if @experience.save
-        format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
-        format.json { render :show, status: :created, location: @experience }
+        format.html { redirect_to new_experience_path, notice: 'Experience créée avec sucess. Merci pour votre contribution.' }
       else
         format.html { render :new }
         format.json { render json: @experience.errors, status: :unprocessable_entity }

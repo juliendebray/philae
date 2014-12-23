@@ -33,20 +33,20 @@
 
         <div><%= f.label :email do %>
           <br />
-          <i class="fa fa-envelope-o fa-2x"></i>
+          <i class="fa fa-envelope fa-2x"></i>
           <%= f.email_field :email, placeholder: "neil.armstrong@nasa.com" %>
           <% end %>
         </div>
 
         <div><%= f.label :password do %>
           <br />
-          <i class="fa fa-key fa-2x"></i>
+          <i class="fa fa-lock fa-2x"></i>
           <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
         <% end %>
 
         <div><%= f.label :password_confirmation do %>
           <br />
-          <i class="fa fa-key fa-2x"></i>
+          <i class="fa fa-lock fa-2x"></i>
           <%= f.password_field :password_confirmation, placeholder: t('passwordconfirmplaceholder') %></div>
         <% end %>
         <br />

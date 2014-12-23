@@ -28,14 +28,14 @@
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
         <div><%= f.label :email do %>
           <br />
-          <i class="fa fa-envelope-o fa-2x"></i>
+          <i class="fa fa-envelope fa-2x"></i>
           <%= f.email_field :email, placeholder: "indiana.jones@nyu.edu" %>
           <% end %>
         </div>
 
         <div><%= f.label :password do %>
           <br />
-          <i class="fa fa-key fa-2x"></i>
+          <i class="fa fa-lock fa-2x"></i>
           <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
         <% end %>
 

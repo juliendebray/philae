@@ -1,5 +1,3 @@
-
-
 // over-ride Bootstrap theme with Sass variables
 $btn-primary-bg: #333333;
 $btn-info-bg: #FF5A5F;
@@ -34,16 +32,15 @@ $font-family-sans-serif: 'Roboto';
 
 // General customized styles
 
-#flash-message {
+.class-flash{
   position: absolute;
   width: 40%;
   text-align: center;
   left: 28%;
-  z-index: 100;
+  z-index: 9999;
   font-weight: 400;
   font-size: 12px;
 }
-
 
 .wrapper {
   background-color: #F0F1F5;
@@ -55,6 +52,10 @@ $font-family-sans-serif: 'Roboto';
   padding: 15px;
   padding-top: 80px;
   margin-top: 30px;
+}
+
+.new-experience {
+  padding-top: 25px;
 }
 
 .title {
