@@ -131,6 +131,7 @@ html, body {
     }
     .tooltip > .tooltip-arrow {
       // TODO: customize teh arow
+      border: 0px solid transparent;
     }
     .disabled:hover {
       cursor: not-allowed;
