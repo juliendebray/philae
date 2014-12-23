@@ -94,6 +94,7 @@ html, body {
         .panel-body-content {
           position: relative;
           left: 0px;
+          font-size: 12px;
         }
       }
     }
@@ -121,6 +122,9 @@ html, body {
       font-weight: 300;
       font-size: 13px;
       white-space: normal;
+    }
+    .disabled:hover {
+      cursor: not-allowed;
     }
   }
 }

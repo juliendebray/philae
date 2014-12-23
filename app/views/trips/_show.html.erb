@@ -73,8 +73,8 @@
             </div>
           </div>
           <div class="col-xs-4 col-sm-4">
-            <div class="button-action">
-              <button type="button" class="btn btn-default" disabled="disabled">Voir les agences et guides locaux (début 2015)</button>
+            <div class="button-action disabled">
+              <button type="button" class="btn btn-default" data-toggle= "tooltip" data-placement="top" title= "Bientôt disponible..." disabled="disabled">Voir les agences et guides locaux</button>
             </div>
           </div>
         <% end %>
@@ -121,6 +121,8 @@
 
       if (GUEST_USER) {
         var guestUserMapOptions = {
+          center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
+          zoom: 6,
           disableDoubleClickZoom: false,
           panControl: false,
           zoomControl: true,
