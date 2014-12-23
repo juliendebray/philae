@@ -3,8 +3,8 @@ class TripExperiencesController < ApplicationController
   respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience]
 
   def markers
-    markers_number = 15
-    experiences_within_bounds = Experience.within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
+    markers_number = 10
+    experiences_within_bounds = Experience.where(published: true).within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
     @experiences = select_experiences_to_show(experiences_within_bounds)
     @markers = build_markers(@experiences[0..markers_number - 1], @trip)
     render json: @markers

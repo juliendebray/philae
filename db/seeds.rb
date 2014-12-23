@@ -16,7 +16,8 @@ data_hash['feed']['entry'].each do |exp_data|
     address: exp_data['gsx$lieu']['$t'],
     latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
     longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
-    description: exp_data['gsx$description']['$t']
+    description: exp_data['gsx$description']['$t'],
+    published: true
   )
   gen_url = "http://philae-floju.s3.amazonaws.com/photos_maroc/"
   code = exp_data['gsx$code']['$t']

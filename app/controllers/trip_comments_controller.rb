@@ -34,11 +34,6 @@ class TripCommentsController < ApplicationController
         trip: trip
       })
       marker.title trip_comment.name
-      marker.picture({
-           url: "http://gmaps-samples.googlecode.com/svn/trunk/markers/blue/blank.png",
-           width: 32,
-           height: 32
-         })
     end
   end
 end

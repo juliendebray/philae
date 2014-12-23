@@ -227,6 +227,20 @@ html, body {
   }
 }
 
+#experience-infowindow {
+  .comment-name {
+    padding-left: 7px;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .comment-content {
+    padding: 7px;
+    font-weight: 100;
+    font-size: 11px;
+  }
+}
+
+
 // Experience display design
 
 .item-banner img {

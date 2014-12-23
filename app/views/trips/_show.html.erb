@@ -32,7 +32,7 @@
       <!-- Guest Modal to let him add his own experience -->
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalGuest">
-        Ajouter un commentaire
+        <small>Ajouter un commentaire</small>
       </button>
     <% end %>
   </div>
@@ -59,9 +59,8 @@
             </div>
           <% else %>
             <div id="set-orders" class="button-action">
-              <%= form_for @trip, url: {action: "update"} do |f|%>
-                <%= hidden_field_tag :order %>
-                <%= f.submit('Sauver mes commentaires', class: "btn btn-group-lg btn-info") %>
+              <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
+                <%= f.submit('Enregistrer mes commentaires', class: "btn btn-group-lg btn-info") %>
               <% end %>
             </div>
           <% end %>
@@ -149,10 +148,9 @@
         buildMapForUser(userMapOptions, <%= @trip.id %>);
         makeExperiencesSortable();
         setExperiencesOrderByClickingOnSave();
+        // Tooltip initialization
+        $('[data-toggle="tooltip"]').tooltip()
       }
-
-      // Tooltip initialization
-      $('[data-toggle="tooltip"]').tooltip()
     });
   </script>
 <% end %>
