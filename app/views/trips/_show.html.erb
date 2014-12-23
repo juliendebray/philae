@@ -54,7 +54,7 @@
             <div id="set-orders" class="button-action">
               <%= form_for @trip, url: {action: "update"} do |f|%>
                 <%= hidden_field_tag :order %>
-                <%= f.submit('Sauver mon itinéraire', class: "btn btn-info") %>
+                <%= f.submit('Enregistrer mon itinéraire', class: "btn btn-info") %>
               <% end %>
             </div>
           <% else %>
@@ -74,7 +74,7 @@
           </div>
           <div class="col-xs-4 col-sm-4">
             <div class="button-action disabled">
-              <button type="button" class="btn btn-default" data-toggle= "tooltip" data-placement="top" title= "Bientôt disponible..." disabled="disabled">Voir les prestataires</button>
+              <button type="button" class="btn btn-default" data-toggle= "tooltip" data-placement="top" title= "Bientôt disponible..." disabled="disabled">Voir les agences et guides locaux</button>
             </div>
           </div>
         <% end %>
