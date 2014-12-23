@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Bonjour</p>
+    <p>Un ami vous a donné ses conseils pour votre voyage.</p>
+    <p>Vous pouvez y accéder en allant sur la page de votre itinéraire en cliquant sur "les conseil des mes amis"
+    </p>
+      <a href='<%= ROOT_URL + "/trips/" + @trip.id.to_s %>'>Accéder aux conseil de mes amis.</a>
+    </p>
+    <p>En espérant que cela vous soit utile, nous vous souhaitons un super voyage! </p>
+    <p>L'équipe EXPLORIZERS</p>
+  </body>
+</html>

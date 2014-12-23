@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     UserMailer.share_trip(self, trip).deliver
   end
 
+  def send_notif_email(trip)
+    UserMailer.notif_trip(self, trip).deliver
+  end
+
   private
   def send_welcome_email
     UserMailer.welcome(self).deliver

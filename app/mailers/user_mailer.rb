@@ -19,4 +19,10 @@ class UserMailer < ActionMailer::Base
     @trip = trip
     mail(to: @user.email, subject: 'Share my trip')
   end
+
+  def notif_trip(user, trip)
+    @user = user
+    @trip = trip
+    mail(to: @user.email, subject: 'Un ami vous a donner ses conseils sur votre trip')
+  end
 end
