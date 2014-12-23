@@ -73,8 +73,10 @@
             </div>
           </div>
           <div class="col-xs-4 col-sm-4">
-            <div class="button-action disabled">
-              <button type="button" class="btn btn-default" data-toggle= "tooltip" data-placement="top" title= "Bientôt disponible..." disabled="disabled">Voir les agences et guides locaux</button>
+            <div class="button-action disabled" data-toggle="tooltip" data-placement="top" title="Bientôt disponible...">
+              <button type="button" class="btn btn-primary" disabled="disabled" >
+                Voir les agences et guides locaux
+              </button>
             </div>
           </div>
         <% end %>
@@ -148,6 +150,9 @@
         makeExperiencesSortable();
         setExperiencesOrderByClickingOnSave();
       }
+
+      // Tooltip initialization
+      $('[data-toggle="tooltip"]').tooltip()
     });
   </script>
 <% end %>

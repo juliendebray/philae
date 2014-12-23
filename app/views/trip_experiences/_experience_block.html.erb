@@ -5,16 +5,10 @@
         <i class="fa fa-times pull-right"></i>
       <% end %>
     <% end %>
-    <%= link_to experience_detail_path(trip_exp.experience.id), remote: true do %>
-      <i class="fa fa-search pull-right"></i>
-    <% end %>
   </div>
   <div class="panel-body">
-    <div class="panel-body-pic">
-      <%= image_tag trip_exp.experience.experience_pictures.first.picture.url(:thumb) if trip_exp.experience.experience_pictures.first %>
-    </div>
-    <div class="panel-body-content">
-      <%= trip_exp.experience.description[0..250] + "..." %>
-    </div>
+    <%= image_tag trip_exp.experience.experience_pictures.first.picture.url(:thumb) if trip_exp.experience.experience_pictures.first %>
+    <%= trip_exp.experience.description[0..200] + "..." %>
+    <%= link_to '(voir plus)', experience_detail_path(trip_exp.experience.id), remote: true %>
   </div>
 </li>
