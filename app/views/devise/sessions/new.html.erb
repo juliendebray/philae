@@ -1,3 +1,7 @@
+<%= content_for(:navbar) do %>
+  <%= 'shared/navbar2.html.erb' %>
+<% end %>
+
 <body class="signup-signin">
 
 <div id="titleblock" class="text-center">
@@ -25,7 +29,7 @@
         <div><%= f.label :email do %>
           <br />
           <i class="fa fa-envelope-o fa-2x"></i>
-          <%= f.email_field :email, placeholder: "Email" %>
+          <%= f.email_field :email, placeholder: "indiana.jones@nyu.edu" %>
           <% end %>
         </div>
 

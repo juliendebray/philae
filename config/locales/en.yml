@@ -83,8 +83,8 @@ en:
   contacts:
     new:
       title: "How can we help?"
-      name: "Your name"
-      email: "Your email address"
+      name: "Marco Polo"
+      email: "marco.polo@gmail.com"
       message: "Enter your message here, we'll get back to you shorty. Thanks."
       submit: "Send"
 
@@ -100,7 +100,7 @@ en:
   #newexperience
   experiences:
     new:
-      title: "New experience"
+      title: "Add a new experience"
       text1: "Explorizers is built of people's appeal for the project. So thanks for your contribution. "
       text2: "To make sure Explorizers remains a peaceful place, contributions are reviewed by our team. This avoids duplication, advertising, trolls, pirates and clowns. For any question, please write to dora@explorizers.com."
 

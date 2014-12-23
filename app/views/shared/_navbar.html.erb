@@ -27,8 +27,8 @@
               <% if current_user.provider %>
               <%= image_tag current_user.picture, id:'profile-pic', class: "img img-circle" %>
               <% else %>
-              <img src="http://lorempixel.com/30/30" id="profile-pic" alt="">
-              <% end %>
+<!--               <img src="http://lorempixel.com/30/30" id="profile-pic" alt="">
+ -->              <% end %>
 
               <%= current_user.email %> <span class="caret"></span>
             </a>
