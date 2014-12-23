@@ -77,24 +77,16 @@ html, body {
       }
 
       .panel-body {
-        padding-bottom: 10px;
+        padding: 0px 7px 10px 7px;
         border: none;
         border-radius: 0px;
         font-weight: 100;
         margin-bottom: 5px;
-        padding-left: 7px;
-        padding-right: 7px;
+        font-size: 11.5px;
 
-        .panel-body-picture {
-          position: relative;
-          left: 0px;
-          width: 160px;
-          height: 100px;
-        }
-        .panel-body-content {
-          position: relative;
-          left: 0px;
-          font-size: 12px;
+        img {
+          float: left;
+          margin-right: 2%;
         }
       }
     }
