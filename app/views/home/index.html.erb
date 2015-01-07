@@ -1,19 +1,21 @@
 <div class="homepage_story">
-  <div id="homeblock" class="banner text-center">
-    <div class="title">
-      <h1><%= t('.firstline') %></h1>
-      <h2><%= t('.secondline') %></h2>
+  <div class="fullpage">
+    <div id="homeblock" class="banner text-center">
+      <div class="title">
+        <h1><%= t('.firstline') %></h1>
+        <h2><%= t('.secondline') %></h2>
+      </div>
+      <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
+      <div class="form-group" class="text-center">
+        <%= f.hidden_field(:query_lat, value: 31.943808) %>
+        <%= f.hidden_field(:query_lng, value: -6.271945) %>
+        <%= f.submit( t('.searchbutton'), class: 'btn btn-primary') %>
+      </div>
+      <% end %>
     </div>
-    <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
-    <div class="form-group" class="text-center">
-      <%= f.hidden_field(:query_lat, value: 31.943808) %>
-      <%= f.hidden_field(:query_lng, value: -6.271945) %>
-      <%= f.submit( t('.searchbutton'), class: 'btn btn-primary') %>
+    <div class="arrow-down text-center">
+      <i class="fa fa-angle-down"></i>
     </div>
-    <% end %>
-  </div>
-  <div class="arrow-down text-center">
-    <i class="fa fa-angle-down"></i>
   </div>
   <div id="homepage-content">
     <div class="container">
