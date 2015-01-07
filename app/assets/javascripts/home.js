@@ -1,0 +1,1 @@
+$('.fullpage').height($(window).height());

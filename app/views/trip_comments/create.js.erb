@@ -1,15 +1,16 @@
 $('#myModalGuest').modal('hide');
 
-var tmpl =
-'<li id="<%= @trip_comment.id %>" class="panel panel-info" %>">' +
-  '<div class="panel-heading"><%= @trip_comment.address %>' +
-    '<%= form_tag trip_trip_comment_path(@trip_comment.trip, @trip_comment), remote: true, method: :delete, class: "form-inline pull-right" do %>'+
-      '<%= submit_tag "X", class: "exp-rm-btn" %>' +
-    '<% end %>' +
-  '</div>'+
-  '<div class="panel-body"><%= @trip_comment.description %></div>'+
-'</li>';
+// TODO: Remove or to be put into a partial
+// var tmpl =
+// '<li id="<%= @trip_comment.id %>" class="panel panel-info" %>">' +
+//   '<div class="panel-heading"><%= @trip_comment.address %>' +
+//     '<%= form_tag trip_trip_comment_path(@trip_comment.trip, @trip_comment), remote: true, method: :delete, class: "form-inline pull-right" do %>'+
+//       '<%= submit_tag "X", class: "exp-rm-btn" %>' +
+//     '<% end %>' +
+//   '</div>'+
+  // '<div class="panel-body"> TODO: Description with simple format or gsub to remove line break @trip_comment.description</div>'+
+// '</li>';
 
-$('#trip-comments-list').append(tmpl);
+// $('#trip-comments-list').append(tmpl);
 
 // TODO: add List of Comments and ability to remove them
