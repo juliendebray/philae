@@ -10,11 +10,10 @@ class @InfoBoxBuilder extends Gmaps.Google.Builders.Marker # inherit from base b
 
   infobox: (boxText)->
     content: boxText
-    ,disableAutoPan: false
+    ,disableAutoPan: true
     ,pixelOffset: new google.maps.Size(-140, -40)
     ,alignBottom: true
     ,zIndex: null
-    ,disableAutoPan: true
     ,closeBoxURL: ""
     ,boxStyle: {
       width: "280px"
@@ -24,3 +23,5 @@ class @InfoBoxBuilder extends Gmaps.Google.Builders.Marker # inherit from base b
     ,isHidden: false
     ,pane: "floatPane"
     ,enableEventPropagation: false
+
+

@@ -71,7 +71,7 @@ function setCarouselOnInfowindow(data) {
     return;
   }
   var map = handler.getMap();
-var data = data;
+  var data = data;
   for (var i = 0; i < markers.length; i++) {
     markers[i].serviceObject.set('id',i);
     google.maps.event.clearListeners(markers[i].serviceObject);
@@ -201,7 +201,7 @@ function buildMapForGuestUser(mapOptions, trip_id) {
 }
 
 function buildMapForUser(mapOptions, trip_id) {
-  handler = Gmaps.build('Google', { builders: { Marker: InfoBoxBuilder} });
+  handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
   var requestingMarkers = false;
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
@@ -210,6 +210,10 @@ function buildMapForUser(mapOptions, trip_id) {
     // SET MARKERS DEPENDING ON USER CHOICE
     $('#user-choices').on("change", function() {
       closeInfoWindowIfOpened();
+      if (ibOpened) {
+      ib.close();
+      ibOpened = false;
+      }
       if ($('#user-experiences').prop('checked')){
         // Set map with booked experiences;
         google.maps.event.clearListeners(map, 'dragend');
@@ -284,7 +288,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {
     google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || ibOpened) {
+     if (requestingMarkers || ibOpened || ($('#all-experiences').prop('checked')== false)) {
      return;
      }
      requestingMarkers = true;
@@ -296,7 +300,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when zoom changes
   google.maps.event.addListener(map, 'zoom_changed', function() {
    google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || ibOpened) {
+     if (requestingMarkers || ibOpened || ($('#all-experiences').prop('checked')== false)) {
        return;
      }
      requestingMarkers = true;
