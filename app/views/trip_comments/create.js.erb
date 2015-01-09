@@ -1,5 +1,17 @@
 $('#myModalGuest').modal('hide');
 
+
+// Set map with trip_comments;
+var url = "/trips/"+ <%= @trip.id %> +"/trip_comments/comments_markers";
+$.get(url, function(data) {
+  // handler.removeMarkers(markers);
+  markers = handler.addMarkers(data);
+  setGuestCommentInfowindow(data);
+  handler.bounds.extendWith(markers);
+  requestingMarkers = false;
+});
+
+
 // TODO: Remove or to be put into a partial
 // var tmpl =
 // '<li id="<%= @trip_comment.id %>" class="panel panel-info" %>">' +

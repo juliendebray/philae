@@ -57,7 +57,7 @@ class TripExperiencesController < ApplicationController
   end
 
   def experience_params
-    params.require(:experience).permit(:name, :address, :description, :category_id, experience_pictures_attributes: [:picture])
+    params.require(:experience).permit(:name, :address, :latitude, :longitude, :description, :category_id, experience_pictures_attributes: [:picture])
   end
 
   def select_experiences_to_show(experiences)
