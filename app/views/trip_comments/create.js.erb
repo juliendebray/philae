@@ -1,28 +1,50 @@
 $('#myModalGuest').modal('hide');
+var markerJson = {
+  "lat": <%= @trip_comment.latitude %>,
+  "lng": <%= @trip_comment.longitude %>,
+  "marker_title": "<%= @trip_comment.name %>",
+  "infobox": "<%= j render('/trip_comments/infowindow.html.erb',
+    {trip_comment: @trip_comment, trip: @trip} )%>"
+};
 
+var marker = handler.addMarker(markerJson);
+markers.push(marker);
+marker.serviceObject.set('id',markers.length - 1);
+google.maps.event.clearListeners(marker.serviceObject);
+google.maps.event.addListener(marker.serviceObject, 'click', function(event) {
+  var map = handler.getMap();
+  if (ibOpened) {
+    ib.close();
+    ibOpened = false;
+  }
+  var boxText = document.createElement("div");
+  boxText.setAttribute("class", 'infobox-container');
 
-// Set map with trip_comments;
-var url = "/trips/"+ <%= @trip.id %> +"/trip_comments/comments_markers";
-$.get(url, function(data) {
-  // handler.removeMarkers(markers);
-  markers = handler.addMarkers(data);
-  setGuestCommentInfowindow(data);
-  handler.bounds.extendWith(markers);
-  requestingMarkers = false;
+  boxText.innerHTML = markerJson.infobox;
+
+  var infoboxOptions = {
+    content: boxText
+    ,disableAutoPan: true
+    ,pixelOffset: new google.maps.Size(-140, -40)
+    ,alignBottom: true
+    ,zIndex: null
+    ,disableAutoPan: true
+    ,closeBoxURL: ""
+    ,boxStyle: {
+      width: "280px"
+      ,opacity: 1
+    }
+    ,infoBoxClearance: new google.maps.Size(1, 1)
+    ,isHidden: false
+    ,pane: "floatPane"
+    ,enableEventPropagation: false
+  };
+
+  ib = new InfoBox(infoboxOptions);
+
+  ib.open(map, this);
+  ibOpened = true;
+  google.maps.event.addListener(ib, 'domready', function(){
+    mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -0.947300072, 0.9909910672);
+  });
 });
-
-
-// TODO: Remove or to be put into a partial
-// var tmpl =
-// '<li id="<%= @trip_comment.id %>" class="panel panel-info" %>">' +
-//   '<div class="panel-heading"><%= @trip_comment.address %>' +
-//     '<%= form_tag trip_trip_comment_path(@trip_comment.trip, @trip_comment), remote: true, method: :delete, class: "form-inline pull-right" do %>'+
-//       '<%= submit_tag "X", class: "exp-rm-btn" %>' +
-//     '<% end %>' +
-//   '</div>'+
-  // '<div class="panel-body"> TODO: Description with simple format or gsub to remove line break @trip_comment.description</div>'+
-// '</li>';
-
-// $('#trip-comments-list').append(tmpl);
-
-// TODO: add List of Comments and ability to remove them

@@ -2,8 +2,9 @@
 var handler;
 var markers = {};
 var ibOpened = false;
-var ib  = {};
+var ib = {};
 var requestingMarkers = false;
+var markersAddedManually = [];
 
 function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, rightOffset) {
   var map = handler.getMap();
@@ -97,11 +98,13 @@ function setGuestCommentInfowindow(data) {
     return;
   }
   for (var i = 0; i < markers.length; i++) {
-    markers[i].serviceObject.set('id',i);
-    google.maps.event.clearListeners(markers[i].serviceObject);
-    google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
-      openInfowindowOnClick(data, this, false);
-    });
+    setListenerOnMarker(data, i, false);
+
+    // markers[i].serviceObject.set('id',i);
+    // google.maps.event.clearListeners(markers[i].serviceObject);
+    // google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
+    //   openInfowindowOnClick(data, this, false);
+    // });
   }
 }
 
@@ -110,13 +113,23 @@ function setExperienceInfowindow(data) {
     return;
   }
   for (var i = 0; i < markers.length; i++) {
-    markers[i].serviceObject.set('id',i);
-    google.maps.event.clearListeners(markers[i].serviceObject);
-    google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
-      openInfowindowOnClick(data, this, true);
-    });
+    setListenerOnMarker(data, i, true);
+    // markers[i].serviceObject.set('id',i);
+    // google.maps.event.clearListeners(markers[i].serviceObject);
+    // google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
+    //   openInfowindowOnClick(data, this, true);
+    // });
   }
 }
+
+function setListenerOnMarker(data, index, carrouselRequired) {
+  markers[index].serviceObject.set('id',index);
+  google.maps.event.clearListeners(markers[index].serviceObject);
+  google.maps.event.addListener(markers[index].serviceObject, 'click', function(event) {
+    openInfowindowOnClick(data, this, carrouselRequired);
+  });
+}
+
 
 function setCarrousel() {
   $(".owl-carousel.small").owlCarousel({
@@ -186,7 +199,14 @@ function placeMarker(location) {
       position: location,
       map: handler.getMap()
   });
-  markers.push(marker)
+  markersAddedManually.push(marker);
+}
+
+function removeMarkersAddedManually() {
+  for (var i = 0; i < markersAddedManually.length; i++) {
+    markersAddedManually[i].setMap(null);
+  }
+  markersAddedManually = [];
 }
 
 function buildMapForGuestUser(mapOptions, trip_id) {
@@ -198,15 +218,12 @@ function buildMapForGuestUser(mapOptions, trip_id) {
       handler.fitMapToBounds();
       requestingMarkers = r;
     });
-    // Markers creation- test
-    google.maps.event.addListener(map, 'click', function(event) {
-        placeMarker(event.latLng);
-    });
 
     showModalByClikingOnMap(map, '#myModalGuest', '#trip_comment_address', '#trip_comment_latitude', '#trip_comment_longitude');
 
-    // Reset modal process
+    // Reset modal process and remove marker added manually
     $('#myModalGuest').on('hidden.bs.modal', function(){
+        removeMarkersAddedManually();
         $('#trip_comment_address').val('');
         $('#trip_comment_description').val('');
       });
@@ -268,8 +285,8 @@ function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field
       ibOpened = false;
     } else {
       updateTimeout = setTimeout(function() {
+        placeMarker(e.latLng);
         var geocoder = new google.maps.Geocoder();
-        // console.log(e);
         geocoder.geocode({'latLng': e.latLng}, function(results, status){
           $(modal_id).modal('show');
           $(latitude_field_id).val(e.latLng.k);
