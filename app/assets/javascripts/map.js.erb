@@ -304,7 +304,7 @@ function buildMapForUser(mapOptions, trip_id) {
         setMapWithUserExperiences(trip_id, map, function(r) {
           requestingMarkers = r;
           if (markers.length == 0) {
-            alert('Vous n\'avez pour le moment pas sélectionné d\'expériences :( ... Ajoutez-en d\'abord à votre itinéraire !');
+            alert('Vous n\'avez pas encore sélectionné d\'expériences :( ... Ajoutez-en d\'abord à votre itinéraire en cliquant sur \"Les meilleures expériences\" !');
           }
          });
 
@@ -320,7 +320,7 @@ function buildMapForUser(mapOptions, trip_id) {
         setMapWithGuestComments(trip_id, map, function(r) {
           requestingMarkers = r;
           if (markers.length == 0) {
-            alert('Oups... Vous n\'avez pas encore de commentaires de vos amis. Vous pouvez leur en demaner an cliquant plus bas sur \"Demander des conseils\"');
+            alert('Oups... Vous n\'avez pas encore de commentaires de vos amis. Vous pouvez leur en demander an cliquant plus bas sur \"Demander des conseils\"');
           }
         });
 
