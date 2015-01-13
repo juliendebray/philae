@@ -32,6 +32,7 @@ class TripCommentsController < ApplicationController
 
   def destroy
     @trip_comment = TripComment.find(params[:id])
+    @trip = @trip_comment.trip
     @trip_comment.destroy
   end
 
@@ -41,7 +42,7 @@ class TripCommentsController < ApplicationController
     # elsif condition
 
     # end
-    @markers = build_markers_comments(@trip.trip_comments, @trip)
+    @markers = build_markers_comments(@trip.trip_comments)
     render json: @markers
   end
 

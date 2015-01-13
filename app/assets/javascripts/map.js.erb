@@ -253,6 +253,42 @@ function buildMapForGuestUser(mapOptions, trip_id) {
   });
 }
 
+function setMarkersAccordingToBounds(map, trip_id, callback) {
+  var url = buildUrlWithBounds(map, trip_id);
+  setMarkersAccordingToApi(url, callback);
+}
+
+function setMarkersAccordingToApi(url, callback) {
+  requestingMarkers = true;
+  $.get(url, function(data) {
+    handler.removeMarkers(markers);
+    markers = handler.addMarkers(data);
+    setExperienceInfowindow(data);
+    handler.bounds.extendWith(markers);
+    callback(false);
+  });
+}
+
+function setMapWithGuestComments(trip_id, map, callback) {
+  google.maps.event.clearListeners(map, 'dragend');
+  google.maps.event.clearListeners(map, 'zoom_changed');
+  var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
+  $.get(url, function(data) {
+    handler.removeMarkers(markers);
+    markers = handler.addMarkers(data);
+    setGuestCommentInfowindow(data);
+    handler.bounds.extendWith(markers);
+    requestingMarkers = false;
+  });
+}
+
+function setMapWithUserExperiences(trip_id, map, callback) {
+  google.maps.event.clearListeners(map, 'dragend');
+  google.maps.event.clearListeners(map, 'zoom_changed');
+  var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
+  setMarkersAccordingToApi(url, callback);
+}
+
 function buildMapForUser(mapOptions, trip_id) {
   handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
@@ -267,24 +303,33 @@ function buildMapForUser(mapOptions, trip_id) {
       }
       if ($('#user-experiences').prop('checked')){
         // Set map with booked experiences;
-        google.maps.event.clearListeners(map, 'dragend');
-        google.maps.event.clearListeners(map, 'zoom_changed');
-        var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
-        setMarkersAccordingToApi(url, function(r) {
+        setMapWithUserExperiences(trip_id, map, function(r) {
           requestingMarkers = r;
-        });
+         });
+
+
+        // google.maps.event.clearListeners(map, 'dragend');
+        // google.maps.event.clearListeners(map, 'zoom_changed');
+        // var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
+        // setMarkersAccordingToApi(url, function(r) {
+        //   requestingMarkers = r;
+        // });
       } else if ($('#guests-comments').prop('checked')) {
         // Set map with trip_comments;
-        google.maps.event.clearListeners(map, 'dragend');
-        google.maps.event.clearListeners(map, 'zoom_changed');
-        var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
-        $.get(url, function(data) {
-          handler.removeMarkers(markers);
-          markers = handler.addMarkers(data);
-          setGuestCommentInfowindow(data);
-          handler.bounds.extendWith(markers);
+        setMapWithGuestComments(trip_id, map, function(r) {
           requestingMarkers = false;
         });
+
+        // google.maps.event.clearListeners(map, 'dragend');
+        // google.maps.event.clearListeners(map, 'zoom_changed');
+        // var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
+        // $.get(url, function(data) {
+        //   handler.removeMarkers(markers);
+        //   markers = handler.addMarkers(data);
+        //   setGuestCommentInfowindow(data);
+        //   handler.bounds.extendWith(markers);
+        //   requestingMarkers = false;
+        // });
       } else if ($('#all-experiences').prop('checked')) {
         setMarkersAndKeepListening(map, trip_id);
       }
@@ -292,6 +337,7 @@ function buildMapForUser(mapOptions, trip_id) {
     showModalByClikingOnMap(map, '#myModal', '#experience_address', '#experience_latitude', '#experience_longitude');
     // Reset modal process
     $('#myModal').on('hidden.bs.modal', function(){
+      removeMarkersAddedManually();
       $('#experience_name').val('');
       $('#experience_address').val('');
       $('#experience_description').val('');

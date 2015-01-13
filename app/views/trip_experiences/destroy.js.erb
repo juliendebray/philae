@@ -1,1 +1,7 @@
-$('li#<%= @trip_experience.id %>').remove()
+$('li#<%= @trip_experience.id %>').remove();
+if ($('#user-experiences').prop('checked')) {
+  var map = handler.getMap();
+  setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
+    requestingMarkers = r;
+  });
+}
