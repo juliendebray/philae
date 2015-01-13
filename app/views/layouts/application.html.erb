@@ -5,10 +5,10 @@
       <%= yield_with_default(:title, "Explorizers | Travel like no other") %>
     </title>
     <meta name="description" content="<%= yield_with_default(:description,"Explorizers is the best easy-to-use plateform for discovering inspiring places around the world")%>" >
-    <%= favicon_link_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= yield :map_css %>
+    <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">

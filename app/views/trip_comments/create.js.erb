@@ -1,43 +1,45 @@
-$('#myModalGuest').modal('hide');
+$( document ).ready(function() {
+  $('#myModalGuest').modal('hide');
 
-var markerJson = {
-  "lat": <%= @trip_comment.latitude %>,
-  "lng": <%= @trip_comment.longitude %>,
-  "marker_title": "<%= @trip_comment.name %>",
-  "infobox": "<%= j render('/trip_comments/infowindow.html.erb',
-    {trip_comment: @trip_comment, trip: @trip} )%>"
-};
+  var markerJson = {
+    "lat": <%= @trip_comment.latitude %>,
+    "lng": <%= @trip_comment.longitude %>,
+    "marker_title": "<%= @trip_comment.name %>",
+    "infobox": "<%= j render('/trip_comments/infowindow.html.erb',
+      {trip_comment: @trip_comment, trip: @trip} )%>"
+  };
 
-commentsJsonStore.push(markerJson);
+  commentsJsonStore.push(markerJson);
 
-var marker = handler.addMarker(markerJson);
-commentsMarkers.push(marker);
+  var marker = handler.addMarker(markerJson);
+  commentsMarkers.push(marker);
 
-setListenerOnMarker(commentsMarkers, commentsJsonStore, commentsMarkers.length - 1, false);
+  setListenerOnMarker(commentsMarkers, commentsJsonStore, commentsMarkers.length - 1, false);
 
-// marker.serviceObject.set('id',commentsMarkers.length - 1);
-// google.maps.event.clearListeners(marker.serviceObject);
-// google.maps.event.addListener(marker.serviceObject, 'click', function(event) {
-//   openInfowindowOnClick(commentsJsonStore, this, false);
-//   // var map = handler.getMap();
-//   // if (ibOpened) {
-//   //   ib.close();
-//   //   ibOpened = false;
-//   // }
-//   // var boxText = document.createElement("div");
-//   // boxText.setAttribute("class", 'infobox-container');
-//   // boxText.setAttribute("id", this.id);
+  // marker.serviceObject.set('id',commentsMarkers.length - 1);
+  // google.maps.event.clearListeners(marker.serviceObject);
+  // google.maps.event.addListener(marker.serviceObject, 'click', function(event) {
+  //   openInfowindowOnClick(commentsJsonStore, this, false);
+  //   // var map = handler.getMap();
+  //   // if (ibOpened) {
+  //   //   ib.close();
+  //   //   ibOpened = false;
+  //   // }
+  //   // var boxText = document.createElement("div");
+  //   // boxText.setAttribute("class", 'infobox-container');
+  //   // boxText.setAttribute("id", this.id);
 
-//   // boxText.innerHTML = commentsJsonStore[this.id].infobox;
+  //   // boxText.innerHTML = commentsJsonStore[this.id].infobox;
 
-//   // var infoboxOptions = setInfoboxOptions(boxText);
+  //   // var infoboxOptions = setInfoboxOptions(boxText);
 
-//   // ib = new InfoBox(infoboxOptions);
+  //   // ib = new InfoBox(infoboxOptions);
 
-//   // ib.open(map, this);
-//   // ibOpened = true;
-//   // google.maps.event.addListener(ib, 'domready', function(){
-//   //   initalizeLinkWithRemoteTrue()
-//   //   mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -0.947300072, 0.9909910672);
-//   // });
-// });
+  //   // ib.open(map, this);
+  //   // ibOpened = true;
+  //   // google.maps.event.addListener(ib, 'domready', function(){
+  //   //   initalizeLinkWithRemoteTrue()
+  //   //   mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -0.947300072, 0.9909910672);
+  //   // });
+  // });
+});

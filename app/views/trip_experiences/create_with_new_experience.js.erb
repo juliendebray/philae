@@ -1,18 +1,20 @@
-$('#myModal').modal('hide');
-$('#draggablePanelList').append(
-  '<%= j render("/trip_experiences/experience_block.html.erb",
-  {trip_exp: @trip_experience, guest_user: false} ) %>'
-);
-$('#user-experiences').prop('checked','checked')
-var map = handler.getMap();
-setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
-  requestingMarkers = r;
+$( document ).ready(function() {
+  $('#myModal').modal('hide');
+  $('#draggablePanelList').append(
+    '<%= j render("/trip_experiences/experience_block.html.erb",
+    {trip_exp: @trip_experience, guest_user: false} ) %>'
+  );
+  $('#user-experiences').prop('checked','checked')
+  var map = handler.getMap();
+  setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
+    requestingMarkers = r;
+  });
+
+
+  // google.maps.event.clearListeners(map, 'dragend');
+  // google.maps.event.clearListeners(map, 'zoom_changed');
+  // var url = "/trips/"+ <%= @trip.id %> +"/trip_experiences/trip_markers";
+  // setMarkersAccordingToApi(url, function(r) {
+  //   requestingMarkers = r;
+  // });
 });
-
-
-// google.maps.event.clearListeners(map, 'dragend');
-// google.maps.event.clearListeners(map, 'zoom_changed');
-// var url = "/trips/"+ <%= @trip.id %> +"/trip_experiences/trip_markers";
-// setMarkersAccordingToApi(url, function(r) {
-//   requestingMarkers = r;
-// });

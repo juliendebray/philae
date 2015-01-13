@@ -2,7 +2,6 @@ function initializeAutocomplete(id) {
   var defaultBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(-90, 180),
     new google.maps.LatLng(90, 180));
-
   var input = document.getElementById(id);
 
   var options = {
@@ -12,12 +11,13 @@ function initializeAutocomplete(id) {
 
   if (input) {
     var autocomplete = new google.maps.places.Autocomplete(input, options);
-    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+    google.maps.event.addListener(autocomplete, 'place_changed');
+    // google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged); // Uncomment to enable prefill functionality
   }
 }
 
-function onPlaceChanged() {
-  var place = this.getPlace();
+// function onPlaceChanged() {
+  // var place = this.getPlace();
   // $('#trip_query_lat').attr('value', place.geometry.location.k);
   // $('#trip_query_lng').attr('value', place.geometry.location.D);
 
@@ -32,10 +32,11 @@ function onPlaceChanged() {
 //       }
 //     }
 //   }
-}
+// }
 
 if(typeof google !== "undefined") {
   google.maps.event.addDomListener(window, 'load', function() {
     initializeAutocomplete('experience_address');
+    initializeAutocomplete('trip_comment_address');
   });
 }

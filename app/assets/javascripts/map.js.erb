@@ -233,12 +233,16 @@ function removeMarkersAddedManually() {
 }
 
 function buildMapForGuestUser(mapOptions, trip_id) {
+  $('#myModalPresentation').modal('show');
   handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
   handler.buildMap({provider: mapOptions, internal: {id: 'map'}}, function(){
     var map = handler.getMap();
     var url = "/trips/" + trip_id + "/trip_experiences/trip_markers";
     setMarkersAccordingToApi(url, function(r) {
       handler.fitMapToBounds();
+      if (map.getZoom() > 7) {
+        map.setZoom(7);
+      }
       requestingMarkers = r;
     });
 
@@ -273,13 +277,7 @@ function setMapWithGuestComments(trip_id, map, callback) {
   google.maps.event.clearListeners(map, 'dragend');
   google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
-  $.get(url, function(data) {
-    handler.removeMarkers(markers);
-    markers = handler.addMarkers(data);
-    setGuestCommentInfowindow(data);
-    handler.bounds.extendWith(markers);
-    requestingMarkers = false;
-  });
+  setMarkersAccordingToApi(url, callback);
 }
 
 function setMapWithUserExperiences(trip_id, map, callback) {
@@ -305,6 +303,9 @@ function buildMapForUser(mapOptions, trip_id) {
         // Set map with booked experiences;
         setMapWithUserExperiences(trip_id, map, function(r) {
           requestingMarkers = r;
+          if (markers.length == 0) {
+            alert('Vous n\'avez pour le moment pas sélectionné d\'expériences :( ... Ajoutez-en d\'abord à votre itinéraire !');
+          }
          });
 
 
@@ -317,7 +318,10 @@ function buildMapForUser(mapOptions, trip_id) {
       } else if ($('#guests-comments').prop('checked')) {
         // Set map with trip_comments;
         setMapWithGuestComments(trip_id, map, function(r) {
-          requestingMarkers = false;
+          requestingMarkers = r;
+          if (markers.length == 0) {
+            alert('Oups... Vous n\'avez pas encore de commentaires de vos amis. Vous pouvez leur en demaner an cliquant plus bas sur \"Demander des conseils\"');
+          }
         });
 
         // google.maps.event.clearListeners(map, 'dragend');

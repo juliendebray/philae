@@ -1,5 +1,7 @@
-$('#draggablePanelList').append(
-  '<%= j render("/trip_experiences/experience_block.html.erb",
-  {trip_exp: @trip_experience, guest_user: false} ) %>'
-);
-addBoxShadowEffectWhileDraggingBox();
+$( document ).ready(function() {
+  $('#draggablePanelList').append(
+    '<%= j render("/trip_experiences/experience_block.html.erb",
+    {trip_exp: @trip_experience, guest_user: false} ) %>'
+  );
+  addBoxShadowEffectWhileDraggingBox();
+});
