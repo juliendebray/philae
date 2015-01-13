@@ -1,1 +1,15 @@
-$('li#<%= @trip_comment.id %>').remove()
+$( document ).ready(function() {
+  var id = parseInt($('.infobox-container').attr('id'));
+  ib.close();
+  ibOpened = false;
+  if (commentsMarkers[id] != null) {
+    commentsMarkers[id].setMap(null);
+  }
+  if ($('#guests-comments').prop('checked')) {
+    var map = handler.getMap();
+    setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
+      requestingMarkers = r;
+    });
+  }
+});
+

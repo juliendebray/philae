@@ -1,6 +1,28 @@
 <%= render 'show' %>
 
 <!-- Guest Modal to display -->
+<!-- Presentation of the service -->
+<div class="modal fade" id="myModalPresentation" tabindex="-1" role="dialog" aria-labelledby="myModalPresentationLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalPresentationLabel">Bienvenue sur EXPLORIZERS</h4>
+      </div>
+      <div class="modal-body">
+        <p>Vous avez été sollicité pour aider un ami à préparer son prochain voyage. Rien de plus simple :</p>
+        <p>1/ Consulter les endroits que votre ami enviseage de visiter</p>
+        <p>2/ Cliquez sur la carte pour faire part de vos commentaires, bons plans, meilleures addresses, etc.</p>
+        <p>3/ Une fois fini, cliquez sur "enregistrer mes commentaires" et votre ami pourra retrouver vos conseils sur son espace perso</p>
+      </div>
+      <div class="modal-footer">
+        <div class="text-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Let's go!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Add a comment -->
 <div class="modal fade" id="myModalGuest" tabindex="-1" role="dialog" aria-labelledby="myModalGuestLabel" aria-hidden="true">
   <div class="modal-dialog">

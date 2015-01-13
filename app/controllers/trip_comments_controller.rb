@@ -3,16 +3,46 @@ class TripCommentsController < ApplicationController
   respond_to :js, only: [:comments_markers]
 
   def create
+    # @trip = Trip.find(params[:trip_id])
+    # p @trip.id
     @trip_comment = @trip.trip_comments.create(trip_comments_params)
+    # puts '$$$$$$$$$$$$$$$$$$$'
+    # @marker = {}
+    # @marker[:lat] = @trip_comment.latitude
+    # @marker[:lng] = @trip_comment.longitude
+    # @marker[:infobox] = render_to_string(partial: "/trip_comments/infowindow.html.erb", locals: {
+    #   trip_comment: @trip_comment,
+    #   trip: @trip
+    # })
+    # @marker[:title] = @trip_comment.name
+
+
+    # puts @marker
+    # puts 'ssssssss--------- JSON ------------ ssssssss'
+    # puts @marker.to_json
+
+    # markers = build_markers_comments([@trip_comment], @trip)
+    # puts '$$$$$$$$$$$$$$$$$$$'
+
+    # @marker = markers[0].to_json
+
+    # p @markers
+    # # p session['session_id']
   end
 
   def destroy
     @trip_comment = TripComment.find(params[:id])
+    @trip = @trip_comment.trip
     @trip_comment.destroy
   end
 
   def comments_markers
-    @markers = build_markers_comments(@trip.trip_comments, @trip)
+    # if current_user = @trip.user
+    #   @markers = build_markers_comments(@trip.trip_comments, @trip)
+    # elsif condition
+
+    # end
+    @markers = build_markers_comments(@trip.trip_comments)
     render json: @markers
   end
 
@@ -22,16 +52,17 @@ class TripCommentsController < ApplicationController
   end
 
   def trip_comments_params
-    params.require(:trip_comment).permit(:name, :address, :description)
+    params.require(:trip_comment).permit(:name, :address, :description, :latitude, :longitude)
   end
 
-  def build_markers_comments(trip_comments, trip)
+  def build_markers_comments(trip_comments)
     Gmaps4rails.build_markers(trip_comments) do |trip_comment, marker|
       marker.lat trip_comment.latitude
       marker.lng trip_comment.longitude
-      marker.infowindow render_to_string(partial: "/trip_comments/infowindow.html.erb", locals: {
-        trip_comment: trip_comment,
-        trip: trip
+      marker.json({
+        infobox:  render_to_string(partial: "/trip_comments/infowindow.html.erb", locals: {
+          trip_comment: trip_comment
+        })
       })
       marker.title trip_comment.name
     end

@@ -8,25 +8,32 @@
       <% end %>
     </div>
   <% end %>
-  <div class="rating">
+  <% if experience.published %>
+    <div class="rating">
       <span class="average">
         <%= experience.average_rating %>
       </span>
       <span class="out-of">/</span>
       <span class="best">10</span>
-    <% if current_user || trip.token.nil? %>
-    <span class="pull-right">
-      <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
-        <%= f.hidden_field :experience_id, value: experience.id %>
-        <%= f.submit t('addtotrip'), class: "fa" %>
+      <% if current_user || trip.token.nil? %>
+        <span class="pull-right">
+          <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
+            <%= f.hidden_field :experience_id, value: experience.id %>
+            <%= f.submit t('addtotrip'), class: "fa" %>
+          <% end %>
+        </span>
       <% end %>
-    <% end %>
-    </span>
-  </div>
+    </div>
+  <% end %>
   <div class="infobox-content">
     <%= link_to experience_detail_path(experience.id), remote: true do %>
       <%=experience.name%>
     <% end %>
       <!-- TODO: Show directly modal with a data-toggle without waiting the controller-->
+    <% unless experience.published %>
+      <p>
+        <small><i><%= experience.description %></i></small>
+      </p>
+    <% end %>
   </div>
 </div>

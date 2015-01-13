@@ -1,9 +1,12 @@
-// Variables gloablly needed to retrieve google maps objects
+// Variables globally needed to retrieve google maps objects
 var handler;
 var markers = {};
 var ibOpened = false;
-var ib  = {};
-
+var ib = {};
+var requestingMarkers = false;
+var markersAddedManually = [];
+var commentsJsonStore = [];
+var commentsMarkers = [];
 
 function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, rightOffset) {
   var map = handler.getMap();
@@ -50,91 +53,124 @@ function latlngToPoint(map, latlng, z) {
   return pixelCoordinate;
 }
 
-function checkIfInfoWindowIsOpened() {
-  if (handler.currentInfowindow() == null) {
-    return false;
-  } else if (handler.currentInfowindow().getMap() == null) {
-    return false;
-  } else {
-    return true;
+function setInfoboxOptions(boxText){
+  var infoboxOptions = {
+    content: boxText
+    ,disableAutoPan: true
+    ,pixelOffset: new google.maps.Size(-140, -40)
+    ,alignBottom: true
+    ,zIndex: null
+    ,disableAutoPan: true
+    ,closeBoxURL: ""
+    ,boxStyle: {
+      width: "280px"
+      ,opacity: 1
+    }
+    ,infoBoxClearance: new google.maps.Size(1, 1)
+    ,isHidden: false
+    ,pane: "floatPane"
+    ,enableEventPropagation: false
+  };
+  return infoboxOptions;
+}
+function openInfowindowOnClick(data, marker, carrouselRequired) {
+  var map = handler.getMap();
+  var data = data;
+  if (ibOpened) {
+    ib.close();
+    ibOpened = false;
   }
+  var boxText = document.createElement("div");
+  boxText.setAttribute("class", 'infobox-container');
+  boxText.setAttribute("id", marker.id);
+
+  boxText.innerHTML = data[marker.id].infobox;
+
+  var infoboxOptions = setInfoboxOptions(boxText);
+  // {
+  //   content: boxText
+  //   ,disableAutoPan: true
+  //   ,pixelOffset: new google.maps.Size(-140, -40)
+  //   ,alignBottom: true
+  //   ,zIndex: null
+  //   ,disableAutoPan: true
+  //   ,closeBoxURL: ""
+  //   ,boxStyle: {
+  //     width: "280px"
+  //     ,opacity: 1
+  //   }
+  //   ,infoBoxClearance: new google.maps.Size(1, 1)
+  //   ,isHidden: false
+  //   ,pane: "floatPane"
+  //   ,enableEventPropagation: false
+  // };
+
+  ib = new InfoBox(infoboxOptions);
+  ib.open(map, marker);
+  ibOpened = true;
+  google.maps.event.addListener(ib, 'domready', function(){
+    if (carrouselRequired) {
+      setCarrousel();
+    }
+    mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -0.947300072, 0.9909910672);
+    initalizeLinkWithRemoteTrue();
+  });
 }
 
-function closeInfoWindowIfOpened() {
-  if (checkIfInfoWindowIsOpened()) {
-    handler.currentInfowindow().close();
-  }
-}
-
-function setCarouselOnInfowindow(data) {
+function setGuestCommentInfowindow(data) {
   if (markers.length == 0) {
     return;
   }
-  var map = handler.getMap();
-var data = data;
   for (var i = 0; i < markers.length; i++) {
-    markers[i].serviceObject.set('id',i);
-    google.maps.event.clearListeners(markers[i].serviceObject);
-    google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
-      if (ibOpened) {
-        ib.close();
-        ibOpened = false;
-      } else {
-        var boxText = document.createElement("div");
-        boxText.setAttribute("class", 'infobox-container');
+    setListenerOnMarker(markers, data, i, false);
 
-        boxText.innerHTML = data[this.id].infobox;
-
-        var infoboxOptions = {
-          content: boxText
-          ,disableAutoPan: true
-          ,pixelOffset: new google.maps.Size(-140, -40)
-          ,alignBottom: true
-          ,zIndex: null
-          ,disableAutoPan: true
-          ,closeBoxURL: ""
-          ,boxStyle: {
-            width: "280px"
-            ,opacity: 1
-          }
-          ,infoBoxClearance: new google.maps.Size(1, 1)
-          ,isHidden: false
-          ,pane: "floatPane"
-          ,enableEventPropagation: false
-        };
-
-        ib = new InfoBox(infoboxOptions);
-        ib.open(map, this);
-        ibOpened = true;
-        google.maps.event.addListener(ib, 'domready', function(){
-          $(".owl-carousel.small").owlCarousel({
-            items: 1,
-            singleItem: true,
-            navigation : true,
-            navigationText : [
-              "<i class='fa fa-angle-left'></i>",
-              "<i class='fa fa-angle-right'></i>"
-            ],
-            pagination : false,
-            slideSpeed : 300,
-            paginationSpeed : 400,
-            rewindSpeed: 1,
-            slideSpeed: 1
-            // lazyLoad : true, // TODO: set img class and data-src and css accordingly (if needed)
-          });
-          mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -0.947300072, 0.9909910672);
-          // Wide screen (width: 930 / heigth: 500)
-          // mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -896.6936455111118, 924.3063544888882);
-          // Small screen (width: 632 / heigth: 500))
-          // mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -598.6936455111136, 626.3063544888864);
-          // Very Small (width: 370 / heigth: 500)
-          // mapPanToContainInfoBox(ib, 54.70033307669564, -17.994751360066402, -338.6936455111136, 364.3063544888864);
-
-          initalizeLinkWithRemoteTrue();
-        });
-      }
-    });
+    // markers[i].serviceObject.set('id',i);
+    // google.maps.event.clearListeners(markers[i].serviceObject);
+    // google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
+    //   openInfowindowOnClick(data, this, false);
+    // });
   }
+}
+
+function setExperienceInfowindow(data) {
+  if (markers.length == 0) {
+    return;
+  }
+  for (var i = 0; i < markers.length; i++) {
+    setListenerOnMarker(markers, data, i, true);
+    // markers[i].serviceObject.set('id',i);
+    // google.maps.event.clearListeners(markers[i].serviceObject);
+    // google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
+    //   openInfowindowOnClick(data, this, true);
+    // });
+  }
+}
+
+function setListenerOnMarker(markers, data, index, carrouselRequired) {
+  markers[index].serviceObject.set('id',index);
+  google.maps.event.clearListeners(markers[index].serviceObject);
+  google.maps.event.addListener(markers[index].serviceObject, 'click', function(event) {
+    openInfowindowOnClick(data, this, carrouselRequired);
+  });
+}
+
+
+function setCarrousel() {
+  $(".owl-carousel.small").owlCarousel({
+    items: 1,
+    singleItem: true,
+    navigation : true,
+    navigationText : [
+      "<i class='fa fa-angle-left'></i>",
+      "<i class='fa fa-angle-right'></i>"
+    ],
+    pagination : false,
+    slideSpeed : 300,
+    paginationSpeed : 400,
+    rewindSpeed: 1,
+    slideSpeed: 1
+    // lazyLoad : true, // TODO: set img class and data-src and css accordingly (if needed)
+  });
 }
 
 function initalizeLinkWithRemoteTrue() {
@@ -181,87 +217,165 @@ function setExperiencesOrderByClickingOnSave() {
   });
 }
 
+function placeMarker(location) {
+  var marker = new google.maps.Marker({
+      position: location,
+      map: handler.getMap()
+  });
+  markersAddedManually.push(marker);
+}
+
+function removeMarkersAddedManually() {
+  for (var i = 0; i < markersAddedManually.length; i++) {
+    markersAddedManually[i].setMap(null);
+  }
+  markersAddedManually = [];
+}
+
 function buildMapForGuestUser(mapOptions, trip_id) {
-  handler = Gmaps.build('Google', { builders: { Marker: InfoBoxBuilder} });
-  requestingMarkers = false;
+  $('#myModalPresentation').modal('show');
+  handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
   handler.buildMap({provider: mapOptions, internal: {id: 'map'}}, function(){
     var map = handler.getMap();
-    requestingMarkers = true;
     var url = "/trips/" + trip_id + "/trip_experiences/trip_markers";
     setMarkersAccordingToApi(url, function(r) {
       handler.fitMapToBounds();
+      if (map.getZoom() > 7) {
+        map.setZoom(7);
+      }
+      requestingMarkers = r;
     });
-    showModalByClikingOnMap(map, '#myModalGuest', '#trip_comment_address');
-    // Reset modal process
+
+    showModalByClikingOnMap(map, '#myModalGuest', '#trip_comment_address', '#trip_comment_latitude', '#trip_comment_longitude');
+
+    // Reset modal process and remove marker added manually
     $('#myModalGuest').on('hidden.bs.modal', function(){
+        removeMarkersAddedManually();
         $('#trip_comment_address').val('');
         $('#trip_comment_description').val('');
       });
   });
 }
 
+function setMarkersAccordingToBounds(map, trip_id, callback) {
+  var url = buildUrlWithBounds(map, trip_id);
+  setMarkersAccordingToApi(url, callback);
+}
+
+function setMarkersAccordingToApi(url, callback) {
+  requestingMarkers = true;
+  $.get(url, function(data) {
+    handler.removeMarkers(markers);
+    markers = handler.addMarkers(data);
+    setExperienceInfowindow(data);
+    handler.bounds.extendWith(markers);
+    callback(false);
+  });
+}
+
+function setMapWithGuestComments(trip_id, map, callback) {
+  google.maps.event.clearListeners(map, 'dragend');
+  google.maps.event.clearListeners(map, 'zoom_changed');
+  var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
+  setMarkersAccordingToApi(url, callback);
+}
+
+function setMapWithUserExperiences(trip_id, map, callback) {
+  google.maps.event.clearListeners(map, 'dragend');
+  google.maps.event.clearListeners(map, 'zoom_changed');
+  var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
+  setMarkersAccordingToApi(url, callback);
+}
+
 function buildMapForUser(mapOptions, trip_id) {
-  handler = Gmaps.build('Google', { builders: { Marker: InfoBoxBuilder} });
-  var requestingMarkers = false;
+  handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
     // SET MARKERS ON MAP LOADING AND KEEP LISTENING
     setMarkersAndKeepListening(map, trip_id);
     // SET MARKERS DEPENDING ON USER CHOICE
     $('#user-choices').on("change", function() {
-      closeInfoWindowIfOpened();
+      if (ibOpened) {
+      ib.close();
+      ibOpened = false;
+      }
       if ($('#user-experiences').prop('checked')){
         // Set map with booked experiences;
-        google.maps.event.clearListeners(map, 'dragend');
-        google.maps.event.clearListeners(map, 'zoom_changed');
-        requestingMarkers = true;
-        var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
-        setMarkersAccordingToApi(url, function(r) {
+        setMapWithUserExperiences(trip_id, map, function(r) {
           requestingMarkers = r;
-        });
+          if (markers.length == 0) {
+            alert('Vous n\'avez pour le moment pas sélectionné d\'expériences :( ... Ajoutez-en d\'abord à votre itinéraire !');
+          }
+         });
+
+
+        // google.maps.event.clearListeners(map, 'dragend');
+        // google.maps.event.clearListeners(map, 'zoom_changed');
+        // var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
+        // setMarkersAccordingToApi(url, function(r) {
+        //   requestingMarkers = r;
+        // });
       } else if ($('#guests-comments').prop('checked')) {
         // Set map with trip_comments;
-        google.maps.event.clearListeners(map, 'dragend');
-        google.maps.event.clearListeners(map, 'zoom_changed');
-        requestingMarkers = true;
-        var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
-        $.get(url, function(data) {
-          handler.removeMarkers(markers);
-          markers = handler.addMarkers(data);
-          handler.bounds.extendWith(markers);
-          requestingMarkers = false;
+        setMapWithGuestComments(trip_id, map, function(r) {
+          requestingMarkers = r;
+          if (markers.length == 0) {
+            alert('Oups... Vous n\'avez pas encore de commentaires de vos amis. Vous pouvez leur en demaner an cliquant plus bas sur \"Demander des conseils\"');
+          }
         });
+
+        // google.maps.event.clearListeners(map, 'dragend');
+        // google.maps.event.clearListeners(map, 'zoom_changed');
+        // var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
+        // $.get(url, function(data) {
+        //   handler.removeMarkers(markers);
+        //   markers = handler.addMarkers(data);
+        //   setGuestCommentInfowindow(data);
+        //   handler.bounds.extendWith(markers);
+        //   requestingMarkers = false;
+        // });
       } else if ($('#all-experiences').prop('checked')) {
         setMarkersAndKeepListening(map, trip_id);
       }
     });
-    showModalByClikingOnMap(map, '#myModal', '#experience_address');
+    showModalByClikingOnMap(map, '#myModal', '#experience_address', '#experience_latitude', '#experience_longitude');
     // Reset modal process
     $('#myModal').on('hidden.bs.modal', function(){
-        $('#experience_name').val('');
-        $('#experience_address').val('');
-        $('#experience_description').val('');
-      });
+      removeMarkersAddedManually();
+      $('#experience_name').val('');
+      $('#experience_address').val('');
+      $('#experience_description').val('');
+    });
   });
 };
 
-function showModalByClikingOnMap(map, modal_id, address_field_id) {
+function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field_id, longitude_field_id) {
   // Show modal with address field prefilled
   var updateTimeout = null;
   google.maps.event.addListener(map, "click", function(e) {
     if (ibOpened) {
       ib.close();
       ibOpened = false;
-    } else if (checkIfInfoWindowIsOpened()) {
-      handler.currentInfowindow().close();
-    }else {
-      closeInfoWindowIfOpened();
+    } else {
       updateTimeout = setTimeout(function() {
+        placeMarker(e.latLng);
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({'latLng': e.latLng}, function(results, status){
           $(modal_id).modal('show');
-          $(address_field_id).val(results[1].formatted_address);
-          });
+          $(latitude_field_id).val(e.latLng.k);
+          $(longitude_field_id).val(e.latLng.D);
+          if (status == google.maps.GeocoderStatus.OK) {
+            var completeAddress = '';
+            var i = 0;
+            while (typeof(results[0].address_components[i]) == 'object') {
+              completeAddress = completeAddress + ', ' + results[0].address_components[i].long_name ;
+              i++;
+            }
+            $(address_field_id).val(completeAddress.substr(2));
+          } else {
+            $(address_field_id).attr("placeholder", "Adresse non trouvée... merci d'en saisir une!");
+          }
+        });
       }, 200);
     }
   });
@@ -277,17 +391,15 @@ function showModalByClikingOnMap(map, modal_id, address_field_id) {
 function setMarkersAndKeepListening(map, trip_id) {
   // SET MARKERS ON MAP LOADING AND KEEP LISTENING
   // Set markers on loading
-  requestingMarkers = true;
   setMarkersAccordingToBounds(map, trip_id, function(r) {
    requestingMarkers = r;
   });
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {
     google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || ibOpened) {
+     if (requestingMarkers || ibOpened || ($('#all-experiences').prop('checked')== false)) {
      return;
      }
-     requestingMarkers = true;
      setMarkersAccordingToBounds(map, trip_id, function(r) {
        requestingMarkers = r;
      });
@@ -296,10 +408,9 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when zoom changes
   google.maps.event.addListener(map, 'zoom_changed', function() {
    google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || ibOpened) {
+     if (requestingMarkers || ibOpened || ($('#all-experiences').prop('checked')== false)) {
        return;
      }
-     requestingMarkers = true;
      setMarkersAccordingToBounds(map, trip_id, function(r) {
        requestingMarkers = r;
      });
@@ -313,10 +424,11 @@ function setMarkersAccordingToBounds(map, trip_id, callback) {
 }
 
 function setMarkersAccordingToApi(url, callback) {
+  requestingMarkers = true;
   $.get(url, function(data) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
-    setCarouselOnInfowindow(data);
+    setExperienceInfowindow(data);
     handler.bounds.extendWith(markers);
     callback(false);
   });
