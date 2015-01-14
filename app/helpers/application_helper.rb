@@ -19,6 +19,18 @@ module ApplicationHelper
     end
   end
 
+  def yield_logo(holder, css_class)
+    if content_for?(holder)
+      link_to root_path, {class: css_class} do
+        image_tag("logo_hp.png", id: "logo")
+      end
+    else
+      link_to root_path, {class: css_class} do
+        image_tag("logo.png", id: "logo")
+      end
+    end
+  end
+
   def bootstrap_class_for(flash_type)
     case flash_type.to_sym
       when :success then "alert-success"

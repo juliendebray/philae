@@ -7,8 +7,9 @@
     <meta name="description" content="<%= yield_with_default(:description,"Explorizers is the best easy-to-use plateform for discovering inspiring places around the world")%>" >
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= yield :navbar_hp_css %>
     <%= yield :map_css %>
-    <%= favicon_link_tag %>
+
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -22,6 +23,8 @@
       <meta property="og:image" content="http://unsplash.imgix.net/uploads/1412231250505b65c703c/1fa14fb0?dpr=0.33&fit=crop&fm=jpg&h=700&q=75&w=1075" />
       <meta property="og:description" content="Explorizers est fait pour les voyageurs qui font confiance à leurs amis pour leur conseiller des expériences extraordinaires et leur faire découvrir des lieux uniques." />
     <% end %>
+
+    <%= favicon_link_tag %>
   </head>
   <body>
 

@@ -8,9 +8,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to root_path, {class: "navbar-brand"} do %>
-      <%= image_tag("logo_hp.png", id: "logo") %>
-      <% end %>
+      <%= yield_logo(:logo_hp, "navbar-brand") %>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
