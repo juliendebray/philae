@@ -25,9 +25,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <% if current_user.provider %>
-              <%= image_tag current_user.picture, id:'profile-pic', class: "img img-circle" %>
-              <% else %>
-              <img src="http://lorempixel.com/30/30" id="profile-pic" alt="">
+                <%= image_tag current_user.picture, id:'profile-pic', class: "img img-circle" %>
               <% end %>
 
               <%= current_user.email %> <span class="caret"></span>
