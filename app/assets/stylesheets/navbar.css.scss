@@ -32,7 +32,9 @@ $profile-border-color: white;
 $profile-border-width: 0px;
 
 .navbar {
-  position: absolute;
+  position: fixed;
+  background: $bg2;
+  // position: absolute;
 }
 
 .navbar-brand{
@@ -57,7 +59,7 @@ $profile-border-width: 0px;
 // And do not look at what follows!
 // This is why we use sass :)
 .navbar-wagon{
-  background: $bg;
+  background: $bg2;
   border: none;
   font-weight: 300;
   padding-left: $horizontal-padding;
@@ -67,14 +69,17 @@ $profile-border-width: 0px;
 }
 
 .navbar-wagon .navbar-nav > li > a {
-  color: $color;
+  color: $color2;
+  // color: $color;
   line-height: $height;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
+
 }
 
 .navbar-wagon .navbar-nav > li > a:hover {
-  color: $color;
+  color: $color2;
+  // color: $color;
   line-height: $height;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
@@ -87,6 +92,7 @@ $profile-border-width: 0px;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
   color: $color;
+  // color: $color2;
   background-color: transparent;
 }
 
@@ -94,7 +100,8 @@ $profile-border-width: 0px;
 .navbar-wagon .navbar-brand:hover
  {
   display: block;
-  color: $color;
+  color: $color2;
+  // color: $color;
   padding-top: $vertical-padding;
   padding-bottom: $vertical-padding;
 }
@@ -171,13 +178,6 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
 }
 
 
-// Customisation de la navbar 2 à la fin du css pour gagner la spécificité
-
-
-.navbar2 {
-  position: fixed;
-  background: $bg2;
-}
 
 .navbar-wagon .navbar-nav > li > a {
   color: $color2;
@@ -187,16 +187,41 @@ $btn-margin-top: ($height + 2 * $vertical-padding - $btn-height - $btn-top-borde
   color: $color2;
 }
 
-.navbar-wagon .navbar-nav2  >.open>a,
-.navbar-wagon .navbar-nav2 >.open>a:hover,
-.navbar-wagon .navbar-nav2 >.open>a:focus {
+.navbar-wagon .navbar-nav > li > a:visited {
   color: $color2;
 }
 
-.navbar-wagon .navbar-brand ,
-.navbar-wagon .navbar-brand:hover {
+.navbar-wagon .navbar-nav  >.open>a,
+.navbar-wagon .navbar-nav >.open>a:hover,
+.navbar-wagon .navbar-nav >.open>a:focus {
   color: $color2;
 }
+// Customisation de la navbar 2 à la fin du css pour gagner la spécificité
+
+
+// .navbar2 {
+//   position: fixed;
+//   background: $bg2;
+// }
+
+// .navbar-wagon .navbar-nav > li > a {
+//   color: $color2;
+// }
+
+// .navbar-wagon .navbar-nav > li > a:hover {
+//   color: $color2;
+// }
+
+// .navbar-wagon .navbar-nav2  >.open>a,
+// .navbar-wagon .navbar-nav2 >.open>a:hover,
+// .navbar-wagon .navbar-nav2 >.open>a:focus {
+//   color: $color2;
+// }
+
+// .navbar-wagon .navbar-brand ,
+// .navbar-wagon .navbar-brand:hover {
+//   color: $color2;
+// }
 
 // Fait par Boris : quelle différence avec le paramétrage lignes 31-38 ??
 // @media screen and (max-width: 768px) {

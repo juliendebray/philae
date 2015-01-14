@@ -1,3 +1,34 @@
-div.homepage_story {
-  background: white;
+$color: white;
+$color2: lightgrey;
+$bg: transparent;
+
+.navbar {
+  position: absolute;
+}
+
+.navbar-wagon{
+  background: $bg;
+}
+
+.navbar-wagon .navbar-nav > li > a {
+  color: $color2;
+}
+
+.navbar-wagon .navbar-nav > li > a:hover {
+  color: $color2;
+}
+
+.navbar-wagon .navbar-nav > li > a:visited {
+  color: $color2;
+}
+
+.navbar-wagon .navbar-nav  >.open>a,
+.navbar-wagon .navbar-nav >.open>a:hover,
+.navbar-wagon .navbar-nav >.open>a:focus {
+  color: $color;
+}
+
+.navbar-wagon .navbar-brand ,
+.navbar-wagon .navbar-brand:hover {
+  color: $color;
 }
