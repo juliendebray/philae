@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
+
+
+
   get 'connections/new'
   post '/trips/:trip_id/trip_experiences/create_with_new_experience', to: 'trip_experiences#create_with_new_experience', as: 'experience_within_trip'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   get 'experiences/:experience_id/detail', to: 'experiences#detail', as: 'experience_detail'
 
-
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
+
+    resources :providers, only: [:index, :show]
 
     resources :experiences, except: [:index] do
       resources :experience_reviews, only: [:new, :create]
