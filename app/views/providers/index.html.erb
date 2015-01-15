@@ -1,3 +1,31 @@
 <div class="wrapper">
-  <h1>dqsdqsdqs</h1>
+  <div id="titleblock" class="text-center">
+    <div class="title">
+      <h2>Liste des prestataires</h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+        <h4>
+          Vous connaissez des agences ou guides locaux fiables qui mériteraient d'être référencés sur notre plateforme?
+        </h4>
+        <h4>
+          <%= link_to 'Faites-nous en part en suivant ce lien !', new_contact_path %>
+        </h4>
+      </div>
+    </div>
+    <% if @providers %>
+      <div class="vertical-spacer">
+        <div class="row text-center">
+          <% @providers.each do |provider| %>
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+            <%= render('provider_block', {provider: provider}) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+
