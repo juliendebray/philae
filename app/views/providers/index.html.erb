@@ -17,10 +17,14 @@
     </div>
     <% if @providers %>
       <div class="vertical-spacer">
-        <div class="row text-center">
+        <div class="row">
           <% @providers.each do |provider| %>
             <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
-            <%= render('provider_block', {provider: provider}) %>
+              <ul class="list-unstyled">
+                <li>
+                  <%= render('provider_block', {provider: provider}) %>
+                </li>
+              </ul>
             </div>
           <% end %>
         </div>

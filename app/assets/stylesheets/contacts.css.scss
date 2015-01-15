@@ -3,14 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .header {
-  color: #052858;
+  color: $color2;
   font-size: 27px;
   padding: 8px;
 }
 
 .bigicon {
   font-size: 30px;
-  color: #052858;
+  color: $color2;
+  margin-right: 0px;
 }
 
 .well {

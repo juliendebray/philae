@@ -28,6 +28,7 @@ $font-family-sans-serif: 'Roboto';
 @import "exp-rm";
 @import "myaccount";
 @import "ask_your_friends";
+@import "providers";
 
 
 // General customized styles
@@ -76,17 +77,6 @@ div.homepage_story {
   }
 
 }
-
-body.signup-signin {
-  background-image: image-url("deck.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  color: grey;
-  height: 800px;
-  padding-top: 80px;
-}
-
 
 .vertical-spacer {
   height: 6em;

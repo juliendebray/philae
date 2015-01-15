@@ -1,3 +1,28 @@
-// Place all the styles related to the providers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.provider-block {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  background: white;
+  font-weight: 100;
+  padding: 15px;
+  margin: 10px;
+
+  .provider-header {
+    a {
+      font-weight: 300;
+      color: #808080;
+      font-size: 1.2em;
+    }
+  }
+
+  .provider-body {
+    .table-responsive {
+      border: none;
+      td {
+        padding-right: 5px;
+      }
+    }
+  }
+}
+
+.v-top {
+  vertical-align: top;
+}
