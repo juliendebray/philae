@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div id="titleblock" class="text-center">
+    <div class="title">
+      <h2>Liste des prestataires en lien avec les expériences choisies</h2>
+    </div>
+  </div>
+  <div class="container">
+    <ul class="list-unstyled">
+      <% @trip.trip_experiences.each_with_index do |trip_exp, index| %>
+      <% if trip_exp.experience.providers.any? %>
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <h4><%= "Experience n°#{index+1}: #{trip_exp.experience.name}" %></h4>
+            <ul class="list-unstyled">
+                <% trip_exp.experience.providers.each do |provider, index| %>
+                      <%= render('/providers/provider_block.html.erb', {provider: provider}) %>
+                <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

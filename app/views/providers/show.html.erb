@@ -1,2 +1,61 @@
-<h1>Providers#show</h1>
-<p>Find me in app/views/providers/show.html.erb</p>
+<div class="wrapper">
+  <div class="vertical-spacer">
+  </div>
+  <div class="provider-block">
+    <div class="provider-header">
+      <div class="table-responsive">
+        <table>
+           <tr>
+            <td>
+              <%= image_tag @provider.picture.url(:thumb) %>
+            </td>
+            <td class="v-top">
+              <h2><%= @provider.name %></h2>
+            </td>
+           </tr>
+        </table>
+      </div>
+    </div>
+    <div class="provider-content">
+      <% if @provider.description %>
+        <div class="provider-description">
+          <h3>Description</h3>
+          <p><%= @provider.description %></p>
+        </div>
+      <% end %>
+      <% if @provider.activities_description %>
+        <div class="provider-activities">
+          <h2>Type d'activités proposées</h2>
+          <p><%= @provider.activities_description %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="provider-contact text-center">
+      <button class="btn btn-large btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Contacter le prestataire
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="well text-left">
+          <h4><%= "Coordonnées de #{@provider.name}" %></h4>
+          <ul>
+            <% if @provider.email %>
+              <li>
+                email: <%= @provider.email %>
+              </li>
+            <% end %>
+            <% if @provider.phone %>
+              <li>
+                tél: <%= @provider.phone %>
+              </li>
+            <% end %>
+            <% if @provider.website %>
+              <li>
+                site web: <%= @provider.website %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

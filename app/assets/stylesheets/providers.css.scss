@@ -12,17 +12,27 @@
       font-size: 1.2em;
     }
   }
+}
 
-  .provider-body {
-    .table-responsive {
-      border: none;
-      td {
-        padding-right: 5px;
-      }
-    }
+.table-responsive {
+  border: none;
+  td {
+    padding-right: 5px;
   }
 }
 
 .v-top {
   vertical-align: top;
+}
+
+.provider-contact {
+  button {
+   font-size: 1.5em;
+   font-weight: 300;
+  }
+  .well {
+    margin-top: 15px;
+  }
+
+
 }

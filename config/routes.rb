@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       resources :ask_your_friends, only: [:index]
       member do
         get :start
+        get :providers
         get ':token' => "trips#show_guest_user", as: :guest_trip
         patch 'share' => "trips#share_trip_email"
         patch 'notif' => "trips#notification_for_sharing_email"

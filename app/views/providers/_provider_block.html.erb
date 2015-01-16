@@ -10,14 +10,10 @@
             <%= image_tag provider.picture.url(:thumb) %>
           </td>
           <td class="v-top">
-            <%= provider.description %>
+            <%= "#{provider.description[0..300]}..." %>
           </td>
          </tr>
       </table>
-    </div>
-  </div>
-    <div class="action">
-
     </div>
   </div>
 </div>
