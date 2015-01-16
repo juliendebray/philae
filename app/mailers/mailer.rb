@@ -6,11 +6,12 @@ class Mailer < ActionMailer::Base
   #
   #   en.mailer.contact_us.subject
   #
-  def contact_us(name, user_email, message)
+  def contact_us(name, user_email, message, current_user)
     @name = name
     @message = message
+    @user = current_user
 
-    mail to: ["florian.joulie@explorizers.com", "julien.debray@explorizers.com"],
+    mail to: ["dora@explorizers.com"],
           subject: " #{name} / contact sur explorizers.com", from: user_email
   end
 end

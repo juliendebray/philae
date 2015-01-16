@@ -1,5 +1,10 @@
-<h2><%= @name %> :</h2>
-
+<h3>Nom: <%= @name %> </h3>
+<h3>Message:</h3>
 <p>
   <%= @message %>
 </p>
+<% if @user %>
+  <h3> Info sur le user (si loggé): </h3>
+  <p>User email: <%= @user.email %></p>
+  <p>User id: <%= @user.id %></p>
+<% end %>

@@ -43,7 +43,6 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
-
   private
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation, :remember_me) }

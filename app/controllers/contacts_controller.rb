@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
     message = params[:message]
 
     #send mail
-    Mailer.contact_us(name, email, message).deliver
+    Mailer.contact_us(name, email, message, current_user).deliver
 
     redirect_to root_path
     # @contact = Contact.new(params[:contact])
