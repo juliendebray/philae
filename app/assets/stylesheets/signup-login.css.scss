@@ -12,7 +12,25 @@ margin: 10px auto;
 padding: 10px 10px;
 border-radius: 5px;
 text-align: center;
+}
 
+
+body.signup-signin {
+  background-image: image-url("deck.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: grey;
+  height: 800px;
+  padding-top: 80px;
+
+  h2 {
+    color: white;
+  }
+
+  #sign-form a {
+    color: white;
+  }
 }
 
 #fb-login {
@@ -23,12 +41,7 @@ border-bottom: 1px dotted lightgrey;
 padding-bottom: 20px;
 }
 
-.fa-envelope {
-  margin-right: 10px;
-  vertical-align: bottom;
-}
-
-.fa-lock {
+.icon-alignement {
   margin-right: 10px;
   vertical-align: bottom;
 }

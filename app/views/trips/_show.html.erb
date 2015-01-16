@@ -1,9 +1,7 @@
 <% content_for :map_css do %>
   <%= stylesheet_link_tag 'map' %>
 <% end %>
-<%= content_for(:navbar) do %>
-  <%= 'shared/navbar2.html.erb' %>
-<% end %>
+
 <div class="wrapper">
   <div class="map-container">
     <div id="map">
@@ -76,6 +74,9 @@
               <button type="button" class="btn btn-primary" disabled="disabled" >
                 Voir les agences et guides locaux
               </button>
+            </div>
+            <div class="button-action" style="display:none">
+            <%= link_to 'Voir les agences et guides locaux',  providers_trip_path(@trip), class: "btn btn-default" %>
             </div>
           </div>
         <% end %>

@@ -1,0 +1,38 @@
+.provider-block {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  background: white;
+  font-weight: 100;
+  padding: 15px;
+  margin: 10px;
+
+  .provider-header {
+    a {
+      font-weight: 300;
+      color: #808080;
+      font-size: 1.2em;
+    }
+  }
+}
+
+.table-responsive {
+  border: none;
+  td {
+    padding-right: 5px;
+  }
+}
+
+.v-top {
+  vertical-align: top;
+}
+
+.provider-contact {
+  button {
+   font-size: 1.5em;
+   font-weight: 300;
+  }
+  .well {
+    margin-top: 15px;
+  }
+
+
+}

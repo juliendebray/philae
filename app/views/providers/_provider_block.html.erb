@@ -1,0 +1,19 @@
+<div class="provider-block">
+  <div class="provider-header">
+    <%= link_to provider.name, provider %>
+  </div>
+  <div class="provider-body">
+    <div class="table-responsive">
+      <table>
+         <tr>
+          <td>
+            <%= image_tag provider.picture.url(:thumb) %>
+          </td>
+          <td class="v-top">
+            <%= "#{provider.description[0..300]}..." %>
+          </td>
+         </tr>
+      </table>
+    </div>
+  </div>
+</div>
