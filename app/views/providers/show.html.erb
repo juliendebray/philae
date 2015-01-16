@@ -43,14 +43,14 @@
                 email: <%= @provider.email %>
               </li>
             <% end %>
-            <% if @provider.phone %>
-              <li>
-                tél: <%= @provider.phone %>
-              </li>
-            <% end %>
             <% if @provider.website %>
               <li>
                 site web: <%= @provider.website %>
+              </li>
+            <% end %>
+            <% if @provider.other %>
+              <li>
+                <%= @provider.other %>
               </li>
             <% end %>
           </ul>
