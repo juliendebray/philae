@@ -9,6 +9,6 @@
   <div class="panel-body">
     <%= image_tag trip_exp.experience.experience_pictures.first.picture.url(:thumb) if trip_exp.experience.experience_pictures.first %>
     <%= trip_exp.experience.description[0..200] + "..." %>
-    <%= link_to '(voir plus)', experience_detail_path(trip_exp.experience.id), remote: true %>
+    <%= link_to t('.seemore'), experience_detail_path(trip_exp.experience.id), remote: true %>
   </div>
 </li>

@@ -6,6 +6,6 @@
     <%= simple_format trip_comment.description %>
   </div>
 <div class="infobox-content">
-  <%= link_to '- supprimer commentaire - ', [trip_comment.trip, trip_comment], remote: true, method: :delete, data: {confirm: "Etes-vous sûr de vouloir supprimer ce commentaire?"} %>
+  <%= link_to t('.delete'), [trip_comment.trip, trip_comment], remote: true, method: :delete, data: {confirm: t('.confirm')} %>
 </div>
 </div>

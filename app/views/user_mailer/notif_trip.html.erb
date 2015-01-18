@@ -4,13 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Bonjour</p>
-    <p>Un ami vous a donné ses conseils pour votre voyage.</p>
-    <p>Vous pouvez y accéder en allant sur la page de votre itinéraire en cliquant sur "les conseil des mes amis"
+    <p><%= t('.hi') %></p>
+    <p><%= t('.n_line1') %></p>
+    <p><%= t('.n_line2') %>
     </p>
-      <a href='<%= ROOT_URL + "/trips/" + @trip.id.to_s %>'>Accéder aux conseil de mes amis.</a>
+      <a href='<%= ROOT_URL + "/trips/" + @trip.id.to_s %>'><%= t('.n_line3') %></a>
     </p>
-    <p>En espérant que cela vous soit utile, nous vous souhaitons un super voyage! </p>
-    <p>L'équipe EXPLORIZERS</p>
+    <p><%= t('.n_line4') %></p>
+    <p><%= t('.n_line5') %></p>
   </body>
 </html>
