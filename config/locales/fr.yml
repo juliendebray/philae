@@ -11,6 +11,7 @@ fr:
   tripsnav: "Mon compte"
   ourcontact: "Contact"
   contribute: "Contribuer"
+  my_trips: "Mes voyages"
 
 
   #sign up / sign in
@@ -54,6 +55,15 @@ fr:
       myexp: "Montrer seulement ma sélection"
       newexp: "Cliquer sur la carte pour ajouter une nouvelle expérience"
 
+  trip_comments:
+    _infowindow:
+      delete: "- Supprimer ce commentaire -"
+      confirm: "Etes-vous sûr de vouloir supprimer ce commentaire?"
+
+  trip_experiences:
+    _experience_block:
+      seemore: "Voir plus"
+
   #users
   users:
     show:
@@ -86,6 +96,7 @@ fr:
       title: "Ajouter une nouvelle experience"
       text1: "Le projet Explorizers repose sur votre contribution. Merci de nous aider à le faire grandir."
       text2: "Pour assurer une qualité maximale sur Explorizers, les contributions sont validées par notre équipe. Cela évite les doublons, la pub, les trolls, les pirates et les clowns en tous genres. Pour toute question, écrivez à dora@explorizers.com."
+      buttonadd: "Ajouter"
 
   #ask_your_friends:
   ask_your_friends:
@@ -97,6 +108,20 @@ fr:
       share_email: "Par email : cliquez ci-dessous et vérifiez vos emails"
       ask_email_btn: "Demander par email"
       ask_fb_btn: "Demander sur Facebook"
+
+  blockfbtitle: "Filez vos bons plans de voyage !"
+  blockfbdescription: "Explorizers est fait pour les voyageurs qui font confiance à leurs amis pour leur conseiller des expériences extraordinaires et leur faire découvrir des lieux uniques."
+
+  #providers:
+  providers:
+    index:
+      title: "Liste des prestataires"
+      desc: "Vous connaissez des agences ou guides locaux fiables qui mériteraient d'être référencés sur notre plateforme?"
+      addprovider: "Faites-nous en part en suivant ce lien !"
+    show:
+      desc: "Description"
+      activities: "Type d'activités proposées"
+      contact: "Contacter le prestataire"
 
   #emails
   user_mailer:
@@ -113,8 +138,13 @@ fr:
       s_line3: "Clique ici pour donner tes recommandations."
       s_line4: "Merci !"
       s_line5: "Explorizers apporte des expériences de voyage uniques et étonnantes. Créez votre propre voyage, avec l'aide de vos amis et de notre communauté d'explorateurs."
-
-
+    notif_trip:
+      hi: "Bonjour,"
+      n_line1: "Un ami vous a donné ses conseils pour votre voyage."
+      n_line2: "Vous pouvez y accéder en allant sur la page de votre itinéraire et en sélectionnant 'Les conseil des mes amis'"
+      n_line3: "Accéder aux conseil de mes amis."
+      n_line4: "En espérant que cela vous soit utile, nous vous souhaitons un super voyage!"
+      n_line5: "L'équipe EXPLORIZERS"
 
 
 

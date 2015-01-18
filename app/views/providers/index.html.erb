@@ -1,17 +1,15 @@
 <div class="wrapper">
   <div id="titleblock" class="text-center">
     <div class="title">
-      <h2>Liste des prestataires</h2>
+      <h2><%= t('.title') %></h2>
     </div>
   </div>
   <div class="container">
     <div class="row text-center">
       <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+        <h4><%= t('.desc') %></h4>
         <h4>
-          Vous connaissez des agences ou guides locaux fiables qui mériteraient d'être référencés sur notre plateforme?
-        </h4>
-        <h4>
-          <%= link_to 'Faites-nous en part en suivant ce lien !', new_contact_path %>
+          <%= link_to( t('.addprovider')), new_contact_path %>
         </h4>
       </div>
     </div>

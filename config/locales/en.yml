@@ -31,6 +31,7 @@ en:
   tripsnav: "My account"
   ourcontact: "Talk to us"
   contribute: "Contribute"
+  my_trips: "My trips"
 
   #sign up / sign in
   sign_up: "Sign up - it's easy and free"
@@ -72,6 +73,16 @@ en:
       myexp: "Only show my own selection"
       newexp: "Click on the map to add a new experience"
 
+
+  trip_comments:
+    _infowindow:
+      delete: "- Delete this comment -"
+      confirm: "Are you sure you want to delete this comment?"
+
+  trip_experiences:
+    _experience_block:
+      seemore: "See more"
+
   #users
   users:
     show:
@@ -103,6 +114,7 @@ en:
       title: "Add a new experience"
       text1: "Explorizers is built of people's appeal for the project. So thanks for your contribution. "
       text2: "To make sure Explorizers remains a peaceful place, contributions are reviewed by our team. This avoids duplication, advertising, trolls, pirates and clowns. For any question, please write to dora@explorizers.com."
+      buttonadd: "Add"
 
   #ask_your_friends:
   ask_your_friends:
@@ -114,6 +126,20 @@ en:
       share_email: "Get an email to transfer the link to my friends"
       ask_email_btn: "Ask by email"
       ask_fb_btn: "Ask on Facebook"
+
+  blockfbtitle: "I need YOU - to help me design the best trip ever!"
+  blockfbdescription: "Explorizers is a platform where you design your trip - with the help of your trusted friends"
+
+  #providers:
+  providers:
+    index:
+      title: "Liste of providers"
+      desc: "You know reliable local guides or agencies that could be on Explorizers?"
+      addprovider: "Let us know here !"
+    show:
+      desc: "Description"
+      activities: "Examples of activities"
+      contact: "Contact this provider"
 
   #emails
   user_mailer:
@@ -130,6 +156,12 @@ en:
       s_line3: "Click right here to give your recommendations"
       s_line4: "Thanks !"
       s_line5: "Explorizers is a travel experience provider. Intuitive and personal, it helps you design your next trip, with the help of your friends and our trusted community."
-
+    notif_trip:
+      hi: "Hi,"
+      n_line1: "A friend has just given you tips for your next travel."
+      n_line2: "Go back to your trip map to visualize these tips!"
+      n_line3: "See my friends' tips"
+      n_line4: "We're hoping they'll be useful. Have a great trip !"
+      n_line5: "The EXPLORIZERS team"
 
 

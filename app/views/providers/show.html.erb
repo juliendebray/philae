@@ -19,24 +19,24 @@
     <div class="provider-content">
       <% if @provider.description %>
         <div class="provider-description">
-          <h3>Description</h3>
+          <h3><%= t('.desc') %></h3>
           <p><%= @provider.description %></p>
         </div>
       <% end %>
       <% if @provider.activities_description %>
         <div class="provider-activities">
-          <h2>Type d'activités proposées</h2>
+          <h2><%= t('.activities') %></h2>
           <p><%= @provider.activities_description %></p>
         </div>
       <% end %>
     </div>
     <div class="provider-contact text-center">
       <button class="btn btn-large btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Contacter le prestataire
+        <%= t('.contact') %>
       </button>
       <div class="collapse" id="collapseExample">
         <div class="well text-left">
-          <h4><%= "Coordonnées de #{@provider.name}" %></h4>
+          <h4><%= "Contact #{@provider.name}" %></h4>
           <ul>
             <% if @provider.email %>
               <li>
