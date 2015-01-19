@@ -47,7 +47,7 @@
   <div class="nav-footer text-center">
     <div class="container vertically-center">
       <div class="row">
-        <div class="col-xs-4 col-sm-4">
+        <div class="col-xs-4 col-sm-3">
           <% unless @guest_user %>
             <div id="set-orders" class="button-action">
               <%= form_for @trip, url: {action: "update"} do |f|%>
@@ -64,12 +64,12 @@
           <% end %>
         </div>
         <% unless @guest_user %>
-          <div class="col-xs-4 col-sm-4">
+          <div class="col-xs-4 col-sm-3">
             <div class="button-action">
               <%= link_to 'Demander des conseils', trip_ask_your_friends_path(@trip), class: "btn btn-primary" %>
             </div>
           </div>
-          <div class="col-xs-4 col-sm-4">
+          <div class="col-xs-4 col-sm-3">
             <div class="button-action disabled" data-toggle="tooltip" data-placement="top" title="Bientôt disponible...">
               <button type="button" class="btn btn-primary" disabled="disabled" >
                 Voir les agences et guides locaux
