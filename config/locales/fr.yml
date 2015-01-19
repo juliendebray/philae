@@ -12,6 +12,7 @@ fr:
   ourcontact: "Contact"
   contribute: "Contribuer"
   my_trips: "Mes voyages"
+  nav_listofproviders: "Acteurs locaux référencés"
 
 
   #sign up / sign in
@@ -55,14 +56,12 @@ fr:
       myexp: "Montrer seulement ma sélection"
       newexp: "Cliquer sur la carte pour ajouter une nouvelle expérience"
 
-  trip_comments:
-    _infowindow:
-      delete: "- Supprimer ce commentaire -"
-      confirm: "Etes-vous sûr de vouloir supprimer ce commentaire?"
+  #trip_comments:
+  trip_comment_delete: "- Supprimer ce commentaire -"
+  trip_comment_confirm: "Etes-vous sûr de vouloir supprimer ce commentaire?"
 
-  trip_experiences:
-    _experience_block:
-      seemore: "Voir plus"
+  #trip_experiences:
+  experience_block_seemore: "Voir plus"
 
   #users
   users:
@@ -147,7 +146,7 @@ fr:
   show_guest_user_modaltitle: "Encore un conseil"
   show_guest_user_thanks: "Merci pour vos conseils!"
   show_guest_user_thanksline1: "Un mail vient de partir, votre ami(e) est prévenu(e) de votre participation."
-  show_guest_user_thanksline1: "Et maintenant, à votre tour :"
+  show_guest_user_thanksline2: "Et maintenant, à votre tour :"
   show_guest_user_thanksbtn: "Découvrir EXPLORIZERS"
 
 

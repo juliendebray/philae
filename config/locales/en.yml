@@ -32,6 +32,7 @@ en:
   ourcontact: "Talk to us"
   contribute: "Contribute"
   my_trips: "My trips"
+  nav_listofproviders: "Local guides and agencies"
 
   #sign up / sign in
   sign_up: "Sign up - it's easy and free"
@@ -74,14 +75,12 @@ en:
       newexp: "Click on the map to add a new experience"
 
 
-  trip_comments:
-    _infowindow:
-      delete: "- Delete this comment -"
-      confirm: "Are you sure you want to delete this comment?"
+  #trip_comments:
+  trip_comment_delete: "- Delete this comment -"
+  trip_comment_confirm: "Are you sure you want to delete this comment?"
 
-  trip_experiences:
-    _experience_block:
-      seemore: "See more"
+  #trip_experiences:
+  experience_block_seemore: "See more"
 
   #users
   users:
@@ -164,7 +163,7 @@ en:
   show_guest_user_modaltitle: "Another tip"
   show_guest_user_thanks: "Thanks for sharing your tips !"
   show_guest_user_thanksline1: "An email has just been sent to your friend to let him/her know."
-  show_guest_user_thanksline1: "And now, your turn :"
+  show_guest_user_thanksline2: "And now, your turn :"
   show_guest_user_thanksbtn: "Discover EXPLORIZERS"
 
   #providers:
