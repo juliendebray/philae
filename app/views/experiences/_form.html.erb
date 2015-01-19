@@ -18,7 +18,7 @@
       <%= f.text_field :address, placeholder: "Isla Nublar, Costa Rica" %>
       <%= f.text_area :description, placeholder: "Park closed in 1993, due to reopen in 2015" %>
       <%= f.collection_select(:category_id, Category.all, :id, :name, {:placeholder => 'Choose a Country...' }) %>
-      <%= f.submit( t('.buttonadd') %>, class: "btn btn-primary" %>
+      <%= f.submit( t('.buttonadd')) %>, class: "btn btn-primary" %>
 
     </div>
   <% end %>
