@@ -10,33 +10,33 @@
       <div id="user-choices">
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
-          <small><%= t('.bestexp') %></small>
+          <small><%= t('show_bestexp') %></small>
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
-          <small><%= t('.myselection') %></small>
+          <small><%= t('show_myselection') %></small>
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
-          <small><%= t('.friendstips') %></small>
+          <small><%= t('show_friendstips') %></small>
         </label>
       </div>
       <!-- User Modal to let him add his own experience -->
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-        <small><%= t('.addmyexp') %></small>
+        <small><%= t('show_addmyexp') %></small>
       </button>
     <% else %>
       <!-- Guest Modal to let him add his own experience -->
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalGuest">
-        <small><%= t('.addcomment') %></small>
+        <small><%= t('show_addcomment') %></small>
       </button>
     <% end %>
   </div>
   <div class="sidebar">
     <div class="selection-header text-center">
-      <h4><%= t('.selectedexp') %></h4>
+      <h4><%= t('show_selectedexp') %></h4>
       <i class="fa fa-angle-double-down"></i>
     </div>
     <div class="selection-content">
@@ -52,13 +52,13 @@
             <div id="set-orders" class="button-action">
               <%= form_for @trip, url: {action: "update"} do |f|%>
                 <%= hidden_field_tag :order %>
-                <%= f.submit( t('.save'), onclick: "ga('send', 'event', 'button', 'click', 'Save my trip button clicked');", class: "btn btn-info") %>
+                <%= f.submit( t('show_save'), onclick: "ga('send', 'event', 'button', 'click', 'Save my trip button clicked');", class: "btn btn-info") %>
               <% end %>
             </div>
           <% else %>
             <div id="set-orders" class="button-action">
               <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
-                <%= f.submit( t('.saveguest'), onclick: "ga('send', 'event', 'button', 'click', 'Save my comments button clicked');", class: "btn btn-group-lg btn-info") %>
+                <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'button', 'click', 'Save my comments button clicked');", class: "btn btn-group-lg btn-info") %>
               <% end %>
             </div>
           <% end %>
@@ -66,12 +66,12 @@
         <% unless @guest_user %>
           <div class="col-xs-4 col-sm-3">
             <div class="button-action">
-              <%= link_to t('.asktips'), trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Ask advice button clicked');", class: "btn btn-primary" %>
+              <%= link_to t('show_asktips'), trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Ask advice button clicked');", class: "btn btn-primary" %>
             </div>
           </div>
           <div class="col-xs-4 col-sm-3">
             <div class="button-action">
-            <%= link_to t('.seeproviders'),  providers_trip_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Show local providers button clicked');", class: "btn btn-default" %>
+            <%= link_to t('show_seeproviders'),  providers_trip_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Show local providers button clicked');", class: "btn btn-default" %>
             </div>
           </div>
         <% end %>

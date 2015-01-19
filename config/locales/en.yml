@@ -132,42 +132,40 @@ en:
   blockfbdescription: "Explorizers is a platform where you design your trip - with the help of your trusted friends"
 
   #trips
-  trips:
-    _form:
-      name: "Name this experience"
-      address: "Where is it?"
-      description: "Personal notes..."
-      add: "Add"
-    _form_guest:
-      name: "What's your name?"
-      address: "Where?"
-      description: "What is it?"
-      share: "Share it!"
-    _show:
-      bestexp: "Best experiences"
-      myselection: "My selection"
-      friendstips: "My friends' tips"
-      addmyexp: "Add my own experience"
-      addcomment: "Add a tip"
-      selectedexp: "My selection"
-      save: "Save"
-      saveguest: "Save my tips"
-      asktips: "Get my friends' tips"
-      seeproviders: "See local guides & agencies"
-    providers:
-      title: "These local guides and agencies will help you"
-    show:
-      title: "Add an experience"
-    show_guest_user:
-      title: "Welcome to Explorizers"
-      line1: "Your friend is traveling and is looking for inspiration"
-      line2: "Add your tips on the map : neighborhoods, monuments, restaurants, hotels, ..."
-      line3: "... and save them !"
-      modaltitle: "Another tip"
-      thanks: "Thanks for sharing your tips !"
-      thanksline1: "An email has just been sent to your friend to let him/her know."
-      thanksline1: "And now, your turn :"
-      thanksbtn: "Discover EXPLORIZERS"
+  form_name: "Name this experience"
+  form_address: "Where is it?"
+  form_description: "Personal notes..."
+  form_add: "Add"
+
+  form_guest_name: "What's your name?"
+  form_guest_address: "Where?"
+  form_guest_description: "What is it?"
+  form_guest_share: "Share it!"
+
+  show_bestexp: "Best experiences"
+  show_myselection: "My selection"
+  show_friendstips: "My friends' tips"
+  show_addmyexp: "Add my own experience"
+  show_addcomment: "Add a tip"
+  show_selectedexp: "My selection"
+  show_save: "Save"
+  show_saveguest: "Save my tips"
+  show_asktips: "Get my friends' tips"
+  show_seeproviders: "See local guides & agencies"
+
+  providers_title: "These local guides and agencies will help you"
+
+  trip_show_title: "Add an experience"
+
+  show_guest_user_title: "Welcome to Explorizers"
+  show_guest_user_line1: "Your friend is traveling and is looking for inspiration"
+  show_guest_user_line2: "Add your tips on the map : neighborhoods, monuments, restaurants, hotels, ..."
+  show_guest_user_line3: "... and save them !"
+  show_guest_user_modaltitle: "Another tip"
+  show_guest_user_thanks: "Thanks for sharing your tips !"
+  show_guest_user_thanksline1: "An email has just been sent to your friend to let him/her know."
+  show_guest_user_thanksline1: "And now, your turn :"
+  show_guest_user_thanksbtn: "Discover EXPLORIZERS"
 
   #providers:
   providers:

@@ -116,47 +116,39 @@ fr:
   #trips
 
   form_name: "Nom de l'expérience"
-  trips:
-    _form:
-      name: "Nom de l'expérience"
-      address: "Quelle adresse?"
-      description: "Notes personnelles..."
-      add: "Ajouter"
-  trips:
-    _form_guest:
-      name: "Votre prénom?"
-      address: "Quelle adresse?"
-      description: "De quoi s'agit-il?"
-      share: "Partager !"
-  trips:
-    _show:
-      bestexp: "Meilleures expériences"
-      myselection: "Ma sélection"
-      friendstips: "Conseils de mes amis"
-      addmyexp: "Ajouter ma propre expérience"
-      addcomment: "Ajouter une reconmmandation"
-      selectedexp: "Ma sélection"
-      save: "Enregistrer"
-      saveguest: "Enregistrer mes conseils"
-      asktips: "Obtenir les conseils de mes amis"
-      seeproviders: "Voir les agences et guides locaux"
-  trips:
-    providers:
-      title: "Ces agences et guides locaux vont vous aider"
-  trips:
-    show:
-      title: "Ajouter une expérience"
-  trips:
-    show_guest_user:
-      title: "Bienvenue sur Explorizers"
-      line1: "Votre ami(e) part en voyage et cherche de l'inspiration!"
-      line2: "Ajoutez vos bons plans sur la carte : quartiers, monuments, restaurants, hôtels, ..."
-      line3: "... et enregistrez-les !"
-      modaltitle: "Encore un conseil"
-      thanks: "Merci pour vos conseils!"
-      thanksline1: "Un mail vient de partir, votre ami(e) est prévenu(e) de votre participation."
-      thanksline1: "Et maintenant, à votre tour :"
-      thanksbtn: "Découvrir EXPLORIZERS"
+  form_address: "Quelle adresse?"
+  form_description: "Notes personnelles..."
+  form_add: "Ajouter"
+
+  form_guest_name: "Votre prénom?"
+  form_guest_address: "Quelle adresse?"
+  form_guest_description: "De quoi s'agit-il?"
+  form_guest_share: "Partager !"
+
+  show_bestexp: "Meilleures expériences"
+  show_myselection: "Ma sélection"
+  show_friendstips: "Conseils de mes amis"
+  show_addmyexp: "Ajouter ma propre expérience"
+  show_addcomment: "Ajouter une reconmmandation"
+  show_selectedexp: "Ma sélection"
+  show_save: "Enregistrer"
+  show_saveguest: "Enregistrer mes conseils"
+  show_asktips: "Obtenir les conseils de mes amis"
+  show_seeproviders: "Voir les agences et guides locaux"
+
+  providers_title: "Ces agences et guides locaux vont vous aider"
+
+  trip_show_title: "Ajouter une expérience"
+
+  show_guest_user_title: "Bienvenue sur Explorizers"
+  show_guest_user_line1: "Votre ami(e) part en voyage et cherche de l'inspiration!"
+  show_guest_user_line2: "Ajoutez vos bons plans sur la carte : quartiers, monuments, restaurants, hôtels, ..."
+  show_guest_user_line3: "... et enregistrez-les !"
+  show_guest_user_modaltitle: "Encore un conseil"
+  show_guest_user_thanks: "Merci pour vos conseils!"
+  show_guest_user_thanksline1: "Un mail vient de partir, votre ami(e) est prévenu(e) de votre participation."
+  show_guest_user_thanksline1: "Et maintenant, à votre tour :"
+  show_guest_user_thanksbtn: "Découvrir EXPLORIZERS"
 
 
 
