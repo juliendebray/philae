@@ -12,7 +12,7 @@
         <div class="box-content text-center">
           <i class="fa fa-facebook"></i><br>
           <h4><%= t('.share_fb') %></h4>
-          <a class="btn btn-facebook" id="sharefb">
+          <a class="btn btn-facebook" id="sharefb" onclick="ga('send', 'event', 'button', 'click', 'Ask on facebook button clicked);">
             <%= t('.ask_fb_btn') %>
           </a>
         </div>
@@ -23,7 +23,7 @@
           <h4><%= t('.share_email') %></h4>
           <%= form_for @trip, url: share_trip_path(@trip.id) do |f| %>
             <%= hidden_field_tag :id, value = @trip.id %>
-            <%= f.submit( t('.ask_email_btn'), class:'btn btn-primary') %>
+            <%= f.submit( t('.ask_email_btn'), onclick: "ga('send', 'event', 'button', 'click', 'Ask with email button clicked');", class:'btn btn-primary') %>
           <% end %>
         </div>
       </div>

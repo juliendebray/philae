@@ -52,13 +52,13 @@
             <div id="set-orders" class="button-action">
               <%= form_for @trip, url: {action: "update"} do |f|%>
                 <%= hidden_field_tag :order %>
-                <%= f.submit('Enregistrer mon itinéraire', class: "btn btn-info") %>
+                <%= f.submit('Enregistrer mon itinéraire', onclick: "ga('send', 'event', 'button', 'click', 'Save my trip button clicked');", class: "btn btn-info") %>
               <% end %>
             </div>
           <% else %>
             <div id="set-orders" class="button-action">
               <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
-                <%= f.submit('Enregistrer mes commentaires', class: "btn btn-group-lg btn-info") %>
+                <%= f.submit('Enregistrer mes commentaires', onclick: "ga('send', 'event', 'button', 'click', 'Save my comments button clicked');", class: "btn btn-group-lg btn-info") %>
               <% end %>
             </div>
           <% end %>
@@ -66,7 +66,7 @@
         <% unless @guest_user %>
           <div class="col-xs-4 col-sm-3">
             <div class="button-action">
-              <%= link_to 'Demander des conseils', trip_ask_your_friends_path(@trip), class: "btn btn-primary" %>
+              <%= link_to 'Demander des conseils', trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Ask advice button clicked');", class: "btn btn-primary" %>
             </div>
           </div>
           <div class="col-xs-4 col-sm-3">
@@ -76,7 +76,7 @@
               </button>
             </div>
             <div class="button-action" style="display:none">
-            <%= link_to 'Voir les agences et guides locaux',  providers_trip_path(@trip), class: "btn btn-default" %>
+            <%= link_to 'Voir les agences et guides locaux',  providers_trip_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Show local providers button clicked');", class: "btn btn-default" %>
             </div>
           </div>
         <% end %>
