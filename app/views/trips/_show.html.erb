@@ -70,13 +70,8 @@
             </div>
           </div>
           <div class="col-xs-4 col-sm-3">
-            <div class="button-action disabled" data-toggle="tooltip" data-placement="top" title="Bientôt disponible...">
-              <button type="button" class="btn btn-primary" disabled="disabled" >
-                <%= t('.seeproviders') %>
-              </button>
-            </div>
-            <div class="button-action" style="display:none">
-            <%= link_to 'Voir les agences et guides locaux',  providers_trip_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Show local providers button clicked');", class: "btn btn-default" %>
+            <div class="button-action">
+            <%= link_to t('.seeproviders'),  providers_trip_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Show local providers button clicked');", class: "btn btn-default" %>
             </div>
           </div>
         <% end %>
