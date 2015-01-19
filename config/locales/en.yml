@@ -89,6 +89,7 @@ en:
       title: "My personal page"
       mytrips: "My trips"
       myfriends: "My friends"
+      delete: "Are you sure you want to delete this trip?"
 
   #contact
   contacts:
@@ -130,10 +131,48 @@ en:
   blockfbtitle: "I need YOU - to help me design the best trip ever!"
   blockfbdescription: "Explorizers is a platform where you design your trip - with the help of your trusted friends"
 
+  #trips
+  trips:
+    _form:
+      name: "Name this experience"
+      address: "Where is it?"
+      description: "Personal notes..."
+      add: "Add"
+    _form_guest:
+      name: "What's your name?"
+      address: "Where?"
+      description: "What is it?"
+      share: "Share it!"
+    _show:
+      bestexp: "Best experiences"
+      myselection: "My selection"
+      friendstips: "My friends' tips"
+      addmyexp: "Add my own experience"
+      addcomment: "Add a tip"
+      selectedexp: "My selection"
+      save: "Save"
+      saveguest: "Save my tips"
+      asktips: "Get my friends' tips"
+      seeproviders: "See local guides & agencies"
+    providers:
+      title: "These local guides and agencies will help you"
+    show:
+      title: "Add an experience"
+    show_guest_user:
+      title: "Welcome to Explorizers"
+      line1: "Your friend is traveling and is looking for inspiration"
+      line2: "Add your tips on the map : neighborhoods, monuments, restaurants, hotels, ..."
+      line3: "... and save them !"
+      modaltitle: "Another tip"
+      thanks: "Thanks for sharing your tips !"
+      thanksline1: "An email has just been sent to your friend to let him/her know."
+      thanksline1: "And now, your turn :"
+      thanksbtn: "Discover EXPLORIZERS"
+
   #providers:
   providers:
     index:
-      title: "Liste of providers"
+      title: "List of providers"
       desc: "You know reliable local guides or agencies that could be on Explorizers?"
       addprovider: "Let us know here !"
     show:

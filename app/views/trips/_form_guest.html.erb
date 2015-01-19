@@ -1,10 +1,10 @@
 <%= bootstrap_form_for([@trip, @trip.trip_comments.new], remote: true) do |f| %>
   <div class="actions">
-    <%= f.text_field :name, placeholder:'Write your name here' %>
-    <%= f.text_field :address, placeholder:'What is the address?' %>
-    <%= f.text_area :description, placeholder: 'What it is about?' %>
+    <%= f.text_field :name, placeholder: t('.name') %>
+    <%= f.text_field :address, placeholder: t('.address') %>
+    <%= f.text_area :description, placeholder: t('.description')  %>
     <%= f.hidden_field :latitude %>
     <%= f.hidden_field :longitude %>
-    <%= f.submit 'Partager!' %>
+    <%= f.submit( t('.share'))  %>
   </div>
 <% end %>

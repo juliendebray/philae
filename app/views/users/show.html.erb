@@ -11,7 +11,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="tripbox">
             <%= link_to "#{trip.title} (créé le #{trip.created_at.strftime('%d-%m-%Y')})", start_trip_path(trip) %>
-            <%= link_to [trip], { method: :delete, data: {confirm: "Etes-vous sûr de vouloir supprimer ce voyage?"} } do %>
+            <%= link_to [trip], { method: :delete, data: {confirm: t('.delete')} } do %>
               <i class= "pull-right fa fa-trash-o"></i>
             <% end %>
           </div>
