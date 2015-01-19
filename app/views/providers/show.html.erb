@@ -48,6 +48,16 @@
                 site web: <%= link_to(@provider.website, "http://#{@provider.website}", {target: "_blank"}) %>
               </li>
             <% end %>
+            <% if @provider.phone %>
+              <li>
+                <%= simple_format @provider.phone %>
+              </li>
+            <% end %>
+            <% if @provider.address %>
+              <li>
+                <%= simple_format @provider.address %>
+              </li>
+            <% end %>
             <% if @provider.other %>
               <li>
                 <%= simple_format @provider.other %>
