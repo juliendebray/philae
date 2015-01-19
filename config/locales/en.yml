@@ -202,10 +202,10 @@ en:
 
   # user_mailer_welcome: "Welcome to Explorizers"
   # user_mailer_share_trip: "Ask for your friends' tips"
-  # user_mailer_notif: "A friend has given you tips!"
+  user_mailer_notif: "A friend has given you tips!"
 
-  mailer:
-    user_mailer:
-      notif_trip:
-        subject: "A friend has given you tips!"
+  # mailer:
+  #   user_mailer:
+  #     notif_trip:
+  #       subject: "A friend has given you tips!"
 
