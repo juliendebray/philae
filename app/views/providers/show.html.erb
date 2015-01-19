@@ -40,12 +40,12 @@
           <ul>
             <% if @provider.email %>
               <li>
-                email: <%= @provider.email %>
+                email: <%= link_to(@provider.email, "mailto:#{@provider.email}", {target: "_blank"}) %>
               </li>
             <% end %>
             <% if @provider.website %>
               <li>
-                site web: <%= @provider.website %>
+                site web: <%= link_to(@provider.website, "http://#{@provider.website}", {target: "_blank"}) %>
               </li>
             <% end %>
             <% if @provider.other %>
