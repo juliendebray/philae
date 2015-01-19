@@ -128,7 +128,7 @@ fr:
   show_myselection: "Ma sélection"
   show_friendstips: "Conseils de mes amis"
   show_addmyexp: "Ajouter ma propre expérience"
-  show_addcomment: "Ajouter une reconmmandation"
+  show_addcomment: "Ajouter une recommandation"
   show_selectedexp: "Ma sélection"
   show_save: "Enregistrer"
   show_saveguest: "Enregistrer mes conseils"
@@ -181,11 +181,18 @@ fr:
       hi: "Bonjour,"
       n_line1: "Un ami vous a donné ses conseils pour votre voyage."
       n_line2: "Vous pouvez y accéder en allant sur la page de votre itinéraire et en sélectionnant 'Les conseil des mes amis'"
-      n_line3: "Accéder aux conseil de mes amis."
+      n_line3: "Accéder aux conseils de mes amis."
       n_line4: "En espérant que cela vous soit utile, nous vous souhaitons un super voyage!"
       n_line5: "L'équipe EXPLORIZERS"
 
+  # user_mailer_welcome: "Bienvenue sur Explorizers"
+  # user_mailer_share_trip: "Demande de conseils"
+  # user_mailer_notif: "Un ami a apporté ses conseils"
 
+  mailer:
+    user_mailer:
+      notif_trip:
+        subject: "Un ami a apporté ses conseils"
 
 
 
