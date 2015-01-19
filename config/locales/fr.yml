@@ -120,11 +120,13 @@ fr:
       address: "Quelle adresse?"
       description: "Notes personnelles..."
       add: "Ajouter"
+  trips:
     _form_guest:
       name: "Votre prénom?"
       address: "Quelle adresse?"
       description: "De quoi s'agit-il?"
       share: "Partager !"
+  trips:
     _show:
       bestexp: "Meilleures expériences"
       myselection: "Ma sélection"
@@ -136,10 +138,13 @@ fr:
       saveguest: "Enregistrer mes conseils"
       asktips: "Obtenir les conseils de mes amis"
       seeproviders: "Voir les agences et guides locaux"
+  trips:
     providers:
       title: "Ces agences et guides locaux vont vous aider"
+  trips:
     show:
       title: "Ajouter une expérience"
+  trips:
     show_guest_user:
       title: "Bienvenue sur Explorizers"
       line1: "Votre ami(e) part en voyage et cherche de l'inspiration!"
