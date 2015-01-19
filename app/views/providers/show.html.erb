@@ -48,11 +48,6 @@
                 <%= simple_format @provider.phone %>
               </li>
             <% end %>
-            <% if @provider.other %>
-              <li>
-                <%= simple_format @provider.other %>
-              </li>
-            <% end %>
             <% if @provider.email %>
               <li>
                 email: <%= link_to(@provider.email, "mailto:#{@provider.email}", {target: "_blank"}) %>
