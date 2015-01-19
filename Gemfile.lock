@@ -182,6 +182,8 @@ GEM
     pg (0.17.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-oauth2 (1.0.8)
       activesupport (>= 2.3)
@@ -293,6 +295,7 @@ DEPENDENCIES
   owlcarousel-rails
   paperclip
   pg
+  quiet_assets
   rails (= 4.1.7)
   rails-assets-underscore
   rails-i18n (~> 4.0.0)

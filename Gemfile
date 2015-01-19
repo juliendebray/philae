@@ -106,4 +106,7 @@ gem 'activeadmin', github: 'activeadmin'
 # rest-client
 gem 'rest-client', '~> 1.7.2'
 
+# Quiet-Assets
+gem 'quiet_assets', group: :development
+
 
