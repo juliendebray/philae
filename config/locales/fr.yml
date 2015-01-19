@@ -70,6 +70,7 @@ fr:
       title: "Mon espace"
       mytrips: "Mes voyages"
       myfriends: "Mes amis"
+      delete: "Etes-vous sûr de vouloir supprimer ce voyage?"
 
 
   #contact
@@ -111,6 +112,46 @@ fr:
 
   blockfbtitle: "Filez vos bons plans de voyage !"
   blockfbdescription: "Explorizers est fait pour les voyageurs qui font confiance à leurs amis pour leur conseiller des expériences extraordinaires et leur faire découvrir des lieux uniques."
+
+  #trips
+  trips:
+    _form:
+      name: "Nom de l'expérience"
+      address: "Quelle adresse?"
+      description: "Notes personnelles..."
+      add: "Ajouter"
+    _form_guest:
+      name: "Votre prénom?"
+      address: "Quelle adresse?"
+      description: "De quoi s'agit-il?"
+      share: "Partager !"
+    _show:
+      bestexp: "Meilleures expériences"
+      myselection: "Ma sélection"
+      friendstips: "Conseils de mes amis"
+      addmyexp: "Ajouter ma propre expérience"
+      addcomment: "Ajouter une reconmmandation"
+      selectedexp: "Ma sélection"
+      save: "Enregistrer"
+      saveguest: "Enregistrer mes conseils"
+      asktips: "Obtenir les conseils de mes amis"
+      seeproviders: "Voir les agences et guides locaux"
+    providers:
+      title: "Ces agences et guides locaux vont vous aider"
+    show:
+      title: "Ajouter une expérience"
+    show_guest_user:
+      title: "Bienvenue sur Explorizers"
+      line1: "Votre ami(e) part en voyage et cherche de l'inspiration!"
+      line2: "Ajoutez vos bons plans sur la carte : quartiers, monuments, restaurants, hôtels, ..."
+      line3: "... et enregistrez-les !"
+      modaltitle: "Encore un conseil"
+      thanks: "Merci pour vos conseils!"
+      thanksline1: "Un mail vient de partir, votre ami(e) est prévenu(e) de votre participation."
+      thanksline1: "Et maintenant, à votre tour :"
+      thanksbtn: "Découvrir EXPLORIZERS"
+
+
 
   #providers:
   providers:
