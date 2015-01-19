@@ -1,5 +1,5 @@
 ActiveAdmin.register Provider do
-  permit_params :name, :email, :description, :activities_description, :website, :phone, :picture_name
+  permit_params :name, :email, :description, :activities_description, :website, :phone, :picture_name, :address, :other
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
