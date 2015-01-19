@@ -114,6 +114,8 @@ fr:
   blockfbdescription: "Explorizers est fait pour les voyageurs qui font confiance à leurs amis pour leur conseiller des expériences extraordinaires et leur faire découvrir des lieux uniques."
 
   #trips
+
+  form_name: "Nom de l'expérience"
   trips:
     _form:
       name: "Nom de l'expérience"

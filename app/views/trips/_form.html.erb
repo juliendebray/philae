@@ -2,7 +2,7 @@
   url: experience_within_trip_path(@trip),
   remote: true) do |f| %>
   <div class="actions">
-    <%= f.text_field :name, placeholder: t('.name') %>
+    <%= f.text_field :name, placeholder: t('form_name') %>
     <%= f.text_field :address, placeholder: t('.address') %>
     <%= f.text_area :description, placeholder: t('.description')  %>
     <%= f.hidden_field :latitude %>
