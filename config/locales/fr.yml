@@ -18,7 +18,7 @@ fr:
   #sign up / sign in
   sign_up: "Inscription"
   sign_in: "Connexion"
-  passwordplaceholder: "Mot de passe"
+  passwordplaceholder: "Mot de passe (> 6 car.)"
   passwordconfirmplaceholder: "Confirmer mot de passe"
   fbbutton: "Connexion"
   noaccount: "Pas encore inscrit?"

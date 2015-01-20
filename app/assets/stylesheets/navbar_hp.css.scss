@@ -1,6 +1,7 @@
 $color: white;
 $color2: lightgrey;
 $bg: transparent;
+$screen-sm-min: 768px;
 
 .navbar {
   position: absolute;
@@ -32,4 +33,11 @@ $bg: transparent;
 .navbar-wagon .navbar-brand ,
 .navbar-wagon .navbar-brand:hover {
   color: $color;
+}
+
+@media screen and (max-width: $screen-sm-min) {
+  .navbar-collapse {
+    position: relative;
+    background-color: transparent;
+  }
 }
