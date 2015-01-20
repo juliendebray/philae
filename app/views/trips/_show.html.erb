@@ -10,33 +10,33 @@
       <div id="user-choices">
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
-          <small>Les meilleures expériences</small>
+          <small><%= t('show_bestexp') %></small>
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
-          <small>Ma sélection</small>
+          <small><%= t('show_myselection') %></small>
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
-          <small>Les conseils de mes amis</small>
+          <small><%= t('show_friendstips') %></small>
         </label>
       </div>
       <!-- User Modal to let him add his own experience -->
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-        <small>Ajouter ma propre experience</small>
+        <small><%= t('show_addmyexp') %></small>
       </button>
     <% else %>
       <!-- Guest Modal to let him add his own experience -->
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalGuest">
-        <small>Ajouter un commentaire</small>
+        <small><%= t('show_addcomment') %></small>
       </button>
     <% end %>
   </div>
   <div class="sidebar">
     <div class="selection-header text-center">
-      <h4>Expériences sélectionnées</h4>
+      <h4><%= t('show_selectedexp') %></h4>
       <i class="fa fa-angle-double-down"></i>
     </div>
     <div class="selection-content">
@@ -54,13 +54,13 @@
             <div id="set-orders" class="button-action">
               <%= form_for @trip, url: {action: "update"} do |f|%>
                 <%= hidden_field_tag :order %>
-                <%= f.submit('Enregistrer mon itinéraire', onclick: "ga('send', 'event', 'button', 'click', 'Save my trip button clicked');", class: "btn btn-info btn-block") %>
+                <%= f.submit( t('show_save'), onclick: "ga('send', 'event', 'button', 'click', 'Save my trip button clicked');", class: "btn btn-info btn-block") %>
               <% end %>
             </div>
           <% else %>
             <div id="set-orders" class="button-action">
               <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
-                <%= f.submit('Enregistrer mes commentaires', onclick: "ga('send', 'event', 'button', 'click', 'Save my comments button clicked');", class: "btn btn-group-lg btn-info") %>
+                <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'button', 'click', 'Save my comments button clicked');", class: "btn btn-group-lg btn-info") %>
               <% end %>
             </div>
           <% end %>
@@ -70,14 +70,15 @@
           <!-- <div class="col-xs-4 col-sm-3"> -->
           <td>
             <div class="button-action">
-              <%= link_to 'Demander des conseils', trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Ask advice button clicked');", class: "btn btn-primary btn-block" %>
+<<<<<<< HEAD
+              <%= link_to t('show_asktips'), trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Ask advice button clicked');", class: "btn btn-primary btn-block" %>
             </div>
           </td>
           <!-- </div> -->
           <!-- <div class="col-xs-4 col-sm-3"> -->
           <td>
             <div class="button-action">
-            <%= link_to 'Voir les agences et guides locaux',  providers_trip_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Show local providers button clicked');", class: "btn btn-default" %>
+            <%= link_to t('show_seeproviders'),  providers_trip_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Show local providers button clicked');", class: "btn btn-default" %>
             </div>
           </td>
           <!-- </div> -->

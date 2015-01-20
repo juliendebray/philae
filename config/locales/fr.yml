@@ -12,6 +12,7 @@ fr:
   ourcontact: "Contact"
   contribute: "Contribuer"
   my_trips: "Mes voyages"
+  nav_listofproviders: "Acteurs locaux référencés"
 
 
   #sign up / sign in
@@ -55,14 +56,12 @@ fr:
       myexp: "Montrer seulement ma sélection"
       newexp: "Cliquer sur la carte pour ajouter une nouvelle expérience"
 
-  trip_comments:
-    _infowindow:
-      delete: "- Supprimer ce commentaire -"
-      confirm: "Etes-vous sûr de vouloir supprimer ce commentaire?"
+  #trip_comments:
+  trip_comment_delete: "- Supprimer ce commentaire -"
+  trip_comment_confirm: "Etes-vous sûr de vouloir supprimer ce commentaire?"
 
-  trip_experiences:
-    _experience_block:
-      seemore: "Voir plus"
+  #trip_experiences:
+  experience_block_seemore: "Voir plus"
 
   #users
   users:
@@ -70,6 +69,7 @@ fr:
       title: "Mon espace"
       mytrips: "Mes voyages"
       myfriends: "Mes amis"
+      delete: "Etes-vous sûr de vouloir supprimer ce voyage?"
 
 
   #contact
@@ -112,6 +112,45 @@ fr:
   blockfbtitle: "Filez vos bons plans de voyage !"
   blockfbdescription: "Explorizers est fait pour les voyageurs qui font confiance à leurs amis pour leur conseiller des expériences extraordinaires et leur faire découvrir des lieux uniques."
 
+  #trips
+
+  form_name: "Nom de l'expérience"
+  form_address: "Quelle adresse?"
+  form_description: "Notes personnelles..."
+  form_add: "Ajouter"
+
+  form_guest_name: "Votre prénom?"
+  form_guest_address: "Quelle adresse?"
+  form_guest_description: "De quoi s'agit-il?"
+  form_guest_share: "Partager !"
+
+  show_bestexp: "Meilleures expériences"
+  show_myselection: "Ma sélection"
+  show_friendstips: "Conseils de mes amis"
+  show_addmyexp: "Ajouter ma propre expérience"
+  show_addcomment: "Ajouter une recommandation"
+  show_selectedexp: "Ma sélection"
+  show_save: "Enregistrer"
+  show_saveguest: "Enregistrer mes conseils"
+  show_asktips: "Obtenir les conseils de mes amis"
+  show_seeproviders: "Voir les agences et guides locaux"
+
+  providers_title: "Ces agences et guides locaux vont vous aider"
+
+  trip_show_title: "Ajouter une expérience"
+
+  show_guest_user_title: "Bienvenue sur Explorizers"
+  show_guest_user_line1: "Votre ami(e) part en voyage et cherche de l'inspiration!"
+  show_guest_user_line2: "Ajoutez vos bons plans sur la carte : quartiers, monuments, restaurants, hôtels, ..."
+  show_guest_user_line3: "... et enregistrez-les !"
+  show_guest_user_modaltitle: "Encore un conseil"
+  show_guest_user_thanks: "Merci pour vos conseils!"
+  show_guest_user_thanksline1: "Un mail vient de partir, votre ami(e) est prévenu(e) de votre participation."
+  show_guest_user_thanksline2: "Et maintenant, à votre tour :"
+  show_guest_user_thanksbtn: "Découvrir EXPLORIZERS"
+
+
+
   #providers:
   providers:
     index:
@@ -142,11 +181,18 @@ fr:
       hi: "Bonjour,"
       n_line1: "Un ami vous a donné ses conseils pour votre voyage."
       n_line2: "Vous pouvez y accéder en allant sur la page de votre itinéraire et en sélectionnant 'Les conseil des mes amis'"
-      n_line3: "Accéder aux conseil de mes amis."
+      n_line3: "Accéder aux conseils de mes amis."
       n_line4: "En espérant que cela vous soit utile, nous vous souhaitons un super voyage!"
       n_line5: "L'équipe EXPLORIZERS"
 
+  # user_mailer_welcome: "Bienvenue sur Explorizers"
+  # user_mailer_share_trip: "Demande de conseils"
+  user_mailer_notif: "Un ami a apporté ses conseils"
 
+  # mailer:
+  #   user_mailer:
+  #     notif_trip:
+  #       subject: "Un ami a apporté ses conseils"
 
 
 

@@ -16,12 +16,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
     <% if @trip %>
-      <meta property="og:title" content= <%= t('blockfbtitle') %> />
+      <meta property="og:title" content="Give me your tips !" />
       <meta property="og:site_name" content="explorizers.com" />
       <meta property="og:type" content="article" />
       <meta property="og:url" content="http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>" />
       <meta property="og:image" content="http://unsplash.imgix.net/uploads/1412231250505b65c703c/1fa14fb0?dpr=0.33&fit=crop&fm=jpg&h=700&q=75&w=1075" />
-      <meta property="og:description" content= <%= t('blockfbdescription') %> />
+      <meta property="og:description" content="Explorizers helps you get your friends tips to design your travel"/>
     <% end %>
 
     <%= favicon_link_tag %>

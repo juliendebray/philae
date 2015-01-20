@@ -7,13 +7,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalPresentationLabel">Bienvenue sur EXPLORIZERS</h4>
+        <h4 class="modal-title" id="myModalPresentationLabel"><%= t('show_guest_user_title') %></h4>
       </div>
       <div class="modal-body">
-        <p>Vous avez été sollicité pour aider un ami à préparer son prochain voyage. Rien de plus simple :</p>
-        <p>1/ Consulter les endroits que votre ami enviseage de visiter</p>
-        <p>2/ Cliquez sur la carte pour faire part de vos commentaires, bons plans, meilleures addresses, etc.</p>
-        <p>3/ Une fois fini, cliquez sur "enregistrer mes commentaires" et votre ami pourra retrouver vos conseils sur son espace perso</p>
+        <p><%= t('show_guest_user_line1') %></p>
+        <p><%= t('show_guest_user_line2') %></p>
+        <p><%= t('show_guest_user_line3') %></p>
       </div>
       <div class="modal-footer">
         <div class="text-center">
@@ -29,7 +28,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalGuestLabel">Partagez vos conseils !</h4>
+        <h4 class="modal-title" id="myModalGuestLabel"><%= t('show_guest_user_modaltitle') %></h4>
       </div>
       <div class="modal-body">
         <%= render 'form_guest' %>
@@ -43,16 +42,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalThanksLabel">Merci pour vos conseils!!!</h4>
+        <h4 class="modal-title" id="myModalThanksLabel"><%= t('show_guest_user_thanks') %></h4>
       </div>
       <div class="modal-body">
-        <p>Nous avons prévenu l'auteur du voyage des commentaires que vous avez ajoutés.</p>
-        <p>Vous pouver découvrir notre site en cliquant sur le lien suivant...</p>
+        <p><%= t('show_guest_user_thanksline1') %></p>
+        <p><%= t('show_guest_user_thanksline2') %></p>
         <div class="text-center">
-          <a href="http://www.explorizers.com">Découvrir EXPLORIZERS</a>
+          <a href="http://www.explorizers.com"> <%= t('show_guest_user_thanksbtn') %></a>
         </div>
       </div>
     </div>
   </div>
 </div>
-

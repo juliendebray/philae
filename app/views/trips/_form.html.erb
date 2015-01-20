@@ -2,11 +2,11 @@
   url: experience_within_trip_path(@trip),
   remote: true) do |f| %>
   <div class="actions">
-    <%= f.text_field :name, placeholder:'Nom' %>
-    <%= f.text_field :address %>
-    <%= f.text_area :description %>
+    <%= f.text_field :name, placeholder: t('form_name') %>
+    <%= f.text_field :address, placeholder: t('form_address') %>
+    <%= f.text_area :description, placeholder: t('form_description')  %>
     <%= f.hidden_field :latitude %>
     <%= f.hidden_field :longitude %>
-    <%= f.submit 'Ajouter' %>
+    <%= f.submit( t('form_add')) %>
   </div>
 <% end %>
