@@ -53,6 +53,12 @@
   margin: 15px;
   color: lightgrey;
 }
+
+@media screen and (max-width: 999px) {
+  .homepage_story .fullpage div i.fa-angle-down {
+    display: none;
+  }
+}
 // .effect-white-shadow{
 //   -webkit-box-shadow: 0 10px 6px -6px #777;
 //      -moz-box-shadow: 0 10px 6px -6px #777;
