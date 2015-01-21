@@ -4,8 +4,13 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers]
 
   def create
-    @trip = Trip.new(trip_params)
-    @trip.title = "Voyage au Maroc"
+    if params[:trip].nil?
+      @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
+      @trip.title = 'Morocco'
+    elsif params[:trip][:query]
+      @trip = Trip.new(trip_params)
+      @trip.title = @trip.query
+    end
     @trip.save
     redirect_to start_trip_path(@trip)
   end
@@ -80,7 +85,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:query, :query_lat, :query_lng)
+    params.require(:trip).permit(:query, :latitude, :longitude)
   end
 
   def set_trip
