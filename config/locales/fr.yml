@@ -16,14 +16,14 @@ fr:
 
 
   #sign up / sign in
-  sign_up: "Inscription"
+  sign_up: "Devenez un Explorizer ! C'est facile et gratuit."
   sign_in: "Connexion"
   passwordplaceholder: "Mot de passe (> 6 car.)"
   passwordconfirmplaceholder: "Confirmer mot de passe"
-  fbbutton: "Connexion"
+  fbbutton: "Connexion Facebook"
   noaccount: "Pas encore inscrit?"
   alreadyaccount: "Déjà inscrit?"
-  fbencourage: "Avec Facebook : plus facile pour obtenir les avis de vos amis"
+  fbencourage: "Connectez-vous avec Facebook pour obtenir les conseils de vos amis"
   emailsignup: "Ou inscrivez-vous avez votre email"
   forgot: "Mot de passe oublié?"
 
@@ -33,17 +33,20 @@ fr:
     index:
       brand: "E X P L O R I Z E R S"
       firstline: "VOTRE VOYAGE AU MAROC COMMENCE ICI"
-      secondline: "Choisissez l'aventure et sortez des sentiers battus"
+      secondline: "Le voyage au Maroc partagé et inspiré par les meilleurs :"
+      thirdline: "amis, voyageurs, locaux"
       baseline: "Préparez-vous au décollage"
       searchplaceholder: "Saisissez votre prochaine destination de voyage"
-      searchbutton: "Démarrer"
-      subtitle1: "1. Faites votre propre voyage"
-      text1: "Explorizers préfère vous dire ce que vous pouvez faire, plutôt que ce que vous devez faire. C'est vous qui décidez, sur la base des descriptions, photos et avis d'autres voyageurs."
-      subtitle2: "2. Appel à un ami ?"
-      text2: "Demandez à vos amis de compléter avec leurs conseils. Ils vous connaissent bien mieux que nous."
-      subtitle3: "3. Trouvez un support local"
-      text3: "Sauf si vous avez un dromadaire, il sera difficile d'aller tout seul dans le désert. On vous présente donc des agences et guides locaux. Ils sont bons, sûrs, et sympas."
-      concept: "Explorizers apporte des expériences de voyage uniques et étonnantes. Créez votre propre voyage, avec l'aide de vos amis et de notre communauté d'explorateurs."
+      searchbutton: "Je pars au Maroc"
+      otherdestination1: "Vous partez ailleurs? Créez votre voyage n'importe où, demandez et compilez les meilleurs conseils de vos amis !"
+      otherdestination2: "Les recommandations Explorizers pour d'autres destinations arrivent bientôt..!"
+      subtitle1: "1. Faites confiance à vos amis"
+      text1: "Demandez leurs meilleurs conseils, à mettre sur votre carte de voyage"
+      subtitle2: "2. Laissez-nous vous inspirer"
+      text2: "Nous connaissons des lieux magnifiques et des expériences uniques, et nous partageons aussi les meilleures contributions des utilisateurs (Maroc only)"
+      subtitle3: "3. Comptez sur nos partenaires locaux"
+      text3: "Ils sont sélectionnés pour leur expertise et sur la base des recommandations d'autres voyageurs (Maroc only)"
+      concept: "Explorizers vous accompagne dans vos voyages autour du monde et vos extraordinaires aventures."
       contact: "Nous contacter"
 
   addreview: "Donnez votre avis!"
@@ -96,7 +99,7 @@ fr:
       title: "Ajouter une nouvelle experience"
       text1: "Le projet Explorizers repose sur votre contribution. Merci de nous aider à le faire grandir."
       text2: "Pour assurer une qualité maximale sur Explorizers, les contributions sont validées par notre équipe. Cela évite les doublons, la pub, les trolls, les pirates et les clowns en tous genres. Pour toute question, écrivez à dora@explorizers.com."
-      buttonadd: "Ajouter"
+  expbuttonadd: "Ajouter"
 
   #ask_your_friends:
   ask_your_friends:

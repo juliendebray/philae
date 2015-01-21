@@ -12,6 +12,7 @@
       <div class="title">
         <h1><%= t('.firstline') %></h1>
         <h2><%= t('.secondline') %></h2>
+        <h2><%= t('.thirdline') %></h2>
       </div>
       <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
         <div class="form-group" class="text-center">
@@ -22,7 +23,8 @@
       <div class="tr-grey-bg">
         <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
           <div class="form-group minor-block" class="text-center">
-            <p>Vous partez ailleurs? Essayez en exclusivité notre version beta pour la destination de votre choix! </br> Vous pourrez créer vous même votre itinéraire et demander conseil à vos amis.</p>
+            <p><%= t('.otherdestination1')%></p>
+            <p><%= t('.otherdestination2')%></p>
             <%= f.hidden_field(:latitude) %>
             <%= f.hidden_field(:longitude) %>
             <%= f.search_field(:query, placeholder: 'Destination') %>
@@ -40,14 +42,14 @@
       <div class="row">
         <div class="col-xs-12 col-md-4">
           <div class="feature text-center effect-white-shadow">
-            <%= image_tag 'home_map.png', class: "img-responsive" %>
+            <%= image_tag 'home_friends2.png', class: "img-responsive" %>
             <h4><%= t('.subtitle1') %></h4>
             <p><%= t('.text1') %></p>
           </div>
         </div>
         <div class="col-xs-12 col-md-4">
           <div class="feature text-center effect-white-shadow">
-            <%= image_tag 'home_friends2.png', class: "img-responsive" %>
+            <%= image_tag 'home_map.png', class: "img-responsive" %>
             <h4><%= t('.subtitle2') %></h4>
             <p><%= t('.text2') %></p>
           </div>
