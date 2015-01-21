@@ -32,7 +32,15 @@
   }
   .well {
     margin-top: 15px;
-  }
 
+    .btn-link {
+      font-size: 1em;
+      font-weight: 200;
+      color: grey;
+    }
+    .btn-link:focus {
+      outline: none;
+    }
+  }
 
 }
