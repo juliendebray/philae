@@ -35,14 +35,14 @@ en:
   nav_listofproviders: "Local guides and agencies"
 
   #sign up / sign in
-  sign_up: "Sign up - it's easy and free"
+  sign_up: "Become an Explorizer ! It's easy and free."
   sign_in: "Connexion"
   passwordplaceholder: "Password (> 6 characters)"
   passwordconfirmplaceholder: "Confirm password"
-  fbbutton: "Connect"
+  fbbutton: "Connect with Facebook"
   noaccount: "Not registered yet?"
   alreadyaccount: "Already have an account?"
-  fbencourage: "To share the fun stuff you'll find here and get your friends' tips, we've made it possible to sign up with Facebook."
+  fbencourage: "Sign up with Facebook to get your friends' travel tips easily."
   emailsignup: "Or sign up just with your email"
   forgot: "Forgot your password"
 
@@ -50,17 +50,20 @@ en:
     index:
       brand: "E X P L O R I Z E R S"
       firstline: "YOUR TRIP TO MOROCCO STARTS HERE"
-      secondline: "Get inspired, and travel your way !"
+      secondline: "Your travel to Morocco shared and inspired by the best :"
+      thirdline: "friends, travelers, locals"
       baseline: "Prepare for take-off"
       searchplaceholder: "Type your next destination here"
-      searchbutton: "Start"
-      subtitle1: "1. Design your own trip"
-      text1: "Explorizers doesn't tell you what to do. It tells you what you CAN do, based on descriptions, photos et reviews from other travelers."
-      subtitle2: "Need an advice ?"
-      text2: "2. Ask your friends to give you tips. Because they know you even better than we do."
-      subtitle3: "3. Ask for local help"
-      text3: "Because you probably don't own a camel (and you'll need one to go in the desert), we introduce you to trusted local providers. They're good, safe, and nice."
-      concept: "Explorizers is a travel experience provider. Intuitive and personal, it helps you design your next trip, with the help of your friends and our trusted community."
+      searchbutton: "I'm going to Morocco"
+      otherdestination1: "Going somewhere else? Create your trip and ask your friends for their best tips!"
+      otherdestination2: "Our own recommendations for other destinations will be online shortly..!"
+      subtitle1: "1. Trust your friends"
+      text1: "Ask them to give you their best tips, on your travel map"
+      subtitle2: "2. Let us inspire you"
+      text2: "We know great places and things to do, and we also share our users' best contributions (Morocco only)"
+      subtitle3: "3. Rely on our local partners"
+      text3: "They were selected on their expertise and other travelers' reviews (Morocco only)"
+      concept: "Explorizers helps you travel the World and live extraordinary adventures"
       contact: "Contact us"
 
 
@@ -114,7 +117,7 @@ en:
       title: "Add a new experience"
       text1: "Explorizers is built of people's appeal for the project. So thanks for your contribution. "
       text2: "To make sure Explorizers remains a peaceful place, contributions are reviewed by our team. This avoids duplication, advertising, trolls, pirates and clowns. For any question, please write to dora@explorizers.com."
-      buttonadd: "Add"
+  expbuttonadd: "Add"
 
   #ask_your_friends:
   ask_your_friends:

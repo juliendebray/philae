@@ -1,0 +1,2 @@
+module MentionslegalesHelper
+end
