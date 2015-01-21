@@ -130,7 +130,7 @@ fr:
   show_addmyexp: "Ajouter ma propre expérience"
   show_addcomment: "Ajouter une recommandation"
   show_selectedexp: "Ma sélection"
-  show_save: "Enregistrer les expériences sélectionnées"
+  show_save: "Enregistrer mes expériences"
   show_saveguest: "Enregistrer mes conseils"
   show_asktips: "Obtenir les conseils de mes amis"
   show_seeproviders: "Voir les agences et guides locaux"
