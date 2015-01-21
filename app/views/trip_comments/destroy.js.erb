@@ -3,7 +3,9 @@ $( document ).ready(function() {
   ib.close();
   ibOpened = false;
   if (commentsMarkers[id] != null) {
-    commentsMarkers[id].setMap(null);
+    // commentsMarkers[id].setMap(null);
+    // TODO: remove marker definitevely
+    commentsMarkers[id].serviceObject.setPosition(new google.maps.LatLng(-90, 0));
   }
   if ($('#guests-comments').prop('checked')) {
     var map = handler.getMap();
