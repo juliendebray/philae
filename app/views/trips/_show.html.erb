@@ -70,7 +70,6 @@
           <!-- <div class="col-xs-4 col-sm-3"> -->
           <td>
             <div class="button-action">
-<<<<<<< HEAD
               <%= link_to t('show_asktips'), trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'button', 'click', 'Ask advice button clicked');", class: "btn btn-primary btn-block" %>
             </div>
           </td>
@@ -127,7 +126,7 @@
 
       if (GUEST_USER) {
         var guestUserMapOptions = {
-          center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
+          center: new google.maps.LatLng(<%= @trip.latitude %>, <%= @trip.longitude %>),
           zoom: 6,
           disableDoubleClickZoom: false,
           panControl: false,
@@ -141,7 +140,7 @@
         $('#draggablePanelList .panel-heading').css('cursor', 'auto')
       } else {
         var userMapOptions = {
-          center: new google.maps.LatLng(<%= @trip.query_lat %>, <%= @trip.query_lng %>),
+          center: new google.maps.LatLng(<%= @trip.latitude %>, <%= @trip.longitude %>),
           zoom: 6,
           disableDoubleClickZoom: false,
           panControl: false,

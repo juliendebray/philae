@@ -6,6 +6,9 @@ class Trip < ActiveRecord::Base
 
   has_many :trip_comments
 
+  geocoded_by :query
+  after_validation :geocode, if: :geocoding_needed?
+
   after_save :generate_token, if: :user_id_changed?
 
   def generate_url_with_token
@@ -23,5 +26,9 @@ class Trip < ActiveRecord::Base
       self.token = random_token
       self.save
     end
+  end
+
+  def geocoding_needed?
+    self.latitude.nil? || self.longitude.nil?
   end
 end
