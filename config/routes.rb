@@ -30,7 +30,6 @@ Rails.application.routes.draw do
     end
 
     resources :story, only: [:index]
-    resources :mentions_legales, only: [:index]
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do
       resources :ask_your_friends, only: [:index]
       member do
