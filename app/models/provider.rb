@@ -4,7 +4,7 @@ class Provider < ActiveRecord::Base
 
   has_attached_file :picture,
       styles: {
-        thumb: "200x200#"
+        thumb: "130x130#"
       }
 
     validates_attachment_content_type :picture,

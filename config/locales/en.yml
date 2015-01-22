@@ -36,15 +36,16 @@ en:
 
   #sign up / sign in
   sign_up: "Become an Explorizer ! It's easy and free."
-  sign_in: "Connexion"
+  sign_in: "Connection"
+  sign_in_btn: "Log in"
   passwordplaceholder: "Password (> 6 characters)"
   passwordconfirmplaceholder: "Confirm password"
   fbbutton: "Connect with Facebook"
-  noaccount: "Not registered yet?"
-  alreadyaccount: "Already have an account?"
-  fbencourage: "Sign up with Facebook to get your friends' travel tips easily."
-  emailsignup: "Or sign up just with your email"
-  forgot: "Forgot your password"
+  noaccount: "(Not registered yet?)"
+  alreadyaccount: "(Already have an account?)"
+  fbencourage: "To easily get your friends' travel tips"
+  emailsignup: "Or just sign up the old fashioned way"
+  forgot: "Forgot your password?"
 
   home:
     index:
@@ -99,7 +100,7 @@ en:
       title: "How can we help?"
       name: "Marco Polo"
       email: "marco.polo@gmail.com"
-      message: "Enter your message here, we'll get back to you shorty. Thanks."
+      message: "Any comment or question ? Want to contribute? Something went wrong? Tell us, we'll get back to you shorty. Thanks."
       submit: "Send"
 
   #concept
@@ -122,13 +123,14 @@ en:
   #ask_your_friends:
   ask_your_friends:
     index:
-      title: "Ask your friends their best tips!"
+      title: "Ask your friends' tips !"
       intro1: "Share your roadmap so that your friends can add their tips."
       intro2: "Then, you decide to include their tips or not!"
-      share_fb: "Post a link on Facebook, and specify your friends' name to get their attention"
-      share_email: "Get an email to transfer the link to my friends"
-      ask_email_btn: "Ask by email"
-      ask_fb_btn: "Ask on Facebook"
+      share_fb: "Your friends will access your map from Facebook"
+      share_email: "Get your map in an email and transfer it to your friends"
+      ask_email_btn: "Get the link by email"
+      ask_fb_btn: "Post your trip on Facebook"
+      gobacktotrip: "Go back to my trip"
 
   blockfbtitle: "I need YOU - to help me design the best trip ever!"
   blockfbdescription: "Explorizers is a platform where you design your trip - with the help of your trusted friends"
