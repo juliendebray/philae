@@ -23,8 +23,8 @@
       <div class="tr-grey-bg">
         <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
           <div class="form-group minor-block" class="text-center">
-            <p><%= t('.otherdestination1')%></p>
-            <p><%= t('.otherdestination2')%></p>
+            <p><%= t('.otherdestination1')%></br>
+               <%= t('.otherdestination2')%></p>
             <%= f.hidden_field(:latitude) %>
             <%= f.hidden_field(:longitude) %>
             <%= f.search_field(:query, placeholder: 'Destination') %>

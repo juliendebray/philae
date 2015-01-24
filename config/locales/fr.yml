@@ -18,13 +18,14 @@ fr:
   #sign up / sign in
   sign_up: "Devenez un Explorizer ! C'est facile et gratuit."
   sign_in: "Connexion"
+  sign_in_btn: "Connexion"
   passwordplaceholder: "Mot de passe (> 6 car.)"
   passwordconfirmplaceholder: "Confirmer mot de passe"
-  fbbutton: "Connexion Facebook"
-  noaccount: "Pas encore inscrit?"
-  alreadyaccount: "Déjà inscrit?"
-  fbencourage: "Connectez-vous avec Facebook pour obtenir les conseils de vos amis"
-  emailsignup: "Ou inscrivez-vous avez votre email"
+  fbbutton: "Connexion avec Facebook"
+  noaccount: "(Pas encore inscrit?)"
+  alreadyaccount: "(Déjà inscrit?)"
+  fbencourage: "Pour obtenir facilement les conseils de vos amis"
+  emailsignup: "Ou inscrivez-vous à l'ancienne"
   forgot: "Mot de passe oublié?"
 
   my_trips: "Mes voyages"
@@ -46,7 +47,7 @@ fr:
       text2: "Nous connaissons des lieux magnifiques et des expériences uniques, et nous partageons aussi les meilleures contributions des utilisateurs (Maroc only)"
       subtitle3: "3. Comptez sur nos partenaires locaux"
       text3: "Ils sont sélectionnés pour leur expertise et sur la base des recommandations d'autres voyageurs (Maroc only)"
-      concept: "Explorizers vous accompagne dans vos voyages autour du monde et vos extraordinaires aventures."
+      concept: "Explorizers vous accompagne dans vos voyages autour du monde et vos aventures extraordinaires."
       contact: "Nous contacter"
 
   addreview: "Donnez votre avis!"
@@ -81,7 +82,7 @@ fr:
       title: "Parlez-nous"
       name: "Marco Polo"
       email: "marco.polo@gmail.com"
-      message: "Ecrivez votre message ici, nous reviendrons vers vous très vite"
+      message: "Une question? Un commentaire? Dites-nous, nous reviendrons vers vous très vite."
       submit: "Envoyer"
 
   #story:
@@ -107,11 +108,11 @@ fr:
       title: "Demandez les bons plans de vos amis!"
       intro1: "Partagez votre roadmap pour que vos amis y ajoutent leurs conseils."
       intro2: "Ensuite, à vous de décider de les inclure ou non dans votre voyage!"
-      share_fb: "Sur Facebook, postez un lien vers votre roadmap"
-      share_email: "Par email : cliquez ci-dessous et vérifiez vos emails"
+      share_fb: "Vos amis accèderont à votre carte depuis Facebook"
+      share_email: "Recevez votre carte par email et transférez-la à vos amis"
       ask_email_btn: "Demander par email"
       ask_fb_btn: "Demander sur Facebook"
-
+      gobacktotrip: "Retourner sur la page de mon voyage"
   blockfbtitle: "Filez vos bons plans de voyage !"
   blockfbdescription: "Explorizers est fait pour les voyageurs qui font confiance à leurs amis pour leur conseiller des expériences extraordinaires et leur faire découvrir des lieux uniques."
 
