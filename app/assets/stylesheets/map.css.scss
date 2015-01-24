@@ -271,6 +271,14 @@ html, body {
     .btn {
       left: 2%;
       bottom: 0px;
+      box-shadow: none;
+    }
+    #user-choices{
+      width: 230px;
+
+      label {
+        margin-left: 0px;
+      }
     }
   }
 
@@ -279,7 +287,7 @@ html, body {
     width: 100%;
     top: 0;
     bottom: 0;
-    margin-top: 5%;
+    margin-top: 45px;
     .selection-content {
       overflow: visible;
     }
