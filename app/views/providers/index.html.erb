@@ -13,20 +13,34 @@
         </h4>
       </div>
     </div>
-    <% if @providers %>
-      <div class="row">
-        <% @providers.each do |provider| %>
-          <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
-            <ul class="list-unstyled">
-              <li>
-                <%= render('provider_block', {provider: provider}) %>
-                <div class="vertical-spacer-xs"> </div>
-              </li>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="provider-container">
+      <% if @providers %>
+        <div class="row">
+          <% @providers.each do |provider| %>
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+              <ul class="list-unstyled">
+                <li>
+                  <%= render('provider_block', {provider: provider}) %>
+                  <div class="vertical-spacer-xs"> </div>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
+<% content_for (:after_js) do %>
+  <% javascript_tag do %>
+    $(window).load(function() {
+      $(".provider-block").dotdotdot({
+          watch: "window",
+          callback  : function( isTruncated, orgContent ) {
+            $(".provider-container ").css("visibility", "visible");
+          },
+      });
+    });
+  <% end %>
+<% end %>

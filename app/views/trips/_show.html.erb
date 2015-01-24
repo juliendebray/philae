@@ -115,6 +115,7 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).on('ready', function() {
+
       // Display existing trip_experiences
       <% if @trip_exp_tab &&  @trip_exp_tab.size > 0 %>
         <% @trip_exp_tab.each do |trip_exp| %>
@@ -123,6 +124,27 @@
           <% end %>
         <% end %>
       <% end %>
+
+      $(window).load(function() {
+        var length = $(".exp-dotdotdot").length
+        if (length != 0) {
+          $(".exp-dotdotdot").each(function(index) {
+            $( this ).dotdotdot({
+              watch: "window",
+              callback  : function( isTruncated, orgContent ) {
+                if (isTruncated) {
+                  $( "p", this ).append(orgContent.find('a.readmore').prop('outerHTML'));
+                }
+                if (index == length-1) {
+                  $('.selection-content').css('visibility', 'visible');
+                }
+              }
+            });
+          });
+        } else {
+          $('.selection-content').css('visibility', 'visible');
+        }
+      });
 
       if (GUEST_USER) {
         var guestUserMapOptions = {

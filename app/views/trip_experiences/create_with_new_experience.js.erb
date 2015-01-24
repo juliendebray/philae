@@ -4,17 +4,18 @@ $( document ).ready(function() {
     '<%= j render("/trip_experiences/experience_block.html.erb",
     {trip_exp: @trip_experience, guest_user: false} ) %>'
   );
+  $('<%= ".exp-#{@trip_experience.id}" %>').dotdotdot({
+          watch: "window",
+          callback: function(isTruncated, orgContent) {
+            if (isTruncated) {
+              $('<%= ".exp-#{@trip_experience.id}" %> p').append(orgContent.find('a.readmore').prop('outerHTML'));
+            }
+          }
+      });
+  addBoxShadowEffectWhileDraggingBox();
   $('#user-experiences').prop('checked','checked')
   var map = handler.getMap();
   setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
     requestingMarkers = r;
   });
-
-
-  // google.maps.event.clearListeners(map, 'dragend');
-  // google.maps.event.clearListeners(map, 'zoom_changed');
-  // var url = "/trips/"+ <%= @trip.id %> +"/trip_experiences/trip_markers";
-  // setMarkersAccordingToApi(url, function(r) {
-  //   requestingMarkers = r;
-  // });
 });

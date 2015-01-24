@@ -200,7 +200,7 @@ function makeExperiencesSortable() {
 function addBoxShadowEffectWhileDraggingBox() {
   // Change the border-shadow while dragging
   $('.panel-heading').on('mousedown', function(){
-    $(this).parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.5)');
+    $(this).parent().parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.5)');
     $(document).on('mouseup', function(){
       $('.panel').css('box-shadow', '1px 1px 1px 1px rgba(0, 0, 0, 0.1)');
     });
