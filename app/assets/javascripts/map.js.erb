@@ -304,7 +304,7 @@ function buildMapForUser(mapOptions, trip_id) {
         setMapWithUserExperiences(trip_id, map, function(r) {
           requestingMarkers = r;
           if (markers.length == 0) {
-            alert('Vous n\'avez pas encore sélectionné d\'expériences :( ... Ajoutez-en d\'abord à votre itinéraire en cliquant sur \"Les meilleures expériences\" !');
+            alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Meilleures expériences"! - No experiences yet! Add yours or choose from "Best experiences!"');
           }
          });
 
@@ -320,7 +320,7 @@ function buildMapForUser(mapOptions, trip_id) {
         setMapWithGuestComments(trip_id, map, function(r) {
           requestingMarkers = r;
           if (markers.length == 0) {
-            alert('Oups... Vous n\'avez pas encore de commentaires de vos amis. Vous pouvez leur en demander an cliquant plus bas sur \"Demander des conseils\"');
+            alert('Pas encore de conseil! Demandez-les : cliquez sur "Obtenir les conseils de mes amis"! - No tips yet! Ask your friends : click on "Get my friends tips" below!');
           }
         });
 
@@ -376,7 +376,7 @@ function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field
             $(address_field_id).attr("placeholder", "Adresse non trouvée... merci d'en saisir une!");
           }
         });
-      }, 200);
+      }, 300);
     }
   });
   google.maps.event.addListener(map, 'dblclick', function(event) {

@@ -66,6 +66,7 @@ en:
       text3: "They were selected on their expertise and other travelers' reviews (Morocco only)"
       concept: "Explorizers helps you travel the World and live extraordinary adventures"
       contact: "Contact us"
+      becomeexplo: "Become an Explorizer!"
 
 
   addreview: "Add a review"
@@ -98,8 +99,8 @@ en:
   contacts:
     new:
       title: "How can we help?"
-      name: "Marco Polo"
-      email: "marco.polo@gmail.com"
+      name: "Felix Baumgartner"
+      email: "felix.bmgt@gmail.com"
       message: "Any comment or question ? Want to contribute? Something went wrong? Tell us, we'll get back to you shorty. Thanks."
       submit: "Send"
 
@@ -170,6 +171,10 @@ en:
   show_guest_user_thanksline1: "An email has just been sent to your friend to let him/her know."
   show_guest_user_thanksline2: "And now, your turn :"
   show_guest_user_thanksbtn: "Discover EXPLORIZERS"
+
+  noexperienceyet: "You have not selected any experience yet. You can add your own and have a look at 'Best experiences'."
+  notipsyet: "No tips yet? Ask them! Click below on 'Get my friends' tips'."
+
 
   #providers:
   providers:
