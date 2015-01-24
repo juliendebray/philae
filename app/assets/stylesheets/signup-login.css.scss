@@ -17,6 +17,7 @@ text-align: center;
 
 body.signup-signin {
   background-image: image-url("deck.jpg");
+  // background-image: url(http://mazwai.com/system/posts/videos/000/000/138/original/matt_devir--one_minute_drive.mp4?1416271335);
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
@@ -49,16 +50,19 @@ padding-bottom: 20px;
 #user_email {
   color: grey;
   font-weight: normal;
+  width: 170px;
 }
 
 #user_password {
   color: grey;
   font-weight: normal;
+   width: 170px;
 }
 
 #user_password_confirmation {
   color: grey;
   font-weight: normal;
+   width: 170px;
 }
 
 @media screen and (max-width: 580px) {

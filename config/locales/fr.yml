@@ -49,6 +49,7 @@ fr:
       text3: "Ils sont sélectionnés pour leur expertise et sur la base des recommandations d'autres voyageurs (Maroc only)"
       concept: "Explorizers vous accompagne dans vos voyages autour du monde et vos aventures extraordinaires."
       contact: "Nous contacter"
+      becomeexplo: "Devenez un Explorizer!"
 
   addreview: "Donnez votre avis!"
   addtotrip: "Ajouter à mon voyage"
@@ -80,8 +81,8 @@ fr:
   contacts:
     new:
       title: "Parlez-nous"
-      name: "Marco Polo"
-      email: "marco.polo@gmail.com"
+      name: "Felix Baumgartner"
+      email: "felix.bmgt@gmail.com"
       message: "Une question? Un commentaire? Dites-nous, nous reviendrons vers vous très vite."
       submit: "Envoyer"
 
@@ -153,7 +154,8 @@ fr:
   show_guest_user_thanksline2: "Et maintenant, à votre tour :"
   show_guest_user_thanksbtn: "Découvrir EXPLORIZERS"
 
-
+  noexperienceyet: "Pas encore d'expériences sélectionnées! Ajoutez les votres, ou cochez 'Meilleures expériences' pour vous inspirer."
+  notipsyet: "Pas encore de conseils de vos amis? Demandez-les en cliquant ci-dessous sur Obtenir les conseils de mes amis'."
 
   #providers:
   providers:
