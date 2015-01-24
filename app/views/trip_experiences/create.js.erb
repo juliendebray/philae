@@ -3,5 +3,13 @@ $( document ).ready(function() {
     '<%= j render("/trip_experiences/experience_block.html.erb",
     {trip_exp: @trip_experience, guest_user: false} ) %>'
   );
-  addBoxShadowEffectWhileDraggingBox();
+    $('<%= ".exp-#{@trip_experience.id}" %>').dotdotdot({
+        watch: "window",
+        callback: function(isTruncated, orgContent) {
+          if (isTruncated) {
+            $('<%= ".exp-#{@trip_experience.id}" %> p').append(orgContent.find('a.readmore').prop('outerHTML'));
+          }
+        }
+    });
+    addBoxShadowEffectWhileDraggingBox();
 });

@@ -1,4 +1,10 @@
+.provider-container {
+  visibility: hidden;
+}
+
+
 .provider-block {
+  height:11em;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
   background: white;
   font-weight: 100;
