@@ -21,7 +21,7 @@ fr:
   sign_in_btn: "Connexion"
   passwordplaceholder: "Mot de passe (> 6 car.)"
   passwordconfirmplaceholder: "Confirmer mot de passe"
-  fbbutton: "Connexion avec Facebook"
+  fbbutton: "Connexion Facebook"
   noaccount: "(Pas encore inscrit?)"
   alreadyaccount: "(Déjà inscrit?)"
   fbencourage: "Pour obtenir facilement les conseils de vos amis"
