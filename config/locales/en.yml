@@ -40,7 +40,7 @@ en:
   sign_in_btn: "Log in"
   passwordplaceholder: "Password (> 6 characters)"
   passwordconfirmplaceholder: "Confirm password"
-  fbbutton: "Connect with Facebook"
+  fbbutton: "Facebook Connect"
   noaccount: "(Not registered yet?)"
   alreadyaccount: "(Already have an account?)"
   fbencourage: "To easily get your friends' travel tips"

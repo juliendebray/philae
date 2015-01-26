@@ -1,5 +1,5 @@
 $color: white;
-$color2: lightgrey;
+$color2: grey;
 $bg: transparent;
 $screen-sm-min: 768px;
 
@@ -39,5 +39,6 @@ $screen-sm-min: 768px;
   .navbar-collapse {
     position: relative;
     background-color: white;
+    color: grey;
   }
 }
