@@ -14,19 +14,17 @@ border-radius: 5px;
 text-align: center;
 }
 
-
 body.signup-signin {
-  background-image: image-url("deck.jpg");
-  // background-image: url(http://mazwai.com/system/posts/videos/000/000/138/original/matt_devir--one_minute_drive.mp4?1416271335);
+  background-image: image-url("beach.jpg");
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
   color: grey;
   height: 800px;
   padding-top: 80px;
-
   h2 {
     color: white;
+    text-shadow: 0px 0px 3px white, 0px 0px 6px black;
   }
 
   #sign-form a {
@@ -35,6 +33,14 @@ body.signup-signin {
 }
 
 #fb-login {
+padding: 10px 10px;
+text-align: center;
+margin: 5px;
+border-bottom: 1px dotted lightgrey;
+padding-bottom: 20px;
+}
+
+#fb-signup {
 padding: 10px 10px;
 text-align: center;
 margin: 5px;
@@ -65,8 +71,15 @@ padding-bottom: 20px;
    width: 170px;
 }
 
+
 @media screen and (max-width: 580px) {
   #sign-form {
-   width: 90%;
+    width: 95%;
+  }
+  .btn {
+    font-size: 100%;
   }
 }
+
+
+
