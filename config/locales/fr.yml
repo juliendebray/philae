@@ -16,16 +16,17 @@ fr:
 
 
   #sign up / sign in
-  sign_up: "Devenez un Explorizer ! C'est facile et gratuit."
+  sign_up: "Jetez un oeil - c'est gratuit."
   sign_in: "Connexion"
   sign_in_btn: "Connexion"
   passwordplaceholder: "Mot de passe (> 6 car.)"
   passwordconfirmplaceholder: "Confirmer mot de passe"
-  fbbutton: "Connexion Facebook"
+  fbloginbutton: "Connexion Facebook"
+  fbsignupbutton: "Continuer avec Facebook"
   noaccount: "(Pas encore inscrit?)"
   alreadyaccount: "(Déjà inscrit?)"
-  fbencourage: "Pour obtenir facilement les conseils de vos amis"
-  emailsignup: "Ou inscrivez-vous à l'ancienne"
+  fbencourage: "Recommandé pour obtenir facilement les conseils de vos amis"
+  emailsignup: "Ou"
   forgot: "Mot de passe oublié?"
 
   my_trips: "Mes voyages"

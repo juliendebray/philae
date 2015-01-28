@@ -35,16 +35,17 @@ en:
   nav_listofproviders: "Local guides and agencies"
 
   #sign up / sign in
-  sign_up: "Become an Explorizer ! It's easy and free."
+  sign_up: "Have a look - it's free."
   sign_in: "Connection"
   sign_in_btn: "Log in"
   passwordplaceholder: "Password (> 6 characters)"
   passwordconfirmplaceholder: "Confirm password"
-  fbbutton: "Facebook Connect"
+  fbloginbutton: "Log in with Facebook"
+  fbsignupbutton: "Sign up with Facebook"
   noaccount: "(Not registered yet?)"
   alreadyaccount: "(Already have an account?)"
-  fbencourage: "To easily get your friends' travel tips"
-  emailsignup: "Or just sign up the old fashioned way"
+  fbencourage: "We recommend using Facebook, to easily get your friends' travel tips"
+  emailsignup: "Or"
   forgot: "Forgot your password?"
 
   home:

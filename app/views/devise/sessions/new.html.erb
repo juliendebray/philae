@@ -1,61 +1,66 @@
 <body class="signup-signin">
 
-<div id="titleblock" class="text-center">
-  <h2><%= t('sign_in', :default => "Sign in") %></h2>
-</div>
+<!--   <video id="video1" loop autoplay poster="1minutedrivejpg">
+  <source src="1minutedrive.webm" type="video/webm">
+  <source src="1minutedrive.mp4" type="video/mp4">
+  </video> -->
 
-<div row>
-  <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+  <div id="titleblock" class="text-center">
+    <h2><%= t('sign_in', :default => "Sign in") %></h2>
+  </div>
 
-    <div id="sign-form">
+  <div row>
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
 
-      <div><%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to t('noaccount'), new_registration_path(resource_name) %><br />
-        <% end -%>
-      </div>
+      <div id="sign-form">
 
-      <div id="fb-login">
-
-        <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-lg btn-facebook" do %>
-          <i class="fa fa-facebook"></i> <%= t('fbbutton') %>
-        <% end %>
-      </div>
-
-      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-        <div><%= f.label :email do %>
-          <br />
-          <span class="col-xs-1 col-xs-offset-1 text-center"><i class="fa fa-envelope fa-2x icon-alignement"></i></span>
-<!--           <i class="fa fa-envelope fa-2x icon-alignement"></i> -->
-          <%= f.email_field :email, placeholder: "indiana.jones@nyu.edu" %>
-          <% end %>
-        </div>
-
-        <div><%= f.label :password do %>
-          <br />
-          <span class="col-xs-1 col-xs-offset-1 text-center"><i class="fa fa-lock fa-2x icon-alignement"></i></span>
-<!--           <i class="fa fa-lock fa-2x icon-alignement"></i> -->
-          <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
-        <% end %>
-
-        <% if devise_mapping.rememberable? -%>
-          <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-        <% end %>
-
-        <div>
-          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-          <%= link_to t('forgot'), new_password_path(resource_name) %>
-          <br />
-          <br />
+        <div><%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to t('noaccount'), new_registration_path(resource_name) %><br />
           <% end -%>
         </div>
 
-          <div><%= f.submit t('sign_in_btn', :default => "Log in"), class: 'btn btn-primary' %></div>
-        <% end %>
+        <div id="fb-login">
+
+          <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-lg btn-facebook" do %>
+            <i class="fa fa-facebook"></i> <%= t('fbloginbutton') %>
+          <% end %>
+        </div>
+
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <div><%= f.label :email do %>
+            <br />
+            <span class="col-xs-1 col-xs-offset-1 text-center"><i class="fa fa-envelope fa-2x icon-alignement"></i></span>
+  <!--           <i class="fa fa-envelope fa-2x icon-alignement"></i> -->
+            <%= f.email_field :email, placeholder: "indiana.jones@nyu.edu" %>
+            <% end %>
+          </div>
+
+          <div><%= f.label :password do %>
+            <br />
+            <span class="col-xs-1 col-xs-offset-1 text-center"><i class="fa fa-lock fa-2x icon-alignement"></i></span>
+  <!--           <i class="fa fa-lock fa-2x icon-alignement"></i> -->
+            <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
+          <% end %>
+
+          <% if devise_mapping.rememberable? -%>
+            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+          <% end %>
+
+          <div>
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to t('forgot'), new_password_path(resource_name) %>
+            <br />
+            <br />
+            <% end -%>
+          </div>
+
+            <div><%= f.submit t('sign_in_btn', :default => "Log in"), class: 'btn btn-primary' %></div>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
 
 
 <%= render "devise/shared/links" %>
