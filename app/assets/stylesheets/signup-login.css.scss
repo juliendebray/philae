@@ -71,8 +71,7 @@ padding-bottom: 20px;
    width: 170px;
 }
 
-
-@media screen and (max-width: 580px) {
+@media screen and (min-width: 200px) and (max-width: 580px) {
   #sign-form {
     width: 95%;
   }
