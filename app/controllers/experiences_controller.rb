@@ -31,7 +31,7 @@ class ExperiencesController < ApplicationController
 
     respond_to do |format|
       if @experience.save
-        format.html { redirect_to new_experience_path, notice: 'Experience créée avec sucess. Merci pour votre contribution.' }
+        format.html { redirect_to new_experience_path, notice: 'Experience créée avec succès. Merci pour votre contribution.' }
       else
         format.html { render :new }
         format.json { render json: @experience.errors, status: :unprocessable_entity }

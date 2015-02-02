@@ -16,12 +16,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
     <% if @trip %>
-      <meta property="og:title" content="Give me your tips !" />
+      <meta property="og:title" content="Vos conseils pour mon voyage !" />
       <meta property="og:site_name" content="explorizers.com" />
       <meta property="og:type" content="article" />
       <meta property="og:url" content="http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>" />
-      <meta property="og:image" content="http://ununsplash.imgix.net/uploads/1412825195419af52b492/8bc72ed7?dpr=0.67&fit=crop&fm=jpg&h=700&q=75&w=1050" />
-      <meta property="og:description" content="Explorizers helps you get your friends tips to design your travel"/>
+      <meta property="og:image" content="http://philae-floju.s3.amazonaws.com/explorizers_wcl.png" />
+      <meta property="og:description" content="Parce que nos amis nous inspirent, Explorizers permet de réunir leurs conseils pour notre prochain voyage."/>
     <% end %>
 
     <%= favicon_link_tag %>
