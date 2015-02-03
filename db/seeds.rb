@@ -7,19 +7,19 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1LDNbW3RTptGwXFFCTCuDmOT2xeYFynkV7HDk384bgqM/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1ROe_ndXrgZ6YIyV9fOhenOMZ0KSA6xtKGrBHqV2g1xY/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
   exp = Experience.create(
     average_rating: exp_data['gsx$rating']['$t'].to_f,
-    name: exp_data['gsx$nom']['$t'],
-    address: exp_data['gsx$lieu']['$t'],
+    name: exp_data['gsx$nomfrench']['$t'],
+    address: exp_data['gsx$lieufrench']['$t'],
     latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
     longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
-    description: exp_data['gsx$description']['$t'],
+    description: exp_data['gsx$descriptionfrench']['$t'],
     published: true
   )
-  gen_url = "http://philae-floju.s3.amazonaws.com/photos_maroc/"
+  gen_url = "http://philae-floju.s3.amazonaws.com/photos_birmanie/"
   code = exp_data['gsx$code']['$t']
   (1..4).each do |i|
     complete_url = gen_url + code + "_#{i}.jpg"
