@@ -9,16 +9,16 @@
     <% unless @guest_user %>
       <div id="user-choices">
         <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
-          <small><%= t('show_bestexp') %></small>
-        </label>
-        <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
           <small><%= t('show_myselection') %></small>
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
           <small><%= t('show_friendstips') %></small>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
+          <small><%= t('show_bestexp') %></small>
         </label>
       </div>
       <!-- User Modal to let him add his own experience -->
