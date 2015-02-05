@@ -6,21 +6,29 @@
   <div class="map-container">
     <div id="map">
     </div>
+    <div id='map-interaction'>
+      <fieldset id="search-bar">
+        <i class="fa fa-search"></i>
+        <%= search_field_tag('pac-input') %>
+      </fieldset>
+      <% unless @guest_user %>
+        <div id="user-choices">
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
+            <small><%= t('show_myselection') %></small>
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
+            <small><%= t('show_friendstips') %></small>
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
+            <small><%= t('show_bestexp') %></small>
+          </label>
+        </div>
+      <% end %>
+    </div>
     <% unless @guest_user %>
-      <div id="user-choices">
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
-          <small><%= t('show_myselection') %></small>
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
-          <small><%= t('show_friendstips') %></small>
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
-          <small><%= t('show_bestexp') %></small>
-        </label>
-      </div>
       <!-- User Modal to let him add his own experience -->
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
@@ -165,11 +173,16 @@
           center: new google.maps.LatLng(<%= @trip.latitude %>, <%= @trip.longitude %>),
           zoom: 6,
           disableDoubleClickZoom: false,
-          panControl: false,
+          disableDefaultUI: true,
           zoomControl: true,
           zoomControlOptions: {
             style: google.maps.ZoomControlStyle.SMALL
           }
+          // panControl: false,
+          // zoomControl: true,
+          // zoomControlOptions: {
+          //   style: google.maps.ZoomControlStyle.SMALL
+          // }
         };
         buildMapForUser(userMapOptions, <%= @trip.id %>);
         makeExperiencesSortable();
