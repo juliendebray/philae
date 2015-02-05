@@ -135,7 +135,7 @@ fr:
   show_myselection: "Ma sélection"
   show_friendstips: "Conseils de mes amis"
   show_addmyexp: "Ajouter une expérience"
-  show_addcomment: "Ajouter une recommandation"
+  show_addcomment: "Ajouter un conseil"
   show_selectedexp: "Sélection"
   show_save: "Enregistrer ma sélection"
   show_saveguest: "Enregistrer mes conseils"
@@ -146,14 +146,14 @@ fr:
 
   trip_show_title: "Ajouter une expérience"
 
-  show_guest_user_title: "Bienvenue sur Explorizers"
-  show_guest_user_line1: "Votre ami(e) part en voyage et cherche de l'inspiration!"
-  show_guest_user_line2: "Ajoutez vos bons plans sur la carte : quartiers, monuments, restaurants, hôtels, ..."
-  show_guest_user_line3: "... et enregistrez-les !"
+  show_guest_user_title: "Un itinéraire ou des bons plans à conseiller?"
+  show_guest_user_line1: "- Ajoutez-les sur la carte: lieux, activités, hôtels..."
+  show_guest_user_line2: "- Enregistrez-les"
+  show_guest_user_line3: "... et vous voilà agent de voyage :-)"
   show_guest_user_modaltitle: "Encore un conseil"
   show_guest_user_thanks: "Merci pour vos conseils!"
   show_guest_user_thanksline1: "Un mail vient de partir, votre ami(e) est prévenu(e) de votre participation."
-  show_guest_user_thanksline2: "Et maintenant, à votre tour :"
+  show_guest_user_thanksline2: "Et vous? Vous partez où?"
   show_guest_user_thanksbtn: "Découvrir EXPLORIZERS"
 
   noexperienceyet: "Pas encore d'expériences sélectionnées! Ajoutez les votres, ou cochez 'Meilleures expériences' pour vous inspirer."

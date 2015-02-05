@@ -164,14 +164,14 @@ en:
 
   trip_show_title: "Add an experience"
 
-  show_guest_user_title: "Welcome to Explorizers"
-  show_guest_user_line1: "Your friend is traveling and is looking for inspiration"
-  show_guest_user_line2: "Add your tips on the map : neighborhoods, monuments, restaurants, hotels, ..."
-  show_guest_user_line3: "... and save them !"
+  show_guest_user_title: "Do you have tips to share?"
+  show_guest_user_line1: "- Add them on the map: places, activities, hotels, ..."
+  show_guest_user_line2: "- Save them"
+  show_guest_user_line3: "... and your friend will be grateful!"
   show_guest_user_modaltitle: "Another tip"
   show_guest_user_thanks: "Thanks for sharing your tips !"
   show_guest_user_thanksline1: "An email has just been sent to your friend to let him/her know."
-  show_guest_user_thanksline2: "And now, your turn :"
+  show_guest_user_thanksline2: "How about you? Where are you going?"
   show_guest_user_thanksbtn: "Discover EXPLORIZERS"
 
   noexperienceyet: "You have not selected any experience yet. You can add your own and have a look at 'Best experiences'."
