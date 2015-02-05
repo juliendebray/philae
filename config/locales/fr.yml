@@ -76,6 +76,7 @@ fr:
       mytrips: "Mes voyages"
       myfriends: "Mes amis"
       delete: "Etes-vous sûr de vouloir supprimer ce voyage?"
+      new_trip: "Créer un nouveau voyage"
 
 
   #contact
