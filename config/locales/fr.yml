@@ -147,9 +147,9 @@ fr:
   trip_show_title: "Ajouter une expérience"
 
   show_guest_user_title: "Un itinéraire ou des bons plans à conseiller?"
-  show_guest_user_line1: "- Ajoutez-les sur la carte: lieux, activités, hôtels..."
-  show_guest_user_line2: "- Enregistrez-les"
-  show_guest_user_line3: "... et vous voilà agent de voyage :-)"
+  show_guest_user_line1: "Votre ami(e) part en voyage et cherche de l'inspiration!"
+  show_guest_user_line2: "1. Ajoutez vos conseils sur la carte de voyage de votre ami(e)"
+  show_guest_user_line3: "2. Enregistrez-les, et souriez: vous êtes super sympa!"
   show_guest_user_modaltitle: "Encore un conseil"
   show_guest_user_thanks: "Merci pour vos conseils!"
   show_guest_user_thanksline1: "Un mail vient de partir, votre ami(e) est prévenu(e) de votre participation."

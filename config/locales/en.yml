@@ -165,9 +165,9 @@ en:
   trip_show_title: "Add an experience"
 
   show_guest_user_title: "Do you have tips to share?"
-  show_guest_user_line1: "- Add them on the map: places, activities, hotels, ..."
-  show_guest_user_line2: "- Save them"
-  show_guest_user_line3: "... and your friend will be grateful!"
+  show_guest_user_line1: "Your friend is traveling and needs to be inspired!"
+  show_guest_user_line2: "1. Add your tips on your friend's travel map"
+  show_guest_user_line3: "2. Save them... and smile: you're awesome!"
   show_guest_user_modaltitle: "Another tip"
   show_guest_user_thanks: "Thanks for sharing your tips !"
   show_guest_user_thanksline1: "An email has just been sent to your friend to let him/her know."
