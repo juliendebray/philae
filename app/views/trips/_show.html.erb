@@ -19,7 +19,42 @@
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3" <%= "checked" if @trip.trip_comments.any? %>>
-          <small><i class="fa fa-comments"></i> <%= t('show_friendstips') %></small>
+          <small>
+
+            <div class="btn-group">
+              <button class="btn btn-link btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="font-size:12px;">
+                <i class="fa fa-comments"></i> <%= t('show_friendstips') %> <span class="caret"></span>
+              </button>
+              <ul id="name-selection" class="dropdown-menu" role="menu">
+                <% if @names && @names.count > 0 %>
+                  <li>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" value="">
+                        Tous
+                      </label>
+                    </div>
+                  </li>
+                  <% @names.each do |name| %>
+                    <li>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="">
+                          <%= name %>
+                        </label>
+                      </div>
+                    </li>
+                  <% end %>
+                <% else %>
+                  <li>
+                    <small class="text-center" style="font-size:10px;">
+                      Vous n'avez pas encore de conseils de vos amis pour accéder à cette fonctionalité
+                    </small>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </small>
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1"  <%= "checked" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %> >
@@ -188,6 +223,10 @@
         // Tooltip initialization
         // $('[data-toggle="popover"]').popover();
         $('[data-toggle="tooltip"]').tooltip()
+        $('#name-selection').on('click', function(e) {
+          // e.preventDefault();
+          e.stopPropagation();
+        })
       }
     });
 </script>

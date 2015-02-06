@@ -45,6 +45,12 @@ class TripsController < ApplicationController
   def show
     @guest_user = false
     @trip = current_user.trips.find(params[:id])
+    @names = []
+    if @trip.trip_comments.any?
+      @trip.trip_comments.each do |tc|
+        @names << tc.name unless @names.include?(tc.name)
+      end
+    end
     set_orders_if_nil!(@trip.trip_experiences)
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
       te.order
