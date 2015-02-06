@@ -1,5 +1,5 @@
 <% content_for :map_css do %>
-  <%= stylesheet_link_tag 'map' %>
+<%= stylesheet_link_tag 'map' %>
 <% end %>
 
 <div class="wrapper">
@@ -12,86 +12,85 @@
         <%= search_field_tag('pac-input') %>
       </fieldset>
       <% unless @guest_user %>
-        <div id="user-choices">
-          <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
-            <small><%= t('show_myselection') %></small>
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
-            <small><%= t('show_friendstips') %></small>
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
-            <small><%= t('show_bestexp') %></small>
-          </label>
-        </div>
+      <div id="user-choices">
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
+          <small><i class="fa fa-map-marker"></i> <%= t('show_myselection') %></small>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
+          <small><i class="fa fa-comments"></i> <%= t('show_friendstips') %></small>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
+          <small><i class="fa fa-star"></i> <%= t('show_bestexp') %></small>
+        </label>
+      </div>
       <% end %>
     </div>
     <% unless @guest_user %>
-      <!-- User Modal to let him add his own experience -->
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-        <small><%= t('show_addmyexp') %></small>
-      </button>
+    <!-- User Modal to let him add his own experience -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="new-exp" >
+      <small><%= t('show_addmyexp') %></small>
+    </button>
     <% else %>
-      <!-- Guest Modal to let him add his own experience -->
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalGuest">
-        <small><%= t('show_addcomment') %></small>
-      </button>
+    <!-- Guest Modal to let him add his own experience -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalGuest">
+      <small><%= t('show_addcomment') %></small>
+    </button>
     <% end %>
   </div>
   <div class="sidebar">
     <div class="selection-header text-center">
-      <h4><%= t('show_selectedexp') %></h4>
-      <i class="fa fa-angle-double-down"></i>
+      <table>
+        <tbody>
+          <% unless @guest_user %>
+            <td>
+              <div id="share-bt" class="button-action">
+                <%= link_to trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');", class: "btn btn-facebook btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_asktips')}  do %>
+                <i class="fa fa-comments"></i>
+                <% end %>
+              </div>
+            </td>
+            <td>
+              <div id="set-orders" class="button-action">
+                <%= form_for @trip, url: {action: "update"} do |f|%>
+                  <%= hidden_field_tag :order %>
+                  <%= button_tag(type: 'submit', onclick: "ga('send', 'event', 'User', 'Save trip', 'Save my trip button clicked');", class: "btn btn-info btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_save')}) do %>
+                  <i class="fa fa-refresh"></i>
+                  <% end %>
+                <% end %>
+              </td>
+              <% if @trip.query.downcase.match('maroc') %>
+                <td>
+                  <div id="see-providers" class="button-action">
+                    <%= link_to  providers_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');", class: "btn btn-default btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_seeproviders')} do %>
+                    <i class="fa fa-plus"></i>
+                    <% end %>
+                  </div>
+                </td>
+              <% end %>
+            <% else %>
+            <td>
+              <div id="set-orders" class="button-action">
+                <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
+                <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-group-lg btn-info") %>
+                <% end %>
+              </div>
+            </td>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="selection-title">
+      <i class="fa fa-map-marker"></i> <%= t('show_selectedexp') %></br>
+      <i class="fa fa-caret-down"></i>
+      </div>
     </div>
     <div class="selection-content">
       <ul id="draggablePanelList" class="list-unstyled">
       </ul>
-    </div>
-  </div>
-  <div class="nav-footer">
-    <div class="vertically-center">
-      <!-- <div class="row"> -->
-        <!-- <div class="col-xs-4 col-sm-3"> -->
-        <table>
-          <td>
-          <% unless @guest_user %>
-            <div id="set-orders" class="button-action">
-              <%= form_for @trip, url: {action: "update"} do |f|%>
-                <%= hidden_field_tag :order %>
-                <%= f.submit( t('show_save'), onclick: "ga('send', 'event', 'User', 'Save trip', 'Save my trip button clicked');", class: "btn btn-info btn-block") %>
-              <% end %>
-            </div>
-          <% else %>
-            <div id="set-orders" class="button-action">
-              <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
-                <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-group-lg btn-info") %>
-              <% end %>
-            </div>
-          <% end %>
-          </td>
-        <!-- </div> -->
-        <% unless @guest_user %>
-          <!-- <div class="col-xs-4 col-sm-3"> -->
-          <td>
-            <div class="button-action">
-              <%= link_to t('show_asktips'), trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');", class: "btn btn-facebook btn-block" %>
-            </div>
-          </td>
-          <!-- </div> -->
-          <!-- <div class="col-xs-4 col-sm-3"> -->
-          <td>
-            <div class="button-action">
-            <%= link_to t('show_seeproviders'),  providers_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');", class: "btn btn-default btn-block" %>
-            </div>
-          </td>
-          <!-- </div> -->
-        <% end %>
-      </table>
-      <!-- </div> -->
     </div>
   </div>
 </div>
@@ -111,26 +110,26 @@
 </div>
 
 <%= content_for(:before_js) do %>
-  <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
-  <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
-  <%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js" %>
-  <script>
+<%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
+<%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
+<%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js" %>
+<script>
     // Use of a global variable to know if the user is authentificated or guest
     var GUEST_USER = <%= @guest_user ? 'true' : 'false' %>;
-  </script>
-<% end %>
+    </script>
+    <% end %>
 
-<% content_for(:after_js) do %>
-  <script>
+    <% content_for(:after_js) do %>
+    <script>
     $(document).on('ready', function() {
 
       // Display existing trip_experiences
       <% if @trip_exp_tab &&  @trip_exp_tab.size > 0 %>
-        <% @trip_exp_tab.each do |trip_exp| %>
-          <% if trip_exp.experience %>
-            $('#draggablePanelList').append('<%= j render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>');
-          <% end %>
-        <% end %>
+      <% @trip_exp_tab.each do |trip_exp| %>
+      <% if trip_exp.experience %>
+      $('#draggablePanelList').append('<%= j render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>');
+      <% end %>
+      <% end %>
       <% end %>
 
       $(window).load(function() {
@@ -188,8 +187,9 @@
         makeExperiencesSortable();
         setExperiencesOrderByClickingOnSave();
         // Tooltip initialization
+        // $('[data-toggle="popover"]').popover();
         $('[data-toggle="tooltip"]').tooltip()
       }
     });
-  </script>
+</script>
 <% end %>

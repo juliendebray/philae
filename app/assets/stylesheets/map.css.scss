@@ -6,7 +6,7 @@ html, body {
   position: fixed;
   width: 65%;
   left: 0px;
-  bottom: 9%;
+  bottom: 0px;
   padding-left: 0px;
   top: 54px;
 
@@ -50,7 +50,7 @@ html, body {
     }
   }
 
-  .btn {
+  #new-exp {
   bottom: 2px;
   position: absolute;
   left: 5px;
@@ -68,12 +68,50 @@ html, body {
   width: 35%;
   right: 0px;
   top: 54px;
-  bottom: 19%;
+  bottom: 9%;
 
+  .selection-header {
+
+      table {
+        width: 100%
+      }
+      .button-action {
+        padding: 4%;
+
+        .tooltip {
+          font-size: 1em;
+        }
+
+        .tooltip > .tooltip-inner, .tooltip-arrow {
+          background-color: white;
+          font-weight: 100;
+          font-style: italic;
+          color: #808080;
+        }
+        .tooltip > .tooltip-arrow {
+          // TODO: customize teh arow
+          border: 0px solid transparent;
+        }
+
+        .btn {
+          font-size: 2em;
+        }
+        .btn:focus {
+          outline: none;
+        }
+      }
+
+    .selection-title {
+      font-weight: 100;
+      font-size: 1.5em;
+      line-height: 1em;
+      margin: 3%;
+    }
+  }
 
   .selection-content {
     margin: 10px;
-    height: 100%;
+    height: 85%;
     overflow: auto;
     visibility: hidden;
 
@@ -126,43 +164,6 @@ html, body {
           }
         }
       }
-    }
-  }
-}
-
-
-.nav-footer {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  border-top: 1px solid whitesmoke;
-  height: 9%;
-  background: #F0F1F5;
-
-  .vertically-center {
-    height: 100%;
-    // position: relative;
-    // top: 50%;
-    // transform: translateY(-50%);
-
-    table {
-      height: 100%;
-      width: 70%;
-    }
-
-    td {
-      width: 33%;
-      padding: 0.5%;
-    }
-
-    .btn {
-      width: 100%;
-      height: 100%;
-      font-weight: 300;
-      font-size: 13px;
-      white-space: normal;
-      // line-height: 2.5em;
     }
   }
 }
@@ -297,9 +298,10 @@ html, body {
     height: 600px;
     padding: 0px 4%;
     top: 25px;
-    .btn {
-      left: 5%;
-      bottom: 5px;
+
+    #new-exp {
+      left: 4%;
+      bottom: 0%;
       box-shadow: none;
     }
 
@@ -333,6 +335,7 @@ html, body {
     top: 0;
     bottom: 0;
     margin-top: 45px;
+
     .selection-content {
       overflow: visible;
       margin: 0px;
