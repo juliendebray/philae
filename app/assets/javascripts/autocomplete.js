@@ -21,16 +21,20 @@ function initializeAutocomplete(id, setLatAndLng) {
 
 function onPlaceChanged() {
   // if (id == 'trip_query') {
-    var place = this.getPlace();
+    console.log('entre dans le place changed');
+    var place = this.getPlaces();
+    console.log(place);
+    var lat = place.geometry.location.lat();
+    var lng = place.geometry.location.lng();
     if ($('#trip_latitude').length + $('#trip_longitude').length > 1) {
-      $('#trip_latitude').attr('value', place.geometry.location.k);
-      $('#trip_longitude').attr('value', place.geometry.location.D);
+      $('#trip_latitude').attr('value', lat);
+      $('#trip_longitude').attr('value', lng);
     } else if ($('#experience_latitude').length + $('#experience_longitude').length > 1) {
-        $('#experience_latitude').attr('value', place.geometry.location.k);
-        $('#experience_longitude').attr('value', place.geometry.location.D);
+      $('#experience_latitude').attr('value', lat);
+      $('#experience_longitude').attr('value', lng);
     } else if ($('#trip_comment_latitude').length + $('#trip_comment_longitude').length > 1) {
-        $('#trip_comment_latitude').attr('value', place.geometry.location.k);
-        $('#trip_comment_longitude').attr('value', place.geometry.location.D);
+      $('#trip_comment_latitude').attr('value', lat);
+      $('#trip_comment_longitude').attr('value', lng);
     }
 
     // console.log(place);  // Uncomment this line to view the full object returned by Google API.

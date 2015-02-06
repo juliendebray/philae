@@ -246,6 +246,8 @@ function buildMapForGuestUser(mapOptions, trip_id) {
       requestingMarkers = r;
     });
 
+    initializeMapSearchBar('pac-input');
+
     showModalByClikingOnMap(map, '#myModalGuest', '#trip_comment_address', '#trip_comment_latitude', '#trip_comment_longitude');
 
     // Reset modal process and remove marker added manually
@@ -338,6 +340,8 @@ function buildMapForUser(mapOptions, trip_id) {
         setMarkersAndKeepListening(map, trip_id);
       }
     });
+
+    initializeMapSearchBar('pac-input');
     showModalByClikingOnMap(map, '#myModal', '#experience_address', '#experience_latitude', '#experience_longitude');
     // Reset modal process
     $('#myModal').on('hidden.bs.modal', function(){
