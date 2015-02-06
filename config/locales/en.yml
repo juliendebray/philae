@@ -54,7 +54,7 @@ en:
       firstline: "YOUR NEXT TRIP STARTS HERE"
       secondline: "Explorizers: travel inspired by your best friends!"
       thirdline: ""
-      trending: "Trending this week: Morocco & Myanmar"
+      trending: "Trending this week: Morocco | Myanmar"
       searchplaceholder: "Where are you going?"
       searchbutton: "Start"
       otherdestination1: "Going somewhere else? Create your trip and ask your friends for their best tips!"
@@ -132,7 +132,7 @@ en:
       share_fb: "Your friends will access your map from Facebook"
       share_email: "Get your map in an email and transfer it to your friends"
       ask_email_btn: "Get the link by email"
-      ask_fb_btn: "Post your trip on Facebook"
+      ask_fb_btn: "Post on Facebook"
       gobacktotrip: "Go back to my trip"
 
   blockfbtitle: "I need YOU - to help me design the best trip ever!"
