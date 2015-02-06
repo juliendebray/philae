@@ -19,13 +19,13 @@ html, body {
     top: 6px;
     left: 30px;
     background: white;
-    padding: 2px 10px;
+    margin: 2px 10px;
 
     #search-bar {
       padding: 4px;
       background: #fff;
       border: 1px solid #c4c4c4;
-      border-radius: 2px;
+      border-radius: 0px;
       background-color: #fff;
     }
 
@@ -48,9 +48,13 @@ html, body {
     input:focus {
       outline: none;
     }
+
+    #user-choices {
+      margin: 0px 3px;
+    }
   }
 
-  #new-exp {
+  .map-bottom-btn {
   bottom: 2px;
   position: absolute;
   left: 5px;
@@ -299,7 +303,7 @@ html, body {
     padding: 0px 4%;
     top: 25px;
 
-    #new-exp {
+    .map-bottom-btn {
       left: 4%;
       bottom: 0%;
       box-shadow: none;
@@ -309,6 +313,7 @@ html, body {
       top: 0px;
       left: 4%;
       right: 4%;
+      margin: 0pc;
 
       #search-bar{
         display: none;

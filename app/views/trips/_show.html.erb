@@ -31,13 +31,13 @@
     <% unless @guest_user %>
     <!-- User Modal to let him add his own experience -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="new-exp" >
+    <button type="button" class="btn btn-default map-bottom-btn" data-toggle="modal" data-target="#myModal" id="new-exp" >
       <small><%= t('show_addmyexp') %></small>
     </button>
     <% else %>
     <!-- Guest Modal to let him add his own experience -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalGuest">
+    <button type="button" class="btn btn-default map-bottom-btn" data-toggle="modal" data-target="#myModalGuest">
       <small><%= t('show_addcomment') %></small>
     </button>
     <% end %>
@@ -74,7 +74,7 @@
               <% end %>
             <% else %>
             <td>
-              <div id="set-orders" class="button-action">
+              <div id="set-orders" class="button-action text-center">
                 <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
                 <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-group-lg btn-info") %>
                 <% end %>
@@ -83,9 +83,8 @@
           <% end %>
         </tbody>
       </table>
-      <div class="selection-title">
-      <i class="fa fa-map-marker"></i> <%= t('show_selectedexp') %></br>
-      <i class="fa fa-caret-down"></i>
+      <div class="selection-title text-center">
+      <i class="fa fa-map-marker"></i> <%= t('show_selectedexp') %> <i class="fa fa-angle-down"></i>
       </div>
     </div>
     <div class="selection-content">
