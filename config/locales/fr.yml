@@ -148,8 +148,8 @@ fr:
 
   show_guest_user_title: "Un itinéraire ou des bons plans à conseiller?"
   show_guest_user_line1: "Votre ami(e) part en voyage et cherche de l'inspiration!"
-  show_guest_user_line2: "1. Ajoutez vos conseils sur la carte de voyage de votre ami(e)"
-  show_guest_user_line3: "2. Enregistrez-les, et souriez: vous êtes super sympa!"
+  show_guest_user_line2: "1. Ajoutez vos conseils en cliquant sur la carte de voyage de votre ami(e)"
+  show_guest_user_line3: "2. Cliquer sur 'Enregistrer mes conseils', et souriez: vous êtes super sympa!"
   show_guest_user_modaltitle: "Encore un conseil"
   show_guest_user_thanks: "Merci pour vos conseils!"
   show_guest_user_thanksline1: "Un mail vient de partir, votre ami(e) est prévenu(e) de votre participation."
@@ -187,7 +187,7 @@ fr:
       s_line5: "Explorizers apporte des expériences de voyage uniques et étonnantes. Créez votre propre voyage, avec l'aide de vos amis et de notre communauté d'explorateurs."
     notif_trip:
       hi: "Bonjour,"
-      n_line1: "Un ami vous a donné ses conseils pour votre voyage."
+      n_line1: "vous a donné ses conseils pour votre voyage."
       n_line2: "Vous pouvez y accéder en allant sur la page de votre itinéraire et en sélectionnant 'Les conseil des mes amis'"
       n_line3: "Accéder aux conseils de mes amis."
       n_line4: "En espérant que cela vous soit utile, nous vous souhaitons un super voyage!"
@@ -195,7 +195,10 @@ fr:
 
   # user_mailer_welcome: "Bienvenue sur Explorizers"
   # user_mailer_share_trip: "Demande de conseils"
-  user_mailer_notif: "Un ami a apporté ses conseils"
+  n_line0_1: "vous a donné"
+  n_line0_2: "conseil(s) pour votre voyage."
+  n_name: "Un de vos amis"
+  user_mailer_notif: "vous a aidé pour votre prochain voyage"
 
   # mailer:
   #   user_mailer:

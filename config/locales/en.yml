@@ -206,7 +206,7 @@ en:
       s_line5: "Explorizers is a travel experience provider. Intuitive and personal, it helps you design your next trip, with the help of your friends and our trusted community."
     notif_trip:
       hi: "Hi,"
-      n_line1: "A friend has just given you tips for your next travel."
+      n_line1: "has just given you tips for your next travel."
       n_line2: "Go back to your trip map to visualize these tips!"
       n_line3: "See my friends' tips"
       n_line4: "We're hoping they'll be useful. Have a great trip !"
@@ -214,7 +214,10 @@ en:
 
   # user_mailer_welcome: "Welcome to Explorizers"
   # user_mailer_share_trip: "Ask for your friends' tips"
-  user_mailer_notif: "A friend has given you tips!"
+  n_line0_1: "has given you"
+  n_line0_2: "tip(s) for your trip."
+  n_name: "One of your friends"
+  user_mailer_notif: "has given you tips!"
 
   # mailer:
   #   user_mailer:

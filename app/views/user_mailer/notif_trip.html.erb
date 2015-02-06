@@ -5,7 +5,11 @@
   </head>
   <body>
     <p><%= t('.hi') %></p>
-    <p><%= t('.n_line1') %></p>
+    <% if @nb_comments %>
+      <p><%= "#{@guest_name} #{t('n_line0_1')} #{@nb_comments} #{t('n_line0_2')}" %></p>
+    <% else %>
+      <p><%= "#{@guest_name} #{t('.n_line1')}" %></p>
+    <% end %>
     <p><%= t('.n_line2') %>
     </p>
       <a href='<%= ROOT_URL + "/trips/" + @trip.id.to_s %>'><%= t('.n_line3') %></a>

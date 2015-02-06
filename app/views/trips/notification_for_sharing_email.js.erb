@@ -1,3 +1,8 @@
 $( document ).ready(function() {
   $('#myModalThanks').modal('show');
+  if (commentsMarkers.length > 0) {
+    for (var i = 0; i < commentsMarkers.length; i++) {
+      commentsMarkers[i].serviceObject.setPosition(new google.maps.LatLng(-90, 0));
+    }
+  }
 });
