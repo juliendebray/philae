@@ -51,8 +51,11 @@ $profile-border-width: 0px;
   .navbar-collapse {
     position: relative;
     background-color: white;
-    color: black;
+    font-size: 18px;
   }
+  // a.dropdown-toggle {
+  // padding-bottom: 0px;
+  // }
 }
 
 // And do not look at what follows!

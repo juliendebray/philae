@@ -23,7 +23,7 @@ en:
   hello: "Hello"
 
   #navbar
-  ourstorynav: "Our concept"
+  ourstorynav: "The Explorizers concept"
   fbconnect: "Login Facebook"
   login: "Log in"
   signup: "Sign up"
@@ -110,10 +110,11 @@ en:
   story:
     index:
       title: "Our project"
-      story1: "At Explorizers, we believe life is an extraordinary adventure, and travels make it even more exciting. That's why the Explorizers community recommends outstanding experiences that are worth going to do, and inspiring places that are worth going to see."
-      story2: "And because our friends inspire us, we've made it possible to ask them for tips in an easy and fun way."
-      story3: "Our project begins with Morocco, with the ambition of covering more and more countries throughout 2015."
+      story1: "Our friends are a great source of inspiration for travel: who else can give us on tips on things we will really like?"
+      story2: "We built Explorizers to help them give you their tips very easily. Post your trip on Facebook or forward it by email, your friends will help you design it!"
+      story3: "And for more inspiration, Explorizers progressively shares its users' best tips. The community is growing, join us!"
       contact: "Contact us"
+      new_trip: "Create a new trip"
 
   #newexperience
   experiences:
