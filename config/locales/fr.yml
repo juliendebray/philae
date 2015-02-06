@@ -3,7 +3,7 @@ fr:
 
   #navbar
   language: "Langue"
-  ourstorynav: "Notre projet"
+  ourstorynav: "Le projet Explorizers"
   fbconnect: "Login Facebook"
   login: "Connexion"
   signup: "Inscription"
@@ -37,7 +37,7 @@ fr:
       firstline: "VOTRE VOYAGE COMMENCE ICI"
       secondline: "Explorizers : le voyage inspiré par vos amis !"
       thirdline: ""
-      trending: "Tendance cette semaine : Maroc | Birmanie"
+      trending: "Tendance cette semaine : Maroc  |  Birmanie  |  Japon"
       searchplaceholder: "Où allez-vous ?"
       searchbutton: "Démarrer"
       otherdestination1: "Vous partez ailleurs? Créez votre voyage n'importe où, demandez et compilez les meilleurs conseils de vos amis !"
@@ -92,10 +92,11 @@ fr:
   story:
     index:
       title: "Notre projet"
-      story1: "Chez Explorizers, nous pensons que la vie est une aventure extraordinaire, et que les voyages la rendent encore plus passionnante. C'est pour cela que nous recommandons uniquement des expériences exceptionnelles et des lieux étonnants, qui méritent le voyage."
-      story2: "Et parce que nos amis sont une source d'inspiration, nous avons conçu Explorizers pour leur permettre de donner leurs conseils très facilement."
-      story3: "Notre projet commence avec le Maroc, avec l'ambition de couvrir de plus en plus de pays en 2015."
+      story1: "Nos amis sont une source d'inspiration pour le voyage: qui d'autre mieux qu'eux peut nous conseiller ce qui va vraiment nous plaire?"
+      story2: "Nous avons conçu Explorizers pour leur permettre de donner leurs conseils très facilement. Postez votre voyage sur Facebook ou envoyez-le par email, vos amis pourront participer à sa construction!"
+      story3: "Et toujours pour vous inspirer, Explorizers partage progressivement les meilleurs conseils de ses utilisateurs. La communauté Explorizers se construit, montez à bord!"
       contact: "Nous contacter"
+      new_trip: "Créer un nouveau voyage"
 
   #newexperience
   experiences:
