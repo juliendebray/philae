@@ -14,15 +14,15 @@
       <% unless @guest_user %>
       <div id="user-choices">
         <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2">
+          <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2" <%= "checked" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>>
           <small><i class="fa fa-map-marker"></i> <%= t('show_myselection') %></small>
         </label>
         <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3">
+          <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3" <%= "checked" if @trip.trip_comments.any? %>>
           <small><i class="fa fa-comments"></i> <%= t('show_friendstips') %></small>
         </label>
         <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1" checked >
+          <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1"  <%= "checked" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %> >
           <small><i class="fa fa-star"></i> <%= t('show_bestexp') %></small>
         </label>
       </div>

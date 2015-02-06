@@ -7,8 +7,8 @@ function initializeMapSearchBar(id) {
   );
 
   var options = {
-      bounds: defaultBounds,
-      types: ['geocode']
+    bounds: defaultBounds,
+    types: ['geocode']
   };
 
   var autocomplete = new google.maps.places.Autocomplete(input, options);

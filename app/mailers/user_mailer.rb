@@ -23,7 +23,12 @@ class UserMailer < ActionMailer::Base
   def notif_trip(user, trip)
     @user = user
     @trip = trip
-    mail(to: @user.email, subject: 'Notification trip')
+    if @trip.trip_comments && @trip.trip_comments.last.name.length > 0
+      @guest_name = @trip.trip_comments.last.name || t('n_name')
+      @nb_comments = @trip.trip_comments.where(name: @guest_name).count
+    else
+      @guest_name = t('n_name')
+    end
+    mail(to: @user.email, subject: "Notification trip: #{@guest_name} #{t('user_mailer_notif')}")
   end
-
 end
