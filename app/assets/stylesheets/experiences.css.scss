@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body.contactpage {
-  background-image: image-url("contact.jpg");
+body.newexperience {
+  background-image: image-url("road.jpg");
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
@@ -14,7 +14,10 @@ body.contactpage {
     text-align: center;
     color: white;
     text-shadow: 0px 0px 3px white, 0px 0px 6px black;
-    padding-bottom: 30px;
+  }
+  h4 {
+    color: white;
+    font-weight: 300;
   }
   .box-content {
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
@@ -29,21 +32,3 @@ body.contactpage {
     border-radius: 0px;
   }
 }
-
-.header {
-  color: $color2;
-  font-size: 27px;
-  padding: 8px;
-}
-
-.bigicon {
-  font-size: 30px;
-  color: white;
-  margin-right: 0px;
-}
-
-// .well {
-//   box-shadow: 0px 0px 3px white, 0px 0px 6px black;
-//   text-shadow: none;
-// }
-

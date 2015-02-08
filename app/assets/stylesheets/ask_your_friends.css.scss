@@ -19,20 +19,32 @@ body.askfriends {
   a {
     color: white;
   }
+  .box-content {
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    background: rgba(0,0,0,0.4);
+    font-weight: 300;
+    padding: 15px;
+    margin: 10px;
+    heigth: 50%;
+    color: white;
+    h4 {
+    font-weight: 300;
+    }
+  }
 }
 
-.box-content {
-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-background: rgba(0,0,0,0.4);
-font-weight: 100;
-padding: 15px;
-margin: 10px;
-heigth: 50%;
-color: white;
- h4 {
-  font-weight: 300;
- }
-}
+// .box-content {
+// box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+// background: rgba(0,0,0,0.4);
+// font-weight: 100;
+// padding: 15px;
+// margin: 10px;
+// heigth: 50%;
+// color: white;
+//  h4 {
+//   font-weight: 300;
+//  }
+// }
 
 
 // .box-content {

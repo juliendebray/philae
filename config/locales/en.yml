@@ -23,7 +23,7 @@ en:
   hello: "Hello"
 
   #navbar
-  ourstorynav: "The Explorizers concept"
+  ourstorynav: "The Explorizers project"
   fbconnect: "Login Facebook"
   login: "Log in"
   signup: "Sign up"
@@ -36,7 +36,7 @@ en:
 
   #sign up / sign in
   sign_up: "Have a look - it's free."
-  sign_in: "Connection"
+  sign_in: "Sign in"
   sign_in_btn: "Log in"
   passwordplaceholder: "Password (> 6 characters)"
   passwordconfirmplaceholder: "Confirm password"
@@ -109,12 +109,13 @@ en:
   #concept
   story:
     index:
-      title: "Our project"
+      title: "The Explorizers project"
       story1: "Our friends are a great source of inspiration for travel: who else can give us on tips on things we will really like?"
       story2: "We built Explorizers to help them give you their tips very easily. Post your trip on Facebook or forward it by email, your friends will help you design it!"
       story3: "And for more inspiration, Explorizers progressively shares its users' best tips. The community is growing, join us!"
       contact: "Contact us"
       new_trip: "Create a new trip"
+      contact: "Contact Explorizers"
 
   #newexperience
   experiences:
@@ -194,13 +195,13 @@ en:
   user_mailer:
     welcome:
       hi: "Welcome aboard !"
-      w_line1: "On Explorizers, you will find what's great in your destination, and will ask your friends to give you their best tips."
-      w_line2: "For now we focus our recommendations on Morocco, to make sure we offer what's best. We intend to spread very quickly !"
-      w_line3: "Feel free to talk to us. For example, reply to this email and tell us what is the ONE THING you want to have on the site !"
-      w_line4: "See you soon on explorizers.com !"
+      w_line1: "We are delighted to see you join Explorizers!"
+      w_line2: "Explorizers is constantly improving and cares for your feedback. Tell us what you need, we will do our best to provide it fast."
+      w_line3: "See you very soon,"
+      w_line4: "Team Explorizers"
     share_trip:
       hi: "Hi,"
-      s_line1: "Transfer this email to your friends, they will access your trip page and give you tips."
+      s_line1: "So that your friends can give their tips, copy this url or transfer the email below."
       s_line2: "I need your tips for my next trip !"
       s_line3: "Click right here to give your recommendations"
       s_line4: "Thanks !"
