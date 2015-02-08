@@ -82,7 +82,7 @@ fr:
   #contact
   contacts:
     new:
-      title: "Parlez-nous"
+      title: "Contacter Explorizers"
       name: "Felix Baumgartner"
       email: "felix.bmgt@gmail.com"
       message: "Une question? Un commentaire? Dites-nous, nous reviendrons vers vous très vite."
@@ -91,12 +91,13 @@ fr:
   #story:
   story:
     index:
-      title: "Notre projet"
+      title: "Le projet Explorizers"
       story1: "Nos amis sont une source d'inspiration pour le voyage: qui d'autre mieux qu'eux peut nous conseiller ce qui va vraiment nous plaire?"
       story2: "Nous avons conçu Explorizers pour leur permettre de donner leurs conseils très facilement. Postez votre voyage sur Facebook ou envoyez-le par email, vos amis pourront participer à sa construction!"
       story3: "Et toujours pour vous inspirer, Explorizers partage progressivement les meilleurs conseils de ses utilisateurs. La communauté Explorizers se construit, montez à bord!"
       contact: "Nous contacter"
       new_trip: "Créer un nouveau voyage"
+      contact: "Contacter Explorizers"
 
   #newexperience
   experiences:
@@ -175,15 +176,15 @@ fr:
   user_mailer:
     welcome:
       hi: "Bienvenue !"
-      w_line1: "Avec Explorizers, vous trouverez ce qu'il y a de mieux pour votre prochain voyage, grâce aux recommandations de notre communauté et celles de vos amis."
-      w_line2: "Nous nous concentrons d'abord sur le Maroc pour offrir la meilleure qualité, et nous allons ajouter d'autres pays très rapidement."
-      w_line3: "Parlez-nous ! Par exemple, répondez à cet email en nous disant quelle est LA chose que vous voulez absolument avoir sur le site ?"
-      w_line4: "A très vite sur explorizers.com !"
+      w_line1: "Nous sommes ravis de vous voir rejoindre la communauté Explorizers."
+      w_line2: "Explorizers est en amélioration constante et écoute ses utilisateurs : dites-nous ce qui vous manque, nous ferons de notre mieux pour vous l'offrir rapidement!"
+      w_line3: "A très vite,"
+      w_line4: "La team Explorizers"
     share_trip:
       hi: "Bonjour,"
-      s_line1: "Transférez l'email ci-dessous à vos amis, ils pourront accéder à votre roadmap et ajouter des conseils."
+      s_line1: "Pour que vos amis puissent vous donner leurs conseils, copiez l'URL ou transférez l'email ci-dessous."
       s_line2: "J'ai besoin de tes conseils pour mon prochain voyage!"
-      s_line3: "Clique ici pour donner tes recommandations."
+      s_line3: "Clique ici pour donner tes recommandations"
       s_line4: "Merci !"
       s_line5: "Explorizers apporte des expériences de voyage uniques et étonnantes. Créez votre propre voyage, avec l'aide de vos amis et de notre communauté d'explorateurs."
     notif_trip:

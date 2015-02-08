@@ -16,6 +16,7 @@
   h1, h2 {
     color: white;
     text-shadow: 0px 0px 3px white, 0px 0px 6px black;
+    padding-bottom: 0px;
   }
 
   .minor-block {
@@ -46,6 +47,9 @@
     background: rgba(0, 0, 0, 0.3);
     color: white;
     height: 153px;
+    padding: 15px;
+    margin: 10px;
+    font-weight: 100;
   }
 
 }
@@ -57,7 +61,7 @@
 
   input#trip_query {
     font-style: normal;
-    font-weight: 100;
+    font-weight: 300;
   }
 }
 

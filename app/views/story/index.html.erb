@@ -1,12 +1,12 @@
 <% content_for(:title) do %>
-  <%= "Explorizers | Notre histoire" %>
+  <%= "Explorizers | Notre projet" %>
 <% end %>
 
 <% content_for(:description) do %>
   <%= "With more and more people joining the project, most of our story belongs to the future" %>
 <% end %>
 <div class="homepage_story">
-  <div class="story">
+  <div id="story" class="story">
 
     <div id="titleblock" class="text-center">
       <div class="title">
@@ -22,6 +22,8 @@
       </div>
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
          <%= link_to t('.new_trip'), root_path, {class: "btn btn-info"} %>
+         <div class="vertical-spacer-xs"></div>
+         <%= link_to t('.contact'), new_contact_path %>
       </div>
     </div>
   </div>
