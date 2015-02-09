@@ -63,7 +63,8 @@ fr:
       newexp: "Cliquer sur la carte pour ajouter une nouvelle expérience"
 
   #trip_comments:
-  trip_comment_delete: "- Supprimer ce commentaire -"
+  trip_comment_add: "Ajouter au voyage"
+  trip_comment_delete: "Supprimer ce commentaire"
   trip_comment_confirm: "Etes-vous sûr de vouloir supprimer ce commentaire?"
 
   #trip_experiences:

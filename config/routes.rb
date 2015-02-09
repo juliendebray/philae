@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'connections/new'
   post '/trips/:trip_id/trip_experiences/create_with_new_experience', to: 'trip_experiences#create_with_new_experience', as: 'experience_within_trip'
+  post '/trip_comments/:trip_comment_id/trip_experience/create_with_new_experience', to: 'trip_experiences#create_with_comment', as: 'experience_from_comment'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   get 'experiences/:experience_id/detail', to: 'experiences#detail', as: 'experience_detail'
@@ -44,6 +45,9 @@ Rails.application.routes.draw do
           get :markers
           get :trip_markers
         end
+        # collection do
+        #   post :create_with_comment
+        # end
       end
       resources :trip_comments, only: [:create, :destroy] do
         collection do

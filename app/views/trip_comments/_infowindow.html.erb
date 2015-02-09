@@ -5,7 +5,18 @@
   <div class="comment-content">
     <%= simple_format trip_comment.description %>
   </div>
-<div class="infobox-content">
-  <%= link_to t('trip_comment_delete'), [trip_comment.trip, trip_comment], remote: true, method: :delete, data: {confirm: t('trip_comment_confirm')} %>
-</div>
+  <div class="infobox-content">
+    <% unless guest_user %>
+      <div class="comment-btn list-unstyled">
+        <%= link_to experience_from_comment_path(trip_comment), remote: true, method: :post do %>
+          <i class="fa fa-map-marker"></i> <small><%= t('trip_comment_add') %></small>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="comment-btn list-unstyled">
+      <%= link_to [trip_comment.trip, trip_comment], remote: true, method: :delete do %>
+        <i class="fa fa-trash-o"></i> <small><%= t('trip_comment_delete') %></small>
+      <% end %>
+    </div>
+  </div>
 </div>

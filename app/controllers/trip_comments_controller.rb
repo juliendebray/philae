@@ -3,31 +3,7 @@ class TripCommentsController < ApplicationController
   respond_to :js, only: [:comments_markers]
 
   def create
-    # @trip = Trip.find(params[:trip_id])
-    # p @trip.id
     @trip_comment = @trip.trip_comments.create(trip_comments_params)
-    # puts '$$$$$$$$$$$$$$$$$$$'
-    # @marker = {}
-    # @marker[:lat] = @trip_comment.latitude
-    # @marker[:lng] = @trip_comment.longitude
-    # @marker[:infobox] = render_to_string(partial: "/trip_comments/infowindow.html.erb", locals: {
-    #   trip_comment: @trip_comment,
-    #   trip: @trip
-    # })
-    # @marker[:title] = @trip_comment.name
-
-
-    # puts @marker
-    # puts 'ssssssss--------- JSON ------------ ssssssss'
-    # puts @marker.to_json
-
-    # markers = build_markers_comments([@trip_comment], @trip)
-    # puts '$$$$$$$$$$$$$$$$$$$'
-
-    # @marker = markers[0].to_json
-
-    # p @markers
-    # # p session['session_id']
   end
 
   def destroy
@@ -37,12 +13,7 @@ class TripCommentsController < ApplicationController
   end
 
   def comments_markers
-    # if current_user = @trip.user
-    #   @markers = build_markers_comments(@trip.trip_comments, @trip)
-    # elsif condition
-
-    # end
-    @markers = build_markers_comments(@trip.trip_comments)
+    @markers = build_markers_comments(@trip.trip_comments, false)
     render json: @markers
   end
 
@@ -55,13 +26,14 @@ class TripCommentsController < ApplicationController
     params.require(:trip_comment).permit(:name, :address, :description, :latitude, :longitude)
   end
 
-  def build_markers_comments(trip_comments)
+  def build_markers_comments(trip_comments, guest_user)
     Gmaps4rails.build_markers(trip_comments) do |trip_comment, marker|
       marker.lat trip_comment.latitude
       marker.lng trip_comment.longitude
       marker.json({
         infobox:  render_to_string(partial: "/trip_comments/infowindow.html.erb", locals: {
-          trip_comment: trip_comment
+          trip_comment: trip_comment,
+          guest_user: guest_user
         })
       })
       marker.title trip_comment.name
