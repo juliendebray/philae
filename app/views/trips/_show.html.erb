@@ -63,7 +63,7 @@
                   <% end %>
                 <% end %>
               </td>
-              <% if @trip.query.downcase.match('maroc') %>
+              <% if @trip.query && @trip.query.downcase.match('maroc') %>
                 <td>
                   <div id="see-providers" class="button-action">
                     <%= link_to  providers_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');", class: "btn btn-default btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_seeproviders')} do %>
