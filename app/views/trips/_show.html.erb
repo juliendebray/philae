@@ -63,6 +63,13 @@
                   <% end %>
                 <% end %>
               </td>
+              <td>
+                <div id="see-trip-summary" class="button-action">
+                  <%= link_to  summarize_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');", class: "btn btn-primary btn-block", data: {toggle: "tooltip", placement: "bottom",  title: "Voir la synthèse de mon trip et me l'envoyer par mail"} do %>
+                  <i class="fa fa-external-link"></i>
+                  <% end %>
+                </div>
+              </td>
               <% if @trip.query && @trip.query.downcase.match('maroc') %>
                 <td>
                   <div id="see-providers" class="button-action">
@@ -76,7 +83,7 @@
             <td>
               <div id="set-orders" class="button-action text-center">
                 <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
-                <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-group-lg btn-info") %>
+                <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-info btn-block") %>
                 <% end %>
               </div>
             </td>

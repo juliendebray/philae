@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <div id="titleblock" class="text-center">
+    <div class="title">
+      <h2><%= @trip.title %></h2>
+      <p>Date de création: <%= @trip.created_at.strftime('%d-%m-%Y') %></br>
+      Dernière mise à jour: <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %> </p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row text-center">
+      <% @trip.trip_experiences.each do |trip_experience| %>
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+         <br> <br> <%= trip_experience.experience.name %> <br>
+          <%= trip_experience.experience.description %>
+        </div>
+      <% end%>
+    </div>
+  </div>
+</div>
