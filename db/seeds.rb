@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1IX1pAZTw24XoHgJgWBkSoOjB9Ru4nhZk9P_6slaH4LU/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1ANe29zEjRNPY6lD19fpIMaldSo4t2T_nZWmjKF6-q-s/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
   exp = Experience.create(
