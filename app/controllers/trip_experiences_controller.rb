@@ -1,6 +1,6 @@
 class TripExperiencesController < ApplicationController
   before_action :set_trip, only: [:markers, :trip_markers, :create, :create_with_new_experience]
-  respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience]
+  respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience, :create_with_comment]
 
   def markers
     markers_number = 10
@@ -30,8 +30,35 @@ class TripExperiencesController < ApplicationController
   end
 
   def create_with_new_experience
-    @experience = Experience.create(experience_params)
+    if current_user
+      @experience = current_user.experiences.create(experience_params)
+    else
+      @experience = Experience.create(experience_params)
+    end
     @trip_experience = @trip.trip_experiences.create(experience_id: @experience.id)
+  end
+
+  def create_with_comment
+    @trip_comment = TripComment.find(params[:trip_comment_id])
+    @trip = @trip_comment.trip
+    if current_user
+      @experience = current_user.experiences.create(
+        name: "Tips: #{@trip_comment.name}",
+        address: @trip_comment.address,
+        latitude: @trip_comment.latitude,
+        longitude: @trip_comment.longitude,
+        description: @trip_comment.description
+      )
+    else
+      @experience = Experience.create(
+        name: "Tips: #{@trip_comment.name}",
+        address: @trip_comment.address,
+        latitude: @trip_comment.latitude,
+        longitude: @trip_comment.longitude,
+        description: @trip_comment.description
+      )
+    end
+      @trip_experience = @trip.trip_experiences.create(experience_id: @experience.id)
   end
 
  private

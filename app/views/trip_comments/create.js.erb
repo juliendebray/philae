@@ -6,7 +6,7 @@ $( document ).ready(function() {
     "lng": <%= @trip_comment.longitude %>,
     "marker_title": "<%= @trip_comment.name %>",
     "infobox": "<%= j render('/trip_comments/infowindow.html.erb',
-      {trip_comment: @trip_comment, trip: @trip} )%>"
+      {trip_comment: @trip_comment, trip: @trip, guest_user: true} )%>"
   };
 
   commentsJsonStore.push(markerJson);

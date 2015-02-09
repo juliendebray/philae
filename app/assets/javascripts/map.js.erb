@@ -21,6 +21,9 @@ function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, ri
   var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x - leftOffset*$('#map').width();
   var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x - rightOffset*$('#map').width();
 
+  console.log(topDistance);
+  console.log('offset: '+ topOffset);
+
   if (topDistance  < 0) {
     if (leftDistance < 0) {
       map.panBy(leftDistance, topDistance);
@@ -87,23 +90,6 @@ function openInfowindowOnClick(data, marker, carrouselRequired) {
   boxText.innerHTML = data[marker.id].infobox;
 
   var infoboxOptions = setInfoboxOptions(boxText);
-  // {
-  //   content: boxText
-  //   ,disableAutoPan: true
-  //   ,pixelOffset: new google.maps.Size(-140, -40)
-  //   ,alignBottom: true
-  //   ,zIndex: null
-  //   ,disableAutoPan: true
-  //   ,closeBoxURL: ""
-  //   ,boxStyle: {
-  //     width: "280px"
-  //     ,opacity: 1
-  //   }
-  //   ,infoBoxClearance: new google.maps.Size(1, 1)
-  //   ,isHidden: false
-  //   ,pane: "floatPane"
-  //   ,enableEventPropagation: false
-  // };
 
   ib = new InfoBox(infoboxOptions);
   ib.open(map, marker);
@@ -112,7 +98,7 @@ function openInfowindowOnClick(data, marker, carrouselRequired) {
     if (carrouselRequired) {
       setCarrousel();
     }
-    mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -0.947300072, 0.9909910672);
+    mapPanToContainInfoBox(ib, 94, -17.994751360066402, -0.995, 0.9909910672);
     initalizeLinkWithRemoteTrue();
   });
 }
@@ -174,7 +160,7 @@ function setCarrousel() {
 }
 
 function initalizeLinkWithRemoteTrue() {
-  $('.infobox-content > a').on('click', function(e){
+  $('.infobox-content a').on('click', function(e){
     e.preventDefault();
     $.rails.handleRemote($(this));
   });
