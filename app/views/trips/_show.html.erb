@@ -59,7 +59,7 @@
                 <%= form_for @trip, url: {action: "update"} do |f|%>
                   <%= hidden_field_tag :order %>
                   <%= button_tag(type: 'submit', onclick: "ga('send', 'event', 'User', 'Save trip', 'Save my trip button clicked');", class: "btn btn-info btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_save')}) do %>
-                  <i class="fa fa-refresh"></i>
+                  <i class="fa fa-check"></i>
                   <% end %>
                 <% end %>
               </td>
