@@ -1,9 +1,31 @@
 <div class="wrapper">
-  <div id="titleblock" class="text-center">
-    <div class="title">
-      <h2><%= @trip.title %></h2>
-      <p>Date de création: <%= @trip.created_at.strftime('%d-%m-%Y') %></br>
-      Dernière mise à jour: <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %> </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3 text-center">
+        <div class="vertical-spacer-xs"></div>
+        <%= link_to trip_path(@trip), class:"btn btn-info btn-block" do %>
+          <i class="fa fa-arrow-circle-left"></i> Retourner sur mon trip
+        <% end %>
+      </div>
+      <!-- <div class="col-xs-1"></div> -->
+      <div class="col-xs-6">
+        <div id="titleblock" class="text-center">
+          <div class="title">
+            <h2><%= @trip.title %></h2>
+            <p>Date de création: <%= @trip.created_at.strftime('%d-%m-%Y') %></br>
+            Dernière mise à jour: <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %> </p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-xs-1"></div> -->
+      <div class="col-xs-3 text-center">
+        <div class="vertical-spacer-xs"></div>
+        <%= form_for @trip, url: summarize_trip_path(@trip.id) do |f| %>
+          <%= hidden_field_tag :id, value = @trip.id %>
+            <label for="mySubmit" class="btn btn-primary btn-block">Recevoir mon trip par email <i class="fa fa-envelope"></i> </label>
+          <%= f.submit(id:'mySubmit', class:'hidden') %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="container">

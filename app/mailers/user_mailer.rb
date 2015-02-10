@@ -31,4 +31,13 @@ class UserMailer < ActionMailer::Base
     end
     mail(to: @user.email, subject: "Notification trip: #{@guest_name} #{t('user_mailer_notif')}")
   end
+
+  def send_trip_summary(user, trip)
+    @user = user
+    @trip = trip
+    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
+    mail(to: @user.email, subject: "Votre résumé de voyage")
+  end
 end

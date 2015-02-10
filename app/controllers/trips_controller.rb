@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:create, :start, :show_guest_user, :notification_for_sharing_email, :providers, :summarize]
-  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email]
 
   def create
     if params[:trip].nil?
@@ -90,6 +90,10 @@ class TripsController < ApplicationController
 
   def notification_for_sharing_email
     @trip.user.send_notif_email(@trip)
+  end
+
+  def send_my_trip_email
+    current_user.send_trip_summary_email(@trip)
   end
 
   def providers

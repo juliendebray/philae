@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     UserMailer.notif_trip(self, trip).deliver
   end
 
+  def send_trip_summary_email(trip)
+    UserMailer.send_trip_summary(self, trip).deliver
+  end
+
   private
   def send_welcome_email
     UserMailer.welcome(self).deliver
