@@ -48,14 +48,14 @@
         <tbody>
           <% unless @guest_user %>
             <td>
-              <div id="share-bt" class="button-action">
+              <div id="share-bt" class="button-action update-order">
                 <%= link_to trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');", class: "btn btn-facebook btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_asktips')}  do %>
-                <i class="fa fa-comments"></i>
+                  <i class="fa fa-comments"></i>
                 <% end %>
               </div>
             </td>
             <td>
-              <div id="set-orders" class="button-action">
+              <div id="set-orders" class="button-action update-order">
                 <%= form_for @trip, url: {action: "update"} do |f|%>
                   <%= hidden_field_tag :order %>
                   <%= button_tag(type: 'submit', onclick: "ga('send', 'event', 'User', 'Save trip', 'Save my trip button clicked');", class: "btn btn-info btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_save')}) do %>
@@ -64,15 +64,15 @@
                 <% end %>
               </td>
               <td>
-                <div id="see-trip-summary" class="button-action">
-                  <%= link_to  summarize_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');", class: "btn btn-primary btn-block", data: {toggle: "tooltip", placement: "bottom",  title: "Voir la synthèse de mon trip et me l'envoyer par mail"} do %>
+                <div id="see-trip-summary" class="button-action update-order">
+                  <%= link_to  summarize_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');", class: "btn btn-primary btn-block", data: {toggle: "tooltip", placement: "bottom",  title: "Voir la synthèse de mon trip et me l'envoyer par mail", json: 'data'} do %>
                   <i class="fa fa-external-link"></i>
                   <% end %>
                 </div>
               </td>
               <% if @trip.query && @trip.query.downcase.match('maroc') %>
                 <td>
-                  <div id="see-providers" class="button-action">
+                  <div id="see-providers" class="button-action update-order">
                     <%= link_to  providers_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');", class: "btn btn-default btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_seeproviders')} do %>
                     <i class="fa fa-plus"></i>
                     <% end %>
@@ -191,7 +191,7 @@
         };
         buildMapForUser(userMapOptions, <%= @trip.id %>);
         makeExperiencesSortable();
-        setExperiencesOrderByClickingOnSave();
+        setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
         // Tooltip initialization
         // $('[data-toggle="popover"]').popover();
         $('[data-toggle="tooltip"]').tooltip()

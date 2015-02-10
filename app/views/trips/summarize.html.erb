@@ -7,11 +7,10 @@
     </div>
   </div>
   <div class="container">
-    <div class="row text-center">
-      <% @trip.trip_experiences.each do |trip_experience| %>
-        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
-         <br> <br> <%= trip_experience.experience.name %> <br>
-          <%= trip_experience.experience.description %>
+    <div class="row">
+      <% @trip_exp_ordered.each do |trip_exp| %>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 border-left">
+          <%= render("/trips/experience_summary_block.html.erb", {trip_exp: trip_exp} ) %>
         </div>
       <% end%>
     </div>

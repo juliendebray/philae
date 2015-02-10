@@ -37,6 +37,7 @@ Rails.application.routes.draw do
         get :start
         get :providers
         get :summarize
+        post :update_order
         get ':token' => "trips#show_guest_user", as: :guest_trip
         patch 'share' => "trips#share_trip_email"
         patch 'notif' => "trips#notification_for_sharing_email"
@@ -46,9 +47,6 @@ Rails.application.routes.draw do
           get :markers
           get :trip_markers
         end
-        # collection do
-        #   post :create_with_comment
-        # end
       end
       resources :trip_comments, only: [:create, :destroy] do
         collection do

@@ -21,9 +21,6 @@ function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, ri
   var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x - leftOffset*$('#map').width();
   var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x - rightOffset*$('#map').width();
 
-  console.log(topDistance);
-  console.log('offset: '+ topOffset);
-
   if (topDistance  < 0) {
     if (leftDistance < 0) {
       map.panBy(leftDistance, topDistance);
@@ -189,17 +186,47 @@ function addBoxShadowEffectWhileDraggingBox() {
     $(this).parent().parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.5)');
     $(document).on('mouseup', function(){
       $('.panel').css('box-shadow', '1px 1px 1px 1px rgba(0, 0, 0, 0.1)');
+      $(this).unbind('mouseup');
     });
   });
 }
 
 function setExperiencesOrderByClickingOnSave() {
   $('#set-orders').on("mousedown", function() {
-    var order = {};
-    for (var i = 0; i < $('.panel.panel-info').length; i++){
-      order[i+1] =  $('.panel.panel-info')[i].id;
-    }
-    $('#order').attr('value', JSON.stringify(order));
+
+  });
+}
+
+// function setExperiencesOrderByClickingOnSave() {
+//   $('.update-order').on("mousedown", function() {
+//     var order = {};
+//     for (var i = 0; i < $('.panel.panel-info').length; i++){
+//       order[i+1] =  $('.panel.panel-info')[i].id;
+//     }
+//     $('#order').attr('value', JSON.stringify(order));
+//   });
+// }
+
+function storeOrder() {
+  var order = {};
+  // var hash = {"order"};
+  for (var i = 0; i < $('.panel.panel-info').length; i++){
+    order[i+1] =  $('.panel.panel-info')[i].id;
+  }
+  $('#order').attr('value', JSON.stringify(order));
+  return {"order":order};
+}
+
+function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
+  $('.ui-sortable-handle').on('mouseup', function() {
+    $('.selection-content').on('mouseleave',function() {
+      $(this).unbind('mouseleave');
+      $.ajax({
+        type: "POST",
+        url: "/trips/"+trip_id+"/update_order",
+        data: storeOrder(),
+      });
+    });
   });
 }
 

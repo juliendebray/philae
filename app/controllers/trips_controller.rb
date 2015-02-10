@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:create, :start, :show_guest_user, :notification_for_sharing_email, :providers, :summarize]
-  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order]
 
   def create
     if params[:trip].nil?
@@ -42,6 +42,13 @@ class TripsController < ApplicationController
     redirect_to trip_path(@trip)
   end
 
+  def update_order
+    if params[:order]
+      order_hash = params[:order]
+      update_trip_experience_order(order_hash)
+    end
+  end
+
   def show
     @guest_user = false
     @trip = current_user.trips.find(params[:id])
@@ -52,6 +59,10 @@ class TripsController < ApplicationController
   end
 
   def summarize
+    set_orders_if_nil!(@trip.trip_experiences)
+    @trip_exp_ordered = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
   end
 
   def show_guest_user
@@ -82,7 +93,6 @@ class TripsController < ApplicationController
   end
 
   def providers
-    # @experiences = @trip.experiences
   end
 
   private
