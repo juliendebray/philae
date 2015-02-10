@@ -16,9 +16,6 @@ $( document ).ready(function() {
           }
       });
   addBoxShadowEffectWhileDraggingBox();
-  $('#user-experiences').prop('checked','checked')
-  var map = handler.getMap();
-  setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
-    requestingMarkers = r;
-  });
+
+  scrollToElement($('.selection-content'), $('.panel-info').last());
 });

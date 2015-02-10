@@ -8,6 +8,16 @@ var markersAddedManually = [];
 var commentsJsonStore = [];
 var commentsMarkers = [];
 
+
+function scrollToElement(container, scrollTo) {
+  // var container = $('.selection-content'),
+  //     scrollTo = $('.panel-info').last();
+
+  container.animate({
+      scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+  });
+}
+
 function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, rightOffset) {
   var map = handler.getMap();
   var mapZoom = map.getZoom();
@@ -218,7 +228,7 @@ function storeOrder() {
 }
 
 function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
-  $('.ui-sortable-handle').on('mouseup', function() {
+  $('.panel-heading').on('mouseup', function() {
     $('.selection-content').on('mouseleave',function() {
       $(this).unbind('mouseleave');
       $.ajax({
