@@ -83,14 +83,14 @@ html, body {
         padding: 4%;
 
         .tooltip {
-          font-size: 1em;
+          font-size: 18px;
         }
 
         .tooltip > .tooltip-inner, .tooltip-arrow {
           background-color: white;
-          font-weight: 100;
+          font-weight: 300;
           font-style: italic;
-          color: #808080;
+          color: black;
         }
         .tooltip > .tooltip-arrow {
           // TODO: customize teh arow

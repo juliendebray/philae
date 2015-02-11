@@ -52,8 +52,8 @@ en:
     index:
       brand: "E X P L O R I Z E R S"
       firstline: "YOUR NEXT TRIP STARTS HERE"
-      secondline: "Explorizers: travel inspired by your best friends!"
-      thirdline: ""
+      secondline: "Design your trip with your friends' tips"
+      thirdline: "Get inspired by our Explorizers' best recommendations"
       trending: "Trending this week: Cuba  |  Sri Lanka  |  Istanbul"
       searchplaceholder: "Where are you going?"
       searchbutton: "Start"
@@ -79,6 +79,11 @@ en:
       title: "Design your trip"
       myexp: "Only show my own selection"
       newexp: "Click on the map to add a new experience"
+    summarize:
+      gobacktotrip: " Go back to my trip"
+      getbyemail: "Get by email "
+      creation: "Created on: "
+      lastupdate: "Last update: "
 
 
   #trip_comments:
@@ -160,8 +165,9 @@ en:
   show_selectedexp: "Selection"
   show_save: "Save my selection"
   show_saveguest: "Save my tips"
-  show_asktips: "Get my friends' tips"
+  show_asktips: "Friends' tips"
   show_seeproviders: "See local guides & agencies"
+  show_summary: "Trip summary"
 
   providers_title: "These local guides and agencies will help you"
 

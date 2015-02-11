@@ -35,8 +35,8 @@ fr:
     index:
       brand: "E X P L O R I Z E R S"
       firstline: "VOTRE VOYAGE COMMENCE ICI"
-      secondline: "Explorizers : le voyage inspiré par vos amis !"
-      thirdline: ""
+      secondline: "Préparez votre voyage avec les conseils de vos amis"
+      thirdline: "Inspirez-vous des meilleures recommandations des Explorizers"
       trending: "Tendance cette semaine : Cuba  |  Sri Lanka  |  Istanbul"
       searchplaceholder: "Où allez-vous ?"
       searchbutton: "Démarrer"
@@ -61,6 +61,11 @@ fr:
       title: "Créez votre voyage"
       myexp: "Montrer seulement ma sélection"
       newexp: "Cliquer sur la carte pour ajouter une nouvelle expérience"
+    summarize:
+      gobacktotrip: " Retourner sur mon itinéraire"
+      getbyemail: "Recevoir par email "
+      creation: "Créé le : "
+      lastupdate: "Dernière mise à jour : "
 
   #trip_comments:
   trip_comment_add: "Ajouter au voyage"
@@ -142,8 +147,9 @@ fr:
   show_selectedexp: "Sélection"
   show_save: "Enregistrer ma sélection"
   show_saveguest: "Enregistrer mes conseils"
-  show_asktips: "Obtenir les conseils d'amis"
+  show_asktips: "Conseils des amis"
   show_seeproviders: "Voir les agences et guides locaux"
+  show_summary: "Synthèse du voyage"
 
   providers_title: "Ces agences et guides locaux vont vous aider"
 
