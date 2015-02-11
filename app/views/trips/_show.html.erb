@@ -96,6 +96,13 @@
     </div>
     <div class="selection-content">
       <ul id="draggablePanelList" class="list-unstyled">
+        <% if @trip_exp_tab &&  @trip_exp_tab.size > 0 %>
+          <% @trip_exp_tab.each do |trip_exp| %>
+            <% if trip_exp.experience %>
+            <%= render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>
+            <% end %>
+          <% end %>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -128,16 +135,6 @@
     <% content_for(:after_js) do %>
     <script>
     $(document).on('ready', function() {
-
-      // Display existing trip_experiences
-      <% if @trip_exp_tab &&  @trip_exp_tab.size > 0 %>
-        <% @trip_exp_tab.each do |trip_exp| %>
-          <% if trip_exp.experience %>
-          $('#draggablePanelList').append('<%= j render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>');
-          <% end %>
-        <% end %>
-      <% end %>
-
       $(window).load(function() {
         var length = $(".exp-dotdotdot").length
         if (length != 0) {

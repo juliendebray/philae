@@ -12,8 +12,14 @@ class TripExperiencesController < ApplicationController
 
   def trip_markers
     @experiences = []
-    @trip.trip_experiences.each do |trip_exp|
-      @experiences << trip_exp.experience
+    if current_user == @trip.user
+      @trip.trip_experiences.each do |trip_exp|
+        @experiences << trip_exp.experience
+      end
+    else
+      @trip.trip_experiences.each do |trip_exp|
+        @experiences << trip_exp.experience unless trip_exp.experience.from_guest_comment
+      end
     end
     @markers = build_markers(@experiences, @trip)
     render json: @markers
@@ -47,7 +53,8 @@ class TripExperiencesController < ApplicationController
         address: @trip_comment.address,
         latitude: @trip_comment.latitude,
         longitude: @trip_comment.longitude,
-        description: @trip_comment.description
+        description: @trip_comment.description,
+        from_guest_comment: true
       )
     else
       @experience = Experience.create(
@@ -55,7 +62,8 @@ class TripExperiencesController < ApplicationController
         address: @trip_comment.address,
         latitude: @trip_comment.latitude,
         longitude: @trip_comment.longitude,
-        description: @trip_comment.description
+        description: @trip_comment.description,
+        from_guest_comment: true
       )
     end
       @trip_experience = @trip.trip_experiences.create(experience_id: @experience.id)
