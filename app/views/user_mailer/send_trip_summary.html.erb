@@ -1,0 +1,8 @@
+<p>Bonjour,</p>
+<p>Vous trouverez plus bas la synthèse de votre voyage.</p>
+<p>A très bientôt sur <a href="www.explorizers.com">Explorizers</a></p>
+
+    <% @trip_exp_tab.each do |trip_exp| %>
+      <br><br>
+        <%= render("/trips/experience_summary_block.html.erb", {trip_exp: trip_exp} ) %>
+    <% end%>

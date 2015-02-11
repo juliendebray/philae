@@ -1,8 +1,8 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
-  before_action :authenticate_user!, except: [:create, :start, :show_guest_user, :notification_for_sharing_email, :providers]
-  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers]
-
+  before_action :authenticate_user!, except: [:create, :start, :show_guest_user, :notification_for_sharing_email, :providers, :summarize]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email]
+  respond_to :js, only: [:send_my_trip_email]
   def create
     if params[:trip].nil?
       @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
@@ -42,11 +42,25 @@ class TripsController < ApplicationController
     redirect_to trip_path(@trip)
   end
 
+  def update_order
+    if params[:order]
+      order_hash = params[:order]
+      update_trip_experience_order(order_hash)
+    end
+  end
+
   def show
     @guest_user = false
     @trip = current_user.trips.find(params[:id])
     set_orders_if_nil!(@trip.trip_experiences)
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
+  end
+
+  def summarize
+    set_orders_if_nil!(@trip.trip_experiences)
+    @trip_exp_ordered = @trip.trip_experiences.sort_by do |te|
       te.order
     end
   end
@@ -76,10 +90,18 @@ class TripsController < ApplicationController
 
   def notification_for_sharing_email
     @trip.user.send_notif_email(@trip)
+    # TODO: check if hidden field in the form_for is really necessary
+  end
+
+  def send_my_trip_email
+    current_user.send_trip_summary_email(@trip)
+    flash[:sucess] = 'Un email vous a été envoyé avec le résumé de votre voyage.'
+    redirect_to summarize_trip_path(@trip)
+    # TODO: redirect to js to change the class of the button
+    # TODO: check if hidden field in the form_for is really necessary
   end
 
   def providers
-    # @experiences = @trip.experiences
   end
 
   private
