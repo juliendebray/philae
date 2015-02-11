@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:create, :start, :show_guest_user, :notification_for_sharing_email, :providers, :summarize]
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email]
-  respond_to :js, only: [:send_my_trip_email]
+
   def create
     if params[:trip].nil?
       @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
@@ -68,9 +68,13 @@ class TripsController < ApplicationController
   def show_guest_user
     if params[:token] == @trip.token
       @guest_user = true
-      @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      # trip_experiences_unordered = @trip.trip_experiences
+      # set_orders_if_nil!(@trip.trip_experiences)
+      trip_experiences =  set_orders_if_nil!(@trip.trip_experiences)
+      trip_exp_tab_all = trip_experiences.sort_by do |te|
         te.order
       end
+      @trip_exp_tab = trip_exp_tab_all.reject { |te| te.experience.from_guest_comment == true }
     else
       render "public/422.html"
     end
@@ -129,6 +133,8 @@ class TripsController < ApplicationController
     trip_experiences.map do |trip_exp|
       count = trip_experiences.reject {|te| te.order.nil?}.size
       trip_exp.order = count + 1 if trip_exp.order.nil?
+      trip_exp.save
     end
+    return trip_experiences
   end
 end
