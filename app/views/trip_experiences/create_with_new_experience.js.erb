@@ -14,4 +14,10 @@ $( document ).ready(function() {
       });
   addBoxShadowEffectWhileDraggingBox();
   scrollToElement($('.selection-content'), $('.panel-info').last());
+  if ($('#user-experiences').prop('checked')){
+    var map = handler.getMap();
+    setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
+      requestingMarkers = r;
+    });
+  }
 });

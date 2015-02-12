@@ -10,9 +10,6 @@ var commentsMarkers = [];
 
 
 function scrollToElement(container, scrollTo) {
-  // var container = $('.selection-content'),
-  //     scrollTo = $('.panel-info').last();
-
   container.animate({
       scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
   });
@@ -348,30 +345,7 @@ function buildMapForUser(mapOptions, trip_id) {
       ib.close();
       ibOpened = false;
       }
-
       displayMarkersAccordingToUserChoices(trip_id, map);
-
-      // if ($('#user-experiences').prop('checked')){
-      //   // Set map with booked experiences;
-      //   setMapWithUserExperiences(trip_id, map, function(r) {
-      //     requestingMarkers = r;
-      //     if (markers.length == 0) {
-      //       alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Top 10 by Explorizers"! - No experiences yet! Add yours or choose from "Top 10 by Explorizers"!');
-      //     }
-      //   });
-      // } else if ($('#guests-comments').prop('checked')) {
-      //   // Set map with trip_comments;
-      //   setMapWithGuestComments(trip_id, map, function(r) {
-      //     requestingMarkers = r;
-      //     if (markers.length == 0) {
-      //       alert('Pas encore de conseil! Demandez-les : cliquez sur "Obtenir les conseils de mes amis"! - No tips yet! Ask your friends : click on "Get my friends tips" below!');
-      //     }
-      //   });
-      // } else if ($('#all-experiences').prop('checked')) {
-      //   setMarkersAndKeepListening(map, trip_id);
-      // }
-
-
     });
 
     initializeMapSearchBar('pac-input');
