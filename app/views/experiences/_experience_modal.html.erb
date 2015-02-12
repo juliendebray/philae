@@ -1,6 +1,6 @@
 <% if experience.experience_pictures.size > 0 %>
     <div id="owl-experiences-banner" class="owl-carousel banner text-center">
-      <% experience.experience_pictures.each do |pic| %>
+      <% experience.experience_pictures.sort_by {|pic| pic.id }.each do |pic| %>
         <div class="item-banner" style="max-width: 100%">
           <%= image_tag(pic.picture.url(:banner)) %>
         </div>
