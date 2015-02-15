@@ -11,9 +11,9 @@
     <div id="homeblock" class="banner text-center">
       <div class="title">
         <h1><%= t('.firstline') %></h1>
-        <h3><%= t('.secondline') %></h3>
-        <h3><%= t('.thirdline') %></h3>
-
+        <div class="vertical-spacer-xs"></div>
+        <h4><%= t('.secondline') %></h4>
+        <h4><%= t('.thirdline') %></h4>
       </div>
       <div class="tr-grey-bg">
         <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
@@ -25,33 +25,49 @@
           </div>
         <% end %>
       </div>
-      <div class="trending">
-        <i class="fa fa-thumbs-o-up fa-2x"></i>
+<!--       <div class="trending">
         <h4><%= t('.trending') %></h4>
-      </div>
-      <div class="vertical-spacer-xs"></div>
+      </div> -->
+      <div class="vertical-spacer-sm"></div>
       <div class="row">
         <div class="col-xs-12 col-md-4">
+          <%= image_tag 'review_aurelia.png', class: "img-circle" %>
           <div class="box-content text-center">
-            <%= image_tag 'review_aurelia.png', class: "img-circle" %>
             <h5><%= t('.subtitle1') %></h5>
             <p><%= t('.text1') %></p>
           </div>
         </div>
         <div class="col-xs-12 col-md-4">
+          <%= image_tag 'review_charlotte.png', class: "img-circle" %>
           <div class="box-content text-center">
-            <%= image_tag 'review_charlotte.png', class: "img-circle" %>
             <h5><%= t('.subtitle2') %></h5>
             <p><%= t('.text2') %></p>
           </div>
         </div>
         <div class="col-xs-12 col-md-4">
+          <%= image_tag 'review_romain.png', class: "img-circle" %>
           <div class="box-content text-center">
-            <%= image_tag 'review_romain.png', class: "img-circle" %>
             <h5><%= t('.subtitle3') %></h5>
             <p><%= t('.text3') %></p>
           </div>
         </div>
+      </div>
+<!--       <div class="vertical-spacer-xs"></div> -->
+      <div class="fb-like" data-href="https://www.facebook.com/explorizers" data-layout="standard" data-action="like" data-show-faces="false" data-share="false" data-colorscheme="dark"></div>
+      <div class="vertical-spacer-xs"></div>
+      <div id="social_links">
+        <a href="https://www.facebook.com/explorizers" target="_blank">
+          <i class="fa fa-facebook fa-2x"></i>
+        </a>
+        <a href="http://instagram.com/explorizers/" target="_blank">
+          <i class="fa fa-instagram fa-2x"></i>
+        </a>
+        <a href="https://www.pinterest.com/explorizers/" target="_blank">
+          <i class="fa fa-pinterest fa-2x"></i>
+        </a>
+        <a href="https://twitter.com/Explorizers_" target="_blank">
+          <i class="fa fa-twitter fa-2x"></i>
+        </a>
       </div>
     </div>
   </div>

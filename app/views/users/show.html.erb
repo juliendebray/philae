@@ -1,24 +1,26 @@
-<div class="wrapper">
-  <div id="titleblock" class="text-center">
-    <h2><%= t('.mytrips', :default => "My trips") %></h2>
-  </div>
-  <div class="vertical-spacer-xs"></div>
+<body class="users">
   <div class="container">
-    <div class="row">
-      <% @user.trips.each do |trip| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="tripbox">
-            <%= link_to "#{trip.title} (créé le #{trip.created_at.strftime('%d-%m-%Y')})", start_trip_path(trip) %>
-            <%= link_to [trip], { method: :delete, data: {confirm: t('.delete')} } do %>
-              <i class= "pull-right fa fa-trash-o"></i>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+    <div id="titleblock" class="text-center">
+      <h2><%= t('.mytrips', :default => "My trips") %></h2>
     </div>
     <div class="vertical-spacer-xs"></div>
-    <div class="row text-center">
-      <%= link_to t('.new_trip'), root_path, {class: "btn btn-info"} %>
+    <div class="container">
+      <div class="row">
+        <% @user.trips.each do |trip| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="tripbox">
+              <%= link_to "#{trip.title} (créé le #{trip.created_at.strftime('%d-%m-%Y')})", start_trip_path(trip) %>
+              <%= link_to [trip], { method: :delete, data: {confirm: t('.delete')} } do %>
+                <i class= "pull-right fa fa-trash-o"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="vertical-spacer-xs"></div>
+      <div class="row text-center">
+        <%= link_to t('.new_trip'), root_path, {class: "btn btn-info"} %>
+      </div>
     </div>
   </div>
-</div>
+</body>
