@@ -1,33 +1,33 @@
 <div class="wrapper">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-3 text-center">
-        <div class="vertical-spacer-xs"></div>
-        <%= link_to trip_path(@trip), class:"btn btn-info btn-block white-space-normal" do %>
-          <i class="fa fa-arrow-circle-left"></i><%= t('.gobacktotrip') %>
-        <% end %>
-      </div>
-      <!-- <div class="col-xs-1"></div> -->
-      <div class="col-xs-6">
-        <div id="titleblock" class="text-center">
-          <div class="title">
-            <h2><%= @trip.title %></h2>
-            <p><%= t('.creation') %><%= @trip.created_at.strftime('%d-%m-%Y') %></br>
-            <%= t('.lastupdate') %> <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %> </p>
-          </div>
+    <div class="vertical-spacer-sm"></div>
+      <div class="row text-center">
+        <div class="col-xs-6 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-3 text-center">
+          <%= link_to trip_path(@trip), class:"btn btn-info btn-block white-space-normal" do %>
+            <i class="fa fa-arrow-circle-left"></i><%= t('.gobacktotrip') %>
+          <% end %>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 text-center">
+          <%= form_for @trip, url: summarize_trip_path(@trip.id) do |f| %>
+            <%= hidden_field_tag :id, value = @trip.id %>
+              <label for="mySubmit" class="btn btn-primary btn-block white-space-normal"><%= t('.getbyemail') %><i class="fa fa-envelope"></i> </label>
+            <%= f.submit(id:'mySubmit', class:'hidden') %>
+          <% end %>
         </div>
       </div>
-      <!-- <div class="col-xs-1"></div> -->
-      <div class="col-xs-3 text-center">
-        <div class="vertical-spacer-xs"></div>
-        <%= form_for @trip, url: summarize_trip_path(@trip.id) do |f| %>
-          <%= hidden_field_tag :id, value = @trip.id %>
-            <label for="mySubmit" class="btn btn-primary btn-block white-space-normal"><%= t('.getbyemail') %><i class="fa fa-envelope"></i> </label>
-          <%= f.submit(id:'mySubmit', class:'hidden') %>
-        <% end %>
+    </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="titleblock" class="text-center">
+        <div class="title">
+          <h2><%= @trip.title %></h2>
+          <p><%= t('.creation') %><%= @trip.created_at.strftime('%d-%m-%Y') %></br>
+          <%= t('.lastupdate') %> <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %> </p>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="container">
     <div class="row">
       <% @trip_exp_ordered.each do |trip_exp| %>

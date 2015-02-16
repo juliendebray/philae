@@ -62,7 +62,7 @@ fr:
       myexp: "Montrer seulement ma sélection"
       newexp: "Cliquer sur la carte pour ajouter une nouvelle expérience"
     summarize:
-      gobacktotrip: " Retourner sur mon itinéraire"
+      gobacktotrip: " Retour au voyage"
       getbyemail: "Recevoir par email "
       creation: "Créé le : "
       lastupdate: "Dernière mise à jour : "

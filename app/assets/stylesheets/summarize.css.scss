@@ -8,3 +8,15 @@
   border: none;
   font-style: italic;
 }
+
+
+
+@media screen and (max-width: 580px) {
+  .btn {
+    font-size: 14px;
+    font-weight: 300;
+  }
+  // .btn {
+  //   font-size: 15px;
+  // }
+}
