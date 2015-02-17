@@ -1,0 +1,42 @@
+
+<body class="destinations">
+  <div class="container">
+    <div id="titleblock" class="text-center">
+      <div class="title">
+        <h2><%= t('.title', :default => "Destinations") %></h2>
+      </div>
+    </div>
+    <div id="destinations">
+      <div class="row text-center">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <h4> <%= t('.dest1') %></h4><br>
+          <div class="vertical-spacer-xs"></div>
+          <h4> <%= t('.destasia') %></h4><br>
+          <h4> <%= t('.destafrica') %></h4><br>
+          <h4> <%= t('.destamerica') %></h4><br>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <div class="tr-grey-bg">
+            <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
+              <div class="form-group minor-block" class="text-center">
+                <%= f.hidden_field(:latitude) %>
+                <%= f.hidden_field(:longitude) %>
+                <%= f.search_field(:query, placeholder: t('.searchplaceholder')) %>
+                <%= f.submit('Go', class: 'btn btn-info btn-sm') %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="vertical-spacer-sm"></div>
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <h4><%= link_to t('.nextdest'), new_contact_path %></h4><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<%= content_for(:before_js) do %>
+  <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
+<% end %>

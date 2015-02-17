@@ -13,6 +13,7 @@ fr:
   contribute: "Contribuer"
   my_trips: "Mes voyages"
   nav_listofproviders: "Acteurs locaux référencés"
+  nav_destinations: "Liste des destinations"
 
 
   #sign up / sign in
@@ -51,6 +52,7 @@ fr:
       concept: "Explorizers vous accompagne dans vos voyages autour du monde et vos aventures extraordinaires."
       contact: "Nous contacter"
       becomeexplo: "Devenez un Explorizer!"
+      seedestinations: "Voir la liste des destinations déjà renseignées"
 
   addreview: "Donnez votre avis!"
   addtotrip: "Ajouter à mon voyage"
@@ -104,6 +106,18 @@ fr:
       contact: "Nous contacter"
       new_trip: "Créer un nouveau voyage"
       contact: "Contacter Explorizers"
+
+  #destinations:
+  destinations:
+    index:
+      title: "Liste des destinations"
+      dest1: "Voici les destinations déjà couvertes par les recommandations Explorizers - les autres arrivent bientôt."
+      destasia: "Birmanie  |  Japon  |  Sri Lanka  |  Indonésie"
+      destafrica: "Maroc  |  Madagascar  |  La Réunion + Maurice + Rodrigues"
+      destamerica: "Cuba  |  Istanbul"
+      nextdest: "Quelle prochaine destination souhaitez-vous voir?"
+      searchplaceholder: "Où allez-vous ?"
+      searchbutton: "Démarrer"
 
   #newexperience
   experiences:
