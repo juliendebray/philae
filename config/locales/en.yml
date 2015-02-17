@@ -33,6 +33,7 @@ en:
   contribute: "Contribute"
   my_trips: "My trips"
   nav_listofproviders: "Local guides and agencies"
+  nav_destinations: "List of destinations"
 
   #sign up / sign in
   sign_up: "Have a look - it's free."
@@ -68,6 +69,7 @@ en:
       concept: "Explorizers helps you travel the World and live extraordinary adventures"
       contact: "Contact us"
       becomeexplo: "Become an Explorizer!"
+      seedestinations: "See the list of covered destinations"
 
 
   addreview: "Add a review"
@@ -122,6 +124,18 @@ en:
       contact: "Contact us"
       new_trip: "Create a new trip"
       contact: "Contact Explorizers"
+
+  #destinations:
+  destinations:
+    index:
+      title: "List of destinations"
+      dest1: "These are the destinations already covered with Explorizers' recommendations. More to come soon!"
+      destasia: "Myanmar  |  Japan  |  Sri Lanka  |  Indonesia"
+      destafrica: "Morocco  |  Madagascar  |  Reunion + Mauritius + Rodrigues"
+      destamerica: "Cuba  |  Istanbul"
+      nextdest: "What is the next destination you want to see?"
+      searchplaceholder: "Where are you going?"
+      searchbutton: "Start"
 
   #newexperience
   experiences:
