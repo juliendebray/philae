@@ -32,3 +32,12 @@ body.newexperience {
     border-radius: 0px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .newexperience {
+    h4 {
+      color: white;
+      font-weight: 500;
+    }
+  }
+}

@@ -127,8 +127,13 @@
     input#trip_query {
       width: 80%;
     }
-   .fb-like {
-    display: none;
-   }
+    .fb-like {
+      display: none;
+    }
+    p {
+      color: white;
+      font-style: oblique;
+      font-size: 300;
+  }
   }
 }

@@ -109,3 +109,15 @@ div.homepage_story {
 .vertical-spacer-xs {
   height: 2em;
 }
+
+@media screen and (max-width: 500px) {
+  .homepage_story {
+    .fb-like {
+      display: none;
+    }
+    h4 {
+      color: white;
+      font-weight: 500;
+    }
+  }
+}

@@ -61,12 +61,14 @@ body.askfriends {
 }
 
 @media screen and (max-width: 580px) {
-  .box-content {
-    width: 95%;
+  .askfriends {
+    .box-content {
+      width: 95%;
+    }
+    .btn {
+      font-size: 17px;
+    }
   }
-  // .btn {
-  //   font-size: 15px;
-  // }
 }
 
 
