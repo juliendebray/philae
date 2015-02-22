@@ -27,6 +27,9 @@ html, body {
       border: 1px solid #c4c4c4;
       border-radius: 0px;
       background-color: #fff;
+      input{
+        width: 410px;
+      }
     }
 
     .search-btn {
@@ -35,7 +38,7 @@ html, body {
 
     small, input {
       font-size: 12px;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     input {
@@ -106,7 +109,7 @@ html, body {
       }
 
     .selection-title {
-      font-weight: 100;
+      font-weight: 300;
       font-size: 1.5em;
       line-height: 1em;
       margin: 3%;
@@ -202,15 +205,22 @@ html, body {
   #experience-infowindow {
     margin: 10px;
     padding-top: 10px;
+    // .fa {
+    //   font-size: 16px;
+    // }
 
     .infobox-content {
       padding-top: 5px;
       padding-bottom: 5px;
-      font-size: 13px;
+      font-size: 14px;
       a {
-        color: #808080;
+        // color: #808080;
+        color: lightslategrey;
         font-family: 'Roboto';
         font-weight: 300;
+      }
+      .fa-search {
+        font-weight: 600;
       }
     }
   }
@@ -261,7 +271,7 @@ html, body {
     .pull-right input {
       background: transparent;
       border-color: transparent;
-      font-size: 12px;
+      font-size: 15px;
     }
     .pull-right input:focus {
       outline: none;
