@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <h1><%= @experience.name %></h1>
+  <p><%= @experience.description %></p>
+  <% if @experience.experience_pictures.any? %>
+    <div class="exp-picture-block table-responsive text-center">
+      <table class="table">
+        <tbody>
+          <tr>
+            <% @experience.experience_pictures(1..3).each do |pic| %>
+              <td>
+                <%= image_tag pic.picture.url(:small) %>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <% if @trip_comments.any? %>
+    <% @trip_comments.each do |tc| %>
+      <p>
+        <%= "#{tc.name} dit : #{tc.description}" %>
+      </p>
+    <% end %>
+  <% end %>
+</div>
