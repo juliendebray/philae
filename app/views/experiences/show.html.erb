@@ -1,3 +1,6 @@
+<%= content_for :title do %>
+ <%= @experience.name %>
+<% end %>
 <div class="wrapper">
   <h1><%= @experience.name %></h1>
   <p><%= @experience.description %></p>
@@ -26,4 +29,8 @@
       </p>
     <% end %>
   <% end %>
+  <div class="vertical-spacer-sm"></div>
+  <div class="text-center">
+   <%= link_to 'Commencer mon voyage!', root_path, class: "btn btn-primary" %>
+  </div>
 </div>
