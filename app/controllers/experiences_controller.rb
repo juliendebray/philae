@@ -1,5 +1,5 @@
 class ExperiencesController < ApplicationController
-  before_action :authenticate_user!, except: [:detail]
+  before_action :authenticate_user!, except: [:detail, :show]
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   respond_to :js, only: [:detail]
 
@@ -10,6 +10,9 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1
   # GET /experiences/1.json
   def show
+    lat = @experience.latitude
+    lng = @experience.longitude
+    @trip_comments = TripComment.near([lat, lng], 0.5)
   end
 
   # GET /experiences/new
