@@ -17,9 +17,12 @@
     </div>
   <% end %>
   <% if @trip_comments.any? %>
+  <h4>Les tips des Explorizers</h4>
     <% @trip_comments.each do |tc| %>
       <p>
-        <%= "#{tc.name} dit : #{tc.description}" %>
+        <i class="fa fa-quote-left"></i>
+        <%= "#{tc.description}" %>
+        <i class="fa fa-quote-right"></i>
       </p>
     <% end %>
   <% end %>
