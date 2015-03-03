@@ -109,5 +109,8 @@ gem 'rest-client', '~> 1.7.2'
 # Quiet-Assets
 gem 'quiet_assets', group: :development
 
+# Sitemap-generation
+gem 'sitemap_generator', '~> 5.0.5'
+
 
 
