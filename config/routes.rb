@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :sitemap, only: [:index]
+
+
   ActiveAdmin.routes(self)
 
 
