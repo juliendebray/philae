@@ -3,13 +3,40 @@
   font-size: 1.2em;
 }
 
-.email-sent {
-  background: green;
-  border: none;
-  font-style: italic;
+// .email-sent {
+//   background: green;
+//   border: none;
+//   font-style: italic;
+// }
+
+.exp-picture-block{
+  td {
+    border-bottom: 1px solid #dddddd;
+  }
 }
 
 
+.comment-module {
+  padding-top: 1%;
+  form {
+    margin: 0px auto;
+  }
+  input{
+    width: 100%;
+    font-size: 1em;
+    font-weight: 100;
+  }
+  input:focus {
+    outline: none;
+  }
+
+  textarea#trip_experience_comment {
+    width: 100%;
+    font-weight: 300;
+    height: 10em;
+
+  }
+}
 
 @media screen and (max-width: 580px) {
   .btn {

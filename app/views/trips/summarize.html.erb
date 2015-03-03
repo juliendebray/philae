@@ -32,7 +32,7 @@
     <div class="row">
       <% @trip_exp_ordered.each do |trip_exp| %>
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 border-left">
-          <%= render("/trips/experience_summary_block.html.erb", {trip_exp: trip_exp} ) %>
+          <%= render("/trips/experience_summary_block.html.erb", {trip_exp: trip_exp, comment: true} ) %>
         </div>
       <% end%>
     </div>
