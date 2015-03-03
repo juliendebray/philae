@@ -1,6 +1,8 @@
 class TripExperiencesController < ApplicationController
   before_action :set_trip, only: [:markers, :trip_markers, :create, :create_with_new_experience]
+  before_action :authenticate_user!, only: [:update]
   respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience, :create_with_comment]
+
 
   def markers
     markers_number = 10
@@ -34,6 +36,12 @@ class TripExperiencesController < ApplicationController
     @trip = @trip_experience.trip
     @trip_experience.destroy
   end
+
+  def update
+    @trip_experience = TripExperience.find(params[:id])
+    @trip_experience.update(comment: params[:trip_experience][:comment])
+  end
+
 
   def create_with_new_experience
     if current_user

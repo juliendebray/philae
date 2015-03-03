@@ -20,4 +20,14 @@
       </table>
     </div>
   <% end %>
+  <% if comment %>
+    <div class="comment-module">
+    <%= form_for [trip_exp.trip, trip_exp], remote: true do |f| %>
+      <%= f.text_area :comment, placeholder: 'Ecrire un commentaire...' %>
+      <%= f.submit 'Sauvegarder', class: 'btn btn-xs btn-primary', id: trip_exp.id %>
+    <% end %>
+    </div>
+  <% elsif trip_exp.comment %>
+     <%= simple_format trip_exp.comment %>
+  <% end %>
 </div>

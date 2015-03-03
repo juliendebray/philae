@@ -1,0 +1,5 @@
+var formId = '#edit_trip_experience_' + <%= @trip_experience.id %>
+$(formId + '> input').removeClass('btn-primary').addClass('btn-success disabled').prop('value', 'Ok');
+$(formId + '> textarea').one('click', function() {
+  $(this).parent().find('input').last().removeClass('btn-success disabled').addClass('btn-primary').prop('value', 'Sauvegarder');
+});

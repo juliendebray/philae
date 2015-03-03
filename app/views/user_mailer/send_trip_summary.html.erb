@@ -4,5 +4,5 @@
 
     <% @trip_exp_tab.each do |trip_exp| %>
       <br><br>
-        <%= render("/trips/experience_summary_block.html.erb", {trip_exp: trip_exp} ) %>
+        <%= render("/trips/experience_summary_block.html.erb", {trip_exp: trip_exp, comment: false} ) %>
     <% end%>

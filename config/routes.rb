@@ -47,7 +47,7 @@ Rails.application.routes.draw do
         patch 'summarize' => "trips#send_my_trip_email"
         patch 'notif' => "trips#notification_for_sharing_email"
       end
-      resources :trip_experiences, only: [:create, :destroy] do
+      resources :trip_experiences, only: [:create, :destroy, :update] do
         collection do
           get :markers
           get :trip_markers
