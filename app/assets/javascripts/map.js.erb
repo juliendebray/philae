@@ -8,6 +8,11 @@ var markersAddedManually = [];
 var commentsJsonStore = [];
 var commentsMarkers = [];
 
+// gestion du side menu
+// $(document).on('ready', function() {
+//   console.log('gestion side menu');
+//   listenToUserChoices();
+// });
 
 function scrollToElement(container, scrollTo) {
   container.animate({
@@ -309,8 +314,21 @@ function setMapWithUserExperiences(trip_id, map, callback) {
   setMarkersAccordingToApi(url, callback);
 }
 
-function displayMarkersAccordingToUserChoices(trip_id, map) {
-  if ($('#user-experiences').prop('checked')){
+function listenToUserChoices(trip_id, map) {
+  $('.map-side-menu-content').on('click', function(){
+    if ($(this).hasClass('menu-selected')) {
+      return;
+    } else {
+      $('.map-side-menu-content').removeClass('menu-selected');
+      $(this).addClass('menu-selected');
+      var id =  $(this).attr('id');
+      displayMarkersAccordingToUserChoices(trip_id, map, id);
+    }
+  });
+}
+
+function displayMarkersAccordingToUserChoices(trip_id, map, id) {
+  if (id == 'user-experiences') {
     // Set map with booked experiences;
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
@@ -318,7 +336,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map) {
         alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Top 10 by Explorizers"! - No experiences yet! Add yours or choose from "Top 10 by Explorizers"!');
       }
     });
-  } else if ($('#guests-comments').prop('checked')) {
+  } else if (id == 'guests-comments') {
     // Set map with trip_comments;
     setMapWithGuestComments(trip_id, map, function(r) {
       requestingMarkers = r;
@@ -326,10 +344,35 @@ function displayMarkersAccordingToUserChoices(trip_id, map) {
         alert('Pas encore de conseil! Demandez-les : cliquez sur "Obtenir les conseils de mes amis"! - No tips yet! Ask your friends : click on "Get my friends tips" below!');
       }
     });
-  } else if ($('#all-experiences').prop('checked')) {
+  } else if (id == 'all-experiences') {
     setMarkersAndKeepListening(map, trip_id);
   }
+  else {
+    alert('Une erreur est survenu... merci de bien vouloir réessayer ;)');
+  }
 }
+
+// function displayMarkersAccordingToUserChoices(trip_id, map) {
+//   if ($('#user-experiences').prop('checked')){
+//     // Set map with booked experiences;
+//     setMapWithUserExperiences(trip_id, map, function(r) {
+//       requestingMarkers = r;
+//       if (markers.length == 0) {
+//         alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Top 10 by Explorizers"! - No experiences yet! Add yours or choose from "Top 10 by Explorizers"!');
+//       }
+//     });
+//   } else if ($('#guests-comments').prop('checked')) {
+//     // Set map with trip_comments;
+//     setMapWithGuestComments(trip_id, map, function(r) {
+//       requestingMarkers = r;
+//       if (markers.length == 0) {
+//         alert('Pas encore de conseil! Demandez-les : cliquez sur "Obtenir les conseils de mes amis"! - No tips yet! Ask your friends : click on "Get my friends tips" below!');
+//       }
+//     });
+//   } else if ($('#all-experiences').prop('checked')) {
+//     setMarkersAndKeepListening(map, trip_id);
+//   }
+// }
 
 function buildMapForUser(mapOptions, trip_id) {
   handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
@@ -338,14 +381,16 @@ function buildMapForUser(mapOptions, trip_id) {
     // SET MARKERS ON MAP LOADING AND KEEP LISTENING
     // setMarkersAndKeepListening(map, trip_id);
 
-    displayMarkersAccordingToUserChoices(trip_id, map);
+    // displayMarkersAccordingToUserChoices(trip_id, map);
+    listenToUserChoices(trip_id, map);
     // SET MARKERS DEPENDING ON USER CHOICE
     $('#user-choices').on("change", function() {
       if (ibOpened) {
       ib.close();
       ibOpened = false;
       }
-      displayMarkersAccordingToUserChoices(trip_id, map);
+      // displayMarkersAccordingToUserChoices(trip_id, map);
+      listenToUserChoices(trip_id, map);
     });
 
     initializeMapSearchBar('pac-input');
@@ -408,7 +453,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {
     google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || ibOpened || ($('#all-experiences').prop('checked')== false)) {
+     if (requestingMarkers || ibOpened || ($('tr#all-experiences').hasClass('menu-selected')== false)) {
      return;
      }
      setMarkersAccordingToBounds(map, trip_id, function(r) {
@@ -419,7 +464,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers when zoom changes
   google.maps.event.addListener(map, 'zoom_changed', function() {
    google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || ibOpened || ($('#all-experiences').prop('checked')== false)) {
+     if (requestingMarkers || ibOpened || ($('tr#all-experiences').hasClass('menu-selected')== false)) {
        return;
      }
      setMarkersAccordingToBounds(map, trip_id, function(r) {

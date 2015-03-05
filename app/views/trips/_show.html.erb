@@ -97,6 +97,72 @@
       </ul>
     </div>
   </div>
+
+  <!-- <div class="map-side-menu-container">
+    <div class="map-side-menu-content btn-group-vertical btn-group" role="group" data-toggle="buttons">
+      <label class="btn btn-default btn-block">
+        <input type="radio" name="options" id="option2" autocomplete="off"> 2
+      </label>
+      <label class="btn btn-default btn-block">
+        <input type="radio" name="options" id="option2" autocomplete="off"> 2
+      </label>
+      <label class="btn btn-default btn-block">
+        <input type="radio" name="options" id="option2" autocomplete="off"> 2
+      </label>
+    </div>
+  </div> -->
+
+  <div class="map-side-menu-container">
+    <table class="responsive">
+      <tr id="all-experiences" class="map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
+        <td class="map-menu-item text-center">
+          <i class="fa fa-star"></i>
+        </td>
+        <td class="item-show pull-left" >
+          Top 10 by Explorizers
+        </td>
+      </tr>
+      <tr id="user-experiences" class="map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
+        <td class="map-menu-item text-center">
+          <i class="fa fa-map-marker"></i>
+        </td>
+        <td class="item-show pull-left" >
+          Ma sélection d'expériences
+        </td>
+      </tr>
+      <tr id="guests-comments" class="map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
+        <td class="map-menu-item text-center">
+          <i class="fa fa-comments"></i>
+        </td>
+        <td class="item-show pull-left">
+          Les conseils de mes amis
+        </td>
+      </tr>
+    </table>
+   <!--  <div class="menu-list">
+      <ul class="map-side-menu-content list-unstyled text-center">
+        <li class="map-menu-item" >
+          <div class="icon" style="display:inline-block; height: 100%; width: 100%;" >
+            <i class="fa fa-star"></i> -->
+
+          <!-- </div>
+          <div class="item-text" style="display:none; font-size:13px; height: 0px; width: 0px;">Experiences</div> -->
+
+          <!-- <ul class="list-unstyled">
+            <li>test</li>
+          </ul> -->
+          <!-- <span class='item-show'> le top 10 par Explorizers</span> -->
+        <!-- </li>
+        <li class="map-menu-item">
+          <i class="fa fa-map-marker"></i>
+        </li>
+        <li class="map-menu-item">
+          <i class="fa fa-comments"></i>
+        </li>
+      </ul>
+    </div> -->
+
+  </div>
 </div>
 
 <!-- Experience Modal to display -->
