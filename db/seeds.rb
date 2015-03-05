@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1vQlnLm6vxDz6XzoEAwO-38YOvGjg63t1jjTeZ6lp7Wc/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1EJXV4ZjXQaSISYOdl7y2sfv9SRbF_jmVJgNvY9DByao/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
   exp = Experience.create(
@@ -19,7 +19,7 @@ data_hash['feed']['entry'].each do |exp_data|
     description: exp_data['gsx$descriptionfrench']['$t'],
     published: true
   )
-  gen_url = "http://philae-floju.s3.amazonaws.com/photos_usa/"
+  gen_url = "http://philae-floju.s3.amazonaws.com/photos_colombie/"
   code = exp_data['gsx$code']['$t']
   (1..4).each do |i|
     complete_url = gen_url + code + "_#{i}.jpg"
