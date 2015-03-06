@@ -92,9 +92,10 @@ class TripExperiencesController < ApplicationController
       marker.lng experience.longitude
       marker.json({
         infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
-        experience: experience,
-        trip: trip
-        })
+          experience: experience,
+          trip: trip
+        }),
+        experience_id: experience.id
       })
       marker.title experience.name
     end

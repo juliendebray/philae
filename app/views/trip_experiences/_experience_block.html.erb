@@ -1,5 +1,5 @@
 <li class="panel panel-info" id="<%= trip_exp.id %>">
-  <div class='exp-dotdotdot <%= "exp-#{trip_exp.id}" %>'>
+  <div class='exp-dotdotdot <%= "exp-#{trip_exp.id}" %>' data-experience_id='<%= trip_exp.experience.id %>' data-lat='<%= trip_exp.experience.latitude %>' data-lng='<%= trip_exp.experience.longitude %>'>
     <div class="panel-heading"><%= trip_exp.experience.name %>
       <% unless guest_user %>
         <%= link_to [trip_exp.trip, trip_exp], remote: true, method: :delete do %>

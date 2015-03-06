@@ -37,6 +37,11 @@ function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, ri
   var map = handler.getMap();
   var mapZoom = map.getZoom();
   var mapBounds = map.getBounds();
+
+
+  // console.log('bounds dans contain ib:');
+  // console.log(map.getBounds());
+
   var infoBoxCoordinates = latlngToPoint(map, infobox.getPosition(), mapZoom);
   var mapNECoordinates = latlngToPoint(map, mapBounds.getNorthEast(), mapZoom);
   var mapSWCoordinates = latlngToPoint(map, mapBounds.getSouthWest(), mapZoom);
@@ -45,6 +50,8 @@ function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, ri
   var bottomDistance = infoBoxCoordinates.y - mapSWCoordinates.y - bottomOffset;
   var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x - leftOffset*$('#map').width();
   var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x - rightOffset*$('#map').width();
+
+  // console.log('map-pan')
 
   if (topDistance  < 0) {
     if (leftDistance < 0) {
@@ -120,6 +127,7 @@ function openInfowindowOnClick(data, marker, carrouselRequired) {
     if (carrouselRequired) {
       setCarrousel();
     }
+    // console.log('dom');
     mapPanToContainInfoBox(ib, 94, -17.994751360066402, -0.995, 0.9909910672);
     initalizeLinkWithRemoteTrue();
   });
@@ -156,6 +164,20 @@ function setExperienceInfowindow(data) {
 
 function setListenerOnMarker(markers, data, index, carrouselRequired) {
   markers[index].serviceObject.set('id',index);
+
+  markers[index].serviceObject.set('experience_id',data[index].experience_id);
+  $('.exp-dotdotdot').on("mouseenter", function() {
+    for(var i=0; i<markers.length;i++){
+      if (markers[i].serviceObject.experience_id == $(this).data('experience_id')){
+        markers[i].serviceObject.setAnimation(google.maps.Animation.BOUNCE)
+      }
+    }
+  }).on("mouseleave", function() {
+    for(var i=0; i<markers.length;i++){
+      markers[i].serviceObject.setAnimation(null);
+    }
+  });
+
   google.maps.event.clearListeners(markers[index].serviceObject);
   google.maps.event.addListener(markers[index].serviceObject, 'click', function(event) {
     openInfowindowOnClick(data, this, carrouselRequired);
@@ -212,8 +234,24 @@ function addBoxShadowEffectWhileDraggingBox() {
     $(document).on('mouseup', function(){
       $('.panel').css('box-shadow', '1px 1px 1px 1px rgba(0, 0, 0, 0.1)');
       $(this).unbind('mouseup');
+      drawPolyline();
     });
   });
+}
+
+function drawPolyline() {
+  var flightPlanCoordinates = [];
+  $('.exp-dotdotdot').each(function() {
+  flightPlanCoordinates.push(new google.maps.LatLng($(this).data('lat'), $(this).data('lng')));
+  });
+  var flightPath = new google.maps.Polyline({
+     path: flightPlanCoordinates,
+     geodesic: true,
+     strokeColor: '#FF0000',
+     strokeOpacity: 1.0,
+     strokeWeight: 2
+   });
+  flightPath.setMap(handler.getMap());
 }
 
 function setExperiencesOrderByClickingOnSave() {
