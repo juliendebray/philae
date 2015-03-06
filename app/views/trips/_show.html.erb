@@ -11,22 +11,6 @@
         <i class="fa fa-search"></i>
         <%= search_field_tag('pac-input') %>
       </fieldset>
-      <% unless @guest_user %>
-      <div id="user-choices">
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2" <%= "checked" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>>
-          <small><i class="fa fa-map-marker"></i> <%= t('show_myselection') %></small>
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3" <%= "checked" if @trip.trip_comments.any? %>>
-          <small><i class="fa fa-comments"></i> <%= t('show_friendstips') %></small>
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1"  <%= "checked" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %> >
-          <small><i class="fa fa-star"></i> <%= t('show_bestexp') %></small>
-        </label>
-      </div>
-      <% end %>
     </div>
     <% unless @guest_user %>
     <!-- User Modal to let him add his own experience -->
@@ -119,7 +103,7 @@
           <i class="fa fa-star"></i>
         </td>
         <td class="item-show pull-left" >
-          Top 10 by Explorizers
+          <%= t('show_bestexp') %>
         </td>
       </tr>
       <tr id="user-experiences" class="map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
@@ -127,7 +111,7 @@
           <i class="fa fa-map-marker"></i>
         </td>
         <td class="item-show pull-left" >
-          Ma sélection d'expériences
+          <%= t('show_myselection') %>
         </td>
       </tr>
       <tr id="guests-comments" class="map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
@@ -135,7 +119,7 @@
           <i class="fa fa-comments"></i>
         </td>
         <td class="item-show pull-left">
-          Les conseils de mes amis
+          <%= t('show_friendstips') %>
         </td>
       </tr>
     </table>

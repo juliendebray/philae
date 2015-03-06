@@ -319,6 +319,10 @@ function listenToUserChoices(trip_id, map) {
     if ($(this).hasClass('menu-selected')) {
       return;
     } else {
+      if (ibOpened) {
+        ib.close();
+        ibOpened = false;
+      }
       $('.map-side-menu-content').removeClass('menu-selected');
       $(this).addClass('menu-selected');
       var id =  $(this).attr('id');
@@ -378,20 +382,24 @@ function buildMapForUser(mapOptions, trip_id) {
   handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
+    // SET MARKERS ON MAP LOADING
+    var id = $('.menu-selected').attr('id')
+    displayMarkersAccordingToUserChoices(trip_id, map, id);
+    // KEEP LISTENING AND DISPLAY MARKERS ACCORDING TO USERS CHOICES
+    listenToUserChoices(trip_id, map);
+
+    // OLD VERSION ->
     // SET MARKERS ON MAP LOADING AND KEEP LISTENING
     // setMarkersAndKeepListening(map, trip_id);
-
     // displayMarkersAccordingToUserChoices(trip_id, map);
-    listenToUserChoices(trip_id, map);
     // SET MARKERS DEPENDING ON USER CHOICE
-    $('#user-choices').on("change", function() {
-      if (ibOpened) {
-      ib.close();
-      ibOpened = false;
-      }
-      // displayMarkersAccordingToUserChoices(trip_id, map);
-      listenToUserChoices(trip_id, map);
-    });
+    // $('#user-choices').on("change", function() {
+    //   if (ibOpened) {
+    //   ib.close();
+    //   ibOpened = false;
+    //   }
+    //   displayMarkersAccordingToUserChoices(trip_id, map);
+    // });
 
     initializeMapSearchBar('pac-input');
     showModalByClikingOnMap(map, '#myModal', '#experience_address', '#experience_latitude', '#experience_longitude');
