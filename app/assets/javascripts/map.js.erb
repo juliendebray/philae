@@ -7,6 +7,7 @@ var requestingMarkers = false;
 var markersAddedManually = [];
 var commentsJsonStore = [];
 var commentsMarkers = [];
+var flightPath;
 
 // gestion du side menu
 // $(document).on('ready', function() {
@@ -51,7 +52,8 @@ function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, ri
   var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x - leftOffset*$('#map').width();
   var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x - rightOffset*$('#map').width();
 
-  // console.log('map-pan')
+
+  // debugger;
 
   if (topDistance  < 0) {
     if (leftDistance < 0) {
@@ -228,30 +230,53 @@ function makeExperiencesSortable() {
 }
 
 function addBoxShadowEffectWhileDraggingBox() {
+
+  // console.log('add shadow effect');
+  // drawPolyline();
   // Change the border-shadow while dragging
   $('.panel-heading').on('mousedown', function(){
     $(this).parent().parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.5)');
     $(document).on('mouseup', function(){
       $('.panel').css('box-shadow', '1px 1px 1px 1px rgba(0, 0, 0, 0.1)');
       $(this).unbind('mouseup');
-      drawPolyline();
+      // drawPolyline();
     });
   });
 }
 
+function removePolyline() {
+  if (typeof(flightPath) != "undefined") {
+    flightPath.setMap(null);
+  }
+}
+
 function drawPolyline() {
-  var flightPlanCoordinates = [];
-  $('.exp-dotdotdot').each(function() {
-  flightPlanCoordinates.push(new google.maps.LatLng($(this).data('lat'), $(this).data('lng')));
-  });
-  var flightPath = new google.maps.Polyline({
-     path: flightPlanCoordinates,
-     geodesic: true,
-     strokeColor: '#FF0000',
-     strokeOpacity: 1.0,
-     strokeWeight: 2
-   });
-  flightPath.setMap(handler.getMap());
+
+  // console.log('fonction draw')
+
+  removePolyline();
+
+  if ($('#user-experiences').hasClass('menu-selected')){
+
+    // console.log('user exp with menu-selected');
+
+    var flightPlanCoordinates = [];
+    $('.exp-dotdotdot').each(function() {
+
+      flightPlanCoordinates.push(new google.maps.LatLng($(this).data('lat'), $(this).data('lng')));
+
+      // console.log(flightPlanCoordinates);
+
+    });
+    flightPath = new google.maps.Polyline({
+       path: flightPlanCoordinates,
+       geodesic: true,
+       strokeColor: '#FF0000',
+       strokeOpacity: 1.0,
+       strokeWeight: 2
+     });
+    flightPath.setMap(handler.getMap());
+  }
 }
 
 function setExperiencesOrderByClickingOnSave() {
@@ -289,6 +314,7 @@ function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
         url: "/trips/"+trip_id+"/update_order",
         data: storeOrder(),
       });
+      drawPolyline();
     });
   });
 }
@@ -383,6 +409,7 @@ function listenToUserChoices(trip_id, map) {
 }
 
 function displayMarkersAccordingToUserChoices(trip_id, map, id) {
+  drawPolyline();
   if (id == 'user-experiences') {
     // Set map with booked experiences;
     setMapWithUserExperiences(trip_id, map, function(r) {
