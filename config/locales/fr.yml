@@ -175,8 +175,9 @@ fr:
 
   show_guest_user_title: "Votre ami vous demande conseil pour son voyage!"
   show_guest_user_line1: "Ajoutez vos conseils en cliquant sur la carte, ou avec le bouton 'Ajouter un conseil'"
-  show_guest_user_line2: ""
+  show_guest_user_line2: "(Switch to English in the navigation bar if needed!)"
   show_guest_user_line3: ""
+  show_guest_user_letsgo: "C'est parti"
   show_guest_user_modaltitle: "Encore un conseil"
   show_guest_user_thanks: "Merci!"
   show_guest_user_thanksline1: "A votre tour! Vous partez où?"
