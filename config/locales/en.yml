@@ -86,6 +86,9 @@ en:
       getbyemail: "Get by email "
       creation: "Created on: "
       lastupdate: "Last update: "
+  summarize_comment: "Add a comment"
+  summarize_savecomment: "Save"
+
 
 
   #trip_comments:
@@ -172,14 +175,14 @@ en:
   form_guest_description: "What is it?"
   form_guest_share: "Share it!"
 
-  show_bestexp: "Top 10 by Explorizers"
+  show_bestexp: "Top 20 by Explorizers"
   show_myselection: "My selection"
   show_friendstips: "My friends' tips"
   show_addmyexp: "Add an experience"
   show_addcomment: "Add a tip"
   show_selectedexp: "Selection"
   show_save: "Save my selection"
-  show_saveguest: "Save my tips"
+  show_saveguest: "I am done!"
   show_asktips: "Friends' tips"
   show_seeproviders: "See local guides & agencies"
   show_summary: "Trip summary"
@@ -188,15 +191,15 @@ en:
 
   trip_show_title: "Add an experience"
 
-  show_guest_user_title: "Do you have tips to share?"
-  show_guest_user_line1: "Your friend is traveling and needs to be inspired!"
-  show_guest_user_line2: "1. Add your tips on your friend's travel map"
-  show_guest_user_line3: "2. Save them... and smile: you're awesome!"
+  show_guest_user_title: "Your friend is asking for your tips!"
+  show_guest_user_line1: "Add your tips with a click on the map, or use the 'Add a tip' button"
+  show_guest_user_line2: ""
+  show_guest_user_line3: ""
   show_guest_user_modaltitle: "Another tip"
   show_guest_user_thanks: "Thanks for sharing your tips !"
-  show_guest_user_thanksline1: "An email has just been sent to your friend to let him/her know."
-  show_guest_user_thanksline2: "How about you? Where are you going?"
-  show_guest_user_thanksbtn: "Discover EXPLORIZERS"
+  show_guest_user_thanksline1: "Your turn! Where are you going? n email has just been sent to your friend to let him/her know."
+  show_guest_user_thanksline2: ""
+  show_guest_user_thanksbtn: "Get inspired with EXPLORIZERS"
 
   noexperienceyet: "You have not selected any experience yet. You can add your own and have a look at 'Best experiences'."
   notipsyet: "No tips yet? Ask them! Click below on 'Get my friends' tips'."

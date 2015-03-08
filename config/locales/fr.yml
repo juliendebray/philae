@@ -69,6 +69,9 @@ fr:
       creation: "Créé le : "
       lastupdate: "Dernière mise à jour : "
 
+  summarize_comment: "Ecrire un commentaire"
+  summarize_savecomment: "Sauvegarder"
+
   #trip_comments:
   trip_comment_add: "Ajouter au voyage"
   trip_comment_delete: "Supprimer ce commentaire"
@@ -154,14 +157,14 @@ fr:
   form_guest_description: "De quoi s'agit-il?"
   form_guest_share: "Partager !"
 
-  show_bestexp: "Top 10 by Explorizers"
+  show_bestexp: "Top 20 by Explorizers"
   show_myselection: "Ma sélection"
   show_friendstips: "Conseils de mes amis"
   show_addmyexp: "Ajouter une expérience au voyage"
   show_addcomment: "Ajouter un conseil"
   show_selectedexp: "Sélection"
   show_save: "Enregistrer ma sélection"
-  show_saveguest: "Enregistrer mes conseils"
+  show_saveguest: "J'ai fini!"
   show_asktips: "Conseils des amis"
   show_seeproviders: "Voir les agences et guides locaux"
   show_summary: "Synthèse du voyage"
@@ -170,15 +173,15 @@ fr:
 
   trip_show_title: "Ajouter une expérience"
 
-  show_guest_user_title: "Un itinéraire ou des bons plans à conseiller?"
-  show_guest_user_line1: "Votre ami(e) part en voyage et cherche de l'inspiration!"
-  show_guest_user_line2: "1. Ajoutez vos conseils en cliquant sur la carte de voyage de votre ami(e)"
-  show_guest_user_line3: "2. Cliquer sur 'Enregistrer mes conseils', et souriez: vous êtes super sympa!"
+  show_guest_user_title: "Votre ami vous demande conseil pour son voyage!"
+  show_guest_user_line1: "Ajoutez vos conseils en cliquant sur la carte, ou avec le bouton 'Ajouter un conseil'"
+  show_guest_user_line2: ""
+  show_guest_user_line3: ""
   show_guest_user_modaltitle: "Encore un conseil"
-  show_guest_user_thanks: "Merci pour vos conseils!"
-  show_guest_user_thanksline1: "Un mail vient de partir, votre ami(e) est prévenu(e) de votre participation."
-  show_guest_user_thanksline2: "Et vous? Vous partez où?"
-  show_guest_user_thanksbtn: "Découvrir EXPLORIZERS"
+  show_guest_user_thanks: "Merci!"
+  show_guest_user_thanksline1: "A votre tour! Vous partez où?"
+  show_guest_user_thanksline2: ""
+  show_guest_user_thanksbtn: "Découvrez EXPLORIZERS"
 
   noexperienceyet: "Pas encore d'expériences sélectionnées! Ajoutez les votres, ou cochez 'Meilleures expériences' pour vous inspirer."
   notipsyet: "Pas encore de conseils de vos amis? Demandez-les en cliquant ci-dessous sur Obtenir les conseils de mes amis'."
