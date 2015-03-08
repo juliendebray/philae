@@ -57,7 +57,7 @@ html, body {
   }
 
   .map-bottom-btn {
-  bottom: 2px;
+  bottom: 5px;
   position: absolute;
   left: 5px;
   box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.3);
@@ -67,7 +67,21 @@ html, body {
       font-weight: 300;
     }
   }
+
+  .map-bottom-btn-tips {
+    bottom: 5px;
+    position: absolute;
+    right: 5px;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.3);
+    background-color: lightgrey;
+
+      small {
+        font-size: 15px;
+        font-weight: 300;
+      }
+  }
 }
+
 
 .sidebar {
   position: fixed;
@@ -296,6 +310,12 @@ html, body {
 // Experience display design
 .item-banner img {
   max-width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .owl-theme .owl-controls .owl-buttons {
+    display: none
+  }
 }
 
 // Responsive: change design for screen smaller than ipad in portrait
