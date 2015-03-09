@@ -18,4 +18,5 @@ $( document ).ready(function() {
     addBoxShadowEffectWhileDraggingBox();
     scrollToElement($('.selection-content'), $('.panel-info').last());
     setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
+    setPolylineDrawingWhenDraggingExperience();
 });

@@ -314,9 +314,20 @@ function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
         url: "/trips/"+trip_id+"/update_order",
         data: storeOrder(),
       });
-      drawPolyline();
     });
   });
+}
+
+function setPolylineDrawingWhenDraggingExperience() {
+  if ($('#user-experiences').hasClass('menu-selected')){
+    $('.panel-heading').on('mouseup', function() {
+      $(this).on('mouseleave',function() {
+        $(this).unbind('mouseleave');
+        console.log('leave');
+        drawPolyline();
+      });
+    });
+  }
 }
 
 function placeMarker(location) {
@@ -409,11 +420,13 @@ function listenToUserChoices(trip_id, map) {
 }
 
 function displayMarkersAccordingToUserChoices(trip_id, map, id) {
-  drawPolyline();
+  removePolyline();
   if (id == 'user-experiences') {
     // Set map with booked experiences;
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
+      drawPolyline();
+      setPolylineDrawingWhenDraggingExperience();
       if (markers.length == 0) {
         alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Top 10 by Explorizers"! - No experiences yet! Add yours or choose from "Top 10 by Explorizers"!');
       }
