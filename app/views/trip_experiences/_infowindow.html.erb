@@ -19,8 +19,11 @@
         <span class="pull-right">
           <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
             <%= f.hidden_field :experience_id, value: experience.id %>
-            <%= f.submit t('addtotrip'), class: "fa" %>
+            <%= f.button :submit, class: "btn btn-link" do %>
+              <i class='fa fa-plus'></i>
+            <% end %>
           <% end %>
+
         </span>
       <% end %>
     </div>

@@ -6,24 +6,30 @@ class TripExperiencesController < ApplicationController
 
   def markers
     markers_number = 18
+    tab_id = @trip.trip_experiences.map { |te| te.experience_id}
     experiences_within_bounds = Experience.where(published: true).within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
-    @experiences = select_experiences_to_show(experiences_within_bounds)
+    tab = experiences_within_bounds.reject { |e| tab_id.include?(e.id) }
+    @experiences = select_experiences_to_show(tab)
     @markers = build_markers(@experiences[0..markers_number - 1], @trip)
     render json: @markers
   end
 
   def trip_markers
     @experiences = []
-    if current_user == @trip.user
-      @trip.trip_experiences.each do |trip_exp|
-        @experiences << trip_exp.experience
-      end
+    if @trip.user.nil? || current_user == @trip.user
+
+      @markers = build_markers_with_trip_experiences(@trip.trip_experiences.sort_by { |te| te.order }, @trip, false)
+      # @trip.trip_experiences.each do |trip_exp|
+      #   @experiences << trip_exp.experience
+      # end
     else
+      trip_experiences = []
       @trip.trip_experiences.each do |trip_exp|
-        @experiences << trip_exp.experience unless trip_exp.experience.from_guest_comment
+        trip_experiences << trip_exp.experience unless trip_exp.experience.from_guest_comment
       end
+      @markers = build_markers_with_trip_experiences(trip_experiences.sort_by { |te| te.order }, @trip, true)
     end
-    @markers = build_markers(@experiences, @trip)
+    # @markers = build_markers(@experiences, @trip)
     render json: @markers
   end
 
@@ -95,7 +101,13 @@ class TripExperiencesController < ApplicationController
           experience: experience,
           trip: trip
         }),
-        experience_id: experience.id
+        experience_id: experience.id,
+        experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+          trip_exp: false,
+          guest_user: false,
+          experience: experience,
+          trip: trip
+        })
       })
       marker.title experience.name
     end
@@ -119,4 +131,24 @@ class TripExperiencesController < ApplicationController
     experiences_to_show
   end
 
+  def build_markers_with_trip_experiences(trip_experiences, trip, guest_user)
+    Gmaps4rails.build_markers(trip_experiences) do |trip_experience, marker|
+      marker.lat trip_experience.experience.latitude
+      marker.lng trip_experience.experience.longitude
+      marker.json({
+        infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+          experience: trip_experience.experience,
+          trip: trip
+        }),
+        experience_id: trip_experience.experience.id,
+        experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+          trip_exp: trip_experience,
+          guest_user: guest_user,
+          experience: guest_user,
+          trip: trip
+        })
+      })
+      marker.title trip_experience.experience.name
+    end
+  end
 end

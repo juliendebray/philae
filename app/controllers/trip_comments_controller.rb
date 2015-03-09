@@ -34,6 +34,12 @@ class TripCommentsController < ApplicationController
         infobox:  render_to_string(partial: "/trip_comments/infowindow.html.erb", locals: {
           trip_comment: trip_comment,
           guest_user: guest_user
+        }),
+        experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+          trip_exp: false,
+          guest_user: guest_user,
+          experience: false,
+          trip_comment: trip_comment
         })
       })
       marker.title trip_comment.name

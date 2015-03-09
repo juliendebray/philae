@@ -123,7 +123,7 @@ html, body {
     overflow: auto;
     visibility: hidden;
 
-    ul#draggablePanelList {
+    ul.experience-block-container {
       margin-right: 3%;
     }
 
@@ -139,6 +139,7 @@ html, body {
       }
 
       .panel-heading {
+        padding-right: 2px;
         margin-top: 5px;
         border-radius: 0px;
         background: white;
@@ -147,11 +148,20 @@ html, body {
         font-weight: 300;
         color: #808080;
 
+        button.btn {
+          margin: 0px;
+          padding: 0px;
+        }
+
+        button.btn:focus {
+          outline: none;
+        }
+
         i {
           color: #808080;
         }
         i:hover {
-          color: black;
+          color: #2196F3;
         }
       }
       .panel-body {
@@ -223,12 +233,12 @@ html, body {
 
 
 
-#draggablePanelList {
+.experience-block-container {
   .panel {
     margin-bottom: 11px;
   }
   .panel-heading {
-    cursor: move;
+    // cursor: move;
     padding: 7px;
   }
 }
@@ -313,6 +323,21 @@ html, body {
     font-size: 15px;
     background-color: #808080;
     color: white;
+
+      form button {
+        padding: 0px;
+        margin: 0px;
+        font-size: 20px;
+        border: none;
+        color: white;
+        position: relative;
+        top: -2px;
+      }
+
+      form button i:hover {
+        color: #2196F3;
+      }
+
     .best {
       font-size: 10px;
     }
@@ -403,7 +428,7 @@ html, body {
       overflow: visible;
       margin: 0px;
 
-      ul#draggablePanelList {
+      ul.experience-block-container {
         margin-right: 0px;
       }
     }
