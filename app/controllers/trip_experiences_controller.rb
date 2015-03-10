@@ -25,7 +25,7 @@ class TripExperiencesController < ApplicationController
     else
       trip_experiences = []
       @trip.trip_experiences.each do |trip_exp|
-        trip_experiences << trip_exp.experience unless trip_exp.experience.from_guest_comment
+        trip_experiences << trip_exp unless trip_exp.experience.from_guest_comment
       end
       @markers = build_markers_with_trip_experiences(trip_experiences.sort_by { |te| te.order }, @trip, true)
     end

@@ -4,6 +4,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email]
 
   def create
+    # TODO: change Morocco default behavior
     if params[:trip].nil?
       @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
       @trip.title = 'Morocco'

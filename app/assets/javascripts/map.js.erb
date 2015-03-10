@@ -439,6 +439,7 @@ function setMarkersAccordingToApi(url, callback) {
     markers = handler.addMarkers(data);
     setExperienceInfowindow(data);
     handler.bounds.extendWith(markers);
+    // draw polyline
     callback(false);
   });
 }
