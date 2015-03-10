@@ -240,12 +240,15 @@ function makeExperiencesSortable() {
 
     // Dragable list for trip experiences order
     $('#draggablePanelList .panel-heading').css('cursor', 'move')
-    if ($('#draggablePanelList').hasClass('ui-sortable-disable')) {
+    if ($('#draggablePanelList').hasClass('ui-sortable-disabled')) {
+
+      // console.log('dans la has class ui-sortable-disble');
+
       $('#draggablePanelList').sortable('enable');
     }
     var panelList = $('#draggablePanelList');
 
-    console.log('avant sortable');
+    // console.log('avant sortable');
 
     panelList.sortable({
     // Only make the .panel-heading child elements support dragging.
@@ -295,7 +298,7 @@ function removePolyline() {
 
 function drawPolyline() {
 
-  // console.log('fonction draw')
+  // console.log('fonction draw');
 
   removePolyline();
 
@@ -349,16 +352,24 @@ function storeOrder() {
 }
 
 function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
-  $('.panel-heading').on('mouseup', function() {
-    $('.selection-content').on('mouseleave',function() {
-      $(this).unbind('mouseleave');
-      $.ajax({
-        type: "POST",
-        url: "/trips/"+trip_id+"/update_order",
-        data: storeOrder(),
+  if ($('#user-experiences').hasClass('menu-selected')) {
+    $('.panel-heading').on('mouseup', function() {
+      $('.selection-content').on('mouseleave',function() {
+        $(this).unbind('mouseleave');
+        if (requestingMarkers == false) {
+          requestingMarkers = true;
+          $.ajax({
+            type: "POST",
+            url: "/trips/"+trip_id+"/update_order",
+            data: storeOrder(),
+          }).done(function() {
+            // console.log('done');
+            requestingMarkers = false;
+          });
+        }
       });
     });
-  });
+  }
 }
 
 function setPolylineDrawingWhenDraggingExperience() {
@@ -366,6 +377,9 @@ function setPolylineDrawingWhenDraggingExperience() {
     $('.panel-heading').on('mouseup', function() {
       $(this).on('mouseleave',function() {
         $(this).unbind('mouseleave');
+
+        // console.log ('draw polyline when drag');
+
         drawPolyline();
       });
     });
