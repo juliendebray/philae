@@ -7,7 +7,7 @@ $( document ).ready(function() {
     // TODO: remove marker definitevely
     commentsMarkers[id].serviceObject.setPosition(new google.maps.LatLng(-90, 0));
   }
-  if ($('#guests-comments').prop('checked')) {
+  if ($('#guests-comments').hasClass('menu-selected')) {
     var map = handler.getMap();
     setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
       requestingMarkers = r;
