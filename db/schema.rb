@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310141645) do
+ActiveRecord::Schema.define(version: 20150310144723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,9 +149,11 @@ ActiveRecord::Schema.define(version: 20150310141645) do
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "add_to_trip", default: false
+    t.boolean  "add_to_trip",   default: false
+    t.integer  "experience_id"
   end
 
+  add_index "trip_comments", ["experience_id"], name: "index_trip_comments_on_experience_id", using: :btree
   add_index "trip_comments", ["trip_id"], name: "index_trip_comments_on_trip_id", using: :btree
   add_index "trip_comments", ["user_id"], name: "index_trip_comments_on_user_id", using: :btree
 

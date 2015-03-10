@@ -68,11 +68,17 @@
           <% unless guest_user %>
             <span class="pull-right">
               <!-- TODO:  Display comment even if added to trip with different action-->
-              <%= link_to experience_from_comment_path(trip_comment), remote: true, method: :post do %>
-                <i class="fa fa-plus"></i>
-              <% end %>
-              <%= link_to [trip_comment.trip, trip_comment], remote: true, method: :delete do %>
-                <i class="fa fa-trash-o"></i>
+              <% if trip_comment.add_to_trip %>
+                <%= link_to [trip_comment.trip, trip_comment.trip_experience], remote: true, method: :delete do %>
+                  <i class="fa fa-times pull-right"></i>
+                <% end %>
+              <% else %>
+                <%= link_to experience_from_comment_path(trip_comment), remote: true, method: :post do %>
+                  <i class="fa fa-plus"></i>
+                <% end %>
+                <%= link_to [trip_comment.trip, trip_comment], remote: true, method: :delete do %>
+                  <i class="fa fa-trash-o"></i>
+                <% end %>
               <% end %>
             </span>
           <% end %>

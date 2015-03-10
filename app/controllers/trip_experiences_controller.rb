@@ -67,7 +67,8 @@ class TripExperiencesController < ApplicationController
         latitude: @trip_comment.latitude,
         longitude: @trip_comment.longitude,
         description: @trip_comment.description,
-        from_guest_comment: true
+        from_guest_comment: true,
+        trip_comment_id: @trip_comment.id
       )
     else
       @experience = Experience.create(
@@ -76,9 +77,11 @@ class TripExperiencesController < ApplicationController
         latitude: @trip_comment.latitude,
         longitude: @trip_comment.longitude,
         description: @trip_comment.description,
-        from_guest_comment: true
+        from_guest_comment: true,
+        trip_comment_id: @trip_comment.id
       )
     end
+      @trip_comment.update(add_to_trip: true)
       @trip_experience = @trip.trip_experiences.create(experience_id: @experience.id)
 
   end
