@@ -80,6 +80,7 @@ class TripExperiencesController < ApplicationController
       )
     end
       @trip_experience = @trip.trip_experiences.create(experience_id: @experience.id)
+
   end
 
  private

@@ -13,7 +13,7 @@ class TripCommentsController < ApplicationController
   end
 
   def comments_markers
-    @markers = build_markers_comments(@trip.trip_comments, false)
+    @markers = build_markers_comments(@trip.trip_comments.where.not(add_to_trip: true), false)
     render json: @markers
   end
 
@@ -35,6 +35,7 @@ class TripCommentsController < ApplicationController
           trip_comment: trip_comment,
           guest_user: guest_user
         }),
+        experience_id: trip_comment.id,
         experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
           trip_exp: false,
           guest_user: guest_user,
