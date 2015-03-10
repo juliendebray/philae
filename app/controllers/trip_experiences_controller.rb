@@ -48,7 +48,6 @@ class TripExperiencesController < ApplicationController
     @trip_experience.update(comment: params[:trip_experience][:comment])
   end
 
-
   def create_with_new_experience
     if current_user
       @experience = current_user.experiences.create(experience_params)
@@ -99,7 +98,8 @@ class TripExperiencesController < ApplicationController
       marker.json({
         infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
           experience: experience,
-          trip: trip
+          trip: trip,
+          trip_experience: false
         }),
         experience_id: experience.id,
         experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
@@ -138,7 +138,8 @@ class TripExperiencesController < ApplicationController
       marker.json({
         infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
           experience: trip_experience.experience,
-          trip: trip
+          trip: trip,
+          trip_experience: trip_experience
         }),
         experience_id: trip_experience.experience.id,
         experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {

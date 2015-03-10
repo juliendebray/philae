@@ -255,6 +255,12 @@ html, body {
   margin: 0 0 0 126px;
 }
 
+
+i#ib-remove-trip-exp {
+  color: white;
+  font-size: 19px;
+}
+
 .infobox-container {
   background: #fff;
   border-radius: 4px;
@@ -263,9 +269,6 @@ html, body {
   #experience-infowindow {
     margin: 10px;
     padding-top: 10px;
-    // .fa {
-    //   font-size: 16px;
-    // }
 
     .infobox-content {
       padding-top: 5px;

@@ -224,7 +224,7 @@ function setCarrousel() {
 }
 
 function initalizeLinkWithRemoteTrue() {
-  $('.infobox-content a').on('click', function(e){
+  $('.infobox-container a').on('click', function(e){
     e.preventDefault();
     $.rails.handleRemote($(this));
   });

@@ -1,4 +1,8 @@
 $( document ).ready(function() {
+  if (ibOpened) {
+    ib.close();
+    ibOpened = false;
+  }
   $('li#<%= @trip_experience.id %>').remove();
   if ($('#user-experiences').hasClass('menu-selected')) {
     var map = handler.getMap();
