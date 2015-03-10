@@ -69,7 +69,7 @@
             <span class="pull-right">
               <!-- TODO:  Display comment even if added to trip with different action-->
               <% if trip_comment.add_to_trip %>
-                <%= link_to [trip_comment.trip, trip_comment.trip_experience], remote: true, method: :delete do %>
+                <%= link_to [trip_comment.trip, trip_comment.experience.trip_experiences.last], remote: true, method: :delete do %>
                   <i class="fa fa-times pull-right"></i>
                 <% end %>
               <% else %>

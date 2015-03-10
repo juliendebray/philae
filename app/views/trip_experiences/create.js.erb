@@ -20,6 +20,11 @@ $( document ).ready(function() {
     scrollToElement($('.selection-content'), $('.panel-info').last());
     setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
     setPolylineDrawingWhenDraggingExperience();
+  } else if ($('#guests-comments').hasClass('menu-selected')) {
+    var map = handler.getMap();
+    setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
+      requestingMarkers = r;
+    });
   } else {
     $('li#<%= @trip_experience.experience.id %>').remove();
     for (var i =0; i < markers.length; i++) {

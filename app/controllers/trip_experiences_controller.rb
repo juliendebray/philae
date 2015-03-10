@@ -40,6 +40,9 @@ class TripExperiencesController < ApplicationController
   def destroy
     @trip_experience = TripExperience.find(params[:id])
     @trip = @trip_experience.trip
+    if @trip_experience.experience && @trip_experience.experience.trip_comment
+      @trip_experience.experience.trip_comment.update(add_to_trip: false, experience_id: nil)
+    end
     @trip_experience.destroy
   end
 
@@ -81,7 +84,7 @@ class TripExperiencesController < ApplicationController
         trip_comment_id: @trip_comment.id
       )
     end
-      @trip_comment.update(add_to_trip: true)
+      @trip_comment.update(add_to_trip: true, experience_id: @experience.id)
       @trip_experience = @trip.trip_experiences.create(experience_id: @experience.id)
 
   end

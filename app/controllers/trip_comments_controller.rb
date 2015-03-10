@@ -13,7 +13,7 @@ class TripCommentsController < ApplicationController
   end
 
   def comments_markers
-    @markers = build_markers_comments(@trip.trip_comments.where.not(add_to_trip: true), false)
+    @markers = build_markers_comments(@trip.trip_comments, false)
     render json: @markers
   end
 
