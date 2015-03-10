@@ -478,6 +478,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
   removePolyline();
   if (id == 'user-experiences') {
     // Set map with booked experiences;
+    $('#sidebar-title-content').html('<i class="fa fa-map-marker"></i> Sélection');
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
       drawPolyline();
@@ -488,6 +489,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
     });
   } else if (id == 'guests-comments') {
     // Set map with trip_comments;
+    $('#sidebar-title-content').html('<i class="fa fa fa-comments"></i> Conseils de mes amis');
     setMapWithGuestComments(trip_id, map, function(r) {
       requestingMarkers = r;
       if (markers.length == 0) {
@@ -495,6 +497,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
       }
     });
   } else if (id == 'all-experiences') {
+    $('#sidebar-title-content').html('<i class="fa fa-star"></i> Top Explorizers');
     setMarkersAndKeepListening(map, trip_id);
   }
   else {
