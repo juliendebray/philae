@@ -23,7 +23,7 @@ function publishPostOnFbWall(fb_element_id, url) {
     FB.ui(
       {
         method: 'share_open_graph',
-        action_type: 'me/explorizers:design',
+        action_type: 'og.design',
         action_properties: JSON.stringify({
           object: url,
         })
