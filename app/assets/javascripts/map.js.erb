@@ -303,25 +303,39 @@ function drawPolyline() {
 
   if ($('#user-experiences').hasClass('menu-selected')){
 
-    // console.log('user exp with menu-selected');
+    drawPolylineOnce();
+    // var flightPlanCoordinates = [];
+    // $('.exp-dotdotdot').each(function() {
 
-    var flightPlanCoordinates = [];
-    $('.exp-dotdotdot').each(function() {
+    //   flightPlanCoordinates.push(new google.maps.LatLng($(this).data('lat'), $(this).data('lng')));
 
-      flightPlanCoordinates.push(new google.maps.LatLng($(this).data('lat'), $(this).data('lng')));
 
-      // console.log(flightPlanCoordinates);
+    // });
+    // flightPath = new google.maps.Polyline({
+    //    path: flightPlanCoordinates,
+    //    geodesic: true,
+    //    strokeColor: '#FF0000',
+    //    strokeOpacity: 1.0,
+    //    strokeWeight: 2
+    //  });
+    // flightPath.setMap(handler.getMap());
 
-    });
-    flightPath = new google.maps.Polyline({
-       path: flightPlanCoordinates,
-       geodesic: true,
-       strokeColor: '#FF0000',
-       strokeOpacity: 1.0,
-       strokeWeight: 2
-     });
-    flightPath.setMap(handler.getMap());
   }
+}
+
+function drawPolylineOnce() {
+  var flightPlanCoordinates = [];
+  $('.exp-dotdotdot').each(function() {
+    flightPlanCoordinates.push(new google.maps.LatLng($(this).data('lat'), $(this).data('lng')));
+  });
+  flightPath = new google.maps.Polyline({
+     path: flightPlanCoordinates,
+     geodesic: true,
+     strokeColor: '#FF0000',
+     strokeOpacity: 1.0,
+     strokeWeight: 2
+   });
+  flightPath.setMap(handler.getMap());
 }
 
 function setExperiencesOrderByClickingOnSave() {
@@ -414,6 +428,7 @@ function buildMapForGuestUser(mapOptions, trip_id) {
       if (map.getZoom() > 7) {
         map.setZoom(7);
       }
+      drawPolylineOnce();
       requestingMarkers = r;
     });
 
