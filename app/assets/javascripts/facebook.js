@@ -27,9 +27,11 @@ function publishPostOnFbWall(fb_element_id, url) {
         trip: "http://samples.ogp.me/507511846053467"
       },
       function(response) {
+        if (response && !response.error_code) {
           alert('Posting completed.');
         } else {
           alert('Error while posting.');
+        }
       }
     );
   });
