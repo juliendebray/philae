@@ -402,6 +402,9 @@ function removeMarkersAddedManually() {
 
 function buildMapForGuestUser(mapOptions, trip_id) {
   $('#myModalPresentation').modal('show');
+  if ($('.map-side-menu-container').length == 0) {
+    $('.map-container').width('65%').css('left', '0px')
+  }
   handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
   handler.buildMap({provider: mapOptions, internal: {id: 'map'}}, function(){
     var map = handler.getMap();

@@ -57,7 +57,6 @@
       </ul>
     </div>
   </div>
-
   <!-- <div class="map-side-menu-container">
     <div class="map-side-menu-content btn-group-vertical btn-group" role="group" data-toggle="buttons">
       <label class="btn btn-default btn-block">
@@ -71,102 +70,102 @@
       </label>
     </div>
   </div> -->
-<% unless @guest_user %>
-  <div class="map-side-menu-container">
-    <table class="responsive">
-        <tr id="all-experiences" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
-          <td class="map-menu-item text-center">
-            <i class="fa fa-star"></i>
-          </td>
-          <td class="item-show pull-left" >
-            <%= t('show_bestexp') %>
-          </td>
-        </tr>
-        <tr id="user-experiences" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
-          <td class="map-menu-item text-center">
-            <i class="fa fa-map-marker"></i>
-          </td>
-          <td class="item-show pull-left" >
-            <%= t('show_myselection') %>
-          </td>
-        </tr>
-        <tr id="guests-comments" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
-          <td class="map-menu-item text-center">
-            <i class="fa fa-comments"></i>
-          </td>
-          <td class="item-show pull-left">
-            <%= t('show_friendstips') %>
-          </td>
-        </tr>
-        <tr class="row-separator">
-          <td>
-            <div class="vertical-spacer-sm"></div>
-          </td>
-        </tr>
-        <tr class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
-          <td class="map-menu-item text-center">
-            <i class="fa fa-thumbs-o-up"></i>
-          </td>
-          <td class="item-show pull-left">
-            J'ai besoin de conseils!
-          </td>
-        </tr>
-        <% if @trip.query && @trip.query.downcase.match('maroc') %>
-          <tr class="map-side-menu-content" data-link="<%= providers_trip_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" >
+  <% unless @guest_user %>
+    <div class="map-side-menu-container">
+      <table class="responsive">
+          <tr id="all-experiences" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
             <td class="map-menu-item text-center">
-              <i class="fa fa-plus"></i>
+              <i class="fa fa-star"></i>
             </td>
-            <td class="item-show pull-left">
-                <%= t('show_seeproviders') %>
+            <td class="item-show pull-left" >
+              <%= t('show_bestexp') %>
             </td>
           </tr>
-        <% end %>
-        <tr class="map-side-menu-content" data-link="<%= summarize_trip_path(@trip) %>", onclick="ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');">
-          <td class="map-menu-item text-center">
-            <i class="fa fa-road"></i>
-          </td>
-          <td class="item-show pull-left">
-            J'ai fini! Let's go!
-          </td>
-        </tr>
-        <tr class="row-separator">
-          <td>
-            <div id="last-row"></div>
-          </td>
-        </tr>
-        <tr class="map-side-menu-content">
-          <td class="map-menu-item text-center">
-            <i class="fa fa-question"></i>
-          </td>
-          <td class="item-show pull-left" >
-            Aide
-          </td>
-        </tr>
-    </table>
-   <!--  <div class="menu-list">
-      <ul class="map-side-menu-content list-unstyled text-center">
-        <li class="map-menu-item" >
-          <div class="icon" style="display:inline-block; height: 100%; width: 100%;" >
-            <i class="fa fa-star"></i> -->
+          <tr id="user-experiences" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-map-marker"></i>
+            </td>
+            <td class="item-show pull-left" >
+              <%= t('show_myselection') %>
+            </td>
+          </tr>
+          <tr id="guests-comments" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-comments"></i>
+            </td>
+            <td class="item-show pull-left">
+              <%= t('show_friendstips') %>
+            </td>
+          </tr>
+          <tr class="row-separator">
+            <td>
+              <div class="vertical-spacer-sm"></div>
+            </td>
+          </tr>
+          <tr class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-thumbs-o-up"></i>
+            </td>
+            <td class="item-show pull-left">
+              J'ai besoin de conseils!
+            </td>
+          </tr>
+          <% if @trip.query && @trip.query.downcase.match('maroc') %>
+            <tr class="map-side-menu-content" data-link="<%= providers_trip_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" >
+              <td class="map-menu-item text-center">
+                <i class="fa fa-plus"></i>
+              </td>
+              <td class="item-show pull-left">
+                  <%= t('show_seeproviders') %>
+              </td>
+            </tr>
+          <% end %>
+          <tr class="map-side-menu-content" data-link="<%= summarize_trip_path(@trip) %>", onclick="ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-road"></i>
+            </td>
+            <td class="item-show pull-left">
+              J'ai fini! Let's go!
+            </td>
+          </tr>
+          <tr class="row-separator">
+            <td>
+              <div id="last-row"></div>
+            </td>
+          </tr>
+          <tr class="map-side-menu-content">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-question"></i>
+            </td>
+            <td class="item-show pull-left" >
+              Aide
+            </td>
+          </tr>
+      </table>
+     <!--  <div class="menu-list">
+        <ul class="map-side-menu-content list-unstyled text-center">
+          <li class="map-menu-item" >
+            <div class="icon" style="display:inline-block; height: 100%; width: 100%;" >
+              <i class="fa fa-star"></i> -->
 
-          <!-- </div>
-          <div class="item-text" style="display:none; font-size:13px; height: 0px; width: 0px;">Experiences</div> -->
+            <!-- </div>
+            <div class="item-text" style="display:none; font-size:13px; height: 0px; width: 0px;">Experiences</div> -->
 
-          <!-- <ul class="list-unstyled">
-            <li>test</li>
-          </ul> -->
-          <!-- <span class='item-show'> le top 10 par Explorizers</span> -->
-        <!-- </li>
-        <li class="map-menu-item">
-          <i class="fa fa-map-marker"></i>
-        </li>
-        <li class="map-menu-item">
-          <i class="fa fa-comments"></i>
-        </li>
-      </ul>
-    </div> -->
+            <!-- <ul class="list-unstyled">
+              <li>test</li>
+            </ul> -->
+            <!-- <span class='item-show'> le top 10 par Explorizers</span> -->
+          <!-- </li>
+          <li class="map-menu-item">
+            <i class="fa fa-map-marker"></i>
+          </li>
+          <li class="map-menu-item">
+            <i class="fa fa-comments"></i>
+          </li>
+        </ul>
+      </div> -->
 
-  </div>
+    </div>
   <% end %>
 </div>
 
