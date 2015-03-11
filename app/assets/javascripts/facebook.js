@@ -15,16 +15,13 @@ window.fbAsyncInit = function() {
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
 
-
-
 // Publish the url on facebook wall
 function publishPostOnFbWall(fb_element_id, url) {
   $(fb_element_id).on('click', function() {
-    FB.api(
-      'me/explorizers:design',
-      'post',
+    FB.ui(
       {
-        trip: "http://samples.ogp.me/507511846053467"
+        method: 'share',
+        href: url
       },
       function(response) {
         if (response && !response.error_code) {
@@ -32,7 +29,6 @@ function publishPostOnFbWall(fb_element_id, url) {
         } else {
           alert('Error while posting.');
         }
-      }
-    );
+      });
   });
 }
