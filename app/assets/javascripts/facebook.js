@@ -20,17 +20,17 @@ window.fbAsyncInit = function() {
 // Publish the url on facebook wall
 function publishPostOnFbWall(fb_element_id, url) {
   $(fb_element_id).on('click', function() {
-    FB.ui(
+    FB.api(
+      'me/explorizers:design',
+      'post',
       {
-        method: 'share',
-        href: url
+        trip: "http://samples.ogp.me/507511846053467"
       },
       function(response) {
-        if (response && !response.error_code) {
           alert('Posting completed.');
         } else {
           alert('Error while posting.');
-        }
-      });
+      }
+    );
   });
 }
