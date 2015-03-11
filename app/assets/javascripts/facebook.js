@@ -22,7 +22,7 @@ function publishPostOnFbWall(fb_element_id, url) {
   $(fb_element_id).on('click', function() {
     FB.ui(
       {
-        method: 'share',
+        method: 'design',
         href: url
       },
       function(response) {
