@@ -22,8 +22,11 @@ function publishPostOnFbWall(fb_element_id, url) {
   $(fb_element_id).on('click', function() {
     FB.ui(
       {
-        method: 'design',
-        href: url
+        method: 'share_open_graph',
+        action_type: 'design',
+        action_properties: JSON.stringify({
+          object: url,
+        })
       },
       function(response) {
         if (response && !response.error_code) {
