@@ -12,9 +12,9 @@
       <div class="modal-body text-center">
         <p><%= t('show_guest_user_line1') %></p>
         <p><i><% if locale == :en %>
-            <li><%= link_to 'En Français', url_for(:locale => 'fr') %></li>
+            <%= link_to '(En français)', url_for(:locale => 'fr') %>
           <% else %>
-            <li><%= link_to 'Switch to English', url_for(:locale => 'en') %></li>
+            <%= link_to '(Switch to English)', url_for(:locale => 'en') %>
           <% end -%></i>
         </p>
         <p><%= t('show_guest_user_line3') %></p>
