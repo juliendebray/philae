@@ -11,16 +11,14 @@
       </div>
       <div class="modal-body text-center">
         <p><%= t('show_guest_user_line1') %></p>
-        <p><i><%= t('show_guest_user_line2') %></i></p>
-        <% if locale == :en %>
-          <li><%= link_to 'Voir en Français', url_for(:locale => 'fr') %></li>
-        <% else %>
-          <li><%= link_to 'See in English', url_for(:locale => 'en') %></li>
-        <% end -%>
+        <p><i><% if locale == :en %>
+            <li><%= link_to 'En Français', url_for(:locale => 'fr') %></li>
+          <% else %>
+            <li><%= link_to 'Switch to English', url_for(:locale => 'en') %></li>
+          <% end -%></i>
+        </p>
         <p><%= t('show_guest_user_line3') %></p>
       </div>
-
-link_to t('.new_trip'), root_path
 
       <div class="modal-footer">
         <div class="text-center">
