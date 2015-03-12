@@ -1,16 +1,25 @@
 <% content_for :map_css do %>
 <%= stylesheet_link_tag 'map' %>
 <% end %>
-<div class="overlay">
+<!-- <div class="overlay">
   <div class="overlay-loading">
     Loading
     <b>.</b>
     <b>.</b>
     <b>.</b>
   </div>
-</div>
+</div> -->
 <div class="wrapper">
   <div class="map-container">
+    <div class="overlay">
+      <div class="overlay-loading">
+        Loading
+        <b>.</b>
+        <b>.</b>
+        <b>.</b>
+      </div>
+    </div>
+
     <div id="map">
     </div>
     <div id='map-interaction'>
@@ -54,6 +63,33 @@
     </div>
     <div class="selection-content">
       <ul id="draggablePanelList" class="list-unstyled experience-block-container">
+        <% if @guest_user %>
+          <!-- Display user selection -->
+           <% if @trip_exp_tab %>
+            <% @trip_exp_tab.each do |trip_exp| %>
+              <% if trip_exp.experience %>
+                <%= render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>
+          <!-- Display user selection -->
+            <% if @trip_exp_tab &&  @trip_exp_tab.size > 0 %>
+              <% @trip_exp_tab.each do |trip_exp| %>
+                <% if trip_exp.experience %>
+                  <%= render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% elsif @trip.trip_comments.any? %>
+          <!-- Display user comments -->
+            <% @trip.trip_comments.each do |trip_comment| %>
+              <%= render("/trip_experiences/experience_block.html.erb", {trip_exp: false, guest_user: @guest_user, experience: false, trip_comment: trip_comment} ) %>
+            <% end %>
+          <% end %>
+        <% end %>
+
       </ul>
     </div>
   </div>
@@ -202,6 +238,7 @@
       });
 
       if (GUEST_USER) {
+        $('.map-container').width('65%').css('left', '0px');
         var guestUserMapOptions = {
           center: new google.maps.LatLng(<%= @trip.latitude %>, <%= @trip.longitude %>),
           zoom: 6,

@@ -416,9 +416,6 @@ function removeMarkersAddedManually() {
 
 function buildMapForGuestUser(mapOptions, trip_id) {
   $('#myModalPresentation').modal('show');
-  if ($('.map-side-menu-container').length == 0) {
-    $('.map-container').width('65%').css('left', '0px')
-  }
   handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
   handler.buildMap({provider: mapOptions, internal: {id: 'map'}}, function(){
     var map = handler.getMap();
@@ -430,6 +427,7 @@ function buildMapForGuestUser(mapOptions, trip_id) {
       }
       drawPolylineOnce();
       requestingMarkers = r;
+      $('.overlay').css('display','none');
     });
 
     initializeMapSearchBar('pac-input');
@@ -499,7 +497,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
 
   if (id == 'user-experiences') {
     // Set map with booked experiences;
-    $('#sidebar-title-content').html('<i class="fa fa-map-marker"></i> Sélection');
+    $('#sidebar-title-content').html('<i class="fa fa-map-marker"></i> Selection');
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
       $('.overlay').css('display','none');
