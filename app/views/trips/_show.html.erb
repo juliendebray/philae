@@ -9,6 +9,25 @@
     <b>.</b>
   </div>
 </div> -->
+<div class="mobile-menu-container container">
+  <div class="row">
+    <div class="col-xs-4 no-padding">
+      <div id="all-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
+        <i class="fa fa-star map-menu-item"></i>
+      </div>
+    </div>
+    <div class="col-xs-4 no-padding">
+      <div id="user-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
+        <i class="fa fa-map-marker map-menu-item"></i>
+      </div>
+    </div>
+    <div class="col-xs-4 no-padding">
+      <div id="guests-comments" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
+        <i class="fa fa-comments map-menu-item"></i>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="wrapper">
   <div class="map-container">
     <div class="overlay">
@@ -44,19 +63,19 @@
   </div>
   <div class="sidebar">
     <div class="selection-header text-center">
-      <table>
-        <tbody>
-            <% if @guest_user %>
-            <td>
-              <div id="set-orders" class="button-action text-center">
-                <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
-                <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-info btn-block") %>
-                <% end %>
-              </div>
-            </td>
-          <% end %>
-        </tbody>
-      </table>
+      <% if @guest_user %>
+        <table>
+          <tbody>
+              <td>
+                <div id="set-orders" class="button-action text-center">
+                  <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
+                  <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-info btn-block") %>
+                  <% end %>
+                </div>
+              </td>
+          </tbody>
+        </table>
+      <% end %>
       <div class="selection-title text-center">
         <span id="sidebar-title-content"></span> <i class="fa fa-angle-down"></i>
       </div>
@@ -93,19 +112,7 @@
       </ul>
     </div>
   </div>
-  <!-- <div class="map-side-menu-container">
-    <div class="map-side-menu-content btn-group-vertical btn-group" role="group" data-toggle="buttons">
-      <label class="btn btn-default btn-block">
-        <input type="radio" name="options" id="option2" autocomplete="off"> 2
-      </label>
-      <label class="btn btn-default btn-block">
-        <input type="radio" name="options" id="option2" autocomplete="off"> 2
-      </label>
-      <label class="btn btn-default btn-block">
-        <input type="radio" name="options" id="option2" autocomplete="off"> 2
-      </label>
-    </div>
-  </div> -->
+
   <% unless @guest_user %>
     <div class="map-side-menu-container">
       <table class="responsive">
@@ -200,9 +207,29 @@
           </li>
         </ul>
       </div> -->
-
     </div>
   <% end %>
+</div>
+<div class="mobile-tapbar-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 no-padding">
+        <div id= "list-selection" class="tapbar-choices text-center map-side-menu-content mobile-selection">
+          <i class="fa fa-list map-menu-item"></i>
+        </div>
+      </div>
+      <div class="col-xs-4 no-padding">
+        <div id= "map-selection" class="tapbar-choices text-center map-side-menu-content">
+          <i class="fa fa-location-arrow map-menu-item"></i>
+        </div>
+      </div>
+      <div class="col-xs-4 no-padding">
+        <div  id= "other-selection" class="tapbar-choices text-center map-side-menu-content">
+          <i class="fa fa-plus map-menu-item"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Experience Modal to display -->

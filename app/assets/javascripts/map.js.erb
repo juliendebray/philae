@@ -489,6 +489,40 @@ function listenToUserChoices(trip_id, map) {
       displayMarkersAccordingToUserChoices(trip_id, map, id);
     }
   });
+  $('.tapbar-choices').on('click', function(){
+    if ($(this).hasClass('mobile-selection')) {
+      return;
+    } else {
+      if (ibOpened) {
+        ib.close();
+        ibOpened = false;
+      }
+      $('.map-side-menu-content').removeClass('mobile-selection');
+      $(this).addClass('mobile-selection');
+      var id =  $(this).attr('id');
+      displayMobileInterface(id);
+    }
+  });
+}
+
+function displayMobileInterface(id) {
+  var zIndex = 2;
+  if (id == 'list-selection') {
+    // zIndex = $('.map-container').css('z-index');
+    $('.sidebar').css('z-index', parseInt(zIndex) + 1);
+    $('.map-container').css('z-index', parseInt(zIndex) - 1);
+    console.log(zIndex);
+    // zIndex = 2;
+  } else if (id == 'map-selection') {
+    // zIndex = $('.sidebar').css('z-index');
+    $('.sidebar').css('z-index', parseInt(zIndex) - 1);
+    $('.map-container').css('z-index', parseInt(zIndex) + 1)
+    console.log(zIndex);
+    // zIndex = 2;
+  } else {
+    alert('Une erreur est survenue... merci de bien vouloir recharger la page ;)');
+  }
+
 }
 
 function displayMarkersAccordingToUserChoices(trip_id, map, id) {
@@ -522,7 +556,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
     setMarkersAndKeepListening(map, trip_id);
   }
   else {
-    alert('Une erreur est survenu... merci de bien vouloir réessayer ;)');
+    alert('Une erreur est survenue... merci de bien vouloir recharger la page ;)');
   }
   // makeExperiencesSortable();
 }
