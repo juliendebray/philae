@@ -495,11 +495,14 @@ function listenToUserChoices(trip_id, map) {
 
 function displayMarkersAccordingToUserChoices(trip_id, map, id) {
   removePolyline();
+  // $('.overlay').css('display','block');
+
   if (id == 'user-experiences') {
     // Set map with booked experiences;
     $('#sidebar-title-content').html('<i class="fa fa-map-marker"></i> Sélection');
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
+      $('.overlay').css('display','none');
       drawPolyline();
       setPolylineDrawingWhenDraggingExperience();
       if (markers.length == 0) {
@@ -511,6 +514,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
     $('#sidebar-title-content').html('<i class="fa fa fa-comments"></i> Conseils de mes amis');
     setMapWithGuestComments(trip_id, map, function(r) {
       requestingMarkers = r;
+      $('.overlay').css('display','none');
       if (markers.length == 0) {
         alert('Pas encore de conseil! Demandez-les : cliquez sur "Obtenir les conseils de mes amis"! - No tips yet! Ask your friends : click on "Get my friends tips" below!');
       }
@@ -626,6 +630,7 @@ function setMarkersAndKeepListening(map, trip_id) {
   // Set markers on loading
   setMarkersAccordingToBounds(map, trip_id, function(r) {
    requestingMarkers = r;
+   $('.overlay').css('display','none');
   });
   // Set markers when drag ends
   google.maps.event.addListener(map, 'dragend', function() {

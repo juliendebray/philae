@@ -1,7 +1,14 @@
 <% content_for :map_css do %>
 <%= stylesheet_link_tag 'map' %>
 <% end %>
-
+<div class="overlay">
+  <div class="overlay-loading">
+    Loading
+    <b>.</b>
+    <b>.</b>
+    <b>.</b>
+  </div>
+</div>
 <div class="wrapper">
   <div class="map-container">
     <div id="map">

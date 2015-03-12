@@ -1,5 +1,67 @@
+@-webkit-keyframes loading {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes loading {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes loading {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes loading {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 html, body {
   overflow: hidden;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  // display: none;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  z-index: 190;
+  -webkit-overflow-scrolling: touch;
+
+  .overlay-loading {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 30px;
+    margin-top: 15px;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0 0 8px #000;
+    top: 50%;
+    width: 100%;
+
+    b {
+      font-weight: 400;
+      letter-spacing: 2px;
+      -webkit-animation: loading 2s infinite; /* Safari 4+ */
+      -moz-animation:    loading 2s infinite; /* Fx 5+ */
+      -o-animation:      loading 2s infinite; /* Opera 12+ */
+      animation:         loading 2s infinite; /* IE 10+, Fx 29+ */
+    }
+
+    b + b {
+      -webkit-animation-delay: .3s;
+      animation-delay: .3s;
+    }
+
+    b + b + b {
+      -webkit-animation-delay: .6s;
+      animation-delay: .6s;
+    }
+  }
 }
 
 .map-container {
