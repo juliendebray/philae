@@ -12,8 +12,16 @@
       <div class="modal-body text-center">
         <p><%= t('show_guest_user_line1') %></p>
         <p><i><%= t('show_guest_user_line2') %></i></p>
+        <% if locale == :en %>
+          <li><%= link_to 'Voir en Français', url_for(:locale => 'fr') %></li>
+        <% else %>
+          <li><%= link_to 'See in English', url_for(:locale => 'en') %></li>
+        <% end -%>
         <p><%= t('show_guest_user_line3') %></p>
       </div>
+
+link_to t('.new_trip'), root_path
+
       <div class="modal-footer">
         <div class="text-center">
           <button type="button" class="btn btn-info" data-dismiss="modal"><%= t('show_guest_user_letsgo')%></button>
