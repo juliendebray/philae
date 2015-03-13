@@ -1,28 +1,100 @@
-<li class="panel panel-info" id="<%= trip_exp.id %>">
-  <div class='exp-dotdotdot <%= "exp-#{trip_exp.id}" %>'>
-    <div class="panel-heading"><%= trip_exp.experience.name %>
-      <% unless guest_user %>
-        <%= link_to [trip_exp.trip, trip_exp], remote: true, method: :delete do %>
-          <i class="fa fa-times pull-right"></i>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="panel-body">
-      <table>
-        <tbody>
-        <tr>
-          <% if trip_exp.experience.experience_pictures.any? %>
-            <td class="thumb-pic">
-              <%= image_tag trip_exp.experience.experience_pictures.first.picture.url(:thumb), class: "img-#{trip_exp.id}" if trip_exp.experience.experience_pictures.first %>
-            </td>
+<% if trip_exp %>
+  <li class="panel panel-info" id="<%= trip_exp.id %>">
+    <div class='exp-dotdotdot <%= "exp-#{trip_exp.id}" %>' data-experience_id='<%= trip_exp.experience.id %>' data-lat='<%= trip_exp.experience.latitude %>' data-lng='<%= trip_exp.experience.longitude %>'>
+      <div class="panel-heading"><%= trip_exp.experience.name %>
+        <% unless guest_user %>
+          <%= link_to [trip_exp.trip, trip_exp], remote: true, method: :delete do %>
+            <i class="fa fa-times pull-right"></i>
           <% end %>
-          <td>
-            <%= simple_format trip_exp.experience.description %>
-            <%= link_to t('experience_block_seemore'), experience_detail_path(trip_exp.experience.id), remote: true, class: "readmore" %>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <table>
+          <tbody>
+          <tr>
+            <% if trip_exp.experience.experience_pictures.any? %>
+              <td class="thumb-pic">
+                <%= image_tag trip_exp.experience.experience_pictures.first.picture.url(:thumb), class: "img-#{trip_exp.id}" if trip_exp.experience.experience_pictures.first %>
+              </td>
+            <% end %>
+            <td>
+              <%= simple_format trip_exp.experience.description %>
+              <%= link_to t('experience_block_seemore'), experience_detail_path(trip_exp.experience.id), remote: true, class: "readmore" %>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-</li>
+  </li>
+<% elsif experience %>
+  <li class="panel panel-info" id="<%= experience.id %>">
+    <div class='exp-dotdotdot <%= "exp-#{experience.id}" %>' data-experience_id='<%= experience.id %>' data-lat='<%= experience.latitude %>' data-lng='<%= experience.longitude %>'>
+      <div class="panel-heading">
+        <%= "#{experience.name} - #{experience.average_rating}/10" %>
+        <span class="pull-right">
+          <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
+            <%= f.hidden_field :experience_id, value: experience.id %>
+            <%= f.button :submit, class: "btn btn-link" do %>
+              <i class='fa fa-plus pull-right'></i>
+            <% end %>
+          <% end %>
+        </span>
+
+      </div>
+      <div class="panel-body">
+        <table>
+          <tbody>
+          <tr>
+            <% if experience.experience_pictures.any? %>
+              <td class="thumb-pic">
+                <%= image_tag experience.experience_pictures.first.picture.url(:thumb), class: "img-#{experience.id}" if experience.experience_pictures.first %>
+              </td>
+            <% end %>
+            <td>
+              <%= simple_format experience.description %>
+              <%= link_to t('experience_block_seemore'), experience_detail_path(experience.id), remote: true, class: "readmore" %>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </li>
+  <% elsif trip_comment %>
+    <li class="panel panel-info" id="<%= trip_comment.id %>">
+      <div class='exp-dotdotdot <%= "exp-#{trip_comment.id}" %>' data-experience_id='<%= trip_comment.id %>' data-lat='<%= trip_comment.latitude %>' data-lng='<%= trip_comment.longitude %>'>
+        <div class="panel-heading"><%= trip_comment.name %>
+          <% unless guest_user %>
+            <span class="pull-right">
+              <!-- TODO:  Display comment even if added to trip with different action-->
+              <% if trip_comment.add_to_trip %>
+                <%= link_to [trip_comment.trip, trip_comment.experience.trip_experiences.last], remote: true, method: :delete do %>
+                  <i class="fa fa-times pull-right"></i>
+                <% end %>
+              <% else %>
+                <%= link_to experience_from_comment_path(trip_comment), remote: true, method: :post do %>
+                  <i class="fa fa-plus"></i>
+                <% end %>
+                <%= link_to [trip_comment.trip, trip_comment], remote: true, method: :delete do %>
+                  <i class="fa fa-trash-o"></i>
+                <% end %>
+              <% end %>
+            </span>
+          <% end %>
+        </div>
+        <div class="panel-body">
+          <table>
+            <tbody>
+            <tr>
+              <td>
+                <%= simple_format trip_comment.description %>
+
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </li>
+<% end %>

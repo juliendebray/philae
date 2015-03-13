@@ -1,22 +1,25 @@
 <div id="experience-infowindow">
   <div class="comment-name">
     <%= trip_comment.name %>
+    <%= " (ajouté au trip)" if trip_comment.add_to_trip %>
   </div>
   <div class="comment-content">
     <%= simple_format trip_comment.description %>
   </div>
   <div class="infobox-content">
-    <% unless guest_user %>
+    <% unless trip_comment.add_to_trip %>
+      <% unless guest_user %>
+        <div class="comment-btn list-unstyled">
+          <%= link_to experience_from_comment_path(trip_comment), remote: true, method: :post do %>
+            <i class="fa fa-map-marker"></i> <small><%= t('trip_comment_add') %></small>
+          <% end %>
+        </div>
+      <% end %>
       <div class="comment-btn list-unstyled">
-        <%= link_to experience_from_comment_path(trip_comment), remote: true, method: :post do %>
-          <i class="fa fa-map-marker"></i> <small><%= t('trip_comment_add') %></small>
+        <%= link_to [trip_comment.trip, trip_comment], remote: true, method: :delete do %>
+          <i class="fa fa-trash-o"></i> <small><%= t('trip_comment_delete') %></small>
         <% end %>
       </div>
     <% end %>
-    <div class="comment-btn list-unstyled">
-      <%= link_to [trip_comment.trip, trip_comment], remote: true, method: :delete do %>
-        <i class="fa fa-trash-o"></i> <small><%= t('trip_comment_delete') %></small>
-      <% end %>
-    </div>
   </div>
 </div>

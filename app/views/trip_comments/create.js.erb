@@ -1,20 +1,26 @@
 $( document ).ready(function() {
   $('#myModalGuest').modal('hide');
+  if ($('.guest-mobile').css('display') == "block") {
+    $('.todo').first().removeClass('todo').addClass('done').prop('disabled', true).html('<i class="fa fa-check"></i>');
+    $('#guest-submit-button').prop('disabled', false);
+  } else {
 
-  var markerJson = {
-    "lat": <%= @trip_comment.latitude %>,
-    "lng": <%= @trip_comment.longitude %>,
-    "marker_title": "<%= @trip_comment.name %>",
-    "infobox": "<%= j render('/trip_comments/infowindow.html.erb',
-      {trip_comment: @trip_comment, trip: @trip, guest_user: true} )%>"
-  };
 
-  commentsJsonStore.push(markerJson);
 
-  var marker = handler.addMarker(markerJson);
-  commentsMarkers.push(marker);
+    var markerJson = {
+      "lat": <%= @trip_comment.latitude %>,
+      "lng": <%= @trip_comment.longitude %>,
+      "marker_title": "<%= @trip_comment.name %>",
+      "infobox": "<%= j render('/trip_comments/infowindow.html.erb',
+        {trip_comment: @trip_comment, trip: @trip, guest_user: true} )%>"
+    };
 
-  setListenerOnMarker(commentsMarkers, commentsJsonStore, commentsMarkers.length - 1, false);
+    commentsJsonStore.push(markerJson);
+
+    var marker = handler.addMarker(markerJson);
+    commentsMarkers.push(marker);
+
+    setListenerOnMarker(commentsMarkers, commentsJsonStore, commentsMarkers.length - 1, false);
 
   // marker.serviceObject.set('id',commentsMarkers.length - 1);
   // google.maps.event.clearListeners(marker.serviceObject);
@@ -42,4 +48,5 @@ $( document ).ready(function() {
   //   //   mapPanToContainInfoBox(ib, 56.70033307669564, -17.994751360066402, -0.947300072, 0.9909910672);
   //   // });
   // });
+  }
 });

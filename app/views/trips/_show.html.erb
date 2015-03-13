@@ -1,9 +1,88 @@
 <% content_for :map_css do %>
 <%= stylesheet_link_tag 'map' %>
 <% end %>
+<!-- <div class="overlay">
+  <div class="overlay-loading">
+    Loading
+    <b>.</b>
+    <b>.</b>
+    <b>.</b>
+  </div>
+</div> -->
+<% unless @guest_user %>
+  <div class="mobile-menu-container container">
+    <div class="row">
+      <div class="col-xs-4 no-padding">
+        <div id="all-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
+          <i class="fa fa-star map-menu-item"></i>
+        </div>
+      </div>
+      <div class="col-xs-4 no-padding">
+        <div id="user-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
+          <i class="fa fa-map-marker map-menu-item"></i>
+        </div>
+      </div>
+      <div class="col-xs-4 no-padding">
+        <div id="guests-comments" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
+          <i class="fa fa-comments map-menu-item"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="guest-mobile wrapper">
+    <div class="intro text-center">
+      <strong>Bienvenue sur Explorizer</strong> <br>
+      <ul class="list-unstyled text-left">
+        <li>
+          <strong><%= @trip.user.name || @trip.user.email || 'Un ami' %></strong> te demande de l'aide pour son prochain voyage !
+        </li>
+        <li>
+          Sa destination : <strong><%= @trip.title || @trip.query %></strong>
+        </li>
+        <li>
+          Donne - lui tes <strong>3</strong> meilleurs bons plans !
+        </li>
+      </ul>
+    </div>
+    <div class="vertical-spacer-xs"></div>
+    <div class="add-experience text-center">
+      <p><i>Appuie sur les bouttons pour donner tes conseils</i></p>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4 text-center">
+            <button id="1" class="btn btn-lg btn-default todo" data-toggle="modal" data-target="#myModalGuest"><i class="fa fa-plus"></i></button>
+          </div>
+          <div class="col-xs-4 text-center">
+            <button id="2" class="btn btn-lg btn-default todo" data-toggle="modal" data-target="#myModalGuest"><i class="fa fa-plus"></i></button>
+          </div>
+          <div class="col-xs-4 text-center">
+            <button id="3" class="btn btn-lg btn-default todo" data-toggle="modal" data-target="#myModalGuest"><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vertical-spacer"></div>
+    <div id="save-guest" class="button-action text-center">
+      <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
+      <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-info btn-block", disabled: true, id: 'guest-submit-button') %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
-<div class="wrapper">
+
+<div class="wrapper <%= 'no-display' if @guest_user %>">
   <div class="map-container">
+    <div class="overlay">
+      <div class="overlay-loading">
+        Loading
+        <b>.</b>
+        <b>.</b>
+        <b>.</b>
+      </div>
+    </div>
+
     <div id="map">
     </div>
     <div id='map-interaction'>
@@ -11,22 +90,6 @@
         <i class="fa fa-search"></i>
         <%= search_field_tag('pac-input') %>
       </fieldset>
-      <% unless @guest_user %>
-      <div id="user-choices">
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="user-experiences" value="2" <%= "checked" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>>
-          <small><i class="fa fa-map-marker"></i> <%= t('show_myselection') %></small>
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="guests-comments" value="3" <%= "checked" if @trip.trip_comments.any? %>>
-          <small><i class="fa fa-comments"></i> <%= t('show_friendstips') %></small>
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="all-experiences" value="1"  <%= "checked" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %> >
-          <small><i class="fa fa-star"></i> <%= t('show_bestexp') %></small>
-        </label>
-      </div>
-      <% end %>
     </div>
     <% unless @guest_user %>
     <!-- User Modal to let him add his own experience -->
@@ -53,52 +116,191 @@
   </div>
   <div class="sidebar">
     <div class="selection-header text-center">
-      <table>
-        <tbody>
-          <% unless @guest_user %>
-            <td>
-              <div id="share-bt" class="button-action update-order">
-                <%= link_to trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');", class: "btn btn-facebook btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_asktips')}  do %>
-                  <i class="fa fa-comments"></i>
-                <% end %>
-              </div>
-            </td>
-            <td>
-              <div id="see-trip-summary" class="button-action update-order">
-                <%= link_to  summarize_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');", class: "btn btn-warning btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_summary'), json: 'data'} do %>
-                <i class="fa fa-book"></i>
-                <% end %>
-              </div>
-            </td>
-            <% if @trip.query && @trip.query.downcase.match('maroc') %>
+      <% if @guest_user %>
+        <table>
+          <tbody>
               <td>
-                <div id="see-providers" class="button-action update-order">
-                  <%= link_to  providers_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');", class: "btn btn-default btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_seeproviders')} do %>
-                  <i class="fa fa-plus"></i>
+                <div id="set-orders" class="button-action text-center">
+                  <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
+                  <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-info btn-block") %>
                   <% end %>
                 </div>
               </td>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      <% end %>
       <div class="selection-title text-center">
-      <i class="fa fa-map-marker"></i> <%= t('show_selectedexp') %> <i class="fa fa-angle-down"></i>
+        <span id="sidebar-title-content"></span> <i class="fa fa-angle-down"></i>
       </div>
     </div>
     <div class="selection-content">
-      <ul id="draggablePanelList" class="list-unstyled">
-        <% if @trip_exp_tab &&  @trip_exp_tab.size > 0 %>
-          <% @trip_exp_tab.each do |trip_exp| %>
-            <% if trip_exp.experience %>
-            <%= render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>
+      <ul id="draggablePanelList" class="list-unstyled experience-block-container">
+        <% if @guest_user %>
+          <!-- Display user selection -->
+           <% if @trip_exp_tab %>
+            <% @trip_exp_tab.each do |trip_exp| %>
+              <% if trip_exp.experience %>
+                <%= render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>
+          <!-- Display user selection -->
+            <% if @trip_exp_tab &&  @trip_exp_tab.size > 0 %>
+              <% @trip_exp_tab.each do |trip_exp| %>
+                <% if trip_exp.experience %>
+                  <%= render("/trip_experiences/experience_block.html.erb", {trip_exp: trip_exp, guest_user: @guest_user} ) %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% elsif @trip.trip_comments.any? %>
+          <!-- Display user comments -->
+            <% @trip.trip_comments.each do |trip_comment| %>
+              <%= render("/trip_experiences/experience_block.html.erb", {trip_exp: false, guest_user: @guest_user, experience: false, trip_comment: trip_comment} ) %>
             <% end %>
           <% end %>
         <% end %>
+
       </ul>
     </div>
   </div>
+
+  <% unless @guest_user %>
+    <div class="map-side-menu-container">
+      <table class="responsive">
+          <tr id="all-experiences" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-star"></i>
+            </td>
+            <td class="item-show pull-left" >
+              <%= t('show_bestexp') %>
+            </td>
+          </tr>
+          <tr id="user-experiences" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-map-marker"></i>
+            </td>
+            <td class="item-show pull-left" >
+              <%= t('show_myselection') %>
+            </td>
+          </tr>
+          <tr id="guests-comments" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-comments"></i>
+            </td>
+            <td class="item-show pull-left">
+              <%= t('show_friendstips') %>
+            </td>
+          </tr>
+          <tr class="row-separator">
+            <td>
+              <div class="vertical-spacer-sm"></div>
+            </td>
+          </tr>
+          <tr class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-thumbs-o-up"></i>
+            </td>
+            <td class="item-show pull-left">
+              J'ai besoin de conseils!
+            </td>
+          </tr>
+          <% if @trip.query && @trip.query.downcase.match('maroc') %>
+            <tr class="map-side-menu-content" data-link="<%= providers_trip_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" >
+              <td class="map-menu-item text-center">
+                <i class="fa fa-plus"></i>
+              </td>
+              <td class="item-show pull-left">
+                  <%= t('show_seeproviders') %>
+              </td>
+            </tr>
+          <% end %>
+          <tr class="map-side-menu-content" data-link="<%= summarize_trip_path(@trip) %>", onclick="ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-road"></i>
+            </td>
+            <td class="item-show pull-left">
+              J'ai fini! Let's go!
+            </td>
+          </tr>
+          <tr class="row-separator">
+            <td>
+              <div id="last-row"></div>
+            </td>
+          </tr>
+          <tr class="map-side-menu-content">
+            <td class="map-menu-item text-center">
+              <i class="fa fa-question"></i>
+            </td>
+            <td class="item-show pull-left" >
+              Aide
+            </td>
+          </tr>
+      </table>
+     <!--  <div class="menu-list">
+        <ul class="map-side-menu-content list-unstyled text-center">
+          <li class="map-menu-item" >
+            <div class="icon" style="display:inline-block; height: 100%; width: 100%;" >
+              <i class="fa fa-star"></i> -->
+
+            <!-- </div>
+            <div class="item-text" style="display:none; font-size:13px; height: 0px; width: 0px;">Experiences</div> -->
+
+            <!-- <ul class="list-unstyled">
+              <li>test</li>
+            </ul> -->
+            <!-- <span class='item-show'> le top 10 par Explorizers</span> -->
+          <!-- </li>
+          <li class="map-menu-item">
+            <i class="fa fa-map-marker"></i>
+          </li>
+          <li class="map-menu-item">
+            <i class="fa fa-comments"></i>
+          </li>
+        </ul>
+      </div> -->
+    </div>
+  <% end %>
 </div>
+
+<% unless @guest_user %>
+  <div class="mobile-tapbar-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4 no-padding">
+          <div id= "list-selection" class="tapbar-choices text-center map-side-menu-content mobile-selection">
+            <i class="fa fa-list map-menu-item"></i>
+          </div>
+        </div>
+        <div class="col-xs-4 no-padding">
+          <div id= "map-selection" class="tapbar-choices text-center map-side-menu-content">
+            <i class="fa fa-location-arrow map-menu-item"></i>
+          </div>
+        </div>
+        <div class="col-xs-4 no-padding dropup">
+          <div  id= "other-selection" class="text-center map-side-menu-content dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-plus map-menu-item"></i>
+          </div>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+             <!-- Dropdown menu links -->
+             <li class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
+                 J'ai besoin de conseils!
+             </li>
+             <% if @trip.query && @trip.query.downcase.match('maroc') %>
+               <li class="map-side-menu-content" data-link="<%= providers_trip_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" >
+                     <%= t('show_seeproviders') %>
+               </li>
+             <% end %>
+             <li class="map-side-menu-content" data-link="<%= summarize_trip_path(@trip) %>", onclick="ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');">
+                 J'ai fini! Let's go!
+             </li>
+           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <!-- Experience Modal to display -->
 <div class="modal fade" id="myExperienceModal" tabindex="-1" role="dialog" aria-labelledby="myExperienceModalLabel" aria-hidden="true">
@@ -128,27 +330,12 @@
     <script>
     $(document).on('ready', function() {
       $(window).load(function() {
-        var length = $(".exp-dotdotdot").length
-        if (length != 0) {
-          $(".exp-dotdotdot").each(function(index) {
-            $( this ).dotdotdot({
-              watch: "window",
-              callback  : function( isTruncated, orgContent ) {
-                if (isTruncated) {
-                  $( "p", this ).append(orgContent.find('a.readmore').prop('outerHTML'));
-                }
-                if (index == length-1) {
-                  $('.selection-content').css('visibility', 'visible');
-                }
-              }
-            });
-          });
-        } else {
-          $('.selection-content').css('visibility', 'visible');
-        }
+        // TODO: Check if still useless
+        ellipseExperienceBlock();
       });
 
       if (GUEST_USER) {
+        $('.map-container').width('65%').css('left', '0px');
         var guestUserMapOptions = {
           center: new google.maps.LatLng(<%= @trip.latitude %>, <%= @trip.longitude %>),
           zoom: 6,
@@ -179,11 +366,14 @@
           // }
         };
         buildMapForUser(userMapOptions, <%= @trip.id %>);
-        makeExperiencesSortable();
-        setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
+        makeTableRowlinkActionnable();
+        // makeExperiencesSortable();
+        placeHelpButton();
+        // setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
+        setPolylineDrawingWhenDraggingExperience();
         // Tooltip initialization
         // $('[data-toggle="popover"]').popover();
-        $('[data-toggle="tooltip"]').tooltip()
+        // $('[data-toggle="tooltip"]').tooltip()
       }
     });
 </script>

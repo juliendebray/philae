@@ -1,6 +1,7 @@
 class Experience < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+  belongs_to :trip_comment
 
   has_many :services
   has_many :providers, through: :services

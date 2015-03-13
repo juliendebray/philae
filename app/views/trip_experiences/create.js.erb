@@ -3,10 +3,11 @@ $( document ).ready(function() {
     ib.close();
     ibOpened = false;
   }
-  $('#draggablePanelList').append(
-    '<%= j render("/trip_experiences/experience_block.html.erb",
-    {trip_exp: @trip_experience, guest_user: false} ) %>'
-  );
+  if ($('#user-experiences').hasClass('menu-selected')){
+    $('#draggablePanelList').append(
+      '<%= j render("/trip_experiences/experience_block.html.erb",
+      {trip_exp: @trip_experience, guest_user: false} ) %>'
+    );
     $('<%= ".exp-#{@trip_experience.id}" %>').dotdotdot({
         watch: "window",
         callback: function(isTruncated, orgContent) {
@@ -17,4 +18,20 @@ $( document ).ready(function() {
     });
     addBoxShadowEffectWhileDraggingBox();
     scrollToElement($('.selection-content'), $('.panel-info').last());
+    setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
+    setPolylineDrawingWhenDraggingExperience();
+  } else if ($('#guests-comments').hasClass('menu-selected')) {
+    var map = handler.getMap();
+    setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
+      requestingMarkers = r;
+    });
+  } else {
+    $('li#<%= @trip_experience.experience.id %>').remove();
+    for (var i =0; i < markers.length; i++) {
+      if (markers[i].serviceObject.experience_id == <%= @trip_experience.experience.id %>) {
+        markers[i].serviceObject.setMap(null);
+      }
+    }
+  }
 });
+

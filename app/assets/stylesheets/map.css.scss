@@ -1,14 +1,88 @@
+@-webkit-keyframes loading {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes loading {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes loading {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes loading {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 html, body {
   overflow: hidden;
 }
 
+.overlay {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  // display: none;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  z-index: 190;
+  -webkit-overflow-scrolling: touch;
+
+  .overlay-loading {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 30px;
+    margin-top: 15px;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0 0 8px #000;
+    top: 50%;
+    width: 100%;
+
+    b {
+      font-weight: 400;
+      letter-spacing: 2px;
+      -webkit-animation: loading 2s infinite; /* Safari 4+ */
+      -moz-animation:    loading 2s infinite; /* Fx 5+ */
+      -o-animation:      loading 2s infinite; /* Opera 12+ */
+      animation:         loading 2s infinite; /* IE 10+, Fx 29+ */
+    }
+
+    b + b {
+      -webkit-animation-delay: .3s;
+      animation-delay: .3s;
+    }
+
+    b + b + b {
+      -webkit-animation-delay: .6s;
+      animation-delay: .6s;
+    }
+  }
+}
+
+.guest-mobile {
+  display: none;
+}
+.mobile-menu-container {
+  display: none;
+}
+.mobiletapbar-container {
+  display: none;
+}
+
 .map-container {
   position: fixed;
-  width: 65%;
-  left: 0px;
+  width: 60%;
+  left: 5%;
   bottom: 0px;
   padding-left: 0px;
   top: 54px;
+  z-index: 1;
+  background: #F0F1F5;
 
   #map {
     height: 100%;
@@ -42,9 +116,9 @@ html, body {
     }
 
     input {
-    background-color: transparent;
-    border: 0 none;
-    box-shadow: none;
+      background-color: transparent;
+      border: 0 none;
+      box-shadow: none;
     }
 
     input:focus {
@@ -88,7 +162,7 @@ html, body {
   width: 35%;
   right: 0px;
   top: 54px;
-  bottom: 9%;
+  bottom: 0%;
 
   .selection-header {
 
@@ -99,20 +173,20 @@ html, body {
       .button-action {
         padding: 4%;
 
-        .tooltip {
-          font-size: 18px;
-        }
+        // .tooltip {
+        //   font-size: 18px;
+        // }
 
-        .tooltip > .tooltip-inner, .tooltip-arrow {
-          background-color: white;
-          font-weight: 300;
-          font-style: italic;
-          color: black;
-        }
-        .tooltip > .tooltip-arrow {
-          // TODO: customize teh arow
-          border: 0px solid transparent;
-        }
+        // .tooltip > .tooltip-inner, .tooltip-arrow {
+        //   background-color: white;
+        //   font-weight: 300;
+        //   font-style: italic;
+        //   color: black;
+        // }
+        // .tooltip > .tooltip-arrow {
+        //   // TODO: customize teh arow
+        //   border: 0px solid transparent;
+        // }
 
         .btn {
           font-size: 2em;
@@ -136,7 +210,7 @@ html, body {
     overflow: auto;
     visibility: hidden;
 
-    ul#draggablePanelList {
+    ul.experience-block-container {
       margin-right: 3%;
     }
 
@@ -152,6 +226,7 @@ html, body {
       }
 
       .panel-heading {
+        padding-right: 2px;
         margin-top: 5px;
         border-radius: 0px;
         background: white;
@@ -160,11 +235,20 @@ html, body {
         font-weight: 300;
         color: #808080;
 
+        button.btn {
+          margin: 0px;
+          padding: 0px;
+        }
+
+        button.btn:focus {
+          outline: none;
+        }
+
         i {
           color: #808080;
         }
         i:hover {
-          color: black;
+          color: #2196F3;
         }
       }
       .panel-body {
@@ -189,12 +273,64 @@ html, body {
   }
 }
 
-#draggablePanelList {
+.map-side-menu-container {
+  bottom: 0px;
+  width: 20%;
+  background: black;
+  left: 0;
+  position: absolute;
+  top: 54px;
+
+  table {
+    width: 100%;
+  }
+}
+.map-side-menu-content {
+  color: white;
+  height: 60px;
+
+  .map-menu-item {
+    // padding: 5% 0px;
+    font-size: 2em;
+    width: 25%;
+    vertical-align: middle;
+  }
+  .item-show {
+    font-size: 12px;
+    font-weight: 300;
+    // padding: 5% 0px;
+    padding-left: 5%;
+    width: 100%;
+    line-height: 5em;
+    vertical-align: middle;
+  }
+}
+
+
+.map-side-menu-content:hover{
+  background: rgb(0,129,186);
+}
+
+.menu-selected, .menu-selected:hover{
+  background: #2196F3;
+}
+
+.mobile-selection, .mobile-selection:hover{
+  background: #2196F3;
+}
+
+.map-side-menu-container:hover {
+  z-index: 2;
+}
+
+
+
+.experience-block-container {
   .panel {
     margin-bottom: 11px;
   }
   .panel-heading {
-    cursor: move;
+    // cursor: move;
     padding: 7px;
   }
 }
@@ -211,6 +347,17 @@ html, body {
   margin: 0 0 0 126px;
 }
 
+
+i#ib-remove-trip-exp {
+  color: white;
+  font-size: 19px;
+}
+
+i#ib-remove-trip-exp:hover {
+  color: red;
+  font-size: 19px;
+}
+
 .infobox-container {
   background: #fff;
   border-radius: 4px;
@@ -219,9 +366,6 @@ html, body {
   #experience-infowindow {
     margin: 10px;
     padding-top: 10px;
-    // .fa {
-    //   font-size: 16px;
-    // }
 
     .infobox-content {
       padding-top: 5px;
@@ -279,6 +423,21 @@ html, body {
     font-size: 15px;
     background-color: #808080;
     color: white;
+
+      form button {
+        padding: 0px;
+        margin: 0px;
+        font-size: 20px;
+        border: none;
+        color: white;
+        position: relative;
+        top: -2px;
+      }
+
+      form button i:hover {
+        color: #2196F3;
+      }
+
     .best {
       font-size: 10px;
     }
@@ -320,44 +479,173 @@ html, body {
 
 // Responsive: change design for screen smaller than ipad in portrait
 @media screen and (max-width: 999px) {
-
-  .wrapper {
-    padding-left: 5px;
-    padding-right: 5px;
+  #myModalPresentation{
+    display: none;
+    visibility: hidden;
   }
 
-  .map-container {
-    position: relative;
+  .guest-mobile.wrapper {
+    display: block;
+    color: black;
+    padding: 55px 10px 10px 10px;
+    font-weight: 300;
+
+    .add-experience {
+      p {
+        color: grey;
+      }
+      button {
+        border: none;
+        background: white;
+        border-shadow: 0px 0px 3px white, 0px 0px 6px black;
+        box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.2);
+        font-size: 1.5em;
+      }
+
+      .done {
+        background: green;
+        color: white;
+      }
+      button:focus {
+        outline: none;
+      }
+
+    }
+  }
+
+  .no-display {
+    display: none;
+  }
+  .wrapper {
+    padding: 0px;
+    margin: 0px;
+  }
+  .modal-dialog {
     width: 100%;
-    height: 600px;
-    padding: 0px 4%;
-    top: 25px;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    .modal-content {
+      height: 100%;
+    }
+  }
+  .map-side-menu-content:hover{
+    // background: transparent;
+  }
+  .mobile-menu-container {
+    display: block;
+    position: fixed;
+    top: 51px;
+    width: 100%;
+    background: black;
+    padding: 0px;
+    margin: 0px;
+
+    .map-side-menu-content {
+      line-height: 4em;
+    }
+  }
+  .no-padding {
+    padding: 0px;
+  }
+
+  .mobile-tapbar-container {
+    z-index: 5;
+    .container {
+      margin: 0px;
+      padding: 0px;
+      width: 100%;
+    }
+
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background: black;
+    line-height: 4em;
+    // color: white;
+    // font-size: 2em;
+
+    .dropdown-menu.dropdown-menu-right {
+      margin-right: 14%;
+
+      li {
+        padding: 12px 5px;;
+        line-height: 1em;
+        color: grey;
+        font-weight: 100;
+        height: auto;
+      }
+      li:hover, li:visited {
+        background: whitesmoke;
+      }
+    }
+  }
+
+  .owl-controls {
+    position: absolute;
+    top: 50px;
+    left: 85px;
+
+    .owl-prev {
+      position: absolute;
+      left: -85px;
+    }
+
+    .owl-next {
+      position: absolute;
+      left: 131px;
+    }
+  }
+
+  .map-side-menu-container {
+    display: none;
+  }
+  .map-container {
+    z-index: 1;
+    top: 111px;
+    left: 0px;
+    width: 100%;
+    height: 75%;
+
+    #search-bar {
+      display: none;
+    }
+    // position: relative;
+    // width: 100%;
+    // height: 600px;
+    // padding: 0px 4%;
+    // top: 25px;
 
     .map-bottom-btn {
-      left: 4%;
       bottom: 0%;
       box-shadow: none;
+      position: absolute;
+      left: 0px;
+      width: 100%;
+      border-radius: 0px;
     }
 
-    #map-interaction {
-      top: 0px;
-      left: 4%;
-      right: 4%;
-      margin: 0pc;
+    // #map-interaction {
+    //   top: 0px;
+    //   left: 4%;
+    //   right: 4%;
+    //   margin: 0pc;
 
-      #search-bar{
-        display: none;
-      }
+    //   #search-bar{
+    //     display: none;
+    //   }
 
-      #user-choices{
-        width: 230px;
+    //   #user-choices{
+    //     width: 230px;
 
-        label {
-          margin-left: 0px;
-        }
-      }
+    //     label {
+    //       margin-left: 0px;
+    //     }
+    //   }
 
-    }
+    // }
 
     .gmnoprint {
       display: none;
@@ -365,35 +653,41 @@ html, body {
   }
 
   .sidebar {
-    position: relative;
+    z-index: 2;
+    background: #F0F1F5;
+    top: 111px;
+    left: 0px;
     width: 100%;
-    top: 0;
-    bottom: 0;
-    margin-top: 45px;
 
-    .selection-content {
-      overflow: visible;
-      margin: 0px;
-
-      ul#draggablePanelList {
-        margin-right: 0px;
+      .selection-title {
+        display: none;
       }
-    }
+
+      .selection-content{
+        margin:0px;
+
+        #draggablePanelList {
+          margin: 0px;
+        }
+      }
+    // position: relative;
+    // width: 100%;
+    // top: 0;
+    // bottom: 0;
+    // margin-top: 45px;
+
+    // .selection-content {
+    //   overflow: visible;
+    //   margin: 0px;
+
+    //   ul.experience-block-container {
+    //     margin-right: 0px;
+    //   }
+    // }
   }
 
   html, body {
     overflow: initial;
-  }
-
-
-  .nav-footer {
-    position: relative;
-    border-top: none;
-    margin: 15px auto;
-
-    .vertically-center > table {
-      width: 100%;
-    }
   }
 }
 
