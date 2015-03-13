@@ -33,7 +33,10 @@ function ellipseExperienceBlock() {
 function makeTableRowlinkActionnable() {
   $("tr[data-link]").click(function() {
     window.location = $(this).data("link");
-  })
+  });
+  $("li[data-link]").click(function() {
+    window.location = $(this).data("link");
+  });
 }
 
 function placeHelpButton() {

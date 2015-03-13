@@ -223,10 +223,24 @@
           <i class="fa fa-location-arrow map-menu-item"></i>
         </div>
       </div>
-      <div class="col-xs-4 no-padding">
-        <div  id= "other-selection" class="tapbar-choices text-center map-side-menu-content">
+      <div class="col-xs-4 no-padding dropup">
+        <div  id= "other-selection" class="text-center map-side-menu-content dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
           <i class="fa fa-plus map-menu-item"></i>
         </div>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+           <!-- Dropdown menu links -->
+           <li class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
+               J'ai besoin de conseils!
+           </li>
+           <% if @trip.query && @trip.query.downcase.match('maroc') %>
+             <li class="map-side-menu-content" data-link="<%= providers_trip_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" >
+                   <%= t('show_seeproviders') %>
+             </li>
+           <% end %>
+           <li class="map-side-menu-content" data-link="<%= summarize_trip_path(@trip) %>", onclick="ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');">
+               J'ai fini! Let's go!
+           </li>
+         </ul>
       </div>
     </div>
   </div>

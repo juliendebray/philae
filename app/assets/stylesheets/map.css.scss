@@ -463,6 +463,9 @@ i#ib-remove-trip-exp:hover {
     padding: 0px;
     margin: 0px;
   }
+  .map-side-menu-content:hover{
+    background: black;
+  }
   .mobile-menu-container {
     display: block;
     position: fixed;
@@ -497,8 +500,38 @@ i#ib-remove-trip-exp:hover {
     line-height: 4em;
     // color: white;
     // font-size: 2em;
+
+    .dropdown-menu.dropdown-menu-right {
+      margin-right: 14%;
+
+      li {
+        padding: 12px 5px;;
+        line-height: 1em;
+        color: grey;
+        font-weight: 100;
+        height: auto;
+      }
+      li:hover, li:visited {
+        background: whitesmoke;
+      }
+    }
   }
 
+  .owl-controls {
+    position: absolute;
+    top: 50px;
+    left: 85px;
+
+    .owl-prev {
+      position: absolute;
+      left: -85px;
+    }
+
+    .owl-next {
+      position: absolute;
+      left: 131px;
+    }
+  }
 
   .map-side-menu-container {
     display: none;

@@ -38,6 +38,10 @@ $font-family-sans-serif: 'Roboto';
 
 // General customized styles
 
+.btn, input, button, .modal-content, ul.dropdown-menu {
+    border-radius: 0px;
+}
+
 .class-flash{
   position: absolute;
   width: 40%;
