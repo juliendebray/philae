@@ -9,26 +9,70 @@
     <b>.</b>
   </div>
 </div> -->
-<div class="mobile-menu-container container">
-  <div class="row">
-    <div class="col-xs-4 no-padding">
-      <div id="all-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
-        <i class="fa fa-star map-menu-item"></i>
+<% unless @guest_user %>
+  <div class="mobile-menu-container container">
+    <div class="row">
+      <div class="col-xs-4 no-padding">
+        <div id="all-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
+          <i class="fa fa-star map-menu-item"></i>
+        </div>
       </div>
-    </div>
-    <div class="col-xs-4 no-padding">
-      <div id="user-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
-        <i class="fa fa-map-marker map-menu-item"></i>
+      <div class="col-xs-4 no-padding">
+        <div id="user-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
+          <i class="fa fa-map-marker map-menu-item"></i>
+        </div>
       </div>
-    </div>
-    <div class="col-xs-4 no-padding">
-      <div id="guests-comments" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
-        <i class="fa fa-comments map-menu-item"></i>
+      <div class="col-xs-4 no-padding">
+        <div id="guests-comments" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
+          <i class="fa fa-comments map-menu-item"></i>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="wrapper">
+<% else %>
+  <div class="guest-mobile wrapper">
+    <div class="intro text-center">
+      <strong>Bienvenue sur Explorizer</strong> <br>
+      <ul class="list-unstyled text-left">
+        <li>
+          <strong><%= @trip.user.name || @trip.user.email || 'Un ami' %></strong> te demande de l'aide pour son prochain voyage !
+        </li>
+        <li>
+          Sa destination : <strong><%= @trip.title || @trip.query %></strong>
+        </li>
+        <li>
+          Donne - lui tes <strong>3</strong> meilleurs bons plans !
+        </li>
+      </ul>
+    </div>
+    <div class="vertical-spacer-xs"></div>
+    <div class="add-experience text-center">
+      <p><i>Appuie sur les bouttons pour donner tes conseils</i></p>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4 text-center">
+            <button id="1" class="btn btn-lg btn-default todo" data-toggle="modal" data-target="#myModalGuest"><i class="fa fa-plus"></i></button>
+          </div>
+          <div class="col-xs-4 text-center">
+            <button id="2" class="btn btn-lg btn-default todo" data-toggle="modal" data-target="#myModalGuest"><i class="fa fa-plus"></i></button>
+          </div>
+          <div class="col-xs-4 text-center">
+            <button id="3" class="btn btn-lg btn-default todo" data-toggle="modal" data-target="#myModalGuest"><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vertical-spacer"></div>
+    <div id="save-guest" class="button-action text-center">
+      <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
+      <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-info btn-block", disabled: true, id: 'guest-submit-button') %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+<div class="wrapper <%= 'no-display' if @guest_user %>">
   <div class="map-container">
     <div class="overlay">
       <div class="overlay-loading">
@@ -210,41 +254,44 @@
     </div>
   <% end %>
 </div>
-<div class="mobile-tapbar-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-4 no-padding">
-        <div id= "list-selection" class="tapbar-choices text-center map-side-menu-content mobile-selection">
-          <i class="fa fa-list map-menu-item"></i>
+
+<% unless @guest_user %>
+  <div class="mobile-tapbar-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4 no-padding">
+          <div id= "list-selection" class="tapbar-choices text-center map-side-menu-content mobile-selection">
+            <i class="fa fa-list map-menu-item"></i>
+          </div>
         </div>
-      </div>
-      <div class="col-xs-4 no-padding">
-        <div id= "map-selection" class="tapbar-choices text-center map-side-menu-content">
-          <i class="fa fa-location-arrow map-menu-item"></i>
+        <div class="col-xs-4 no-padding">
+          <div id= "map-selection" class="tapbar-choices text-center map-side-menu-content">
+            <i class="fa fa-location-arrow map-menu-item"></i>
+          </div>
         </div>
-      </div>
-      <div class="col-xs-4 no-padding dropup">
-        <div  id= "other-selection" class="text-center map-side-menu-content dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          <i class="fa fa-plus map-menu-item"></i>
-        </div>
-        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-           <!-- Dropdown menu links -->
-           <li class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
-               J'ai besoin de conseils!
-           </li>
-           <% if @trip.query && @trip.query.downcase.match('maroc') %>
-             <li class="map-side-menu-content" data-link="<%= providers_trip_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" >
-                   <%= t('show_seeproviders') %>
+        <div class="col-xs-4 no-padding dropup">
+          <div  id= "other-selection" class="text-center map-side-menu-content dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-plus map-menu-item"></i>
+          </div>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+             <!-- Dropdown menu links -->
+             <li class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
+                 J'ai besoin de conseils!
              </li>
-           <% end %>
-           <li class="map-side-menu-content" data-link="<%= summarize_trip_path(@trip) %>", onclick="ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');">
-               J'ai fini! Let's go!
-           </li>
-         </ul>
+             <% if @trip.query && @trip.query.downcase.match('maroc') %>
+               <li class="map-side-menu-content" data-link="<%= providers_trip_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" >
+                     <%= t('show_seeproviders') %>
+               </li>
+             <% end %>
+             <li class="map-side-menu-content" data-link="<%= summarize_trip_path(@trip) %>", onclick="ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');">
+                 J'ai fini! Let's go!
+             </li>
+           </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <!-- Experience Modal to display -->
 <div class="modal fade" id="myExperienceModal" tabindex="-1" role="dialog" aria-labelledby="myExperienceModalLabel" aria-hidden="true">
