@@ -103,7 +103,16 @@
     <button type="button" class="btn btn-default map-bottom-btn" data-toggle="modal" data-target="#myModalGuest">
       <small><%= t('show_addcomment') %></small>
     </button>
+
+    <button type="button" class="btn btn-default map-bottom-btn-tips" id="set-orders">
+      <small><%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
+      <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked')") %>
+      <% end %>
+      </small>
+    </button>
+
     <% end %>
+
   </div>
   <div class="sidebar">
     <div class="selection-header text-center">
