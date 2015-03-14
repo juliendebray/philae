@@ -64,7 +64,11 @@ html, body {
   }
 }
 
-.guest-mobile {
+.mobile-tapbar-container {
+  display: none;
+}
+
+.guest-mobile.wrapper {
   display: none;
 }
 .mobile-menu-container {
@@ -297,7 +301,7 @@ html, body {
   width: 20%;
   background: #3B5998;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 54px;
 
   table {
