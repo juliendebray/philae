@@ -19,7 +19,7 @@
       </div>
       <div class="col-xs-4 no-padding">
         <div id="user-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
-          <i class="fa fa-map-marker map-menu-item"></i>
+          <i class="fa fa-check map-menu-item"></i>
         </div>
       </div>
       <div class="col-xs-4 no-padding">
@@ -32,22 +32,28 @@
 <% else %>
   <div class="guest-mobile wrapper">
     <div class="intro text-center">
-      <strong>Bienvenue sur Explorizer</strong> <br>
+      <p><i><% if locale == :en %>
+            <%= link_to '(En français?)', url_for(:locale => 'fr') %>
+          <% else %>
+            <%= link_to '(In English?)', url_for(:locale => 'en') %>
+          <% end -%></i>
+      </p>
+      <strong><%= t('show_guest_user_welcome') %></strong> <br><br>
       <ul class="list-unstyled text-left">
         <li>
-          <strong><%= @trip.user.name || @trip.user.email || 'Un ami' %></strong> te demande de l'aide pour son prochain voyage !
+          <strong><%= @trip.user.name || @trip.user.email || 'Un ami' %></strong><%= t('show_guest_user_friend_needs_tips') %>
         </li>
         <li>
-          Sa destination : <strong><%= @trip.title || @trip.query %></strong>
+          <%= t('show_guest_user_destination') %><strong><%= @trip.title || @trip.query %></strong>
         </li>
         <li>
-          Donne - lui tes <strong>3</strong> meilleurs bons plans !
+          <%= t('show_guest_user_incite_tips1') %><strong>3</strong> <%= t('show_guest_user_incite_tips2') %>
         </li>
       </ul>
     </div>
     <div class="vertical-spacer-xs"></div>
     <div class="add-experience text-center">
-      <p><i>Appuie sur les bouttons pour donner tes conseils</i></p>
+      <p><i><%= t('show_guest_user_click_buttons') %></i></p><br>
       <div class="container">
         <div class="row">
           <div class="col-xs-4 text-center">
@@ -62,7 +68,7 @@
         </div>
       </div>
     </div>
-    <div class="vertical-spacer"></div>
+    <div class="vertical-spacer-sm"></div>
     <div id="save-guest" class="button-action text-center">
       <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
       <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-info btn-block", disabled: true, id: 'guest-submit-button') %>
@@ -100,7 +106,7 @@
     <% else %>
     <!-- Guest Modal to let him add his own experience -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-default map-bottom-btn" data-toggle="modal" data-target="#myModalGuest">
+    <button type="button" class="btn btn-default map-bottom-up" data-toggle="modal" data-target="#myModalGuest">
       <small><%= t('show_addcomment') %></small>
     </button>
 
@@ -117,17 +123,9 @@
   <div class="sidebar">
     <div class="selection-header text-center">
       <% if @guest_user %>
-        <table>
-          <tbody>
-              <td>
-                <div id="set-orders" class="button-action text-center">
-                  <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
-                  <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-info btn-block") %>
-                  <% end %>
-                </div>
-              </td>
-          </tbody>
-        </table>
+        <div class="selection-title text-center">
+          <%= t('show_guest_user_sidebar_title')%><%= @trip.user.name || @trip.user.email || 'Un ami' %>
+        </div>
       <% end %>
       <div class="selection-title text-center">
         <span id="sidebar-title-content"></span> <i class="fa fa-angle-down"></i>
@@ -179,7 +177,7 @@
           </tr>
           <tr id="user-experiences" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
             <td class="map-menu-item text-center">
-              <i class="fa fa-map-marker"></i>
+              <i class="fa fa-check"></i>
             </td>
             <td class="item-show pull-left" >
               <%= t('show_myselection') %>
@@ -200,10 +198,10 @@
           </tr>
           <tr class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
             <td class="map-menu-item text-center">
-              <i class="fa fa-thumbs-o-up"></i>
+              <i class="fa fa-users"></i>
             </td>
             <td class="item-show pull-left">
-              J'ai besoin de conseils!
+              <%= t('show_need_tips')%>
             </td>
           </tr>
           <% if @trip.query && @trip.query.downcase.match('maroc') %>
@@ -221,7 +219,7 @@
               <i class="fa fa-road"></i>
             </td>
             <td class="item-show pull-left">
-              J'ai fini! Let's go!
+              <%= t('show_summary')%>
             </td>
           </tr>
           <tr class="row-separator">
@@ -234,7 +232,7 @@
               <i class="fa fa-question"></i>
             </td>
             <td class="item-show pull-left" >
-              Aide
+              <%= t('show_help')%>
             </td>
           </tr>
       </table>
@@ -275,7 +273,7 @@
         </div>
         <div class="col-xs-4 no-padding">
           <div id= "map-selection" class="tapbar-choices text-center map-side-menu-content">
-            <i class="fa fa-location-arrow map-menu-item"></i>
+            <i class="fa fa-globe map-menu-item"></i>
           </div>
         </div>
         <div class="col-xs-4 no-padding dropup">
@@ -285,7 +283,7 @@
           <ul class="dropdown-menu dropdown-menu-right" role="menu">
              <!-- Dropdown menu links -->
              <li class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
-                 J'ai besoin de conseils!
+                 <%= t('show_need_tips') %>
              </li>
              <% if @trip.query && @trip.query.downcase.match('maroc') %>
                <li class="map-side-menu-content" data-link="<%= providers_trip_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" >
@@ -293,7 +291,7 @@
                </li>
              <% end %>
              <li class="map-side-menu-content" data-link="<%= summarize_trip_path(@trip) %>", onclick="ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');">
-                 J'ai fini! Let's go!
+                 <%= t('show_summary') %>
              </li>
            </ul>
         </div>
