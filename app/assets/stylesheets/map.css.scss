@@ -131,15 +131,28 @@ html, body {
   }
 
   .map-bottom-btn {
-  bottom: 5px;
-  position: absolute;
-  left: 5px;
-  box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.3);
+    bottom: 5px;
+    position: absolute;
+    left: 5px;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.3);
 
     small {
       font-size: 15px;
-      font-weight: 300;
+      font-weight: 400;
     }
+  }
+
+  .map-bottom-up {
+    top: 45px;
+    left: 40px;
+    position: absolute;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.3);
+    border-color: red;
+
+      small {
+        font-size: 15px;
+        font-weight: 400;
+      }
   }
 
   .map-bottom-btn-tips {
@@ -151,7 +164,13 @@ html, body {
 
       small {
         font-size: 15px;
-        font-weight: 300;
+        font-weight: 400;
+      }
+
+      input {
+        border: none;
+        background-color: #FF5A5F;
+        color: white;
       }
   }
 }
@@ -276,7 +295,7 @@ html, body {
 .map-side-menu-container {
   bottom: 0px;
   width: 20%;
-  background: black;
+  background: #3B5998;
   left: 0;
   position: absolute;
   top: 54px;
@@ -537,7 +556,7 @@ i#ib-remove-trip-exp:hover {
     position: fixed;
     top: 51px;
     width: 100%;
-    background: black;
+    background: #3B5998;
     padding: 0px;
     margin: 0px;
 
@@ -562,7 +581,7 @@ i#ib-remove-trip-exp:hover {
     bottom: 0px;
     left: 0px;
     width: 100%;
-    background: black;
+    background: #3B5998;
     line-height: 4em;
     // color: white;
     // font-size: 2em;
@@ -619,6 +638,15 @@ i#ib-remove-trip-exp:hover {
     // top: 25px;
 
     .map-bottom-btn {
+      bottom: 0%;
+      box-shadow: none;
+      position: absolute;
+      left: 0px;
+      width: 100%;
+      border-radius: 0px;
+    }
+
+    .map-bottom-up {
       bottom: 0%;
       box-shadow: none;
       position: absolute;
