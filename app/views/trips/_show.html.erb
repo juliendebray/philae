@@ -14,17 +14,17 @@
     <div class="row">
       <div class="col-xs-4 no-padding">
         <div id="all-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
-          <i class="fa fa-star map-menu-item"></i>
-        </div>
-      </div>
-      <div class="col-xs-4 no-padding">
-        <div id="user-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
-          <i class="fa fa-check map-menu-item"></i>
+          <i class="map-menu-item-top"><%= t('show_bestexp_mobile')%></i>
         </div>
       </div>
       <div class="col-xs-4 no-padding">
         <div id="guests-comments" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
-          <i class="fa fa-comments map-menu-item"></i>
+          <i class="map-menu-item-top"><%= t('show_friendstips_mobile')%></i>
+        </div>
+      </div>
+      <div class="col-xs-4 no-padding">
+        <div id="user-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
+          <i class="map-menu-item-top"><%= t('show_myselection_mobile')%></i>
         </div>
       </div>
     </div>
@@ -268,17 +268,17 @@
       <div class="row">
         <div class="col-xs-4 no-padding">
           <div id= "list-selection" class="tapbar-choices text-center map-side-menu-content mobile-selection">
-            <i class="fa fa-list map-menu-item"></i>
+            <i class="fa fa-list map-menu-item-bottom"></i>
           </div>
         </div>
         <div class="col-xs-4 no-padding">
           <div id= "map-selection" class="tapbar-choices text-center map-side-menu-content">
-            <i class="fa fa-globe map-menu-item"></i>
+            <i class="fa fa-globe map-menu-item-bottom"></i>
           </div>
         </div>
         <div class="col-xs-4 no-padding dropup">
           <div  id= "other-selection" class="text-center map-side-menu-content dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-plus map-menu-item"></i>
+            <i class="fa fa-plus map-menu-item-bottom"></i>
           </div>
           <ul class="dropdown-menu dropdown-menu-right" role="menu">
              <!-- Dropdown menu links -->
