@@ -534,7 +534,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
 
   if (id == 'user-experiences') {
     // Set map with booked experiences;
-    $('#sidebar-title-content').html('<i class="fa fa-check"></i> Selection');
+    $('#sidebar-title-content').html('<i class="fa fa-check"></i> My selection');
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
       $('.overlay').css('display','none');

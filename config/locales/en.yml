@@ -178,6 +178,10 @@ en:
   show_bestexp: "Top 20 by Explorizers"
   show_myselection: "My selection"
   show_friendstips: "My friends' tips"
+  show_bestexp_mobile: "Best of"
+  show_myselection_mobile: "My trip"
+  show_friendstips_mobile: "Tips"
+
   show_addmyexp: "Add an experience"
   show_addcomment: "Click on the map or HERE to add a tip"
   show_selectedexp: "Selection"
