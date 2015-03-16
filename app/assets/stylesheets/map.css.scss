@@ -19,6 +19,16 @@ html, body {
   overflow: hidden;
 }
 
+#link-to-detail {
+  background: transparent;
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  bottom: 87px;
+  left: 55px;
+  right: 55px;
+  z-index: 1;
+}
 
 #ask-friends-mobile-btn {
   display: none;
@@ -450,7 +460,7 @@ i#ib-remove-trip-exp:hover {
     opacity: 0;
   }
 
-  #owl-experiences:hover{
+  #experience-infowindow:hover {
     .owl-buttons div {
     opacity: 0.5;
     }
