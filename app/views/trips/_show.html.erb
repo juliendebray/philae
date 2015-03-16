@@ -88,7 +88,11 @@
         <b>.</b>
       </div>
     </div>
-
+    <% unless @guest_user %>
+      <%= link_to trip_ask_your_friends_path(@trip), class:"btn btn-info", id:"ask-friends-mobile-btn" do %>
+        <small>Demander des conseils à mes amis!</small>
+      <% end %>
+      <% end %>
     <div id="map">
     </div>
     <div id='map-interaction'>
@@ -276,24 +280,12 @@
             <i class="fa fa-globe map-menu-item-bottom"></i>
           </div>
         </div>
-        <div class="col-xs-4 no-padding dropup">
-          <div  id= "other-selection" class="text-center map-side-menu-content dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-plus map-menu-item-bottom"></i>
-          </div>
-          <ul class="dropdown-menu dropdown-menu-right" role="menu">
-             <!-- Dropdown menu links -->
-             <li class="map-side-menu-content" data-link="<%= trip_ask_your_friends_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');">
-                 <%= t('show_need_tips') %>
-             </li>
-             <% if @trip.query && @trip.query.downcase.match('maroc') %>
-               <li class="map-side-menu-content" data-link="<%= providers_trip_path(@trip) %>", onclick= "ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" >
-                     <%= t('show_seeproviders') %>
-               </li>
-             <% end %>
-             <li class="map-side-menu-content" data-link="<%= summarize_trip_path(@trip) %>", onclick="ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');">
-                 <%= t('show_summary') %>
-             </li>
-           </ul>
+        <div class="col-xs-4 no-padding">
+          <%= link_to summarize_trip_path(@trip), onclick:"ga('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" do %>
+            <div  id= "other-selection" class="text-center map-side-menu-content">
+              <i class="fa fa-external-link map-menu-item-bottom"></i>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
