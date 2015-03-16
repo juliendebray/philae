@@ -75,8 +75,20 @@ padding-bottom: 20px;
   #sign-form {
     width: 95%;
   }
-  .btn {
+  #fb-signup {
+    padding: 2px 2px;
+    text-align: center;
+    margin-top: 10px;
+    border-bottom: 1px dotted lightgrey;
+    padding-bottom: 20px;
+    i {
+      display: none;
+    }
+    .btn-social.btn-lg {
     font-size: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+   }
   }
 }
 
