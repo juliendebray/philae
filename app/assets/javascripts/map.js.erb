@@ -147,7 +147,7 @@ function openInfowindowOnClick(data, marker, carrouselRequired) {
     if (carrouselRequired) {
       setCarrousel();
     }
-    setTimeout(function(){ closeInfoboxWhenMouseout(ib); }, 1000);
+    setTimeout(function(){ closeInfoboxWhenMouseout(ib); }, 300);
     // google.maps.event.addListener(ib, "mouseover", function(e) {
     //   console.log('test');
     //   ib.close();
@@ -249,7 +249,7 @@ function makeExperiencesSortable() {
 
   // console.log('exp sort');
 
-  if ($('tr#user-experiences').hasClass('menu-selected')) {
+  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
 
     // console.log('exp sort dans user exp');
 
@@ -317,7 +317,7 @@ function drawPolyline() {
 
   removePolyline();
 
-  if ($('#user-experiences').hasClass('menu-selected')){
+  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
 
     drawPolylineOnce();
     // var flightPlanCoordinates = [];
@@ -376,23 +376,34 @@ function storeOrder() {
   for (var i = 0; i < $('.panel.panel-info').length; i++){
     order[i+1] =  $('.panel.panel-info')[i].id;
   }
-  $('#order').attr('value', JSON.stringify(order));
+  // $('#order').attr('value', JSON.stringify(order));
+
   return {"order":order};
+
 }
 
 function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
-  if ($('#user-experiences').hasClass('menu-selected')) {
+
+
+  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
+
+
     $('.panel-heading').on('mouseup', function() {
+
+
       $('.selection-content').on('mouseleave',function() {
+
+        console.log('mous leave');
         $(this).unbind('mouseleave');
         if (requestingMarkers == false) {
+
+
           requestingMarkers = true;
           $.ajax({
             type: "POST",
             url: "/trips/"+trip_id+"/update_order",
             data: storeOrder(),
           }).done(function() {
-            // console.log('done');
             requestingMarkers = false;
           });
         }
@@ -402,7 +413,7 @@ function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
 }
 
 function setPolylineDrawingWhenDraggingExperience() {
-  if ($('#user-experiences').hasClass('menu-selected')){
+  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
     $('.panel-heading').on('mouseup', function() {
       $(this).on('mouseleave',function() {
         $(this).unbind('mouseleave');

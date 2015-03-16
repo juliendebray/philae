@@ -4,7 +4,7 @@ $( document ).ready(function() {
     ibOpened = false;
   }
   $('li#<%= @trip_experience.id %>').remove();
-  if ($('#user-experiences').hasClass('menu-selected')) {
+  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
     var map = handler.getMap();
     setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
       requestingMarkers = r;
