@@ -1,10 +1,10 @@
 <%= bootstrap_form_for([@trip, @trip.trip_comments.new], remote: true) do |f| %>
   <div class="actions">
-    <%= f.text_area :description, hide_label: true, placeholder: t('form_guest_description')  %>
-    <%= f.text_field :address, hide_label: true, placeholder: t('form_guest_address') %>
+    <%= f.text_area :description, hide_label: true, placeholder: t('form_guest_description'),required: true  %>
+    <%= f.text_field :address, hide_label: true, placeholder: t('form_guest_address'), required: true %>
     <%= f.hidden_field :latitude %>
     <%= f.hidden_field :longitude %>
-    <%= f.text_field :name, hide_label: true, placeholder: t('form_guest_name') %>
+    <%= f.text_field :name, hide_label: true, placeholder: t('form_guest_name'), required: true %>
 
     <%= f.submit t('form_guest_share'), class: 'btn btn-info' %>
   </div>
