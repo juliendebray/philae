@@ -182,7 +182,7 @@ en:
   show_myselection_mobile: "My trip"
   show_friendstips_mobile: "Tips"
 
-  show_addmyexp: "Add an experience"
+  show_addmyexp: "Add an experience to your trip"
   show_addcomment: "Click on the map or HERE to add a tip"
   show_selectedexp: "Selection"
   show_save: "Save my selection"
