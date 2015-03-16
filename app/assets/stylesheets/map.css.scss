@@ -19,6 +19,11 @@ html, body {
   overflow: hidden;
 }
 
+
+#ask-friends-mobile-btn {
+  display: none;
+}
+
 .overlay {
   height: 100%;
   width: 100%;
@@ -586,6 +591,10 @@ i#ib-remove-trip-exp:hover {
     padding: 0px;
   }
 
+  #ask-friends-mobile-btn {
+    display: block;
+    width: 100%;
+  }
   .mobile-tapbar-container {
     z-index: 5;
     .container {
@@ -603,7 +612,9 @@ i#ib-remove-trip-exp:hover {
     line-height: 4em;
     // color: white;
     // font-size: 2em;
-
+    a i {
+      color: white;
+    }
     .dropdown-menu.dropdown-menu-right {
       margin-right: 14%;
 
@@ -656,12 +667,13 @@ i#ib-remove-trip-exp:hover {
     // top: 25px;
 
     .map-bottom-btn {
-      bottom: 0%;
-      box-shadow: none;
-      position: absolute;
-      left: 0px;
-      width: 100%;
-      border-radius: 0px;
+      display: none;
+      // bottom: 0%;
+      // box-shadow: none;
+      // position: absolute;
+      // left: 0px;
+      // width: 100%;
+      // border-radius: 0px;
     }
 
     .map-bottom-up {
