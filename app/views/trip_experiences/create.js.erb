@@ -3,7 +3,7 @@ $( document ).ready(function() {
     ib.close();
     ibOpened = false;
   }
-  if ($('#user-experiences').hasClass('menu-selected')){
+  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
     $('#draggablePanelList').append(
       '<%= j render("/trip_experiences/experience_block.html.erb",
       {trip_exp: @trip_experience, guest_user: false} ) %>'
