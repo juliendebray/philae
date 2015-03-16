@@ -143,9 +143,16 @@ function openInfowindowOnClick(data, marker, carrouselRequired) {
   ib.open(map, marker);
   ibOpened = true;
   google.maps.event.addListener(ib, 'domready', function(){
+
     if (carrouselRequired) {
       setCarrousel();
     }
+    setTimeout(function(){ closeInfoboxWhenMouseout(ib); }, 1000);
+    // google.maps.event.addListener(ib, "mouseover", function(e) {
+    //   console.log('test');
+    //   ib.close();
+    //   ibOpened = false;
+    // });
     // console.log('dom');
     mapPanToContainInfoBox(ib, 94, -17.994751360066402, -0.995, 0.9909910672);
     initalizeLinkWithRemoteTrue();
@@ -201,8 +208,14 @@ function setListenerOnMarker(markers, data, index, carrouselRequired) {
   markers[index].serviceObject.set('experience_id',data[index].experience_id);
 
   google.maps.event.clearListeners(markers[index].serviceObject);
-  google.maps.event.addListener(markers[index].serviceObject, 'click', function(event) {
-    openInfowindowOnClick(data, this, carrouselRequired);
+  google.maps.event.addListener(markers[index].serviceObject, 'mouseover', function(event) {
+    if (ibOpened)  {
+      return
+    } else {
+      // console.log('before open ib on click');
+      openInfowindowOnClick(data, this, carrouselRequired);
+      // closeInfoboxWhenMouseout(this);
+    }
   });
 }
 
@@ -514,13 +527,13 @@ function displayMobileInterface(id) {
     // zIndex = $('.map-container').css('z-index');
     $('.sidebar').css('z-index', parseInt(zIndex) + 1);
     $('.map-container').css('z-index', parseInt(zIndex) - 1);
-    console.log(zIndex);
+    // console.log(zIndex);
     // zIndex = 2;
   } else if (id == 'map-selection') {
     // zIndex = $('.sidebar').css('z-index');
     $('.sidebar').css('z-index', parseInt(zIndex) - 1);
     $('.map-container').css('z-index', parseInt(zIndex) + 1)
-    console.log(zIndex);
+    // console.log(zIndex);
     // zIndex = 2;
   } else {
     alert('Une erreur est survenue... merci de bien vouloir recharger la page ;)');
@@ -611,7 +624,9 @@ function buildMapForUser(mapOptions, trip_id) {
 
     initializeMapSearchBar('pac-input');
     showModalByClikingOnMap(map, '#myModal', '#experience_address', '#experience_latitude', '#experience_longitude');
+    closeInfoboxWhenDragging(map);
     // Reset modal process
+
     $('#myModal').on('hidden.bs.modal', function(){
       removeMarkersAddedManually();
       $('#experience_name').val('');
@@ -620,6 +635,29 @@ function buildMapForUser(mapOptions, trip_id) {
     });
   });
 };
+
+function closeInfoboxWhenDragging(map) {
+  google.maps.event.addListener(map, "dragstart", function(e) {
+    if (ibOpened) {
+      ib.close();
+      ibOpened = false;
+    }
+  });
+}
+
+function closeInfoboxWhenMouseout(ib) {
+
+  $('.infobox-container').on('mouseleave', function() {
+  // console.log('eqedsqdsq');
+  ib.close();
+  ibOpened= false;
+  });
+  // google.maps.event.addListener(ib, "mouseout", function(e) {
+  //   console.log('test');
+  //   ib.close();
+  //   ibOpened = false;
+  // });
+}
 
 function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field_id, longitude_field_id) {
   // Show modal with address field prefilled
