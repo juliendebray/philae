@@ -107,6 +107,12 @@ html, body {
     height: 100%;
   }
 
+  #ask-friends-mobile-btn {
+    small {
+      font-size: 15px;
+    }
+  }
+
   #map-interaction {
     position: absolute;
     top: 6px;
