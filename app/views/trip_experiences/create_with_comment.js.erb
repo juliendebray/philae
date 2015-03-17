@@ -20,7 +20,7 @@ $( document ).ready(function() {
     scrollToElement($('.selection-content'), $('.panel-info').last());
     setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
     setPolylineDrawingWhenDraggingExperience();
-  } else if ($('#guests-comments').hasClass('menu-selected')) {
+  } else if ($('tr#guests-comments').hasClass('menu-selected') || $('div#guests-comments').hasClass('menu-selected')) {
     var map = handler.getMap();
     setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
       requestingMarkers = r;
