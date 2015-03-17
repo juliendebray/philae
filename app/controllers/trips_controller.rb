@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
-  before_action :authenticate_user!, except: [:create, :start, :show_guest_user, :notification_for_sharing_email, :providers, :summarize]
+  before_action :authenticate_user!, except: [:update_order, :create, :start, :show_guest_user, :notification_for_sharing_email, :providers]
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email]
 
   def create
@@ -53,14 +53,14 @@ class TripsController < ApplicationController
   def show
     @guest_user = false
     @trip = current_user.trips.find(params[:id])
-    set_orders_if_nil!(@trip.trip_experiences)
+    # set_orders_if_nil!(@trip.trip_experiences)
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
       te.order
     end
   end
 
   def summarize
-    set_orders_if_nil!(@trip.trip_experiences)
+    # set_orders_if_nil!(@trip.trip_experiences)
     @trip_exp_ordered = @trip.trip_experiences.sort_by do |te|
       te.order
     end
@@ -71,7 +71,7 @@ class TripsController < ApplicationController
       @guest_user = true
       # trip_experiences_unordered = @trip.trip_experiences
       # set_orders_if_nil!(@trip.trip_experiences)
-      trip_experiences =  set_orders_if_nil!(@trip.trip_experiences)
+      trip_experiences =  @trip.trip_experiences
       trip_exp_tab_all = trip_experiences.sort_by do |te|
         te.order
       end
@@ -130,12 +130,12 @@ class TripsController < ApplicationController
     @guest_user = true if @trip.token == params[:token]
   end
 
-  def set_orders_if_nil!(trip_experiences)
-    trip_experiences.map do |trip_exp|
-      count = trip_experiences.reject {|te| te.order.nil?}.size
-      trip_exp.order = count + 1 if trip_exp.order.nil?
-      trip_exp.save
-    end
-    return trip_experiences
-  end
+  # def set_orders_if_nil!(trip_experiences)
+  #   trip_experiences.map do |trip_exp|
+  #     count = trip_experiences.reject {|te| te.order.nil?}.size
+  #     trip_exp.order = count + 1 if trip_exp.order.nil?
+  #     trip_exp.save
+  #   end
+  #   return trip_experiences
+  # end
 end

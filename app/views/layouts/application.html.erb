@@ -6,16 +6,13 @@
     </title>
     <meta name="description" content="<%= yield_with_default(:description,"Explorizers propose une nouvelle façon de voyager, inspirée des conseils de vos amis, pour découvrir et vivre des expériences uniques.")%>" >
     <meta name="p:domain_verify" content="d6d8c001e555d111c1398d6c829b75c0"/>
-
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= yield :navbar_hp_css %>
     <%= yield :map_css %>
-
+    <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
     <% if @trip %>
       <meta property="og:title" content="Le voyage inspiré par ses amis !" />
       <meta property="og:site_name" content="Explorizers" />
@@ -24,9 +21,8 @@
       <meta property="og:image" content="http://philae-floju.s3.amazonaws.com/explorizers_wcl.png" />
       <meta property="og:description" content="Votre ami(e) prépare son voyage sur Explorizers, et l'a posté sur Facebook pour avoir vos conseils. Cliquez sur le lien, visualisez sa carte de voyage et donnez-lui vos meilleurs plans!"/>
     <% end %>
-
-    <%= favicon_link_tag %>
-
+    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=351072325084597&amp;ev=PixelInitialized" /></noscript>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <script>(function() {
       var _fbq = window._fbq || (window._fbq = []);
       if (!_fbq.loaded) {
@@ -42,8 +38,6 @@
     window._fbq = window._fbq || [];
     window._fbq.push(['track', 'PixelInitialized', {}]);
     </script>
-    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=351072325084597&amp;ev=PixelInitialized" /></noscript>
-
   </head>
   <body>
 
