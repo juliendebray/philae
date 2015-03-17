@@ -19,7 +19,7 @@ function ellipseExperienceBlock() {
           if (isTruncated) {
             $( "p", this ).append(orgContent.find('a.readmore').prop('outerHTML'));
           }
-          if (index == length-1) {
+          if (index == length - 1) {
             $('.selection-content').css('visibility', 'visible');
           }
         }
@@ -55,23 +55,13 @@ function mapPanToContainInfoBox(infobox, topOffset, bottomOffset, leftOffset, ri
   var map = handler.getMap();
   var mapZoom = map.getZoom();
   var mapBounds = map.getBounds();
-
-
-  // console.log('bounds dans contain ib:');
-  // console.log(map.getBounds());
-
   var infoBoxCoordinates = latlngToPoint(map, infobox.getPosition(), mapZoom);
   var mapNECoordinates = latlngToPoint(map, mapBounds.getNorthEast(), mapZoom);
   var mapSWCoordinates = latlngToPoint(map, mapBounds.getSouthWest(), mapZoom);
-
   var topDistance = infoBoxCoordinates.y - $('.infoBox').height() - mapNECoordinates.y - topOffset;
   var bottomDistance = infoBoxCoordinates.y - mapSWCoordinates.y - bottomOffset;
   var leftDistance = infoBoxCoordinates.x - ($('.infoBox').width())/2 - mapNECoordinates.x - leftOffset*$('#map').width();
   var rightDistance = infoBoxCoordinates.x + ($('.infoBox').width())/2 - mapSWCoordinates.x - rightOffset*$('#map').width();
-
-
-  // debugger;
-
   if (topDistance  < 0) {
     if (leftDistance < 0) {
       map.panBy(leftDistance, topDistance);
@@ -124,6 +114,7 @@ function setInfoboxOptions(boxText){
   };
   return infoboxOptions;
 }
+
 function openInfowindowOnClick(data, marker, carrouselRequired) {
   var map = handler.getMap();
   var data = data;
@@ -134,26 +125,16 @@ function openInfowindowOnClick(data, marker, carrouselRequired) {
   var boxText = document.createElement("div");
   boxText.setAttribute("class", 'infobox-container');
   boxText.setAttribute("id", marker.id);
-
   boxText.innerHTML = data[marker.id].infobox;
-
   var infoboxOptions = setInfoboxOptions(boxText);
-
   ib = new InfoBox(infoboxOptions);
   ib.open(map, marker);
   ibOpened = true;
   google.maps.event.addListener(ib, 'domready', function(){
-
     if (carrouselRequired) {
       setCarrousel();
     }
     setTimeout(function(){ closeInfoboxWhenMouseout(ib); }, 300);
-    // google.maps.event.addListener(ib, "mouseover", function(e) {
-    //   console.log('test');
-    //   ib.close();
-    //   ibOpened = false;
-    // });
-    // console.log('dom');
     mapPanToContainInfoBox(ib, 94, -17.994751360066402, -0.995, 0.9909910672);
     initalizeLinkWithRemoteTrue();
   });
@@ -165,12 +146,6 @@ function setGuestCommentInfowindow(data) {
   }
   for (var i = 0; i < markers.length; i++) {
     setListenerOnMarker(markers, data, i, false);
-
-    // markers[i].serviceObject.set('id',i);
-    // google.maps.event.clearListeners(markers[i].serviceObject);
-    // google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
-    //   openInfowindowOnClick(data, this, false);
-    // });
   }
 }
 
@@ -180,11 +155,6 @@ function setExperienceInfowindow(data) {
   }
   for (var i = 0; i < markers.length; i++) {
     setListenerOnMarker(markers, data, i, true);
-    // markers[i].serviceObject.set('id',i);
-    // google.maps.event.clearListeners(markers[i].serviceObject);
-    // google.maps.event.addListener(markers[i].serviceObject, 'click', function(event) {
-    //   openInfowindowOnClick(data, this, true);
-    // });
   }
 }
 
@@ -196,7 +166,7 @@ function setAnimationOnMarkers() {
       }
     }
   }).on("mouseleave", function() {
-    for(var i=0; i<markers.length;i++){
+    for(var i=0; i < markers.length;i++) {
       markers[i].serviceObject.setAnimation(null);
     }
   });
@@ -204,17 +174,13 @@ function setAnimationOnMarkers() {
 
 function setListenerOnMarker(markers, data, index, carrouselRequired) {
   markers[index].serviceObject.set('id',index);
-
   markers[index].serviceObject.set('experience_id',data[index].experience_id);
-
   google.maps.event.clearListeners(markers[index].serviceObject);
   google.maps.event.addListener(markers[index].serviceObject, 'mouseover', function(event) {
     if (ibOpened)  {
       return
     } else {
-      // console.log('before open ib on click');
       openInfowindowOnClick(data, this, carrouselRequired);
-      // closeInfoboxWhenMouseout(this);
     }
   });
 }
@@ -245,26 +211,42 @@ function initalizeLinkWithRemoteTrue() {
   });
 }
 
+// function makeExperiencesSortable() {
+//   if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
+//     // Dragable list for trip experiences order
+//     $('#draggablePanelList .panel-heading').css('cursor', 'move')
+//     if ($('#draggablePanelList').hasClass('ui-sortable-disabled')) {
+//       $('#draggablePanelList').sortable('enable');
+//     }
+//     var panelList = $('#draggablePanelList');
+//     panelList.sortable({
+//     // Only make the .panel-heading child elements support dragging.
+//     // Omit this to make the entire <li>...</li> draggable.
+//       handle: '.panel-heading',
+//       update: function() {
+//         $('.panel', panelList).each(function(index, elem) {
+//           var $listItem = $(elem),
+//             newIndex = $listItem.index(); // Persist the new indices.
+//         });
+//       }
+//     });
+//     addBoxShadowEffectWhileDraggingBox();
+//   } else {
+//     if ($('#draggablePanelList').hasClass('ui-sortable')) {
+//       $('#draggablePanelList').sortable('disable');
+//     }
+//   }
+// }
 function makeExperiencesSortable() {
-
-  // console.log('exp sort');
-
-  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
-
-    // console.log('exp sort dans user exp');
-
     // Dragable list for trip experiences order
-    $('#draggablePanelList .panel-heading').css('cursor', 'move')
-    if ($('#draggablePanelList').hasClass('ui-sortable-disabled')) {
+    // console.log('just');
+    // console.log($('#draggablePanelList .panel-heading'));
 
-      // console.log('dans la has class ui-sortable-disble');
-
-      $('#draggablePanelList').sortable('enable');
-    }
+    // console.log('just2');
     var panelList = $('#draggablePanelList');
-
-    // console.log('avant sortable');
-
+    if (panelList.hasClass('ui-sortable-disabled')) {
+      panelList.sortable('enable');
+    }
     panelList.sortable({
     // Only make the .panel-heading child elements support dragging.
     // Omit this to make the entire <li>...</li> draggable.
@@ -276,31 +258,23 @@ function makeExperiencesSortable() {
         });
       }
     });
+    // var panelHeading = $('.panel-heading', panelList);
+    // panelHeading.css('cursor', 'move');
     addBoxShadowEffectWhileDraggingBox();
-  } else {
+}
 
-      // console.log('dns le autre');
-
+function preventExperiencesFromBeingSortable() {
     if ($('#draggablePanelList').hasClass('ui-sortable')) {
-      // $('#draggablePanelList .panel-heading').css('cursor', 'move')
-      // console.log('dns le class ui sort');
       $('#draggablePanelList').sortable('disable');
-      // $('#draggablePanelList').removeClass('ui-sortable')
     }
-  }
 }
 
 function addBoxShadowEffectWhileDraggingBox() {
-
-  // console.log('add shadow effect');
-  // drawPolyline();
-  // Change the border-shadow while dragging
   $('.panel-heading').on('mousedown', function(){
     $(this).parent().parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.5)');
     $(document).on('mouseup', function(){
       $('.panel').css('box-shadow', '1px 1px 1px 1px rgba(0, 0, 0, 0.1)');
       $(this).unbind('mouseup');
-      // drawPolyline();
     });
   });
 }
@@ -312,31 +286,10 @@ function removePolyline() {
 }
 
 function drawPolyline() {
-
-  // console.log('fonction draw');
-
   removePolyline();
-
-  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
-
+  // if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
     drawPolylineOnce();
-    // var flightPlanCoordinates = [];
-    // $('.exp-dotdotdot').each(function() {
-
-    //   flightPlanCoordinates.push(new google.maps.LatLng($(this).data('lat'), $(this).data('lng')));
-
-
-    // });
-    // flightPath = new google.maps.Polyline({
-    //    path: flightPlanCoordinates,
-    //    geodesic: true,
-    //    strokeColor: '#FF0000',
-    //    strokeOpacity: 1.0,
-    //    strokeWeight: 2
-    //  });
-    // flightPath.setMap(handler.getMap());
-
-  }
+  // }
 }
 
 function drawPolylineOnce() {
@@ -354,50 +307,20 @@ function drawPolylineOnce() {
   flightPath.setMap(handler.getMap());
 }
 
-function setExperiencesOrderByClickingOnSave() {
-  $('#set-orders').on("mousedown", function() {
-
-  });
-}
-
-// function setExperiencesOrderByClickingOnSave() {
-//   $('.update-order').on("mousedown", function() {
-//     var order = {};
-//     for (var i = 0; i < $('.panel.panel-info').length; i++){
-//       order[i+1] =  $('.panel.panel-info')[i].id;
-//     }
-//     $('#order').attr('value', JSON.stringify(order));
-//   });
-// }
-
 function storeOrder() {
   var order = {};
-  // var hash = {"order"};
   for (var i = 0; i < $('.panel.panel-info').length; i++){
     order[i+1] =  $('.panel.panel-info')[i].id;
   }
-  // $('#order').attr('value', JSON.stringify(order));
-
   return {"order":order};
-
 }
 
 function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
-
-
-  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
-
-
+  // if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
     $('.panel-heading').on('mouseup', function() {
-
-
       $('.selection-content').on('mouseleave',function() {
-
-        console.log('mous leave');
         $(this).unbind('mouseleave');
         if (requestingMarkers == false) {
-
-
           requestingMarkers = true;
           $.ajax({
             type: "POST",
@@ -409,21 +332,20 @@ function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
         }
       });
     });
-  }
+  // }
 }
 
 function setPolylineDrawingWhenDraggingExperience() {
-  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
+      // console.log('mu');
+  // if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
     $('.panel-heading').on('mouseup', function() {
       $(this).on('mouseleave',function() {
+        console.log('ml');
         $(this).unbind('mouseleave');
-
-        // console.log ('draw polyline when drag');
-
         drawPolyline();
       });
     });
-  }
+  // }
 }
 
 function placeMarker(location) {
@@ -447,7 +369,7 @@ function buildMapForGuestUser(mapOptions, trip_id) {
   handler.buildMap({provider: mapOptions, internal: {id: 'map'}}, function(){
     var map = handler.getMap();
     var url = "/trips/" + trip_id + "/trip_experiences/trip_markers";
-    setMarkersAccordingToApi(url, function(r) {
+    setMarkersAccordingToApi(url, trip_id, function(r) {
       handler.fitMapToBounds();
       if (map.getZoom() > 7) {
         map.setZoom(7);
@@ -456,11 +378,8 @@ function buildMapForGuestUser(mapOptions, trip_id) {
       requestingMarkers = r;
       $('.overlay').css('display','none');
     });
-
     initializeMapSearchBar('pac-input');
-
     showModalByClikingOnMap(map, '#myModalGuest', '#trip_comment_address', '#trip_comment_latitude', '#trip_comment_longitude');
-
     // Reset modal process and remove marker added manually
     $('#myModalGuest').on('hidden.bs.modal', function(){
         removeMarkersAddedManually();
@@ -470,36 +389,10 @@ function buildMapForGuestUser(mapOptions, trip_id) {
   });
 }
 
-function setMarkersAccordingToBounds(map, trip_id, callback) {
-  var url = buildUrlWithBounds(map, trip_id);
-  setMarkersAccordingToApi(url, callback);
-}
-
-function setMarkersAccordingToApi(url, callback) {
-  requestingMarkers = true;
-  $.get(url, function(data) {
-    handler.removeMarkers(markers);
-    markers = handler.addMarkers(data);
-    setExperienceInfowindow(data);
-    handler.bounds.extendWith(markers);
-    // draw polyline
-    callback(false);
-  });
-}
-
-function setMapWithGuestComments(trip_id, map, callback) {
-  google.maps.event.clearListeners(map, 'dragend');
-  google.maps.event.clearListeners(map, 'zoom_changed');
-  var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
-  setMarkersAccordingToApi(url, callback, trip_id);
-}
-
-function setMapWithUserExperiences(trip_id, map, callback) {
-  google.maps.event.clearListeners(map, 'dragend');
-  google.maps.event.clearListeners(map, 'zoom_changed');
-  var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
-  setMarkersAccordingToApi(url, callback, trip_id);
-}
+// function setMarkersAccordingToBounds(map, trip_id, callback) {
+//   var url = buildUrlWithBounds(map, trip_id);
+//   setMarkersAccordingToApi(url, trip_id, callback);
+// }
 
 function listenToUserChoices(trip_id, map) {
   $('.user-choices').on('click', function(){
@@ -535,40 +428,30 @@ function listenToUserChoices(trip_id, map) {
 function displayMobileInterface(id) {
   var zIndex = 2;
   if (id == 'list-selection') {
-    // zIndex = $('.map-container').css('z-index');
     $('.sidebar').css('z-index', parseInt(zIndex) + 1);
     $('.map-container').css('z-index', parseInt(zIndex) - 1);
-    // console.log(zIndex);
-    // zIndex = 2;
   } else if (id == 'map-selection') {
-    // zIndex = $('.sidebar').css('z-index');
     $('.sidebar').css('z-index', parseInt(zIndex) - 1);
     $('.map-container').css('z-index', parseInt(zIndex) + 1)
-    // console.log(zIndex);
-    // zIndex = 2;
   } else {
     alert('Une erreur est survenue... merci de bien vouloir recharger la page ;)');
   }
-
 }
 
 function displayMarkersAccordingToUserChoices(trip_id, map, id) {
-  removePolyline();
-  // $('.overlay').css('display','block');
-
+  // removePolyline();
   if (id == 'user-experiences') {
     // Set map with booked experiences;
     $('#sidebar-title-content').html('<i class="fa fa-check"></i> Ma selection');
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
       $('.overlay').css('display','none');
-      drawPolyline();
-      setPolylineDrawingWhenDraggingExperience();
       if (markers.length == 0) {
         alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Top 20 by Explorizers"! - No experiences yet! Add yours or choose from "Top 10 by Explorizers"!');
       }
     });
   } else if (id == 'guests-comments') {
+    removePolyline();
     // Set map with trip_comments;
     $('#sidebar-title-content').html('<i class="fa fa fa-comments"></i> Conseils de mes amis');
     setMapWithGuestComments(trip_id, map, function(r) {
@@ -579,65 +462,29 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
       }
     });
   } else if (id == 'all-experiences') {
+    removePolyline();
+    // Set map with all experiences
     $('#sidebar-title-content').html('<i class="fa fa-star"></i> Best of Explorizers');
     setMarkersAndKeepListening(map, trip_id);
   }
   else {
     alert('Une erreur est survenue... merci de bien vouloir recharger la page ;)');
   }
-  // makeExperiencesSortable();
 }
-
-// function displayMarkersAccordingToUserChoices(trip_id, map) {
-//   if ($('#user-experiences').prop('checked')){
-//     // Set map with booked experiences;
-//     setMapWithUserExperiences(trip_id, map, function(r) {
-//       requestingMarkers = r;
-//       if (markers.length == 0) {
-//         alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Top 10 by Explorizers"! - No experiences yet! Add yours or choose from "Top 10 by Explorizers"!');
-//       }
-//     });
-//   } else if ($('#guests-comments').prop('checked')) {
-//     // Set map with trip_comments;
-//     setMapWithGuestComments(trip_id, map, function(r) {
-//       requestingMarkers = r;
-//       if (markers.length == 0) {
-//         alert('Pas encore de conseil! Demandez-les : cliquez sur "Obtenir les conseils de mes amis"! - No tips yet! Ask your friends : click on "Get my friends tips" below!');
-//       }
-//     });
-//   } else if ($('#all-experiences').prop('checked')) {
-//     setMarkersAndKeepListening(map, trip_id);
-//   }
-// }
 
 function buildMapForUser(mapOptions, trip_id) {
   handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
     // SET MARKERS ON MAP LOADING
-    var id = $('.menu-selected').attr('id')
+    var id = $('.menu-selected').attr('id');
     displayMarkersAccordingToUserChoices(trip_id, map, id);
     // KEEP LISTENING AND DISPLAY MARKERS ACCORDING TO USERS CHOICES
     listenToUserChoices(trip_id, map);
-
-    // OLD VERSION ->
-    // SET MARKERS ON MAP LOADING AND KEEP LISTENING
-    // setMarkersAndKeepListening(map, trip_id);
-    // displayMarkersAccordingToUserChoices(trip_id, map);
-    // SET MARKERS DEPENDING ON USER CHOICE
-    // $('#user-choices').on("change", function() {
-    //   if (ibOpened) {
-    //   ib.close();
-    //   ibOpened = false;
-    //   }
-    //   displayMarkersAccordingToUserChoices(trip_id, map);
-    // });
-
     initializeMapSearchBar('pac-input');
     showModalByClikingOnMap(map, '#myModal', '#experience_address', '#experience_latitude', '#experience_longitude');
     closeInfoboxWhenDragging(map);
     // Reset modal process
-
     $('#myModal').on('hidden.bs.modal', function(){
       removeMarkersAddedManually();
       $('#experience_name').val('');
@@ -659,15 +506,9 @@ function closeInfoboxWhenDragging(map) {
 function closeInfoboxWhenMouseout(ib) {
 
   $('.infobox-container').on('mouseleave', function() {
-  // console.log('eqedsqdsq');
   ib.close();
   ibOpened= false;
   });
-  // google.maps.event.addListener(ib, "mouseout", function(e) {
-  //   console.log('test');
-  //   ib.close();
-  //   ibOpened = false;
-  // });
 }
 
 function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field_id, longitude_field_id) {
@@ -742,26 +583,68 @@ function setMarkersAndKeepListening(map, trip_id) {
 
 function setMarkersAccordingToBounds(map, trip_id, callback) {
   var url = buildUrlWithBounds(map, trip_id);
-  setMarkersAccordingToApi(url, callback, trip_id);
+  setMarkersAccordingToApi(url, trip_id, function(r){
+    preventUserChoicesInitialization();
+    callback(r);
+  });
 }
 
-function setMarkersAccordingToApi(url, callback, trip_id) {
+function setMapWithGuestComments(trip_id, map, callback) {
+  google.maps.event.clearListeners(map, 'dragend');
+  google.maps.event.clearListeners(map, 'zoom_changed');
+  var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
+  setMarkersAccordingToApi(url, trip_id, function(r){
+    preventUserChoicesInitialization();
+    callback(r);
+  });
+}
+
+function setMapWithUserExperiences(trip_id, map, callback) {
+  google.maps.event.clearListeners(map, 'dragend');
+  google.maps.event.clearListeners(map, 'zoom_changed');
+  var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
+  setMarkersAccordingToApi(url, trip_id, function(r){
+    initializeWithUserChoices(trip_id);
+    callback(r);
+  });
+}
+
+function setMarkersAccordingToApi(url, trip_id, callback) {
   requestingMarkers = true;
   $.get(url, function(data) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
-    setExperienceInfowindow(data);
     handler.bounds.extendWith(markers);
-    setSideBar(data);
-    ellipseExperienceBlock();
-    setAnimationOnMarkers();
-    makeExperiencesSortable();
+    commonInitialization(data);
+
+
+    // makeExperiencesSortable();
 
     // TODO: See if simpler solution exists...
-    setExperiencesOrderByEndDraggingAnExperience(trip_id);
+    // setExperiencesOrderByEndDraggingAnExperience(trip_id);
 
     callback(false);
   });
+}
+
+function commonInitialization(data) {
+  setSideBar(data);
+  ellipseExperienceBlock();
+  setExperienceInfowindow(data);
+  setAnimationOnMarkers();
+}
+
+function initializeWithUserChoices(trip_id) {
+  makeExperiencesSortable();
+  $('.panel-heading').css('cursor', 'move');
+  drawPolyline();
+  setPolylineDrawingWhenDraggingExperience();
+  setExperiencesOrderByEndDraggingAnExperience(trip_id);
+}
+
+function preventUserChoicesInitialization() {
+  preventExperiencesFromBeingSortable();
+  $('.panel-heading').css('cursor', 'auto');
 }
 
 function setSideBar(data) {

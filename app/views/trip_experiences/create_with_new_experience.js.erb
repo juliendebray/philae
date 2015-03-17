@@ -13,15 +13,15 @@ $( document ).ready(function() {
               }
             }
         });
-    addBoxShadowEffectWhileDraggingBox();
+    // addBoxShadowEffectWhileDraggingBox();
     scrollToElement($('.selection-content'), $('.panel-info').last());
-    setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
+    // setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
 
     var map = handler.getMap();
     setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
       requestingMarkers = r;
     });
-    setPolylineDrawingWhenDraggingExperience();
-    drawPolyline();
+    // setPolylineDrawingWhenDraggingExperience();
+    // drawPolyline();
   }
 });

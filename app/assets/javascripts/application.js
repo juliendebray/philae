@@ -19,14 +19,3 @@
 // = require gmaps/google
 
 // = require_tree .
-
-// $(function(){
-//   // Removes form submission on enter key in inputs
-//   $('input').keypress(function(event) {
-//     if (event.which == 13) {
-//         event.preventDefault();
-//     }
-//   });
-
-  // var s = skrollr.init();
-// });
