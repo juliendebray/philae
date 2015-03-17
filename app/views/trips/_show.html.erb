@@ -90,7 +90,7 @@
     </div>
     <% unless @guest_user %>
       <%= link_to trip_ask_your_friends_path(@trip), class:"btn btn-info", id:"ask-friends-mobile-btn" do %>
-        <small>Demander des conseils à mes amis!</small>
+        <small><%= t('show_need_tips') %></small>
       <% end %>
       <% end %>
     <div id="map">

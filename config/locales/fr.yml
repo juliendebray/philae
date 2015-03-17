@@ -115,10 +115,12 @@ fr:
     index:
       title: "Liste des destinations déjà couvertes par les recommandations Explorizers"
       dest1: "Voici les destinations déjà couvertes par les recommandations Explorizers - les autres arrivent bientôt."
-      destasia: "Birmanie   |   Népal   |   Japon   |   Sri Lanka   |   Indonésie   |   Taiwan    |    Malaisie  |  Cambodge  |  Vietnam  |  Inde"
-      destafrica: "Ethiopie  |  Botswana   |   Maroc   |   Madagascar   |   La Réunion / Maurice"
-      destamerica: "Etats-Unis  |  Cuba   |   Brésil   |   Mexique   |   Pérou  |  Colombie"
-      desteurope: "Ouzbekistan  |  Jordanie   |  Istanbul  |  Israël "
+      destasia: "Asie: Birmanie, Cambodge, Inde, Indonésie, Japon, Malaisie, Népal, Ouzbékistan, Sri Lanka, Taiwan, Vietnam"
+      destafrica: "Afrique: Botswana, Ethiopie, Madagascar, Maroc, La Réunion / Maurice"
+      destamerica: "Amérique: Brésil, Colombie, Cuba, Etats-Unis, Mexique, Pérou"
+      destmiddleeast: "Proche-Orient: Israël, Jordanie"
+      desteurope: "Europe: Istanbul"
+
       nextdest: "Quelle prochaine destination souhaitez-vous voir?"
       searchplaceholder: "Où allez-vous ?"
       searchbutton: "Démarrer"

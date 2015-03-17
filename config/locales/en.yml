@@ -133,6 +133,13 @@ en:
     index:
       title: "List of destinations already covered with Explorizers' recommendations"
       dest1: "These are the destinations already covered with Explorizers' recommendations. More to come soon!"
+      destasia: "Asia: Myanmar, Cambodia, India, Indonesia, Japan, Malaysia, Nepal, Sri Lanka, Taiwan, Vietnam, Uzbekistan"
+      destafrica: "Africa: Botswana, Ethiopia, Madagascar, Morocco, Reunion / Mauritius"
+      destamerica: "America: Brazil, Colombia, Cuba, Mexico, Peru, United States"
+      destmiddleeast: "Middle-East: Israel, Jordan"
+      desteurope: "Europe: Istanbul"
+
+
       destasia: "Myanmar  |  Nepal  |  Japan  |  Sri Lanka  |  Indonesia  |  Taiwan    |    Malaysia  |  Cambodia  |  Vietnam  |  India"
       destafrica: "Ethiopia  |  Bostwana  | Morocco  |  Madagascar  |  Reunion / Mauritius"
       destamerica: "USA  |  Cuba  |  Brazil  |  Mexico  |  Peru  |  Colombia"

@@ -14,9 +14,9 @@
       <% end %>
     <!-- Form -->
       <div class="actions">
-        <%= f.text_field :name, placeholder: "Jurassic Park", required: true%>
-        <%= f.text_field :address, placeholder: "Isla Nublar, Costa Rica", required: true %>
-        <%= f.text_area :description, placeholder: "Park closed in 1993, due to reopen in 2015", required: true %>
+        <%= f.text_field :name, hide_label: true, placeholder: "Jurassic Park", required: true%>
+        <%= f.text_field :address, hide_label: true, placeholder: "Isla Nublar, Costa Rica", required: true %>
+        <%= f.text_area :description, hide_label: true, placeholder: "Park closed in 1993, due to reopen in 2015", required: true %>
         <%= f.submit( t('expbuttonadd'), class: "btn btn-primary") %>
 
       </div>
