@@ -3,17 +3,17 @@ fr:
 
   #navbar
   language: "Langue"
-  ourstorynav: "Le projet Explorizers"
+  ourstorynav: "Que fait Explorizers?"
   fbconnect: "Login Facebook"
   login: "Connexion"
   signup: "Inscription"
   signout: "Déconnexion"
   tripsnav: "Mon compte"
   ourcontact: "Contact"
-  contribute: "Contribuer"
+  contribute: "Conseils à partager"
   my_trips: "Mes voyages"
   nav_listofproviders: "Acteurs locaux référencés"
-  nav_destinations: "Liste des destinations"
+  nav_destinations: "Destinations couvertes"
 
 
   #sign up / sign in
@@ -36,7 +36,8 @@ fr:
     index:
       brand: "E X P L O R I Z E R S"
       firstline: "VOTRE VOYAGE COMMENCE ICI"
-      secondline: "Préparez votre voyage avec les conseils de vos amis"
+      # secondline: "Préparez votre voyage avec les conseils de vos amis"
+      secondline: "Retrouvez ici les conseils de voyage des meilleures sources : vos amis, d'autres voyageurs, et des professionnels"
       thirdline: "Inspirez-vous des meilleures recommandations des Explorizers"
       trending: "Tendance cette semaine : Madagascar  |  Japon"
       searchplaceholder: "Où allez-vous ?"
@@ -55,7 +56,7 @@ fr:
       seedestinations: "Voir les DESTINATIONS déjà couvertes"
 
   addreview: "Donnez votre avis!"
-  addtotrip: "Ajouter à mon voyage"
+  addtotrip: "Ajouter au voyage"
 
   #trips
   trips:
@@ -149,8 +150,10 @@ fr:
 
   #trips
 
-  form_name: "Nom de l'expérience"
-  form_address: "Quelle adresse?"
+  trip_show_title: "Ajouter une autre étape à mon voyage"
+  form_new_exp_intro: "Quelque chose manque sur la carte Explorizers? Ajoutez votre propre étape à votre voyage ici!"
+  form_name: "Nom de l'étape"
+  form_address: "Le lieu"
   form_description: "Notes personnelles..."
   form_add: "Ajouter"
 
@@ -165,8 +168,8 @@ fr:
   show_bestexp_mobile: "Best of"
   show_myselection_mobile: "Mon voyage"
   show_friendstips_mobile: "Conseils"
-  show_addmyexp: "Ajouter une expérience au voyage"
-  show_addcomment: "Pour ajouter un conseil, cliquez ICI ou sur la carte"
+  show_addmyexp: "Ajouter une autre étape"
+  show_addcomment: "Ajoute un conseil: clique ICI ou sur la carte"
   show_selectedexp: "Sélection"
   show_save: "Enregistrer ma sélection"
   show_saveguest: "J'ai fini!"
@@ -177,8 +180,6 @@ fr:
   show_help: "Aide"
 
   providers_title: "Ces agences et guides locaux vont vous aider"
-
-  trip_show_title: "Ajouter une expérience"
 
   show_guest_user_title: "Votre ami vous demande conseil pour son voyage!"
   show_guest_user_line1: "Ajoutez vos conseils en cliquant sur la carte, ou avec le bouton 'Ajouter un conseil'"

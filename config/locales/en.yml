@@ -23,14 +23,14 @@ en:
   hello: "Hello"
 
   #navbar
-  ourstorynav: "The Explorizers project"
+  ourstorynav: "What is Explorizers?"
   fbconnect: "Login Facebook"
   login: "Log in"
   signup: "Sign up"
   signout: "Sign out"
   tripsnav: "My account"
   ourcontact: "Talk to us"
-  contribute: "Contribute"
+  contribute: "Tips to share"
   my_trips: "My trips"
   nav_listofproviders: "Local guides and agencies"
   nav_destinations: "List of destinations"
@@ -53,7 +53,7 @@ en:
     index:
       brand: "E X P L O R I Z E R S"
       firstline: "YOUR NEXT TRIP STARTS HERE"
-      secondline: "Design your trip with your friends' tips"
+      secondline: "Find travel tips from the best sources: your friends, other travelers and professionals"
       thirdline: "Get inspired by our Explorizers' best recommendations"
       trending: "Trending this week: Madagascar  |  Japan"
       searchplaceholder: "Where are you going?"
@@ -166,7 +166,9 @@ en:
   blockfbdescription: "Explorizers is a platform where you design your trip - with the help of your trusted friends"
 
   #trips
-  form_name: "Name this experience"
+  trip_show_title: "Add another stop-over to my trip"
+  form_new_exp_intro: "Something missing on Explorizers' map? Add your own stop-over right here."
+  form_name: "Name this stop-over"
   form_address: "Where is it?"
   form_description: "Personal notes..."
   form_add: "Add"
@@ -183,7 +185,7 @@ en:
   show_myselection_mobile: "My trip"
   show_friendstips_mobile: "Tips"
 
-  show_addmyexp: "Add an experience to your trip"
+  show_addmyexp: "Add another stop-over"
   show_addcomment: "Click on the map or HERE to add a tip"
   show_selectedexp: "Selection"
   show_save: "Save my selection"
@@ -195,8 +197,6 @@ en:
   show_help: "Help"
 
   providers_title: "These local guides and agencies will help you"
-
-  trip_show_title: "Add an experience"
 
   show_guest_user_title: "Your friend is asking for your tips!"
   show_guest_user_line1: "Add your tips with a click on the map, or use the 'Add a tip' button"

@@ -11,7 +11,7 @@
       <% unless guest_user %>
         <div class="comment-btn list-unstyled">
           <%= link_to experience_from_comment_path(trip_comment), remote: true, method: :post do %>
-            <i class="fa fa-map-marker"></i> <small><%= t('trip_comment_add') %></small>
+            <i class="fa fa-heart"></i> <small><%= t('trip_comment_add') %></small>
           <% end %>
         </div>
       <% end %>

@@ -126,8 +126,10 @@ html, body {
       border: 1px solid #c4c4c4;
       border-radius: 0px;
       background-color: #fff;
+      height: 35px;
       input{
-        width: 410px;
+        width: 240px;
+        height: 27px;
       }
     }
 
@@ -167,13 +169,13 @@ html, body {
     }
   }
 
-  .map-bottom-up {
-    top: 45px;
-    left: 40px;
+  .map-up-btn {
+    top: 9px;
+    right: 9px;
     position: absolute;
-    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.3);
-    border-color: red;
-
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
+    // border-color: red;
+    font-size: 15px;
       small {
         font-size: 15px;
         font-weight: 400;
@@ -265,6 +267,10 @@ html, body {
       margin-bottom: 15px;
       box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 
+      .panel-info {
+
+      }
+
       .exp-dotdotdot {
         height: 12em;
       }
@@ -289,12 +295,38 @@ html, body {
         }
 
         i {
+          padding-right: 5px;
+          color: #FF5A5F;
+        }
+
+        i:hover {
+          padding-right: 5px;
           color: #808080;
         }
-        i:hover {
-          color: #2196F3;
+
+        .pull-right {
+          i {
+            padding-right: 5px;
+            color: #808080;
+          }
+          i:hover {
+            padding-right: 5px;
+            color: #FF5A5F;
+          }
         }
+
+        i.fa-heart.comment {
+          padding-right: 5px;
+          color: #FF5A5F;
+        }
+
+        i.fa-heart.comment:hover {
+          padding-right: 5px;
+          color: #808080;
+        }
+
       }
+
       .panel-body {
         padding: 0px 7px 10px 7px;
         border: none;
@@ -302,6 +334,15 @@ html, body {
         font-weight: 200;
         margin-bottom: 5px;
         font-size: 12.5px;
+
+        .readmore {
+          color: grey;
+          text-decoration: underline;
+          font-weight: 400;
+        }
+        .readmore:hover {
+          color: coral;
+        }
 
         td.thumb-pic {
           vertical-align: top;
@@ -407,12 +448,12 @@ html, body {
 
 
 i#ib-remove-trip-exp {
-  color: white;
+  color: #FF5A5F;
   font-size: 19px;
 }
 
 i#ib-remove-trip-exp:hover {
-  color: red;
+  color: #808080;
   font-size: 19px;
 }
 
@@ -441,6 +482,11 @@ i#ib-remove-trip-exp:hover {
       }
       .fa-search {
         font-weight: 600;
+      }
+      .comment-btn:hover {
+        .fa {
+          color: #FF5A5F;
+        }
       }
     }
   }
@@ -503,13 +549,21 @@ i#ib-remove-trip-exp:hover {
     .best {
       font-size: 10px;
     }
+
     .pull-right input {
       background: transparent;
       border-color: transparent;
       font-size: 15px;
     }
+
     .pull-right input:focus {
       outline: none;
+    }
+
+    .btn:hover {
+      .fa-heart {
+        color: #FF5A5F;
+      }
     }
   }
 }
@@ -696,7 +750,7 @@ i#ib-remove-trip-exp:hover {
       // border-radius: 0px;
     }
 
-    .map-bottom-up {
+    .map-up-btn {
       bottom: 0%;
       box-shadow: none;
       position: absolute;

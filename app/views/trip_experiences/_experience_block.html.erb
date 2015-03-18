@@ -5,7 +5,7 @@
         <%= trip_exp.experience.name %>
         <% unless guest_user %>
           <%= link_to [trip_exp.trip, trip_exp], remote: true, method: :delete do %>
-            <i class="fa fa-times pull-right"></i>
+            <i class="fa fa-heart pull-right"></i>
           <% end %>
         <% end %>
       </div>
@@ -37,7 +37,7 @@
           <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
             <%= f.hidden_field :experience_id, value: experience.id %>
             <%= f.button :submit, class: "btn btn-link" do %>
-              <i class='fa fa-plus pull-right'></i>
+              <i class='fa fa-heart pull-right'></i>
             <% end %>
           <% end %>
         </span>
@@ -71,11 +71,11 @@
               <!-- TODO:  Display comment even if added to trip with different action-->
               <% if trip_comment.add_to_trip %>
                 <%= link_to [trip_comment.trip, trip_comment.experience.trip_experiences.last], remote: true, method: :delete do %>
-                  <i class="fa fa-times pull-right"></i>
+                  <i class="fa fa-heart pull-right comment"></i>
                 <% end %>
               <% else %>
                 <%= link_to experience_from_comment_path(trip_comment), remote: true, method: :post do %>
-                  <i class="fa fa-plus"></i>
+                  <i class="fa fa-heart"></i>
                 <% end %>
                 <%= link_to [trip_comment.trip, trip_comment], remote: true, method: :delete do %>
                   <i class="fa fa-trash-o"></i>

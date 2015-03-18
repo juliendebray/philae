@@ -2,6 +2,8 @@
   url: experience_within_trip_path(@trip),
   remote: true) do |f| %>
   <div class="actions">
+    <%= t('form_new_exp_intro') %> <br>
+    <br>
     <%= f.text_field :name, hide_label: true, placeholder: t('form_name'), required: true %>
     <%= f.text_field :address, hide_label: true, placeholder: t('form_address'), required: true %>
     <%= f.text_area :description, hide_label: true, placeholder: t('form_description') %>
