@@ -19,15 +19,15 @@
       <% if (current_user || trip.token.nil?) %>
         <% if trip_experience %>
           <%= link_to [trip, trip_experience], remote: true, method: :delete do %>
-            <i id='ib-remove-trip-exp' class="fa fa-times pull-right"></i>
+            <i id='ib-remove-trip-exp' class="fa fa-heart pull-right"></i>
           <% end %>
         <% else %>
           <span class="pull-right">
             <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
               <%= f.hidden_field :experience_id, value: experience.id %>
               <%= f.button :submit, class: "btn btn-link" do %>
-              <%= t('addtotrip') %>
-<!--                 <i class='fa fa-plus'></i> -->
+<!--               <%= t('addtotrip') %> -->
+                <i class='fa fa-heart  '></i> <%= t('addtotrip') %>
               <% end %>
             <% end %>
           </span>

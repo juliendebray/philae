@@ -94,13 +94,13 @@
     <% unless @guest_user %>
     <!-- User Modal to let him add his own experience -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-default map-bottom-btn" data-toggle="modal" data-target="#myModal" id="new-exp" >
+    <button type="button" class="btn btn-default map-up-btn" data-toggle="modal" data-target="#myModal" id="new-exp" >
       <small><%= t('show_addmyexp') %></small>
     </button>
     <% else %>
     <!-- Guest Modal to let him add his own experience -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-default map-bottom-up" data-toggle="modal" data-target="#myModalGuest">
+    <button type="button" class="btn btn-default map-up-btn" data-toggle="modal" data-target="#myModalGuest">
       <small><%= t('show_addcomment') %></small>
     </button>
 
@@ -120,7 +120,7 @@
         </div>
       <% end %>
       <div class="selection-title text-center">
-        <span id="sidebar-title-content"></span> <i class="fa fa-angle-down"></i>
+        <span id="sidebar-title-content"></span>
       </div>
     </div>
     <div class="selection-content">
@@ -167,7 +167,7 @@
           </tr>
           <tr id="user-experiences" class="user-choices map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
             <td class="map-menu-item text-center">
-              <i class="fa fa-check"></i>
+              <i class="fa fa-heart"></i>
             </td>
             <td class="item-show pull-left" >
               <%= t('show_myselection') %>
