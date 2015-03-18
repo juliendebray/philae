@@ -476,7 +476,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
 }
 
 function buildMapForUser(mapOptions, trip_id) {
-  handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
+  handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5, clusterer: undefined } });
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
     // SET MARKERS ON MAP LOADING
