@@ -23,7 +23,7 @@
               <div class="form-group minor-block" class="text-center">
                 <%= f.hidden_field(:latitude) %>
                 <%= f.hidden_field(:longitude) %>
-                <%= f.search_field(:query, placeholder: t('.searchplaceholder')) %>
+                <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
                 <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
               </div>
             <% end %>
