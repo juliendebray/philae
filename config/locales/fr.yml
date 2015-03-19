@@ -2,9 +2,7 @@ fr:
   hello: "Bonjour à tous"
 
   #navbar
-  language: "Langue"
   ourstorynav: "Que fait Explorizers?"
-  fbconnect: "Login Facebook"
   login: "Connexion"
   signup: "Inscription"
   signout: "Déconnexion"
@@ -12,12 +10,11 @@ fr:
   ourcontact: "Contact"
   contribute: "Conseils à partager"
   my_trips: "Mes voyages"
-  nav_listofproviders: "Acteurs locaux référencés"
   nav_destinations: "Destinations couvertes"
 
 
   #sign up / sign in
-  sign_up: "Jetez un oeil - c'est gratuit."
+  sign_up: "Jette un oeil - c'est gratuit."
   sign_in: "Connexion"
   sign_in_btn: "Connexion"
   passwordplaceholder: "Mot de passe (> 6 car.)"
@@ -26,7 +23,7 @@ fr:
   fbsignupbutton: "Continuer avec Facebook"
   noaccount: "(Pas encore inscrit?)"
   alreadyaccount: "(Déjà inscrit?)"
-  fbencourage: "Recommandé pour obtenir facilement les conseils de vos amis"
+  fbencourage: "Recommandé pour obtenir facilement les conseils de tes amis"
   emailsignup: "Ou"
   forgot: "Mot de passe oublié?"
 
@@ -35,26 +32,19 @@ fr:
   home:
     index:
       brand: "E X P L O R I Z E R S"
-      firstline: "VOTRE VOYAGE COMMENCE ICI"
-      # secondline: "Préparez votre voyage avec les conseils de vos amis"
+      firstline: "TON VOYAGE COMMENCE ICI"
       secondline: "Retrouve ici les conseils de voyage des meilleures sources : tes amis, d'autres voyageurs, et des professionnels"
       thirdline: "1. Identifie l'immanquable et découvre des pépites hors des sentiers battus"
       fourthline: "2. Complète par les conseils de tes amis"
       fifthline: "3. Sélectionne ce qui te correspond pour élaborer TON voyage"
-      trending: "Tendance cette semaine : Madagascar  |  Japon"
-      searchplaceholder: "Où allez-vous ?"
-      searchbutton: "Démarrer"
-      otherdestination1: "Vous partez ailleurs? Créez votre voyage n'importe où, demandez et compilez les meilleurs conseils de vos amis !"
-      otherdestination2: "Les recommandations Explorizers pour d'autres destinations arrivent bientôt..!"
+      searchplaceholder: "Où vas-tu ?"
+      searchbutton: "Voyager"
       subtitle1: "Aurelia - Sri Lanka"
       text1: "En mélangeant les conseils de mes amis et mes propres attentes, j'ai pu organiser un voyage au top taillé sur-mesure."
       subtitle2: "Charlotte - Birmanie"
       text2: "Pour certains pays c'est rassurant d'avoir des retours d'expérience d'amis. Ca évite les mauvaises surprises.."
       subtitle3: "Romain - Maroc"
       text3: "Mes amis ont complété les recos d'Explorizers avec des endroits géniaux mais très peu connus: c'est encore mieux!"
-      concept: "Explorizers vous accompagne dans vos voyages autour du monde et vos aventures extraordinaires."
-      contact: "Nous contacter"
-      becomeexplo: "Devenez un Explorizer!"
       seedestinations: "Voir les DESTINATIONS déjà couvertes"
 
   addreview: "Donnez votre avis!"
@@ -62,23 +52,18 @@ fr:
 
   #trips
   trips:
-    start:
-      title: "Créez votre voyage"
-      myexp: "Montrer seulement ma sélection"
-      newexp: "Cliquer sur la carte pour ajouter une nouvelle expérience"
     summarize:
       gobacktotrip: " Retour au voyage"
       getbyemail: "Recevoir par email "
       creation: "Créé le : "
       lastupdate: "Dernière mise à jour : "
-
-  summarize_comment: "Ecrire un commentaire"
   summarize_savecomment: "Sauvegarder"
+  summarize_comment: "Ajouter un commentaire"
 
   #trip_comments:
   trip_comment_add: "Ajouter au voyage"
   trip_comment_delete: "Supprimer ce commentaire"
-  trip_comment_confirm: "Etes-vous sûr de vouloir supprimer ce commentaire?"
+  trip_comment_confirm: "Es-tu sûr de vouloir supprimer ce commentaire?"
 
   #trip_experiences:
   experience_block_seemore: "Voir plus"
@@ -89,7 +74,7 @@ fr:
       title: "Mon espace"
       mytrips: "Mes voyages"
       myfriends: "Mes amis"
-      delete: "Etes-vous sûr de vouloir supprimer ce voyage?"
+      delete: "Es-tu sûr de vouloir supprimer ce voyage?"
       new_trip: "Créer un nouveau voyage"
 
 
@@ -99,19 +84,17 @@ fr:
       title: "Contacter Explorizers"
       name: "Felix Baumgartner"
       email: "felix.bmgt@gmail.com"
-      message: "Une question? Un commentaire? Dites-nous, nous reviendrons vers vous très vite."
+      message: "Une question? Un commentaire? Dis-nous tout, nous reviendrons vers toi très vite."
       submit: "Envoyer"
 
   #story:
   story:
     index:
       title: "Le projet Explorizers"
-      story1: "Si vous lisez ceci, c'est déjà trop tard. Vous êtes contaminé. La mouche vous a piqué. C'est irrémédiable, ça vous démange, vous ne pouvez pas vous empêcher de penser aux prochains paysages que vous allez voir, aux prochaines expériences que vous allez vivre et aux prochaines personnes que vous allez rencontrer."
+      story1: "Si tu lis ceci, c'est déjà trop tard. Tu es contaminé. La mouche t'a piqué. C'est irrémédiable, ça te démange, tu ne peux pas t'empêcher de penser aux prochains paysages que tu vas voir, aux prochaines expériences que tu vas vivre et aux prochaines personnes que tu vas rencontrer."
       story2: "Parce que nous sommes contaminés aussi, et que c'est contagieux, nous avons conçu ce site pour les passionnés de voyage comme nous."
-      story3: "Parcourez le site comme on parcourt le monde, partez à la découverte d'endroits immanquables ou d'endroits secrets, demandez conseil à vos amis, faites découvrir aux autres les pépites que vous connaissez, explorez le monde et racontez vos expériences ici... Ce site est à partager."
-      contact: "Nous contacter"
+      story3: "Parcours le site comme on parcourt le monde, pars à la découverte d'endroits immanquables ou d'endroits secrets, demande conseil à tes amis, fais découvrir aux autres les pépites que tu connais, explore le monde et raconte tes expériences ici... Ce site est à partager."
       new_trip: "Créer un nouveau voyage"
-      contact: "Contacter Explorizers"
 
   #destinations:
   destinations:
@@ -125,10 +108,9 @@ fr:
       destamerica: "Brésil, Colombie, Cuba, Etats-Unis, Mexique, Pérou"
       destmiddleeast: "Israël, Jordanie"
       desteurope: "Istanbul"
-
-      nextdest: "Quelle prochaine destination souhaitez-vous voir?"
-      searchplaceholder: "Où allez-vous ?"
-      searchbutton: "Démarrer"
+      nextdest: "Quelle prochaine destination souhaites-tu voir?"
+      searchplaceholder: "Où vas-tu ?"
+      searchbutton: "Voyager"
 
   #newexperience
   experiences:
@@ -136,35 +118,31 @@ fr:
       title: "Ajouter une nouvelle experience"
       text1: "Le projet Explorizers repose sur votre contribution. Merci de nous aider à le faire grandir."
       text2: "Pour assurer une qualité maximale sur Explorizers, les contributions sont validées par notre équipe. Cela évite les doublons, la pub, les trolls, les pirates et les clowns en tous genres. Pour toute question, écrivez à dora@explorizers.com."
-  expbuttonadd: "Ajouter"
+  expbuttonadd: "Partager"
 
   #ask_your_friends:
   ask_your_friends:
     index:
-      title: "Demandez les bons plans de vos amis!"
-      intro1: "Partagez votre roadmap pour que vos amis y ajoutent leurs conseils."
-      intro2: "Ensuite, à vous de décider de les inclure ou non dans votre voyage!"
-      share_fb: "Vos amis accèderont à votre carte"
-      share_email: "Recevez et transférez votre carte"
-      ask_email_btn: "Demander par email"
+      title: "Demande les bons plans de tes amis!"
       ask_fb_btn: "Partager sur Facebook"
+      ask_email_btn: "Demander par email"
+      share_fb: "Tes amis accèderont à ta carte"
+      share_email: "Reçois et transfère ta carte"
       gobacktotrip: "Retourner sur la page de mon voyage"
-  blockfbtitle: "Filez vos bons plans de voyage !"
-  blockfbdescription: "Explorizers est fait pour les voyageurs qui font confiance à leurs amis pour leur conseiller des expériences extraordinaires et leur faire découvrir des lieux uniques."
 
   #trips
 
   trip_show_title: "Ajouter une autre étape à mon voyage"
-  form_new_exp_intro: "Quelque chose manque sur la carte Explorizers? Ajoutez votre propre étape à votre voyage ici!"
+  form_new_exp_intro: "Quelque chose manque sur la carte Explorizers? Ajoute ta propre étape à ton voyage ici!"
   form_name: "Nom de l'étape"
   form_address: "Le lieu"
   form_description: "Notes personnelles..."
   form_add: "Ajouter"
 
-  form_guest_name: "Indiquez votre prénom"
-  form_guest_address: "Indiquez le lieu ou l'adresse!"
-  form_guest_description: "Quel est votre conseil?"
-  form_guest_share: "Envoyer à votre ami(e)!"
+  form_guest_name: "Indique ton prénom"
+  form_guest_address: "Indique le lieu ou l'adresse!"
+  form_guest_description: "Quel est ton conseil?"
+  form_guest_share: "Envoyer à ton ami(e)!"
 
   show_bestexp: "Top 20 by Explorizers"
   show_myselection: "Ma sélection"
@@ -181,18 +159,17 @@ fr:
   show_seeproviders: "Voir les agences et guides locaux"
   show_summary: "Synthèse du voyage"
   show_need_tips: "Obtenir les conseils d'amis!"
-  show_help: "Aide"
+  show_help: "Comment ça marche?"
 
-  providers_title: "Ces agences et guides locaux vont vous aider"
+  providers_title: "Ces agences et guides locaux vont t'aider"
 
-  show_guest_user_title: "Votre ami vous demande conseil pour son voyage!"
+  show_guest_user_title: "Ton ami te demande conseil pour son voyage!"
   show_guest_user_line1: "Ajoutez vos conseils en cliquant sur la carte, ou avec le bouton 'Ajouter un conseil'"
-  show_guest_user_line2: "(Switch to English in the navigation bar if needed!)"
-  show_guest_user_line3: ""
+  show_guest_user_line2: ""
   show_guest_user_letsgo: "C'est parti"
   show_guest_user_modaltitle: "Encore un conseil"
   show_guest_user_thanks: "Merci!"
-  show_guest_user_thanksline1: "A votre tour! Vous partez où?"
+  show_guest_user_thanksline1: "A ton tour! Tu pars où?"
   show_guest_user_thanksline2: ""
   show_guest_user_thanksbtn: "Découvrez EXPLORIZERS"
   #guest sur mobile:
@@ -205,15 +182,12 @@ fr:
   show_guest_user_good_tip: "Ton bon plan"
   show_guest_user_sidebar_title: "Expériences sélectionnées par "
 
-  noexperienceyet: "Pas encore d'expériences sélectionnées! Ajoutez les votres, ou cochez 'Meilleures expériences' pour vous inspirer."
-  notipsyet: "Pas encore de conseils de vos amis? Demandez-les en cliquant ci-dessous sur Obtenir les conseils de mes amis'."
-
   #providers:
   providers:
     index:
       title: "Liste des prestataires"
-      desc: "Vous connaissez des agences ou guides locaux fiables qui mériteraient d'être référencés sur notre plateforme?"
-      addprovider: "Faites-nous en part en suivant ce lien !"
+      desc: "Tu connais des agences ou guides locaux fiables qui mériteraient d'être référencés sur notre plateforme?"
+      addprovider: "Fais-nous en part en suivant ce lien !"
     show:
       desc: "Description"
       activities: "Type d'activités proposées"
@@ -223,31 +197,31 @@ fr:
   user_mailer:
     welcome:
       hi: "Bienvenue !"
-      w_line1: "Nous sommes ravis de vous voir rejoindre la communauté Explorizers."
-      w_line2: "Explorizers est en amélioration constante et écoute ses utilisateurs : dites-nous ce qui vous manque, nous ferons de notre mieux pour vous l'offrir rapidement!"
+      w_line1: "Nous sommes ravis de te voir rejoindre la communauté Explorizers."
+      w_line2: "Explorizers est en amélioration constante et écoute ses utilisateurs : dis-nous ce qui te manque, nous ferons de notre mieux pour te l'offrir rapidement!"
       w_line3: "A très vite,"
       w_line4: "La team Explorizers"
     share_trip:
       hi: "Bonjour,"
-      s_line1: "Pour que vos amis puissent vous donner leurs conseils, copiez l'URL ou transférez l'email ci-dessous."
+      s_line1: "Pour que tes amis puissent vous donner leurs conseils, copie l'URL ou transfère l'email ci-dessous."
       s_line2: "J'ai besoin de tes conseils pour mon prochain voyage!"
       s_line3: "Clique ici pour donner tes recommandations"
       s_line4: "Merci !"
-      s_line5: "Explorizers apporte des expériences de voyage uniques et étonnantes. Créez votre propre voyage, avec l'aide de vos amis et de notre communauté d'explorateurs."
+      s_line5: "Explorizers apporte des expériences de voyage uniques et étonnantes. Crée ton propre voyage, avec l'aide de tes amis et de notre communauté d'explorateurs."
     notif_trip:
       hi: "Bonjour,"
-      n_line1: "vous a donné ses conseils pour votre voyage."
-      n_line2: "Vous pouvez y accéder en allant sur la page de votre itinéraire et en sélectionnant 'Les conseil des mes amis'"
+      n_line1: "t'a donné ses conseils pour ton voyage."
+      n_line2: "Tu peux y accéder en allant sur la page de ton itinéraire et en sélectionnant 'Conseils de mes amis'"
       n_line3: "Accéder aux conseils de mes amis."
-      n_line4: "En espérant que cela vous soit utile, nous vous souhaitons un super voyage!"
+      n_line4: "En espérant que cela te soit utile, nous te souhaitons un super voyage!"
       n_line5: "L'équipe EXPLORIZERS"
 
   # user_mailer_welcome: "Bienvenue sur Explorizers"
   # user_mailer_share_trip: "Demande de conseils"
-  n_line0_1: "vous a donné"
-  n_line0_2: "conseil(s) pour votre voyage."
-  n_name: "Un de vos amis"
-  user_mailer_notif: "vous a aidé pour votre prochain voyage"
+  n_line0_1: "t'a donné"
+  n_line0_2: "conseil(s) pour ton voyage."
+  n_name: "Un de tes amis"
+  user_mailer_notif: "t'a aidé pour ton prochain voyage"
 
   # mailer:
   #   user_mailer:
