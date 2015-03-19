@@ -34,6 +34,9 @@
       padding-right: 14px;
     }
   }
+  h3 {
+    font-size: 22px;
+  }
 
   .minor-block {
     font-size: 1.5em;
@@ -102,6 +105,16 @@
   }
 }
 
+.explanation-hp {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.explanation-box {
+  color: white;
+  size: 15px;
+}
+
 .arrow-down {
   position: absolute;
   bottom: 0px;
@@ -135,6 +148,10 @@
   .homepage_story .fullpage div i.fa-angle-down {
     display: none;
   }
+  .explanation-hp {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -152,6 +169,6 @@
       color: white;
       font-style: oblique;
       font-size: 300;
-  }
+    }
   }
 }
