@@ -10,7 +10,7 @@
         <div class="col-xs-6 col-sm-4 col-md-3 text-center">
           <%= form_for @trip, url: summarize_trip_path(@trip.id) do |f| %>
             <%= hidden_field_tag :id, value = @trip.id %>
-              <label for="mySubmit" class="btn btn-primary btn-block white-space-normal"><%= t('.getbyemail') %><i class="fa fa-envelope"></i> </label>
+              <label for="mySubmit" class="btn btn-success btn-block white-space-normal"><%= t('.getbyemail') %><i class="fa fa-envelope"></i> </label>
             <%= f.submit(id:'mySubmit', class:'hidden') %>
           <% end %>
         </div>

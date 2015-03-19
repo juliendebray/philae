@@ -24,7 +24,7 @@
     <div class="comment-module">
     <%= form_for [trip_exp.trip, trip_exp], remote: true do |f| %>
       <%= f.text_area :comment, placeholder: t('summarize_comment') %>
-      <%= f.submit t('summarize_savecomment'), class: 'btn btn-xs btn-primary', id: trip_exp.id %>
+      <%= f.submit t('summarize_savecomment'), class: 'btn btn-xs btn-warning', id: trip_exp.id %>
     <% end %>
     </div>
   <% elsif trip_exp.comment %>
