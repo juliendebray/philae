@@ -23,6 +23,7 @@ body.destinations {
     margin: 0px;
     font-weight: 300;
   }
+
   .minor-block {
     font-size: 1.5em;
     font-weight: 300;
@@ -33,6 +34,13 @@ body.destinations {
   .form-group{
     margin: 10px auto;
     padding-top:20px;
+  }
+
+  .title {
+    a {
+      color: white;
+      text-decoration: underline;
+    }
   }
 }
 

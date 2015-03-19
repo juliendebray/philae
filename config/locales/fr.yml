@@ -116,13 +116,15 @@ fr:
   #destinations:
   destinations:
     index:
-      title: "Liste des destinations déjà couvertes par les recommandations Explorizers"
-      dest1: "Voici les destinations déjà couvertes par les recommandations Explorizers - les autres arrivent bientôt."
-      destasia: "Asie: Birmanie, Cambodge, Inde, Indonésie, Japon, Malaisie, Népal, Ouzbékistan, Sri Lanka, Taiwan, Thaïlande, Vietnam"
-      destafrica: "Afrique: Botswana, Ethiopie, Madagascar, Maroc, La Réunion / Maurice"
-      destamerica: "Amérique: Brésil, Colombie, Cuba, Etats-Unis, Mexique, Pérou"
-      destmiddleeast: "Proche-Orient: Israël, Jordanie"
-      desteurope: "Europe: Istanbul"
+      title: "Destinations Explorizers"
+      destination_pitch: "Explorizers choisit de ne présenter que les conseils de voyageurs expérimentés et de professionnels sur le terrain. Ces conseils sont recoupés, et filtrés, pour ne garder que le meilleur de chaque destination. A ce jour, Explorizers couvre 27 destinations. "
+      contribute: "Tes recommandations"
+      destination_pitch2: " sont les bienvenues pour étendre notre couverture!"
+      destasia: "Birmanie, Cambodge, Inde, Indonésie, Japon, Malaisie, Népal, Ouzbékistan, Sri Lanka, Taiwan, Thaïlande, Vietnam"
+      destafrica: "Botswana, Ethiopie, Madagascar, Maroc, La Réunion / Maurice"
+      destamerica: "Brésil, Colombie, Cuba, Etats-Unis, Mexique, Pérou"
+      destmiddleeast: "Israël, Jordanie"
+      desteurope: "Istanbul"
 
       nextdest: "Quelle prochaine destination souhaitez-vous voir?"
       searchplaceholder: "Où allez-vous ?"

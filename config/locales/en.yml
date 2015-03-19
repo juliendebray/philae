@@ -133,13 +133,15 @@ en:
   #destinations:
   destinations:
     index:
-      title: "List of destinations already covered with Explorizers' recommendations"
-      dest1: "These are the destinations already covered with Explorizers' recommendations. More to come soon!"
-      destasia: "Asia: Myanmar, Cambodia, India, Indonesia, Japan, Malaysia, Nepal, Sri Lanka, Taiwan, Thailand, Vietnam, Uzbekistan"
-      destafrica: "Africa: Botswana, Ethiopia, Madagascar, Morocco, Reunion / Mauritius"
-      destamerica: "America: Brazil, Colombia, Cuba, Mexico, Peru, United States"
-      destmiddleeast: "Middle-East: Israel, Jordan"
-      desteurope: "Europe: Istanbul"
+      title: "Explorizers' destinations"
+      destination_pitch: "Explorizers chose to display only recommendations that come from expert travelers and local professionals. Their tips are double-checked, and filtered, to keep only the best of each destination. Today, Explorizers covers 27 destinations. "
+      contribute: "Your recommendations"
+      destination_pitch2: " are very welcome to help us extend the coverage!"
+      destasia: "Cambodia, India, Indonesia, Japan, Malaysia, Myanmar, Nepal, Sri Lanka, Taiwan, Thailand, Vietnam, Uzbekistan"
+      destafrica: "Botswana, Ethiopia, Madagascar, Morocco, Reunion / Mauritius"
+      destamerica: "Brazil, Colombia, Cuba, Mexico, Peru, United States"
+      destmiddleeast: "Israel, Jordan"
+      desteurope: "Istanbul"
       nextdest: "What is the next destination you want to see?"
       searchplaceholder: "Where are you going?"
       searchbutton: "Start"
