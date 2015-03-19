@@ -248,6 +248,9 @@ html, body {
       line-height: 1em;
       margin: 3%;
     }
+    p {
+      font-size: 14px;
+    }
   }
 
   .selection-content {
@@ -487,6 +490,11 @@ i#ib-remove-trip-exp:hover {
         .fa {
           color: #FF5A5F;
         }
+      }
+    }
+    .infobox-content:hover {
+      .fa-search {
+        color: coral;
       }
     }
   }

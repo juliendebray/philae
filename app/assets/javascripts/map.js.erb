@@ -445,18 +445,18 @@ function displayMobileInterface(id) {
 function displayMarkersAccordingToUserChoices(trip_id, map, id) {
   if (id == 'user-experiences') {
     // Set map with booked experiences;
-    $('#sidebar-title-content').html('<i class="fa fa-heart-o"></i> Ma selection');
+    $('#sidebar-title-content').html('<i class="fa fa-heart-o"></i> Ma selection <br><br> <p>Voici les expériences sélectionnées pour ton voyage. Supprime-les ou réorganise-les!</p>');
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
       $('.overlay').css('display','none');
       if (markers.length == 0) {
-        alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Top 20 by Explorizers"! - No experiences yet! Add yours or choose from "Top 10 by Explorizers"!');
+        alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Top 20 by Explorizers"! - No experiences yet! Add yours or choose from "Top 20 by Explorizers"!');
       }
     });
   } else if (id == 'guests-comments') {
     removePolyline();
     // Set map with trip_comments;
-    $('#sidebar-title-content').html('<i class="fa fa fa-comments-o"></i> Conseils de mes amis');
+    $('#sidebar-title-content').html('<i class="fa fa fa-comments-o"></i> Conseils de mes amis <br><br> <p>Ajoute-les ou non à ton voyage! Et pour plus de conseils, clique sur <i class="fa fa-users"></i> à gauche.</p>');
     setMapWithGuestComments(trip_id, map, function(r) {
       requestingMarkers = r;
       $('.overlay').css('display','none');
@@ -467,7 +467,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
   } else if (id == 'all-experiences') {
     removePolyline();
     // Set map with all experiences
-    $('#sidebar-title-content').html('<i class="fa fa-star-o"></i> TOP 20 by Explorizers');
+    $('#sidebar-title-content').html('<i class="fa fa-star-o"></i> TOP 20 by Explorizers <br><br> <p>Sur cette carte, voici les 20 expériences les mieux notées par les voyageurs. Ajoute-les à ton voyage, ou zoome et déplace la carte pour en voir plus.</p>');
     setMarkersAndKeepListening(map, trip_id);
   }
   else {
