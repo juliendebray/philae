@@ -3,7 +3,7 @@ class ExperiencePicture < ActiveRecord::Base
 
   has_attached_file :picture,
     styles: {
-      banner: "851x315#",
+      banner: "851x440#",
       small: "260x174#",
       thumb: "160x100#",
     }

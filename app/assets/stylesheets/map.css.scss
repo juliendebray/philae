@@ -608,17 +608,26 @@ i#ib-remove-trip-exp:hover {
   max-width: 100%;
 }
 
-@media screen and (max-width: 600px) {
-  .owl-theme .owl-controls .owl-buttons {
-    display: none
-  }
-}
 
 // Responsive: change design for screen smaller than ipad in portrait
 @media screen and (max-width: 999px) {
   #myModalPresentation{
     display: none;
     visibility: hidden;
+  }
+
+  // .owl-theme .owl-controls .owl-buttons {
+  //   display: none
+  // }
+
+  .owl-controls.clickable {
+    display: none;
+    .owl-prev {
+      display: none;
+    }
+    .owl-next {
+      display: none;
+    }
   }
 
   #new-exp {
