@@ -24,7 +24,6 @@ en:
 
   #navbar
   ourstorynav: "What is Explorizers?"
-  fbconnect: "Login Facebook"
   login: "Log in"
   signup: "Sign up"
   signout: "Sign out"
@@ -32,7 +31,6 @@ en:
   ourcontact: "Talk to us"
   contribute: "Tips to share"
   my_trips: "My trips"
-  nav_listofproviders: "Local guides and agencies"
   nav_destinations: "List of destinations"
 
   #sign up / sign in
@@ -54,33 +52,24 @@ en:
       brand: "E X P L O R I Z E R S"
       firstline: "YOUR NEXT TRIP STARTS HERE"
       secondline: "Find travel tips from the best sources: your friends, other travelers and professionals"
-      thirdline: "Get inspired by our Explorizers' best recommendations"
-      trending: "Trending this week: Madagascar  |  Japan"
+      thirdline: "1. Identify must-see places and off the-beaten-tracks gems"
+      fourthline: "2. Ask your friends' tips"
+      fifthline: "3. Pick what you like to build YOUR trip"
       searchplaceholder: "Where are you going?"
-      searchbutton: "Start"
-      otherdestination1: "Going somewhere else? Create your trip and ask your friends for their best tips!"
-      otherdestination2: "Our own recommendations for other destinations will be online shortly..!"
+      searchbutton: "Travel"
       subtitle1: "Aurelia - Sri Lanka"
       text1: "Mixing my friends' tips and my own expectations, I designed a great tailor-made trip."
       subtitle2: "Charlotte - Myanmar"
       text2: "I felt safer to go to Myanmar with my friends' tips. I avoided bad surprises!"
       subtitle3: "Romain - Morocco"
       text3: "My own friends completed Explorizers' recommendations, with great yet less travelled places: even better!"
-      concept: "Explorizers helps you travel the World and live extraordinary adventures"
-      contact: "Contact us"
-      becomeexplo: "Become an Explorizer!"
       seedestinations: "List of covered DESTINATIONS"
-
 
   addreview: "Add a review"
   addtotrip: "Add to my trip"
 
   #trips
   trips:
-    show:
-      title: "Design your trip"
-      myexp: "Only show my own selection"
-      newexp: "Click on the map to add a new experience"
     summarize:
       gobacktotrip: " Go back to my trip"
       getbyemail: "Get by email "
@@ -88,8 +77,6 @@ en:
       lastupdate: "Last update: "
   summarize_comment: "Add a comment"
   summarize_savecomment: "Save"
-
-
 
   #trip_comments:
   trip_comment_add: "Add to trip"
@@ -114,7 +101,7 @@ en:
       title: "How can we help?"
       name: "Felix Baumgartner"
       email: "felix.bmgt@gmail.com"
-      message: "Any comment or question ? Want to contribute? Something went wrong? Tell us, we'll get back to you shorty. Thanks."
+      message: "Any comment or question? Want to contribute? Something went wrong? Tell us, we'll get back to you shorty. Thanks."
       submit: "Send"
 
   #concept
@@ -124,23 +111,23 @@ en:
       story1: "Our friends are a great source of inspiration for travel: who else can give us on tips on things we will really like?"
       story2: "We built Explorizers to help them give you their tips very easily. Post your trip on Facebook or forward it by email, your friends will help you design it!"
       story3: "And for more inspiration, Explorizers progressively shares its users' best tips. The community is growing, join us!"
-      contact: "Contact us"
       new_trip: "Create a new trip"
-      contact: "Contact Explorizers"
 
   #destinations:
   destinations:
     index:
-      title: "List of destinations already covered with Explorizers' recommendations"
-      dest1: "These are the destinations already covered with Explorizers' recommendations. More to come soon!"
-      destasia: "Asia: Myanmar, Cambodia, India, Indonesia, Japan, Malaysia, Nepal, Sri Lanka, Taiwan, Thailand, Vietnam, Uzbekistan"
-      destafrica: "Africa: Botswana, Ethiopia, Madagascar, Morocco, Reunion / Mauritius"
-      destamerica: "America: Brazil, Colombia, Cuba, Mexico, Peru, United States"
-      destmiddleeast: "Middle-East: Israel, Jordan"
-      desteurope: "Europe: Istanbul"
+      title: "Explorizers' destinations"
+      destination_pitch: "Explorizers chose to display only recommendations that come from expert travelers and local professionals. Their tips are double-checked, and filtered, to keep only the best of each destination. Today, Explorizers covers 27 destinations. "
+      contribute: "Your recommendations"
+      destination_pitch2: " are very welcome to help us extend the coverage!"
+      destasia: "Cambodia, India, Indonesia, Japan, Malaysia, Myanmar, Nepal, Sri Lanka, Taiwan, Thailand, Vietnam, Uzbekistan"
+      destafrica: "Botswana, Ethiopia, Madagascar, Morocco, Reunion / Mauritius"
+      destamerica: "Brazil, Colombia, Cuba, Mexico, Peru, United States"
+      destmiddleeast: "Israel, Jordan"
+      desteurope: "Istanbul"
       nextdest: "What is the next destination you want to see?"
       searchplaceholder: "Where are you going?"
-      searchbutton: "Start"
+      searchbutton: "Travel"
 
   #newexperience
   experiences:
@@ -148,22 +135,17 @@ en:
       title: "Add a new experience"
       text1: "Explorizers is built of people's appeal for the project. So thanks for your contribution. "
       text2: "To make sure Explorizers remains a peaceful place, contributions are reviewed by our team. This avoids duplication, advertising, trolls, pirates and clowns. For any question, please write to dora@explorizers.com."
-  expbuttonadd: "Add"
+  expbuttonadd: "Share"
 
   #ask_your_friends:
   ask_your_friends:
     index:
       title: "Ask your friends' tips !"
-      intro1: "Share your roadmap so that your friends can add their tips."
-      intro2: "Then, you decide to include their tips or not!"
+      ask_fb_btn: "Post on Facebook"
+      ask_email_btn: "Get the link by email"
       share_fb: "Your friends will access your map from Facebook"
       share_email: "Get your map in an email and transfer it to your friends"
-      ask_email_btn: "Get the link by email"
-      ask_fb_btn: "Post on Facebook"
       gobacktotrip: "Go back to my trip"
-
-  blockfbtitle: "I need YOU - to help me design the best trip ever!"
-  blockfbdescription: "Explorizers is a platform where you design your trip - with the help of your trusted friends"
 
   #trips
   trip_show_title: "Add another stop-over to my trip"
@@ -194,14 +176,13 @@ en:
   show_seeproviders: "See local guides & agencies"
   show_summary: "Trip summary"
   show_need_tips: "Get my friends tips!"
-  show_help: "Help"
+  show_help: "How it works"
 
   providers_title: "These local guides and agencies will help you"
 
   show_guest_user_title: "Your friend is asking for your tips!"
   show_guest_user_line1: "Add your tips with a click on the map, or use the 'Add a tip' button"
-  show_guest_user_line2: "(Passez en français dans la barre de navigation si besoin!)"
-  show_guest_user_line3: ""
+  show_guest_user_line2: ""
   show_guest_user_letsgo: "Here we go!"
   show_guest_user_modaltitle: "Another tip"
   show_guest_user_thanks: "Thanks for sharing your tips !"
@@ -217,10 +198,6 @@ en:
   show_guest_user_click_buttons: "Click on the buttons to add your tips!"
   show_guest_user_good_tip: "Your good tip"
   show_guest_user_sidebar_title: "Selected experiences by "
-
-  noexperienceyet: "You have not selected any experience yet. You can add your own and have a look at 'Best experiences'."
-  notipsyet: "No tips yet? Ask them! Click below on 'Get my friends' tips'."
-
 
   #providers:
   providers:

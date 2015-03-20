@@ -4,6 +4,7 @@
     <div id="titleblock" class="text-center">
       <div class="title">
         <h2><%= t('.title', :default => "Destinations") %></h2>
+        <h4><%= t('.destination_pitch') %><i><%= link_to t('.contribute'), new_experience_path %></i><%= t('.destination_pitch2') %></h4>
       </div>
     </div>
     <div class="vertical-spacer-xs"></div>
@@ -22,8 +23,8 @@
               <div class="form-group minor-block" class="text-center">
                 <%= f.hidden_field(:latitude) %>
                 <%= f.hidden_field(:longitude) %>
-                <%= f.search_field(:query, placeholder: t('.searchplaceholder')) %>
-                <%= f.submit('Go', class: 'btn btn-info btn-sm') %>
+                <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
+                <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
               </div>
             <% end %>
           </div>

@@ -173,8 +173,9 @@ html, body {
     top: 9px;
     right: 9px;
     position: absolute;
-    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
-    // border-color: red;
+    // box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
+    border-left: #FF7519;
+    border-style: solid;
     font-size: 15px;
       small {
         font-size: 15px;
@@ -182,23 +183,35 @@ html, body {
       }
   }
 
+  .map-up-btn:hover {
+    background-color: #FF7519;
+    color: white;
+  }
+
   .map-bottom-btn-tips {
     bottom: 5px;
     position: absolute;
     right: 5px;
     box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.3);
-    background-color: #FF5A5F;
+    background-color: #3b5998;
 
-      small {
-        font-size: 15px;
-        font-weight: 400;
-      }
+    small {
+      font-size: 15px;
+      font-weight: 400;
+    }
 
-      input {
-        border: none;
-        background-color: #FF5A5F;
-        color: white;
-      }
+    input {
+      border: none;
+      background-color: #3b5998;
+      color: white;
+    }
+    input:hover {
+      background-color: #2d4373;
+    }
+  }
+
+  .map-bottom-btn-tips:hover {
+    background-color: #2d4373;
   }
 }
 
@@ -247,6 +260,9 @@ html, body {
       font-size: 1.5em;
       line-height: 1em;
       margin: 3%;
+    }
+    p {
+      font-size: 14px;
     }
   }
 
@@ -487,6 +503,11 @@ i#ib-remove-trip-exp:hover {
         .fa {
           color: #FF5A5F;
         }
+      }
+    }
+    .infobox-content:hover {
+      .fa-search {
+        color: coral;
       }
     }
   }

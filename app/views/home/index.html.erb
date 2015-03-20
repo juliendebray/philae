@@ -11,11 +11,31 @@
     <div id="homeblock" class="banner text-center">
       <div class="title">
         <h1><%= t('.firstline') %></h1>
-        <div class="vertical-spacer-sm"></div>
-        <h4><%= t('.secondline') %></h4>
+        <div class="vertical-spacer-xs"></div>
+        <h3><%= t('.secondline') %></h3>
       </div>
+      <div class="vertical-spacer-xs"></div>
+      <div class="row">
+        <div class="explanation-hp">
+          <div class="col-xs-12 col-md-4">
+            <div class="explanation-box text-center">
+              <h4><%= t('.thirdline') %></h4>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-4">
+            <div class="explanation-box text-center">
+              <h4><%= t('.fourthline') %></h4>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-4">
+            <div class="explanation-box text-center">
+              <h4><%= t('.fifthline') %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vertical-spacer-xs"></div>
       <div class="trending">
-<!--         <h4><%= t('.thirdline') %></h4> -->
         <h4><i class="fa fa-hand-o-right"></i><%= link_to t('.seedestinations'), destinations_path %><i class="  fa fa-hand-o-left"></i></h4>
       </div>
       <div class="tr-grey-bg">
@@ -23,12 +43,11 @@
           <div class="form-group minor-block" class="text-center">
             <%= f.hidden_field(:latitude) %>
             <%= f.hidden_field(:longitude) %>
-            <%= f.search_field(:query, placeholder: t('.searchplaceholder')) %>
-            <%= f.submit('Go', class: 'btn btn-info btn-sm') %>
+            <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
+            <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
           </div>
         <% end %>
       </div>
-      <div class="vertical-spacer"></div>
       <div class="vertical-spacer-sm"></div>
 
       <div class="row">

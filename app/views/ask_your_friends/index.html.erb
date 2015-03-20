@@ -25,7 +25,7 @@
           <i class="fa fa-envelope fa-2x"></i><br><br>
           <%= form_for @trip, url: share_trip_path(@trip.id) do |f| %>
             <%= hidden_field_tag :id, value = @trip.id %>
-            <%= f.submit( t('.ask_email_btn'), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask with email button clicked');", class:'btn btn-primary') %>
+            <%= f.submit( t('.ask_email_btn'), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask with email button clicked');", class:'btn btn-success') %>
           <% end %>
           <h4><%= t('.share_email') %></h4>
         </div>
@@ -33,7 +33,7 @@
       <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
         <div class="vertical-spacer ">
         </div>
-        <%= link_to t('.gobacktotrip'), trip_path(@trip), {class: "btn btn-info"} %>
+        <%= link_to t('.gobacktotrip'), trip_path(@trip), {class: "btn btn-warning"} %>
 <!--         <%= link_to t('.gobacktotrip'), trip_path(@trip) %> -->
       </div>
     </div>

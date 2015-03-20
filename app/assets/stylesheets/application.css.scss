@@ -1,7 +1,12 @@
 // over-ride Bootstrap theme with Sass variables
+//noir
 $btn-primary-bg: #333333;
-$btn-info-bg: #FF5A5F;
-$btn-success-bg: green;
+//rouge pale
+// $btn-info-bg: #FF5A5F;
+$btn-info-bg: #FF7519;
+//vert
+$btn-success-bg: #C53727;
+//gris foncé
 $btn-warning-bg: #666F77;
 
 
@@ -113,6 +118,10 @@ div.homepage_story {
 
 .vertical-spacer-xs {
   height: 2em;
+}
+
+.vertical-spacer-xxs {
+  height: 0.1em;
 }
 
 @media screen and (max-width: 500px) {
