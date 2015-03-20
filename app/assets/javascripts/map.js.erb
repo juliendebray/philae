@@ -121,7 +121,6 @@ function openInfowindowOnClick(data, marker, carrouselRequired) {
   if (ibOpened) {
     ib.close();
     ibOpened = false;
-    console.log('fermeture ib');
   }
   var boxText = document.createElement("div");
   boxText.setAttribute("class", 'infobox-container');
@@ -129,7 +128,6 @@ function openInfowindowOnClick(data, marker, carrouselRequired) {
   boxText.innerHTML = data[marker.id].infobox;
   var infoboxOptions = setInfoboxOptions(boxText);
   ib = new InfoBox(infoboxOptions);
-  console.log('open new ib');
   ib.open(map, marker);
   ibOpened = true;
   google.maps.event.addListener(ib, 'domready', function(){
@@ -339,16 +337,12 @@ function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
 }
 
 function setPolylineDrawingWhenDraggingExperience() {
-      // console.log('mu');
-  // if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
-    $('.panel-heading').on('mouseup', function() {
-      $(this).on('mouseleave',function() {
-        console.log('ml');
-        $(this).unbind('mouseleave');
-        drawPolyline();
-      });
+  $('.panel-heading').on('mouseup', function() {
+    $(this).on('mouseleave',function() {
+      $(this).unbind('mouseleave');
+      drawPolyline();
     });
-  // }
+  });
 }
 
 function placeMarker(location) {

@@ -17,11 +17,7 @@ class TripExperiencesController < ApplicationController
   def trip_markers
     @experiences = []
     if @trip.user.nil? || current_user == @trip.user
-
       @markers = build_markers_with_trip_experiences(@trip.trip_experiences.sort_by { |te| te.order }, @trip, false)
-      # @trip.trip_experiences.each do |trip_exp|
-      #   @experiences << trip_exp.experience
-      # end
     else
       trip_experiences = []
       @trip.trip_experiences.each do |trip_exp|
@@ -29,7 +25,6 @@ class TripExperiencesController < ApplicationController
       end
       @markers = build_markers_with_trip_experiences(trip_experiences.sort_by { |te| te.order }, @trip, true)
     end
-    # @markers = build_markers(@experiences, @trip)
     render json: @markers
   end
 
@@ -102,6 +97,11 @@ class TripExperiencesController < ApplicationController
     Gmaps4rails.build_markers(experiences) do |experience, marker|
       marker.lat experience.latitude
       marker.lng experience.longitude
+      marker.picture({
+        url: "http://philae-floju.s3.amazonaws.com/markers/marker_test.png",
+        width:  44,
+        height: 80
+        })
       marker.json({
         infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
           experience: experience,
