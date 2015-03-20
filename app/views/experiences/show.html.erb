@@ -1,9 +1,13 @@
 <%= content_for :title do %>
  <%= @experience.name %>
 <% end %>
-<div class="wrapper">
+<div class="wrapper text-center">
   <h1><%= @experience.name %></h1>
+  <div class="vertical-spacer-xs"></div>
   <p><%= @experience.description %></p>
+
+  <div class="vertical-spacer-xs"></div>
+
   <% if @experience.experience_pictures.any? %>
     <div class="exp-picture-block table-responsive text-center">
       <table class="table">
@@ -31,6 +35,6 @@
   <% end %>
   <div class="vertical-spacer-sm"></div>
   <div class="text-center">
-   <%= link_to 'Commencer mon voyage!', root_path, class: "btn btn-primary" %>
+   <%= link_to 'Commencer mon voyage!', root_path, class: "btn btn-info" %>
   </div>
 </div>
