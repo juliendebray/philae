@@ -99,7 +99,7 @@ class TripExperiencesController < ApplicationController
       marker.lng experience.longitude
       marker.picture({
         url: "http://philae-floju.s3.amazonaws.com/markers/marker_test.png",
-        width:  44,
+        width:  54,
         height: 80
         })
       marker.json({
