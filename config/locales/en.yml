@@ -169,6 +169,9 @@ en:
 
   show_addmyexp: "Add another stop-over"
   show_addcomment: "Click on the map or HERE to add a tip"
+  show_addcomment_place: "Tip for a place?"
+  show_addcomment_restaurant: "Tip for a restaurant?"
+  show_addcomment_hotel: "Tip for a hotel?"
   show_selectedexp: "Selection"
   show_save: "Save my selection"
   show_saveguest: "I am done!"

@@ -169,21 +169,52 @@ html, body {
     }
   }
 
-  .map-up-btn {
+  .map-up-btn1 {
     top: 9px;
     right: 9px;
     position: absolute;
+    width: 148px;
     // box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
     border-left: #FF7519;
     border-style: solid;
     font-size: 15px;
       small {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 400;
       }
   }
 
-  .map-up-btn:hover {
+  .map-up-btn2 {
+    top: 50px;
+    right: 9px;
+    position: absolute;
+    width: 148px;
+    // box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
+    border-left: #FF7519;
+    border-style: solid;
+    font-size: 15px;
+      small {
+        font-size: 14px;
+        font-weight: 400;
+      }
+  }
+
+  .map-up-btn3 {
+    top: 91px;
+    right: 9px;
+    position: absolute;
+    width: 148px;
+    // box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
+    border-left: #FF7519;
+    border-style: solid;
+    font-size: 15px;
+      small {
+        font-size: 14px;
+        font-weight: 400;
+      }
+  }
+
+  .map-up-btn1:hover, .map-up-btn2:hover, .map-up-btn3:hover  {
     background-color: #FF7519;
     color: white;
   }
