@@ -449,7 +449,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
       requestingMarkers = r;
       $('.overlay').css('display','none');
       if (markers.length == 0) {
-        alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Top 20 by Explorizers"! - No experiences yet! Add yours or choose from "Top 20 by Explorizers"!');
+        alert('Pas encore de sélection! Ajoutez vos expériences ou cochez "Best of Explorizers"! - No experiences yet! Add yours or choose from "Best of Explorizers"!');
       }
     });
   } else if (id == 'guests-comments') {
@@ -466,7 +466,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
   } else if (id == 'all-experiences') {
     removePolyline();
     // Set map with all experiences
-    $('#sidebar-title-content').html('<i class="fa fa-star-o"></i> TOP 20 by Explorizers <br><br> <p>Sur cette carte, voici les 20 expériences les mieux notées par les voyageurs. Ajoute-les à ton voyage, ou zoome et déplace la carte pour en voir plus.</p>');
+    $('#sidebar-title-content').html('<i class="fa fa-star-o"></i> Best of Explorizers <br><br> <p>Voici les expériences <b>les mieux notées </b> par les voyageurs. Ajoute-les à ton voyage, ou <b>zoome et déplace la carte</b> pour en voir plus.</p>');
     setMarkersAndKeepListening(map, trip_id);
   }
   else {

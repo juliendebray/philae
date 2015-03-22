@@ -144,16 +144,14 @@ fr:
   form_guest_description: "Quel est ton conseil?"
   form_guest_share: "Envoyer à ton ami(e)!"
 
-  show_bestexp: "Top 20 by Explorizers"
+  show_bestexp: "Best of Explorizers"
   show_myselection: "Ma sélection"
   show_friendstips: "Conseils de mes amis"
   show_bestexp_mobile: "Best of"
   show_myselection_mobile: "Mon voyage"
   show_friendstips_mobile: "Conseils"
-  show_addmyexp: "Ajouter une autre étape"
-  show_addcomment_place: "Conseille un lieu"
-  show_addcomment_restaurant: "Conseille un resto"
-  show_addcomment_hotel: "Conseille un hôtel"
+
+  show_addmyexp: "Ajouter ma propre étape"
   show_selectedexp: "Sélection"
   show_save: "Enregistrer ma sélection"
   show_saveguest: "J'ai fini!"
@@ -162,6 +160,7 @@ fr:
   show_summary: "Synthèse du voyage"
   show_need_tips: "Obtenir les conseils d'amis!"
   show_help: "Comment ça marche?"
+  guest_comment_added: "- ajouté au voyage"
 
   providers_title: "Ces agences et guides locaux vont t'aider"
 
@@ -169,6 +168,9 @@ fr:
   show_guest_user_line1: "Ajoutez vos conseils en cliquant sur la carte, ou avec le bouton 'Ajouter un conseil'"
   show_guest_user_line2: ""
   show_guest_user_letsgo: "C'est parti"
+  show_addcomment_place: "Conseille un lieu"
+  show_addcomment_restaurant: "Conseille un resto"
+  show_addcomment_hotel: "Conseille un hôtel"
   show_guest_user_modaltitle: "Encore un conseil"
   show_guest_user_thanks: "Merci!"
   show_guest_user_thanksline1: "A ton tour! Tu pars où?"
