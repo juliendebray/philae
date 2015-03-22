@@ -115,9 +115,9 @@ fr:
   #newexperience
   experiences:
     new:
-      title: "Ajouter une nouvelle experience"
-      text1: "Le projet Explorizers repose sur votre contribution. Merci de nous aider à le faire grandir."
+      title: "Partager une experience"
       text2: "Pour assurer une qualité maximale sur Explorizers, les contributions sont validées par notre équipe. Cela évite les doublons, la pub, les trolls, les pirates et les clowns en tous genres. Pour toute question, écrivez à dora@explorizers.com."
+  exp_share_text1: "Contribue au projet Explorizers en partageant tes conseils de voyage!"
   expbuttonadd: "Partager"
 
   #ask_your_friends:
@@ -171,7 +171,7 @@ fr:
   show_guest_user_thanks: "Merci!"
   show_guest_user_thanksline1: "A ton tour! Tu pars où?"
   show_guest_user_thanksline2: ""
-  show_guest_user_thanksbtn: "Découvrez EXPLORIZERS"
+  show_guest_user_thanksbtn: "Découvre EXPLORIZERS"
   #guest sur mobile:
   show_guest_user_welcome: "Bienvenue sur Explorizers"
   show_guest_user_friend_needs_tips: " a besoin de conseils pour son prochain voyage!"
