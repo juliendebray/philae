@@ -132,9 +132,9 @@ en:
   #newexperience
   experiences:
     new:
-      title: "Add a new experience"
-      text1: "Explorizers is built of people's appeal for the project. So thanks for your contribution. "
+      title: "Share an experience"
       text2: "To make sure Explorizers remains a peaceful place, contributions are reviewed by our team. This avoids duplication, advertising, trolls, pirates and clowns. For any question, please write to dora@explorizers.com."
+  exp_share_text1: "Contribute to Explorizers: share your tips!"
   expbuttonadd: "Share"
 
   #ask_your_friends:
@@ -197,7 +197,7 @@ en:
   show_guest_user_incite_tips2: "best tips!"
   show_guest_user_click_buttons: "Click on the buttons to add your tips!"
   show_guest_user_good_tip: "Your good tip"
-  show_guest_user_sidebar_title: "Selected experiences by "
+  show_guest_user_sidebar_title: "Experiences selected by "
 
   #providers:
   providers:

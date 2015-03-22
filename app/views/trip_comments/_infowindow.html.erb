@@ -6,6 +6,9 @@
   <div class="comment-content">
     <%= simple_format trip_comment.description %>
   </div>
+  <div class="comment-address">
+    <%= simple_format trip_comment.address %>
+  </div>
   <div class="infobox-content">
     <% unless trip_comment.add_to_trip %>
       <% unless guest_user %>

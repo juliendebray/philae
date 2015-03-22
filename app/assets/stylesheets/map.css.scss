@@ -301,6 +301,10 @@ html, body {
         font-weight: 300;
         color: #808080;
 
+        a {
+          color: #808080;
+        }
+
         button.btn {
           margin: 0px;
           padding: 0px;
@@ -593,9 +597,14 @@ i#ib-remove-trip-exp:hover {
   .comment-name {
     padding-left: 7px;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 15px;
   }
   .comment-content {
+    padding: 7px;
+    font-weight: 100;
+    font-size: 13px;
+  }
+  .comment-address {
     padding: 7px;
     font-weight: 100;
     font-size: 11px;
