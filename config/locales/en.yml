@@ -160,14 +160,14 @@ en:
   form_guest_description: "What is your tip?"
   form_guest_share: "Send to your friend!"
 
-  show_bestexp: "Top 20 by Explorizers"
+  show_bestexp: "Best of Explorizers"
   show_myselection: "My selection"
   show_friendstips: "My friends' tips"
   show_bestexp_mobile: "Best of"
   show_myselection_mobile: "My trip"
   show_friendstips_mobile: "Tips"
 
-  show_addmyexp: "Add another stop-over"
+  show_addmyexp: "Add my own stop-over"
   show_addcomment: "Click on the map or HERE to add a tip"
   show_addcomment_place: "Tip for a place?"
   show_addcomment_restaurant: "Tip for a restaurant?"
@@ -180,6 +180,8 @@ en:
   show_summary: "Trip summary"
   show_need_tips: "Get my friends tips!"
   show_help: "How it works"
+  guest_comment_added: "- added to trip"
+
 
   providers_title: "These local guides and agencies will help you"
 

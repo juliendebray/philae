@@ -169,6 +169,20 @@ html, body {
     }
   }
 
+.map-up-btn {
+    top: 9px;
+    right: 9px;
+    position: absolute;
+    // box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
+    border-left: #FF7519;
+    border-style: solid;
+    font-size: 15px;
+      small {
+        font-size: 14px;
+        font-weight: 400;
+      }
+  }
+
   .map-up-btn1 {
     top: 9px;
     right: 9px;
@@ -214,7 +228,7 @@ html, body {
       }
   }
 
-  .map-up-btn1:hover, .map-up-btn2:hover, .map-up-btn3:hover  {
+  .map-up-btn:hover, .map-up-btn1:hover, .map-up-btn2:hover, .map-up-btn3:hover  {
     background-color: #FF7519;
     color: white;
   }
@@ -446,7 +460,7 @@ html, body {
     vertical-align: middle;
   }
   .item-show {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     // padding: 5% 0px;
     padding-left: 5%;
