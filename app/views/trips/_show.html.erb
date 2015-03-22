@@ -100,8 +100,12 @@
     <% else %>
     <!-- Guest Modal to let him add his own experience -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-default map-up-btn" data-toggle="modal" data-target="#myModalGuest">
-      <small><%= t('show_addcomment') %></small>
+    <button type="button" class="btn btn-default map-up-btn1" data-toggle="modal" data-target="#myModalGuest">
+      <small><%= t('show_addcomment_place') %></small>
+    <button type="button" class="btn btn-default map-up-btn2" data-toggle="modal" data-target="#myModalGuest">
+      <small><%= t('show_addcomment_restaurant') %></small>
+    <button type="button" class="btn btn-default map-up-btn3" data-toggle="modal" data-target="#myModalGuest">
+      <small><%= t('show_addcomment_hotel') %></small>
     </button>
 
     <button type="button" class="btn btn-facebook map-bottom-btn-tips" id="set-orders">
