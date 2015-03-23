@@ -511,15 +511,22 @@ html, body {
   margin: 0 0 0 126px;
 }
 
-
-i#ib-remove-trip-exp {
-  color: #FF5A5F;
-  font-size: 19px;
+.remove-from-trip {
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  i#ib-remove-trip-exp {
+    color: #FF5A5F;
+  }
 }
 
-i#ib-remove-trip-exp:hover {
-  color: #808080;
-  font-size: 19px;
+.remove-from-trip:hover {
+  text-decoration: underline;
+  i#ib-remove-trip-exp {
+    color: #808080;
+    font-size: 14px;
+    text-decoration: none;
+  }
 }
 
 .infobox-container {

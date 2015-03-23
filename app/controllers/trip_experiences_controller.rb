@@ -6,22 +6,18 @@ class TripExperiencesController < ApplicationController
 
   def markers
     markers_number = 20
-    tab_id = @trip.trip_experiences.map { |te| te.experience_id}
+    # tab_id = @trip.trip_experiences.map { |te| te.experience_id}
     experiences_within_bounds = Experience.where(published: true).within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
-    tab = experiences_within_bounds.reject { |e| tab_id.include?(e.id) }
-    @experiences = select_experiences_to_show(tab)
+    # tab = experiences_within_bounds.reject { |e| tab_id.include?(e.id) }
+    @experiences = select_experiences_to_show(experiences_within_bounds)
     @markers = build_markers(@experiences[0..markers_number - 1], @trip)
     render json: @markers
   end
 
   def trip_markers
     @experiences = []
-    if @trip.user.nil? || current_user == @trip.user
-
+    if @trip.user.nil? || @trip.user == current_user
       @markers = build_markers_with_trip_experiences(@trip.trip_experiences.sort_by { |te| te.order }, @trip, false)
-      # @trip.trip_experiences.each do |trip_exp|
-      #   @experiences << trip_exp.experience
-      # end
     else
       trip_experiences = []
       @trip.trip_experiences.each do |trip_exp|
@@ -29,7 +25,6 @@ class TripExperiencesController < ApplicationController
       end
       @markers = build_markers_with_trip_experiences(trip_experiences.sort_by { |te| te.order }, @trip, true)
     end
-    # @markers = build_markers(@experiences, @trip)
     render json: @markers
   end
 
@@ -102,21 +97,51 @@ class TripExperiencesController < ApplicationController
     Gmaps4rails.build_markers(experiences) do |experience, marker|
       marker.lat experience.latitude
       marker.lng experience.longitude
-      marker.json({
-        infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
-          experience: experience,
-          trip: trip,
-          trip_experience: false
-        }),
-        experience_id: experience.id,
-        experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
-          trip_exp: false,
-          guest_user: false,
-          experience: experience,
-          trip: trip
-        })
-      })
       marker.title experience.name
+      trip_experiences = TripExperience.where("trip_id = ? AND experience_id = ?", trip.id, experience.id)
+      if trip_experiences.any?
+        marker.picture({
+          url: "https://philae-floju.s3.amazonaws.com/markers/selection.png",
+          width:  25,
+          height: 39
+          })
+        marker.json({
+          infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+            experience: experience,
+            trip: trip,
+            trip_experience: trip_experiences.first,
+            guest_user: false
+          }),
+          experience_id: experience.id,
+          experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+            trip_exp: trip_experiences.first,
+            guest_user: false,
+            experience: experience,
+            trip: trip
+          })
+        })
+      else
+        marker.picture({
+          url: "https://philae-floju.s3.amazonaws.com/markers/top.png",
+          width:  25,
+          height: 39
+        })
+        marker.json({
+          infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+            experience: experience,
+            trip: trip,
+            trip_experience: false,
+            guest_user: false
+          }),
+          experience_id: experience.id,
+          experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+            trip_exp: false,
+            guest_user: false,
+            experience: experience,
+            trip: trip
+          })
+        })
+      end
     end
   end
 
@@ -142,11 +167,17 @@ class TripExperiencesController < ApplicationController
     Gmaps4rails.build_markers(trip_experiences) do |trip_experience, marker|
       marker.lat trip_experience.experience.latitude
       marker.lng trip_experience.experience.longitude
+      marker.picture({
+        url: "https://philae-floju.s3.amazonaws.com/markers/selection.png",
+        width:  25,
+        height: 39
+        })
       marker.json({
         infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
           experience: trip_experience.experience,
           trip: trip,
-          trip_experience: trip_experience
+          trip_experience: trip_experience,
+          guest_user: guest_user
         }),
         experience_id: trip_experience.experience.id,
         experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {

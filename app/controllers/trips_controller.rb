@@ -69,8 +69,6 @@ class TripsController < ApplicationController
   def show_guest_user
     if params[:token] == @trip.token
       @guest_user = true
-      # trip_experiences_unordered = @trip.trip_experiences
-      # set_orders_if_nil!(@trip.trip_experiences)
       trip_experiences =  @trip.trip_experiences
       trip_exp_tab_all = trip_experiences.sort_by do |te|
         te.order

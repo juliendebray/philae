@@ -3,35 +3,15 @@ $( document ).ready(function() {
     ib.close();
     ibOpened = false;
   }
-  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
-    $('#draggablePanelList').append(
-      '<%= j render("/trip_experiences/experience_block.html.erb",
-      {trip_exp: @trip_experience, guest_user: false} ) %>'
-    );
-    $('<%= ".exp-#{@trip_experience.id}" %>').dotdotdot({
-        watch: "window",
-        callback: function(isTruncated, orgContent) {
-          if (isTruncated) {
-            $('<%= ".exp-#{@trip_experience.id}" %> p').append(orgContent.find('a.readmore').prop('outerHTML'));
-          }
-        }
-    });
-    // addBoxShadowEffectWhileDraggingBox();
-    scrollToElement($('.selection-content'), $('.panel-info').last());
-    // setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
-    // setPolylineDrawingWhenDraggingExperience();
-  } else if ($('tr#guests-comments').hasClass('menu-selected') || $('div#guests-comments').hasClass('menu-selected')) {
-    var map = handler.getMap();
+  var map = handler.getMap();
+  if ($('tr#guests-comments').hasClass('menu-selected') || $('div#guests-comments').hasClass('menu-selected')) {
     setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
       requestingMarkers = r;
     });
   } else {
-    $('li#<%= @trip_experience.experience.id %>').remove();
-    for (var i =0; i < markers.length; i++) {
-      if (markers[i].serviceObject.experience_id == <%= @trip_experience.experience.id %>) {
-        markers[i].serviceObject.setMap(null);
-      }
-    }
+    setMarkersAccordingToBounds(map, <%= @trip.id %>, function(r){
+      requestingMarkers = r;
+    });
   }
 });
 

@@ -36,15 +36,8 @@ function initializeMapSearchBar(id) {
 
 function moveMapAccordinglyToViewport(result, map) {
   if (result.geometry.viewport) {
-    // console.log('un')
     map.fitBounds(result.geometry.viewport);
-
-
-    // console.log('bounds de acc to view:');
-    // console.log(map.getBounds());
-
   } else {
-    // console.log('deux')
     map.setCenter(result.geometry.location);
   }
 }

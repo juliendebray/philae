@@ -1,14 +1,18 @@
 $( document ).ready(function() {
+  var map = handler.getMap();
   if (ibOpened) {
     ib.close();
     ibOpened = false;
   }
-  $('li#<%= @trip_experience.id %>').remove();
   if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
-    var map = handler.getMap();
+    $('li#<%= @trip_experience.id %>').remove();
     setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
       requestingMarkers = r;
     });
+    drawPolyline();
+  } else {
+    setMarkersAccordingToBounds(map, <%= @trip.id %>, function(r){
+      requestingMarkers = r;
+    });
   }
-  drawPolyline();
 });
