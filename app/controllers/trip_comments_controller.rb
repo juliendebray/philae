@@ -30,6 +30,11 @@ class TripCommentsController < ApplicationController
     Gmaps4rails.build_markers(trip_comments) do |trip_comment, marker|
       marker.lat trip_comment.latitude
       marker.lng trip_comment.longitude
+      marker.picture({
+        url: "https://philae-floju.s3.amazonaws.com/markers/comment.png",
+        width:  25,
+        height: 39
+        })
       marker.json({
         infobox:  render_to_string(partial: "/trip_comments/infowindow.html.erb", locals: {
           trip_comment: trip_comment,
