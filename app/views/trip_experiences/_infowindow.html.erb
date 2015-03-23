@@ -26,8 +26,7 @@
             <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
               <%= f.hidden_field :experience_id, value: experience.id %>
               <%= f.button :submit, class: "btn btn-link" do %>
-<!--               <%= t('addtotrip') %> -->
-                <i class='fa fa-heart  '></i> <%= t('addtotrip') %>
+                <i class='fa fa-heart'></i> <%= t('addtotrip') %>
               <% end %>
             <% end %>
           </span>

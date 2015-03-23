@@ -110,7 +110,7 @@ function setInfoboxOptions(boxText){
     ,infoBoxClearance: new google.maps.Size(15, 50)
     ,isHidden: false
     ,pane: "floatPane"
-    ,enableEventPropagation: true
+    ,enableEventPropagation: false
   };
   return infoboxOptions;
 }
@@ -206,7 +206,9 @@ function setCarrousel() {
 }
 
 function initalizeLinkWithRemoteTrue() {
+  // console.log('init');
   $('.infobox-container a').on('click', function(e){
+    // console.log('in');
     e.preventDefault();
     $.rails.handleRemote($(this));
   });
