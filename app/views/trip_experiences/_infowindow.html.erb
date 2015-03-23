@@ -16,10 +16,10 @@
       </span>
       <span class="out-of">/</span>
       <span class="best">10</span>
-      <% if (current_user || trip.token.nil?) %>
+      <% unless guest_user %>
         <% if trip_experience %>
           <%= link_to [trip, trip_experience], remote: true, method: :delete do %>
-            <i id='ib-remove-trip-exp' class="fa fa-heart pull-right"></i>
+            <span class="pull-right remove-from-trip"><i id='ib-remove-trip-exp' class="fa fa-heart"></i> Retirer du voyage</span>
           <% end %>
         <% else %>
           <span class="pull-right">

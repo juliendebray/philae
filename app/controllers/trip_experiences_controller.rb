@@ -16,7 +16,7 @@ class TripExperiencesController < ApplicationController
 
   def trip_markers
     @experiences = []
-    if @trip.user.nil? || current_user == @trip.user
+    if @trip.user.nil? || @trip.user == current_user
       @markers = build_markers_with_trip_experiences(@trip.trip_experiences.sort_by { |te| te.order }, @trip, false)
     else
       trip_experiences = []
@@ -129,7 +129,8 @@ class TripExperiencesController < ApplicationController
           infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
             experience: experience,
             trip: trip,
-            trip_experience: false
+            trip_experience: false,
+            guest_user: false
           }),
           experience_id: experience.id,
           experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
@@ -174,7 +175,8 @@ class TripExperiencesController < ApplicationController
         infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
           experience: trip_experience.experience,
           trip: trip,
-          trip_experience: trip_experience
+          trip_experience: trip_experience,
+          guest_user: guest_user
         }),
         experience_id: trip_experience.experience.id,
         experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
