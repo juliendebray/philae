@@ -97,26 +97,49 @@ class TripExperiencesController < ApplicationController
     Gmaps4rails.build_markers(experiences) do |experience, marker|
       marker.lat experience.latitude
       marker.lng experience.longitude
-      marker.picture({
-        url: "https://philae-floju.s3.amazonaws.com/markers/top.png",
-        width:  25,
-        height: 39
-        })
-      marker.json({
-        infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
-          experience: experience,
-          trip: trip,
-          trip_experience: false
-        }),
-        experience_id: experience.id,
-        experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
-          trip_exp: false,
-          guest_user: false,
-          experience: experience,
-          trip: trip
-        })
-      })
       marker.title experience.name
+      trip_experiences = TripExperience.where("trip_id = ? AND experience_id = ?", trip.id, experience.id)
+      if trip_experiences.any?
+        marker.picture({
+          url: "https://philae-floju.s3.amazonaws.com/markers/selection.png",
+          width:  25,
+          height: 39
+          })
+        marker.json({
+          infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+            experience: experience,
+            trip: trip,
+            trip_experience: trip_experiences.first
+          }),
+          experience_id: experience.id,
+          experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+            trip_exp: trip_experiences.first,
+            guest_user: false,
+            experience: experience,
+            trip: trip
+          })
+        })
+      else
+        marker.picture({
+          url: "https://philae-floju.s3.amazonaws.com/markers/top.png",
+          width:  25,
+          height: 39
+        })
+        marker.json({
+          infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+            experience: experience,
+            trip: trip,
+            trip_experience: false
+          }),
+          experience_id: experience.id,
+          experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+            trip_exp: false,
+            guest_user: false,
+            experience: experience,
+            trip: trip
+          })
+        })
+      end
     end
   end
 
