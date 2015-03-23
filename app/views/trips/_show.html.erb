@@ -284,10 +284,6 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).on('ready', function() {
-      // $(window).load(function() {
-      //   // TODO: Check if still usefull
-      //   ellipseExperienceBlock();
-      // });
       if (GUEST_USER) {
         $('.map-container').width('65%').css('left', '0px');
         var guestUserMapOptions = {
@@ -317,8 +313,6 @@
         buildMapForUser(userMapOptions, <%= @trip.id %>);
         makeTableRowlinkActionnable();
         placeHelpButton();
-        // console.log('aps');
-        // setPolylineDrawingWhenDraggingExperience();
       }
     });
   </script>
