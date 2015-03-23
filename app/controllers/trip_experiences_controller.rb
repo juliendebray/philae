@@ -6,10 +6,10 @@ class TripExperiencesController < ApplicationController
 
   def markers
     markers_number = 20
-    tab_id = @trip.trip_experiences.map { |te| te.experience_id}
+    # tab_id = @trip.trip_experiences.map { |te| te.experience_id}
     experiences_within_bounds = Experience.where(published: true).within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
-    tab = experiences_within_bounds.reject { |e| tab_id.include?(e.id) }
-    @experiences = select_experiences_to_show(tab)
+    # tab = experiences_within_bounds.reject { |e| tab_id.include?(e.id) }
+    @experiences = select_experiences_to_show(experiences_within_bounds)
     @markers = build_markers(@experiences[0..markers_number - 1], @trip)
     render json: @markers
   end

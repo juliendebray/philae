@@ -160,10 +160,10 @@ en:
   form_guest_description: "What is your tip?"
   form_guest_share: "Send to your friend!"
 
-  show_bestexp: "Best of Explorizers"
+  show_bestexp: "Top from Explorizers"
   show_myselection: "My selection"
   show_friendstips: "My friends' tips"
-  show_bestexp_mobile: "Best of"
+  show_bestexp_mobile: "Top"
   show_myselection_mobile: "My trip"
   show_friendstips_mobile: "Tips"
 
