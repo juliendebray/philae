@@ -144,10 +144,10 @@ fr:
   form_guest_description: "Quel est ton conseil?"
   form_guest_share: "Envoyer à ton ami(e)!"
 
-  show_bestexp: "Best of Explorizers"
+  show_bestexp: "Top from Explorizers"
   show_myselection: "Ma sélection"
   show_friendstips: "Conseils de mes amis"
-  show_bestexp_mobile: "Best of"
+  show_bestexp_mobile: "Top"
   show_myselection_mobile: "Mon voyage"
   show_friendstips_mobile: "Conseils"
 
