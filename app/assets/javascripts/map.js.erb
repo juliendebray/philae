@@ -491,10 +491,6 @@ function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field
   google.maps.event.addListener(map, 'dblclick', function(event) {
       clearTimeout(updateTimeout);
   });
-  // Display google maps pac-container
-  $(address_field_id).on("click", function(e) {
-    $('.pac-container').zIndex(100000);
-  });
 }
 
 function setMarkersAndKeepListening(map, trip_id) {

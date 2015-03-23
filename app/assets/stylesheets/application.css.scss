@@ -46,6 +46,10 @@ $font-family-sans-serif: 'Roboto';
     border-radius: 0px;
 }
 
+.pac-container {
+  z-index: 99999;
+}
+
 .class-flash{
   position: absolute;
   width: 40%;
