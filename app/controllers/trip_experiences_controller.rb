@@ -109,7 +109,8 @@ class TripExperiencesController < ApplicationController
           infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
             experience: experience,
             trip: trip,
-            trip_experience: trip_experiences.first
+            trip_experience: trip_experiences.first,
+            guest_user: false
           }),
           experience_id: experience.id,
           experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
