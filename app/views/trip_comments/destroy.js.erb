@@ -1,4 +1,3 @@
-console.log('test');
 if ($('.infobox-container').length > 0) {
   var id = parseInt($('.infobox-container').attr('id'));
   ib.close();
@@ -10,7 +9,6 @@ if (commentsMarkers[id] != null) {
   commentsMarkers[id].serviceObject.setPosition(new google.maps.LatLng(-90, 0));
 }
 if ($('tr#guests-comments').hasClass('menu-selected') || $('div#guests-comments').hasClass('menu-selected')) {
-  console.log('test2');
   var map = handler.getMap();
   setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
     requestingMarkers = r;
