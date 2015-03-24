@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324141423) do
+ActiveRecord::Schema.define(version: 20150324142210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,17 @@ ActiveRecord::Schema.define(version: 20150324141423) do
     t.string   "address"
     t.text     "other"
   end
+
+  create_table "recommended_trip_experiences", force: true do |t|
+    t.integer  "recommended_trip_id"
+    t.integer  "experience_id"
+    t.integer  "order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "recommended_trip_experiences", ["experience_id"], name: "index_recommended_trip_experiences_on_experience_id", using: :btree
+  add_index "recommended_trip_experiences", ["recommended_trip_id"], name: "index_recommended_trip_experiences_on_recommended_trip_id", using: :btree
 
   create_table "recommended_trips", force: true do |t|
     t.string   "title"
