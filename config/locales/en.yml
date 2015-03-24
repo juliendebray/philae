@@ -67,6 +67,7 @@ en:
 
   addreview: "Add a review"
   addtotrip: "Add to my trip"
+  removefromtrip: "Remove from trip"
 
   #trips
   trips:

@@ -49,6 +49,7 @@ fr:
 
   addreview: "Donnez votre avis!"
   addtotrip: "Ajouter au voyage"
+  removefromtrip: "Retirer du voyage"
 
   #trips
   trips:
