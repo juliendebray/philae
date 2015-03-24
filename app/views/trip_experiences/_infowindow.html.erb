@@ -19,7 +19,7 @@
       <% unless guest_user %>
         <% if trip_experience %>
           <%= link_to [trip, trip_experience], remote: true, method: :delete do %>
-            <span class="pull-right remove-from-trip"><i id='ib-remove-trip-exp' class="fa fa-heart"></i> Retirer du voyage</span>
+            <span class="pull-right remove-from-trip"><i id='ib-remove-trip-exp' class="fa fa-heart"></i> <%= t('removefromtrip') %></span>
           <% end %>
         <% else %>
           <span class="pull-right">
