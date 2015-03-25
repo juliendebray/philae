@@ -6,51 +6,51 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1f5WSB7ew6aCspE1IysJ3RYZiCqeOjJBYZ-UYzzEBR18/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |destination_data|
-  destination = Destination.create(
-    name: destination_data['gsx$name']['$t'],
-    ne_lat: destination_data['gsx$nelat']['$t'].to_f,
-    ne_lng: destination_data['gsx$nelng']['$t'].to_f,
-    sw_lat: destination_data['gsx$swlat']['$t'].to_f,
-    sw_lng: destination_data['gsx$swlng']['$t'].to_f,
-    overview: destination_data['gsx$overview']['$t'],
-    formalities: destination_data['gsx$formalities']['$t'],
-    regions: destination_data['gsx$regions']['$t'],
-    transportation: destination_data['gsx$transportation']['$t'],
-  )
-end
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1f5WSB7ew6aCspE1IysJ3RYZiCqeOjJBYZ-UYzzEBR18/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |destination_data|
+#   destination = Destination.create(
+#     name: destination_data['gsx$name']['$t'],
+#     ne_lat: destination_data['gsx$nelat']['$t'].to_f,
+#     ne_lng: destination_data['gsx$nelng']['$t'].to_f,
+#     sw_lat: destination_data['gsx$swlat']['$t'].to_f,
+#     sw_lng: destination_data['gsx$swlng']['$t'].to_f,
+#     overview: destination_data['gsx$overview']['$t'],
+#     formalities: destination_data['gsx$formalities']['$t'],
+#     regions: destination_data['gsx$regions']['$t'],
+#     transportation: destination_data['gsx$transportation']['$t'],
+#   )
+# end
 
 
 # require 'json'
 # require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/19aquHyh7DOdJppZ4-NbT9h1oeTX0pGRZfEHZwym6BiM/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |exp_data|
-  exp = Experience.create(
-    average_rating: exp_data['gsx$rating']['$t'].to_f,
-    name: exp_data['gsx$nomfrench']['$t'],
-    address: exp_data['gsx$lieufrench']['$t'],
-    latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
-    longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
-    description: exp_data['gsx$descriptionfrench']['$t'],
-    published: true
-  )
-  gen_url = "http://philae-floju.s3.amazonaws.com/photos_liban/"
-  code = exp_data['gsx$code']['$t']
-  (1..4).each do |i|
-    complete_url = gen_url + code + "_#{i}.jpg"
-    begin
-      doc = open(complete_url)
-    rescue OpenURI::HTTPError
-      next
-    end
-    exp.experience_pictures.create(picture: complete_url)
-  end
-end
+# url_json = 'https://spreadsheets.google.com/feeds/list/19aquHyh7DOdJppZ4-NbT9h1oeTX0pGRZfEHZwym6BiM/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   exp = Experience.create(
+#     average_rating: exp_data['gsx$rating']['$t'].to_f,
+#     name: exp_data['gsx$nomfrench']['$t'],
+#     address: exp_data['gsx$lieufrench']['$t'],
+#     latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
+#     longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
+#     description: exp_data['gsx$descriptionfrench']['$t'],
+#     published: true
+#   )
+#   gen_url = "http://philae-floju.s3.amazonaws.com/photos_liban/"
+#   code = exp_data['gsx$code']['$t']
+#   (1..4).each do |i|
+#     complete_url = gen_url + code + "_#{i}.jpg"
+#     begin
+#       doc = open(complete_url)
+#     rescue OpenURI::HTTPError
+#       next
+#     end
+#     exp.experience_pictures.create(picture: complete_url)
+#   end
+# end
 
 
 
