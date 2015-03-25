@@ -8,4 +8,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 # Import stylesheet for map show
-Rails.application.config.assets.precompile += %w( map.css navbar_hp.css )
+Rails.application.config.assets.precompile += %w( map.css navbar_hp.css map_demo.css )
