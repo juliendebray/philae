@@ -6,23 +6,23 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1f5WSB7ew6aCspE1IysJ3RYZiCqeOjJBYZ-UYzzEBR18/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |destination_data|
-  destination = Destination.create(
-    name: destination_data['gsx$name']['$t'],
-    ne_lat: destination_data['gsx$nelat']['$t'].to_f,
-    ne_lng: destination_data['gsx$nelng']['$t'].to_f,
-    sw_lat: destination_data['gsx$swlat']['$t'].to_f,
-    sw_lng: destination_data['gsx$swlng']['$t'].to_f,
-    overview: destination_data['gsx$overview']['$t'],
-    formalities: destination_data['gsx$formalities']['$t'],
-    regions: destination_data['gsx$regions']['$t'],
-    transportation: destination_data['gsx$transportation']['$t'],
-  )
-end
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1f5WSB7ew6aCspE1IysJ3RYZiCqeOjJBYZ-UYzzEBR18/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |destination_data|
+#   destination = Destination.create(
+#     name: destination_data['gsx$name']['$t'],
+#     ne_lat: destination_data['gsx$nelat']['$t'].to_f,
+#     ne_lng: destination_data['gsx$nelng']['$t'].to_f,
+#     sw_lat: destination_data['gsx$swlat']['$t'].to_f,
+#     sw_lng: destination_data['gsx$swlng']['$t'].to_f,
+#     overview: destination_data['gsx$overview']['$t'],
+#     formalities: destination_data['gsx$formalities']['$t'],
+#     regions: destination_data['gsx$regions']['$t'],
+#     transportation: destination_data['gsx$transportation']['$t'],
+#   )
+# end
 
 
 # require 'json'

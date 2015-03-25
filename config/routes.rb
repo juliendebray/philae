@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       resources :ask_your_friends, only: [:index]
       member do
         get :start
+        get :demo
         get :providers
         get :summarize
         post :update_order

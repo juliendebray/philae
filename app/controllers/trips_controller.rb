@@ -1,19 +1,27 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:update_order, :create, :start, :show_guest_user, :notification_for_sharing_email, :providers]
-  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo]
 
   def create
+    # Libanese demo
+    if params[:title] && params[:title] == 'Liban'
+      authenticate_user!
+      @destination = Destination.first
+      @trip = current_user.trips.create(query: @destination.name, title: @destination.name, latitude: 33.89120770946144, longitude: 35.88151107421868)
+      redirect_to demo_trip_path(@trip)
+    else
     # TODO: change Morocco default behavior
-    if params[:trip].nil?
-      @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
-      @trip.title = 'Morocco'
-    elsif params[:trip][:query]
-      @trip = Trip.new(trip_params)
-      @trip.title = @trip.query
+      if params[:trip].nil?
+        @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
+        @trip.title = 'Morocco'
+      elsif params[:trip][:query]
+        @trip = Trip.new(trip_params)
+        @trip.title = @trip.query
+      end
+      @trip.save
+      redirect_to start_trip_path(@trip)
     end
-    @trip.save
-    redirect_to start_trip_path(@trip)
   end
 
   def start
@@ -54,6 +62,15 @@ class TripsController < ApplicationController
     @guest_user = false
     @trip = current_user.trips.find(params[:id])
     # set_orders_if_nil!(@trip.trip_experiences)
+    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
+  end
+
+  # Libanese demo
+  def demo
+    @trip = Trip.find(params[:id])
+    @guest_user = false
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
       te.order
     end

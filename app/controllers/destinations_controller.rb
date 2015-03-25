@@ -1,11 +1,10 @@
 class DestinationsController < ApplicationController
   before_action :set_destination, only: [:show]
+
   def index
-    @trip = Trip.new
   end
 
   def show
-
   end
 
   private
