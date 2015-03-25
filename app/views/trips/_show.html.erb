@@ -281,6 +281,9 @@
     var GUEST_USER = <%= @guest_user ? 'true' : 'false' %>;
   </script>
 <% end %>
+<% content_for :map_js do %>
+  <% javascript_include_tag 'map' %>
+<% end %>
 <% content_for(:after_js) do %>
   <script>
     $(document).on('ready', function() {

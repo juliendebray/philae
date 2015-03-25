@@ -96,7 +96,8 @@ html, body {
 .map-container {
   position: fixed;
   width: 60%;
-  left: 5%;
+  // left: 5%;
+  right: 0px;
   bottom: 0px;
   padding-left: 0px;
   top: 54px;
@@ -262,11 +263,14 @@ html, body {
 
 
 .sidebar {
+  background: #F0F1F5;
   position: fixed;
   width: 35%;
-  right: 0px;
+  // right: 0px;
+  left: 5%;
   top: 54px;
   bottom: 0%;
+  z-index: 1;
 
   .selection-header {
 
