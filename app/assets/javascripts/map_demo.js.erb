@@ -413,7 +413,7 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
   } else if (id == 'all-experiences') {
     removePolyline();
     // Set map with all experiences
-    $('#sidebar-title-content').html('<i class="fa fa-star-o"></i> Top from Explorizers <br><br> <p>Voici les expériences <b>les mieux notées </b> par les voyageurs ayant partagé leurs expériences sur Explorizers. Ajoute-les à ton voyage, ou <b>zoome et déplace la carte</b> pour en voir plus.</p>');
+    // $('#sidebar-title-content').html('<i class="fa fa-star-o"></i> Top from Explorizers <br><br> <p>Voici les expériences <b>les mieux notées </b> par les voyageurs ayant partagé leurs expériences sur Explorizers. Ajoute-les à ton voyage, ou <b>zoome et déplace la carte</b> pour en voir plus.</p>');
     setMarkersAndKeepListening(map, trip_id);
   }
   else {
@@ -564,8 +564,8 @@ function setMarkersAccordingToApi(url, trip_id, callback) {
 }
 
 function commonInitialization(data) {
-  setSideBar(data);
-  ellipseExperienceBlock();
+  // setSideBar(data);
+  // ellipseExperienceBlock();
   setExperienceInfowindow(data);
   setAnimationOnMarkers();
 }

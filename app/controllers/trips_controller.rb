@@ -69,6 +69,7 @@ class TripsController < ApplicationController
 
   # Libanese demo
   def demo
+    @destination = Destination.first
     @trip = Trip.find(params[:id])
     @guest_user = false
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
