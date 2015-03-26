@@ -122,22 +122,29 @@
         <span id="sidebar-title-content">
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a data-toggle="tab" href="#home" aria-controls="home" role="tab" >Home</a></li>
-              <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-              <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-              <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+              <li role="presentation" class="active"><a data-toggle="tab" href="#destination-overview" aria-controls="destination-overview" role="tab">Infos générales</a></li>
+              <li role="presentation"><a href="#must-see" aria-controls="must-see" role="tab" data-toggle="tab">Les Immanquables</a></li>
+              <li role="presentation"><a href="#recommended-trip-1" aria-controls="recommended-trip-1" role="tab" data-toggle="tab">Itinéraire 1</a></li>
+              <li role="presentation"><a href="#recommended-trip-2" aria-controls="recommended-trip-2" role="tab" data-toggle="tab">Itinéraire 2</a></li>
+              <li role="presentation"><a href="#top-from-explorizers" aria-controls="top-from-explorizers" role="tab" data-toggle="tab">Top from Explorizers</a></li>
           </ul>
         </span>
       </div>
     </div>
     <!-- Nav content -->
     <div class="selection-content tab-content">
-      <div role="tabpanel" class="tab-pane active" id="home">
-        <h2><%= @destination.name %></h2>
+      <div role="tabpanel" class="tab-pane active" id="destination-overview">
+        <p><%= @destination.name %></p>
+        <p><%= @destination.overview %></p>
+        <p><%= @destination.formalities %></p>
+        <p><%= @destination.regions %></p>
+        <p><%= @destination.transportation %></p>
       </div>
-      <div role="tabpanel" class="tab-pane" id="profile">Affiche profile</div>
-      <div role="tabpanel" class="tab-pane" id="messages">Affiche messages</div>
-      <div role="tabpanel" class="tab-pane" id="settings">
+      <div role="tabpanel" class="tab-pane" id="must-see">Lister immanquables</div>
+      <div role="tabpanel" class="tab-pane" id="recommended-trip-1">Lister trip 1</div>
+      <div role="tabpanel" class="tab-pane" id="recommended-trip-2">Lister trip 2</div>
+      <div role="tabpanel" class="tab-pane" id="rtop-from-explorizers">
+        Lister les expériences
         <ul id="draggablePanelList" class="list-unstyled experience-block-container">
           <% if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>
           <!-- Display user selection -->
