@@ -19,6 +19,215 @@ html, body {
   overflow: hidden;
 }
 
+.map-side-menu-container {
+  display: none;
+}
+
+.olrk-normal {
+  display: none;
+}
+
+.sidebar {
+  background: #FCFCFC;
+  position: fixed;
+  width: 38%;
+  top: 54px;
+  bottom: 0%;
+  z-index: 1;
+  // right: 0px;
+  // left: 5%;
+
+  .selection-header {
+
+    .selection-title {
+      font-weight: 300;
+      font-size: 1.5em;
+      line-height: 1em;
+      margin: 3%;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .selection-content {
+    margin: 10px;
+    height: 78%;
+    overflow: auto;
+    visibility: hidden;
+    border-bottom-style: solid;
+    border-color: white;
+    p {
+      font-weight: 300;
+    }
+   }
+
+   table {
+    width: 100%
+   }
+
+
+  .btn {
+    width: 184px;
+    p {
+      font-size: 15px;
+    }
+  }
+  .btn-info {
+    background-color: #FF5A5F;
+  }
+
+
+  ul.experience-block-container {
+    margin-right: 3%;
+  }
+
+  .panel{
+    margin: 5px;
+    border: none;
+    border-radius: 0px;
+    margin-bottom: 15px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+    .panel-info {
+
+    }
+
+    .exp-dotdotdot {
+      height: 12em;
+    }
+
+    .panel-heading {
+      padding-right: 2px;
+      margin-top: 5px;
+      border-radius: 0px;
+      background: white;
+      border: none;
+      border-radius: 0px;
+      font-weight: 300;
+      color: #808080;
+
+      a {
+        color: #808080;
+      }
+
+      button.btn {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      button.btn:focus {
+        outline: none;
+      }
+
+      i {
+        padding-right: 5px;
+        color: #FF5A5F;
+      }
+
+      i:hover {
+        padding-right: 5px;
+        color: #808080;
+      }
+
+      .pull-right {
+        i {
+          padding-right: 5px;
+          color: #808080;
+        }
+        i:hover {
+          padding-right: 5px;
+          color: #FF5A5F;
+        }
+      }
+
+      i.fa-heart.comment {
+        padding-right: 5px;
+        color: #FF5A5F;
+      }
+
+      i.fa-heart.comment:hover {
+        padding-right: 5px;
+        color: #808080;
+      }
+
+    }
+
+    .panel-body {
+      padding: 0px 7px 10px 7px;
+      border: none;
+      border-radius: 0px;
+      font-weight: 200;
+      margin-bottom: 5px;
+      font-size: 12.5px;
+
+      .readmore {
+        color: grey;
+        text-decoration: underline;
+        font-weight: 400;
+      }
+      .readmore:hover {
+        color: coral;
+      }
+
+      td.thumb-pic {
+        vertical-align: top;
+        width: 165px;
+
+        img {
+          float: left;
+          margin-right: 2%;
+        }
+      }
+    }
+  }
+}
+
+#ul-sidebar {
+  border-bottom-style: solid;
+  border-top-style: solid;
+  border-color: white;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  .dropdown {
+    a {
+      font-size: 25px;
+      color: grey;
+    }
+  }
+  .dropdown-menu {
+    a {
+      font-size: 14px;
+    }
+  }
+
+  li {
+    .fa {
+      color: grey;
+      font-size: 14px;
+      padding-right: 10px;
+    }
+    #fa-info {
+      padding-left: 5px;
+      padding-right: 14px;
+    }
+    #fa-map-marker {
+      padding-left: 4px;
+      padding-right: 13px;
+    }
+    #fa-car {
+      padding-right: 9px;
+    }
+
+    a {
+      color: black;
+      font-size: 14px;
+      padding-top: 5px;
+    }
+  }
+}
+
+
 #link-to-detail {
   background: transparent;
   position: absolute;
@@ -102,7 +311,7 @@ html, body {
   padding-left: 0px;
   top: 54px;
   z-index: 1;
-  background: #F0F1F5;
+  background: #FCFCFC;
 
   #map {
     height: 100%;
@@ -174,7 +383,6 @@ html, body {
     top: 9px;
     right: 9px;
     position: absolute;
-    // box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
     border-left: #FF7519;
     border-style: solid;
     font-size: 15px;
@@ -261,171 +469,6 @@ html, body {
   }
 }
 
-
-.sidebar {
-  background: #F0F1F5;
-  position: fixed;
-  width: 35%;
-  // right: 0px;
-  left: 5%;
-  top: 54px;
-  bottom: 0%;
-  z-index: 1;
-
-  .selection-header {
-
-      table {
-        width: 100%
-      }
-
-      .button-action {
-        padding: 4%;
-
-        // .tooltip {
-        //   font-size: 18px;
-        // }
-
-        // .tooltip > .tooltip-inner, .tooltip-arrow {
-        //   background-color: white;
-        //   font-weight: 300;
-        //   font-style: italic;
-        //   color: black;
-        // }
-        // .tooltip > .tooltip-arrow {
-        //   // TODO: customize teh arow
-        //   border: 0px solid transparent;
-        // }
-
-        .btn {
-          font-size: 2em;
-        }
-        .btn:focus {
-          outline: none;
-        }
-      }
-
-    .selection-title {
-      font-weight: 300;
-      font-size: 1.5em;
-      line-height: 1em;
-      margin: 3%;
-    }
-    p {
-      font-size: 14px;
-    }
-  }
-
-  .selection-content {
-    margin: 10px;
-    height: 65%;
-    overflow: auto;
-    visibility: hidden;
-
-    ul.experience-block-container {
-      margin-right: 3%;
-    }
-
-    .panel{
-      margin: 5px;
-      border: none;
-      border-radius: 0px;
-      margin-bottom: 15px;
-      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-
-      .panel-info {
-
-      }
-
-      .exp-dotdotdot {
-        height: 12em;
-      }
-
-      .panel-heading {
-        padding-right: 2px;
-        margin-top: 5px;
-        border-radius: 0px;
-        background: white;
-        border: none;
-        border-radius: 0px;
-        font-weight: 300;
-        color: #808080;
-
-        a {
-          color: #808080;
-        }
-
-        button.btn {
-          margin: 0px;
-          padding: 0px;
-        }
-
-        button.btn:focus {
-          outline: none;
-        }
-
-        i {
-          padding-right: 5px;
-          color: #FF5A5F;
-        }
-
-        i:hover {
-          padding-right: 5px;
-          color: #808080;
-        }
-
-        .pull-right {
-          i {
-            padding-right: 5px;
-            color: #808080;
-          }
-          i:hover {
-            padding-right: 5px;
-            color: #FF5A5F;
-          }
-        }
-
-        i.fa-heart.comment {
-          padding-right: 5px;
-          color: #FF5A5F;
-        }
-
-        i.fa-heart.comment:hover {
-          padding-right: 5px;
-          color: #808080;
-        }
-
-      }
-
-      .panel-body {
-        padding: 0px 7px 10px 7px;
-        border: none;
-        border-radius: 0px;
-        font-weight: 200;
-        margin-bottom: 5px;
-        font-size: 12.5px;
-
-        .readmore {
-          color: grey;
-          text-decoration: underline;
-          font-weight: 400;
-        }
-        .readmore:hover {
-          color: coral;
-        }
-
-        td.thumb-pic {
-          vertical-align: top;
-          width: 165px;
-
-          img {
-            float: left;
-            margin-right: 2%;
-          }
-        }
-      }
-    }
-  }
-}
 
 .map-side-menu-container {
   bottom: 0px;
@@ -885,7 +928,7 @@ html, body {
 
   .sidebar {
     z-index: 2;
-    background: #F0F1F5;
+    background: #FCFCFC;
     top: 111px;
     left: 0px;
     width: 100%;
