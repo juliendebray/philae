@@ -1,7 +1,9 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:update_order, :create, :start, :show_guest_user, :notification_for_sharing_email, :providers]
-  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display]
+  respond_to :js, only: [:selection_display]
+
 
   def create
     # Libanese demo
@@ -56,6 +58,12 @@ class TripsController < ApplicationController
       order_hash = params[:order]
       update_trip_experience_order(order_hash)
     end
+  end
+
+
+  # Lebanes demo
+  def selection_display
+    @destination = Destination.first
   end
 
   def show
@@ -145,13 +153,4 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @guest_user = true if @trip.token == params[:token]
   end
-
-  # def set_orders_if_nil!(trip_experiences)
-  #   trip_experiences.map do |trip_exp|
-  #     count = trip_experiences.reject {|te| te.order.nil?}.size
-  #     trip_exp.order = count + 1 if trip_exp.order.nil?
-  #     trip_exp.save
-  #   end
-  #   return trip_experiences
-  # end
 end

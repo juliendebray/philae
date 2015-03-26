@@ -414,14 +414,70 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
   } else if (id == 'all-experiences') {
     removePolyline();
     // Set map with all experiences
-    // $('#sidebar-title-content').append('<%= j render(file: "/../views/trips/demo_sidebar_title.html.erb") %>');
+    $.get( "/trips/"+trip_id+"/selection_display", function( data ) {
+      // remove markers and show according content
+      // listen to user action and display markers and selection content accordingly
+      demoListenToUserChoicesInsideSelection(trip_id, map);
+      $('.overlay').css('display','none');
+    });
     // html('<i class="fa fa-star-o"></i> Top from Explorizers <br><br> <p>Voici les expériences <b>les mieux notées </b> par les voyageurs ayant partagé leurs expériences sur Explorizers. Ajoute-les à ton voyage, ou <b>zoome et déplace la carte</b> pour en voir plus.</p>');
-    setMarkersAndKeepListening(map, trip_id);
+
+
+    // setMarkersAndKeepListening(map, trip_id);
   }
   else {
     alert('Une erreur est survenue... merci de bien vouloir recharger la page ;)');
   }
 }
+
+function demoListenToUserChoicesInsideSelection(trip_id, map) {
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var id = $(e.target).attr('aria-controls');
+    displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map);
+  });
+}
+
+function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
+  if (id == 'destination-overview') {
+    return;
+  } else if (id == "must-see") {
+    displayMustSeeExperiences(trip_id, function() {
+      requestingMarkers = r;
+    });
+  } else if (id == "recommended-trip-1") {
+    displayRecommendedTripExperiences(1, trip_id, function() {
+      requestingMarkers = r;
+    });
+  } else if (id == "recommended-trip-2") {
+    displayRecommendedTripExperiences(2, trip_id, function() {
+      requestingMarkers = r;
+    });
+  } else if (id == "top-from-explorizers") {
+    setMarkersAndKeepListening(map, trip_id);
+  } else {
+    alert('Un problème est survenu :(  --> merci de recharger la page.... ');
+  }
+}
+
+function displayMustSeeExperiences(trip_id, callback) {
+  google.maps.event.clearListeners(map, 'dragend');
+  google.maps.event.clearListeners(map, 'zoom_changed');
+  var url = "/trips/" + trip_id + "/trip_experiences/must_see";
+  setMarkersAccordingToApi(url, trip_id, ".must-see", function(data) {
+    callback(r);
+  });
+}
+
+function displayRecommendedTripExperiences(recommended_trip_id, trip_id, callback) {
+  google.maps.event.clearListeners(map, 'dragend');
+  google.maps.event.clearListeners(map, 'zoom_changed');
+  var url = "/trips/" + trip_id + "/trip_experiences/recommended_trip?rti=" + recommended_trip_id;
+  setMarkersAccordingToApi(url, trip_id, "", function(r){
+    drawPolyline();
+    callback(r);
+  });
+}
+
 
 function buildMapForUser(mapOptions, trip_id) {
   handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5, clusterer: undefined } });
@@ -498,7 +554,7 @@ function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field
 function setMarkersAndKeepListening(map, trip_id) {
   // SET MARKERS ON MAP LOADING AND KEEP LISTENING
   // Set markers on loading
-  setMarkersAccordingToBounds(map, trip_id, function(r) {
+  setMarkersAccordingToBounds(map, trip_id, ".top-from-explorizers", function(r) {
    requestingMarkers = r;
    $('.overlay').css('display','none');
   });
@@ -508,7 +564,7 @@ function setMarkersAndKeepListening(map, trip_id) {
      if (requestingMarkers || ibOpened || ($('tr#all-experiences').hasClass('menu-selected')== false)) {
      return;
      }
-     setMarkersAccordingToBounds(map, trip_id, function(r) {
+     setMarkersAccordingToBounds(map, trip_id, ".top-from-explorizers", function(r) {
        requestingMarkers = r;
      });
    });
@@ -519,16 +575,16 @@ function setMarkersAndKeepListening(map, trip_id) {
      if (requestingMarkers || ibOpened || ($('tr#all-experiences').hasClass('menu-selected')== false)) {
        return;
      }
-     setMarkersAccordingToBounds(map, trip_id, function(r) {
+     setMarkersAccordingToBounds(map, trip_id, ".top-from-explorizers", function(r) {
        requestingMarkers = r;
      });
    });
   });
 }
 
-function setMarkersAccordingToBounds(map, trip_id, callback) {
+function setMarkersAccordingToBounds(map, trip_id, className, callback) {
   var url = buildUrlWithBounds(map, trip_id);
-  setMarkersAccordingToApi(url, trip_id, function(r){
+  setMarkersAccordingToApi(url, trip_id, className, function(r){
     preventUserChoicesInitialization();
     callback(r);
   });
@@ -538,7 +594,7 @@ function setMapWithGuestComments(trip_id, map, callback) {
   google.maps.event.clearListeners(map, 'dragend');
   google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
-  setMarkersAccordingToApi(url, trip_id, function(r){
+  setMarkersAccordingToApi(url, trip_id, "", function(r){
     preventUserChoicesInitialization();
     callback(r);
   });
@@ -548,26 +604,26 @@ function setMapWithUserExperiences(trip_id, map, callback) {
   google.maps.event.clearListeners(map, 'dragend');
   google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
-  setMarkersAccordingToApi(url, trip_id, function(r){
+  setMarkersAccordingToApi(url, trip_id, "", function(r){
     initializeWithUserChoices(trip_id);
     callback(r);
   });
 }
 
-function setMarkersAccordingToApi(url, trip_id, callback) {
+function setMarkersAccordingToApi(url, trip_id, className, callback) {
   requestingMarkers = true;
   $.get(url, function(data) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
     handler.bounds.extendWith(markers);
-    commonInitialization(data);
+    commonInitialization(data, className);
     callback(false);
   });
 }
 
-function commonInitialization(data) {
-  // setSideBar(data);
-  // ellipseExperienceBlock();
+function commonInitialization(data, className) {
+  setSideBar(data, className);
+  ellipseExperienceBlock();
   setExperienceInfowindow(data);
   setAnimationOnMarkers();
 }
@@ -585,10 +641,10 @@ function preventUserChoicesInitialization() {
   $('.panel-heading').css('cursor', 'auto');
 }
 
-function setSideBar(data) {
+function setSideBar(data, className) {
   $('.experience-block-container li').remove();
   for (var i = 0; i < data.length; i++) {
-    $('.experience-block-container').append(data[i].experience_block);
+    $('.experience-block-container' + className).append(data[i].experience_block);
   }
 }
 

@@ -1,6 +1,6 @@
 class TripExperiencesController < ApplicationController
-  before_action :set_trip, only: [:markers, :trip_markers, :create, :create_with_new_experience]
-  before_action :authenticate_user!, only: [:update]
+  before_action :set_trip, only: [:markers, :trip_markers, :create, :create_with_new_experience, :must_see]
+  before_action :authenticate_user!, only: [:update, :must_see, :recommended_trip]
   respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience, :create_with_comment]
 
 
@@ -82,6 +82,19 @@ class TripExperiencesController < ApplicationController
       @trip_comment.update(add_to_trip: true, experience_id: @experience.id)
       @trip_experience = @trip.trip_experiences.create(experience_id: @experience.id)
 
+  end
+
+  def must_see
+    # TODO: Link Experience to destination
+    @markers = build_markers(Experience.where(must_see: true).to_a, @trip)
+    render json: @markers
+  end
+
+  def recommended_trip
+
+    recommended_trip = RecommendedTrip.find(params[:rti])
+    recommended_trip_experiences = recommended_trip.experiences
+    render json: @markers
   end
 
  private
