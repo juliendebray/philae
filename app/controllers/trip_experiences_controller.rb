@@ -1,5 +1,5 @@
 class TripExperiencesController < ApplicationController
-  before_action :set_trip, only: [:markers, :trip_markers, :create, :create_with_new_experience, :must_see]
+  before_action :set_trip, only: [:markers, :trip_markers, :create, :create_with_new_experience, :must_see, :recommended_trip]
   before_action :authenticate_user!, only: [:update, :must_see, :recommended_trip]
   respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience, :create_with_comment]
 
@@ -91,9 +91,12 @@ class TripExperiencesController < ApplicationController
   end
 
   def recommended_trip
-
     recommended_trip = RecommendedTrip.find(params[:rti])
-    recommended_trip_experiences = recommended_trip.experiences
+    experiences_ordered = []
+    recommended_trip.recommended_trip_experiences.sort_by {|reco_trip_exp| reco_trip_exp.order }.each do |reco_trip_exp|
+      experiences_ordered << reco_trip_exp.experience
+    end
+    @markers = build_markers(experiences_ordered, @trip)
     render json: @markers
   end
 
