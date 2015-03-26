@@ -438,18 +438,19 @@ function demoListenToUserChoicesInsideSelection(trip_id, map) {
 }
 
 function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
+  removePolyline();
   if (id == 'destination-overview') {
     return;
   } else if (id == "must-see") {
-    displayMustSeeExperiences(trip_id, function() {
+    displayMustSeeExperiences(trip_id, function(r) {
       requestingMarkers = r;
     });
   } else if (id == "recommended-trip-1") {
-    displayRecommendedTripExperiences(1, trip_id, function() {
+    displayRecommendedTripExperiences(1, trip_id, function(r) {
       requestingMarkers = r;
     });
   } else if (id == "recommended-trip-2") {
-    displayRecommendedTripExperiences(2, trip_id, function() {
+    displayRecommendedTripExperiences(2, trip_id, function(r) {
       requestingMarkers = r;
     });
   } else if (id == "top-from-explorizers") {
@@ -463,7 +464,7 @@ function displayMustSeeExperiences(trip_id, callback) {
   google.maps.event.clearListeners(map, 'dragend');
   google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/" + trip_id + "/trip_experiences/must_see";
-  setMarkersAccordingToApi(url, trip_id, ".must-see", function(data) {
+  setMarkersAccordingToApi(url, trip_id, ".must-see", function(r) {
     callback(r);
   });
 }
@@ -472,7 +473,7 @@ function displayRecommendedTripExperiences(recommended_trip_id, trip_id, callbac
   google.maps.event.clearListeners(map, 'dragend');
   google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/" + trip_id + "/trip_experiences/recommended_trip?rti=" + recommended_trip_id;
-  setMarkersAccordingToApi(url, trip_id, "", function(r){
+  setMarkersAccordingToApi(url, trip_id, ".recommended_trip", function(r){
     drawPolyline();
     callback(r);
   });
