@@ -1,0 +1,2 @@
+$('#sidebar-title-content').html('<%= j render("/trips/demo_sidebar_title.html.erb") %>');
+$('.selection-content.tab-content').html("<%= j render 'demo_sidebar_content', {destination: @destination, trip: @trip} %>")

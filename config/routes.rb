@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         get :demo
         get :providers
         get :summarize
+        get :selection_display
         post :update_order
         get ':token' => "trips#show_guest_user", as: :guest_trip
         patch 'share' => "trips#share_trip_email"
@@ -50,8 +51,10 @@ Rails.application.routes.draw do
       end
       resources :trip_experiences, only: [:create, :destroy, :update] do
         collection do
+          get :must_see
           get :markers
           get :trip_markers
+          get :recommended_trip
         end
       end
       resources :trip_comments, only: [:create, :destroy] do

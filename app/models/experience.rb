@@ -11,6 +11,9 @@ class Experience < ActiveRecord::Base
   has_many :trip_experiences
   has_many :trips, through: :trip_experiences
 
+  has_many :recommended_trip_experiences
+  has_many :recommended_trips, through: :recommended_trip_experiences
+
   has_many :experience_pictures, dependent: :destroy
   accepts_nested_attributes_for :experience_pictures
 
