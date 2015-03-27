@@ -8,6 +8,8 @@ var markersAddedManually = [];
 var commentsJsonStore = [];
 var commentsMarkers = [];
 var flightPath;
+var zoomChangedListener;
+var dragendListener;
 
 function ellipseExperienceBlock() {
   var length = $(".exp-dotdotdot").length
@@ -475,20 +477,27 @@ function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
 }
 
 function displayMustSeeExperiences(trip_id, map, callback) {
-  google.maps.event.clearListeners(map, 'dragend');
-  google.maps.event.clearListeners(map, 'zoom_changed');
+  clearDragendAndZoomChangedListeners();
+  // google.maps.event.clearListeners(map, 'dragend');
+  // google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/" + trip_id + "/trip_experiences/must_see";
   setMarkersAccordingToApi(url, trip_id, ".must-see", function(r) {
+    // DO NOT SET PROPER ZOOM LEVEL....
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
     callback(r);
   });
 }
 
 function displayRecommendedTripExperiences(recommended_trip_id, trip_id, map, callback) {
-  google.maps.event.clearListeners(map, 'dragend');
-  google.maps.event.clearListeners(map, 'zoom_changed');
+  clearDragendAndZoomChangedListeners();
+  // google.maps.event.clearListeners(map, 'dragend');
+  // google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/" + trip_id + "/trip_experiences/recommended_trip?rti=" + recommended_trip_id;
   setMarkersAccordingToApi(url, trip_id, ".recommended_trip", function(r){
     drawPolylineForRecommendedTrip();
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
     callback(r);
   });
 }
@@ -574,26 +583,26 @@ function setMarkersAndKeepListening(map, trip_id) {
    $('.overlay').css('display','none');
   });
   // Set markers when drag ends
-  google.maps.event.addListener(map, 'dragend', function() {
-    google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || ibOpened || ($('tr#all-experiences').hasClass('menu-selected')== false)) {
+  dragendListener = google.maps.event.addListener(map, 'dragend', function() {
+    // google.maps.event.addListener(map, 'idle', function() {
+     if (requestingMarkers || ibOpened) {
      return;
      }
      setMarkersAccordingToBounds(map, trip_id, ".top-from-explorizers", function(r) {
        requestingMarkers = r;
      });
-   });
+   // });
   });
   // Set markers when zoom changes
-  google.maps.event.addListener(map, 'zoom_changed', function() {
-   google.maps.event.addListener(map, 'idle', function() {
-     if (requestingMarkers || ibOpened || ($('tr#all-experiences').hasClass('menu-selected')== false)) {
+  zoomChangedListener = google.maps.event.addListener(map, 'zoom_changed', function() {
+   // google.maps.event.addListener(map, 'idle', function() {
+     if (requestingMarkers || ibOpened) {
        return;
      }
      setMarkersAccordingToBounds(map, trip_id, ".top-from-explorizers", function(r) {
        requestingMarkers = r;
      });
-   });
+   // });
   });
 }
 
@@ -605,9 +614,19 @@ function setMarkersAccordingToBounds(map, trip_id, className, callback) {
   });
 }
 
+function clearDragendAndZoomChangedListeners() {
+    console.log('test');
+  if (typeof(zoomChangedListener) != 'undefined') {
+    console.log('dans le if');
+    google.maps.event.removeListener(dragendListener);
+    google.maps.event.removeListener(zoomChangedListener);
+  }
+}
+
 function setMapWithGuestComments(trip_id, map, callback) {
-  google.maps.event.clearListeners(map, 'dragend');
-  google.maps.event.clearListeners(map, 'zoom_changed');
+  clearDragendAndZoomChangedListeners();
+  // google.maps.event.clearListeners(map, 'dragend');
+  // google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
   setMarkersAccordingToApi(url, trip_id, "", function(r){
     preventUserChoicesInitialization();
@@ -616,8 +635,9 @@ function setMapWithGuestComments(trip_id, map, callback) {
 }
 
 function setMapWithUserExperiences(trip_id, map, callback) {
-  google.maps.event.clearListeners(map, 'dragend');
-  google.maps.event.clearListeners(map, 'zoom_changed');
+  clearDragendAndZoomChangedListeners();
+  // google.maps.event.clearListeners(map, 'dragend');
+  // google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
   setMarkersAccordingToApi(url, trip_id, "", function(r){
     initializeWithUserChoices(trip_id);
@@ -630,7 +650,8 @@ function setMarkersAccordingToApi(url, trip_id, className, callback) {
   $.get(url, function(data) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
-    handler.bounds.extendWith(markers);
+    // handler.bounds.extendWith(markers);
+    // handler.fitMapToBounds();
     commonInitialization(data, className);
     callback(false);
   });
