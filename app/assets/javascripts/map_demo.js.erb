@@ -275,23 +275,21 @@ function storeOrder() {
 }
 
 function setExperiencesOrderByEndDraggingAnExperience(trip_id) {
-  // if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
-    $('.panel-heading').on('mouseup', function() {
-      $('.selection-content').on('mouseleave',function() {
-        $(this).unbind('mouseleave');
-        if (requestingMarkers == false) {
-          requestingMarkers = true;
-          $.ajax({
-            type: "POST",
-            url: "/trips/"+trip_id+"/update_order",
-            data: storeOrder(),
-          }).done(function() {
-            requestingMarkers = false;
-          });
-        }
-      });
+  $('.panel-heading').on('mouseup', function() {
+    $('.selection-content').on('mouseleave',function() {
+      $(this).unbind('mouseleave');
+      if (requestingMarkers == false) {
+        requestingMarkers = true;
+        $.ajax({
+          type: "POST",
+          url: "/trips/"+trip_id+"/update_order",
+          data: storeOrder(),
+        }).done(function() {
+          requestingMarkers = false;
+        });
+      }
     });
-  // }
+  });
 }
 
 function setPolylineDrawingWhenDraggingExperience() {

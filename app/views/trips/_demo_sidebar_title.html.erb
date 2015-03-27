@@ -1,27 +1,23 @@
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="tab-choices active">
-    <a data-toggle="tab" href="#destination-overview" aria-controls="destination-overview" role="tab">
-      Infos générales
+<div id="ul-sidebar" class="list-unstyled text-left">
+  <div class="dropdown text-center">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= @destination.name %>
+     <span class="caret"></span>
     </a>
-  </li>
-  <li role="presentation" class="tab-choices">
-    <a href="#must-see" aria-controls="must-see" role="tab" data-toggle="tab">
-      Les Immanquables
-    </a>
-  </li>
-  <li role="presentation" class="tab-choices">
-    <a href="#recommended-trip-1" aria-controls="recommended-trip-1" role="tab" data-toggle="tab">
-      Itinéraire 1
-    </a>
-  </li>
-  <li role="presentation" class="tab-choices">
-    <a href="#recommended-trip-2" aria-controls="recommended-trip-2" role="tab" data-toggle="tab">
-      Itinéraire 2
-    </a>
-  </li>
-  <li role="presentation" class="tab-choices">
-    <a href="#top-from-explorizers" aria-controls="top-from-explorizers" role="tab" data-toggle="tab">
-      Top from Explorizers
-    </a>
-  </li>
-</ul>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+      <li role="presentation">
+      <a data-toggle="tab" href="#destination-overview" aria-controls="destination-overview" role="tab"><i class="fa fa-info" id="fa-info"></i>A savoir avant de partir</a>
+      </li>
+      <li role="presentation">
+        <a href="#must-see" aria-controls="must-see" role="tab" data-toggle="tab"><i class="fa fa-eye"></i>A ne pas rater!</a>
+      </li>
+      <li role="presentation">
+        <a href="#recommended-trip-1" aria-controls="recommended-trip-1" role="tab" data-toggle="tab"><i class="fa fa-car" id="fa-car"></i>Itinéraire 1: Beyrouth et day trips</a>
+      </li>
+      <li role="presentation">
+        <a href="#recommended-trip-2" aria-controls="recommended-trip-2" role="tab" data-toggle="tab"><i class="fa fa-car" id="fa-car"></i>Itinéraire 2: Boucle du Liban en une semaine</a></li>
+      <li role="presentation">
+        <a href="#top-from-explorizers" aria-controls="top-from-explorizers" role="tab" data-toggle="tab"><i class="fa fa-map-marker" id="fa-map-marker"></i>Toutes les expériences Explorizers</a>
+      </li>
+    </ul>
+  </div>
+</div>

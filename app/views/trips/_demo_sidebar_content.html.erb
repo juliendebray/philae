@@ -1,23 +1,38 @@
 <div role="tabpanel" class="tab-pane active" id="destination-overview">
-  <p><%= destination.name %></p>
-  <p><%= destination.overview %></p>
-  <p><%= destination.formalities %></p>
-  <p><%= destination.regions %></p>
-  <p><%= destination.transportation %></p>
+  <h4>Généralités</h4>
+  <p><%= simple_format destination.overview %></p><br>
+  <h4>Formalités</h4>
+  <p><%= destination.formalities %></p><br>
+  <h4>Géographie</h4>
+  <p><%= destination.regions %></p><br>
+  <h4>Transports</h4>
+  <p><%= destination.transportation %></p><br>
 </div>
 <div role="tabpanel" class="tab-pane" id="must-see">
   <div class="tab-description">
-  Voici la liste des expériences qui font l'unamité auprès des guides de voyages. Ajoute les à ton itinéraire pour commencer à construire ton voyage !
+    <h4 class="text-center">A ne pas rater!</h4>
+    <p>Ce sont les incontournables, les grands classiques du Liban. Ajoute-les à ton itinéraire pour commencer à construire ton voyage!</p>
+    <p>Vous visiterez bien d’autres choses à Beyrouth, mais on garde en particulier de bons souvenirs de sa vie nocturne. Un passage par<b> la rue Monnot </b>est une garantie d’une soirée / nuit réussie.</p>
+    <p>Plus au nord et plus au calme, ne manquez pas la <b>visite de Jbeil</b>, ancienne Byblos, port de pêche entouré de ruines romaines et croisées, l’une des plus belles villes du Liban, habitée depuis (seulement) 7 000 ans.</p>
+    <p>Pour voir un Liban plus pittoresque, il ne faut pas manquer le <b>village de Beiteddine</b>, dans la vallée du Chouf, et d’autres villages alentours bien différents de l’ambiance de la côte.</p>
+    <p>Qu’on soit fan de géologie ou non, <b>l’immense grotte de Jeita</b> doit faire partie du voyage. C’est le site naturel le plus étonnant de la région.</p>
+    <p>Parce que le Liban, c’est aussi la nature, ne passez pas à côté d’une <b>randonnée dans la vallée de Qadisha</b>, qui abrite des monastères cachés datant des débuts du christianisme. Tout proche, vous irez rendre visite aux <b>Cèdres de Dieu</b>, emblèmes du Liban.</p>
+    <p>Si la question de la sécurité de ne posait pas (voir les recommandations du Ministère des Affaires étrangères), les férus d’archéologie ne devraient pas passer à côté du <b>site antique de Baalbek</b>, qui compte parmi les ruines gréco-romaines les mieux conservées au monde.</p>
   </div>
   <div class="tab-content">
     <ul id="must-see-list" class="list-unstyled experience-block-container must-see">
-
     </ul>
   </div>
 </div>
 <div role="tabpanel" class="tab-pane" id="recommended-trip-1">
   <div class="tab-description">
-    Super itinéraire près de beyrouth
+    <h4>Itinéraire 1: Beyrouth et day trips</h4>
+    <p>Les faibles distances et la position centrale de Beyrouth permettent de visiter le Liban tout en restant dans la capitale. La location d’une voiture ou la réservation d’un taxi sur la journée est facile et relativement bon marché.</p>
+    <p>On peut diviser 5-6 de voyage au Liban, basé à Beyrouth, comme ceci:</p>
+    <p>- 2-3 jours à Beyrouth, pour visiter le typique quartier d’Achrafieh, la Corniche, le Rawcheh, emblème de la ville, et passer la soirée à Gemmayzé ou rue Monnot</p>
+    <p>- 1 journée incluant Jounieh et la magnifique vue depuis Notre-Dame du Liban, l’impressionnante Grotte de Jeita et la ville de Jbeil (Byblos), tous ces sites étant très proches</p>
+    <p>- 1 jour dans le nord du pays, jusqu’au village de Ehden, pour randonner dans la vallée de Qadisha et voir les Cèdres de Dieu, emblèmes du pays</p>
+    <p>- 1 jour dans la vallée du Chouf, pour visiter notamment les villages traditionnels de Beiteddine et Deir el Qamar, et pourquoi pas pousser jusqu’au vignoble de Kefraya pour une dégustation</p>
   </div>
   <div class="tab-content">
     <ul id="must-see-list" class="list-unstyled experience-block-container recommended_trip">
@@ -26,7 +41,13 @@
 </div>
 <div role="tabpanel" class="tab-pane" id="recommended-trip-2">
   <div class="tab-description">
-    Itinéraire sur tout le liban
+    <h4>Itinéraire 2: Boucle du Liban en une semaine</h4>
+    <p>- Jours 1, 2 et 3: à Beyrouth, visitez le typique quartier d’Achrafieh, la Corniche et le Rawcheh, et passez la soirée à Gemmayzé ou rue Monnot</p>
+    <p>- Jour 4 (50km / 1h de route): quittez Beyrouth pour démarrer la journée avec l’impressionnante grotte de Jeita. Rejoignez ensuite Jounieh, et montez en téléphérique vers Notre-Dame du Liban pour son point de vue époustouflant. Continuez vers le nord pour visiter Jbeil et y passer la nuit.</p>
+    <p>- Jour 5 (80km / 1h30 de route): faites un passage par Batroun, puis continuez pour visiter Tripoli, et rendez-vous dans le village d’Ehden pour y passer la nuit.</p>
+    <p>- Jour 6: Autour d’Ehden, faites la randonnée dans la vallée de Qadisha, allez voir les Cèdres de Dieu et pousser éventuellement jusqu’au Qornet es Sawda, sommet du Liban. Restez dormir à Ehden.</p>
+    <p>- Jour 7: quittez Ehden tôt, traversez le Liban du nord au sud par les magnifiques routes de montagne (170km, 4h) pour passer l’après-midi dans la vallée du Chouf, notamment les villages de Deir el Qamar et Beiteddine. Puis retournez à Beyrouth boire un dernier verre à Gemmayzé!</p><br>
+    <p>NB: la visite de Baalbek est volontairement écartée, compte-tenu du contexte sécuritaire dégradé dans cette région.</p>
   </div>
   <div class="tab-content">
     <ul id="must-see-list" class="list-unstyled experience-block-container recommended_trip">
@@ -34,7 +55,7 @@
   </div>
 </div>
 <div role="tabpanel" class="tab-pane" id="top-from-explorizers">
-  Lister les expériences
+  <h4>Toutes les expériences Explorizers</h4>
   <ul id="draggablePanelList" class="list-unstyled experience-block-container top-from-explorizers">
   </ul>
 </div>
