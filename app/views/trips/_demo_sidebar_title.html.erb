@@ -10,28 +10,23 @@
           <a role="menuitem" data-toggle="tab" href="#destination-overview" aria-controls="destination-overview"><i class="fa fa-info" id="fa-info"></i>A savoir avant de partir</a>
         </li>
         <li role="presentation">
-          <a role="menuitem" data-toggle="tab" href="#must-see" aria-controls="must-see"><i class="fa fa-eye"></i>A ne pas rater!</a>
+          <a role="menuitem" data-toggle="tab" href="#must-see" aria-controls="must-see"><i class="fa fa-eye"></i>Les incontournables du Liban</a>
         </li>
         <li role="presentation">
           <a role="menuitem"  data-toggle="tab" href="#recommended-trip-1" aria-controls="recommended-trip-1"><i class="fa fa-car" id="fa-car"></i>Itinéraire 1: Beyrouth et day trips</a>
         </li>
         <li role="presentation">
-          <a role="menuitem"  data-toggle="tab" href="#recommended-trip-2" aria-controls="recommended-trip-2"><i class="fa fa-car" id="fa-car"></i>Itinéraire 2: Boucle du Liban en une semaine</a></li>
+          <a role="menuitem"  data-toggle="tab" href="#recommended-trip-2" aria-controls="recommended-trip-2"><i class="fa fa-car" id="fa-car"></i>Itinéraire 2: Boucle du Liban en 1 semaine</a></li>
         <li role="presentation">
-          <a role="menuitem"  data-toggle="tab" href="#top-from-explorizers" aria-controls="top-from-explorizers"><i class="fa fa-map-marker" id="fa-map-marker"></i>Toutes les expériences Explorizers</a>
+          <a role="menuitem"  data-toggle="tab" href="#top-from-explorizers" aria-controls="top-from-explorizers"><i class="fa fa-map-marker" id="fa-map-marker"></i>Toutes les expériences Explorizers au Liban</a>
         </li>
       </ul>
     </li>
     <li role="presentation" id="friends-tips-pill">
-
-
-
-      <%= link_to trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');" do %><%= t('show_asktips') %>
-      <% end %>
+      <a href="#"><%= t('show_asktips') %></a>
     </li>
     <li role="presentation" id="my-trip-pill">
-      <%= link_to summarize_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');" do %><%= t('show_summary') %>
-      <% end %>
+      <a href="#"><%= t('show_summary') %></a>
     </li>
   </ul>
 </div>
