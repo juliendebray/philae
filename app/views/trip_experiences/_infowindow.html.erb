@@ -35,7 +35,12 @@
     </div>
   <% end %>
   <div class="infobox-content text-center">
-    <%= link_to experience_detail_path(experience.id), remote: true do %><i class="fa fa-search"></i><%=experience.name%>
+    <% if guest_user %>
+      <%= link_to experience_detail_path(experience.id), remote: true do %>
+        <i class="fa fa-search"></i><%=experience.name%>
+      <% end %>
+    <% else %>
+       <%= link_to modal_exp_path [trip.id, experience.id] %>
     <% end %>
       <!-- TODO: Show directly modal with a data-toggle without waiting the controller-->
     <% unless experience.published %>

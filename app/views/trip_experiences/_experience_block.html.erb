@@ -20,7 +20,11 @@
             <% end %>
             <td>
               <%= simple_format trip_exp.experience.description %>
-              <%= link_to t('experience_block_seemore'), experience_detail_path(trip_exp.experience.id), remote: true, class: "readmore" %>
+              <% if guest_user %>
+                <%= link_to t('experience_block_seemore'), experience_detail_path(trip_exp.experience.id), remote: true, class: "readmore" %>
+                <% else %>
+                <!-- TODO: link to add or remove this experience to trip -->
+                <% end %>
             </td>
           </tr>
           </tbody>
@@ -32,6 +36,7 @@
   <li class="panel panel-info" id="<%= experience.id %>">
     <div class='exp-dotdotdot <%= "exp-#{experience.id}" %>' data-experience_id='<%= experience.id %>' data-lat='<%= experience.latitude %>' data-lng='<%= experience.longitude %>'>
       <div class="panel-heading">
+        <!-- TODO: link with button to add experience -->
         <%= link_to "#{experience.name} - #{experience.average_rating}/10", experience_detail_path(experience.id), remote: true %>
         <span class="pull-right">
           <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
@@ -41,7 +46,6 @@
             <% end %>
           <% end %>
         </span>
-
       </div>
       <div class="panel-body">
         <table>
