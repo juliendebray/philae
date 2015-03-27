@@ -1,23 +1,37 @@
-<div id="ul-sidebar" class="list-unstyled text-left">
-  <div class="dropdown text-center">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= @destination.name %>
-     <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-      <li role="presentation">
-      <a data-toggle="tab" href="#destination-overview" aria-controls="destination-overview" role="tab"><i class="fa fa-info" id="fa-info"></i>A savoir avant de partir</a>
-      </li>
-      <li role="presentation">
-        <a href="#must-see" aria-controls="must-see" role="tab" data-toggle="tab"><i class="fa fa-eye"></i>A ne pas rater!</a>
-      </li>
-      <li role="presentation">
-        <a href="#recommended-trip-1" aria-controls="recommended-trip-1" role="tab" data-toggle="tab"><i class="fa fa-car" id="fa-car"></i>Itinéraire 1: Beyrouth et day trips</a>
-      </li>
-      <li role="presentation">
-        <a href="#recommended-trip-2" aria-controls="recommended-trip-2" role="tab" data-toggle="tab"><i class="fa fa-car" id="fa-car"></i>Itinéraire 2: Boucle du Liban en une semaine</a></li>
-      <li role="presentation">
-        <a href="#top-from-explorizers" aria-controls="top-from-explorizers" role="tab" data-toggle="tab"><i class="fa fa-map-marker" id="fa-map-marker"></i>Toutes les expériences Explorizers</a>
-      </li>
-    </ul>
-  </div>
+<div id="ul-sidebar">
+
+  <ul class="nav nav-pills nav-justified">
+    <li role="presentation" class="dropdown" id="destination-pill">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+        <%= @destination.name %><span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li role="presentation">
+          <a role="menuitem" data-toggle="tab" href="#destination-overview" aria-controls="destination-overview"><i class="fa fa-info" id="fa-info"></i>A savoir avant de partir</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" data-toggle="tab" href="#must-see" aria-controls="must-see"><i class="fa fa-eye"></i>A ne pas rater!</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem"  data-toggle="tab" href="#recommended-trip-1" aria-controls="recommended-trip-1"><i class="fa fa-car" id="fa-car"></i>Itinéraire 1: Beyrouth et day trips</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem"  data-toggle="tab" href="#recommended-trip-2" aria-controls="recommended-trip-2"><i class="fa fa-car" id="fa-car"></i>Itinéraire 2: Boucle du Liban en une semaine</a></li>
+        <li role="presentation">
+          <a role="menuitem"  data-toggle="tab" href="#top-from-explorizers" aria-controls="top-from-explorizers"><i class="fa fa-map-marker" id="fa-map-marker"></i>Toutes les expériences Explorizers</a>
+        </li>
+      </ul>
+    </li>
+    <li role="presentation" id="friends-tips-pill">
+
+
+
+      <%= link_to trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');" do %><%= t('show_asktips') %>
+      <% end %>
+    </li>
+    <li role="presentation" id="my-trip-pill">
+      <%= link_to summarize_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');" do %><%= t('show_summary') %>
+      <% end %>
+    </li>
+  </ul>
 </div>

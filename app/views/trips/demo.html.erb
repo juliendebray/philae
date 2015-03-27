@@ -131,26 +131,6 @@
    <!--  <ul id="draggablePanelList" class="list-unstyled experience-block-container">
     </ul> -->
     </div>
-    <table>
-      <tbody>
-        <td>
-          <div id="share-bt" class="button-action update-order">
-            <%= link_to trip_ask_your_friends_path(@trip), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');", class: "btn btn-facebook btn-block pull-left", data: {toggle: "tooltip", placement: "bottom",  title: t('show_asktips')}  do %>
-              <p>  Conseils de mes amis</p>
-                <!-- <i class="fa fa-comments"></i> -->
-            <% end %>
-          </div>
-        </td>
-        <td>
-          <div id="see-trip-summary" class="button-action update-order">
-            <%= link_to  summarize_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');", class: "btn btn-info btn-block pull-right", data: {toggle: "tooltip", placement: "bottom",  title: t('show_summary'), json: 'data'} do %>
-              <p>Mon voyage</p>
-            <!-- <i class="fa fa-book"></i> -->
-            <% end %>
-          </div>
-        </td>
-      </tbody>
-    </table>
   </div>
   <% unless @guest_user %>
     <div class="map-side-menu-container">

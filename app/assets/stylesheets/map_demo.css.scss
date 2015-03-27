@@ -28,7 +28,7 @@ html, body {
 }
 
 .sidebar {
-  background: #FCFCFC;
+  background: white;
   position: fixed;
   width: 38%;
   top: 54px;
@@ -40,10 +40,9 @@ html, body {
   .selection-header {
 
     .selection-title {
-      font-weight: 300;
-      font-size: 1.5em;
-      line-height: 1em;
-      margin: 3%;
+      font-weight: 400;
+      line-height: 1.3em;
+      margin: 2%;
     }
     p {
       font-size: 14px;
@@ -51,31 +50,26 @@ html, body {
   }
 
   .selection-content {
-    margin: 10px;
-    height: 78%;
+    margin: 5px;
+    height: 88%;
     overflow: auto;
     visibility: hidden;
-    border-bottom-style: solid;
-    border-color: white;
+    // border-bottom-style: solid;
+    // border-color: white;
     p {
-      font-weight: 300;
+      .tab-description {
+        font-weight: 300;
+        font-size: 14px;
+        color: black;
+        line-height: 20px;
+        word-spacing: 1px;
+      }
     }
    }
 
    table {
     width: 100%
    }
-
-
-  .btn {
-    width: 184px;
-    p {
-      font-size: 15px;
-    }
-  }
-  .btn-info {
-    background-color: #FF5A5F;
-  }
 
 
   ul.experience-block-container {
@@ -184,20 +178,71 @@ html, body {
 }
 
 #ul-sidebar {
-  border-bottom-style: solid;
-  border-top-style: solid;
-  border-color: white;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  .dropdown {
-    a {
-      font-size: 25px;
-      color: grey;
+
+  .nav-pills > li > a {
+    background-color: lightgrey;
+    color: black;
+    margin-right: 1px;
+    margin-left: 1px;
+    .dropdown-menu {
+      a {
+        background-color: white;
+        color: black;
+      }
     }
   }
-  .dropdown-menu {
+
+  #destination-pill:hover {
     a {
-      font-size: 14px;
+      background-color: #FF7519;
+      color: white;
+    }
+    .dropdown-menu {
+      a {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+
+  #friends-tips-pill:hover {
+    a {
+      background-color: #3b5998;
+      color: white;
+    }
+  }
+
+  #my-trip-pill:hover {
+    a {
+      background-color: #FF5A5F;
+      color: white;
+    }
+  }
+
+  #destination-pill.active {
+    a {
+      background-color: #FF7519;
+      color: white;
+    }
+    .dropdown-menu {
+      a {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+
+  #friends-tips-pill.active {
+    a {
+      background-color: #3b5998;
+      color: white;
+    }
+  }
+
+  #my-trip-pill.active {
+    a {
+      background-color: #FF5A5F;
+      color: white;
     }
   }
 
