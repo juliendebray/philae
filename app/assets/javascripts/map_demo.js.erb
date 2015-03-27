@@ -240,6 +240,22 @@ function addBoxShadowEffectWhileDraggingBox() {
   });
 }
 
+function drawPolylineForRecommendedTrip() {
+  removePolyline();
+  var flightPlanCoordinates = [];
+  for(var i=0; i<markers.length;i++){
+    flightPlanCoordinates.push(markers[i].serviceObject.position);
+  }
+  flightPath = new google.maps.Polyline({
+     path: flightPlanCoordinates,
+     geodesic: true,
+     strokeColor: '#FF0000',
+     strokeOpacity: 1.0,
+     strokeWeight: 2
+   });
+  flightPath.setMap(handler.getMap());
+}
+
 function removePolyline() {
   if (typeof(flightPath) != "undefined") {
     flightPath.setMap(null);
@@ -472,7 +488,7 @@ function displayRecommendedTripExperiences(recommended_trip_id, trip_id, map, ca
   google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/" + trip_id + "/trip_experiences/recommended_trip?rti=" + recommended_trip_id;
   setMarkersAccordingToApi(url, trip_id, ".recommended_trip", function(r){
-    drawPolyline();
+    drawPolylineForRecommendedTrip();
     callback(r);
   });
 }
