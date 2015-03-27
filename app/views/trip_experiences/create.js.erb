@@ -4,14 +4,21 @@ $( document ).ready(function() {
     ibOpened = false;
   }
   var map = handler.getMap();
-  if ($('tr#guests-comments').hasClass('menu-selected') || $('div#guests-comments').hasClass('menu-selected')) {
-    setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
-      requestingMarkers = r;
-    });
+  if ($('#myTab').length > 0) {
+    // demo liban
   } else {
-    setMarkersAccordingToBounds(map, <%= @trip.id %>, function(r){
-      requestingMarkers = r;
-    });
+    // Business As Usual
+    if ($('tr#guests-comments').hasClass('menu-selected') || $('div#guests-comments').hasClass('menu-selected')) {
+      setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
+        requestingMarkers = r;
+      });
+    } else {
+      setMarkersAccordingToBounds(map, <%= @trip.id %>, function(r){
+        requestingMarkers = r;
+      });
+    }
   }
+
+
 });
 
