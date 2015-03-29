@@ -40,7 +40,9 @@
         <i class="fa fa-search"></i><%=experience.name%>
       <% end %>
     <% else %>
-       <%= link_to modal_exp_path [trip.id, experience.id] %>
+       <%= link_to modal_exp_path(trip.id, experience.id), remote: true do %>
+        <i class="fa fa-search"></i><%=experience.name%>
+      <% end %>
     <% end %>
       <!-- TODO: Show directly modal with a data-toggle without waiting the controller-->
     <% unless experience.published %>

@@ -8,7 +8,10 @@ class ExperiencesController < ApplicationController
   end
 
   def detail_for_user
-    raise
+    @experience = Experience.find(params[:experience_id])
+    @trip = Trip.find(params[:trip_id])
+    @trip_experiences = TripExperience.where("trip_id = ? AND experience_id = ?", @trip.id, @experience.id)
+    render :detail
   end
 
 

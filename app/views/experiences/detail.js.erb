@@ -2,7 +2,7 @@ $( document ).ready(function() {
   $('#myExperienceModal').modal('show');
   $('.experience-content').html(
     '<%= j render("experience_modal.html.erb",
-    {experience: @experience} ) %>'
+    {experience: @experience, trip: @trip, trip_experiences: @trip_experiences} ) %>'
   );
   $('.experience-title').html('<%= j @experience.name %>');
   $(".owl-carousel.banner").owlCarousel({
