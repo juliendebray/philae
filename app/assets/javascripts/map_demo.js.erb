@@ -40,9 +40,9 @@ function makeTableRowlinkActionnable() {
 }
 
 function placeHelpButton() {
-  var p = $('#last-row').offset();
-  var offset = $(window).height() - p.top - $('.map-side-menu-content').height();
-  $('#last-row').height(offset+'px');
+//   var p = $('#last-row').offset();
+//   var offset = $(window).height() - p.top - $('.map-side-menu-content').height();
+//   $('#last-row').height(offset+'px');
 }
 
 function scrollToElement(container, scrollTo) {
@@ -343,34 +343,32 @@ function buildMapForGuestUser(mapOptions, trip_id) {
 }
 
 function listenToUserChoices(trip_id, map) {
-  $('.user-choices').on('click', function(){
-    if ($(this).hasClass('menu-selected')) {
-      return;
-    } else {
-      if (ibOpened) {
-        ib.close();
-        ibOpened = false;
-      }
-      $('.map-side-menu-content').removeClass('menu-selected');
-      $(this).addClass('menu-selected');
-      var id =  $(this).attr('id');
-      displayMarkersAccordingToUserChoices(trip_id, map, id);
+  // console.log('enter dans listen to user');
+  // console.log($('#my-trip-pill a'));
+  $('#my-trip-pill a').on('click', function() {
+    console.log('test');
+    if (ibOpened) {
+      ib.close();
+      ibOpened = false;
     }
+    var id =  'my-trip-pill';
+    displayMarkersAccordingToUserChoices(trip_id, map, id);
   });
-  $('.tapbar-choices').on('click', function(){
-    if ($(this).hasClass('mobile-selection')) {
-      return;
-    } else {
-      if (ibOpened) {
-        ib.close();
-        ibOpened = false;
-      }
-      $('.map-side-menu-content').removeClass('mobile-selection');
-      $(this).addClass('mobile-selection');
-      var id =  $(this).attr('id');
-      displayMobileInterface(id);
-    }
-  });
+
+  // $('.tapbar-choices').on('click', function(){
+  //   if ($(this).hasClass('mobile-selection')) {
+  //     return;
+  //   } else {
+  //     if (ibOpened) {
+  //       ib.close();
+  //       ibOpened = false;
+  //     }
+  //     $('.map-side-menu-content').removeClass('mobile-selection');
+  //     $(this).addClass('mobile-selection');
+  //     var id =  $(this).attr('id');
+  //     displayMobileInterface(id);
+  //   }
+  // });
 }
 
 function displayMobileInterface(id) {
