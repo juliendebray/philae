@@ -7,7 +7,9 @@ class ExperienceReviewsController < ApplicationController
   end
 
   def create
-    experience_review = @experience.experience_reviews.new(user_id: current_user)
+    experience_review = @experience.experience_reviews.new(experience_params)
+     experience_review.user = current_user
+     experience_review.save
     if experience_review.save
       flash[:notice] = "Review has been saved"
       redirect_to experience_path(@experience)

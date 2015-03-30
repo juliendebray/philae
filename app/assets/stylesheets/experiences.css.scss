@@ -2,6 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// CSS pour experience SHOW
+
+#exp_review_block {
+  box-sizing: content-box;
+  font-weight: 400;
+  padding: 15px;
+  font-size: 15px;
+  background-color: white;
+  h4 {
+    font-size: 16px;
+    margin-top: 0px;
+  }
+  p {
+    margin-bottom: 5px;
+    font-size:  14px;
+  }
+  .fa {
+    font-size: 6px;
+  }
+  .btn {
+    font-size: 15px;
+  }
+  #experience_review_rating {
+    width: 151px;
+  }
+}
+
+
+
+// CSS pour experience NEW
 body.newexperience {
   background-image: image-url("sparkle.jpeg");
   background-size: cover;
