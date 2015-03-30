@@ -1,6 +1,10 @@
 <div id="experience-infowindow">
   <% if experience.experience_pictures.size > 0 %>
-    <%= link_to '', experience_detail_path(experience.id), remote: true, id:"link-to-detail" %>
+    <% if guest_user %>
+      <%= link_to '', experience_detail_path(experience.id), remote: true, id:"link-to-detail" %>
+    <% else %>
+      <%= link_to '', modal_exp_path(trip.id, experience.id), remote: true, id:"link-to-detail" %>
+    <% end %>
     <div id="owl-experiences" class="owl-carousel small text-center">
       <% experience.experience_pictures.sort_by {|pic| pic.id }.each do |pic| %>
           <div class="item">
@@ -40,7 +44,7 @@
         <i class="fa fa-search"></i><%=experience.name%>
       <% end %>
     <% else %>
-       <%= link_to modal_exp_path(trip.id, experience.id), remote: true do %>
+      <%= link_to modal_exp_path(trip.id, experience.id), remote: true do %>
         <i class="fa fa-search"></i><%=experience.name%>
       <% end %>
     <% end %>

@@ -7,7 +7,7 @@
       <% end %>
     </div>
 <% end %>
-<% if trip.user = current_user %>
+<% if trip && trip.user == current_user %>
   <div class="user-action">
     <% if trip_experiences.any? %>
       <%= link_to [trip, trip_experiences.first], remote: true, method: :delete do %>
