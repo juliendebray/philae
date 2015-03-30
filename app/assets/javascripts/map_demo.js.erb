@@ -208,7 +208,7 @@ function initalizeLinkWithRemoteTrue() {
 }
 
 function makeExperiencesSortable() {
-  var panelList = $('#draggablePanelList');
+  var panelList = $('#draggablePanelList.user-experiences-content');
   if (panelList.hasClass('ui-sortable-disabled')) {
     panelList.sortable('enable');
   }
@@ -234,9 +234,9 @@ function preventExperiencesFromBeingSortable() {
 
 function addBoxShadowEffectWhileDraggingBox() {
   $('.panel-heading').on('mousedown', function(){
-    $(this).parent().parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.5)');
+    $(this).parent().parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.4)');
     $(document).on('mouseup', function(){
-      $('.panel').css('box-shadow', '1px 1px 1px 1px rgba(0, 0, 0, 0.1)');
+      $('.panel').css('box-shadow', 'none');
       $(this).unbind('mouseup');
     });
   });

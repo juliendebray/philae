@@ -6,6 +6,8 @@ $( document ).ready(function() {
   var map = handler.getMap();
   if ($('#myTab').length > 0) {
     // demo liban
+    var id = $('.tab-pane.active').prop('id');
+    displayMarkersAccordingToUserChoicesInsideSelection(id, <%= @trip.id %>, map);
   } else {
     // Business As Usual
     if ($('tr#guests-comments').hasClass('menu-selected') || $('div#guests-comments').hasClass('menu-selected')) {
@@ -18,7 +20,5 @@ $( document ).ready(function() {
       });
     }
   }
-
-
 });
 

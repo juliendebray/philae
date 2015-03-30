@@ -7,6 +7,8 @@ $( document ).ready(function() {
 
   if ($('#myTab').length > 0) {
     // demo liban
+    var id = $('.tab-pane.active').prop('id');
+    displayMarkersAccordingToUserChoicesInsideSelection(id, <%= @trip.id %>, map);
   } else {
     // business as usual
     if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
