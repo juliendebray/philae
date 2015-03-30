@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     resources :providers, only: [:index, :show]
 
-    resources :experiences, except: [:index, :show] do
+    resources :experiences, except: [:index] do
       resources :experience_reviews, only: [:new, :create]
     end
 
