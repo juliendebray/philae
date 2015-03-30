@@ -51,7 +51,8 @@ en:
     index:
       brand: "E X P L O R I Z E R S"
       firstline: "YOUR NEXT TRIP STARTS HERE"
-      secondline: "Find travel tips from the best sources: your friends, other travelers and professionals"
+      secondline: "Easily plan your next trip, with tips from your friends, other travelers and professionals"
+      # secondline: "Find travel tips from the best sources: your friends, other travelers and professionals"
       thirdline: "1. Identify must-see places and off the-beaten-tracks gems"
       fourthline: "2. Ask your friends' tips"
       fifthline: "3. Pick what you like to build YOUR trip"

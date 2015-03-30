@@ -33,7 +33,8 @@ fr:
     index:
       brand: "E X P L O R I Z E R S"
       firstline: "TON VOYAGE COMMENCE ICI"
-      secondline: "Retrouve ici les conseils de voyage des meilleures sources : tes amis, d'autres voyageurs, et des professionnels"
+      # secondline: "Retrouve ici les conseils de voyage des meilleures sources : tes amis, d'autres voyageurs, et des professionnels"
+      secondline: "Simplifie la préparation de ton voyage, avec les conseils de tes amis, d'autres voyageurs et de professionnels"
       thirdline: "1. Identifie l'immanquable et découvre des pépites hors des sentiers battus"
       fourthline: "2. Complète par les conseils de tes amis"
       fifthline: "3. Sélectionne ce qui te correspond pour élaborer TON voyage"
