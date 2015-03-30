@@ -1,11 +1,19 @@
 class ExperiencesController < ApplicationController
   before_action :authenticate_user!, except: [:detail, :show]
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
-  respond_to :js, only: [:detail]
+  respond_to :js, only: [:detail, :detail_for_user]
 
   def detail
     @experience = Experience.find(params[:experience_id])
   end
+
+  def detail_for_user
+    @experience = Experience.find(params[:experience_id])
+    @trip = Trip.find(params[:trip_id])
+    @trip_experiences = TripExperience.where("trip_id = ? AND experience_id = ?", @trip.id, @experience.id)
+    render :detail
+  end
+
 
   # GET /experiences/1
   # GET /experiences/1.json

@@ -12,14 +12,15 @@ Rails.application.routes.draw do
   post '/trip_comments/:trip_comment_id/trip_experience/create_with_new_experience', to: 'trip_experiences#create_with_comment', as: 'experience_from_comment'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  get 'experiences/:experience_id/detail', to: 'experiences#detail', as: 'experience_detail'
+  get '/experiences/:experience_id/detail', to: 'experiences#detail', as: 'experience_detail'
+  get '/trips/:trip_id/experiences/:experience_id/detail_for_user', to: 'experiences#detail_for_user', as: 'modal_exp'
 
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
 
     resources :providers, only: [:index, :show]
 
-    resources :experiences, except: [:index] do
+    resources :experiences, except: [:index, :show] do
       resources :experience_reviews, only: [:new, :create]
     end
 

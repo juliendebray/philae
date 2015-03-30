@@ -4,15 +4,22 @@ $( document ).ready(function() {
     ib.close();
     ibOpened = false;
   }
-  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
-    $('li#<%= @trip_experience.id %>').remove();
-    setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
-      requestingMarkers = r;
-    });
-    drawPolyline();
+
+  if ($('#myTab').length > 0) {
+    // demo liban
   } else {
-    setMarkersAccordingToBounds(map, <%= @trip.id %>, function(r){
-      requestingMarkers = r;
-    });
+    // business as usual
+    if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
+      $('li#<%= @trip_experience.id %>').remove();
+      setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
+        requestingMarkers = r;
+      });
+      drawPolyline();
+    } else {
+      setMarkersAccordingToBounds(map, <%= @trip.id %>, function(r){
+        requestingMarkers = r;
+      });
+    }
   }
+
 });

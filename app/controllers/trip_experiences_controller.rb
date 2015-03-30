@@ -10,7 +10,7 @@ class TripExperiencesController < ApplicationController
     experiences_within_bounds = Experience.where(published: true).within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
     # tab = experiences_within_bounds.reject { |e| tab_id.include?(e.id) }
     @experiences = select_experiences_to_show(experiences_within_bounds)
-    @markers = build_markers(@experiences[0..markers_number - 1], @trip)
+    @markers = build_markers(@experiences[0..markers_number - 1], @trip, true)
     render json: @markers
   end
 
@@ -86,7 +86,7 @@ class TripExperiencesController < ApplicationController
 
   def must_see
     # TODO: Link Experience to destination
-    @markers = build_markers(Experience.where(must_see: true).to_a, @trip)
+    @markers = build_markers(Experience.where(must_see: true).to_a, @trip, false)
     render json: @markers
   end
 
@@ -96,7 +96,7 @@ class TripExperiencesController < ApplicationController
     recommended_trip.recommended_trip_experiences.sort_by {|reco_trip_exp| reco_trip_exp.order }.each do |reco_trip_exp|
       experiences_ordered << reco_trip_exp.experience
     end
-    @markers = build_markers(experiences_ordered, @trip)
+    @markers = build_markers(experiences_ordered, @trip, false)
     render json: @markers
   end
 
@@ -109,7 +109,7 @@ class TripExperiencesController < ApplicationController
     @trip = Trip.find(params[:trip_id])
   end
 
-  def build_markers(experiences, trip)
+  def build_markers(experiences, trip, experience_block_required)
     Gmaps4rails.build_markers(experiences) do |experience, marker|
       marker.lat experience.latitude
       marker.lng experience.longitude
@@ -121,42 +121,66 @@ class TripExperiencesController < ApplicationController
           width:  25,
           height: 39
           })
-        marker.json({
-          infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
-            experience: experience,
-            trip: trip,
-            trip_experience: trip_experiences.first,
-            guest_user: false
-          }),
-          experience_id: experience.id,
-          experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
-            trip_exp: trip_experiences.first,
-            guest_user: false,
-            experience: experience,
-            trip: trip
+        if experience_block_required
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: trip_experiences.first,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+            experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+              trip_exp: trip_experiences.first,
+              guest_user: false,
+              experience: experience,
+              trip: trip
+            })
           })
-        })
+        else
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: trip_experiences.first,
+              guest_user: false
+            }),
+            experience_id: experience.id
+          })
+        end
       else
         marker.picture({
           url: "https://philae-floju.s3.amazonaws.com/markers/top.png",
           width:  25,
           height: 39
         })
-        marker.json({
-          infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
-            experience: experience,
-            trip: trip,
-            trip_experience: false,
-            guest_user: false
-          }),
-          experience_id: experience.id,
-          experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
-            trip_exp: false,
-            guest_user: false,
-            experience: experience,
-            trip: trip
+        if experience_block_required
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+            experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+              trip_exp: false,
+              guest_user: false,
+              experience: experience,
+              trip: trip
+            })
           })
-        })
+        else
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+          })
+        end
       end
     end
   end
