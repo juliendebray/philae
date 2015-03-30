@@ -1,12 +1,11 @@
 <div id="ul-sidebar">
-
-  <ul class="nav nav-pills nav-justified">
-    <li role="presentation" class="dropdown" id="destination-pill">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-        <%= @destination.name %><span class="caret"></span>
+  <ul id="myTab" class="nav nav-pills nav-justified" role="tablist">
+    <li role="presentation" class="dropdown active" id="destination-pill">
+      <a id="myTabDrop" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false" aria-controls="myTabDrop-content">
+        <%= @destination.name %> <span class="caret"></span>
       </a>
-      <ul class="dropdown-menu" role="menu">
-        <li role="presentation">
+      <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop" id="myTabDrop-content">
+        <li role="presentation" class="active">
           <a role="menuitem" data-toggle="tab" href="#destination-overview" aria-controls="destination-overview"><i class="fa fa-info" id="fa-info"></i>A savoir avant de partir</a>
         </li>
         <li role="presentation">
@@ -23,10 +22,12 @@
       </ul>
     </li>
     <li role="presentation" id="friends-tips-pill">
-      <a href="#"><%= t('show_asktips') %></a>
+      <a role="menuitem"  data-toggle="tab" href="#user-guest-comments" aria-controls="user-guest-comments">
+        <%= t('show_asktips') %>
+      </a>
     </li>
     <li role="presentation" id="my-trip-pill">
-      <a href="#"><%= t('show_summary') %></a>
+      <a role="menuitem"  data-toggle="tab" href="#user-experiences-selection" aria-controls="user-experiences-selection">Mon voyage</a>
     </li>
   </ul>
 </div>

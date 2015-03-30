@@ -3,27 +3,35 @@ $( document ).ready(function() {
     ib.close();
     ibOpened = false;
   }
-  if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
-    $('#draggablePanelList').append(
-      '<%= j render("/trip_experiences/experience_block.html.erb",
-      {trip_exp: @trip_experience, guest_user: false} ) %>'
-    );
-    $('<%= ".exp-#{@trip_experience.id}" %>').dotdotdot({
-            watch: "window",
-            callback: function(isTruncated, orgContent) {
-              if (isTruncated) {
-                $('<%= ".exp-#{@trip_experience.id}" %> p').append(orgContent.find('a.readmore').prop('outerHTML'));
-              }
-            }
-        });
-    addBoxShadowEffectWhileDraggingBox();
-    scrollToElement($('.selection-content'), $('.panel-info').last());
-    setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
-    setPolylineDrawingWhenDraggingExperience();
-  } else if ($('tr#guests-comments').hasClass('menu-selected') || $('div#guests-comments').hasClass('menu-selected')) {
-    var map = handler.getMap();
-    setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
+  if ($('#myTab').length > 0) {
+    // demo liban
+    setMapWithGuestComments(<%= @trip.id %>, handler.getMap(), function(r) {
       requestingMarkers = r;
     });
+  } else {
+    // Business As Usual
+    if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')){
+      $('#draggablePanelList').append(
+        '<%= j render("/trip_experiences/experience_block.html.erb",
+        {trip_exp: @trip_experience, guest_user: false} ) %>'
+      );
+      $('<%= ".exp-#{@trip_experience.id}" %>').dotdotdot({
+              watch: "window",
+              callback: function(isTruncated, orgContent) {
+                if (isTruncated) {
+                  $('<%= ".exp-#{@trip_experience.id}" %> p').append(orgContent.find('a.readmore').prop('outerHTML'));
+                }
+              }
+          });
+      addBoxShadowEffectWhileDraggingBox();
+      scrollToElement($('.selection-content'), $('.panel-info').last());
+      setExperiencesOrderByEndDraggingAnExperience(<%= @trip.id %>);
+      setPolylineDrawingWhenDraggingExperience();
+    } else if ($('tr#guests-comments').hasClass('menu-selected') || $('div#guests-comments').hasClass('menu-selected')) {
+      var map = handler.getMap();
+      setMapWithGuestComments(<%= @trip.id %>, map, function(r) {
+        requestingMarkers = r;
+      });
+    }
   }
 });

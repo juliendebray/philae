@@ -160,8 +160,8 @@ function setExperienceInfowindow(data) {
 }
 
 function setAnimationOnMarkers() {
-  $('.exp-dotdotdot').on("mouseenter", function() {
-    for(var i=0; i<markers.length;i++){
+  $('.exp-dotdotdot, .exp-text').on("mouseenter", function() {
+    for(var i=0; i < markers.length;i++){
       if (markers[i].serviceObject.experience_id == $(this).data('experience_id')){
         markers[i].serviceObject.setAnimation(google.maps.Animation.BOUNCE)
       }
@@ -208,7 +208,7 @@ function initalizeLinkWithRemoteTrue() {
 }
 
 function makeExperiencesSortable() {
-  var panelList = $('#draggablePanelList');
+  var panelList = $('#draggablePanelList.user-experiences-content');
   if (panelList.hasClass('ui-sortable-disabled')) {
     panelList.sortable('enable');
   }
@@ -234,9 +234,9 @@ function preventExperiencesFromBeingSortable() {
 
 function addBoxShadowEffectWhileDraggingBox() {
   $('.panel-heading').on('mousedown', function(){
-    $(this).parent().parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.5)');
+    $(this).parent().parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.4)');
     $(document).on('mouseup', function(){
-      $('.panel').css('box-shadow', '1px 1px 1px 1px rgba(0, 0, 0, 0.1)');
+      $('.panel').css('box-shadow', 'none');
       $(this).unbind('mouseup');
     });
   });
@@ -361,17 +361,18 @@ function buildMapForGuestUser(mapOptions, trip_id) {
 }
 
 function listenToUserChoices(trip_id, map) {
+  // $(window).load()
   // console.log('enter dans listen to user');
   // console.log($('#my-trip-pill a'));
-  $('#my-trip-pill a').on('click', function() {
-    console.log('test');
-    if (ibOpened) {
-      ib.close();
-      ibOpened = false;
-    }
-    var id =  'my-trip-pill';
-    displayMarkersAccordingToUserChoices(trip_id, map, id);
-  });
+  // $(document).on("click", "#my-trip-pill a", function(){
+  // // $('#my-trip-pill a').on('click', function() {
+  //   console.log('test2');
+  //   if (ibOpened) {
+  //     ib.close();
+  //     ibOpened = false;
+  //   }
+  //   // displayMarkersAccordingToUserChoices(trip_id, map, 'user-experiences');
+  // });
 
   // $('.tapbar-choices').on('click', function(){
   //   if ($(this).hasClass('mobile-selection')) {
@@ -447,6 +448,8 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
 function demoListenToUserChoicesInsideSelection(trip_id, map) {
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var id = $(e.target).attr('aria-controls');
+    // console.log('id est ...');
+    // console.log(id);
     displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map);
   });
 }
@@ -469,6 +472,14 @@ function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
     });
   } else if (id == "top-from-explorizers") {
     setMarkersAndKeepListening(map, trip_id);
+  } else if (id == "user-experiences-selection") {
+    setMapWithUserExperiences(trip_id, map, function(r) {
+      requestingMarkers = r;
+    });
+    } else if (id == "user-guest-comments") {
+      setMapWithGuestComments(trip_id, map, function(r) {
+        requestingMarkers = r;
+      });
   } else {
     alert('Un problème est survenu :(  --> merci de recharger la page.... ');
   }
@@ -506,10 +517,11 @@ function buildMapForUser(mapOptions, trip_id) {
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
     // SET MARKERS ON MAP LOADING
-    var id = $('.menu-selected').attr('id');
+    var id = 'all-experiences';
+    // demoListenToUserChoicesInsideSelection(trip_id, map);
     displayMarkersAccordingToUserChoices(trip_id, map, id);
     // KEEP LISTENING AND DISPLAY MARKERS ACCORDING TO USERS CHOICES
-    listenToUserChoices(trip_id, map);
+    // listenToUserChoices(trip_id, map);
     initializeMapSearchBar('pac-input');
     google.maps.event.addListener(map, "click", function(e) {
       if (ibOpened) {
@@ -613,9 +625,7 @@ function setMarkersAccordingToBounds(map, trip_id, className, callback) {
 }
 
 function clearDragendAndZoomChangedListeners() {
-    console.log('test');
   if (typeof(zoomChangedListener) != 'undefined') {
-    console.log('dans le if');
     google.maps.event.removeListener(dragendListener);
     google.maps.event.removeListener(zoomChangedListener);
   }
@@ -626,7 +636,7 @@ function setMapWithGuestComments(trip_id, map, callback) {
   // google.maps.event.clearListeners(map, 'dragend');
   // google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/"+trip_id+"/trip_comments/comments_markers";
-  setMarkersAccordingToApi(url, trip_id, "", function(r){
+  setMarkersAccordingToApi(url, trip_id, ".guest-comments-content", function(r){
     preventUserChoicesInitialization();
     callback(r);
   });
@@ -637,7 +647,7 @@ function setMapWithUserExperiences(trip_id, map, callback) {
   // google.maps.event.clearListeners(map, 'dragend');
   // google.maps.event.clearListeners(map, 'zoom_changed');
   var url = "/trips/"+trip_id+"/trip_experiences/trip_markers";
-  setMarkersAccordingToApi(url, trip_id, "", function(r){
+  setMarkersAccordingToApi(url, trip_id, ".user-experiences-content", function(r){
     initializeWithUserChoices(trip_id);
     callback(r);
   });

@@ -234,10 +234,14 @@ html, body {
     }
   }
 
-  .dropdown-menu > li > a.hover {
+  .dropdown-menu > li > a:hover {
     background-color: lightgrey;
     color: #525252;
     border-style: none;
+  }
+
+  .dropdown-menu > li.active > a {
+    font-weight: bold;
   }
 
   #destination-pill:hover {
