@@ -160,8 +160,8 @@ function setExperienceInfowindow(data) {
 }
 
 function setAnimationOnMarkers() {
-  $('.exp-dotdotdot').on("mouseenter", function() {
-    for(var i=0; i<markers.length;i++){
+  $('.exp-dotdotdot, .exp-text').on("mouseenter", function() {
+    for(var i=0; i < markers.length;i++){
       if (markers[i].serviceObject.experience_id == $(this).data('experience_id')){
         markers[i].serviceObject.setAnimation(google.maps.Animation.BOUNCE)
       }
