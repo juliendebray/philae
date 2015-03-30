@@ -3,8 +3,10 @@ $( document ).ready(function() {
   if ($('#myTab').length > 0) {
     // demo liban
     var id = $('.tab-pane.active').prop('id');
+    console.log(id);
     if (id == "user-experiences-selection") {
-      setMapWithUserExperiences(trip_id, map, function(r) {
+      console.log('test2');
+      setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
         requestingMarkers = r;
       });
     } else {
