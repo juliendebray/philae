@@ -3,7 +3,7 @@
     <div class='exp-dotdotdot <%= "exp-#{trip_exp.id}" %>' data-experience_id='<%= trip_exp.experience.id %>' data-lat='<%= trip_exp.experience.latitude %>' data-lng='<%= trip_exp.experience.longitude %>'>
       <div class="panel-heading">
         <% unless guest_user %>
-          <%= link_to "#{experience.name} - #{experience.average_rating}/10", modal_exp_path(trip.id, trip_exp.experience.id), remote: true %>
+          <%= link_to "#{trip_exp.experience.name} - #{trip_exp.experience.average_rating}/10", modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true %>
           <%= link_to [trip_exp.trip, trip_exp], remote: true, method: :delete do %>
             <i class="fa fa-heart pull-right"></i>
           <% end %>
@@ -26,7 +26,7 @@
                 <%= link_to t('experience_block_seemore'), experience_detail_path(trip_exp.experience.id), remote: true, class: "readmore" %>
                 <% else %>
                 <!-- TODO: link to add or remove this experience to trip -->
-                  <%= link_to t('experience_block_seemore'), modal_exp_path(trip.id, trip_exp.experience.id), remote: true, class: "readmore" %>
+                  <%= link_to t('experience_block_seemore'), modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true, class: "readmore" %>
                 <% end %>
             </td>
           </tr>
