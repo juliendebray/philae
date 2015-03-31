@@ -456,7 +456,7 @@ function demoListenToUserChoicesInsideSelection(trip_id, map) {
 
 function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
   removePolyline();
-  if (id == 'destination-overview') {
+  if (id == 'destination-overview' || id == 'help-menu') {
     return;
   } else if (id == "must-see") {
     displayMustSeeExperiences(trip_id, map, function(r) {
