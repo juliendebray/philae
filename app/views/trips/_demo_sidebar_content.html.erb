@@ -1,7 +1,7 @@
 <div role="tabpanel" class="tab-pane" id="destination-overview">
   <h4>Le Liban en 5 phrases</h4>
   <ol>
-    <li><p>Le Liban est un <b>petit pays</b>: tous les poins d'intérêts sont à moins de 2h de toure de Beyrouth.</p></li>
+    <li><p>Le Liban est un <b>petit pays</b>: tous les poins d'intérêts sont à moins de 2h de route de Beyrouth.</p></li>
     <li><p>C'est un pays riche de <b>5 000 ans d'histoire</b>, et de <b>diversité géographique</b>: dans une même journée, on peut skier le matin, déjeuner dans une vallée verdoyante, finir l'après-midi à la plage, et passer la soirée à Beyrouth.</p></li>
     <li><p>Sa spécificité tient également à sa <b>mosaïque culturelle et religieuse</b>, qui a donné lieu à de graves conflits, et qui fait du Liban un pays toujours sous tension.</p></li>
     <li><p>Un pays où l'<b>on aime vivre vite</b>, tout de suite, et s'amuser: Beyrouth est la ville la plus festive du monde arabe, la gastronomie est divine, la scène culturelle est florissante, et la musique fait référence dans tout le monde arabe.</p></li>
@@ -15,8 +15,8 @@
   </ul>
   <h4>Entrer au Liban</h4>
   <ul>
-    <li><p>Visa obligatoire pour les Français, délivré à l'arrivée (passeport valable 6 mois minimum)</p></li>
-    <li><p>Le visa peut être refusé si la douane découvre un passage antérieur (tampon israélien sur le passeport) ou futur (billets d'avion par exemple) en Israël.</p></li>
+    <li><p><b>Visa obligatoire</b> pour les Français, délivré à l'arrivée (passeport valable 6 mois minimum)</p></li>
+    <li><p>Le <b>visa peut être refusé</b> si la douane découvre un passage antérieur (tampon israélien sur le passeport) ou futur (billets d'avion par exemple) en Israël.</p></li>
   </ul>
   <h4>3 choses à savoir</h4>
   <ul>
@@ -41,27 +41,27 @@
     <p>Voici les incontournables, les grands classiques du Liban à ne pas rater. Ajoute-les à ton itinéraire pour commencer à construire ton voyage!</p><br>
     <ol>
       <span class="exp-text" data-experience_id="583">
-        <li><p><b><%= link_to "Faire la fête à Beyrouth", experience_detail_path(583), remote: true %></b>
-        <br>Vous visiterez bien d’autres choses à Beyrouth, mais on garde en particulier de bons souvenirs de sa vie nocturne. Un passage par <%= link_to "la rue Monnot", experience_detail_path(583), remote: true %> garantit une soirée / nuit réussie.</p></li>
+        <li><p><b><%= link_to "Faire la fête à Beyrouth", modal_exp_path(trip.id,583), remote: true %></b>
+        <br>Vous visiterez bien d’autres choses à Beyrouth, mais on garde en particulier de bons souvenirs de sa vie nocturne. Un passage par <%= link_to "la rue Monnot", modal_exp_path(trip.id,583), remote: true %> garantit une soirée / nuit réussie.</p></li>
       </span>
       <span class="exp-text" data-experience_id="589">
-        <li><p><b><%= link_to "Visiter Jbeil, l'ancienne Byblos", experience_detail_path(589), remote: true %></b><br>
+        <li><p><b><%= link_to "Visiter Jbeil, l'ancienne Byblos", modal_exp_path(trip.id,589), remote: true %></b><br>
         Plus au nord et plus au calme, ne manquez pas Jbeil, port de pêche entouré de ruines romaines et croisées, l’une des plus belles villes du Liban.</p></li>
       </span>
       <span class="exp-text" data-experience_id="592">
-        <li><p><b><%= link_to "La Vallée du Chouf", experience_detail_path(592), remote: true %></b><br>
-        Pour le Liban pittoresque, direction la vallée du Chouf, et notamment le <%= link_to "village de Beiteddine", experience_detail_path(592), remote: true %>.</p></li>
+        <li><p><b><%= link_to "La Vallée du Chouf", modal_exp_path(trip.id,592), remote: true %></b><br>
+        Pour le Liban pittoresque, direction la vallée du Chouf, et notamment le <%= link_to "village de Beiteddine", modal_exp_path(trip.id,592), remote: true %>.</p></li>
       </span>
       <span class="exp-text" data-experience_id="588">
-        <li><p><b><%= link_to "Grotte de Jeita", experience_detail_path(588), remote: true %></b><br>
+        <li><p><b><%= link_to "Grotte de Jeita", modal_exp_path(trip.id,588), remote: true %></b><br>
         Qu’on soit fan de géologie ou non, l'immense grotte de Jeita doit faire partie du voyage. C’est le site naturel le plus étonnant de la région.</p></li>
       </span>
       <span class="exp-text" data-experience_id="597">
-        <li><p><b><%= link_to "Randonnée dans la vallée sainte de Qadisha", experience_detail_path(597), remote: true %></b><br>
-        C'est l'étape nature et culture, car la vallée de Qadisha abrite des monastères cachés, datant des débuts du christianisme. Tout proche, vous irez rendre visite aux <%= link_to "Cèdres de Dieu", experience_detail_path(596), remote: true %>, emblèmes du Liban.</p></li>
+        <li><p><b><%= link_to "Randonnée dans la vallée sainte de Qadisha", modal_exp_path(trip.id,597), remote: true %></b><br>
+        C'est l'étape nature et culture, car la vallée de Qadisha abrite des monastères cachés, datant des débuts du christianisme. Tout proche, vous irez rendre visite aux <%= link_to "Cèdres de Dieu", modal_exp_path(trip.id,596), remote: true %>, emblèmes du Liban.</p></li>
       </span>
       <span class="exp-text" data-experience_id="590">
-        <li><p><b><%= link_to "Site antique de Baalbek", experience_detail_path(590), remote: true %></b><br>
+        <li><p><b><%= link_to "Site antique de Baalbek", modal_exp_path(trip.id,590), remote: true %></b><br>
         Si la question de la sécurité ne se posait pas (voir les recommandations du Ministère des Affaires étrangères), les férus d’archéologie ne devraient pas passer à côté de Baalbek, qui compte parmi les ruines gréco-romaines les mieux conservées au monde.</p></li>
       </span>
     </ol>
@@ -77,10 +77,10 @@
     <p>Les faibles distances et la position centrale de Beyrouth permettent de visiter le Liban tout en restant dans la capitale. La location d’une voiture ou la réservation d’un taxi sur la journée est facile et relativement bon marché.</p>
     <p>On peut diviser 5-6 de voyage au Liban, basé à Beyrouth, comme ceci:</p>
     <ul>
-      <li><p><b>2-3 jours à Beyrouth</b>, pour visiter le typique quartier d’<span class="text-exp" data-experience_id="581"><%= link_to "Achrafieh", experience_detail_path(581), remote: true %></span> , la Corniche, le <span class="text-exp" data-experience_id="580"><%= link_to "Rawcheh", experience_detail_path(580), remote: true %></span>, emblème de la ville, et passer la soirée à <span class="text-exp" data-experience_id="582"><%= link_to "Gemmayzé", experience_detail_path(582), remote: true %></span> ou <span class="text-exp" data-experience_id="583"><%= link_to "rue Monnot", experience_detail_path(583), remote: true %></span></p></li>
-      <li><p><b>1 journée sur la côte nord</b>, incluant Jounieh et la magnifique vue depuis <span class="text-exp" data-experience_id="587"><%= link_to "Notre-Dame du Liban", experience_detail_path(587), remote: true %></span>, l’impressionnante <span class="text-exp" data-experience_id="588"><%= link_to "Grotte de Jeita", experience_detail_path(588), remote: true %></span> et la <span class="text-exp" data-experience_id="589"><%= link_to "ville de Jbeil", experience_detail_path(589), remote: true %>  (Byblos)</span>, tous ces sites étant très proches</p></li>
-      <li><p><b>1 jour dans le nord du pays</b>, jusqu’au <span class="text-exp" data-experience_id="595"><%= link_to "village d'Ehden", experience_detail_path(595), remote: true %></span>, pour <span class="text-exp" data-experience_id="597"><%= link_to "randonner dans la vallée de Qadisha", experience_detail_path(597), remote: true %></span> et voir les <span class="text-exp" data-experience_id="596"><%= link_to "Cèdres de Dieu", experience_detail_path(596), remote: true %></span> , emblèmes du pays</p></li>
-      <li><p><b>1 jour dans la vallée du Chouf</b>, pour visiter notamment les villages traditionnels de <span class="text-exp" data-experience_id="592"><%= link_to "Beiteddine", experience_detail_path(592), remote: true %></span> et <span class="text-exp" data-experience_id="591"><%= link_to "Deir el Qamar", experience_detail_path(591), remote: true %></span>, et pourquoi pas pousser jusqu’au <span class="text-exp" data-experience_id="598"><%= link_to "vignoble de Kefraya", experience_detail_path(598), remote: true %></span> pour une dégustation</p></li>
+      <li><p><b>2-3 jours à Beyrouth</b>, pour visiter le typique quartier d’<span class="text-exp" data-experience_id="581"><%= link_to "Achrafieh", modal_exp_path(trip.id,581), remote: true %></span> , la Corniche, le <span class="text-exp" data-experience_id="580"><%= link_to "Rawcheh", modal_exp_path(trip.id,580), remote: true %></span>, emblème de la ville, et passer la soirée à <span class="text-exp" data-experience_id="582"><%= link_to "Gemmayzé", modal_exp_path(trip.id,582), remote: true %></span> ou <span class="text-exp" data-experience_id="583"><%= link_to "rue Monnot", modal_exp_path(trip.id,583), remote: true %></span></p></li>
+      <li><p><b>1 journée sur la côte nord</b>, incluant Jounieh et la magnifique vue depuis <span class="text-exp" data-experience_id="587"><%= link_to "Notre-Dame du Liban", modal_exp_path(trip.id,587), remote: true %></span>, l’impressionnante <span class="text-exp" data-experience_id="588"><%= link_to "Grotte de Jeita", modal_exp_path(trip.id,588), remote: true %></span> et la <span class="text-exp" data-experience_id="589"><%= link_to "ville de Jbeil", modal_exp_path(trip.id,589), remote: true %>  (Byblos)</span>, tous ces sites étant très proches</p></li>
+      <li><p><b>1 jour dans le nord du pays</b>, jusqu’au <span class="text-exp" data-experience_id="595"><%= link_to "village d'Ehden", modal_exp_path(trip.id,595), remote: true %></span>, pour <span class="text-exp" data-experience_id="597"><%= link_to "randonner dans la vallée de Qadisha", modal_exp_path(trip.id,597), remote: true %></span> et voir les <span class="text-exp" data-experience_id="596"><%= link_to "Cèdres de Dieu", modal_exp_path(trip.id,596), remote: true %></span> , emblèmes du pays</p></li>
+      <li><p><b>1 jour dans la vallée du Chouf</b>, pour visiter notamment les villages traditionnels de <span class="text-exp" data-experience_id="592"><%= link_to "Beiteddine", modal_exp_path(trip.id,592), remote: true %></span> et <span class="text-exp" data-experience_id="591"><%= link_to "Deir el Qamar", modal_exp_path(trip.id,591), remote: true %></span>, et pourquoi pas pousser jusqu’au <span class="text-exp" data-experience_id="598"><%= link_to "vignoble de Kefraya", modal_exp_path(trip.id,598), remote: true %></span> pour une dégustation</p></li>
     </ul>
   </div>
   <div class="tab-content">
@@ -92,12 +92,13 @@
   <div class="tab-description">
     <h4>Itinéraire 2: Boucle du Liban en 1 semaine</h4>
     <ul>
-      <li><p><b>Jours 1, 2 et 3</b>: à Beyrouth, visitez le typique quartier d’<span class="text-exp" data-experience_id="581"><%= link_to "Achrafieh", experience_detail_path(581), remote: true %></span>, la Corniche et le <span class="text-exp" data-experience_id="580"><%= link_to "Rawcheh", experience_detail_path(580), remote: true %></span>, et passez la soirée <span class="text-exp" data-experience_id="583"><%= link_to "rue Monnot", experience_detail_path(583), remote: true %></span>.</p></li>
-      <li><p><b>Jour 4</b> (50km / 1h de route): quittez Beyrouth pour démarrer la journée avec l’impressionnante <span class="text-exp" data-experience_id="588"><%= link_to "Grotte de Jeita", experience_detail_path(588), remote: true %></span>. Rejoignez ensuite Jounieh, et montez en téléphérique vers <span class="text-exp" data-experience_id="587"><%= link_to "Notre-Dame du Liban", experience_detail_path(587), remote: true %></span> pour son point de vue époustouflant. Continuez vers le nord pour <span class="text-exp" data-experience_id="589"><%= link_to "visiter Jbeil", experience_detail_path(589), remote: true %></span> et y passer la nuit.</p></li>
-      <li><p><b>Jour 5</b> (80km / 1h30 de route): faites un passage par <span class="text-exp" data-experience_id="593"><%= link_to "Batroun", experience_detail_path(593), remote: true %></span>, puis continuez pour visiter <span class="text-exp" data-experience_id="594"><%= link_to "Tripoli", experience_detail_path(594), remote: true %></span>, et rendez-vous dans le <span class="text-exp" data-experience_id="595"><%= link_to "village d'Ehden", experience_detail_path(595), remote: true %></span> pour y passer la nuit.</p></li>
-      <li><p><b>Jour 6</b>: Autour d’Ehden, faites la <span class="text-exp" data-experience_id="597"><%= link_to "randonnée dans la vallée de Qadisha", experience_detail_path(597), remote: true %></span>, allez voir les <span class="text-exp" data-experience_id="596"><%= link_to "Cèdres de Dieu", experience_detail_path(596), remote: true %></span> et pousser éventuellement jusqu’au Qornet es Sawda, sommet du Liban. Restez dormir à Ehden.</p></li>
-      <li><p><b>Jour 7</b>: quittez Ehden tôt, traversez le Liban du nord au sud par les magnifiques routes de montagne (170km, 4h) pour passer l’après-midi dans la vallée du Chouf, notamment les villages de <span class="text-exp" data-experience_id="591"><%= link_to "Deir el Qamar", experience_detail_path(591), remote: true %></span> et <span class="text-exp" data-experience_id="592"><%= link_to "Beiteddine", experience_detail_path(592), remote: true %></span>. Puis retournez à Beyrouth boire un dernier verre à <span class="text-exp" data-experience_id="582"><%= link_to "Gemmayzé", experience_detail_path(590), remote: true %></span>!</p></li><br>
-      <li><p>NB: la visite de <span class="text-exp" data-experience_id="581"><%= link_to "Baalbek", experience_detail_path(590), remote: true %></span> est volontairement écartée de cet itinéraire, en attendant que le contexte sécuritaire s'améliore dans cette région.</p></li>
+      <li><p><b>Jours 1, 2 et 3</b>: à Beyrouth, visitez le typique quartier d’<span class="text-exp" data-experience_id="581"><%= link_to "Achrafieh", modal_exp_path(trip.id,581), remote: true %></span>, la Corniche et le <span class="text-exp" data-experience_id="580"><%= link_to "Rawcheh", modal_exp_path(trip.id,580), remote: true %></span>, et passez la soirée <span class="text-exp" data-experience_id="583"><%= link_to "rue Monnot", modal_exp_path(trip.id,583), remote: true %></span>.</p></li>
+      <li><p><b>Jour 4</b> (50km / 1h de route): quittez Beyrouth pour démarrer la journée avec l’impressionnante <span class="text-exp" data-experience_id="588"><%= link_to "Grotte de Jeita", modal_exp_path(trip.id,588), remote: true %></span>. Rejoignez ensuite Jounieh, et montez en téléphérique vers <span class="text-exp" data-experience_id="587"><%= link_to "Notre-Dame du Liban", modal_exp_path(trip.id,587), remote: true %></span> pour son point de vue époustouflant. Continuez vers le nord pour <span class="text-exp" data-experience_id="589"><%= link_to "visiter Jbeil", modal_exp_path(trip.id,589), remote: true %></span> et y passer la nuit.</p></li>
+      <li><p><b>Jour 5</b> (80km / 1h30 de route): faites un passage par <span class="text-exp" data-experience_id="593"><%= link_to "Batroun", modal_exp_path(trip.id,593), remote: true %></span>, puis continuez pour visiter <span class="text-exp" data-experience_id="594"><%= link_to "Tripoli", modal_exp_path(trip.id,594), remote: true %></span>, et rendez-vous dans le <span class="text-exp" data-experience_id="595"><%= link_to "village d'Ehden", modal_exp_path(trip.id,595), remote: true %></span> pour y passer la nuit.</p></li>
+      <li><p><b>Jour 6</b>: Autour d’Ehden, faites la <span class="text-exp" data-experience_id="597"><%= link_to "randonnée dans la vallée de Qadisha", modal_exp_path(trip.id,597), remote: true %></span>, allez voir les <span class="text-exp" data-experience_id="596"><%= link_to "Cèdres de Dieu", modal_exp_path(trip.id,596), remote: true %></span> et pousser éventuellement jusqu’au Qornet es Sawda, sommet du Liban. Restez dormir à Ehden.</p></li>
+      <li><p><b>Jour 7</b>: quittez Ehden tôt, traversez le Liban du nord au sud par les magnifiques routes de montagne (170km, 4h) pour passer l’après-midi dans la vallée du Chouf, notamment les villages de <span class="text-exp" data-experience_id="591"><%= link_to "Deir el Qamar", modal_exp_path(trip.id,591), remote: true %></span> et <span class="text-exp" data-experience_id="592"><%= link_to "Beiteddine", modal_exp_path(trip.id,592), remote: true %></span>. Puis retournez à Beyrouth boire un dernier verre à <span class="text-exp" data-experience_id="582"><%= link_to "Gemmayzé", modal_exp_path(trip.id,590), remote: true %></span>!</p></li><br>
+      <li><p>NB: la visite de <span class="text-exp" data-experience_id="581"><%= link_to "Baalbek", modal_exp_path(trip.id,590), remote: true %></span> est volontairement écartée de cet itinéraire, en attendant que le contexte sécuritaire s'améliore dans cette région.</p></li>
+>>>>>>> master
     </ul>
   </div>
   <div class="tab-content">
@@ -136,26 +137,60 @@
 </div>
 <div role="tabpanel" class="tab-pane" id="user-experiences-selection">
   <p class="text-center">
-    Voici les expériences sélectionnées pour ton voyage. Supprime-les ou réorganise-les dans le bon ordre!
+    <b>Voici les expériences sélectionnées pour ton voyage. Supprime-les ou réorganise-les dans le bon ordre!</b>
   </p>
+
   <ul id="draggablePanelList" class="list-unstyled experience-block-container user-experiences-content">
   </ul>
+
+
   <div id="see-trip-summary" class="button-action update-order">
-    <%= link_to  summarize_trip_path(trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');", class: "btn btn-primary btn-block", data: {toggle: "tooltip", placement: "bottom",  title: "Voir la synthèse de mon trip et me l'envoyer par mail", json: 'data'} do %>
-    Envoyez-moi le résumé de mon voyage!
+    <%= link_to summarize_trip_path(trip), target: "_blank", onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');", class: "btn btn-success btn-block", data: {toggle: "tooltip", placement: "bottom",  title: "Voir la synthèse de mon trip et me l'envoyer par mail", json: 'data'} do %>
+    Voir la synthèse éditable et recevoir par email
     <% end %>
   </div>
+
 </div>
 <div role="tabpanel" class="tab-pane" id="user-guest-comments">
-  <p class="text-center">
-    Voici les conseils que tes amis t'ont donné. Tu peux les ajouter à ton voyage en cliquant dessus. <br>
-    Pas encore de conseils ou tu veux plus de conseils : clique sur le boutons en bas 'Demander des conseils'!
+  <p>
+    <i>Pas encore de conseils? Pour que tes amis les ajoutent sur ta carte, clique sur:</i>
   </p>
+
+  <table>
+    <tbody>
+      <td>
+        <div id="share-bt" class="button-action update-order">
+          <a class="btn btn-facebook" id="sharefb" onclick="ga('send', 'event', 'User', 'Ask advice', 'Ask on facebook button clicked');", data: {toggle: "tooltip"}, placement: "bottom">
+                  Partager sur Facebook
+          </a>
+        </div>
+      </td>
+      <td>ou</td>
+      <td>
+        <div id="share-bt" class="button-action update-order">
+          <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
+            <%= hidden_field_tag :id, value = @trip.id %>
+            <%= f.submit( "Demander par email", onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask with email button clicked');", class:'btn btn-success') %>
+          <% end %>
+        </div>
+      </td>
+    </tbody>
+  </table>
+  <br>
+
+  <p class="text-center">
+    <b>Ci-dessous, voici les conseils de tes amis. Ajoute-les à ton voyage en cliquant dessus.</b>
+  </p>
+
+
   <ul id="draggablePanelList" class="list-unstyled experience-block-container guest-comments-content">
   </ul>
-  <div id="share-bt" class="button-action update-order">
-    <%= link_to trip_ask_your_friends_path(trip), onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask advice button clicked');", class: "btn btn-facebook btn-block", data: {toggle: "tooltip", placement: "bottom",  title: t('show_asktips')}  do %>
-      Demander des conseils à mes amis!
-    <% end %>
-  </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+  // $('a[aria-controls="user-guest-comments"]').on('shown.bs.tab', function (e) {
+    publishPostOnFbWall("#sharefb", "<%= j share_url("/trips/#{@trip.id}/#{@trip.token}") %>");
+  // });
+  </script>
+<% end %>

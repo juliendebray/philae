@@ -327,138 +327,38 @@ html, body {
   }
 }
 
-// #ul-sidebar {
+#user-guest-comments {
+  table {
+    width: 100%;
+    text-align: center;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-color: lightgrey;
+  }
+  td {
+    padding-bottom: 10px;
+  }
+  // p {
+  //   text-align: center;
+  // }
+  .btn {
+    font-size: 14px;
+    width: 90%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+}
 
-//   .nav-pills > li > a {
-//     // background-color: lightgrey;
-//     color: black;
-//     margin-right: 2px;
-//     margin-left: 2px;
-//     webkit-border-radius: 0;
-//     moz-border-radius: 0;
-//     border-radius: 0;
-//     font-size: 17px;
-//     border-bottom-style: solid;
-//     border-top-style: solid;
-//   }
-
-//   .nav-pills.active > li > a {
-//     border-bottom-style: solid;
-//     border-top-style: solid;
-//   }
-
-//   .dropdown-menu {
-//     li {
-//       a {
-//         background-color: white;
-//         color: black;
-//       }
-//     }
-//   }
-
-//   .dropdown-menu > li > a.hover {
-//     background-color: lightgrey;
-//     color: black;
-//     border-style: none;
-//   }
-
-//   #destination-pill {
-//     .dropdown-toggle {
-//       background-color: white;
-//       border-bottom-style: solid;
-//       border-bottom-color: #FF7519;
-//       border-top-style: solid;
-//       border-top-color: #FF7519;
-//     }
-//   }
-
-//   #friends-tips-pill {
-//     a {
-//       background-color: white;
-//       border-bottom-color: #3b5998;
-//       border-top-color: #3b5998;
-//     }
-//   }
-
-//   #my-trip-pill {
-//     a {
-//       background-color: white;
-//       border-bottom-color: #FF5A5F;
-//       border-top-color: #FF5A5F;
-//     }
-//   }
-
-//   #destination-pill:hover {
-//     .dropdown-toggle {
-//       background-color: #FF7519;
-//       color: white;
-//     }
-//   }
-
-//   #friends-tips-pill:hover {
-//     a {
-//       background-color: #3b5998;
-//       color: white;
-//     }
-//   }
-
-//   #my-trip-pill:hover {
-//     a {
-//       background-color: #FF5A5F;
-//       color: white;
-//     }
-//   }
-
-//   #destination-pill.active {
-//     .dropdown-toggle {
-//       background-color: #FF7519;
-//       color: white;
-//     }
-//   }
-
-//   #friends-tips-pill.active {
-//     a {
-//       background-color: #3b5998;
-//       color: white;
-//     }
-//   }
-
-//   #my-trip-pill.active {
-//     a {
-//       background-color: #FF5A5F;
-//       color: white;
-//     }
-//   }
-
-//   li {
-//     .fa {
-//       color: grey;
-//       font-size: 14px;
-//       padding-right: 10px;
-//     }
-//     #fa-info {
-//       padding-left: 5px;
-//       padding-right: 14px;
-//     }
-//     #fa-map-marker {
-//       padding-left: 4px;
-//       padding-right: 13px;
-//     }
-//     #fa-car {
-//       padding-right: 9px;
-//     }
-
-//     a {
-//       color: black;
-//       font-size: 14px;
-//       padding-top: 5px;
-//     }
-//     a:hover {
-//       background-color: lightgrey;
-//     }
-//   }
-// }
-
+#user-experiences-selection {
+  .btn {
+    font-size: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+}
 
 #link-to-detail {
   background: transparent;
