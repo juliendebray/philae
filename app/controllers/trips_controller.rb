@@ -114,7 +114,8 @@ class TripsController < ApplicationController
   def share_trip_email
     current_user.send_trip_email(@trip)
     flash[:sucess] = 'Un email vous a été envoyé avec le lien vers votre voyage.'
-    redirect_to trip_ask_your_friends_path(@trip)
+    # redirect_to trip_ask_your_friends_path(@trip)
+    # redirect_to session[:previous_url]
   end
 
   def notification_for_sharing_email
