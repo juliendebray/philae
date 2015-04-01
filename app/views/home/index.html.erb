@@ -37,8 +37,9 @@
             <h4><%= link_to t('.seedestinations'), destinations_path %></h4>
           </div>
           <div class="vertical-spacer-xs"></div>
-          <h4><%= link_to t('signup'), new_user_registration_path,  {class: "btn btn-info btn-lg"}%></h4>
+          <h3><%= link_to t('signup'), new_user_registration_path,  {class: "btn btn-info btn-lg"}%></h3>
         <% end %>
+          <h5><i><%= link_to t('.alreadyaccount'), new_user_session_path %></i></h5>
       </div>
 
       <div class="vertical-spacer"></div>
