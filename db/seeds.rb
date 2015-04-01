@@ -6,19 +6,36 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-# Ajout des leaders reviews (citations guides)
+# Ajout des experiences_reviews
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1oIYSGswUzoImlGBWuVyFmw2k9y-8DSUxzC_38m3CTIs/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1SKEiOrcHDZJHdE12JU7NSSYDmkJRsEvUjXWxMP0O1R0/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |leader_review|
-  leader_review = LeaderReview.create(
-    experience_id: leader_review['gsx$experienceid']['$t'].to_f,
-    source: leader_review['gsx$source']['$t'],
-    comment: leader_review['gsx$comment']['$t'],
+data_hash['feed']['entry'].each do |experience_review|
+  exp_review = ExperienceReview.create(
+    experience_id: experience_review['gsx$experienceid']['$t'].to_f,
+    name: experience_review['gsx$name']['$t'],
+    rating: experience_review['gsx$rating']['$t'].to_f * 2,
+    original_date: experience_review['gsx$originaldate']['$t'],
+    comment: experience_review['gsx$comment']['$t']
   )
 end
+
+
+# Ajout des leaders reviews (citations guides)
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1oIYSGswUzoImlGBWuVyFmw2k9y-8DSUxzC_38m3CTIs/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |leader_review|
+#   leader_review = LeaderReview.create(
+#     experience_id: leader_review['gsx$experienceid']['$t'].to_f,
+#     source: leader_review['gsx$source']['$t'],
+#     comment: leader_review['gsx$comment']['$t'],
+#   )
+# end
+
+
 
 
 # Seed Destination
