@@ -7,7 +7,7 @@ class Experience < ActiveRecord::Base
   has_many :providers, through: :services
 
   has_many :experience_reviews
-  has_many :leader_review
+  has_many :leader_reviews
 
   has_many :trip_experiences
   has_many :trips, through: :trip_experiences

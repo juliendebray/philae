@@ -28,4 +28,26 @@
 <div class="experience-content">
  <%= simple_format experience.description %>
 </div>
+<div class="experience-reviews">
+  <% if experience.leader_reviews.any? %>
+  <div class="leader-reviews">
+    <% experience.leader_reviews.each do |leader_review| %>
+      <blockquote>
+        <p><%= leader_review.comment %></p>
+        <footer>d'après <cite title="Source Title"><%= leader_review.source %></cite></footer>
+      </blockquote>
+    <% end %>
+  </div>
+  <% end %>
+  <% if experience.leader_reviews.any? %>
+  <div class="user-reviews">
+    <% experience.experience_reviews.each do |experience_review| %>
+      <blockquote>
+        <p><%= experience_review.comment %></p>
+        <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date} (score: #{experience_review.rating} / 10)" %></cite></footer>
+      </blockquote>
+    <% end %>
+  </div>
+  <% end %>
+</div>
 
