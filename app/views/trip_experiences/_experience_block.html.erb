@@ -17,7 +17,7 @@
           <tr>
             <% if trip_exp.experience.experience_pictures.any? %>
               <td class="thumb-pic">
-                <%= image_tag trip_exp.experience.experience_pictures.first.picture.url(:thumb), class: "img-#{trip_exp.id}" if trip_exp.experience.experience_pictures.first %>
+                <%= image_tag trip_exp.experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:thumb), class: "img-#{trip_exp.id}" if trip_exp.experience.experience_pictures.first %>
               </td>
             <% end %>
             <td>
@@ -55,7 +55,7 @@
           <tr>
             <% if experience.experience_pictures.any? %>
               <td class="thumb-pic">
-                <%= image_tag experience.experience_pictures.first.picture.url(:thumb), class: "img-#{experience.id}" if experience.experience_pictures.first %>
+                <%= image_tag experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:thumb), class: "img-#{experience.id}" if experience.experience_pictures.first %>
               </td>
             <% end %>
             <td>
