@@ -6,20 +6,34 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Ajout des experiences_reviews
+
+
+# Mise à jour du nb de votes par experiences
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1SKEiOrcHDZJHdE12JU7NSSYDmkJRsEvUjXWxMP0O1R0/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/19aquHyh7DOdJppZ4-NbT9h1oeTX0pGRZfEHZwym6BiM/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |experience_review|
-  exp_review = ExperienceReview.create(
-    experience_id: experience_review['gsx$experienceid']['$t'].to_f,
-    name: experience_review['gsx$name']['$t'],
-    rating: experience_review['gsx$rating']['$t'].to_f * 2,
-    original_date: experience_review['gsx$originaldate']['$t'],
-    comment: experience_review['gsx$comment']['$t']
-  )
+data_hash['feed']['entry'].each do |exp_data|
+  Experience.find(exp_data['experienceid']['$t'].to_i).update(nb_votes: exp_data['gsx$nbvotes']['$t'].to_i )
 end
+
+
+
+
+# Ajout des experiences_reviews
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1SKEiOrcHDZJHdE12JU7NSSYDmkJRsEvUjXWxMP0O1R0/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |experience_review|
+#   exp_review = ExperienceReview.create(
+#     experience_id: experience_review['gsx$experienceid']['$t'].to_f,
+#     name: experience_review['gsx$name']['$t'],
+#     rating: experience_review['gsx$rating']['$t'].to_f * 2,
+#     original_date: experience_review['gsx$originaldate']['$t'],
+#     comment: experience_review['gsx$comment']['$t']
+#   )
+# end
 
 
 # Ajout des leaders reviews (citations guides)
