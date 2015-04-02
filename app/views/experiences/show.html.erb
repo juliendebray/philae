@@ -1,12 +1,12 @@
 <%= content_for :title do %>
  <%= @experience.name %>
 <% end %>
-<div class="wrapper text-center">
-  <h1><%= @experience.name %></h1>
+<div class="wrapper">
+  <h1 class="text-center"><%= @experience.name %></h1>
   <div class="vertical-spacer-xs"></div>
   <div class="container">
 
-    <div class="row">
+    <div class="row text)center">
       <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
         <p><%= @experience.description %></p>
       </div>
@@ -45,18 +45,25 @@
 
     <div class="vertical-spacer-xs"></div>
 
-    <div class="row text-center">
+    <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
         <div id="exp_review_block">
-          <h4 class="text-center">Les avis et conseils des Explorizers</h4>
-          <p><i>Note moyenne des Explorizers:</i> <b><%= @experience.average_rating %></b>/10</p>
+          <% if @experience.leader_reviews.any? %>
+          <h4>Ce que les guides en disent</h4>
+            <% @experience.leader_reviews.each do |leader_review| %>
+              <blockquote>
+                <p>"<b><%= leader_review.comment %></b>", selon le <u><%= leader_review.source %></u></p>
+              </blockquote>
+            <% end %>
+          <% end %>
+          <br>
+          <h4>Avis et conseils des Explorizers - <i>note moyenne: <b><%= @experience.average_rating %></b>/10</i></h4>
           <% if @experience.experience_reviews.any? %>
-            <% @experience.experience_reviews.each do |er| %>
-              <p>
-                <i class="fa fa-quote-left"></i>
-                <%= "#{er.comment}" %>
-                <i class="fa fa-quote-right"></i>
-              </p>
+            <% @experience.experience_reviews.each do |experience_review| %>
+              <blockquote>
+                <p>"<%= experience_review.comment %>"</p>
+                <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
+              </blockquote>
             <% end %>
           <% else %>
           <p>Sois le 1er à donner ton avis ci-dessous!</p>
@@ -73,8 +80,10 @@
         <div id="exp_review_block">
           <h4>Donne ton avis</h4>
           <%= bootstrap_form_for([@experience, ExperienceReview.new], layout: :inline) do |f| %>
-            <%= f.text_field :comment, hide_label: true, placeholder: "Donne ton avis en 140 caractères max!", required: true, size: 75, maxlength: 140 %>
+            <%= f.text_field :comment, hide_label: true, placeholder: "Donne ton avis en 140 caractères max!", required: true, size: 65, maxlength: 140 %>
+            <%= f.text_field :name, hide_label: true, placeholder: "Ton petit nom", required: true %>
             <%= f.number_field :rating, hide_label: true, placeholder: "Note entre 0 et 10", required: true, min: 0, max: 10 %>
+            <%= f.hidden_field(:created_at) %>
             <%= f.submit( t('expbuttonadd'), class: "btn btn-info") %>
           <% end %>
         </div>
