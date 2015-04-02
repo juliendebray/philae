@@ -1,6 +1,18 @@
 <div class="wrapper">
- <%= @destination.name %>
- <%= @destination.overview %>
- <%= @destination.formalities %>
- <%= @destination.formalities %>
+  <h1 class="text-center"><%= @destination.name %></h1>
+
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+        <p><%= @destination.overview %></p>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+        <p><%= @destination.formalities %></p>
+      </div>
+    </div>
+
+  </div>
+
 </div>
