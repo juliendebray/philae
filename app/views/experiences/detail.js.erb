@@ -1,5 +1,11 @@
 $( document ).ready(function() {
   $('#myExperienceModal').modal('show');
+  // $('#myExperienceModal .modal-content').width($(window).width() + 'px');
+  // $('#myExperienceModal .modal-content').css({
+  //   'position' : 'absolute',
+  //   'left':'0px'
+  // });
+
   $('.experience-content').html(
     '<%= j render("experience_modal.html.erb",
     {experience: @experience, trip: @trip, trip_experiences: @trip_experiences} ) %>'
