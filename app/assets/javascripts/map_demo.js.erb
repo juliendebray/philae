@@ -472,7 +472,7 @@ function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
       requestingMarkers = r;
     });
   } else if (id == "top-from-explorizers") {
-    setMarkersAndKeepListening(map, trip_id);
+    // setMarkersAndKeepListening(map, trip_id);
     listenToUserChoiceOnFilteringExperiences(map, trip_id);
   } else if (id == "user-experiences-selection") {
     setMapWithUserExperiences(trip_id, map, function(r) {
@@ -588,18 +588,23 @@ function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field
 }
 
 function listenToUserChoiceOnFilteringExperiences(map, trip_id) {
+  filterExperiences(map, trip_id);
   $('#experiences-filter').on("change", function() {
-    clearDragendAndZoomChangedListeners();
-    if (ibOpened) {
-    ib.close();
-    ibOpened = false;
-    }
-    if ($('#experiences-score').prop('checked')){
-      setMarkersAndKeepListening(map, trip_id);
-    } else if ($('#experiences-popularity').prop('checked')) {
-      setMarkersAndKeepListeningByPopularity(map, trip_id)
-    }
+    filterExperiences(map, trip_id);
   });
+}
+
+function filterExperiences(map, trip_id) {
+  clearDragendAndZoomChangedListeners();
+  if (ibOpened) {
+  ib.close();
+  ibOpened = false;
+  }
+  if ($('#experiences-score').prop('checked')){
+    setMarkersAndKeepListening(map, trip_id);
+  } else if ($('#experiences-popularity').prop('checked')) {
+    setMarkersAndKeepListeningByPopularity(map, trip_id)
+  }
 }
 
 function setMarkersAndKeepListening(map, trip_id) {
