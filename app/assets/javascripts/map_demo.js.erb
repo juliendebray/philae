@@ -11,6 +11,7 @@ var flightPath;
 var zoomChangedListener;
 var dragendListener;
 
+
 function ellipseExperienceBlock() {
   var length = $(".exp-dotdotdot").length
   if (length != 0) {
@@ -471,7 +472,8 @@ function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
       requestingMarkers = r;
     });
   } else if (id == "top-from-explorizers") {
-    setMarkersAndKeepListening(map, trip_id);
+    // setMarkersAndKeepListening(map, trip_id);
+    listenToUserChoiceOnFilteringExperiences(map, trip_id);
   } else if (id == "user-experiences-selection") {
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
@@ -585,7 +587,30 @@ function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field
   });
 }
 
+function listenToUserChoiceOnFilteringExperiences(map, trip_id) {
+  filterExperiences(map, trip_id);
+  $('#experiences-filter').on("change", function() {
+    filterExperiences(map, trip_id);
+  });
+}
+
+function filterExperiences(map, trip_id) {
+  clearDragendAndZoomChangedListeners();
+  if (ibOpened) {
+  ib.close();
+  ibOpened = false;
+  }
+  if ($('#experiences-score').prop('checked')){
+    setMarkersAndKeepListening(map, trip_id);
+  } else if ($('#experiences-popularity').prop('checked')) {
+    setMarkersAndKeepListeningByPopularity(map, trip_id)
+  }
+}
+
 function setMarkersAndKeepListening(map, trip_id) {
+
+
+
   // SET MARKERS ON MAP LOADING AND KEEP LISTENING
   // Set markers on loading
   setMarkersAccordingToBounds(map, trip_id, ".top-from-explorizers", function(r) {
@@ -615,6 +640,50 @@ function setMarkersAndKeepListening(map, trip_id) {
    // });
   });
 }
+
+
+function setMarkersAndKeepListeningByPopularity(map, trip_id) {
+
+
+
+  // SET MARKERS ON MAP LOADING AND KEEP LISTENING
+  // Set markers on loading
+  setMarkersAccordingToBoundsByPopularity(map, trip_id, ".top-from-explorizers", function(r) {
+   requestingMarkers = r;
+   $('.overlay').css('display','none');
+  });
+  // Set markers when drag ends
+  dragendListener = google.maps.event.addListener(map, 'dragend', function() {
+    // google.maps.event.addListener(map, 'idle', function() {
+     if (requestingMarkers || ibOpened) {
+     return;
+     }
+     setMarkersAccordingToBoundsByPopularity(map, trip_id, ".top-from-explorizers", function(r) {
+       requestingMarkers = r;
+     });
+   // });
+  });
+  // Set markers when zoom changes
+  zoomChangedListener = google.maps.event.addListener(map, 'zoom_changed', function() {
+   // google.maps.event.addListener(map, 'idle', function() {
+     if (requestingMarkers || ibOpened) {
+       return;
+     }
+     setMarkersAccordingToBoundsByPopularity(map, trip_id, ".top-from-explorizers", function(r) {
+       requestingMarkers = r;
+     });
+   // });
+  });
+}
+
+function setMarkersAccordingToBoundsByPopularity(map, trip_id, className, callback){
+  var url = buildUrlWithBoundsByPopularity(map, trip_id);
+  setMarkersAccordingToApi(url, trip_id, className, function(r){
+    preventUserChoicesInitialization();
+    callback(r);
+  });
+}
+
 
 function setMarkersAccordingToBounds(map, trip_id, className, callback) {
   var url = buildUrlWithBounds(map, trip_id);
@@ -658,8 +727,6 @@ function setMarkersAccordingToApi(url, trip_id, className, callback) {
   $.get(url, function(data) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
-    // handler.bounds.extendWith(markers);
-    // handler.fitMapToBounds();
     commonInitialization(data, className);
     callback(false);
   });
@@ -690,6 +757,15 @@ function setSideBar(data, className) {
   for (var i = 0; i < data.length; i++) {
     $('.experience-block-container' + className).append(data[i].experience_block);
   }
+}
+
+function buildUrlWithBoundsByPopularity(map, trip_id) {
+  var bounds = map.getBounds();
+  var northEastLat = bounds.getNorthEast().lat();
+  var northEastLng = bounds.getNorthEast().lng();
+  var southWestLat = bounds.getSouthWest().lat();
+  var southWestLng = bounds.getSouthWest().lng();
+  return "/trips/"+trip_id+"/trip_experiences/markers_popularity?NELA=" + northEastLat + "&NELO=" + northEastLng + "&SWLA=" + southWestLat + "&SWLO=" + southWestLng ;
 }
 
 function buildUrlWithBounds(map, trip_id) {
