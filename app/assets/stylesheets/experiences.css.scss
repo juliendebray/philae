@@ -3,7 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// CSS pour experience SHOW
+// .modal-body {
+//   .experience-content {
+//     height: 545px;
+//     overflow-y: auto;
+//   }
+// }
+
+.tab-content {
+  #reviews, #descriptif, #getthere {
+    height: 477px;
+    overflow-y: auto;
+  }
+}
+
 
 #exp-modal-tabs {
     webkit-border-radius: 0;
@@ -39,6 +52,7 @@
   h4 {
     font-size: 16px;
     margin-top: 0px;
+    text-decoration: underline;
   }
   p {
     margin-bottom: 5px;
@@ -52,6 +66,11 @@
   }
   #experience_review_rating {
     width: 151px;
+  }
+  blockquote {
+    font-size: 14px;
+    padding-top: 1px;
+    padding-bottom: 0px;
   }
 }
 

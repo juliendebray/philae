@@ -23,6 +23,7 @@
     <li><a href="#descriptif" data-toggle="tab">Descriptif</a></li>
     <li><a href="#reviews" data-toggle="tab">Avis et conseils</a></li>
     <li><a href="#getthere" data-toggle="tab">Comment s'y rendre</a></li>
+    <li><a href="#user_review" data-toggle="tab"><i>Donne ton avis</i></a></li>
   </ul>
 </div>
 
@@ -71,7 +72,7 @@
         <% experience.experience_reviews.each do |experience_review| %>
           <blockquote>
             <p>"<%= experience_review.comment %>"</p>
-            <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date} (score: #{experience_review.rating} / 10)" %></cite></footer>
+            <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
           </blockquote>
         <% end %>
       </div>
@@ -89,6 +90,21 @@
     <div class="experience-content">
       <br>
       <p>Coming soon...</p>
+    </div>
+    <br>
+  </div>
+
+  <div class="tab-pane" id="user_review">
+    <div class="experience-content text center">
+      <br>
+      <p>Tu connais cet endroit? Donne ton avis!</p>
+      <%= bootstrap_form_for([@experience, ExperienceReview.new]) do |f| %>
+            <%= f.text_field :comment, hide_label: true, placeholder: "Donne ton avis en 140 caractères max!", required: true, size: 75, maxlength: 140 %>
+            <%= f.text_field :name, hide_label: true, placeholder: "Ton petit nom", required: true %>
+            <%= f.number_field :rating, hide_label: true, placeholder: "Note entre 0 et 10", required: true, min: 0, max: 10 %>
+            <%= f.hidden_field(:created_at) %>
+            <%= f.submit( t('expbuttonadd'), class: "btn btn-info") %>
+          <% end %>
     </div>
     <br>
   </div>
