@@ -45,9 +45,16 @@
       <br>
       <p><u>Descriptif</u></p>
     </div> -->
-    <div class="experience-content">
+    <div class="experience-content text-justify">
       <br>
-     <%= simple_format experience.description %>
+      <%= simple_format experience.description %>
+      <% if experience.wikipedia_link %>
+        <p>
+          <a href="<%= experience.wikipedia_link %>" target="_blank">
+            Wikipedia
+          </a>
+        </p>
+      <% end %>
     </div>
   </div>
 
