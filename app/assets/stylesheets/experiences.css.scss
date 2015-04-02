@@ -5,6 +5,31 @@
 
 // CSS pour experience SHOW
 
+#exp-modal-tabs {
+    webkit-border-radius: 0;
+    moz-border-radius: 0;
+    border-radius: 0;
+    font-size: 15px;
+    background-color: #eaeaea;
+    li > a {
+      color: #525252;
+    }
+}
+
+#exp-modal-tabs {
+  li {
+    a:hover {
+      background-color: white;
+    }
+  }
+}
+
+#exp-modal-tabs.active {
+  a {
+    background-color: white;
+  }
+}
+
 #exp_review_block {
   box-sizing: content-box;
   font-weight: 400;
@@ -30,6 +55,62 @@
   }
 }
 
+.user-action {
+  .btn {
+    font-size: 15px;
+    vertical-align: middle;
+    color: #333333;
+    margin-top: -14px;
+    font-weight: 400;
+    .fa {
+      color: grey;
+    }
+  }
+  .btn:hover {
+    .fa {
+      color: #FF5A5F;
+    }
+  }
+
+  span {
+    font-size: 15px;
+    vertical-align: middle;
+    color: #333333;
+    margin-top: -14px;
+    font-weight: 400;
+    .fa {
+      color: #FF5A5F;
+    }
+  }
+
+  span:hover {
+    .fa {
+      color: grey;
+    }
+  }
+}
+
+.experience-reviews {
+  p {
+    font-size: 16px;
+  }
+  .leader-reviews, .user-reviews {
+    p {
+      font-size: 14px;
+    }
+  }
+  blockquote {
+    font-size: 14px;
+    padding-top: 1px;
+    padding-bottom: 0px;
+  }
+}
+
+.subtitles-modal-exp {
+  p {
+    font-size: 16px;
+  }
+}
 
 
 // CSS pour experience NEW

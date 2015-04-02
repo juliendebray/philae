@@ -1,14 +1,5 @@
-<% if experience.experience_pictures.size > 0 %>
-    <div id="owl-experiences-banner" class="owl-carousel banner text-center">
-      <% experience.experience_pictures.sort_by {|pic| pic.id }.each do |pic| %>
-        <div class="item-banner" style="max-width: 100%">
-          <%= image_tag(pic.picture.url(:banner)) %>
-        </div>
-      <% end %>
-    </div>
-<% end %>
 <% if trip && trip.user == current_user %>
-  <div class="user-action">
+  <div class="user-action text-center">
     <% if trip_experiences.any? %>
       <%= link_to [trip, trip_experiences.first], remote: true, method: :delete do %>
         <span><i id='ib-remove-trip-exp' class="fa fa-heart"></i> <%= t('removefromtrip') %></span>
@@ -25,29 +16,82 @@
     <% end %>
   </div>
 <% end %>
-<div class="experience-content">
- <%= simple_format experience.description %>
+
+<div id="exp-modal-tabs">
+  <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
+    <li><a href="#descriptif" data-toggle="tab">Descriptif</a></li>
+    <li><a href="#reviews" data-toggle="tab">Avis et conseils</a></li>
+    <li><a href="#getthere" data-toggle="tab">Comment s'y rendre</a></li>
+  </ul>
 </div>
-<div class="experience-reviews">
-  <% if experience.leader_reviews.any? %>
-  <div class="leader-reviews">
-    <% experience.leader_reviews.each do |leader_review| %>
-      <blockquote>
-        <p><%= leader_review.comment %></p>
-        <footer>d'après <cite title="Source Title"><%= leader_review.source %></cite></footer>
-      </blockquote>
+
+<div class="tab-content">
+
+  <div class="tab-pane active" id="photos">
+    <% if experience.experience_pictures.size > 0 %>
+        <div id="owl-experiences-banner" class="owl-carousel banner text-center">
+          <% experience.experience_pictures.sort_by {|pic| pic.id }.each do |pic| %>
+            <div class="item-banner" style="max-width: 100%">
+              <%= image_tag(pic.picture.url(:banner)) %>
+            </div>
+          <% end %>
+        </div>
     <% end %>
   </div>
-  <% end %>
-  <% if experience.leader_reviews.any? %>
-  <div class="user-reviews">
-    <% experience.experience_reviews.each do |experience_review| %>
-      <blockquote>
-        <p><%= experience_review.comment %></p>
-        <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date} (score: #{experience_review.rating} / 10)" %></cite></footer>
-      </blockquote>
-    <% end %>
+
+  <div class="tab-pane" id="descriptif">
+<!--     <div class="subtitles-modal-exp">
+      <br>
+      <p><u>Descriptif</u></p>
+    </div> -->
+    <div class="experience-content">
+      <br>
+     <%= simple_format experience.description %>
+    </div>
   </div>
-  <% end %>
+
+  <div class="tab-pane" id="reviews">
+    <br>
+    <div class="experience-reviews">
+      <% if experience.leader_reviews.any? %>
+      <p><u>Ce que les guides en disent</u></p>
+      <div class="leader-reviews">
+        <% experience.leader_reviews.each do |leader_review| %>
+          <blockquote>
+            <p>"<b><%= leader_review.comment %></b>", selon le <u><%= leader_review.source %></u></p>
+          </blockquote>
+        <% end %>
+      </div>
+      <% end %>
+
+      <% if experience.experience_reviews.any? %>
+      <p><u>Ce que les voyageurs en disent</u></p>
+      <div class="user-reviews">
+        <% experience.experience_reviews.each do |experience_review| %>
+          <blockquote>
+            <p>"<%= experience_review.comment %>"</p>
+            <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date} (score: #{experience_review.rating} / 10)" %></cite></footer>
+          </blockquote>
+        <% end %>
+      </div>
+      <% else %>
+      <p>Coming soon...</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="getthere">
+<!--     <div class="subtitles-modal-exp">
+      <br>
+      <p><u>Comment s'y rendre</u></p>
+    </div> -->
+    <div class="experience-content">
+      <br>
+      <p>Coming soon...</p>
+    </div>
+    <br>
+  </div>
+
 </div>
 
