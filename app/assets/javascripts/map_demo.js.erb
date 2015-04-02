@@ -589,6 +589,7 @@ function showModalByClikingOnMap(map, modal_id, address_field_id, latitude_field
 
 function listenToUserChoiceOnFilteringExperiences(map, trip_id) {
   $('#experiences-filter').on("change", function() {
+    clearDragendAndZoomChangedListeners();
     if (ibOpened) {
     ib.close();
     ibOpened = false;
