@@ -29,6 +29,15 @@ html, body {
 //   background-color: #000;
 // }
 
+#experiences-filter {
+  padding-left: 2%;
+  label.radio-inline{
+    input {
+      position: static;
+    }
+  }
+}
+
 .orange {
   color: #FF7519;
 }
