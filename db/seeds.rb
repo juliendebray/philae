@@ -14,7 +14,7 @@ require 'rest_client'
 url_json = 'https://spreadsheets.google.com/feeds/list/19aquHyh7DOdJppZ4-NbT9h1oeTX0pGRZfEHZwym6BiM/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
-  Experience.find(exp_data['experienceid']['$t'].to_i).update(nb_votes: exp_data['gsx$nbvotes']['$t'].to_i )
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(nb_votes: exp_data['gsx$nbvotes']['$t'].to_i )
 end
 
 
