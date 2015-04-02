@@ -3,7 +3,12 @@
     <div class='exp-dotdotdot <%= "exp-#{trip_exp.id}" %>' data-experience_id='<%= trip_exp.experience.id %>' data-lat='<%= trip_exp.experience.latitude %>' data-lng='<%= trip_exp.experience.longitude %>'>
       <div class="panel-heading">
         <% unless guest_user %>
-          <%= link_to "#{trip_exp.experience.name} - #{trip_exp.experience.average_rating}/10", modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true %>
+          <%= link_to modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true do %>
+            <%= "#{trip_exp.experience.name} - #{trip_exp.experience.average_rating}/10" %>
+            <% if trip_exp.experience.nb_votes %>
+              <small><em><%= " (#{trip_exp.experience.nb_votes} votes)"%></em></small>
+            <% end %>
+          <% end %>
           <%= link_to [trip_exp.trip, trip_exp], remote: true, method: :delete do %>
             <i class="fa fa-heart pull-right"></i>
           <% end %>
@@ -39,7 +44,12 @@
   <li class="panel panel-info" id="<%= experience.id %>">
     <div class='exp-dotdotdot <%= "exp-#{experience.id}" %>' data-experience_id='<%= experience.id %>' data-lat='<%= experience.latitude %>' data-lng='<%= experience.longitude %>'>
       <div class="panel-heading">
-        <%= link_to "#{experience.name} - #{experience.average_rating}/10", modal_exp_path(trip.id, experience.id), remote: true %>
+        <%= link_to modal_exp_path(trip.id, experience.id), remote: true do %>
+          <%= "#{experience.name} - #{experience.average_rating}/10" %>
+          <% if experience.nb_votes %>
+            <small><em><%= " (#{experience.nb_votes} votes)"%></em></small>
+          <% end %>
+        <% end %>
         <span class="pull-right">
           <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
             <%= f.hidden_field :experience_id, value: experience.id %>
