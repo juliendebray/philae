@@ -1,15 +1,21 @@
 class TripExperiencesController < ApplicationController
-  before_action :set_trip, only: [:markers, :trip_markers, :create, :create_with_new_experience, :must_see, :recommended_trip]
+  before_action :set_trip, only: [:markers, :markers_popularity, :trip_markers, :create, :create_with_new_experience, :must_see, :recommended_trip]
   before_action :authenticate_user!, only: [:update, :must_see, :recommended_trip]
   respond_to :js, only: [:create, :trip_markers, :destroy, :create_with_new_experience, :create_with_comment]
 
 
   def markers
     markers_number = 20
-    # tab_id = @trip.trip_experiences.map { |te| te.experience_id}
     experiences_within_bounds = Experience.where(published: true).within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
-    # tab = experiences_within_bounds.reject { |e| tab_id.include?(e.id) }
     @experiences = select_experiences_to_show(experiences_within_bounds)
+    @markers = build_markers(@experiences[0..markers_number - 1], @trip, true)
+    render json: @markers
+  end
+
+  def markers_popularity
+    markers_number = 20
+    experiences_within_bounds = Experience.where(published: true).within_bounding_box([params[:SWLA].to_f, params[:SWLO].to_f, params[:NELA].to_f, params[:NELO]])
+    @experiences = select_experiences_to_show_by_popularity(experiences_within_bounds)
     @markers = build_markers(@experiences[0..markers_number - 1], @trip, true)
     render json: @markers
   end
@@ -201,6 +207,21 @@ class TripExperiencesController < ApplicationController
     experiences_to_show = experiences_to_show.reverse
     experiences.each do |exp|
       experiences_to_show << exp unless exp.average_rating
+    end
+    experiences_to_show
+  end
+
+  # TODO: Rethink the logic, smg better should exist and factorize
+  def select_experiences_to_show_by_popularity(experiences)
+    experiences_with_votes = []
+    experiences_to_show = []
+    experiences.each do |exp|
+      experiences_with_votes << exp if exp.nb_votes
+    end
+    experiences_to_show = experiences_with_votes.sort_by { |e| e.nb_votes }
+    experiences_to_show = experiences_to_show.reverse
+    experiences.each do |exp|
+      experiences_to_show << exp unless exp.nb_votes
     end
     experiences_to_show
   end

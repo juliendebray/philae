@@ -54,6 +54,7 @@ Rails.application.routes.draw do
         collection do
           get :must_see
           get :markers
+          get :markers_popularity
           get :trip_markers
           get :recommended_trip
         end

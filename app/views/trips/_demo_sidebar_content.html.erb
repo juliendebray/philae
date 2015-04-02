@@ -107,8 +107,18 @@
 </div>
 <div role="tabpanel" class="tab-pane" id="top-from-explorizers">
   <p class="text-center">
-    Voici les expériences issues des contributions des Explorizers ayant voyagé au Liban. Elles sont classées par ordre de popularité. Ajoute-les à ton voyage en cliquant sur le <i class="fa fa-heart"></i>.
+    Voici les expériences issues des contributions des Explorizers ayant voyagé au Liban. Tu peux les trier en fonction de leur note moyenne ou en fonction de leur popularité. Ajoute-les à ton voyage en cliquant sur le <i class="fa fa-heart"></i>.
   </p>
+  <div id="experiences-filter">
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="experiences-score" value="1" checked>
+      <strong>Trier par note</strong>
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="experiences-popularity" value="2">
+      <strong>Trier par popularité</strong>
+    </label>
+ </div>
   <ul id="draggablePanelList" class="list-unstyled experience-block-container top-from-explorizers">
   </ul>
 </div>
