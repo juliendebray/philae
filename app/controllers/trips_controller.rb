@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:update_order, :create, :start, :show_guest_user, :notification_for_sharing_email, :providers]
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display]
-  respond_to :js, only: [:selection_display]
+  respond_to :js, only: [:selection_display, :share_trip_email]
 
 
   def create
@@ -113,7 +113,7 @@ class TripsController < ApplicationController
 
   def share_trip_email
     current_user.send_trip_email(@trip)
-    flash[:sucess] = 'Un email vous a été envoyé avec le lien vers votre voyage.'
+    # flash[:sucess] = 'Un email vous a été envoyé avec le lien vers votre voyage.'
     # redirect_to trip_ask_your_friends_path(@trip)
     # redirect_to session[:previous_url]
   end
