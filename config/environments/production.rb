@@ -86,6 +86,7 @@ Rails.application.configure do
   }
 
   ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.default charset: "utf-8"
 
   ROOT_URL = "http://www.explorizers.com"
 end
