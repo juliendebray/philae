@@ -67,14 +67,14 @@
       <div class="leader-reviews">
         <% experience.leader_reviews.each do |leader_review| %>
           <blockquote>
-            <p>"<b><%= leader_review.comment %></b>", selon le <u><%= leader_review.source %></u></p>
+            <p>"<b><%= leader_review.comment %></b>", selon le <%= leader_review.source %></p>
           </blockquote>
         <% end %>
       </div>
       <% end %>
 
       <% if experience.experience_reviews.any? %>
-      <p><u>Ce que les voyageurs en disent</u></p>
+      <p><u>Avis des voyageurs sur TripAdvisor</u> - note moyenne <%= experience.average_rating %>/10</p>
       <div class="user-reviews">
         <% experience.experience_reviews.each do |experience_review| %>
           <blockquote>
