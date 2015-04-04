@@ -8,14 +8,24 @@
 
 
 
-# Mise à jour du nb de votes par experiences
+
+#Mise à jour du lien Wikipedia
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/19aquHyh7DOdJppZ4-NbT9h1oeTX0pGRZfEHZwym6BiM/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1XnCFrrMTgnyBjkW5rcaaub5dP00zL1DZNmXdvDo3szw/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
-  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(nb_votes: exp_data['gsx$nbvotes']['$t'].to_i )
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(wikipedia_link: exp_data['gsx$wikipedialink']['$t'] )
 end
+
+# Mise à jour du nb de votes par experiences
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/19aquHyh7DOdJppZ4-NbT9h1oeTX0pGRZfEHZwym6BiM/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(nb_votes: exp_data['gsx$nbvotes']['$t'].to_i )
+# end
 
 
 
