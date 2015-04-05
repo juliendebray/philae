@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402133851) do
+ActiveRecord::Schema.define(version: 20150405145922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20150402133851) do
     t.boolean  "must_see",           default: false
     t.string   "wikipedia_link"
     t.integer  "nb_votes"
+    t.boolean  "thousand_places"
   end
 
   add_index "experiences", ["category_id"], name: "index_experiences_on_category_id", using: :btree
