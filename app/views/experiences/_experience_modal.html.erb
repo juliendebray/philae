@@ -50,7 +50,7 @@
       <br>
       <%= simple_format experience.description %>
       <br>
-      <% if experience.thousand_places == :true %>
+      <% if experience.thousand_places %>
         <p>Cette experience appartient à la Liste des 1 000 lieux à voir dans sa vie.</p>
       <% end %>
       <% if experience.wikipedia_link %>
