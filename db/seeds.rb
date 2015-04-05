@@ -14,8 +14,8 @@ url_json = 'https://spreadsheets.google.com/feeds/list/1yqaP4CpQUrI1gJGUuYmPqtIF
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
-    must_see: exp_data['gsx$mustsee']['$t']
-    thousand_places: exp_date['gsx$thousandplaces']['$t']
+    must_see: exp_data['gsx$mustsee']['$t'],
+    thousand_places: exp_date['gsx$thousandplaces']['$t'],
   )
 end
 
