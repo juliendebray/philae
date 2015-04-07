@@ -16,7 +16,6 @@ data_hash['feed']['entry'].each do |exp_data|
   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
     must_see: exp_data['gsx$mustsee']['$t'],
     unesco: exp_data['gsx$unesco']['$t']
-    # thousand_places: exp_data['gsx$thousandplaces']['$t']
   )
 end
 
