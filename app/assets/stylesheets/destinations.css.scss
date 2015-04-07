@@ -57,6 +57,18 @@
   }
 }
 
+.must-see-box {
+  background-color: white;
+  padding: 16px 16px 16px 16px;
+  img {
+    width: 100%;
+    text-align: center;
+  }
+  // p {
+  //   vertical-align: middle;
+  // }
+}
+
 .destination_itineraries {
   background-image: image-url("destination_liban_demo_2.jpg");
   // background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_beyrouth_rawcheh_1.jpg");
@@ -73,10 +85,6 @@
   }
 }
 
-// .onboarding_destpage {
-//   padding-left: 100px;
-//   padding-right: 100px;
-// }
 .onboarding-box {
   background-color: white;
   border: 1px #c4d9d9 solid;
