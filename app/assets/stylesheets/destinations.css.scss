@@ -2,6 +2,58 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.destination-box {
+  background-color: white;
+  border: 1px #c4d9d9 solid;
+  padding: 16px 0 16px 16px;
+}
+
+.destination_title {
+  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: white;
+  height: 570px;
+  padding-top: 1px;
+  h1 {
+    padding-top: 180px;
+    font-size: 65px;
+  }
+}
+
+.destination_must-see {
+  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_jbeil_byblos_une_journee_1.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: white;
+  height: 470px;
+  padding-top: 1px;
+  h1 {
+    padding-top: 180px;
+    font-size: 65px;
+    text-align: center;
+  }
+}
+
+.destination_itineraries {
+  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_beyrouth_rawcheh_1.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: white;
+  height: 470px;
+  padding-top: 1px;
+  h1 {
+    padding-top: 180px;
+    font-size: 65px;
+    text-align: center;
+  }
+}
+
+
+
 body.destinations {
   background-image: image-url("beachtrip.jpeg");
   background-size: cover;
