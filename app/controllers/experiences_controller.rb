@@ -82,6 +82,6 @@ class ExperiencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:name, :address, :description, :category_id, :must_see, :thousand_places, experience_pictures_attributes: [:picture])
+      params.require(:experience).permit(:name, :address, :description, :category_id, :must_see, :thousand_places, :unesco, experience_pictures_attributes: [:picture])
     end
 end
