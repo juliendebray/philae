@@ -1,6 +1,6 @@
 ActiveAdmin.register Experience do
 
-  permit_params :name, :address, :description, :published, :user_id, :private, :published_at, :created_at, :updated_at, :average_rating, :from_guest_comment, :must_see, :wikipedia_link, :nb_votes, :thousand_places # etc...
+  permit_params :name, :address, :description, :published, :user_id, :private, :published_at, :created_at, :updated_at, :average_rating, :from_guest_comment, :must_see, :wikipedia_link, :nb_votes, :thousand_places, :unesco # etc...
 
 
 
