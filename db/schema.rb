@@ -100,7 +100,8 @@ ActiveRecord::Schema.define(version: 20150407201339) do
     t.boolean  "must_see",           default: false
     t.string   "wikipedia_link"
     t.integer  "nb_votes"
-    t.boolean  "thousand_places"
+    t.boolean  "thousand_places",    default: false
+    t.boolean  "unesco",             default: false
   end
 
   add_index "experiences", ["category_id"], name: "index_experiences_on_category_id", using: :btree
