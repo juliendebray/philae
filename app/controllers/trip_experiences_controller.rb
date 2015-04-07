@@ -92,7 +92,8 @@ class TripExperiencesController < ApplicationController
 
   def must_see
     # TODO: Link Experience to destination
-    @markers = build_markers(Experience.where(must_see: true).to_a, @trip, false)
+    @destination = Destination.first
+    @markers = build_markers(Experience.within_bounding_box([@destination.sw_lat, @destination.sw_lng, @destination.ne_lat, @destination.ne_lng]).to_a, @trip, false)
     render json: @markers
   end
 
