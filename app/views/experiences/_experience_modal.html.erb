@@ -64,33 +64,43 @@
   </div>
 
   <div class="tab-pane" id="reviews">
-    <br>
-    <div class="experience-reviews">
-      <% if experience.leader_reviews.any? %>
-      <p><u>Ce que les guides en disent</u></p>
-      <div class="leader-reviews">
-        <% experience.leader_reviews.each do |leader_review| %>
-          <blockquote>
-            <p>"<b><%= leader_review.comment %></b>", selon le <%= leader_review.source %></p>
-          </blockquote>
+    <table>
+      <tr>
+        <td style="width:50%;vertical-align: top;">
+        <% if experience.leader_reviews.any? %>
+          <span class="text-center"><p><u>Avis des experts</u></p></span>
+          <div class="leader-reviews">
+            <% experience.leader_reviews.each do |leader_review| %>
+              <blockquote>
+                <p>"<b><%= leader_review.comment %></b>", selon le <%= leader_review.source %></p>
+              </blockquote>
+            <% end %>
+          </div>
+        <% else %>
+          Pas de critique trouvée pour cette expériences...
         <% end %>
-      </div>
-      <% end %>
-
+        </td>
+        <td style="width:50%;vertical-align: top;">
+          <span class="text-center"><p><u>Note globale: <%= experience.average_rating %>/10 <small><em>(<%=experience.nb_votes%> votes)</em></small></u></p></span>
+          <!-- TODO: insert ratings from different providers -->
+        </td>
+      </tr>
+    </table>
       <% if experience.experience_reviews.any? %>
-      <p><u>Avis des voyageurs sur TripAdvisor</u> - note moyenne <%= experience.average_rating %>/10</p>
-      <div class="user-reviews">
-        <% experience.experience_reviews.each do |experience_review| %>
-          <blockquote>
-            <p>"<%= experience_review.comment %>"</p>
-            <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
-          </blockquote>
-        <% end %>
-      </div>
+        <div>
+          <span class="text-center"><p><u>Conseils des voyageurs</u></p></span>
+          <div class="user-reviews">
+            <% experience.experience_reviews.each do |experience_review| %>
+              <blockquote>
+                <p>"<%= experience_review.comment %>"</p>
+                <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
+              </blockquote>
+            <% end %>
+          </div>
+        </div>
       <% else %>
-      <p>Coming soon...</p>
+          <p>Coming soon...</p>
       <% end %>
-    </div>
   </div>
 
   <div class="tab-pane" id="getthere">
