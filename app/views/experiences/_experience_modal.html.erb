@@ -65,9 +65,10 @@
 
   <div class="tab-pane" id="reviews">
     <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
+    <br>
     <table>
       <tr>
-        <td style="width:50%;vertical-align: top;">
+        <td class="vertical-align-top width-split">
           <span class="text-center"><p><u>Avis des experts</u></p></span>
           <% if experience.leader_reviews.any? %>
             <div class="leader-reviews">
@@ -82,39 +83,36 @@
           <% end %>
         </td>
         <% if experience.ta_rating || experience.gg_rating || experience.fsq_rating %>
-        <td style="width:50%;vertical-align: top;">
+        <td class="width-split vertical-align-top">
           <span class="text-center"><p><u>Note globale: <%= experience.average_rating %>/10 <small><em>(<%=experience.nb_votes%> votes)</em></small></u></p></span>
-          <table class="list-unstyled">
+          <table>
             <% if experience.ta_rating %>
               <tr>
-                <td style="height:34px; border-left: 5px solid #eeeeee;padding-left:5%;">
-                  <%= image_tag('ta_logo_rating.png', style:"height:30px;") %>
+                <td class="rating-cell vertical-align-middle">
+                  <%= image_tag('ta_logo_rating.png', class: "fixed-height") %>
                 </td>
-                <td style="vertical-align: middle;">
-                     <span class="ta-rating" style="padding-left:40px; color: #3a8e1b; line-height: 4em;"><strong style="
-    font-size: 24px;"><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
+                <td class="vertical-align-middle">
+                     <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
                 </td>
               </tr>
             <% end %>
             <% if experience.gg_rating %>
               <tr>
-                <td style="height:34px; border-left: 5px solid #eeeeee;padding-left:5%;">
-                  <%= image_tag('gg_logo_rating.png', style:"height:30px;") %>
+                <td class="rating-cell vertical-align-middle">
+                  <%= image_tag('gg_logo_rating.png', class: "fixed-height") %>
                 </td>
-                <td style="vertical-align: middle;">
-                     <span class="gg-rating" style="padding-left:40px; color: #e7711b;line-height: 4em;"><strong style="
-    font-size: 24px;"><%= experience.gg_rating %></strong> <small>/5</small></span> <small><em>(<%=experience.gg_votes%> votes)</em></small>
+                <td class="vertical-align-middle">
+                     <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span> <small><em>(<%=experience.gg_votes%> votes)</em></small>
                 </td>
               </tr>
             <% end %>
             <% if experience.fsq_rating %>
               <tr>
-                <td style="height:34px; border-left: 5px solid #eeeeee;padding-left:5%;">
-                  <%= image_tag('fsq_logo_rating.png', style:"height:28px;") %>
+                <td class="rating-cell vertical-align-middle">
+                  <%= image_tag('fsq_logo_rating.png', class: "small-height") %>
                 </td>
-                <td style="vertical-align: middle;">
-                     <span class="fsq-rating" style="padding-left:40px; color: #0732a2;line-height: 4em;"><strong style="
-    font-size: 24px;"><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
+                <td class="vertical-align-middle">
+                     <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
                 </td>
               </tr>
             <% end %>
@@ -130,7 +128,7 @@
             <% experience.experience_reviews.each do |experience_review| %>
               <blockquote>
                 <p>"<%= experience_review.comment %>"</p>
-                <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
+                <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date || experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
               </blockquote>
             <% end %>
           </div>
