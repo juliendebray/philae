@@ -3,9 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .destination-box {
-  background-color: white;
-  border: 1px #c4d9d9 solid;
-  padding: 16px 0 16px 16px;
+  // background-color: white;
+  // border: 1px #c4d9d9 solid;
+  border-top: 3px white solid;
+  padding: 16px 16px 16px 16px;
+  img {
+    width: 120%;
+    border: 1px #F7F7F7 solid;
+  }
+  h4 {
+    text-align: center;
+  }
+}
+.destination-box-nobordertop {
+  padding: 16px 16px 16px 16px;
+}
+
+.destination-image-box {
+  border-top: 3px white solid;
+  padding: 16px 16px 16px 16px;
+  img {
+    width: 100%;
+    border: 1px #F7F7F7 solid;
+  }
 }
 
 .destination_title {
@@ -37,8 +57,21 @@
   }
 }
 
+.must-see-box {
+  background-color: white;
+  padding: 16px 16px 16px 16px;
+  img {
+    width: 100%;
+    text-align: center;
+  }
+  // p {
+  //   vertical-align: middle;
+  // }
+}
+
 .destination_itineraries {
-  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_beyrouth_rawcheh_1.jpg");
+  background-image: image-url("destination_liban_demo_2.jpg");
+  // background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_beyrouth_rawcheh_1.jpg");
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
@@ -52,7 +85,20 @@
   }
 }
 
-
+.onboarding-box {
+  background-color: white;
+  border: 1px #c4d9d9 solid;
+  padding: 16px 16px 16px 16px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  img {
+    width: 95%;
+    border: 1px #F7F7F7 solid;
+  }
+  p {
+    font-size: 20px;
+  }
+}
 
 body.destinations {
   background-image: image-url("beachtrip.jpeg");
