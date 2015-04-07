@@ -62,6 +62,32 @@ img.small-height {
 }
 
 
+
+// Styles for experiences block
+.display-inline {
+  display: inline;
+}
+.exp-rating {
+  background: green;
+  color: white;
+  font-size: 15px;
+  padding: 3px;
+  display: inline;
+   .best {
+      font-size: 10px;
+    }
+}
+.exp-category {
+  background: black;
+  padding: 0px 2px;
+  color: whiye;
+  color: white;
+  opacity: 0.7;
+  letter-spacing: 2px;
+}
+
+
+
 #experiences-filter {
   padding-left: 2%;
   label.radio-inline{

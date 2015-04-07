@@ -25,14 +25,44 @@
                 <%= image_tag trip_exp.experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:thumb), class: "img-#{trip_exp.id}" if trip_exp.experience.experience_pictures.first %>
               </td>
             <% end %>
-            <td>
-              <%= simple_format trip_exp.experience.description %>
-              <% if guest_user %>
-                <%= link_to t('experience_block_seemore'), experience_detail_path(trip_exp.experience.id), remote: true, class: "readmore" %>
-                <% else %>
-                <!-- TODO: link to add or remove this experience to trip -->
-                  <%= link_to t('experience_block_seemore'), modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true, class: "readmore" %>
+            <td class="vertical-align-top">
+              <% if trip_exp.experience.leader_reviews.any? %>
+              <div class="content-header">
+                <div class="exp-rating text-center">
+                  <span class="average">
+                    <%= trip_exp.experience.average_rating %>
+                  </span>
+                  <span class="out-of">/</span>
+                  <span class="best">10</span>
+                </div>
+                <div class="votes display-inline">
+                  <small>
+                    <em>   <%= trip_exp.experience.nb_votes %> votes</em>
+                  </small>
+                    <% if trip_exp.experience.must_see? %>
+                            <span>   <i class="fa fa-star" style="color: yellow;"></i> immanquable!</span>
+                    <% end %>
+                </div>
+                <% if trip_exp.experience.category %>
+                  <div class="exp-category display-inline pull-right">
+                    <%= trip_expxperience.experience.category %>
+                  </div>
                 <% end %>
+              </div>
+
+
+                  <strong><%= trip_exp.experience.leader_reviews.first.comment %></strong> - <em><%= trip_exp.experience.leader_reviews.first.source %></em>
+
+
+              <% else %>
+                <%= simple_format trip_exp.experience.description %>
+                  <% if guest_user %>
+                    <%= link_to t('experience_block_seemore'), experience_detail_path(trip_exp.experience.id), remote: true, class: "readmore" %>
+                  <% else %>
+                  <!-- TODO: link to add or remove this experience to trip -->
+                    <%= link_to t('experience_block_seemore'), modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true, class: "readmore" %>
+                  <% end %>
+              <% end %>
             </td>
           </tr>
           </tbody>
