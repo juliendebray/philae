@@ -64,26 +64,63 @@
   </div>
 
   <div class="tab-pane" id="reviews">
+    <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
     <table>
       <tr>
         <td style="width:50%;vertical-align: top;">
-        <% if experience.leader_reviews.any? %>
           <span class="text-center"><p><u>Avis des experts</u></p></span>
-          <div class="leader-reviews">
-            <% experience.leader_reviews.each do |leader_review| %>
-              <blockquote>
-                <p>"<b><%= leader_review.comment %></b>", selon le <%= leader_review.source %></p>
-              </blockquote>
-            <% end %>
-          </div>
-        <% else %>
-          Pas de critique trouvée pour cette expériences...
-        <% end %>
+          <% if experience.leader_reviews.any? %>
+            <div class="leader-reviews">
+              <% experience.leader_reviews.each do |leader_review| %>
+                <blockquote>
+                  <p>"<b><%= leader_review.comment %></b>", selon le <%= leader_review.source %></p>
+                </blockquote>
+              <% end %>
+            </div>
+          <% else %>
+            <p>Pas de critique trouvée pour cette expériences...</p>
+          <% end %>
         </td>
+        <% if experience.ta_rating || experience.gg_rating || experience.fsq_rating %>
         <td style="width:50%;vertical-align: top;">
           <span class="text-center"><p><u>Note globale: <%= experience.average_rating %>/10 <small><em>(<%=experience.nb_votes%> votes)</em></small></u></p></span>
-          <!-- TODO: insert ratings from different providers -->
+          <table class="list-unstyled">
+            <% if experience.ta_rating %>
+              <tr>
+                <td style="height:34px; border-left: 5px solid #eeeeee;padding-left:5%;">
+                  <%= image_tag('ta_logo_rating.png', style:"height:30px;") %>
+                </td>
+                <td style="vertical-align: middle;">
+                     <span class="ta-rating" style="padding-left:40px; color: #3a8e1b; line-height: 4em;"><strong style="
+    font-size: 24px;"><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
+                </td>
+              </tr>
+            <% end %>
+            <% if experience.gg_rating %>
+              <tr>
+                <td style="height:34px; border-left: 5px solid #eeeeee;padding-left:5%;">
+                  <%= image_tag('gg_logo_rating.png', style:"height:30px;") %>
+                </td>
+                <td style="vertical-align: middle;">
+                     <span class="gg-rating" style="padding-left:40px; color: #e7711b;line-height: 4em;"><strong style="
+    font-size: 24px;"><%= experience.gg_rating %></strong> <small>/5</small></span> <small><em>(<%=experience.gg_votes%> votes)</em></small>
+                </td>
+              </tr>
+            <% end %>
+            <% if experience.fsq_rating %>
+              <tr>
+                <td style="height:34px; border-left: 5px solid #eeeeee;padding-left:5%;">
+                  <%= image_tag('fsq_logo_rating.png', style:"height:28px;") %>
+                </td>
+                <td style="vertical-align: middle;">
+                     <span class="fsq-rating" style="padding-left:40px; color: #0732a2;line-height: 4em;"><strong style="
+    font-size: 24px;"><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
+                </td>
+              </tr>
+            <% end %>
+          </table>
         </td>
+        <% end %>
       </tr>
     </table>
       <% if experience.experience_reviews.any? %>
@@ -98,9 +135,12 @@
             <% end %>
           </div>
         </div>
-      <% else %>
-          <p>Coming soon...</p>
       <% end %>
+    <% else %>
+    <p>
+      Coming soon...
+    </p>
+    <% end %>
   </div>
 
   <div class="tab-pane" id="getthere">
