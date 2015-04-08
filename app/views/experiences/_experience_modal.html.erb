@@ -9,7 +9,7 @@
         <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
           <%= f.hidden_field :experience_id, value: experience.id %>
           <%= f.button :submit, class: "btn btn-link" do %>
-            <i class='fa fa-heart'></i> <%= t('addtotrip') %>
+            <b><i class='fa fa-heart'></i></b> <%= t('addtotrip') %>
           <% end %>
         <% end %>
       </span>
@@ -20,8 +20,8 @@
 <div id="exp-modal-tabs">
   <ul class="nav nav-tabs nav-justified" role="tablist">
     <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
-    <li><a href="#descriptif" data-toggle="tab">Descriptif</a></li>
     <li><a href="#reviews" data-toggle="tab">Avis et conseils</a></li>
+    <li><a href="#descriptif" data-toggle="tab">Descriptif</a></li>
     <li><a href="#getthere" data-toggle="tab">Comment s'y rendre</a></li>
     <li><a href="#user_review" data-toggle="tab"><i>Donne ton avis</i></a></li>
   </ul>
@@ -57,6 +57,11 @@
           </a>
         </p>
       <% end %>
+      <br>
+      <% if experience.unesco %>
+        <p>- Classé au <a href="http://whc.unesco.org/fr/list/" target="_blank">Patrimoine mondial de l'UNESCO</a></p>
+      <% end %>
+      <br>
       <% if experience.thousand_places %>
         <p>- Figure sur la Liste des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
       <% end %>

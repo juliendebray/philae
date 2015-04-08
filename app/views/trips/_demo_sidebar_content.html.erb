@@ -73,9 +73,14 @@
   </div>
 </div>
 <div role="tabpanel" class="tab-pane" id="recommended-trip-1">
+    <div id="tab-pane-introduction">
+      <p>
+        <i>Clique sur les noms des expériences pour en savoir plus</i></p>
+    </div>
   <div class="tab-description">
     <h4>Itinéraire 1: Beyrouth et day trips en 5-6 jours</h4>
-    <p><i>Au total: 250 km, 5h de route</i></p>
+    <h5><i>Au total: 250 km, 5h de route</i></h5>
+    <br>
     <p>Les <b>faibles distances</b> et la <b>position centrale de Beyrouth</b> permettent de visiter le Liban tout en restant dans la capitale. La location d’une voiture ou la réservation d’un taxi sur la journée est facile et relativement bon marché.</p>
     <p>On peut diviser 5-6 de voyage au Liban, basé à Beyrouth, comme ceci:</p>
     <ul>
@@ -93,9 +98,15 @@
   </div>
 </div>
 <div role="tabpanel" class="tab-pane" id="recommended-trip-2">
+
   <div class="tab-description">
+    <div id="tab-pane-introduction">
+      <p>
+        <i>Clique sur les noms des expériences pour en savoir plus</i></p>
+    </div>
     <h4>Itinéraire 2: Boucle du Liban en 1 semaine</h4>
-    <p><i>Au total: 400 km, 8h de route</i></p>
+    <h5><i>Au total: 400 km, 8h de route</i></h5>
+    <br>
     <ul>
       <li><p><b>Jours 1, 2 et 3</b>: à Beyrouth, visitez le typique quartier d’<span class="text-exp" data-experience_id="581"><%= link_to "Achrafieh", modal_exp_path(trip.id,581), remote: true %></span>, la Corniche et le <span class="text-exp" data-experience_id="580"><%= link_to "Rawcheh", modal_exp_path(trip.id,580), remote: true %></span>, et passez la soirée <span class="text-exp" data-experience_id="583"><%= link_to "rue Monnot", modal_exp_path(trip.id,583), remote: true %></span>.</p></li>
       <li><p><b>Jour 4</b> (50km / 1h de route): quittez Beyrouth pour démarrer la journée avec l’impressionnante <span class="text-exp" data-experience_id="588"><%= link_to "Grotte de Jeita", modal_exp_path(trip.id,588), remote: true %></span>. Rejoignez ensuite Jounieh, et montez en téléphérique vers <span class="text-exp" data-experience_id="587"><%= link_to "Notre-Dame du Liban", modal_exp_path(trip.id,587), remote: true %></span> pour son point de vue époustouflant. Continuez vers le nord pour <span class="text-exp" data-experience_id="589"><%= link_to "visiter Jbeil", modal_exp_path(trip.id,589), remote: true %></span> et y passer la nuit.</p></li>
@@ -118,7 +129,7 @@
       Les expériences sont <b>triées par note</b>.
       <br>
       <br>
-      Une expérience t'intéresse? <b>Passe la souris dessus</b> pour la localiser, et <b>clique sur le titre</b> pour en savoir plus</p>
+      Une expérience t'intéresse? <b>Passe la souris dessus</b> pour la localiser, et <b>clique dessus</b> pour en savoir plus</p>
   </div>
   <div id="experiences-filter">
     <label class="radio-inline">
@@ -134,44 +145,50 @@
   </ul>
 </div>
 <div role="tabpanel" class="tab-pane" id="help-menu">
-  <h4>Comment construire mon itinéraire?</h4>
-  <br>
-<!--   <p>
-    Bienvenue sur la page d'organisation de ton voyage !
-    Que faire ? Que voir ? C'est ici que tu trouveras les reponses à ces questions :)
-  </p> -->
-<!--   <p>
-    Voici comment ça marche :
-  </p> -->
-  <p>
-    <strong>1. Commence avec <span class="orange">"Visiter le Liban"</span></strong><br>
-    <ul>
-      <li><p>Retrouve ici les incontournables du Liban et les suggestions d'itinéraires</p></li>
-      <li><p>Découvre l'ensemble des expériences au Liban</p></li>
-      <li><p>Clique sur "Sélectionner" ou sur <i class="fa fa-heart"></i> pour construire ton itinéraire</p></li>
-    </ul>
-<!--     Commence par jeter un oeil aux différentes catégories de ce menu. C'est ici que tu trouveras l'inspiration pour organiser ton voyage : les <strong>infos utiles</strong> (ex: faut-il un visa ?), les <strong>immanquables</strong>, les <strong>itinéraires recommandés</strong> par les guides de voyages et les voyageurs. C'est aussi ici que tu pourras parcourir l'<strong>ensemble des expériences recommandées</strong> par la communauté EXPLORIZERS. Dès qu'une expérience te plait, clique dessus pour avoir plus d'infos et l'<strong>ajouter à ton voyage</strong>. -->
-  </p>
-  <br>
-  <p>
-    <strong>2. Poursuis avec les <span class="blue">"Conseils d'amis"</span></strong><br>
-    <ul>
-      <li><p>Poste ton voyage sur Facebook ou envoie-le par email</p></li>
-      <li><p>Tes amis pourront ajouter leurs conseils directement sur ta carte, et tu pourras les ajouter ou non à ton voyage</p></li>
-    </ul>
-<!--     EXPLORIZERS te permet de <strong>demander des conseils à tes amis</strong> très facilement. Ils te connaissent mieux que nous, ils seront capables de te donner des bons plans qui feront toute la différence. Pour se faire, clique sur "Conseils de mes amis" et invite les à partager leur conseils. Ensuite, retourne sur ce menu et tu pourras consulter leur bons plans <strong>directement sur la carte</strong>. Pratique, non? -->
-  </p>
-  <br>
-  <p>
-    <strong>3. Finalise avec <span class="red">"Mon voyage"</span></strong><br>
-    <ul>
-      <li><p>Retrouve les expériences sélectionnées, et affine ton itinéraire</p></li>
-      <li><p>Accède ensuite au résumé de ton voyage, et reçois-le par email</p></li>
-    </ul>
-<!--     A tout moment, tu peux ajouter une expérience à ton voyage. Tu retrouveras toutes ces expériences dans le menu "Mon Voyage". Depuis ce menu, tu peux : réorganiser l'ordre des expériences sélectionnées pour <strong>construire ton itinéraire</strong> ou supprimer celles qui ne t'intéressent plus. Tu peux même accéder au <strong>résumé de ton voyage</strong> et te l'<strong>envoyer par email</strong>. -->
-  </p>
-  <br>
-  <p><i><a href="http://www.explorizers.com/destinations/1" target="_blank" class="text-center">Retourner sur la page de présentation du Liban</a></i></p>
+  <div class="tab-description">
+    <h4>Comment construire mon itinéraire?</h4>
+    <br>
+  <!--   <p>
+      Bienvenue sur la page d'organisation de ton voyage !
+      Que faire ? Que voir ? C'est ici que tu trouveras les reponses à ces questions :)
+    </p> -->
+  <!--   <p>
+      Voici comment ça marche :
+    </p> -->
+    <p>
+      <strong>1. Découvre les expériences du Liban</strong><br>
+      <ul>
+        <li><p>Retrouve ici les incontournables du Liban, marqués par une étoile</p></li>
+        <li><p>Découvre l'ensemble des expériences au Liban</p></li>
+        <li><p>Clique sur "Sélectionner" ou sur <i class="fa fa-heart"></i> pour construire ton itinéraire</p></li>
+      </ul>
+  <!--     Commence par jeter un oeil aux différentes catégories de ce menu. C'est ici que tu trouveras l'inspiration pour organiser ton voyage : les <strong>infos utiles</strong> (ex: faut-il un visa ?), les <strong>immanquables</strong>, les <strong>itinéraires recommandés</strong> par les guides de voyages et les voyageurs. C'est aussi ici que tu pourras parcourir l'<strong>ensemble des expériences recommandées</strong> par la communauté EXPLORIZERS. Dès qu'une expérience te plait, clique dessus pour avoir plus d'infos et l'<strong>ajouter à ton voyage</strong>. -->
+    </p>
+    <br>
+    <p>
+      <strong>2. Poursuis avec les itinéraires suggérés</strong><br>
+  <!--       <span class="blue">"Conseils d'amis"</span> -->
+      <ul>
+        <li><p>Un séjour de quelques jours basé à Beyrouth, avec 3 excursions sur la journée</p></li>
+        <li><p>Un parcours d'une semaine pour voir l'essentiel du Liban</p></li>
+  <!--       <li><p>Poste ton voyage sur Facebook ou envoie-le par email</p></li>
+        <li><p>Tes amis pourront ajouter leurs conseils directement sur ta carte, et tu pourras les ajouter ou non à ton voyage</p></li> -->
+      </ul>
+  <!--     EXPLORIZERS te permet de <strong>demander des conseils à tes amis</strong> très facilement. Ils te connaissent mieux que nous, ils seront capables de te donner des bons plans qui feront toute la différence. Pour se faire, clique sur "Conseils de mes amis" et invite les à partager leur conseils. Ensuite, retourne sur ce menu et tu pourras consulter leur bons plans <strong>directement sur la carte</strong>. Pratique, non? -->
+    </p>
+    <br>
+    <p>
+      <strong>3. Finalise avec "Mon voyage"</strong><br>
+      <!-- <strong>3. Finalise avec <span class="red">"Mon voyage"</span></strong><br> -->
+      <ul>
+        <li><p>Retrouve les expériences sélectionnées, et affine ton itinéraire</p></li>
+        <li><p>Accède ensuite au résumé de ton voyage, et reçois-le par email</p></li>
+      </ul>
+  <!--     A tout moment, tu peux ajouter une expérience à ton voyage. Tu retrouveras toutes ces expériences dans le menu "Mon Voyage". Depuis ce menu, tu peux : réorganiser l'ordre des expériences sélectionnées pour <strong>construire ton itinéraire</strong> ou supprimer celles qui ne t'intéressent plus. Tu peux même accéder au <strong>résumé de ton voyage</strong> et te l'<strong>envoyer par email</strong>. -->
+    </p>
+    <br>
+    <h4><i><a href="http://www.explorizers.com/destinations/1" target="_blank" class="text-center">Retourner sur la page de présentation du Liban</a></i></h4>
+  </div>
 </div>
 <div role="tabpanel" class="tab-pane" id="user-experiences-selection">
   <div id="tab-pane-introduction">

@@ -191,6 +191,15 @@ i.must-see {
       #experiences-filter {
         display: none;
       }
+      .tab-description {
+        h4 {
+          margin-bottom: 10px;
+        }
+        h5 {
+          font-weight: 300;
+          text-align: center;
+        }
+      }
     }
   }
 
@@ -252,7 +261,6 @@ i.must-see {
       }
     }
 
-
     .panel-heading {
       padding-right: 2px;
       margin-top: 5px;
@@ -280,6 +288,7 @@ i.must-see {
       i {
         padding-right: 5px;
         color: #FF5A5F;
+        font-size: 20px;
       }
 
       i:hover {
@@ -290,11 +299,14 @@ i.must-see {
       .pull-right {
         i {
           padding-right: 5px;
-          color: #808080;
+          font-size: 20px;
+          color: white;
+          text-shadow: -1px 0 #525252, 0 1px #525252, 1px 0 #525252, 0 -1px #525252;
         }
         i:hover {
           padding-right: 5px;
           color: #FF5A5F;
+          text-shadow: none;
         }
       }
 
@@ -307,14 +319,15 @@ i.must-see {
         padding-right: 5px;
         color: #808080;
       }
-
     }
-
-
   }
 }
 
 #ul-sidebar {
+  #myTab {
+    table-layout: fixed;
+    display: table;
+  }
 
   .nav-pills > li > a {
     color: #525252;
@@ -327,7 +340,6 @@ i.must-see {
     padding-left: 2px;
     padding-right: 2px;
     padding-top: 10px;
-
   }
 
   .dropdown-menu {
@@ -349,10 +361,41 @@ i.must-see {
     font-weight: bold;
   }
 
+  #destination-pill, #itineraries, #my-trip-pill {
+    width: 31%;
+  }
+
+  #destination-pill {
+    i {
+      color: #0086B8;
+      font-size: 16px;
+    }
+  }
+
+  #help-menu-pill {
+    width: 7%;
+    border-left: 2px solid white;
+  }
+
+  #my-trip-pill {
+    border-left: 2px solid white;
+    i {
+      color: #FF5A5F;
+    }
+  }
+
+
+  #itineraries {
+    border-left: 2px solid white;
+  }
+
   #destination-pill:hover {
     a {
       // background-color: #FF7519;
       background-color: #0086B8;
+      color: white;
+    }
+    i {
       color: white;
     }
   }
@@ -376,6 +419,9 @@ i.must-see {
       background-color: #FF5A5F;
       color: white;
     }
+    i {
+      color: white;
+    }
   }
 
   #help-menu-pill:hover {
@@ -389,6 +435,9 @@ i.must-see {
     a {
       // background-color: #FF7519;
       background-color: #0086B8;
+      color: white;
+    }
+    i {
       color: white;
     }
   }
@@ -410,6 +459,9 @@ i.must-see {
   #my-trip-pill.active {
     a {
       background-color: #FF5A5F;
+      color: white;
+    }
+    i {
       color: white;
     }
   }
@@ -799,6 +851,7 @@ i.must-see {
     // cursor: move;
     padding: 7px;
   }
+
 }
 
 // Infobox design
