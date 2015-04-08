@@ -179,6 +179,18 @@ i.must-see {
         font-weight: 400;
         text-align: center;
       }
+      #tab-pane-introduction {
+        img {
+          width: 3%;
+        }
+        p {
+          text-align: center;
+          font-size: 16px;
+        }
+      }
+      #experiences-filter {
+        display: none;
+      }
     }
   }
 
@@ -315,6 +327,7 @@ i.must-see {
     padding-left: 2px;
     padding-right: 2px;
     padding-top: 10px;
+
   }
 
   .dropdown-menu {
@@ -337,8 +350,16 @@ i.must-see {
   }
 
   #destination-pill:hover {
+    a {
+      // background-color: #FF7519;
+      background-color: #0086B8;
+      color: white;
+    }
+  }
+
+  #itineraries:hover {
     .dropdown-toggle {
-      background-color: #FF7519;
+      background-color: #6F9AAA;
       color: white;
     }
   }
@@ -365,8 +386,16 @@ i.must-see {
   }
 
   #destination-pill.active {
+    a {
+      // background-color: #FF7519;
+      background-color: #0086B8;
+      color: white;
+    }
+  }
+
+  #itineraries.active {
     .dropdown-toggle {
-      background-color: #FF7519;
+      background-color: #6F9AAA;
       color: white;
     }
   }

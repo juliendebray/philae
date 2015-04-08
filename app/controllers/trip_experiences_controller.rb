@@ -124,7 +124,8 @@ class TripExperiencesController < ApplicationController
       marker.title experience.name
       trip_experiences = TripExperience.where("trip_id = ? AND experience_id = ?", trip.id, experience.id)
       if trip_experiences.any?
-        experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png"
+        # experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png"
+        experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png"
         marker.picture({
           url: picture_url,
           width:  25,
@@ -158,7 +159,8 @@ class TripExperiencesController < ApplicationController
           })
         end
       else
-        experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top.png"
+        # experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top.png"
+        experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_2.png"
         marker.picture({
           url: picture_url,
           width:  25,

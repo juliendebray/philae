@@ -53,7 +53,7 @@ fr:
       alreadyaccount: "Déjà inscrit?"
 
   addreview: "Donnez votre avis!"
-  addtotrip: "Ajouter à mon voyage"
+  addtotrip: "Sélectionner"
   removefromtrip: "Retirer du voyage"
 
   #trips
@@ -67,7 +67,7 @@ fr:
   summarize_comment: "Ajouter un commentaire"
 
   #trip_comments:
-  trip_comment_add: "Ajouter à mon voyage"
+  trip_comment_add: "Sélectionner"
   trip_comment_delete: "Supprimer ce commentaire"
   trip_comment_confirm: "Es-tu sûr de vouloir supprimer ce commentaire?"
 

@@ -112,24 +112,28 @@
     </ul>
   </div>
 </div>
-<div role="tabpanel" class="tab-pane" id="top-from-explorizers">
-  <p class="text-center">
-    Voici les expériences issues des contributions des Explorizers ayant voyagé au Liban. Tu peux les trier en fonction de leur note moyenne ou en fonction de leur popularité. Ajoute-les à ton voyage en cliquant sur le <i class="fa fa-heart"></i>.
-  </p>
+<div role="tabpanel" class="tab-pane active" id="top-from-explorizers">
+  <div id="tab-pane-introduction">
+    <p>
+      Les expériences sont <b>triées par note</b>.
+      <br>
+      <br>
+      Une expérience t'intéresse? <b>Passe la souris dessus</b> pour la localiser, et <b>clique sur le titre</b> pour en savoir plus</p>
+  </div>
   <div id="experiences-filter">
     <label class="radio-inline">
       <input type="radio" name="inlineRadioOptions" id="experiences-score" value="1" checked>
-      <strong>Trier par note</strong>
+      <strong>Trier par notes</strong>
     </label>
     <label class="radio-inline">
       <input type="radio" name="inlineRadioOptions" id="experiences-popularity" value="2">
-      <strong>Trier par nombre de notes</strong>
+      <strong>Trier par popularité (nombre de votes)</strong>
     </label>
- </div>
+  </div>
   <ul id="draggablePanelList" class="list-unstyled experience-block-container top-from-explorizers">
   </ul>
 </div>
-<div role="tabpanel" class="tab-pane active" id="help-menu">
+<div role="tabpanel" class="tab-pane" id="help-menu">
   <h4>Comment construire mon itinéraire?</h4>
   <br>
 <!--   <p>
@@ -144,7 +148,7 @@
     <ul>
       <li><p>Retrouve ici les incontournables du Liban et les suggestions d'itinéraires</p></li>
       <li><p>Découvre l'ensemble des expériences au Liban</p></li>
-      <li><p>Clique sur "Ajouter au voyage" ou sur <i class="fa fa-heart"></i> pour construire ton itinéraire</p></li>
+      <li><p>Clique sur "Sélectionner" ou sur <i class="fa fa-heart"></i> pour construire ton itinéraire</p></li>
     </ul>
 <!--     Commence par jeter un oeil aux différentes catégories de ce menu. C'est ici que tu trouveras l'inspiration pour organiser ton voyage : les <strong>infos utiles</strong> (ex: faut-il un visa ?), les <strong>immanquables</strong>, les <strong>itinéraires recommandés</strong> par les guides de voyages et les voyageurs. C'est aussi ici que tu pourras parcourir l'<strong>ensemble des expériences recommandées</strong> par la communauté EXPLORIZERS. Dès qu'une expérience te plait, clique dessus pour avoir plus d'infos et l'<strong>ajouter à ton voyage</strong>. -->
   </p>
@@ -170,9 +174,9 @@
   <p><i><a href="http://www.explorizers.com/destinations/1" target="_blank" class="text-center">Retourner sur la page de présentation du Liban</a></i></p>
 </div>
 <div role="tabpanel" class="tab-pane" id="user-experiences-selection">
-  <p>
-    <b>Voici les expériences sélectionnées pour ton voyage. Supprime-les ou réorganise-les dans le bon ordre!</b>
-  </p>
+  <div id="tab-pane-introduction">
+    <p>Voici tes expériences sélectionnées! Supprime-les ou réorganise-les dans le bon ordre.</p><br>
+  </div>
 
   <ul id="draggablePanelList" class="list-unstyled experience-block-container user-experiences-content">
   </ul>
