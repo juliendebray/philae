@@ -70,12 +70,17 @@ img.small-height {
 .exp-rating {
   background: green;
   color: white;
-  font-size: 15px;
-  padding: 3px;
+  font-size: 17px;
+  padding: 0.5px 2px;
   display: inline;
+  margin-right: 5px;
    .best {
       font-size: 10px;
     }
+}
+i.must-see {
+  color: gold;
+  font-size: 20px;
 }
 .exp-category {
   background: black;
@@ -86,7 +91,14 @@ img.small-height {
   letter-spacing: 2px;
 }
 
-
+.exp-quote {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 300;
+  em {
+    color: #939393;
+  }
+}
 
 #experiences-filter {
   padding-left: 2%;
