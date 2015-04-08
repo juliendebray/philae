@@ -459,7 +459,8 @@ function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
   removePolyline();
   if (id == 'destination-overview' || id == 'help-menu') {
     return;
-  } else if (id == "must-see") {
+  } else
+  if (id == "must-see") {
     displayMustSeeExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
     });

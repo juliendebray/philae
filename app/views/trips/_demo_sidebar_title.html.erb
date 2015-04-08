@@ -1,20 +1,22 @@
 <div id="ul-sidebar">
 
   <ul id="myTab" class="nav nav-pills nav-justified" role="tablist">
-    <li role="presentation" class="dropdown" id="destination-pill">
-      <a id="myTabDrop" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false" aria-controls="myTabDrop-content">
-        Visiter le Liban <span class="caret"></span>
+    <li role="presentation" class="active" id="destination-pill">
+      <a role="menuitem" data-toggle="tab" href="#top-from-explorizers" aria-controls="top-from-explorizers"><i class="fa fa-map-marker"></i>Expériences</a>
+    </li>
+    <li role="presentation" class="dropdown" id="itineraries">
+      <a id="myTabDrop" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false" aria-controls="myTabDrop-content"><i>Itinéraires</i><span class="caret"></span>
       </a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop" id="myTabDrop-content">
 <!--         <li role="presentation">
           <a role="menuitem" data-toggle="tab" href="#destination-overview" aria-controls="destination-overview"><i class="fa fa-info" id="fa-info"></i>A savoir avant de partir</a>
         </li> -->
-        <li role="presentation">
+<!--         <li role="presentation">
           <a role="menuitem" data-toggle="tab" href="#must-see" aria-controls="must-see"><i class="fa fa-star"></i>Voir les incontournables du Liban</a>
-        </li>
-        <li role="presentation">
+        </li> -->
+ <!--        <li role="presentation">
           <a role="menuitem"  data-toggle="tab" href="#top-from-explorizers" aria-controls="top-from-explorizers"><i class="fa fa-map-marker" id="fa-map-marker"></i>Voir toutes les expériences au Liban</a>
-        </li>
+        </li> -->
         <li role="presentation">
           <a role="menuitem"  data-toggle="tab" href="#recommended-trip-1" aria-controls="recommended-trip-1"><i class="fa fa-car" id="fa-car"></i><i>Itinéraire 1: Beyrouth et day trips en 5-6 jours</i></a>
         </li>
@@ -25,15 +27,15 @@
         </li> -->
       </ul>
     </li>
-    <li role="presentation" id="friends-tips-pill">
+<!--     <li role="presentation" id="friends-tips-pill">
       <a role="menuitem"  data-toggle="tab" href="#user-guest-comments" aria-controls="user-guest-comments">
         <%= t('show_asktips') %>
       </a>
-    </li>
+    </li> -->
     <li role="presentation" id="my-trip-pill">
-      <a role="menuitem"  data-toggle="tab" href="#user-experiences-selection" aria-controls="user-experiences-selection">Mon voyage</a>
+      <a role="menuitem"  data-toggle="tab" href="#user-experiences-selection" aria-controls="user-experiences-selection"><i class="fa fa-heart"></i>Mon voyage</a>
     </li>
-    <li role="presentation" class="active" id="help-menu-pill">
+    <li role="presentation" id="help-menu-pill">
       <a role="menuitem" data-toggle="tab" href="#help-menu" aria-controls="help-menu">?</a>
     </li>
   </ul>
