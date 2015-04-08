@@ -19,15 +19,86 @@ html, body {
   overflow: hidden;
 }
 
-// .modal-backdrop-fixed {
-//   position: fixed;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   z-index: 0;
-//   background-color: #000;
-// }
+// Styles for modal experience
+.vertical-align-top {
+  vertical-align: top;
+}
+
+.vertical-align-middle{
+  vertical-align: middle;
+}
+
+td.width-split {
+  width: 50%;
+}
+
+td.rating-cell {
+  border-left: 5px solid #eeeeee;
+  padding-left:5%;
+}
+img.fixed-height {
+  height: 31px;
+}
+
+img.small-height {
+  height: 27px;
+}
+
+.rating-score {
+  padding-left:40px;
+  color: #e7711b;
+  line-height: 4em;
+  font-size: 24px;
+}
+
+.ta-color {
+  color:#3a8e1b;
+}
+.gg-color {
+  color:#e7711b;
+}
+.fsq-color {
+  color:#0732a2 ;
+}
+
+
+
+// Styles for experiences block
+.display-inline {
+  display: inline;
+}
+.exp-rating {
+  background: green;
+  color: white;
+  font-size: 17px;
+  padding: 0.5px 2px;
+  display: inline;
+  margin-right: 5px;
+   .best {
+      font-size: 10px;
+    }
+}
+i.must-see {
+  color: gold;
+  font-size: 20px;
+}
+.exp-category {
+  background: black;
+  padding: 0px 2px;
+  color: whiye;
+  color: white;
+  opacity: 0.7;
+  letter-spacing: 2px;
+}
+
+.exp-quote {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 300;
+  em {
+    color: #939393;
+  }
+}
 
 #experiences-filter {
   padding-left: 2%;

@@ -67,33 +67,81 @@
   </div>
 
   <div class="tab-pane" id="reviews">
+    <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
     <br>
-    <div class="experience-reviews">
-      <% if experience.leader_reviews.any? %>
-      <p><u>Ce que les guides en disent</u></p>
-      <div class="leader-reviews">
-        <% experience.leader_reviews.each do |leader_review| %>
-          <blockquote>
-            <p>"<b><%= leader_review.comment %></b>", selon le <%= leader_review.source %></p>
-          </blockquote>
+    <table>
+      <tr>
+        <td class="vertical-align-top width-split">
+          <span class="text-center"><p><u>Avis des experts</u></p></span>
+          <% if experience.leader_reviews.any? %>
+            <div class="leader-reviews">
+              <% experience.leader_reviews.each do |leader_review| %>
+                <blockquote>
+                  <p>"<b><%= leader_review.comment %></b>", selon le <%= leader_review.source %></p>
+                </blockquote>
+              <% end %>
+            </div>
+          <% else %>
+            <p>Pas de critique trouvée pour cette expériences...</p>
+          <% end %>
+        </td>
+        <% if experience.ta_rating || experience.gg_rating || experience.fsq_rating %>
+        <td class="width-split vertical-align-top">
+          <span class="text-center"><p><u>Note globale: <%= experience.average_rating %>/10 <small><em>(<%=experience.nb_votes%> votes)</em></small></u></p></span>
+          <table>
+            <% if experience.ta_rating %>
+              <tr>
+                <td class="rating-cell vertical-align-middle">
+                  <%= image_tag('ta_logo_rating.png', class: "fixed-height") %>
+                </td>
+                <td class="vertical-align-middle">
+                     <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
+                </td>
+              </tr>
+            <% end %>
+            <% if experience.gg_rating %>
+              <tr>
+                <td class="rating-cell vertical-align-middle">
+                  <%= image_tag('gg_logo_rating.png', class: "fixed-height") %>
+                </td>
+                <td class="vertical-align-middle">
+                     <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span> <small><em>(<%=experience.gg_votes%> votes)</em></small>
+                </td>
+              </tr>
+            <% end %>
+            <% if experience.fsq_rating %>
+              <tr>
+                <td class="rating-cell vertical-align-middle">
+                  <%= image_tag('fsq_logo_rating.png', class: "small-height") %>
+                </td>
+                <td class="vertical-align-middle">
+                     <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </td>
         <% end %>
-      </div>
-      <% end %>
-
+      </tr>
+    </table>
       <% if experience.experience_reviews.any? %>
-      <p><u>Avis des voyageurs sur TripAdvisor</u> - note moyenne <%= experience.average_rating %>/10</p>
-      <div class="user-reviews">
-        <% experience.experience_reviews.each do |experience_review| %>
-          <blockquote>
-            <p>"<%= experience_review.comment %>"</p>
-            <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
-          </blockquote>
-        <% end %>
-      </div>
-      <% else %>
-      <p>Coming soon...</p>
+        <div>
+          <span class="text-center"><p><u>Conseils des voyageurs</u></p></span>
+          <div class="user-reviews">
+            <% experience.experience_reviews.each do |experience_review| %>
+              <blockquote>
+                <p>"<%= experience_review.comment %>"</p>
+                <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date || experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
+              </blockquote>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-    </div>
+    <% else %>
+    <p>
+      Coming soon...
+    </p>
+    <% end %>
   </div>
 
   <div class="tab-pane" id="getthere">
