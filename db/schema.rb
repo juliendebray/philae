@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407110835) do
+ActiveRecord::Schema.define(version: 20150407214735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20150407110835) do
     t.integer  "gg_votes"
     t.float    "fsq_rating"
     t.integer  "fsq_votes"
+    t.boolean  "unesco"
   end
 
   add_index "experiences", ["category_id"], name: "index_experiences_on_category_id", using: :btree

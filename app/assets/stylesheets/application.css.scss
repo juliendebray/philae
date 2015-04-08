@@ -133,6 +133,11 @@ div.homepage_story {
   height: 0.1em;
 }
 
+.line-separator {
+  height:3px;
+  border-bottom:3px solid white;
+}
+
 @media screen and (max-width: 500px) {
   .homepage_story {
     .fb-like {

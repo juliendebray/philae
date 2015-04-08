@@ -50,9 +50,6 @@
       <br>
       <%= simple_format experience.description %>
       <br>
-      <% if experience.thousand_places %>
-        <p>Cette experience appartient à la Liste des 1 000 lieux à voir dans sa vie.</p>
-      <% end %>
       <% if experience.wikipedia_link %>
         <p>
           <a href="<%= experience.wikipedia_link %>" target="_blank">
@@ -60,6 +57,12 @@
           </a>
         </p>
       <% end %>
+      <% if experience.thousand_places %>
+        <p>- Figure sur la Liste des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+      <% end %>
+
+
+
     </div>
   </div>
 
