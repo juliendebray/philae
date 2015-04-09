@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <div class="panel-body">
-        <%= link_to modal_exp_path(trip.id, experience.id), remote: true do %>
+        <%= link_to modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true do %>
           <table>
             <tbody>
             <tr>

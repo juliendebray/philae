@@ -125,12 +125,11 @@ class TripExperiencesController < ApplicationController
       trip_experiences = TripExperience.where("trip_id = ? AND experience_id = ?", trip.id, experience.id)
       if trip_experiences.any?
         # experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png"
-        experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png"
         marker.picture({
-          url: picture_url,
-          width:  25,
-          height: 39
-          })
+        url: "https://philae-floju.s3.amazonaws.com/markers/selection.png",
+        width:  25,
+        height: 39
+        })
         if experience_block_required
           marker.json({
             infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
@@ -234,9 +233,9 @@ class TripExperiencesController < ApplicationController
     Gmaps4rails.build_markers(trip_experiences) do |trip_experience, marker|
       marker.lat trip_experience.experience.latitude
       marker.lng trip_experience.experience.longitude
-      trip_experience.experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png"
+      # trip_experience.experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png"
       marker.picture({
-        url: picture_url,
+        url: "https://philae-floju.s3.amazonaws.com/markers/selection.png",
         width:  25,
         height: 39
       })

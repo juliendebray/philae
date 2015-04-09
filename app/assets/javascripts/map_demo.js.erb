@@ -459,8 +459,7 @@ function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
   removePolyline();
   if (id == 'destination-overview' || id == 'help-menu') {
     return;
-  } else
-  if (id == "must-see") {
+  } else if (id == "must-see") {
     displayMustSeeExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
     });
@@ -473,16 +472,16 @@ function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
       requestingMarkers = r;
     });
   } else if (id == "top-from-explorizers") {
-    // setMarkersAndKeepListening(map, trip_id);
-    listenToUserChoiceOnFilteringExperiences(map, trip_id);
+    setMarkersAndKeepListening(map, trip_id);
+    // listenToUserChoiceOnFilteringExperiences(map, trip_id);
   } else if (id == "user-experiences-selection") {
     setMapWithUserExperiences(trip_id, map, function(r) {
       requestingMarkers = r;
     });
-    } else if (id == "user-guest-comments") {
-      setMapWithGuestComments(trip_id, map, function(r) {
-        requestingMarkers = r;
-      });
+  } else if (id == "user-guest-comments") {
+    setMapWithGuestComments(trip_id, map, function(r) {
+      requestingMarkers = r;
+    });
   } else {
     alert('Un problème est survenu :(  --> merci de recharger la page.... ');
   }
