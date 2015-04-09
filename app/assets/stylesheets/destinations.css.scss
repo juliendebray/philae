@@ -2,18 +2,92 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Styles for modal experience
+.vertical-align-top {
+  vertical-align: top;
+}
+
+.vertical-align-middle{
+  vertical-align: middle;
+}
+
+td.width-split {
+  width: 50%;
+}
+
+td.rating-cell {
+  border-left: 5px solid #eeeeee;
+  padding-left:5%;
+}
+img.fixed-height {
+  height: 31px;
+}
+
+img.small-height {
+  height: 27px;
+}
+
+.rating-score {
+  padding-left:40px;
+  color: #e7711b;
+  line-height: 4em;
+  font-size: 24px;
+}
+
+.ta-color {
+  color:#3a8e1b;
+}
+.gg-color {
+  color:#e7711b;
+}
+.fsq-color {
+  color:#0732a2 ;
+}
+
+// Styles for show destination
+
+a#must-see-img:hover {
+  img {
+    opacity: 0.7;
+  }
+  .hover-img {
+    display: block;
+  }
+}
+.hover-img {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 25%;
+  font-size: 4em;
+  color: white;
+  text-shadow: 0px 0px 1px white, 0px 0px 3px black;
+}
+
 .navbar-wagon .navbar-nav > li > a {
   color: black;
 }
+.bg-black{
+  background: black;
+}
 
+#bottom-start-planning {
+ color: white;
+ background: black;
+ height: 100%;
+ padding-top: 5%;
+ padding-bottom: 5%;
+}
 
 .wrapper.bg-white.black {
   background-color: white;
   color: black;
+  padding-bottom: 0px;
 }
-// .white {
-//   color: white;
-// }
+
 .medium {
   letter-spacing: .01rem;
   font-weight: 300;
@@ -79,6 +153,7 @@ a.destination-collapse:focus {
 }
 
 #start-planning {
+  z-index: 2;
   position: fixed;
   right: 10px;
   top: 60px;
