@@ -41,7 +41,7 @@
                       <em>   <%= trip_exp.experience.nb_votes %> votes</em>
                     </small>
                       <% if trip_exp.experience.must_see? %>
-                              <span class="pull-right"> <i class="fa fa-star must-see"></i> <em>"Incontournable!"</em></span>
+                              <span class="pull-right"> <i class="fa fa-star must-see"></i> <em>Incontournable!</em></span>
                       <% end %>
                   </div>
                   <% if trip_exp.experience.category %>
@@ -86,7 +86,7 @@
         <span class="pull-right">
           <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
             <%= f.hidden_field :experience_id, value: experience.id %>
-            <%= f.button :submit, class: "btn btn-link" do %>
+            <%= f.button :submit, class: "btn btn-link" do %><a id="addtotrip">Sélectionner</a>
               <i class='fa fa-heart pull-right'></i>
             <% end %>
           <% end %>
@@ -117,7 +117,7 @@
                         <em>   <%= experience.nb_votes %> votes</em>
                       </small>
                         <% if experience.must_see? %>
-                                <span class="pull-right"> <i class="fa fa-star must-see"></i> <em>"Incontournable!"</em></span>
+                                <span class="pull-right"> <i class="fa fa-star must-see"></i> <em>Incontournable!</em></span>
                         <% end %>
                     </div>
                     <% if experience.category %>

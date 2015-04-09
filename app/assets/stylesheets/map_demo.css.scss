@@ -91,6 +91,11 @@ i.must-see {
   letter-spacing: 2px;
 }
 
+#addtotrip {
+  font-size: 12px;
+  vertical-align: text-top;
+}
+
 .exp-quote {
   margin-top: 8px;
   font-size: 15px;
@@ -198,6 +203,9 @@ i.must-see {
         h5 {
           font-weight: 300;
           text-align: center;
+        }
+        img {
+          width: 3%;
         }
       }
     }
@@ -503,6 +511,28 @@ i.must-see {
 }
 
 #user-guest-comments {
+  table {
+    width: 100%;
+    text-align: center;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-color: lightgrey;
+  }
+  td {
+    padding-bottom: 10px;
+  }
+  // p {
+  //   text-align: center;
+  // }
+  .btn {
+    font-size: 14px;
+    width: 90%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+}
+
+#help-menu {
   table {
     width: 100%;
     text-align: center;
