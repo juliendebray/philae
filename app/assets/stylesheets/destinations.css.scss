@@ -2,157 +2,231 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.destination-box {
-  // background-color: white;
-  // border: 1px #c4d9d9 solid;
-  border-top: 3px white solid;
-  padding: 16px 16px 16px 16px;
-  img {
-    width: 120%;
-    border: 1px #F7F7F7 solid;
-  }
-  h4 {
-    text-align: center;
-  }
-}
-.destination-box-nobordertop {
-  padding: 16px 16px 16px 16px;
-}
-
-.destination-image-box {
-  border-top: 3px white solid;
-  padding: 16px 16px 16px 16px;
-  img {
-    width: 100%;
-    border: 1px #F7F7F7 solid;
-  }
-}
-
-.destination_title {
-  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  color: white;
-  height: 570px;
-  padding-top: 1px;
-  h1 {
-    padding-top: 180px;
-    font-size: 65px;
-  }
-}
-
-.destination_must-see {
-  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_jbeil_byblos_une_journee_1.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  color: white;
-  height: 470px;
-  padding-top: 1px;
-  h1 {
-    padding-top: 180px;
-    font-size: 65px;
-    text-align: center;
-  }
-}
-
-.must-see-box {
+.wrapper.bg-white.black {
   background-color: white;
-  padding: 16px 16px 16px 16px;
-  img {
-    width: 100%;
-    text-align: center;
-  }
-  // p {
-  //   vertical-align: middle;
-  // }
+  color: black;
 }
-
-.destination_itineraries {
-  background-image: image-url("destination_liban_demo_2.jpg");
-  // background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_beyrouth_rawcheh_1.jpg");
+.white {
+  color: white;
+}
+.medium {
+  letter-spacing: .01rem;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1.5;
+}
+.no-margin {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.destination-title {
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
-  color: white;
-  height: 470px;
-  padding-top: 1px;
-  h1 {
-    padding-top: 180px;
-    font-size: 65px;
-    text-align: center;
-  }
-}
-
-.onboarding-box {
-  background-color: white;
-  border: 1px #c4d9d9 solid;
-  padding: 16px 16px 16px 16px;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  img {
-    width: 95%;
-    border: 1px #F7F7F7 solid;
-  }
-  p {
-    font-size: 20px;
-  }
-}
-
-body.destinations {
-  background-image: image-url("beachtrip.jpeg");
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  height: 800px;
-  padding-top: 56px;
-  color: white;
-  margin: 0px;
+  padding-top: 25%;
+  padding-bottom: 25%;
+  padding-top: 35px;
   h2 {
-    text-align: center;
-    text-shadow: 0px 0px 3px white, 0px 0px 6px black;
-    padding-bottom: 30px;
-    font-weight: 300;
-    font-size: 25px;
-  }
-  h4, a.liban {
+    font-size: 4em;
+    letter-spacing: 5px;
     color: white;
-    text-align: center;
-    margin: 0px;
-    font-weight: 300;
+    text-shadow: 0px 0px 1px white, 0px 0px 3px black;
   }
+}
+#overview{
+  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg");
+}
+#must-see{
+  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_jbeil_byblos_une_journee_1.jpg");
+}
+#recommended-trip{
+  background-image: image-url("destination_liban_demo_2.jpg");
+}
 
-  .minor-block {
-    font-size: 1.5em;
-    font-weight: 300;
-    color: #525252;
-    margin: 30px;
-    padding-bottom: 30px;
-  }
-  .form-group{
-    margin: 10px auto;
-    padding-top:20px;
-  }
+.destination-tagline {
+  color: white;
+  font-size: 2em;
+  font-weight: 100;
+  margin-top: 20px;
+}
 
-  .title {
-    a {
-      color: white;
-      text-decoration: underline;
-    }
-  }
-  .btn {
-    font-size: 16px;
+a.destination-collapse:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+a.destination-collapse:focus {
+  color: white;;
+}
+
+.destination-content{
+  padding: 2% 8%;
+  p {
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 1.5;
   }
 }
 
-@media screen and (max-width: 500px) {
-  .destinations {
-    .minor-block {
-      font-size: 1.4em;
-    }
-    input#trip_query {
-      width: 80%;
-    }
-  }
-}
+
+// .destination-box {
+//   // background-color: white;
+//   // border: 1px #c4d9d9 solid;
+//   border-top: 3px white solid;
+//   padding: 16px 16px 16px 16px;
+//   img {
+//     width: 120%;
+//     border: 1px #F7F7F7 solid;
+//   }
+//   h4 {
+//     text-align: center;
+//   }
+// }
+// .destination-box-nobordertop {
+//   padding: 16px 16px 16px 16px;
+// }
+
+// .destination-image-box {
+//   border-top: 3px white solid;
+//   padding: 16px 16px 16px 16px;
+//   img {
+//     width: 100%;
+//     border: 1px #F7F7F7 solid;
+//   }
+// }
+
+// .destination_title {
+//   background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg");
+//   background-size: cover;
+//   background-position: center top;
+//   background-attachment: fixed;
+//   color: white;
+//   height: 570px;
+//   padding-top: 1px;
+//   h1 {
+//     padding-top: 180px;
+//     font-size: 65px;
+//     font-weight: 400;
+//   }
+// }
+
+// .destination_must-see {
+//   background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_jbeil_byblos_une_journee_1.jpg");
+//   background-size: cover;
+//   background-position: center top;
+//   background-attachment: fixed;
+//   color: white;
+//   height: 470px;
+//   padding-top: 1px;
+//   h1 {
+//     padding-top: 180px;
+//     font-size: 65px;
+//     text-align: center;
+//     font-weight: 300;
+//   }
+// }
+
+// .must-see-box {
+//   background-color: white;
+//   padding: 16px 16px 16px 16px;
+//   img {
+//     width: 100%;
+//     text-align: center;
+//   }
+//   // p {
+//   //   vertical-align: middle;
+//   // }
+// }
+
+// .destination_itineraries {
+//   background-image: image-url("destination_liban_demo_2.jpg");
+//   // background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_beyrouth_rawcheh_1.jpg");
+//   background-size: cover;
+//   background-position: center top;
+//   background-attachment: fixed;
+//   color: white;
+//   height: 470px;
+//   padding-top: 1px;
+//   h1 {
+//     padding-top: 180px;
+//     font-size: 65px;
+//     text-align: center;
+//   }
+// }
+
+// .onboarding-box {
+//   background-color: white;
+//   border: 1px #c4d9d9 solid;
+//   padding: 16px 16px 16px 16px;
+//   margin-bottom: 15px;
+//   margin-top: 15px;
+//   img {
+//     width: 95%;
+//     border: 1px #F7F7F7 solid;
+//   }
+//   p {
+//     font-size: 20px;
+//   }
+// }
+
+// body.destinations {
+//   background-image: image-url("beachtrip.jpeg");
+//   background-size: cover;
+//   background-position: center top;
+//   background-attachment: fixed;
+//   height: 800px;
+//   padding-top: 56px;
+//   color: white;
+//   margin: 0px;
+//   h2 {
+//     text-align: center;
+//     text-shadow: 0px 0px 3px white, 0px 0px 6px black;
+//     padding-bottom: 30px;
+//     font-weight: 300;
+//     font-size: 25px;
+//   }
+//   h4, a.liban {
+//     color: white;
+//     text-align: center;
+//     margin: 0px;
+//     font-weight: 300;
+//   }
+
+//   .minor-block {
+//     font-size: 1.5em;
+//     font-weight: 300;
+//     color: #525252;
+//     margin: 30px;
+//     padding-bottom: 30px;
+//   }
+//   .form-group{
+//     margin: 10px auto;
+//     padding-top:20px;
+//   }
+
+//   .title {
+//     a {
+//       color: white;
+//       text-decoration: underline;
+//     }
+//   }
+//   .btn {
+//     font-size: 16px;
+//   }
+// }
+
+// @media screen and (max-width: 500px) {
+//   .destinations {
+//     .minor-block {
+//       font-size: 1.4em;
+//     }
+//     input#trip_query {
+//       width: 80%;
+//     }
+//   }
+// }
