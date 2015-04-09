@@ -522,6 +522,8 @@ function buildMapForUser(mapOptions, trip_id) {
     var id = 'all-experiences';
     // demoListenToUserChoicesInsideSelection(trip_id, map);
     displayMarkersAccordingToUserChoices(trip_id, map, id);
+    // Display top from explorizers on landing
+    displayMarkersAccordingToUserChoicesInsideSelection('top-from-explorizers', trip_id, map);
     // KEEP LISTENING AND DISPLAY MARKERS ACCORDING TO USERS CHOICES
     // listenToUserChoices(trip_id, map);
     initializeMapSearchBar('pac-input');
