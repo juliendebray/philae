@@ -87,34 +87,56 @@
 
 <div role="tabpanel" class="tab-pane" id="help-menu">
   <div class="tab-description">
-    <h4>Comment construire mon itinéraire?</h4>
+    <h5><i>A tout moment, tu peux <a href="http://www.explorizers.com/destinations/1" target="_blank" class="text-center">retourner sur la page de présentation du Liban</a></i></h5>
+    <h4>Comment ça marche?</h4>
     <br>
     <p>
-      <strong>1. Découvre les expériences du Liban</strong><br>
-      <ul>
-        <li><p>Retrouve ici les incontournables du Liban, marqués par une étoile</p></li>
-        <li><p>Découvre l'ensemble des expériences au Liban</p></li>
-        <li><p>Clique sur "Sélectionner" ou sur <i class="fa fa-heart"></i> pour construire ton itinéraire</p></li>
-      </ul>
+      <strong>1. Explore les POINTS D'INTERET du Liban</strong><br>
+      <br>
+      <%= image_tag 'http://philae-floju.s3.amazonaws.com/markers/top_2.png'%> indique les points d'intérêt au Liban.
+      <br>
+      <%= image_tag 'http://philae-floju.s3.amazonaws.com/markers/top_must_see.png'%> indique les <b>incontournables</b>!
+      <br>
+      <br>
+      <i class="fa fa-heart-o"></i> permet de sélectionner les points d'intérêt que tu veux retenir
+      <br>
+      <i class="fa fa-heart red"></i> indique que le point d'intérêt est bien sélectionné!
+      <br>
+      <br>
+      Jette un oeil aux itinéraires suggérés
     </p>
     <br>
     <p>
-      <strong>2. Poursuis avec les itinéraires suggérés</strong><br>
-      <ul>
-        <li><p>Un séjour de quelques jours basé à Beyrouth, avec 3 excursions sur la journée</p></li>
-        <li><p>Un parcours d'une semaine pour voir l'essentiel du Liban</p></li>
-      </ul>
-    </p>
-    <br>
-    <p>
-      <strong>3. Finalise avec "Mon voyage"</strong><br>
+      <strong>2. Récupère ton PARCOURS</strong><br>
       <ul>
         <li><p>Retrouve les expériences sélectionnées, et affine ton itinéraire</p></li>
         <li><p>Accède ensuite au résumé de ton voyage, et reçois-le par email</p></li>
       </ul>
     </p>
     <br>
-    <h4><i><a href="http://www.explorizers.com/destinations/1" target="_blank" class="text-center">Retourner sur la page de présentation du Liban</a></i></h4>
+    <p>
+      <strong>3. Partage avec tes amis pour avoir leurs conseils</strong><br>
+      <table>
+        <tbody>
+          <td>
+            <div id="share-bt" class="button-action update-order">
+              <a class="btn btn-facebook" id="sharefb" onclick="ga('send', 'event', 'User', 'Ask advice', 'Ask on facebook button clicked');", data: {toggle: "tooltip"}, placement: "bottom">
+                      Partager sur Facebook
+              </a>
+            </div>
+          </td>
+          <td>ou</td>
+          <td>
+            <div id="share-bt" class="button-action update-order">
+              <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
+                <%= hidden_field_tag :id, value = @trip.id %>
+                <%= f.submit( "Demander par email", onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask with email button clicked');", class:'btn btn-success') %>
+              <% end %>
+            </div>
+          </td>
+        </tbody>
+      </table>
+    </p>
   </div>
 </div>
 

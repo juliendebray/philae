@@ -63,7 +63,7 @@ fr:
       getbyemail: "Recevoir par email "
       creation: "Créé le : "
       lastupdate: "Dernière mise à jour : "
-  summarize_savecomment: "Sauvegarder"
+  summarize_savecomment: "Sauvegarder le commentaire"
   summarize_comment: "Ajouter un commentaire"
 
   #trip_comments:
