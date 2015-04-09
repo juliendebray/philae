@@ -28,7 +28,6 @@
   background-attachment: fixed;
   padding-top: 25%;
   padding-bottom: 25%;
-  padding-top: 35px;
   h2 {
     font-size: 4em;
     letter-spacing: 5px;
@@ -64,6 +63,7 @@ a.destination-collapse:focus {
 
 .destination-content{
   padding: 2% 8%;
+  padding-top: 35px;
   p {
     letter-spacing: .01rem;
     font-weight: 300;
@@ -73,6 +73,11 @@ a.destination-collapse:focus {
   }
 }
 
+#start-planning {
+  position: fixed;
+  right: 10px;
+  top: 60px;
+}
 
 // .destination-box {
 //   // background-color: white;
