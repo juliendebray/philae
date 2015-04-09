@@ -159,7 +159,7 @@ class TripExperiencesController < ApplicationController
         end
       else
         # experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top.png"
-        experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_2.png"
+        experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_2.png"
         marker.picture({
           url: picture_url,
           width:  25,
