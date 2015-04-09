@@ -2,13 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.navbar-wagon .navbar-nav > li > a {
+  color: black;
+}
+
+
 .wrapper.bg-white.black {
   background-color: white;
   color: black;
 }
-.white {
-  color: white;
-}
+// .white {
+//   color: white;
+// }
 .medium {
   letter-spacing: .01rem;
   font-weight: 300;
