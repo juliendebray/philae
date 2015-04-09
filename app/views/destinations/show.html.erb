@@ -66,69 +66,23 @@
   </div>
   </a>
   <div class="collapse" id="collapseMustSee">
+  <br>
+  <br>
      <div class="destination-content">
-      <br>
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-3">
-            <%= image_tag 'http://philae-floju.s3.amazonaws.com/photos_liban/liban_beyrouth_gemmayze_1.jpg', class: 'img-responsive'%>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-9">
-            <p><b>1. Faire la fête à Beyrouth</b><br>
-              <br>Vous visiterez bien d’autres choses à Beyrouth, mais on garde en particulier de bons souvenirs de sa vie nocturne. Un passage par la rue Monnot garantit une soirée / nuit réussie. <br>
-              Avis du Routard: "Vie nocturne animée"</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-3">
-            <%= image_tag 'http://philae-floju.s3.amazonaws.com/photos_liban/liban_jbeil_byblos_une_journee_1.jpg', class: 'img-responsive'%>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-9">
-            <p><b>2. Visiter Jbeil, l'ancienne Byblos</b><br>
-            <br>Plus au nord et plus au calme, ne manquez pas Jbeil, port de pêche entouré de ruines romaines et croisées, l’une des plus belles villes du Liban.<br>
-            "Cadre sublime", selon le Guide du Routard - "Ville pleine de charme", selon le Lonely Planet</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-3">
-            <%= image_tag 'http://philae-floju.s3.amazonaws.com/photos_liban/liban_beiteddine_chouf_3.jpg', class: 'img-responsive'%>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-9">
-              <p><b>3. La Vallée du Chouf</b><br>
-              <br>Pour le Liban pittoresque, direction la vallée du Chouf, et notamment le village de Beiteddine.<br>
-              "Site superbe", selon le Guide du Routard</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-3">
-            <%= image_tag 'http://philae-floju.s3.amazonaws.com/photos_liban/liban_grotte_jeita_2.jpg', class: 'img-responsive'%>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-9">
-              <p><b>4. Grotte de Jeita</b><br>
-              <br>Qu’on soit fan de géologie ou non, l'immense grotte de Jeita doit faire partie du voyage. C’est le site naturel le plus étonnant de la région.<br>
-              "L'une des plus grandes merveilles naturelles du Moyen-Orient", selon le Lonely Planet</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-3">
-            <%= image_tag 'http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg', class: 'img-responsive'%>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-9">
-              <p><b>5. Randonnée dans la vallée sainte de Qadisha</b><br>
-              <br>C'est l'étape nature et culture, car la vallée de Qadisha abrite des monastères cachés, datant des débuts du christianisme. Tout proche, vous irez rendre visite aux Cèdres de Dieu, emblèmes du Liban.<br>
-              "Somptueux paysages naturels", selon le Guide du Routard <br>
-              "Un paradis pour les randonneurs", selon le Lonely Planet</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-3">
-            <%= image_tag 'http://philae-floju.s3.amazonaws.com/photos_liban/liban_baalbek_ruines_1.jpg', class: 'img-responsive'%>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-9">
-              <p><b>(6.) Site antique de Baalbek</b><br>
-              <br>Si la question de la sécurité ne se posait pas (voir les recommandations du Ministère des Affaires étrangères), les férus d’archéologie ne devraient pas passer à côté de Baalbek, qui compte parmi les ruines gréco-romaines les mieux conservées au monde.<br>
-             "Le site archéologique le mieux préservé du Moyen-Orient", selon le Lonely Planet</p>
-          </div>
+          <% Experience.where(destination: Destination.first, must_see:true).each do |experience| %>
+            <%= link_to experience_detail_path(experience.id), remote: true, id: "must-see-img" do %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+              <figure>
+                <figcaption class="text-center"><%=experience.name%></figcaption>
+                <%= image_tag experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:banner), class: "img-responsive" if experience.experience_pictures.first %>
+                <div class="text-center hover-img"><%= experience.average_rating %><small> / 10</small></div>
+              </figure>
+              <br>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -224,5 +178,19 @@
     <br>
     <%= link_to "Découvrir les meilleurs expériences pour le Liban", trips_path(Trip.new, title: 'Liban'), method: :post, class: "btn btn-info btn-lg" %>
     <br>
+  </div>
+</div>
+
+<!-- Experience Modal to display -->
+<div class="modal fade" id="myExperienceModal" tabindex="-1" role="dialog" aria-labelledby="myExperienceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title experience-title text-center" id="myExperienceModalLabel">Chargement...</h4>
+      </div>
+      <div class="modal-body experience-content">
+      </div>
+    </div>
   </div>
 </div>
