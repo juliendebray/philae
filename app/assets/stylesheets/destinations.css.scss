@@ -259,59 +259,59 @@ a.destination-collapse:focus {
 //   }
 // }
 
-// body.destinations {
-//   background-image: image-url("beachtrip.jpeg");
-//   background-size: cover;
-//   background-position: center top;
-//   background-attachment: fixed;
-//   height: 800px;
-//   padding-top: 56px;
-//   color: white;
-//   margin: 0px;
-//   h2 {
-//     text-align: center;
-//     text-shadow: 0px 0px 3px white, 0px 0px 6px black;
-//     padding-bottom: 30px;
-//     font-weight: 300;
-//     font-size: 25px;
-//   }
-//   h4, a.liban {
-//     color: white;
-//     text-align: center;
-//     margin: 0px;
-//     font-weight: 300;
-//   }
+body.destinations {
+  background-image: image-url("beachtrip.jpeg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  height: 800px;
+  padding-top: 56px;
+  color: white;
+  margin: 0px;
+  h2 {
+    text-align: center;
+    text-shadow: 0px 0px 3px white, 0px 0px 6px black;
+    padding-bottom: 30px;
+    font-weight: 300;
+    font-size: 25px;
+  }
+  h4, a.liban {
+    color: white;
+    text-align: center;
+    margin: 0px;
+    font-weight: 300;
+  }
 
-//   .minor-block {
-//     font-size: 1.5em;
-//     font-weight: 300;
-//     color: #525252;
-//     margin: 30px;
-//     padding-bottom: 30px;
-//   }
-//   .form-group{
-//     margin: 10px auto;
-//     padding-top:20px;
-//   }
+  .minor-block {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #525252;
+    margin: 30px;
+    padding-bottom: 30px;
+  }
+  .form-group{
+    margin: 10px auto;
+    padding-top:20px;
+  }
 
-//   .title {
-//     a {
-//       color: white;
-//       text-decoration: underline;
-//     }
-//   }
-//   .btn {
-//     font-size: 16px;
-//   }
-// }
+  .title {
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+  .btn {
+    font-size: 16px;
+  }
+}
 
-// @media screen and (max-width: 500px) {
-//   .destinations {
-//     .minor-block {
-//       font-size: 1.4em;
-//     }
-//     input#trip_query {
-//       width: 80%;
-//     }
-//   }
-// }
+@media screen and (max-width: 500px) {
+  .destinations {
+    .minor-block {
+      font-size: 1.4em;
+    }
+    input#trip_query {
+      width: 80%;
+    }
+  }
+}
