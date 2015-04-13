@@ -1,0 +1,24 @@
+$('.fullpage').css('min-height', $(window).height());
+
+function changeTitleOnHomePage() {
+  var itemList = ['<%= image_tag("ta_logo_rating.png")%>', 'DE facebook', 'DE google', 'DE TES AMIS', 'DE autres']
+  for (var i = 0; i < itemList.length; i++) {
+    console.log(itemList[i]);
+    $('#show-item').css('visibility', 'hidden');
+    sleep(2000);
+    $('#show-item').html(itemList[i]);
+    $('#show-item').css('visibility', 'visible');
+    sleep(4000);
+  }
+}
+
+    // $( "#foo" ).slideUp( 300 ).delay( 800 ).fadeIn( 400 );
+// setInterval(changeTitleOnHomePage, 1000); // boucler
+// function sleep(milliseconds) {
+//   var start = new Date().getTime();
+//   for (var i = 0; i < 1e7; i++) {
+//     if ((new Date().getTime() - start) > milliseconds){
+//       break;
+//     }
+//   }
+// }
