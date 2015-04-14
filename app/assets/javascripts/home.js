@@ -1,1 +1,1 @@
-$('.fullpage').css('min-height', $(window).height());
+// $('.fullpage').css('min-height', $(window).height());
