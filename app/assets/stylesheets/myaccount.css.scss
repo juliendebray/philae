@@ -1,86 +1,42 @@
-body.users {
-  // background-image: image-url("palmtrees.jpeg");
-  background-color: #F7F7F7;
-
-  h2 {
-    color: #525252;
-    // text-shadow: 0px 0px 3px white, 0px 0px 6px black;
-    padding-top: 45px;
-    margin-top: 0px;
-  }
-
-  a {
-    text-align: center;
-    i {
-      font-size: 30px;
-    }
-  }
-
-  .new_trip {
-    background: rgba(0,0,0,0);
-    padding-bottom: 0px;
-    margin: 10px 20px;
-
-    input#trip_query {
-      font-style: normal;
-      font-size: 18px;
-      font-weight: 300;
-      width: 300px;
-    }
-    .btn {
-      font-size: 20px;
-    }
-  }
-
-  .col-xs-12 {
-    padding: 0px;
-    margin: 0px;
-  }
-
-  #user-sidebar {
-    margin-left: 15px;
-    // position: fixed;
-  }
-
-  #user-container-fluid {
-    top: 45;
-    padding-top: 65px;
-  }
-
+#user-sidebar {
+  padding-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 15px;
+  padding-left: 15px;
+  // position: fixed;
   .nav-tabs {
     width: 100%;
     li {
       margin-bottom: 20px;
     }
   }
-
+  a {
+  text-align: center;
+    i {
+      font-size: 30px;
+    }
+  }
   .tabs-left > .nav-tabs {
     border-bottom: 0;
-  }
-
-  .tabs-left > .nav-tabs > li {
-    float: none;
-  }
-
-  .tabs-left > .nav-tabs > li > a{
-    min-width: 74px;
-    margin-right: 0;
-    margin-bottom: 3px;
-  }
-
-  .tabs-left > .nav-tabs {
     float: left;
-    margin-right: 19px;
+    // margin-right: 19px;
     border-right: 1px solid #ddd;
-  }
-
-  .tabs-left > .nav-tabs > li > a {
-    margin-right: -1px;
-    -webkit-border-radius: 4px 0 0 4px;
-       -moz-border-radius: 4px 0 0 4px;
+    li {
+      float: none;
+      a {
+        min-width: 74px;
+        padding-left: 4px;
+        padding-right: 4px;
+        margin-right: 0;
+        margin-bottom: 3px;
+        margin-right: -1px;
+        -webkit-border-radius: 4px 0 0 4px;
+          -moz-border-radius: 4px 0 0 4px;
             border-radius: 4px 0 0 4px;
+      }
+    }
   }
-
   .tabs-left > .nav-tabs > li > a:hover,
   .tabs-left > .nav-tabs > li > a:focus {
     border-color: #eeeeee #dddddd #eeeeee #eeeeee;
@@ -92,39 +48,65 @@ body.users {
     border-color: #ddd transparent #ddd #ddd;
     border-right-color: #ffffff;
   }
+}
+
+#col-user-page {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#user-content {
 
   #user-page-banner {
-    display: inline-block;
-    h2 {
-      color: white;
-      text-shadow: 0px 0px 3px white, 0px 0px 6px black;
-      padding-top: 45px;
-      margin-top: 0px;
-    }
-
-    #user-profile-pic {
-      border: $profile-border-width solid $profile-border-color;
-      box-shadow: 0 0 2px rgb(200, 200, 200);
-      height: 45px;
-      width: 45px;
-      margin-right: 10px;
-      border-radius: $profile-radius;
-    }
-  }
-
-  #user-page-banner{
     background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/Facebook_cover.jpeg");
     height: 400px;
     width: 100%;
     background-size: cover;
     background-position: center bottom;
     background-attachment: fixed;
+    .row {
+      position: absolute;
+    }
+    #profile-pic {
+      margin-top: 18px;
+      margin-left: 16px;
+      border: $profile-border-width solid $profile-border-color;
+      box-shadow: 0 0 2px rgb(200, 200, 200);
+      height: 65px;
+      margin-right: 10px;
+      border-radius: $profile-radius;
+    }
+    h2 {
+      color: white;
+      font-size: 25px;
+      text-shadow: 0px 0px 3px white, 0px 0px 3px black;
+      padding-top: 35px;
+      margin-top: 0px;
+    }
+    #user-quote {
+      padding-top: 15%;
+      color: white;
+    }
   }
-
-  #tab2, #tab3, #tab4, #tab5 {
+  .user-content-detail {
     padding-left: 15px;
     padding-right: 15px;
   }
+  .minor-block {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #525252;
+    margin: 30px;
+    padding-bottom: 30px;
+  }
+  .form-group{
+    margin: 10px auto;
+    padding-top:20px;
+  }
+  .btn {
+    font-size: 16px;
+  }
+}
 
   .tripbox > a {
     color: white;
@@ -140,13 +122,13 @@ body.users {
     font-weight: 300;
     font-size: 15px;
   }
-}
 
-@media screen and (max-width: 500px) {
-  .users {
-    a {
-      color: white;
-      font-weight: 500;
+@media screen and (max-width: 768px) {
+  #user-content {
+    #user-page-banner {
+      #user-quote {
+        padding-top: 35%;
+      }
     }
   }
 }

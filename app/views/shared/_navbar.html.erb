@@ -22,9 +22,9 @@
         <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <% if current_user.provider %>
+ <!--              <% if current_user.provider %>
                 <%= image_tag current_user.picture, id:'profile-pic', class: "img img-circle" %>
-              <% end %>
+              <% end %> -->
 
               <%= current_user.email %> <span class="caret"></span>
             </a>
