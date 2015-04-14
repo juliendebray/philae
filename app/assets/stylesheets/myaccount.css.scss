@@ -1,14 +1,129 @@
 body.users {
-  background-image: image-url("palmtrees.jpeg");
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  height: 800px;
+  // background-image: image-url("palmtrees.jpeg");
+  background-color: #F7F7F7;
 
   h2 {
-    color: white;
-    text-shadow: 0px 0px 3px white, 0px 0px 6px black;
-    padding-top: 80px;
+    color: #525252;
+    // text-shadow: 0px 0px 3px white, 0px 0px 6px black;
+    padding-top: 45px;
+    margin-top: 0px;
+  }
+
+  a {
+    text-align: center;
+    i {
+      font-size: 30px;
+    }
+  }
+
+  .new_trip {
+    background: rgba(0,0,0,0);
+    padding-bottom: 0px;
+    margin: 10px 20px;
+
+    input#trip_query {
+      font-style: normal;
+      font-size: 18px;
+      font-weight: 300;
+      width: 300px;
+    }
+    .btn {
+      font-size: 20px;
+    }
+  }
+
+  .col-xs-12 {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #user-sidebar {
+    margin-left: 15px;
+    // position: fixed;
+  }
+
+  #user-container-fluid {
+    top: 45;
+    padding-top: 65px;
+  }
+
+  .nav-tabs {
+    width: 100%;
+    li {
+      margin-bottom: 20px;
+    }
+  }
+
+  .tabs-left > .nav-tabs {
+    border-bottom: 0;
+  }
+
+  .tabs-left > .nav-tabs > li {
+    float: none;
+  }
+
+  .tabs-left > .nav-tabs > li > a{
+    min-width: 74px;
+    margin-right: 0;
+    margin-bottom: 3px;
+  }
+
+  .tabs-left > .nav-tabs {
+    float: left;
+    margin-right: 19px;
+    border-right: 1px solid #ddd;
+  }
+
+  .tabs-left > .nav-tabs > li > a {
+    margin-right: -1px;
+    -webkit-border-radius: 4px 0 0 4px;
+       -moz-border-radius: 4px 0 0 4px;
+            border-radius: 4px 0 0 4px;
+  }
+
+  .tabs-left > .nav-tabs > li > a:hover,
+  .tabs-left > .nav-tabs > li > a:focus {
+    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+  }
+
+  .tabs-left > .nav-tabs .active > a,
+  .tabs-left > .nav-tabs .active > a:hover,
+  .tabs-left > .nav-tabs .active > a:focus {
+    border-color: #ddd transparent #ddd #ddd;
+    border-right-color: #ffffff;
+  }
+
+  #user-page-banner {
+    display: inline-block;
+    h2 {
+      color: white;
+      text-shadow: 0px 0px 3px white, 0px 0px 6px black;
+      padding-top: 45px;
+      margin-top: 0px;
+    }
+
+    #user-profile-pic {
+      border: $profile-border-width solid $profile-border-color;
+      box-shadow: 0 0 2px rgb(200, 200, 200);
+      height: 45px;
+      width: 45px;
+      margin-right: 10px;
+      border-radius: $profile-radius;
+    }
+  }
+
+  #user-page-banner{
+    background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/Facebook_cover.jpeg");
+    height: 400px;
+    width: 100%;
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
+  }
+
+  #tab2, #tab3, #tab4, #tab5 {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .tripbox > a {

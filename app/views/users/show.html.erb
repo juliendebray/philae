@@ -1,25 +1,100 @@
 <body class="users">
-  <div class="container">
-    <div id="titleblock" class="text-center">
-      <h2><%= t('.mytrips', :default => "My trips") %></h2>
-    </div>
-    <div class="vertical-spacer-xs"></div>
-    <div class="container">
-      <div class="row">
-        <% @user.trips.each do |trip| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="tripbox">
-              <%= link_to "#{trip.title} (créé le #{trip.created_at.strftime('%d-%m-%Y')})", start_trip_path(trip) %>
-              <%= link_to [trip], { method: :delete, data: {confirm: t('.delete')} } do %>
-                <i class= "pull-right fa fa-trash-o"></i>
+  <div class="container-fluid" id="user-container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3 col-md-2">
+        <div id="user-sidebar">
+          <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-user"></i> <br> Accueil</a></li>
+              <li><a href="#tab2" data-toggle="tab"><i class="fa fa-plane"></i> <br>Mes voyages</a></li>
+              <li><a href="#tab3" data-toggle="tab"><i class="fa fa-globe"></i> <br>Ma carte</a></li>
+              <li><a href="#tab4" data-toggle="tab"><i class="fa fa-users"></i> <br>Mes amis</a></li>
+              <li><a href="#tab5" data-toggle="tab"><i class="fa fa-cog"></i> <br>Paramètres</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-10">
+        <div id="user-content">
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+              <div id="user-page-banner" class="text-center">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <h2><%= @user.name %></h2>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
+                      <div class="form-group minor-block" class="text-center">
+                        <%= f.hidden_field(:latitude) %>
+                        <%= f.hidden_field(:longitude) %>
+                        <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
+                        <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p>Destination 1</p>
+                <p>Destination 2</p>
+                <p>Destination 3</p>
+                <p>Destination 1</p>
+                <p>Destination 2</p>
+                <p>Destination 3</p>
+                <p>Destination 1</p>
+                <p>Destination 2</p>
+                <p>Destination 3</p>
+                <p>Destination 1</p>
+                <p>Destination 2</p>
+                <p>Destination 3</p>
+                <p>Destination 1</p>
+                <p>Destination 2</p>
+                <p>Destination 3</p>
+                <p>Destination 1</p>
+                <p>Destination 2</p>
+                <p>Destination 3</p>
+
+              </div>
+            </div>
+
+
+            <div class="tab-pane" id="tab2">
+              <div id="titleblock" class="text-center">
+                <h2>Mes voyages</h2>
+              </div>
+              <% @user.trips.each do |trip| %>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                  <div class="tripbox">
+                    <%= link_to "#{trip.title} (créé le #{trip.created_at.strftime('%d-%m-%Y')})", start_trip_path(trip) %>
+                    <%= link_to [trip], { method: :delete, data: {confirm: t('.delete')} } do %>
+                      <i class= "pull-right fa fa-trash-o"></i>
+                    <% end %>
+                  </div>
+                </div>
               <% end %>
             </div>
+            <div class="tab-pane" id="tab3">
+              <div id="titleblock" class="text-center">
+                <h2>Ma carte</h2>
+              </div>
+              <p>Coming soon!</p>
+            </div>
+            <div class="tab-pane" id="tab4">
+              <div id="titleblock" class="text-center">
+                <h2>Mes amis</h2>
+              </div>
+              <div class="class"></div>
+              <p>Coming soon!</p>
+            </div>
+            <div class="tab-pane" id="tab5">
+              <div id="titleblock" class="text-center">
+                <h2>Paramètres</h2>
+              </div>
+              <p>Coming soon!</p>
+            </div>
           </div>
-        <% end %>
-      </div>
-      <div class="vertical-spacer-xs"></div>
-      <div class="row text-center">
-        <%= link_to t('.new_trip'), root_path, {class: "btn btn-info"} %>
+        </div>
       </div>
     </div>
   </div>
