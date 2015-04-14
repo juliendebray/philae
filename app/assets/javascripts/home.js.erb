@@ -1,17 +1,58 @@
 $('.fullpage').css('min-height', $(window).height());
 
-function changeTitleOnHomePage() {
-  var itemList = ['<%= image_tag("ta_logo_rating.png")%>', 'DE facebook', 'DE google', 'DE TES AMIS', 'DE autres']
-  for (var i = 0; i < itemList.length; i++) {
-    console.log(itemList[i]);
-    $('#show-item').css('visibility', 'hidden');
-    sleep(2000);
-    $('#show-item').html(itemList[i]);
-    $('#show-item').css('visibility', 'visible');
-    sleep(4000);
-  }
-}
+// function changeTitleOnHomePage() {
+//   var itemList = ['DU web', 'DE tripadvisor', 'DE facebook', 'DE google', 'DE foursquare', 'DE tes amis'];
+//   for (var i = 0; i < itemList.length; i++) {
+//     console.log(i);
+//     $('#show-item').animate({opacity: 0.0}, 1000);
+//     $('#show-item').html(itemList[0]);
+//     console.log(itemList[0]);
+//     $('#show-item').animate({opacity: 1.0}, 2000);
+//     $('#show-item').animate({opacity: 0.0}, 1000);
+//     $('#show-item').html(itemList[1]);
+//     console.log(itemList[1]);
+//     $('#show-item').animate({opacity: 1.0}, 2000);
+//     $('#show-item').animate({opacity: 0.0}, 1000);
+//     $('#show-item').html(itemList[2]);
+//     console.log(itemList[2]);
+//     $('#show-item').animate({opacity: 1.0}, 2000);
+//   }
+// }
 
+$(document).ready(function() {
+
+  $("#owl-logo-slider").owlCarousel({
+
+      navigation : false, // Show next and prev buttons
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem:true,
+      itemsScaleUp:true,
+      autoPlay: true,
+      navigationText: false,
+      pagination: false,
+      autoHeight: false,
+      rewindSpeed: 1
+      // "singleItem:true" is a shortcut for:
+      // items : 1,
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+
+  });
+
+});
+
+
+    //     setTimeout(function(){
+    //   $('#show-item').css('visibility', 'hidden');
+    //   setTimeout(function(){
+    //     console.log('set int');
+    //     $('#show-item').html(itemList[i]);
+    //     $('#show-item').css('visibility', 'visible');
+    //   }, 5000);
+    // },2000)
     // $( "#foo" ).slideUp( 300 ).delay( 800 ).fadeIn( 400 );
 // setInterval(changeTitleOnHomePage, 1000); // boucler
 // function sleep(milliseconds) {
