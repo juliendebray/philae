@@ -75,18 +75,26 @@
       </div>
     </div>
     <h2 class="text-center">Destination du moment</h2>
-    <p class='text-center'>EXPLORIZERS te permet de savoir quoi faire et quoi voir lors de ton prochain voyage.</p>
+    <p class='text-center'>Découvre les destinations du moment et laisse toi inspirer.</p>
+    <div class="destination-item text-center" style='position: relative;'>
+      <%= image_tag(Destination.first.picture.url(:banner), class: 'responsive') %>
+      <div class="destination-name text-center" style='position: absolute; top:0px; bottom:0px; margin: auto; height:440px; width:100%;'>
+        <%= Destination.first.name %>
+      </div>
+    </div>
+    <div class="vertical-spacer"></div>
+    <h2 class="text-center">Explore le monde</h2>
+    <p class='text-center'>Parcours la carte des expériences sur le monde entier.</p>
+    <div class="vertical-spacer"></div>
     <div class="vertical-spacer"></div>
   </div>
-  <div class="hp-content">
-
+  <div class="footer">
   </div>
+
   </div>
    <div class="trending">
-            <h4><%= link_to t('.seedestinations'), destinations_path %></h4>
+      <h4><%= link_to t('.seedestinations'), destinations_path %></h4>
     </div>
-
-
   <div class="row">
     <div class="explanation-hp">
       <div class="col-xs-12 col-md-4">
