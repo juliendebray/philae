@@ -1,6 +1,36 @@
-.fullpage {
-  // min-height: 678px;
+// .fullpage {
+//   // min-height: 678px;
 
+// }
+
+.hp-section{
+  background:white;
+  padding: 10px 0px;
+  h2 {
+    color: black;
+    text-shadow: none;
+  }
+  p {
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  .how-header {
+    i {
+      font-size: 8em;
+      color: #0086B8;
+    }
+  }
+  .how-content{
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.5;
+  }
 }
 
 #social_links {
@@ -17,6 +47,7 @@
 }
 
 #homeblock {
+
   .form-group{
     margin: 10px auto;
     padding-top:20px;
@@ -29,7 +60,7 @@
     padding-bottom: 0px;
     font-weight: 700;
   }
-  h2, h3, h4 {
+  h3, h4 {
     color: white;
     padding-bottom: 0px;
     font-weight: 300;
@@ -177,6 +208,9 @@
 
     h1 {
       font-size: 34px;
+    }
+    #references-logos {
+      width: 100%;
     }
 
     .minor-block {
