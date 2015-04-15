@@ -3,6 +3,18 @@
 
 // }
 
+.vcenter{
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+.logo-item {
+  img {
+    max-width: 100%;
+  }
+}
+
+
 .hp-section{
   background:white;
   padding: 10px 0px;
@@ -42,7 +54,7 @@
 
 
 #homeblock {
-  padding-top: 15%;
+  padding-top: 10%;
   padding-bottom: 15%;
 }
 
@@ -128,7 +140,7 @@
 .tr-grey-bg {
   background: rgba(0,0,0,0);
   padding-bottom: 0px;
-  margin: 10px 20px;
+  margin: 10px auto;
 
   input#trip_query {
     font-style: normal;

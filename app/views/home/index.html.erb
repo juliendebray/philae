@@ -16,9 +16,6 @@
       </div>
       <div class="vertical-spacer-xxs"></div>
       <div class="tr-grey-bg">
-        <div>
-          <%= image_tag 'homepage-partners-logos.png', id: 'references-logos' %>
-        </div>
         <% if user_signed_in? %>
         <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
           <div class="form-group minor-block" class="text-center">
@@ -37,8 +34,43 @@
   </div>
 
   <div class="help hp-section">
+    <div class="logo-container container-fluid">
+      <div class="row">
+        <div class="col-xs-4 col-sm-2 vcenter">
+          <div class="logo-item text-center">
+            <%= image_tag('ta_logo.png', alt:'Tripadvisor Logo Officiel') %>
+          </div>
+        </div><!-- Remove space when return to the line
+        --><div class="col-xs-4 col-sm-2 vcenter">
+          <div class="logo-item text-center">
+            <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
+          </div>
+        </div><!-- Remove space when return to the line
+        --><div class="col-xs-4 col-sm-2 vcenter">
+          <div class="logo-item text-center">
+            <%= image_tag('f_logo.png', alt:'Facebook Logo Officiel') %>
+          </div>
+        </div><!-- Remove space when return to the line
+        --><div class="col-xs-4 col-sm-2 vcenter">
+          <div class="logo-item text-center">
+            <%= image_tag('gg_logo.png', alt:'Google Logo Officiel') %>
+          </div>
+        </div><!-- Remove space when return to the line
+        --><div class="col-xs-4 col-sm-2 vcenter">
+          <div class="logo-item text-center">
+            <%= image_tag('fsq_logo.png', alt:'Foursquare Logo Officiel') %>
+          </div>
+        </div><!-- Remove space when return to the line
+        --><div class="col-xs-4 col-sm-2 vcenter">
+          <div class="logo-item text-center">
+            <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vertical-spacer-xs"></div>
     <h2 class="text-center">Comment ça marche ?</h2>
-    <p class='text-center'>EXPLORIZERS te permet de savoir quoi faire et quoi voir lors de ton prochain voyage.</p>
+    <p class='text-center'>EXPLORIZERS te permet de savoir "quoi faire" et "quoi voir" lors de ton prochain voyage en se basant sur les recommandations et services des principaux sites de voyages.</p>
     <div class="vertical-spacer"></div>
     <div class="container">
       <div class="row">
