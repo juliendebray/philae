@@ -1,7 +1,12 @@
 class ExperiencesController < ApplicationController
-  before_action :authenticate_user!, except: [:detail, :show]
+  before_action :authenticate_user!, except: [:detail, :show, :map]
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   respond_to :js, only: [:detail, :detail_for_user]
+
+  def map
+    @experiences = Experience.where(published: true)
+    @markers = build_markers_global_map(@experiences)
+  end
 
   def detail
     @experience = Experience.find(params[:experience_id])
@@ -83,5 +88,28 @@ class ExperiencesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
       params.require(:experience).permit(:name, :address, :description, :category_id, :must_see, :unesco, :thousand_places, experience_pictures_attributes: [:picture])
+    end
+
+    def build_markers_global_map(experiences)
+      Gmaps4rails.build_markers(experiences) do |experience, marker|
+        marker.lat experience.latitude
+        marker.lng experience.longitude
+        marker.title experience.name
+        picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_2.png"
+        marker.picture({
+          url: picture_url,
+          width:  25,
+          height: 39
+        })
+        marker.json({
+          infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+            experience: experience,
+            trip: false,
+            trip_experience: false,
+            guest_user: true
+          }),
+          experience_id: experience.id,
+        })
+      end
     end
 end

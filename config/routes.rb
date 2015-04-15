@@ -2,10 +2,7 @@ Rails.application.routes.draw do
 
   resources :sitemap, only: [:index]
 
-
   ActiveAdmin.routes(self)
-
-
 
   get 'connections/new'
   post '/trips/:trip_id/trip_experiences/create_with_new_experience', to: 'trip_experiences#create_with_new_experience', as: 'experience_within_trip'
@@ -17,6 +14,7 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
+    get :map, to: 'experiences#map'
 
     resources :providers, only: [:index, :show]
 

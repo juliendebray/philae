@@ -1,5 +1,135 @@
-.fullpage {
-  min-height: 678px;
+footer {
+  background: #2b2d2e;
+  color: #fff;
+  padding: 3em 0;
+  .social {
+    li {
+      padding: 4%;
+      line-height: 140%;
+    }
+  }
+  i.fa-2x {
+    font-size: 2.5em;
+  }
+}
+
+
+.destination-item:hover {
+  img {
+    filter: grayscale(25%);
+    -webkit-filter: grayscale(25%);
+    -moz-filter: grayscale(25%);
+    -ms-filter: grayscale(25%);
+    -o-filter: grayscale(25%);
+  }
+  .destination-name {
+    display: block
+  }
+}
+.destination-item {
+  position: relative;
+}
+
+.destination-name {
+  display: none;
+  font-size: 4em;
+  letter-spacing: 5px;
+  color: white;
+  text-shadow: 0px 0px 6px white, 0px 0px 3px black;
+  position: absolute;
+  top:0px;
+  bottom:0px;
+  margin: auto;
+  height:440px;
+  width:100%;
+  padding-top: 13%;
+  small {
+    font-size: 26px;
+    font-weight: 300;
+  }
+}
+
+#homeblock, .fullpage, .homepage_story {
+  height: 100%;
+}
+
+.vcenter{
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+.logo-item {
+  img {
+    max-width: 100%;
+  }
+}
+
+.title {
+  padding: 10px;
+}
+
+div.homepage_story {
+  background-image: image-url("lonely.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  // color: #238BFF;
+  padding-top: 56px;
+
+  .story {
+    color: white;
+    // height: 800px;
+  }
+  h2 {
+  // text-align: center;
+  // color: white;
+  // text-shadow: 0px 0px 3px white, 0px 0px 6px black;
+  // padding-bottom: 30px;
+  }
+
+  h3 {
+    padding-bottom: 40px;
+  }
+
+  h4 {
+    color: white;
+    font-weight: 300;
+  }
+
+  a {
+    color: white;
+    text-size: 16px;
+  }
+}
+
+.hp-section{
+  background:white;
+  padding: 10px 0px;
+  h2 {
+    color: black;
+    text-shadow: none;
+  }
+  p {
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  .how-header {
+    i {
+      font-size: 8em;
+      color: #0086B8;
+    }
+  }
+  .how-content{
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.5;
+  }
 }
 
 #social_links {
@@ -11,10 +141,12 @@
 
 
 #homeblock {
-  padding-top: 3%;
+  padding-top: 10%;
+  padding-bottom: 15%;
 }
 
 #homeblock {
+
   .form-group{
     margin: 10px auto;
     padding-top:20px;
@@ -22,13 +154,15 @@
 
   h1 {
     color: white;
-    text-shadow: 0px 0px 20px white, 0px 0px 10px black;
+    text-shadow: 0px 0px 4px white, 0px 0px 2px black;
+    font-size: 60px;
     padding-bottom: 0px;
+    font-weight: 700;
   }
-  h2, h3, h4 {
+  h3, h4 {
     color: white;
-    // text-shadow: 0px 0px 0px white, 0px 0px 0px black;
     padding-bottom: 0px;
+    font-weight: 300;
     a {
       padding-left: 14px;
       padding-right: 14px;
@@ -36,6 +170,13 @@
   }
   h3 {
     font-size: 22px;
+  }
+
+  #references-logos {
+    width: 75%;
+    background: white;
+    border-radius: 15px;
+    padding: 3px 10px;
   }
 
   .minor-block {
@@ -59,6 +200,8 @@
 
   .btn {
     font-size: 20px;
+    font-weight: 500;
+    // font-variant: small-caps;
   }
 
   .row {
@@ -84,7 +227,10 @@
 .tr-grey-bg {
   background: rgba(0,0,0,0);
   padding-bottom: 0px;
-  margin: 10px 20px;
+  margin: 10px auto;
+  a {
+    white-space: normal;
+  }
 
   input#trip_query {
     font-style: normal;
@@ -161,6 +307,13 @@
 
 @media screen and (max-width: 500px) {
   #homeblock {
+    h1 {
+      font-size: 34px;
+    }
+    #references-logos {
+      width: 100%;
+    }
+
     .minor-block {
       font-size: 1.4em;
     }
@@ -175,5 +328,8 @@
       font-style: oblique;
       font-size: 300;
     }
+  }
+  .destination-name {
+    display: block
   }
 }

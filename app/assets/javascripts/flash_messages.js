@@ -1,1 +1,1 @@
-  $('#flash-message').addClass('class-flash').delay(5000).fadeOut();
+  $('.notices').delay(5000).fadeOut();

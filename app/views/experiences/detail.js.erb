@@ -8,7 +8,7 @@ $( document ).ready(function() {
 
   $('.experience-content').html(
     '<%= j render("experience_modal.html.erb",
-    {experience: @experience, trip: @trip, trip_experiences: @trip_experiences} ) %>'
+    {experience: @experience, trip: @trip, trip_experiences: @trip_experiences, global_map: true} ) %>'
   );
   $('.experience-title').html('<%= j @experience.name %>');
   $(".owl-carousel.banner").owlCarousel({
