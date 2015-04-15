@@ -4,6 +4,7 @@
   margin-right: 0px;
   margin-top: 15px;
   padding-left: 15px;
+  fixed-width: 45px;
   // position: fixed;
   .nav-tabs {
     width: 100%;
@@ -13,6 +14,7 @@
   }
   a {
   text-align: center;
+  font-size: 12px;
     i {
       font-size: 30px;
     }
@@ -57,13 +59,16 @@
 
 #user-content {
 
+  h2 {
+    margin-top: 10px;
+  }
   #user-page-banner {
-    background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/Facebook_cover.jpeg");
-    height: 400px;
+    background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/banners/user_page_banner.jpeg");
+    height: 250px;
     width: 100%;
     background-size: cover;
-    background-position: center bottom;
-    background-attachment: fixed;
+    background-position: center 75%;
+    // background-attachment: fixed;
     .row {
       position: absolute;
     }
@@ -77,21 +82,59 @@
       border-radius: $profile-radius;
     }
     h2 {
-      color: white;
-      font-size: 25px;
-      text-shadow: 0px 0px 3px white, 0px 0px 3px black;
       padding-top: 35px;
       margin-top: 0px;
     }
     #user-quote {
-      padding-top: 15%;
+      position: relative;
+      width: 100%;
       color: white;
+      top: 220px;
+      margin-bottom: 0px;
+      p {
+        margin-bottom: 0px;
+        font-weight: 300;
+      }
     }
   }
   .user-content-detail {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 40px;
+    .trip_image {
+      img {
+        width: 100%;
+        background-size: cover;
+        background-position: center bottom;
+        background-attachment: fixed;
+      }
+    }
   }
+  #user-trips-banner {
+    background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/banners/user-trips-banner.jpeg");
+    height: 200px;
+    width: 100%;
+    background-size: cover;
+    background-position: center bottom;
+  }
+
+  #user-friends-banner {
+    background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/banners/user_friends_banner_2.JPG");
+    height: 200px;
+    width: 100%;
+    background-size: cover;
+    background-position: center bottom 30%;
+  }
+
+  #user-settings-banner {
+    background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/banners/user_settings_banner_2.jpg");
+    height: 200px;
+    width: 100%;
+    background-size: cover;
+    background-position: center bottom 50%;
+  }
+
+
   .minor-block {
     font-size: 1.5em;
     font-weight: 300;
@@ -113,21 +156,83 @@
   }
 
   .tripbox {
-    background: rgba(0,0,0,0.2);
-    color: lightgrey;
-    margin: 10px auto;
-    padding: 10px 10px;
-    border-radius: 5px;
+    width: 100%;
+    background: rgba(0,0,0,0.1);
+    color: #525252;
     text-align: center;
-    font-weight: 300;
-    font-size: 15px;
+    // font-weight: 300;
+    // font-size: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    .trip_title {
+      font-weight: 300;
+      font-size: 25px;
+      a {
+        color: #525252;
+      }
+      i {
+        font-size: 15px;
+        padding-right: 5px;
+        padding-top: 5px;
+      }
+      .fa {
+        margin-left: -20px;
+      }
+    }
+    .trip_details {
+      font-weight: 300;
+      font-size: 15px;
+      a {
+        color: #525252;
+      }
+      p {
+        margin-bottom: 0px;
+      }
+    }
+
   }
 
 @media screen and (max-width: 768px) {
   #user-content {
     #user-page-banner {
       #user-quote {
-        padding-top: 35%;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .tripbox {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    padding: 0px;
+  }
+  #user-content {
+    .user-content-detail {
+      .trip_image {
+        img {
+          width: 100%;
+          background-size: cover;
+          background-position: center bottom;
+          background-attachment: fixed;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1110px) {
+  #user-content {
+    #user-page-banner {
+      #user-quote {
+        top: 200px;
       }
     }
   }
