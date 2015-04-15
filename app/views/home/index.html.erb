@@ -26,13 +26,12 @@
           </div>
           <% end %>
         <% else %>
-          <div class="vertical-spacer-xs"></div>
+          <div class="vertical-spacer"></div>
           <h3><%= link_to 'INSCRIPTION GRATUITE', new_user_registration_path,  {class: "btn btn-info btn-lg"}%></h3>
         <% end %>
       </div>
     </div>
   </div>
-
   <div class="help hp-section">
     <div class="logo-container container-fluid">
       <div class="row">
@@ -71,7 +70,7 @@
     <div class="vertical-spacer-xs"></div>
     <h2 class="text-center">Comment ça marche ?</h2>
     <p class='text-center'>EXPLORIZERS te permet de savoir "quoi faire" et "quoi voir" lors de ton prochain voyage en se basant sur les recommandations et services des principaux sites de voyages.</p>
-    <div class="vertical-spacer"></div>
+    <div class="vertical-spacer-sm"></div>
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-4 text-center text-contrast">
@@ -123,10 +122,9 @@
   <div class="footer">
   </div>
 
+  <div class="trending">
+    <h4><%= link_to t('.seedestinations'), destinations_path %></h4>
   </div>
-   <div class="trending">
-      <h4><%= link_to t('.seedestinations'), destinations_path %></h4>
-    </div>
   <div class="row">
     <div class="explanation-hp">
       <div class="col-xs-12 col-md-4">
@@ -149,7 +147,6 @@
       </div>
     </div>
   </div>
-
   <div class="vertical-spacer-xs"></div>
   <div id="social_links">
     <a href="https://www.facebook.com/explorizers" target="_blank">

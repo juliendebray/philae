@@ -44,6 +44,11 @@ $font-family-sans-serif: 'Roboto';
 
 // General customized styles
 
+html, body {
+  height: 100%;
+}
+
+
 .btn, input, button, .modal-content, ul.dropdown-menu {
     border-radius: 0px;
 }
@@ -101,7 +106,6 @@ div.homepage_story {
   background-position: center top;
   background-attachment: fixed;
   // color: #238BFF;
-  height: 80%;
   padding-top: 56px;
 
   .story {
