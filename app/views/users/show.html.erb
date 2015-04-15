@@ -73,7 +73,7 @@
                         <p>XX conseils d'amis</p>
                         <%= bootstrap_form_for(trip, html: { multipart: true}) do |f| %>
                           <div class="field">
-                            <%= f.file_field :picture %>
+                            <%= f.file_field :picture, hide_label: true %>
                             <p><%= f.submit %></p>
                           </div>
                         <% end %>
@@ -97,8 +97,52 @@
                   <h2>Mes amis</h2>
                 </div>
               </div>
+              <p>Coming soon!</p>
               <div class="user-content-detail">
-                <p>Coming soon!</p>
+                <h3>Envoyer une demande par email</h3>
+                <%= form_tag(user_relationships_path(current_user)) do %>
+                  <%= text_field_tag :email %>
+                  <%= submit_tag 'Send request' %>
+                <% end %>
+
+                <div class="row">
+
+                  <div class="col-xs-12 col-sm-3">
+                    <h3>Mes demandes</h3>
+                    <h4>Envoyées</h4>
+                    <ul>
+                      <% current_user.relationships.where(sender_id: current_user.id).where(status: 'pending').each do |r| %>
+                        <li>
+                          <%= "#{User.find(r.friend_id).email} - #{r.created_at}" %>
+                        </li>
+                      <% end %>
+                    </ul>
+                    <h4>Reçues</h4>
+                    <ul>
+                      <% current_user.relationships.where.not(sender_id: current_user).where(status: 'pending').each do |r| %>
+                        <li>
+                          <%= "#{User.find(r.sender_id).email} - #{r.created_at}" %>
+                          <%= link_to 'Accept', user_relationship_path(current_user, r),
+                            method: :patch %>
+                          <%= link_to 'Decline', user_relationship_path(current_user, r),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                  <h3>Liste des amis</h3>
+                  <ul>
+                    <% current_user.relationships.where(status: 'accepted').each do |r| %>
+                      <li>
+                        <%= "#{User.find(r.friend_id).email} - #{r.created_at}" %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="tab-pane" id="tab5">
