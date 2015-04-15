@@ -7,7 +7,7 @@
 <div class="homepage_story">
   <div class="fullpage">
     <div id="homeblock" class="banner text-center">
-      <div class="title">
+      <div class="title fader">
         <h1><%= t('.firstline') %></h1>
         <!-- <div class="vertical-spacer-xs"></div> -->
         <h3>Le meilleur du web pour organiser le voyage de tes rêves</h3>
@@ -25,7 +25,7 @@
           <% end %>
         <% else %>
           <div class="vertical-spacer"></div>
-          <h3><%= link_to 'INSCRIPTION GRATUITE', new_user_registration_path,  {class: "btn btn-info btn-lg"}%></h3>
+          <h3><%= link_to 'INSCRIPTION GRATUITE', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
         <% end %>
       </div>
     </div>
@@ -159,7 +159,7 @@
           </ul>
         </div>
         <div class="col-sm-3">
-          <h4>Langue</h4>
+          <h4>Langues</h4>
           <ul class="list-unstyled">
             <li>
               <a href="/en">English</a>
