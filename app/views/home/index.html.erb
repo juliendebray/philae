@@ -108,7 +108,7 @@
     <p class='text-center'>Découvre les destinations du moment et laisse toi inspirer.</p>
     <%= link_to Destination.first do %>
       <div class="destination-item text-center">
-        <%= image_tag(Destination.first.picture.url(:banner), class: 'responsive') %>
+        <%= image_tag(Destination.first.picture.url(:banner), class: 'max-width') %>
         <div class="destination-name text-center">
           <%= Destination.first.name %>
           <br>
@@ -121,7 +121,7 @@
     <p class='text-center'>Parcours la carte des expériences sur le monde entier.</p>
     <%= link_to map_path do %>
       <div class="destination-item text-center">
-        <%= image_tag('maphands.jpg', width: 851, height: 440) %>
+        <%= image_tag('maphands.jpg', width: 851, height: 440, class: 'max-width') %>
         <div class="destination-name text-center">
           Carte interactive
           <br>
@@ -129,7 +129,6 @@
         </div>
       </div>
     <% end %>
-    <div class="vertical-spacer"></div>
     </div>
   <footer>
     <div class="container">

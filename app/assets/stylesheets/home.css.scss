@@ -13,6 +13,9 @@ footer {
   }
 }
 
+.max-width {
+  max-width:100%;
+}
 
 .destination-item:hover {
   img {
@@ -104,7 +107,7 @@ div.homepage_story {
 
 .hp-section{
   background:white;
-  padding: 10px 0px;
+  padding: 10px 0px 0px 0px;
   h2 {
     color: black;
     text-shadow: none;
@@ -330,6 +333,8 @@ div.homepage_story {
     }
   }
   .destination-name {
-    display: block
+    display: block;
+    font-size: 1.5em;
+    padding-top: 43%;
   }
 }
