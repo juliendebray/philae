@@ -119,7 +119,7 @@
     <div class="vertical-spacer"></div>
     <h2 class="text-center">Explore le monde</h2>
     <p class='text-center'>Parcours la carte des expériences sur le monde entier.</p>
-    <a href="#">
+    <%= link_to map_path do %>
       <div class="destination-item text-center">
         <%= image_tag('maphands.jpg', width: 851, height: 440) %>
         <div class="destination-name text-center">
@@ -128,10 +128,9 @@
           <small>Voir les expériences du monde entier</small>
         </div>
       </div>
-    </a>
+    <% end %>
     <div class="vertical-spacer"></div>
     </div>
-
   <footer>
     <div class="container">
       <div class="row">
@@ -197,8 +196,6 @@
     </div>
   </footer>
 </div>
-
-
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
 <% end %>
