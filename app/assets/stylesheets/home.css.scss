@@ -33,13 +33,9 @@
   }
 }
 
-
-
 #homeblock, .fullpage, .homepage_story {
   height: 100%;
 }
-
-
 
 .vcenter{
   display: inline-block;
@@ -51,7 +47,6 @@
     max-width: 100%;
   }
 }
-
 
 .title {
   padding: 10px;
@@ -296,7 +291,6 @@ div.homepage_story {
 
 @media screen and (max-width: 500px) {
   #homeblock {
-
     h1 {
       font-size: 34px;
     }
@@ -318,5 +312,8 @@ div.homepage_story {
       font-style: oblique;
       font-size: 300;
     }
+  }
+  .destination-name {
+    display: block
   }
 }
