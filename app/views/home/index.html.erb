@@ -107,12 +107,16 @@
     </div>
     <h2 class="text-center">Destination du moment</h2>
     <p class='text-center'>Découvre les destinations du moment et laisse toi inspirer.</p>
-    <div class="destination-item text-center" style='position: relative;'>
-      <%= image_tag(Destination.first.picture.url(:banner), class: 'responsive') %>
-      <div class="destination-name text-center" style='position: absolute; top:0px; bottom:0px; margin: auto; height:440px; width:100%;'>
-        <%= Destination.first.name %>
+    <%= link_to Destination.first do %>
+      <div class="destination-item text-center">
+        <%= image_tag(Destination.first.picture.url(:banner), class: 'responsive') %>
+        <div class="destination-name text-center">
+          <%= Destination.first.name %>
+          <br>
+          <small>Découvrir les meilleures expériences</small>
+        </div>
       </div>
-    </div>
+    <% end %>
     <div class="vertical-spacer"></div>
     <h2 class="text-center">Explore le monde</h2>
     <p class='text-center'>Parcours la carte des expériences sur le monde entier.</p>

@@ -96,44 +96,6 @@ html, body {
   margin-top: 30px;
 }
 
-.title {
-  padding: 10px;
-}
-
-div.homepage_story {
-  background-image: image-url("lonely.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  // color: #238BFF;
-  padding-top: 56px;
-
-  .story {
-    color: white;
-    height: 800px;
-  }
-  h2 {
-  // text-align: center;
-  // color: white;
-  // text-shadow: 0px 0px 3px white, 0px 0px 6px black;
-  // padding-bottom: 30px;
-  }
-
-  h3 {
-    padding-bottom: 40px;
-  }
-
-  h4 {
-    color: white;
-    font-weight: 300;
-  }
-
-  a {
-    color: white;
-    text-size: 16px;
-  }
-}
-
 .vertical-spacer {
   height: 6em;
 }
