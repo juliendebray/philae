@@ -1,11 +1,9 @@
 <% content_for :navbar_hp_css do %>
   <%= stylesheet_link_tag 'navbar_hp' %>
 <% end %>
-
 <% content_for :logo_hp do %>
   <%= true %>
 <% end %>
-
 <div class="homepage_story">
   <div class="fullpage">
     <div id="homeblock" class="banner text-center">
@@ -33,10 +31,10 @@
     </div>
   </div>
   <div class="help hp-section">
-
     <div class="vertical-spacer-xs"></div>
     <h2 class="text-center">Comment ça marche ?</h2>
     <p class='text-center'>EXPLORIZERS te permet de savoir "quoi faire" et "quoi voir" lors de ton prochain voyage en se basant sur les recommandations et services des principaux sites de voyages.</p>
+    <div class="vertical-spacer-sm"></div>
     <div class="logo-container container-fluid">
       <div class="row">
         <div class="col-xs-4 col-sm-2 vcenter">
@@ -71,7 +69,7 @@
         </div>
       </div>
     </div>
-    <div class="vertical-spacer-sm"></div>
+    <div class="vertical-spacer"></div>
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-4 text-center text-contrast">
@@ -121,59 +119,84 @@
     <div class="vertical-spacer"></div>
     <h2 class="text-center">Explore le monde</h2>
     <p class='text-center'>Parcours la carte des expériences sur le monde entier.</p>
+    <a href="#">
+      <div class="destination-item text-center">
+        <%= image_tag('maphands.jpg', width: 851, height: 440) %>
+        <div class="destination-name text-center">
+          Carte interactive
+          <br>
+          <small>Voir les expériences du monde entier</small>
+        </div>
+      </div>
+    </a>
     <div class="vertical-spacer"></div>
-    <div class="vertical-spacer"></div>
-  </div>
-  <div class="footer">
-  </div>
+    </div>
 
-  <div class="trending">
-    <h4><%= link_to t('.seedestinations'), destinations_path %></h4>
-  </div>
-  <div class="row">
-    <div class="explanation-hp">
-      <div class="col-xs-12 col-md-4">
-        <div class="box-content text-center">
-          <h4><%= t('.thirdline_title') %></h4>
-          <h5><%= t('.thirdline') %></h5>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <h4>Explorizers</h4>
+          <ul class="list-unstyled">
+            <%= link_to t('ourstorynav'), story_index_path %>
+            <li><a href="#">Blog</a></li>
+            <li><%= link_to t('ourcontact'), new_contact_path %></a></li>
+            <li><a href="mailto:dora@explorizers.com">Presse</a></li>
+          </ul>
         </div>
-      </div>
-      <div class="col-xs-12 col-md-4">
-        <div class="box-content text-center">
-          <h4><%= t('.fourthline_title') %></h4>
-          <h5><%= t('.fourthline') %></h5>
+        <div class="col-sm-3">
+          <h4>Découvrir</h4>
+          <ul class="list-unstyled">
+              <li>
+                <%= link_to t('nav_destinations'), destinations_path %>
+              </li>
+              <li>
+                <%= link_to t('contribute'), new_experience_path %>
+              </li>
+              <li>
+                <%= link_to 'Prestataires', providers_path %>
+              </li>
+          </ul>
         </div>
-      </div>
-      <div class="col-xs-12 col-md-4">
-        <div class="box-content text-center">
-          <h4><%= t('.fifthline_title') %></h4>
-          <h5><%= t('.fifthline') %></h5>
+        <div class="col-sm-3">
+          <h4>Langue</h4>
+          <ul class="list-unstyled">
+            <li>
+              <a href="/en">English</a>
+            </li>
+            <li>
+              <a href="/">Français</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-3">
+          <ul  class="list-inline social text-center">
+            <li>
+              <a href="https://www.facebook.com/explorizers" target="_blank">
+                <i class="fa fa-facebook fa-2x"></i>
+              </a>
+            </li>
+            <li>
+              <a href="http://instagram.com/explorizers/" target="_blank">
+                <i class="fa fa-instagram fa-2x"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.pinterest.com/explorizers/" target="_blank">
+                <i class="fa fa-pinterest fa-2x"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/Explorizers_" target="_blank">
+                <i class="fa fa-twitter fa-2x"></i>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  </div>
-  <div class="vertical-spacer-xs"></div>
-  <div id="social_links">
-    <a href="https://www.facebook.com/explorizers" target="_blank">
-      <i class="fa fa-facebook fa-2x"></i>
-    </a>
-    <a href="http://instagram.com/explorizers/" target="_blank">
-      <i class="fa fa-instagram fa-2x"></i>
-    </a>
-    <a href="https://www.pinterest.com/explorizers/" target="_blank">
-      <i class="fa fa-pinterest fa-2x"></i>
-    </a>
-    <a href="https://twitter.com/Explorizers_" target="_blank">
-      <i class="fa fa-twitter fa-2x"></i>
-    </a>
-    <div class="vertical-spacer-xs"></div>
-  </div>
+  </footer>
 </div>
-
-
-
-
-
 
 
 <%= content_for(:before_js) do %>
