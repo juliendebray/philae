@@ -80,6 +80,7 @@ div.homepage_story {
   padding-top: 56px;
   // overflow: scroll;
   // width: 100%;
+  -webkit-overflow-scrolling: touch;
 
   .story {
     color: white;
