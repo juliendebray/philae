@@ -1,19 +1,24 @@
+#user-container-fluid {
+  margin-top: 10px;
+  h2 {
+    padding-top: 0px;
+    margin-top: 0px;
+  }
+}
+
 #user-sidebar {
-  // background-color: #F7F7F7;
+  background-color: #F7F7F7;
   padding-right: 0px;
   margin-left: 0px;
   margin-right: 0px;
-  margin-top: 10px;
-  // padding-left: 15px;
   fixed-width: 45px;
-  min-height: 678px;
-
   // position: fixed;
+  height: 678px;
   .nav-tabs {
     background-color: #F7F7F7;
     width: 100%;
     li {
-      margin-bottom: 20px;
+      // margin-bottom: 20px;
     }
   }
   a {
@@ -68,9 +73,10 @@
 }
 
 #user-content {
+  // padding-top: 1px;
 
   h2 {
-    margin-top: 10px;
+    // margin-top: 10px;
   }
   #user-page-banner {
     background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/banners/user_page_banner.jpeg");
@@ -93,7 +99,7 @@
     }
     h2 {
       padding-top: 35px;
-      margin-top: 0px;
+      margin-top: 5px;
     }
     #user-quote {
       position: relative;
@@ -144,7 +150,6 @@
     background-position: center bottom 50%;
   }
 
-
   .minor-block {
     font-size: 1.5em;
     font-weight: 300;
@@ -154,7 +159,7 @@
   }
   .form-group{
     margin: 10px auto;
-    padding-top:20px;
+    padding-top: 20px;
   }
   .btn {
     font-size: 16px;
