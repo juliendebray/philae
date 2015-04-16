@@ -1,22 +1,4 @@
-footer {
-  background: #2b2d2e;
-  color: #fff;
-  padding: 3em 0;
-  .social {
-    li a {
-      display: inline-block;
-      height: 40px;
-      width: 40px;
-      font-size: 25px;
-      border-radius: 50%;
-      border: 2px solid #CCCCCC;
-      line-height: 140%;
-    }
-    li a:hover {
-      border-color: white;
-    }
-  }
-}
+
 
 .max-width {
   max-width:100%;
@@ -152,6 +134,10 @@ div.homepage_story {
   }
 }
 
+.experience-promo {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
 #homeblock {
   padding-top: 10%;
