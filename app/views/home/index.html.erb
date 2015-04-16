@@ -15,6 +15,7 @@
       <div class="vertical-spacer-xxs"></div>
       <div class="tr-grey-bg">
         <% if user_signed_in? %>
+<<<<<<< HEAD
         <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
           <div class="form-group minor-block" class="text-center">
             <%= f.hidden_field(:latitude) %>
@@ -23,6 +24,16 @@
             <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
           </div>
         <% end %>
+=======
+          <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
+            <div class="form-group minor-block" class="text-center">
+              <%= f.hidden_field(:latitude) %>
+              <%= f.hidden_field(:longitude) %>
+              <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
+              <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
+            </div>
+          <% end %>
+>>>>>>> bb6836c890998d5154243e01e39e41bc1cb3c22c
         <% else %>
           <div class="vertical-spacer"></div>
           <h3><%= link_to 'INSCRIPTION GRATUITE', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
@@ -172,22 +183,22 @@
           <ul  class="list-inline social text-center">
             <li>
               <a href="https://www.facebook.com/explorizers" target="_blank">
-                <i class="fa fa-facebook fa-2x"></i>
+                <i class="fa fa-facebook"></i>
               </a>
             </li>
             <li>
               <a href="http://instagram.com/explorizers/" target="_blank">
-                <i class="fa fa-instagram fa-2x"></i>
+                <i class="fa fa-instagram"></i>
               </a>
             </li>
             <li>
               <a href="https://www.pinterest.com/explorizers/" target="_blank">
-                <i class="fa fa-pinterest fa-2x"></i>
+                <i class="fa fa-pinterest"></i>
               </a>
             </li>
             <li>
               <a href="https://twitter.com/Explorizers_" target="_blank">
-                <i class="fa fa-twitter fa-2x"></i>
+                <i class="fa fa-twitter"></i>
               </a>
             </li>
           </ul>
