@@ -55,11 +55,11 @@
                         <% if trip.picture_file_name %>
                           <%= image_tag trip.picture.url(:medium) %>
                         <% else %>
-                          <%= link_to(image_tag('beachtrip.jpeg'),start_trip_path(trip)) %>
+                          <%= link_to(image_tag('beachtrip.jpeg'), user_trip_path(@user,trip)) %>
                         <% end %>
                       </div>
                       <div class="trip_title">
-                        <%= link_to "#{trip.title}", start_trip_path(trip) %>
+                        <%= link_to "#{trip.title}", user_trip_path(@user,trip) %>
                         <%= link_to [trip], { method: :delete, data: {confirm: t('.delete')} } do %>
                           <i class= "pull-right fa fa-trash-o"></i>
                         <% end %>

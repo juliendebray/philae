@@ -4,7 +4,6 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display]
   respond_to :js, only: [:selection_display, :share_trip_email]
 
-
   def create
     # Libanese demo
     if params[:title] && params[:title] == 'Liban'
@@ -43,6 +42,14 @@ class TripsController < ApplicationController
     end
   end
 
+  def show
+    @guest_user = false
+    @trip = current_user.trips.find(params[:id])
+    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
+  end
+
   def update
     @trip.update(user_id: current_user.id)
     if params[:order]
@@ -64,15 +71,6 @@ class TripsController < ApplicationController
   # Lebanes demo
   def selection_display
     @destination = Destination.first
-  end
-
-  def show
-    @guest_user = false
-    @trip = current_user.trips.find(params[:id])
-    # set_orders_if_nil!(@trip.trip_experiences)
-    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
-      te.order
-    end
   end
 
   # Libanese demo
