@@ -1,15 +1,15 @@
 <div class="wrapper">
   <div class="container-fluid" id="user-container-fluid">
     <div class="row">
-      <div class="col-xs-12 col-sm-2 col-md-1" id="col-user-page">
+      <div class="col-xs-12 col-sm-2 col-md-1" id="col-side-bar">
         <div id="user-sidebar">
           <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
             <ul class="nav nav-tabs">
               <li><a href="#tab1" data-toggle="tab"><i class="fa fa-user"></i> <br> Accueil</a></li>
               <li class="active"><a href="#tab2" data-toggle="tab"><i class="fa fa-plane"></i> <br>Mes voyages</a></li>
-              <li><a href="#tab3" data-toggle="tab"><i class="fa fa-globe"></i> <br>Ma carte</a></li>
+<!--               <li><a href="#tab3" data-toggle="tab"><i class="fa fa-globe"></i> <br>Ma carte</a></li>
               <li><a href="#tab4" data-toggle="tab"><i class="fa fa-users"></i> <br>Mes amis</a></li>
-              <li><a href="#tab5" data-toggle="tab"><i class="fa fa-cog"></i> <br>Paramètres</a></li>
+              <li><a href="#tab5" data-toggle="tab"><i class="fa fa-cog"></i> <br>Paramètres</a></li> -->
             </ul>
           </div>
         </div>
@@ -36,9 +36,9 @@
                 </div>
               </div>
               <div class="user-content-detail">
-                <p>Destination 1</p>
+<!--                 <p>Destination 1</p>
                 <p>Destination 2</p>
-                <p>Destination 3</p>
+                <p>Destination 3</p> -->
               </div>
             </div>
             <div class="tab-pane active" id="tab2">
@@ -64,12 +64,10 @@
                           <i class= "pull-right fa fa-trash-o"></i>
                         <% end %>
                       </div>
-                      <div class="trip_details">
+                      <!-- <div class="trip_details">
                         <i><small><%= link_to "créé le #{trip.created_at.strftime('%d-%m-%Y')}", start_trip_path(trip) %></small></i> <br>
                         <br>
-<!--                         Si pas d'experiences, "ajouter vos expériences" -->
                         <p>XX expériences ajoutées</p>
-<!--                         Si pas de conseils d'amis, display none -->
                         <p>XX conseils d'amis</p>
                         <%= bootstrap_form_for(trip, html: { multipart: true}) do |f| %>
                           <div class="field">
@@ -77,7 +75,7 @@
                             <p><%= f.submit %></p>
                           </div>
                         <% end %>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 <% end %>
