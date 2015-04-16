@@ -1,26 +1,161 @@
-<body class="users">
-  <div class="container">
-    <div id="titleblock" class="text-center">
-      <h2><%= t('.mytrips', :default => "My trips") %></h2>
-    </div>
-    <div class="vertical-spacer-xs"></div>
-    <div class="container">
-      <div class="row">
-        <% @user.trips.each do |trip| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="tripbox">
-              <%= link_to "#{trip.title} (créé le #{trip.created_at.strftime('%d-%m-%Y')})", start_trip_path(trip) %>
-              <%= link_to [trip], { method: :delete, data: {confirm: t('.delete')} } do %>
-                <i class= "pull-right fa fa-trash-o"></i>
-              <% end %>
+<div class="wrapper">
+  <div class="container-fluid" id="user-container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-2 col-md-1" id="col-side-bar">
+        <div id="user-sidebar">
+          <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li><a href="#tab1" data-toggle="tab"><i class="fa fa-user"></i> <br> Accueil</a></li>
+              <li class="active"><a href="#tab2" data-toggle="tab"><i class="fa fa-plane"></i> <br>Mes voyages</a></li>
+<!--               <li><a href="#tab3" data-toggle="tab"><i class="fa fa-globe"></i> <br>Ma carte</a></li>
+              <li><a href="#tab4" data-toggle="tab"><i class="fa fa-users"></i> <br>Mes amis</a></li>
+              <li><a href="#tab5" data-toggle="tab"><i class="fa fa-cog"></i> <br>Paramètres</a></li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-10 col-md-11" id="col-user-page">
+        <div id="user-content">
+          <div class="tab-content">
+            <div class="tab-pane" id="tab1">
+              <div id="user-page-banner">
+                <div class="row">
+                  <div class="col-xs-4 col-sm-2">
+                    <% if current_user.provider %>
+                      <%= image_tag current_user.picture, id:'profile-pic', class: "img img-circle" %>
+                    <% end %>
+                  </div>
+                  <div class="col-xs-8 col-sm-8 col-sm-offset-2">
+                    <h2><%= @user.name %></h2>
+                  </div>
+                </div>
+                <div class="row text-center" id="user-quote" >
+                  <div class="col-xs-12">
+                    <p>"Et il n'est rien de plus beau que l'instant qui précède le voyage, l'instant où l'horizon de demain vient nous rendre visite et nous dire ses promesses - <i>Milan Kundera</i></p>
+                  </div>
+                </div>
+              </div>
+              <div class="user-content-detail">
+<!--                 <p>Destination 1</p>
+                <p>Destination 2</p>
+                <p>Destination 3</p> -->
+              </div>
+            </div>
+            <div class="tab-pane active" id="tab2">
+              <div id="user-trips-banner">
+                <div id="titleblock" class="text-center">
+                  <h2>Mes voyages</h2>
+                </div>
+              </div>
+              <div class="user-content-detail">
+                <% @user.trips.each do |trip| %>
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="tripbox">
+                      <div class="trip_image">
+                        <% if trip.picture_file_name %>
+                          <%= image_tag trip.picture.url(:medium) %>
+                        <% else %>
+                          <%= link_to(image_tag('beachtrip.jpeg'),start_trip_path(trip)) %>
+                        <% end %>
+                      </div>
+                      <div class="trip_title">
+                        <%= link_to "#{trip.title}", start_trip_path(trip) %>
+                        <%= link_to [trip], { method: :delete, data: {confirm: t('.delete')} } do %>
+                          <i class= "pull-right fa fa-trash-o"></i>
+                        <% end %>
+                      </div>
+                      <!-- <div class="trip_details">
+                        <i><small><%= link_to "créé le #{trip.created_at.strftime('%d-%m-%Y')}", start_trip_path(trip) %></small></i> <br>
+                        <br>
+                        <p>XX expériences ajoutées</p>
+                        <p>XX conseils d'amis</p>
+                        <%= bootstrap_form_for(trip, html: { multipart: true}) do |f| %>
+                          <div class="field">
+                            <%= f.file_field :picture, hide_label: true %>
+                            <p><%= f.submit %></p>
+                          </div>
+                        <% end %>
+                      </div> -->
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab3">
+              <div id="titleblock" class="text-center">
+                <h2>Ma carte</h2>
+              </div>
+              <div class="user-content-detail">
+                <p>Coming soon!</p>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab4">
+              <div id="user-friends-banner">
+                <div id="titleblock" class="text-center">
+                  <h2>Mes amis</h2>
+                </div>
+              </div>
+              <p>Coming soon!</p>
+              <div class="user-content-detail">
+                <h3>Envoyer une demande par email</h3>
+                <%= form_tag(user_relationships_path(current_user)) do %>
+                  <%= text_field_tag :email %>
+                  <%= submit_tag 'Send request' %>
+                <% end %>
+
+                <div class="row">
+
+                  <div class="col-xs-12 col-sm-3">
+                    <h3>Mes demandes</h3>
+                    <h4>Envoyées</h4>
+                    <ul>
+                      <% current_user.relationships.where(sender_id: current_user.id).where(status: 'pending').each do |r| %>
+                        <li>
+                          <%= "#{User.find(r.friend_id).email} - #{r.created_at}" %>
+                        </li>
+                      <% end %>
+                    </ul>
+                    <h4>Reçues</h4>
+                    <ul>
+                      <% current_user.relationships.where.not(sender_id: current_user).where(status: 'pending').each do |r| %>
+                        <li>
+                          <%= "#{User.find(r.sender_id).email} - #{r.created_at}" %>
+                          <%= link_to 'Accept', user_relationship_path(current_user, r),
+                            method: :patch %>
+                          <%= link_to 'Decline', user_relationship_path(current_user, r),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                  <h3>Liste des amis</h3>
+                  <ul>
+                    <% current_user.relationships.where(status: 'accepted').each do |r| %>
+                      <li>
+                        <%= "#{User.find(r.friend_id).email} - #{r.created_at}" %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab5">
+              <div id="user-settings-banner">
+                <div id="titleblock" class="text-center">
+                  <h2>Paramètres</h2>
+                </div>
+              </div>
+              <div class="user-content-detail">
+                <p>Coming soon!</p>
+              </div>
             </div>
           </div>
-        <% end %>
-      </div>
-      <div class="vertical-spacer-xs"></div>
-      <div class="row text-center">
-        <%= link_to t('.new_trip'), root_path, {class: "btn btn-info"} %>
+        </div>
       </div>
     </div>
   </div>
-</body>
+</div>

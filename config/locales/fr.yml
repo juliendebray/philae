@@ -82,6 +82,8 @@ fr:
       myfriends: "Mes amis"
       delete: "Es-tu sûr de vouloir supprimer ce voyage?"
       new_trip: "Créer un nouveau voyage"
+      searchplaceholder: "Un nouveau voyage ?"
+      searchbutton: "Voyager"
 
 
   #contact
