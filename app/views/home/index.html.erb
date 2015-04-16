@@ -15,13 +15,14 @@
       <div class="vertical-spacer-xxs"></div>
       <div class="tr-grey-bg">
         <% if user_signed_in? %>
-        <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
-          <div class="form-group minor-block" class="text-center">
-            <%= f.hidden_field(:latitude) %>
-            <%= f.hidden_field(:longitude) %>
-            <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
-            <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
-          </div>
+          <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
+            <div class="form-group minor-block" class="text-center">
+              <%= f.hidden_field(:latitude) %>
+              <%= f.hidden_field(:longitude) %>
+              <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
+              <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
+            </div>
+          <% end %>
         <% else %>
           <div class="vertical-spacer"></div>
           <h3><%= link_to 'INSCRIPTION GRATUITE', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
