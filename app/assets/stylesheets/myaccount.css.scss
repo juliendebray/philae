@@ -1,5 +1,7 @@
 #user-container-fluid {
   margin-top: 10px;
+  padding-right: 0px;
+  padding-left: 0px;
   h2 {
     padding-top: 0px;
     margin-top: 0px;
@@ -8,12 +10,15 @@
 
 #user-sidebar {
   background-color: #F7F7F7;
-  padding-right: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  fixed-width: 45px;
+  position: fixed;
+  width: 10%;
+  left: 0px;
+  top: 55px;
+  bottom: 0px;
+
+  // fixed-width: 45px;
+  // height: 678px;
   // position: fixed;
-  height: 678px;
   .nav-tabs {
     background-color: #F7F7F7;
     width: 100%;
@@ -62,21 +67,17 @@
   }
 }
 
-#col-side-bar {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-#col-user-page {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
 #user-content {
-  // padding-top: 1px;
+  position: relative;
+  width: 90%;
+  left: 10%;
+
+  .destination-item > img {
+    width: 100%;
+  }
 
   h2 {
-    // margin-top: 10px;
+    padding-top: 10px;
   }
   #user-page-banner {
     background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/banners/user_page_banner.jpeg");
@@ -89,23 +90,25 @@
       position: absolute;
     }
     #profile-pic {
-      margin-top: 18px;
-      margin-left: 16px;
+      position: absolute;
+      top: 5px;
+      left: 20px;
+      height: 60px;
       border: $profile-border-width solid $profile-border-color;
       box-shadow: 0 0 2px rgb(200, 200, 200);
-      height: 65px;
-      margin-right: 10px;
       border-radius: $profile-radius;
     }
     h2 {
-      padding-top: 35px;
-      margin-top: 5px;
+      top: 4px;
+      position: absolute;
+      left: 80px;
+      font-size: 20px;
     }
     #user-quote {
-      position: relative;
+      position: absolute;
+      bottom: 0;
       width: 100%;
       color: white;
-      top: 220px;
       margin-bottom: 0px;
       p {
         margin-bottom: 0px;
@@ -164,60 +167,109 @@
   .btn {
     font-size: 16px;
   }
+
+}
+.experience-box:hover {
+  img {
+    filter: grayscale(25%);
+    -webkit-filter: grayscale(25%);
+    -moz-filter: grayscale(25%);
+    -ms-filter: grayscale(25%);
+    -o-filter: grayscale(25%);
+  }
+  .experience-name {
+    display: block;
+  }
 }
 
-  .tripbox > a {
+.experience-box {
+  padding-top: 25px;
+  .experience-picture {
+    img {
+      width: 100%;
+      background-size: cover;
+      background-position: center bottom;
+      background-attachment: fixed;
+      height: 250px;
+    }
+  }
+
+  .experience-name {
+    display: none;
+    font-size: 1em;
     color: white;
-  }
-
-  .tripbox {
-    width: 100%;
-    background: rgba(0,0,0,0.1);
-    color: #525252;
-    text-align: center;
-    // font-weight: 300;
-    // font-size: 15px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 25px;
-    .trip_title {
+    text-shadow: 0px 0px 1px white, 0px 0px 2px black;
+    position: absolute;
+    bottom:0px;
+    margin: auto;
+    width: 93%;
+    padding-top: 13%;
+    small {
+      font-size: 20px;
       font-weight: 300;
-      font-size: 25px;
-      a {
-        color: #525252;
-      }
-      i {
-        font-size: 15px;
-        padding-right: 5px;
-        padding-top: 5px;
-      }
-      .fa {
-        margin-left: -20px;
-      }
     }
-    .trip_details {
-      font-weight: 300;
+  }
+}
+
+.tripbox > a {
+  color: white;
+}
+
+.tripbox {
+  width: 100%;
+  background: rgba(0,0,0,0.1);
+  color: #525252;
+  text-align: center;
+  // font-weight: 300;
+  // font-size: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+  .trip_title {
+    font-weight: 300;
+    font-size: 25px;
+    a {
+      color: #525252;
+    }
+    i {
       font-size: 15px;
-      a {
-        color: #525252;
-      }
-      p {
-        margin-bottom: 0px;
-      }
+      padding-right: 5px;
+      padding-top: 5px;
     }
-
+    .fa {
+      margin-left: -20px;
+    }
   }
+  .trip_details {
+    font-weight: 300;
+    font-size: 15px;
+    a {
+      color: #525252;
+    }
+    p {
+      margin-bottom: 0px;
+    }
+  }
+}
 
 @media screen and (max-width: 768px) {
   #user-content {
+    position: relative;
+    width: 100%;
+    margin-top: 145px;
+    left: 0%;
     #user-page-banner {
       #user-quote {
         font-size: 13px;
       }
     }
+  }
+  #user-sidebar {
+    position: absolute;
+    width: 100%;
   }
 }
 

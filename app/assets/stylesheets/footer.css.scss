@@ -1,1 +1,24 @@
-// Do not remove this file to make the "application include styleshee, media: all" works
+footer {
+  margin-top: 10px;
+  position: relative;
+  background: #2b2d2e;
+  color: #fff;
+  padding: 3em 0;
+  a, a:hover {
+    color: #fff;
+  }
+  .social {
+    li a {
+      display: inline-block;
+      height: 40px;
+      width: 40px;
+      font-size: 25px;
+      border-radius: 50%;
+      border: 2px solid #CCCCCC;
+      line-height: 140%;
+    }
+    li a:hover {
+      border-color: white;
+    }
+  }
+}

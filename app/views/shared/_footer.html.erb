@@ -1,0 +1,64 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h4>Explorizers</h4>
+        <ul class="list-unstyled">
+          <%= link_to t('ourstorynav'), story_index_path %>
+          <li><a href="#">Blog</a></li>
+          <li><%= link_to t('ourcontact'), new_contact_path %></a></li>
+          <li><a href="mailto:dora@explorizers.com">Presse</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h4>Découvrir</h4>
+        <ul class="list-unstyled">
+            <li>
+              <%= link_to t('nav_destinations'), destinations_path %>
+            </li>
+            <li>
+              <%= link_to t('contribute'), new_experience_path %>
+            </li>
+            <li>
+              <%= link_to 'Prestataires locaux', providers_path %>
+            </li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h4>Langues</h4>
+        <ul class="list-unstyled">
+          <li>
+            <a href="/en">English</a>
+          </li>
+          <li>
+            <a href="/">Français</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <ul  class="list-inline social text-center">
+          <li>
+            <a href="https://www.facebook.com/explorizers" target="_blank">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a href="http://instagram.com/explorizers/" target="_blank">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.pinterest.com/explorizers/" target="_blank">
+              <i class="fa fa-pinterest"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/Explorizers_" target="_blank">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
