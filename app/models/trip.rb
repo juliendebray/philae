@@ -6,6 +6,16 @@ class Trip < ActiveRecord::Base
 
   has_many :trip_comments
 
+  has_attached_file :picture,
+    styles: {
+          big: "630x419#",
+          medium: "280x186#",
+          small: "178x118#",
+    }
+
+  validates_attachment_content_type :picture,
+  content_type: /\Aimage\/.*\z/
+
   geocoded_by :query
   after_validation :geocode, if: :geocoding_needed?
 

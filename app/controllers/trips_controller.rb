@@ -137,7 +137,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:query, :latitude, :longitude)
+    params.require(:trip).permit(:query, :latitude, :longitude, :picture)
   end
 
   def set_trip
