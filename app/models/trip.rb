@@ -1,5 +1,6 @@
 class Trip < ActiveRecord::Base
   belongs_to :user
+  belongs_to :destination
 
   has_many :trip_experiences
   has_many :experiences, through: :trip_experiences
