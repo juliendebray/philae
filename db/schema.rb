@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416144702) do
+ActiveRecord::Schema.define(version: 20150416180348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -252,6 +252,11 @@ ActiveRecord::Schema.define(version: 20150416144702) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer  "destination_id"
+    t.string   "country_code"
+    t.float    "vp_ne_lat"
+    t.float    "vp_ne_lng"
+    t.float    "vp_sw_lat"
+    t.float    "vp_sw_lng"
   end
 
   add_index "trips", ["destination_id"], name: "index_trips_on_destination_id", using: :btree

@@ -6,6 +6,7 @@ class TripsController < ApplicationController
 
   def create
     # Libanese demo
+    raise
     if params[:title] && params[:title] == 'Liban'
       authenticate_user!
       @destination = Destination.first
