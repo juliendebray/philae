@@ -7,6 +7,8 @@ $btn-info-bg: #FF7519;
 $btn-success-bg: #C53727;
 //gris foncé
 $btn-warning-bg: #666F77;
+// bootstrap border radius
+$border-radius-base: none;
 
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400italic,300,700,300italic,400,100,100italic);
@@ -42,6 +44,11 @@ $font-family-sans-serif: 'Roboto';
 
 // General customized styles
 
+html, body {
+  height: 100%;
+}
+
+
 .btn, input, button, .modal-content, ul.dropdown-menu {
     border-radius: 0px;
 }
@@ -50,16 +57,27 @@ $font-family-sans-serif: 'Roboto';
   z-index: 99999;
 }
 
-.class-flash{
-  position: absolute;
-  width: 40%;
+
+.notices {
   text-align: center;
-  left: 28%;
-  z-index: 9999;
-  font-weight: 400;
-  font-size: 18px;
-  color: green;
+  position: absolute;
+  top: 55px;
+  right: 0px;
+  left: 0px;
 }
+.alert {
+  margin-bottom: 0px;
+}
+// .class-flash{
+//   position: absolute;
+//   width: 40%;
+//   text-align: center;
+//   left: 28%;
+//   z-index: 9999;
+//   font-weight: 400;
+//   font-size: 18px;
+//   color: green;
+// }
 
 .wrapper {
   // background-color: #F7F7F7;
@@ -76,45 +94,6 @@ $font-family-sans-serif: 'Roboto';
   padding-bottom: 15px;
   // padding: 15px;
   margin-top: 30px;
-}
-
-.title {
-  padding: 10px;
-}
-
-div.homepage_story {
-  background-image: image-url("lonely.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  // color: #238BFF;
-  height: 80%;
-  padding-top: 56px;
-
-  .story {
-    color: white;
-    height: 800px;
-  }
-  h2 {
-  text-align: center;
-  color: white;
-  text-shadow: 0px 0px 3px white, 0px 0px 6px black;
-  padding-bottom: 30px;
-  }
-
-  h3 {
-    padding-bottom: 40px;
-  }
-
-  h4 {
-    color: white;
-    font-weight: 300;
-  }
-
-  a {
-    color: white;
-    text-size: 16px;
-  }
 }
 
 .vertical-spacer {

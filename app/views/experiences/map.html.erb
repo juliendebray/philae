@@ -1,0 +1,56 @@
+<% content_for :map_css do %>
+<%= stylesheet_link_tag 'map_demo' %>
+<% end %>
+
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { height: 100% }
+</style>
+<div id="map-canvas" style='margin-top:60px;'>
+</div>
+<!-- Experience Modal to display -->
+<div class="modal fade" id="myExperienceModal" tabindex="-1" role="dialog" aria-labelledby="myExperienceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title experience-title text-center" id="myExperienceModalLabel">Chargement...</h4>
+      </div>
+      <div class="modal-body experience-content">
+      </div>
+    </div>
+  </div>
+</div>
+<%= content_for(:before_js) do %>
+  <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
+  <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
+  <%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js" %>
+<% end %>
+<% content_for :map_js do %>
+  <% javascript_include_tag 'map_demo' %>
+<% end %>
+<% content_for(:after_js) do %>
+  <script>
+    $(document).on('ready', function() {
+      var mapOptions = {
+        center: new google.maps.LatLng(0, 0),
+        zoom: 1,
+        disableDoubleClickZoom: false,
+        panControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.SMALL
+        }
+      };
+      handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
+      handler.buildMap({provider: mapOptions, internal: {id: 'map-canvas'}}, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        setExperienceInfowindowForGlobalMap(<%= raw @markers.to_json %>)
+        // initializeMapSearchBar('pac-input');
+      });
+    });
+  </script>
+<% end %>

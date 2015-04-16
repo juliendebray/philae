@@ -11,6 +11,58 @@ var flightPath;
 var zoomChangedListener;
 var dragendListener;
 
+// Custom functions for global map
+function setExperienceInfowindowForGlobalMap(data) {
+  if (markers.length == 0) {
+    return;
+  }
+  for (var i = 0; i < markers.length; i++) {
+    setListenerOnMarkerForGlobalMap(markers, data, i, true);
+  }
+  google.maps.event.addListener(handler.getMap(), "click", function(e) {
+    if (ibOpened) {
+      ib.close();
+      ibOpened = false;
+    }
+  });
+}
+
+
+function setListenerOnMarkerForGlobalMap(markers, data, index, carrouselRequired) {
+  markers[index].serviceObject.set('id',index);
+  markers[index].serviceObject.set('experience_id',data[index].experience_id);
+  google.maps.event.clearListeners(markers[index].serviceObject);
+  google.maps.event.addListener(markers[index].serviceObject, 'click', function(event) {
+    openInfowindowOnClickForGlobalMap(data, this, carrouselRequired);
+  });
+}
+
+function openInfowindowOnClickForGlobalMap(data, marker, carrouselRequired) {
+  var map = handler.getMap();
+  var data = data;
+  if (ibOpened) {
+    ib.close();
+    ibOpened = false;
+  }
+  var boxText = document.createElement("div");
+  boxText.setAttribute("class", 'infobox-container');
+  boxText.setAttribute("id", marker.id);
+  boxText.innerHTML = data[marker.id].infobox;
+  var infoboxOptions = setInfoboxOptions(boxText);
+  ib = new InfoBox(infoboxOptions);
+  ib.open(map, marker);
+  ibOpened = true;
+  google.maps.event.addListener(ib, 'domready', function(){
+    if (carrouselRequired) {
+      setCarrousel();
+    }
+    // mapPanToContainInfoBox(ib, 94, -17.994751360066402, -0.995, 0.9909910672);
+    initalizeLinkWithRemoteTrue();
+  });
+}
+
+// End  of custom functions for global map
+
 
 function ellipseExperienceBlock() {
   var length = $(".exp-dotdotdot").length
