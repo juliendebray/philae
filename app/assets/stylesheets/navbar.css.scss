@@ -37,7 +37,7 @@ $profile-border-width: 0px;
   opacity: 0.97;
 }
 
-.navbar-brand{
+.navbar-brand {
   padding-left: 0px;
   padding-right: 0px;
 }
@@ -48,16 +48,46 @@ $profile-border-width: 0px;
   font-style: italic;
 }
 
+// .navbar-travel {
+//   padding-left: 15px;
+//   .minor-block {
+//     margin-top: 15px;
+//   }
+//   #trip_query {
+//     font-size: 12px;
+//   }
+//   .btn {
+//     font-size: 12px;
+//     padding-top: 1px;
+//     padding-bottom: 2px;
+//     opacity: 0.6;
+//   }
+//   .btn:hover {
+//     background-color: #FF7519;
+//     opacity: 1;
+//   }
+// }
+
 @media screen and (max-width: $screen-sm-min) {
   .navbar-collapse {
     position: relative;
     background-color: white;
     font-size: 18px;
   }
+  .navbar-travel {
+    display: none;
+  }
   // a.dropdown-toggle {
   // padding-bottom: 0px;
   // }
 }
+
+// @media screen and (max-width: 999px) {
+//   .navbar-travel {
+//     display: none;
+//   }
+// }
+
 
 // And do not look at what follows!
 // This is why we use sass :)
