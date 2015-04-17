@@ -6,7 +6,6 @@ class TripsController < ApplicationController
 
   def create
     # Libanese demo
-    raise
     if params[:title] && params[:title] == 'Liban'
       authenticate_user!
       @destination = Destination.first
@@ -24,6 +23,8 @@ class TripsController < ApplicationController
       @trip.save
       redirect_to start_trip_path(@trip)
     end
+    raise
+
   end
 
   def start
