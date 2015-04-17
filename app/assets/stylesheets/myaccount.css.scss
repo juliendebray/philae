@@ -75,8 +75,24 @@
   width: 90%;
   left: 10%;
 
+  .minor-block {
+    text-align: center;
+    border-left-style: solid;
+    border-width: 1px;
+    border-color: lightgrey;
+    .btn {
+      margin: 15px;
+    }
+  }
+  .form-group.minor-block {
+    padding-top: 0px;
+    padding-bottom: 17px;
+  }
+
   .destination-item > img {
     width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   h2 {
@@ -157,6 +173,7 @@
   }
 
   .minor-block {
+    width: 100%;
     font-size: 1.5em;
     font-weight: 300;
     color: #525252;
@@ -188,19 +205,23 @@
 .last-trip {
   width: 100%;
   margin-bottom: 15px;
+}
+
+.last-trip-image {
+  img {
+    width: 100%;
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
+  }
+}
+
+.last-trip-details {
   border-bottom-style: solid;
   border-color: lightgrey;
   border-width: 1px;
-  // text-align: center;
-  .last-trip-image {
-    img {
-      width: 100%;
-      background-size: cover;
-      background-position: center bottom;
-      background-attachment: fixed;
-    }
-  }
-  .last-trip-details {
+  padding-bottom: 5px;
+  a {
     i {
       color: #525252;
     }
@@ -213,15 +234,17 @@
       font-size: 18px;
     }
   }
-  .last-trip-details:hover {
-    p {
-      color: #FF7519;
-    }
-  }
-  a:hover, small:hover, i:hover {
-    text-decoration: none
+}
+
+.last-trip-details:hover {
+  p {
+    color: #FF7519;
   }
 }
+a:hover, small:hover, i:hover {
+  text-decoration: none
+}
+
 .last-trip:hover {
   p {
     color: #FF7519;
@@ -317,9 +340,6 @@
     position: absolute;
     width: 100%;
   }
-  .last-trip-details {
-    text-align: center;
-  }
 }
 
 @media screen and (max-width: 360px) {
@@ -354,5 +374,12 @@
     .experience-name {
       display: block;
     }
+    .minor-block {
+      text-align: center;
+      border-left-style: none;
+    }
+  }
+  .last-trip-details {
+    text-align: center;
   }
 }
