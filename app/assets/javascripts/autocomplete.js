@@ -21,8 +21,6 @@ function initializeAutocomplete(id, setLatAndLng) {
 
 function onPlaceChanged() {
   var place = this.getPlace();
-  console.log(this);
-  console.log(place);
   if (!place.geometry) {
     return;
   }

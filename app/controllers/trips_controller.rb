@@ -47,11 +47,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    @guest_user = false
-    @trip = current_user.trips.find(params[:id])
-    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
-      te.order
-    end
+    @trip
   end
 
   def update

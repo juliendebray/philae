@@ -17,13 +17,13 @@
         <% if user_signed_in? %>
           <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
             <div class="form-group minor-block" class="text-center">
-              <%= f.hidden_field(:latitude) %>
-              <%= f.hidden_field(:longitude) %>
-              <%= f.hidden_field(:vp_ne_lat) %>
-              <%= f.hidden_field(:vp_ne_lng) %>
-              <%= f.hidden_field(:vp_sw_lat) %>
-              <%= f.hidden_field(:vp_sw_lng) %>
-              <%= f.hidden_field(:country_code) %>
+              <%= f.hidden_field(:latitude, class: 'trip_params') %>
+              <%= f.hidden_field(:longitude, class: 'trip_params') %>
+              <%= f.hidden_field(:vp_ne_lat, class: 'trip_params') %>
+              <%= f.hidden_field(:vp_ne_lng, class: 'trip_params') %>
+              <%= f.hidden_field(:vp_sw_lat, class: 'trip_params') %>
+              <%= f.hidden_field(:vp_sw_lng, class: 'trip_params') %>
+              <%= f.hidden_field(:country_code, class: 'trip_params') %>
               <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
               <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
             </div>
