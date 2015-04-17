@@ -5,9 +5,10 @@ class TripsController < ApplicationController
   respond_to :js, only: [:selection_display, :share_trip_email]
 
   def create
-    @trip = current_user.trips.new(trip_params)
-    @trip.save
-    raise
+    @trip = current_user.trips.create(trip_params)
+    destination = Destination.find_by(country_code: @trip.country_code)
+    destination ? path = user_trip_path(current_user, @trip) : path = start_trip_path(@trip)
+    redirect_to path
     # # Libanese demo
     # if params[:title] && params[:title] == 'Liban'
     #   authenticate_user!
@@ -30,19 +31,19 @@ class TripsController < ApplicationController
 
   def start
     @trip = Trip.find(params[:id])
-    if current_user
-      @trip.update(user_id: current_user.id) unless @trip.user
-      redirect_to @trip
-    elsif @trip.user
-      redirect_to @trip
-    else
+    # if current_user
+    #   @trip.update(user_id: current_user.id) unless @trip.user
+    #   redirect_to @trip
+    # elsif @trip.user
+    #   redirect_to @trip
+    # else
       if TripExperience.find_by(trip_id: params[:id])
         @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
           te.order
         end
       end
-      render :show
-    end
+      # render :show
+    # end
   end
 
   def show
