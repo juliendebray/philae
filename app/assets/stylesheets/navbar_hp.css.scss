@@ -7,10 +7,14 @@ $screen-sm-min: 768px;
   position: absolute;
 }
 
-.navbar-wagon{
+.navbar-wagon {
   background: $bg;
   border-bottom: none;
 }
+
+// .navbar-travel {
+//   display: none;
+// }
 
 .navbar-wagon .navbar-nav > li > a {
   color: $color2;

@@ -68,6 +68,9 @@
 }
 
 #user-content {
+  .vertical-spacer {
+    display: none;
+  }
   position: relative;
   width: 90%;
   left: 10%;
@@ -182,6 +185,49 @@
   }
 }
 
+.last-trip {
+  width: 100%;
+  margin-bottom: 15px;
+  border-bottom-style: solid;
+  border-color: lightgrey;
+  border-width: 1px;
+  // text-align: center;
+  .last-trip-image {
+    img {
+      width: 100%;
+      background-size: cover;
+      background-position: center bottom;
+      background-attachment: fixed;
+    }
+  }
+  .last-trip-details {
+    i {
+      color: #525252;
+    }
+    p {
+      color: #525252;
+      font-size: 30px;
+    }
+    small {
+      color: #525252;
+      font-size: 18px;
+    }
+  }
+  .last-trip-details:hover {
+    p {
+      color: #FF7519;
+    }
+  }
+  a:hover, small:hover, i:hover {
+    text-decoration: none
+  }
+}
+.last-trip:hover {
+  p {
+    color: #FF7519;
+  }
+}
+
 .experience-box {
   padding-top: 25px;
   .experience-picture {
@@ -193,12 +239,12 @@
       height: 250px;
     }
   }
-
   .experience-name {
     display: none;
+    letter-spacing: 2px;
     font-size: 1em;
     color: white;
-    text-shadow: 0px 0px 1px white, 0px 0px 2px black;
+    text-shadow: 0px 0px 1px white, 0px 0px 6px black;
     position: absolute;
     bottom:0px;
     margin: auto;
@@ -271,6 +317,9 @@
     position: absolute;
     width: 100%;
   }
+  .last-trip-details {
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 360px) {
@@ -301,6 +350,9 @@
       #user-quote {
         top: 200px;
       }
+    }
+    .experience-name {
+      display: block;
     }
   }
 }

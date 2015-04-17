@@ -23,9 +23,9 @@
 .destination-name {
   display: none;
   font-size: 4em;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
   color: white;
-  text-shadow: 0px 0px 6px white, 0px 0px 3px black;
+  text-shadow: 0px 0px 1px white, 0px 0px 6px black;
   position: absolute;
   top:0px;
   bottom:0px;
@@ -338,7 +338,11 @@ div.homepage_story {
   div.homepage_story {
     overflow: scroll;
     width: 100%;
+    .experience-name {
+      display: block;
+    }
   }
+
 }
 @media screen and (max-width: 860px) {
   .hide-xs{
