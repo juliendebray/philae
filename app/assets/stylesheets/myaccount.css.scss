@@ -15,16 +15,9 @@
   left: 0px;
   top: 55px;
   bottom: 0px;
-
-  // fixed-width: 45px;
-  // height: 678px;
-  // position: fixed;
   .nav-tabs {
     background-color: #F7F7F7;
     width: 100%;
-    li {
-      // margin-bottom: 20px;
-    }
   }
   a {
   text-align: center;
@@ -37,8 +30,6 @@
   .tabs-left > .nav-tabs {
     border-bottom: 0;
     float: left;
-    // margin-right: 19px;
-    // border-right: 1px solid #ddd;
     li {
       float: none;
       a {
@@ -48,22 +39,8 @@
         margin-right: 0;
         margin-bottom: 3px;
         margin-right: -1px;
-        // -webkit-border-radius: 4px 0 0 4px;
-        //   -moz-border-radius: 4px 0 0 4px;
-        //     border-radius: 4px 0 0 4px;
       }
     }
-  }
-  .tabs-left > .nav-tabs > li > a:hover,
-  .tabs-left > .nav-tabs > li > a:focus {
-    // border-color: #eeeeee #dddddd #eeeeee #eeeeee;
-  }
-
-  .tabs-left > .nav-tabs .active > a,
-  .tabs-left > .nav-tabs .active > a:hover,
-  .tabs-left > .nav-tabs .active > a:focus {
-    // border-color: #ddd transparent #ddd #ddd;
-    // border-right-color: #ffffff;
   }
 }
 
