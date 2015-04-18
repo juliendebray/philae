@@ -24,8 +24,7 @@
             </div>
           <% end %>
         <% else %>
-          <div class="vertical-spacer"></div>
-          <h3><%= link_to 'INSCRIPTION GRATUITE', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
+          <h3><%= link_to 'INSCRIPTION', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
         <% end %>
       </div>
     </div>
@@ -105,7 +104,7 @@
       </div>
     </div>
     <h2 class="text-center">Explore la destination du moment</h2>
-    <p class='text-center'>Découvre les destinations du moment et laisse-toi inspirer.</p>
+    <p class='text-center'>Laisse-toi inspirer par la destination du moment.</p>
     <%= link_to Destination.first do %>
       <div class="destination-item text-center">
         <%= image_tag(Destination.first.picture.url(:banner), class: 'max-width') %>
@@ -119,6 +118,7 @@
     <div class="vertical-spacer-sm"></div>
     <div class="experience-promo">
       <h2 class="text-center">Découvre ces expériences uniques</h2>
+      <p class='text-center'>Prends quelques minutes pour t'évader.</p>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="experience-box">
