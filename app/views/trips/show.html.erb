@@ -1,1 +1,46 @@
-<h1> Show du trip </h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 hidden-xs trip-home-sidebar">
+      <%= link_to current_user do %>
+        <div class="user-info text-center">
+          <div class="user-picture">
+            <%= image_tag(current_user.picture, class:'img-circle') %>
+          </div>
+          <div class="user-content">
+            <div class="user-name">
+              <%= current_user.name %>
+            </div>
+            <div class="user-trips">
+              <%= current_user.trips.count %> voyages
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="vertical-spacer-xxs"></div>
+      <div class="home-trip-menu">
+        <ul class="list-unstyled">
+          <li>
+            <i class="fa fa-tachometer"></i>  Tableau de bord
+          </li>
+          <li>
+            <i class="fa fa-lightbulb-o"></i>  Trouver de l'inspiration
+          </li>
+          <li>
+            <i class="fa fa-map-marker"></i>  Ajouter des expériences
+          </li>
+          <li>
+            <i class="fa fa-comment"></i>  Demander des conseils
+          </li>
+          <li>
+            <i class="fa fa-cloud-download"></i>  Finaliser mon itinéraire
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-xs-12 trip-home-content">
+        <div class="trip-picture">
+          <%=  @trip.destination ? image_tag(@trip.destination.picture.url(:banner)) : image_tag('beachtrip.jpeg', class: 'img-responsive') %>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+.trip-home-sidebar {
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  padding: 43px 0px 20px 0px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.user-info {
+  color: black;
+}
+
+.user-name {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.user-trips {
+  font-size: 12px;
+  color: #66757f;
+}
+
+.user-content {
+  padding: 3% 0px;
+}
+
+.home-trip-menu {
+  padding-left: 15%;
+  li {
+    padding: 5px 0 1px 10px;
+    font-weight: 300;
+    font-size: 1.2em;
+    line-height: 2em;
+  }
+}
+
+.trip-home-content {
+  margin-top: 51px;
+}

@@ -5,8 +5,11 @@ class TripsController < ApplicationController
   respond_to :js, only: [:selection_display, :share_trip_email]
 
   def create
-    @trip = current_user.trips.create(trip_params)
+    @trip = current_user.trips.new(trip_params)
+    @trip.title = @trip.query
     destination = Destination.find_by(country_code: @trip.country_code)
+    @trip.destination = destination
+    @trip.save
     destination ? path = user_trip_path(current_user, @trip) : path = start_trip_path(@trip)
     redirect_to path
     # # Libanese demo
