@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" role="tabpanel">
   <div class="row">
     <div class="col-md-3 hidden-xs trip-home-sidebar">
       <%= link_to current_user do %>
@@ -18,82 +18,108 @@
       <% end %>
       <div class="vertical-spacer-xxs"></div>
       <div class="home-trip-menu">
-        <ul class="list-unstyled">
+        <ul class="list-unstyled" role="tablist">
           <li class='text-indent-35'>
             <em><small>Que souhaites-tu faire?</small></em>
           </li>
-          <li>
-            <i class="fa fa-tachometer"></i>  Tableau de bord
+          <li role="presentation" class="active">
+            <a href="#dashboard" aria-controls="dashboard" role="tab" data-toggle="tab">
+              <i class="fa fa-tachometer"></i>  Tableau de bord
+            </a>
           </li>
           <li>
-            <i class="fa fa-lightbulb-o"></i>  Trouver de l'inspiration
+            <a href="#inspiration" aria-controls="inspiration" role="tab" data-toggle="tab">
+              <i class="fa fa-lightbulb-o"></i>  Trouver de l'inspiration
+            </a>
           </li>
           <li>
+            <a href="#add-experiences" aria-controls="add-experiences" role="tab" data-toggle="tab">
             <i class="fa fa-map-marker"></i>  Ajouter des expériences
+            </a>
           </li>
           <li>
+            <a href="#ask-advice" aria-controls="ask-advice" role="tab" data-toggle="tab">
             <i class="fa fa-comment"></i>  Demander des conseils
+            </a>
           </li>
           <li>
+            <a href="#sum-trip" aria-controls="sum-trip" role="tab" data-toggle="tab">
             <i class="fa fa-cloud-download"></i>  Finaliser mon itinéraire
+            </a>
           </li>
         </ul>
       </div>
     </div>
-    <div class="col-sm-9 col-sm-offset-3 col-xs-12 trip-home-content">
-        <div class="trip-picture">
-          <!-- TODO: set size of picture properly -->
-          <%=  @trip.destination ? image_tag(@trip.destination.picture.url(:banner)) : image_tag('beachtrip.jpeg', height: 150, width: '100%') %>
-        </div>
-        <h1 class="text-center"><strong><%= @trip.title.upcase %></strong></h1>
-        <div class="row">
-          <div class="col-xs-6 text-center">
-            <h3 class="text-center">
-              <i class="fa fa-heart red"></i>
-              <em> Expériences</em>
-            </h3>
-            <% if @trip.trip_experiences.any? %>
-              <p class= 'light'>
-                <%= @trip.trip_experiences.count %> expériences ajoutés au voyage
-                <br>
-                (dernier ajout: <%= "#{@trip.trip_experiences.last.name} le #{@trip.trip_experiences.last.created_at.strftime('%d-%m-%Y')}" %>)
-              </p>
-              <p class= 'light'>
-                Ajouter plus d'expériences
-              </p>
-            <% else %>
-              <p class= 'light'>
-                 Tu n'as pas encore ajouté d'expériences à ton voyage...
-              </p>
-              <p class= 'light'>
-                Clique ici pour y remédier!
-              </p>
-            <% end %>
+    <div class="col-sm-9 col-sm-offset-3 col-xs-12 trip-home-content" >
+      <div class="trip-picture">
+        <!-- TODO: set size of picture properly -->
+        <%=  @trip.destination ? image_tag(@trip.destination.picture.url(:banner)) : image_tag('beachtrip.jpeg', height: 150, width: '100%') %>
+      </div>
+      <div class="tab-content">
+        <div class="tab-pane active" role="tabpanel" id="dashboard">
+          <h1 class="text-center"><strong><%= @trip.title.upcase %></strong></h1>
+          <div class="row">
+            <div class="col-xs-6 text-center">
+              <h3 class="text-center">
+                <i class="fa fa-heart red"></i>
+                <em> Expériences</em>
+              </h3>
+              <% if @trip.trip_experiences.any? %>
+                <p class= 'light'>
+                  <%= @trip.trip_experiences.count %> expériences ajoutés au voyage
+                  <br>
+                  (dernier ajout: <%= "#{@trip.trip_experiences.last.name} le #{@trip.trip_experiences.last.created_at.strftime('%d-%m-%Y')}" %>)
+                </p>
+                <p class= 'light'>
+                  Ajouter plus d'expériences
+                </p>
+              <% else %>
+                <p class= 'light'>
+                   Tu n'as pas encore ajouté d'expériences à ton voyage...
+                </p>
+                <p class= 'light'>
+                  Clique ici pour y remédier!
+                </p>
+              <% end %>
+            </div>
+            <div class="col-xs-6 text-center">
+              <h3 class="text-center">
+                <i class="fa fa-comment fb-blue"></i>
+                <em> Commentaires</em>
+              </h3>
+              <% if @trip.trip_comments.any? %>
+                <p class= 'light'>
+                  <%= @trip.trip_comments.count %> expériences ajoutés au voyage
+                  <br>
+                  (dernier commentaire de <%= "#{@trip.trip_comments.last.name} le #{@trip.trip_comments.last.created_at.strftime('%d-%m-%Y')}" %>)
+                </p>
+                <p class= 'light'>
+                  Demander plus de conseils
+                </p>
+              <% else %>
+                <p class= 'light'>
+                   Tu n'as pas encore de conseils de tes amis...
+                </p>
+                <p class= 'light'>
+                  Clique ici pour leur demander!
+                </p>
+              <% end %>
+            </div>
           </div>
-          <div class="col-xs-6 text-center">
-            <h3 class="text-center">
-              <i class="fa fa-comment fb-blue"></i>
-              <em> Commentaires</em>
-            </h3>
-            <% if @trip.trip_comments.any? %>
-              <p class= 'light'>
-                <%= @trip.trip_comments.count %> expériences ajoutés au voyage
-                <br>
-                (dernier commentaire de <%= "#{@trip.trip_comments.last.name} le #{@trip.trip_comments.last.created_at.strftime('%d-%m-%Y')}" %>)
-              </p>
-              <p class= 'light'>
-                Demander plus de conseils
-              </p>
-            <% else %>
-              <p class= 'light'>
-                 Tu n'as pas encore de conseils de tes amis...
-              </p>
-              <p class= 'light'>
-                Clique ici pour leur demander!
-              </p>
-            <% end %>
-          </div>
         </div>
+        <div class="tab-pane" role="tabpanel" id="inspiration">
+          INSPIRATION
+        </div>
+        <div class="tab-pane" role="tabpanel" id="add-experiences">
+          ADD EXPERIENCE
+        </div>
+        <div class="tab-pane" role="tabpanel" id="ask-advice">
+          CONSEIL
+        </div>
+        <div class="tab-pane" role="tabpanel" id="sum-trip">
+          SUM TRIP
+        </div>
+      </div>
     </div>
   </div>
 </div>
