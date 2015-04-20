@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# explorizers: http://ogp.me/ns/fb/explorizers#">
     <title>
       <%= yield_with_default(:title, "Explorizers | Le voyage inspiré et partagé") %>
     </title>
@@ -14,12 +14,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <% if @trip %>
-      <meta property="og:title" content="Vos conseils pour mon voyage" />
+
+
+      <meta property="fb:app_id" content="476354419169210" />
+      <meta property="og:type"   content="explorizers:trip" />
+      <meta property="og:url"    content="http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>" />
+      <meta property="og:title"  content="Vos conseils pour mon voyage" />
+      <meta property="og:image"  content="http://philae-floju.s3.amazonaws.com/explorizers_cover.png" />
+
+
+<!--       <meta property="og:title" content="Vos conseils pour mon voyage" />
       <meta property="og:site_name" content="Explorizers" />
       <meta property="og:type" content="explorizers:trip" />
       <meta property="og:url" content="http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>" />
       <meta property="og:image" content="http://philae-floju.s3.amazonaws.com/explorizers_cover.png" />
-      <meta property="og:description" content="Votre ami(e) prépare son voyage sur Explorizers, et l'a posté sur Facebook pour avoir vos conseils. Cliquez sur le lien, visualisez sa carte de voyage et donnez-lui vos meilleurs plans!"/>
+      <meta property="og:description" content="Votre ami(e) prépare son voyage sur Explorizers, et l'a posté sur Facebook pour avoir vos conseils. Cliquez sur le lien, visualisez sa carte de voyage et donnez-lui vos meilleurs plans!"/> -->
     <% end %>
     <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=351072325084597&amp;ev=PixelInitialized" /></noscript>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
