@@ -33,27 +33,11 @@ function publishPostOnFbWall(fb_element_id, url) {
   });
 }
 
-FB.api(
-  'me/explorizers:design',
-  'post',
-  {
-    trip: "http://samples.ogp.me/507511846053467"
-  },
-  function(response) {
-    if (response && !response.error_code) {
-      alert('Posting completed.');
-    } else {
-      alert('Error while posting.');
-    }
-    // handle the response
-  }
-);
-
 // FB.api(
 //   'me/explorizers:design',
 //   'post',
 //   {
-//     trip: "http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>"
+//     trip: "http://samples.ogp.me/507511846053467"
 //   },
 //   function(response) {
 //     if (response && !response.error_code) {
@@ -61,5 +45,21 @@ FB.api(
 //     } else {
 //       alert('Error while posting.');
 //     }
+//     // handle the response
 //   }
 // );
+
+FB.api(
+  'me/explorizers:design',
+  'post',
+  {
+    trip: "http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>"
+  },
+  function(response) {
+    if (response && !response.error_code) {
+      alert('Posting completed.');
+    } else {
+      alert('Error while posting.');
+    }
+  }
+);
