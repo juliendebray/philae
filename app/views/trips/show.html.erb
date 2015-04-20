@@ -43,8 +43,13 @@
             </a>
           </li>
           <li>
-            <a href="#sum-trip" aria-controls="sum-trip" role="tab" data-toggle="tab">
+            <a href="#user-selection" aria-controls="user-selection" role="tab" data-toggle="tab">
             <i class="fa fa-cloud-download"></i>  Finaliser mon itinéraire
+            </a>
+          </li>
+          <li>
+            <a href="#sum-trip" aria-controls="sum-trip" role="tab" data-toggle="tab">
+            <i class="fa fa-envelope"></i>  Recevoir une synthèse
             </a>
           </li>
         </ul>
@@ -53,13 +58,13 @@
     <div class="col-sm-9 col-sm-offset-3 col-xs-12 trip-home-content" >
       <div class="trip-picture">
         <!-- TODO: set size of picture properly -->
-        <%=  @trip.destination ? image_tag(@trip.destination.picture.url(:banner)) : image_tag('beachtrip.jpeg', height: 150, width: '100%') %>
+        <%=  @trip.destination ? image_tag(@trip.destination.picture.url(:banner), height: 150, width: '100%') : image_tag('beachtrip.jpeg', height: 150, width: '100%') %>
       </div>
       <div class="tab-content">
         <div class="tab-pane active" role="tabpanel" id="dashboard">
           <h1 class="text-center"><strong><%= @trip.title.upcase %></strong></h1>
           <div class="row">
-            <div class="col-xs-6 text-center">
+            <div class="col-xs-6 text-center medium-style">
               <h3 class="text-center">
                 <i class="fa fa-heart red"></i>
                 <em> Expériences</em>
@@ -82,7 +87,7 @@
                 </p>
               <% end %>
             </div>
-            <div class="col-xs-6 text-center">
+            <div class="col-xs-6 text-center medium-style">
               <h3 class="text-center">
                 <i class="fa fa-comment fb-blue"></i>
                 <em> Commentaires</em>
@@ -101,14 +106,14 @@
                    Tu n'as pas encore de conseils de tes amis...
                 </p>
                 <p class= 'light'>
-                  Clique ici pour leur demander!
+                  Clique ici pour leur en demander!
                 </p>
               <% end %>
             </div>
           </div>
         </div>
         <div class="tab-pane" role="tabpanel" id="inspiration">
-          <h1 class="text-center"><strong>Besoin d'inspiration?</strong></h1>
+          <h2 class="text-center"><strong>Besoin d'inspiration?</strong></h2>
           <div class="medium-style">
             <p>
               Trouve ici toutes les infos utiles et l'inspiration pour organiser ton voyage, notamment:
@@ -128,17 +133,93 @@
           <div class="vertical-spacer-xs"></div>
           <div class="text-center">
             <!-- TODO: Display only if destination for trip exist -->
-            <%= link_to 'INSPIREZ-MOI', destination_path(Destination.first), class: 'btn btn-info btn-lg' %>
+            <%= link_to 'INSPIREZ-MOI', destination_path(@trip.destination), class: 'btn btn-info btn-lg' %>
           </div>
         </div>
         <div class="tab-pane" role="tabpanel" id="add-experiences">
-          ADD EXPERIENCE
+          <h2 class="text-center"><strong>Explore et selectionne les expériences qui te plaisent</strong></h2>
+              <div class="medium-style">
+                <p>
+                  Accéde ici à la <strong>carte interactive</strong> qui va te permettre d'explorer les meilleures expériences à vivre :
+                </p>
+                <ul class='list-unstyled'>
+                  <li>
+                    <%= image_tag 'http://philae-floju.s3.amazonaws.com/markers/top_2.png'%> indique les <strong>points d'intérêt</strong> au Liban.
+                  </li>
+                  <li>
+                    <%= image_tag 'http://philae-floju.s3.amazonaws.com/markers/top_must_see.png'%> indique les <b>incontournables</b>!
+                  </li>
+                </ul>
+                <br>
+                  <p>
+                    Une expérience te plait? Clique dessus avoir plus d'infos et <strong>rajoute la à ton voyage</strong> pour commencer à créer ton itinéraire :
+                  </p>
+                  <ul class='list-unstyled'>
+                    <li>
+                      <i class="fa fa-heart-o"></i> permet de sélectionner les points d'intérêt que tu veux retenir
+                    </li>
+                    <li>
+                      <i class="fa fa-heart red"></i> indique que le point d'intérêt est bien sélectionné!
+                    </li>
+                  </ul>
+              </div>
+              <div class="vertical-spacer-xs"></div>
+              <div class="text-center">
+                <!-- TODO: Link to map -->
+                <%= link_to 'EXPLORER', destination_path(@trip.destination), class: 'btn btn-info btn-lg' %>
+              </div>
         </div>
         <div class="tab-pane" role="tabpanel" id="ask-advice">
-          CONSEIL
-        </div>
+          <h2 class="text-center"><strong>Demande les bons plans de tes amis!</strong></h2>
+          <!-- <div class="container"> -->
+          <div class="vertical-spacer-xs"></div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="box-content text-center">
+                  <i class="fa fa-facebook fa-2x"></i><br><br>
+                  <a class="btn btn-facebook" id="sharefb" onclick="ga('send', 'event', 'User', 'Ask advice', 'Ask on facebook button clicked');">
+                    Partager sur facebook
+                  </a>
+                  <h4>Tes amis accèderont à ta carte</h4>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="box-content text-center">
+                  <i class="fa fa-envelope fa-2x"></i><br><br>
+                  <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
+                    <%= hidden_field_tag :id, value = @trip.id %>
+                    <%= f.submit( 'Partager par email', onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask with email button clicked');", class:'btn btn-success') %>
+                  <% end %>
+                  <h4>Reçois et transfère ta carte</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" role="tabpanel" id="user-selection">
+                    <h2 class="text-center"><strong>Finalise ton voyage</strong></h2>
+                        <div class="medium-style">
+                          <p>
+                            Accéde ici à la <strong>carte interactive</strong> qui regroupe toutes les expériences que tu as selectionné jusqu'à présent.
+                          </p>
+                          <p>Réagence l'ordre dans lequel tu souhaites les faire en cliquant sur une vignette et en relachant l'endroit où tu souhaites la poser.</p>
+                        </div>
+                        <div class="vertical-spacer-xs"></div>
+                        <div class="text-center">
+                          <!-- TODO: Link to map -->
+                          <%= link_to 'EXPLORER', destination_path(@trip.destination), class: 'btn btn-info btn-lg' %>
+                        </div>
+                  </div>
         <div class="tab-pane" role="tabpanel" id="sum-trip">
-          SUM TRIP
+          <h2 class="text-center"><strong>Récupére ton itinéraire par email</strong></h2>
+          <p class="text-center">Clique sur le lien ci-dessous pour t'envoyer une synthèse de ton itinéraire.</p>
+          <div class="vertical-spacer-xs"></div>
+          <div class="text-center">
+          <%= form_for @trip, url: summarize_trip_path(@trip.id) do |f| %>
+            <%= hidden_field_tag :id, value = @trip.id %>
+              <label for="mySubmit" class="btn btn-success btn-lg white-space-normal">Recevoir mon itinéraire par email <i class="fa fa-envelope"></i> </label>
+            <%= f.submit(id:'mySubmit', class:'hidden') %>
+          <% end %>
+          </div>
         </div>
       </div>
     </div>
