@@ -60,7 +60,7 @@
     <div class="col-sm-9 col-sm-offset-3 col-xs-12 trip-home-content" >
       <div class="trip-picture">
         <!-- TODO: set size of picture properly -->
-        <%=  @trip.destination ? image_tag(@trip.destination.picture.url(:banner), width: '100%') : image_tag('beachtrip.jpeg', height: 180, width: '100%') %>
+        <%=  @trip.destination ? image_tag(@trip.destination.picture.url(:header)) : image_tag('beachtrip.jpeg', height: 180, width: '100%') %>
       </div>
       <div class="tab-content">
         <div class="tab-pane fade in active" role="tabpanel" id="dashboard">
