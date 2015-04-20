@@ -18,6 +18,10 @@ window.fbAsyncInit = function() {
 // Publish the url on facebook wall
 function publishPostOnFbWall(fb_element_id, url) {
   $(fb_element_id).on('click', function() {
+    FB.api(
+      'me/explorizers:design',
+      'post',
+    )
     FB.ui(
       {
         method: 'share',
@@ -32,34 +36,3 @@ function publishPostOnFbWall(fb_element_id, url) {
       });
   });
 }
-
-// FB.api(
-//   'me/explorizers:design',
-//   'post',
-//   {
-//     trip: "http://samples.ogp.me/507511846053467"
-//   },
-//   function(response) {
-//     if (response && !response.error_code) {
-//       alert('Posting completed.');
-//     } else {
-//       alert('Error while posting.');
-//     }
-//     // handle the response
-//   }
-// );
-
-FB.api(
-  'me/explorizers:design',
-  'post',
-  {
-    trip: "http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>"
-  },
-  function(response) {
-    if (response && !response.error_code) {
-      alert('Posting completed.');
-    } else {
-      alert('Error while posting.');
-    }
-  }
-);
