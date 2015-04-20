@@ -15,17 +15,13 @@ window.fbAsyncInit = function() {
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
 
-
 // Publish the url on facebook wall
 function publishPostOnFbWall(fb_element_id, url) {
   $(fb_element_id).on('click', function() {
     FB.ui(
       {
-        method: 'share_open_graph',
-        action_type: 'og.design',
-        action_properties: JSON.stringify({
-          object:'http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>',
-        }),
+        method: 'share',
+        href: url
       },
       function(response) {
         if (response && !response.error_code) {
