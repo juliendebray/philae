@@ -25,8 +25,7 @@ function publishPostOnFbWall(fb_element_id, url) {
         action_type: 'og.design',
         action_properties: JSON.stringify({
           object:'http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>',
-        })
-        href: url
+        }),
       },
       function(response) {
         if (response && !response.error_code) {
