@@ -108,7 +108,28 @@
           </div>
         </div>
         <div class="tab-pane" role="tabpanel" id="inspiration">
-          INSPIRATION
+          <h1 class="text-center"><strong>Besoin d'inspiration?</strong></h1>
+          <div class="medium-style">
+            <p>
+              Trouve ici toutes les infos utiles et l'inspiration pour organiser ton voyage, notamment:
+            </p>
+            <ul>
+              <li>
+                Les <strong>formalités d'entrée</strong>, <strong>climat</strong> et <strong>sécurité</strong>
+              </li>
+              <li>
+                Les <strong>expériences incontournables</strong> qui font l'unanimité auprès des guides et voyageurs
+              </li>
+              <li>
+                Les <strong>itinéraires conseillés</strong> en fonction de la durée de ton séjour
+              </li>
+            </ul>
+          </div>
+          <div class="vertical-spacer-xs"></div>
+          <div class="text-center">
+            <!-- TODO: Display only if destination for trip exist -->
+            <%= link_to 'INSPIREZ-MOI', destination_path(Destination.first), class: 'btn btn-info btn-lg' %>
+          </div>
         </div>
         <div class="tab-pane" role="tabpanel" id="add-experiences">
           ADD EXPERIENCE

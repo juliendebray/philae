@@ -1,3 +1,4 @@
+// SIDEBAR
 .trip-home-sidebar {
   position: fixed;
   top: 51px;
@@ -36,8 +37,13 @@
     font-weight: 300;
     font-size: 1.2em;
     line-height: 2em;
+    a {
+      color: black;
+    }
   }
 }
+
+//
 
 .trip-home-content {
   margin-top: 51px;
