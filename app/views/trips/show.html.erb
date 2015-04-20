@@ -27,11 +27,13 @@
               <i class="fa fa-tachometer"></i>  Tableau de bord
             </a>
           </li>
-          <li>
-            <a href="#inspiration" aria-controls="inspiration" role="tab" data-toggle="tab">
-              <i class="fa fa-lightbulb-o"></i>  Trouver de l'inspiration
-            </a>
-          </li>
+          <% if @trip.destination %>
+            <li>
+              <a href="#inspiration" aria-controls="inspiration" role="tab" data-toggle="tab">
+                <i class="fa fa-lightbulb-o"></i>  Trouver de l'inspiration
+              </a>
+            </li>
+          <% end %>
           <li>
             <a href="#add-experiences" aria-controls="add-experiences" role="tab" data-toggle="tab">
             <i class="fa fa-map-marker"></i>  Ajouter des expériences
@@ -58,11 +60,17 @@
     <div class="col-sm-9 col-sm-offset-3 col-xs-12 trip-home-content" >
       <div class="trip-picture">
         <!-- TODO: set size of picture properly -->
-        <%=  @trip.destination ? image_tag(@trip.destination.picture.url(:banner), height: 150, width: '100%') : image_tag('beachtrip.jpeg', height: 150, width: '100%') %>
+        <%=  @trip.destination ? image_tag(@trip.destination.picture.url(:banner), width: '100%') : image_tag('beachtrip.jpeg', height: 180, width: '100%') %>
       </div>
       <div class="tab-content">
-        <div class="tab-pane active" role="tabpanel" id="dashboard">
+        <div class="tab-pane fade in active" role="tabpanel" id="dashboard">
           <h1 class="text-center"><strong><%= @trip.title.upcase %></strong></h1>
+          <div class='text-center medium-style'>
+            Bienvenue sur la page d'accueil de ton voyage!
+            <br>
+            C'est à partir d'ici que tu pourras accéder aux services te permettant d'organiser simplement ton voyage.
+          </div>
+          <div class="vertical-spacer-xxs"></div>
           <div class="row">
             <div class="col-xs-6 text-center medium-style">
               <h3 class="text-center">
@@ -76,14 +84,18 @@
                   (dernier ajout: <%= "#{@trip.trip_experiences.last.name} le #{@trip.trip_experiences.last.created_at.strftime('%d-%m-%Y')}" %>)
                 </p>
                 <p class= 'light'>
-                  Ajouter plus d'expériences
+                  <a class='black' href="#add-experiences" aria-controls="add-experiences" role="tab" data-toggle="tab" onclick="setClassActiveOnLink(this);">
+                    Ajouter plus d'expériences
+                  </a>
                 </p>
               <% else %>
                 <p class= 'light'>
                    Tu n'as pas encore ajouté d'expériences à ton voyage...
                 </p>
                 <p class= 'light'>
-                  Clique ici pour y remédier!
+                   <a class='black' href="#add-experiences" aria-controls="add-experiences" role="tab" data-toggle="tab" onclick="setClassActiveOnLink(this);" >
+                    Clique ici pour y remédier!
+                  </a>
                 </p>
               <% end %>
             </div>
@@ -99,43 +111,49 @@
                   (dernier commentaire de <%= "#{@trip.trip_comments.last.name} le #{@trip.trip_comments.last.created_at.strftime('%d-%m-%Y')}" %>)
                 </p>
                 <p class= 'light'>
-                  Demander plus de conseils
+                  <a class='black' href="#ask-advice" aria-controls="ask-advice" role="tab" data-toggle="tab" onclick="setClassActiveOnLink(this);">
+                    Demander plus de conseils
+                  </a>
                 </p>
               <% else %>
                 <p class= 'light'>
                    Tu n'as pas encore de conseils de tes amis...
                 </p>
                 <p class= 'light'>
-                  Clique ici pour leur en demander!
+                  <a class='black' href="#ask-advice" aria-controls="ask-advice" role="tab" data-toggle="tab" onclick="setClassActiveOnLink(this);">
+                    Clique ici pour leur en demander!
+                  </a>
                 </p>
               <% end %>
             </div>
           </div>
         </div>
-        <div class="tab-pane" role="tabpanel" id="inspiration">
-          <h2 class="text-center"><strong>Besoin d'inspiration?</strong></h2>
-          <div class="medium-style">
-            <p>
-              Trouve ici toutes les infos utiles et l'inspiration pour organiser ton voyage, notamment:
-            </p>
-            <ul>
-              <li>
-                Les <strong>formalités d'entrée</strong>, <strong>climat</strong> et <strong>sécurité</strong>
-              </li>
-              <li>
-                Les <strong>expériences incontournables</strong> qui font l'unanimité auprès des guides et voyageurs
-              </li>
-              <li>
-                Les <strong>itinéraires conseillés</strong> en fonction de la durée de ton séjour
-              </li>
-            </ul>
+        <% if @trip.destination %>
+          <div class="tab-pane" role="tabpanel" id="inspiration">
+            <h2 class="text-center"><strong>Besoin d'inspiration?</strong></h2>
+            <div class="medium-style">
+              <p>
+                Trouve ici toutes les infos utiles et l'inspiration pour organiser ton voyage, notamment:
+              </p>
+              <ul>
+                <li>
+                  Les <strong>formalités d'entrée</strong>, <strong>climat</strong> et <strong>sécurité</strong>
+                </li>
+                <li>
+                  Les <strong>expériences incontournables</strong> qui font l'unanimité auprès des guides et voyageurs
+                </li>
+                <li>
+                  Les <strong>itinéraires conseillés</strong> en fonction de la durée de ton séjour
+                </li>
+              </ul>
+            </div>
+            <div class="vertical-spacer-xs"></div>
+            <div class="text-center">
+              <!-- TODO: Display only if destination for trip exist -->
+              <%= link_to 'INSPIREZ-MOI', destination_path(@trip.destination), class: 'btn btn-info btn-lg' %>
+            </div>
           </div>
-          <div class="vertical-spacer-xs"></div>
-          <div class="text-center">
-            <!-- TODO: Display only if destination for trip exist -->
-            <%= link_to 'INSPIREZ-MOI', destination_path(@trip.destination), class: 'btn btn-info btn-lg' %>
-          </div>
-        </div>
+        <% end %>
         <div class="tab-pane" role="tabpanel" id="add-experiences">
           <h2 class="text-center"><strong>Explore et selectionne les expériences qui te plaisent</strong></h2>
               <div class="medium-style">

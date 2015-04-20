@@ -8,6 +8,7 @@ class Destination < ActiveRecord::Base
   has_attached_file :picture,
     styles: {
           banner: "851x440#",
+          header: "960x180",
           small: "260x174#",
           thumb: "160x100#",
     }
