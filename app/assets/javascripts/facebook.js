@@ -27,12 +27,12 @@ function publishPostOnFbWall(fb_element_id, url) {
         method: 'share',
         href: url
       },
-      function(response) {
-        if (response && !response.error_code) {
-          alert('Posting completed.');
-        } else {
-          alert('Error while posting.');
-        }
-      });
+    function(response) {
+      if (response && !response.error_code) {
+        alert('Posting completed.');
+      } else {
+        alert('Error while posting.');
+      }
+    });
   });
 }
