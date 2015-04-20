@@ -63,24 +63,3 @@ FB.api(
     }
   }
 );
-
-FB.api(
-  'me/objects/explorizers:trip',
-  'post',
-  {
-    og:url: http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token},
-    og:title: "Vos conseils pour mon voyage",
-    og:type: explorizers:trip,
-    og:image: http://philae-floju.s3.amazonaws.com/explorizers_cover.png,
-    og:description: "Votre ami(e) prépare son voyage sur Explorizers, et l'a posté sur Facebook pour avoir vos conseils. Cliquez sur le lien, visualisez sa carte de voyage et donnez-lui vos meilleurs plans!",
-    fb:app_id: 476354419169210
-  },
-  function(response) {
-    if (response && !response.error_code) {
-      alert('Posting completed.');
-    } else {
-      alert('Error while posting.');
-    }
-  }
-  }
-);
