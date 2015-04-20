@@ -10,6 +10,13 @@
 //   }
 // }
 
+
+.exp-page-pictures {
+  img {
+    width: 100%;
+  }
+}
+
 .tab-content {
   #reviews {
     height: 477px;
@@ -71,6 +78,10 @@
     font-size: 14px;
     padding-top: 1px;
     padding-bottom: 0px;
+  }
+  footer {
+    background-color: white;
+    padding: 0px;
   }
 }
 
