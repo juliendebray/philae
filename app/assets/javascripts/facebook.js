@@ -21,7 +21,7 @@ function publishPostOnFbWall(fb_element_id, url) {
     FB.api(
       'me/explorizers:design',
       'post',
-    )
+    );
     FB.ui(
       {
         method: 'share',
