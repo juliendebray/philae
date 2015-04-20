@@ -18,10 +18,6 @@ window.fbAsyncInit = function() {
 // Publish the url on facebook wall
 function publishPostOnFbWall(fb_element_id, url) {
   $(fb_element_id).on('click', function() {
-    FB.api(
-      'me/explorizers:design',
-      'post',
-    );
     FB.ui(
       {
         method: 'share',
