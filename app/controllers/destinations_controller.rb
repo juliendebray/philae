@@ -7,6 +7,10 @@ class DestinationsController < ApplicationController
   def show
   end
 
+  def show_within_trip
+    render :show
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_destination

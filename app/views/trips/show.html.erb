@@ -150,7 +150,7 @@
             <div class="vertical-spacer-xs"></div>
             <div class="text-center">
               <!-- TODO: Display only if destination for trip exist -->
-              <%= link_to 'INSPIREZ-MOI', destination_path(@trip.destination), class: 'btn btn-info btn-lg' %>
+              <%= link_to 'INSPIREZ-MOI', user_trip_destination_within_trip_path(current_user, @trip, @trip.destination), class: 'btn btn-info btn-lg' %>
             </div>
           </div>
         <% end %>

@@ -30,7 +30,9 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show] do
       resources :relationships, only: [:create, :update, :destroy]
-      resources :trips, only: [:show]
+      resources :trips, only: [:show] do
+        get '/destinations/:destination_id/within_trip', to: 'destinations#show_within_trip', as: 'destination_within_trip'
+      end
     end
 
     resources :story, only: [:index]
