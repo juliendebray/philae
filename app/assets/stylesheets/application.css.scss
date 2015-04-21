@@ -41,6 +41,7 @@ $font-family-sans-serif: 'Roboto';
 @import "experience_summary_block";
 @import "summarize";
 @import "trip_show";
+@import "explore_map";
 
 
 // General customized styles
@@ -49,6 +50,9 @@ html, body {
   height: 100%;
 }
 
+.v-middle {
+  vertical-align: middle;
+}
 
 .medium-style {
   letter-spacing: .01rem;

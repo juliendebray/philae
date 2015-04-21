@@ -1,0 +1,35 @@
+// body#explore-map {
+//   overflow: hidden;
+// }
+
+
+#map-navigation-menu {
+  position: absolute;
+  top: 55px;
+  height: 55px;
+  left: 0px;
+  right: 0px;
+  z-index: 1030;
+  border-top: 1px solid #dce0e0;
+}
+
+#sidebar-container {
+  position: fixed;
+  top: 110px;
+  left: 0;
+  bottom: 0;
+  width: 45%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background: #f7f7f7;
+}
+
+#map-container {
+  position: fixed;
+  top: 110px;
+  right: 0;
+  left: auto;
+  bottom: 0;
+  display: block;
+  width: 40%;
+}
