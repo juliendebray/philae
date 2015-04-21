@@ -6,7 +6,7 @@ class RecommendedTrip < ActiveRecord::Base
   has_attached_file :picture,
     styles: {
           banner: "851x440#",
-          small: "260x174#",
+          small: "335x361#",
           thumb: "160x100#",
     }
 

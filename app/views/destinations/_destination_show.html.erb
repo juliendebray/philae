@@ -19,11 +19,11 @@
 <div class="collapse" id="collapseMustSee">
 <br>
 <br>
-   <div class="destination-content">
+  <div class="destination-content">
     <div class="container-fluid">
       <div class="row">
         <% Experience.where(destination: destination, must_see:true).each do |experience| %>
-          <%= link_to experience_detail_path(experience.id), remote: true, id: "must-see-img" do %>
+          <%= link_to modal_exp_path(trip.id, experience.id), remote: true, id: "must-see-img" do %>
             <div class="col-xs-12 col-sm-6 col-md-4">
             <figure>
               <figcaption class="text-center"><%=experience.name%></figcaption>
@@ -47,7 +47,6 @@
 <div class="collapse" id="collapseRecommendedTrip">
   <div class="destination-content">
     <% destination.recommended_trips.each do |recommended_trip| %>
-
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
           <div class="destination-box-nobordertop">

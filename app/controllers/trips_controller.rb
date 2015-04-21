@@ -12,7 +12,7 @@ class TripsController < ApplicationController
     @trip.save
     destination ? path = user_trip_path(current_user, @trip) : path = start_trip_path(@trip)
     redirect_to path
-    # # Libanese demo
+    # Libanese demo
     # if params[:title] && params[:title] == 'Liban'
     #   authenticate_user!
     #   @destination = Destination.first
@@ -147,7 +147,8 @@ class TripsController < ApplicationController
       :vp_ne_lat,
       :vp_ne_lng,
       :vp_sw_lat,
-      :vp_sw_lng
+      :vp_sw_lng,
+      :title
     )
   end
 
