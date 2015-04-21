@@ -8,7 +8,8 @@ class DestinationsController < ApplicationController
   end
 
   def show_within_trip
-    render :show
+    @destination = Destination.find(params[:destination_id])
+    @trip = Trip.find(params[:trip_id])
   end
 
   private
@@ -16,6 +17,4 @@ class DestinationsController < ApplicationController
     def set_destination
       @destination = Destination.find(params[:id])
     end
-
 end
-
