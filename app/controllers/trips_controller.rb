@@ -49,6 +49,9 @@ class TripsController < ApplicationController
     # end
   end
 
+  def explore_map
+  end
+
   def show
     @trip
   end

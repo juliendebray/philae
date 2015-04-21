@@ -184,7 +184,7 @@
               <div class="vertical-spacer-xs"></div>
               <div class="text-center">
                 <!-- TODO: Link to map -->
-                <%= link_to 'EXPLORER', destination_path(@trip.destination), class: 'btn btn-info btn-lg' %>
+                <%= link_to 'EXPLORER', explore_map_user_trip_path(current_user, @trip), class: 'btn btn-info btn-lg' %>
               </div>
         </div>
         <div class="tab-pane" role="tabpanel" id="ask-advice">
