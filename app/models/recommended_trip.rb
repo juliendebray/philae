@@ -1,6 +1,7 @@
 class RecommendedTrip < ActiveRecord::Base
   has_many :recommended_trip_experiences
   has_many :experiences, through: :recommended_trip_experiences
+  belongs_to :destination
 
   has_attached_file :picture,
     styles: {

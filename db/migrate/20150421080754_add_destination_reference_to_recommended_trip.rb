@@ -1,0 +1,5 @@
+class AddDestinationReferenceToRecommendedTrip < ActiveRecord::Migration
+  def change
+    add_reference :recommended_trips, :destination, index: true
+  end
+end

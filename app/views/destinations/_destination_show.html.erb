@@ -22,7 +22,7 @@
    <div class="destination-content">
     <div class="container-fluid">
       <div class="row">
-        <% Experience.where(destination: Destination.first, must_see:true).each do |experience| %>
+        <% Experience.where(destination: destination, must_see:true).each do |experience| %>
           <%= link_to experience_detail_path(experience.id), remote: true, id: "must-see-img" do %>
             <div class="col-xs-12 col-sm-6 col-md-4">
             <figure>

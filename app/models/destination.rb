@@ -1,6 +1,6 @@
 class Destination < ActiveRecord::Base
   has_many :recommended_trip_experiences
-  has_many :recommended_trips, through: :recommended_trip_experiences
+  has_many :recommended_trips
   has_many :experiences
   has_many :trips
 
