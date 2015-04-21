@@ -1,0 +1,23 @@
+<div class="wrapper bg-white black">
+  <%= render partial: "destination_show", locals: {destination: @destination, trip: @trip} %>
+  <div class="text-center" id="bottom-start-planning">
+    <h2 class="text-center">Fini de lire? Retourne sur la page de ton voyage!</h2>
+    <br>
+    <%= link_to "Continuer la planification de mon voyage", user_trip_path(current_user, @trip), class: "btn btn-info btn-lg" %>
+    <br>
+  </div>
+</div>
+
+<!-- Experience Modal to display -->
+<div class="modal fade" id="myExperienceModal" tabindex="-1" role="dialog" aria-labelledby="myExperienceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title experience-title text-center" id="myExperienceModalLabel">Chargement...</h4>
+      </div>
+      <div class="modal-body experience-content">
+      </div>
+    </div>
+  </div>
+</div>

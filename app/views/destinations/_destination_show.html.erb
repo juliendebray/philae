@@ -1,0 +1,122 @@
+
+<a class='destination-collapse' data-toggle='collapse' href='#collapseOverview' aria-expanded='false' aria-controls='collapseOverview'>
+  <div id='overview' class='text-center destination-title'>
+    <h2 class='no-margin'>A savoir avant de partir</h2>
+    <p class='destination-tagline'>Informations générales, formalités entrée, climat</p>
+  </div>
+</a>
+<div class='collapse' id='collapseOverview'>
+  <div class='destination-content'>
+    <%= raw destination.overview %>
+  </div>
+</div>
+<a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee">
+<div id="must-see" class="text-center destination-title">
+  <h2 class="no-margin">Incontournables</h2>
+  <p class="destination-tagline">Lieux et activités qui font l'unamité auprès des guides et voyageurs</p>
+</div>
+</a>
+<div class="collapse" id="collapseMustSee">
+<br>
+<br>
+   <div class="destination-content">
+    <div class="container-fluid">
+      <div class="row">
+        <% Experience.where(destination: Destination.first, must_see:true).each do |experience| %>
+          <%= link_to experience_detail_path(experience.id), remote: true, id: "must-see-img" do %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+            <figure>
+              <figcaption class="text-center"><%=experience.name%></figcaption>
+              <%= image_tag experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:banner), class: "img-responsive" if experience.experience_pictures.first %>
+              <div class="text-center hover-img"><%= experience.average_rating %><small> / 10</small></div>
+            </figure>
+            <br>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip">
+<div id="recommended-trip" class="text-center destination-title">
+  <h2 class="no-margin">Itinéraires</h2>
+  <p class="destination-tagline">Itinéraires conseillés en fonction de la durée de votre séjour</p>
+</div>
+</a>
+<div class="collapse" id="collapseRecommendedTrip">
+   <div class="destination-content">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+
+        <div class="destination-box-nobordertop">
+          <div class="row">
+            <div class="col-xs-12">
+              <h3 class="text-center">1. L'essentiel du Liban en 5-6 jours</h3>
+              <br>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-7">
+              <p>Au total: 250km, 5h de route</p>
+              <p>Les <b>faibles distances</b> et la <b>position centrale de Beyrouth</b> permettent de visiter le Liban tout en restant dans la capitale. La location d’une voiture ou la réservation d’un taxi sur la journée est facile et relativement bon marché.</p>
+              <p>On peut diviser 5-6 de voyage au Liban, basé à Beyrouth, comme ceci:</p>
+              <ul>
+                <li><p><b>2-3 jours à Beyrouth</b>, pour visiter le typique quartier d’Achrafieh, la Corniche, le Rawcheh, emblème de la ville, et passer la soirée à Gemmayzé ou rue Monnot</p></li>
+                <li><p><b>1 journée sur la côte nord</b>, incluant Jounieh et la magnifique vue depuis Notre-Dame du Liban, l’impressionnante Grotte de Jeita et la ville de Jbeil, tous ces sites étant très proches</p></li>
+                <li><p><b>1 jour dans le nord du pays</b>, jusqu’au village d'Ehden, pour randonner dans la vallée de Qadisha et voir les Cèdres de Dieu, emblèmes du pays</p></li>
+                <li><p><b>1 jour dans la vallée du Chouf</b>, pour visiter notamment les villages traditionnels de Beiteddine et Deir el Qamar, et pourquoi pas pousser jusqu’au vignoble de Kefraya pour une dégustation</p></li>
+              </ul>
+              <br>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="itinerary_image">
+                <%= image_tag 'itineraire_liban_1.png'%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-spacer-xs"></div>
+
+    <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+      <div class="line-separator"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+        <div class="destination-box-nobordertop">
+          <div class="row">
+            <div class="col-xs-12">
+              <h3 class="text-center">2. Le Liban incontournable et authentique en 1 semaine</h3>
+              <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-7">
+              <p>Au total: 400 km, 8h de route</p>
+              <ul>
+                <li><p><b>Jours 1, 2 et 3</b>: à Beyrouth, visitez le typique quartier d’Achrafieh, la Corniche et le Rawcheh", et passez la soirée rue Monnot.</p></li>
+                <li><p><b>Jour 4</b> (50km / 1h de route): quittez Beyrouth pour démarrer la journée avec l’impressionnante Grotte de Jeita. Rejoignez ensuite Jounieh, et montez en téléphérique vers Notre-Dame du Liban pour son point de vue époustouflant. Continuez vers le nord pour visiter Jbeil et y passer la nuit.</p></li>
+                <li><p><b>Jour 5</b> (80km / 1h30 de route): faites un passage par Batroun, puis continuez pour visiter Tripoli, et rendez-vous dans le village d'Ehden pour y passer la nuit.</p></li>
+                <li><p><b>Jour 6</b>: Autour d’Ehden, faites la randonnée dans la vallée de Qadisha, allez voir les Cèdres de Dieu et poussez éventuellement jusqu’au Qornet es Sawda, sommet du Liban. Restez dormir à Ehden.</p></li>
+                <li><p><b>Jour 7</b>: quittez Ehden tôt, traversez le Liban du nord au sud par les magnifiques routes de montagne (170km, 4h) pour passer l’après-midi dans la vallée du Chouf, notamment les villages de Deir el Qamar et Beiteddine. Puis retournez à Beyrouth boire un dernier verre à Gemmayzé!</p></li><br>
+              </ul>
+              <br>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="itinerary_image">
+                <%= image_tag 'itineraire_liban_2.png'%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
