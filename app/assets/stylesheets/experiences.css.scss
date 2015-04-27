@@ -10,6 +10,44 @@
 //   }
 // }
 
+.experience-page {
+  padding-top: 12px;
+  img {
+    width: 100%;
+  }
+
+  .exp-page-banner {
+    position: relative;
+    // img {
+    //   max-height: 550px;
+    // }
+    .experience-name {
+      width: 100%;
+      letter-spacing: 1px;
+      color: white;
+      // bottom: 0px;
+      top: 0px;
+      background: rgba(0,0,0,0.1);
+      position: absolute;
+      margin: auto;
+      p {
+        font-size: 3.225em;
+        line-height: 1.555556;
+        font-weight: 400;
+        text-align: left;
+        margin-bottom: 0px;
+        padding-left: 15px;
+      }
+    }
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.555556;
+    font-weight: 400;
+    text-align: center;
+  }
+}
 
 .exp-page-pictures {
   img {
@@ -23,7 +61,6 @@
     overflow-y: auto;
   }
 }
-
 
 #exp-modal-tabs {
     webkit-border-radius: 0;
@@ -50,20 +87,43 @@
   }
 }
 
+#leader_review_block {
+  box-sizing: content-box;
+  font-weight: 400;
+  padding: 15px;
+  font-size: 15px;
+  img {
+    width: 40%;
+  }
+  h4 {
+    font-size: 18px;
+    margin-top: 0px;
+  }
+  p {
+    margin-bottom: 5px;
+    font-size:  20px;
+    text-align: center;
+  }
+}
+
+
 #exp_review_block {
   box-sizing: content-box;
   font-weight: 400;
   padding: 15px;
   font-size: 15px;
   background-color: white;
+  img {
+    max-width: 170px;
+  }
   h4 {
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 0px;
-    text-decoration: underline;
   }
   p {
     margin-bottom: 5px;
-    font-size:  14px;
+    font-size:  18px;
+    text-align: left;
   }
   .fa {
     font-size: 6px;
