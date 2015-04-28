@@ -79,28 +79,58 @@
 
           <div id="leader_review_block">
             <% if @experience.leader_reviews.any? %>
-              <h4><i>Ce qu'ils en disent</i></h4>
+
+              <h4><i> Ce qu'ils en disent</i></h4>
               <br>
-              <div class="row">
-                <div class="col-xs-5 vcenter">
-                  <div class="logo-item text-center">
-                    <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
-                  </div>
-                </div>
-                <div class="col-xs-5 vcenter">
-                  <div class="logo-item text-center">
-                  <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
-                  </div>
-                </div>
-              </div>
-              <br>
-              <div class="row text-center">
-                <% @experience.leader_reviews.each do |leader_review| %>
+              <% if @experience.leader_reviews.first != @experience.leader_reviews.last %>
+                <div class="row text-center">
                   <div class="col-xs-5 vcenter">
-                    <p>"<%= leader_review.comment %>"</p>
+                    <div class="logo-item text-center">
+                      <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
+                    </div>
                   </div>
-                <% end %>
-              </div>
+                  <div class="col-xs-5 vcenter">
+                    <div class="logo-item text-center">
+                      <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row text-center">
+                  <div class="col-xs-5 vcenter">
+                    <% if @experience.leader_reviews.first.source =~ /Lonely Planet/ %>
+                      <p>"<%= @experience.leader_reviews.first.comment %>"</p>
+                    <% else %>
+                      <p>"<%= @experience.leader_reviews.second.comment %>"</p>
+                    <% end %>
+                  </div>
+                  <div class="col-xs-5 vcenter">
+                    <% if @experience.leader_reviews.first.source =~ /Lonely Planet/ %>
+                      <p>"<%= @experience.leader_reviews.second.comment %>"</p>
+                    <% else %>
+                      <p>"<%= @experience.leader_reviews.first.comment %>"</p>
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="row text-center">
+                  <div class="col-xs-12 vcenter">
+                    <div class="logo-item text-center">
+                      <% if @experience.leader_reviews.first.source =~ /Guide du Routard/ %>
+                        <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
+                      <% else %>
+                        <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row text-center">
+                  <div class="col-xs-12 vcenter">
+                    <p>"<%= @experience.leader_reviews.first.comment %>"</p>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>

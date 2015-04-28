@@ -230,6 +230,7 @@ a:hover, small:hover, i:hover {
 
 .experience-box {
   padding-top: 25px;
+  position: relative;
   .experience-picture {
     img {
       width: 100%;
@@ -240,16 +241,16 @@ a:hover, small:hover, i:hover {
     }
   }
   .experience-name {
-    left: 0;
+    // left: 0;
     text-align: center;
     width: 100%;
     display: none;
     letter-spacing: 1px;
     font-size: 1em;
     color: white;
-    text-shadow: 0px 0px 1px white, 0px 0px 3px black;
+    // text-shadow: 0px 0px 1px white, 0px 0px 3px black;
     bottom: 0px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.4);
     position: absolute;
     margin: auto;
     small {
