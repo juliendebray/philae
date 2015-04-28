@@ -139,6 +139,9 @@ en:
     new:
       title: "Share an experience"
       text2: "To make sure Explorizers remains a peaceful place, contributions are reviewed by our team. This avoids duplication, advertising, trolls, pirates and clowns. For any question, please write to dora@explorizers.com."
+    show:
+      searchplaceholder: "Where are you going?"
+      searchbutton: "Travel"
   exp_share_text1: "Contribute to Explorizers: share your tips!"
   expbuttonadd: "Share"
 
