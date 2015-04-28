@@ -34,6 +34,10 @@ class Trip < ActiveRecord::Base
     self.country_code = results.country_code
   end
 
+  def viewport_set?
+    self.vp_ne_lat && self.vp_ne_lng && self.vp_sw_lat && self.vp_sw_lng ? true : false
+  end
+
   def set_viewport_if_available(results)
     if vp = results.geometry['viewport']
       self.vp_ne_lat = vp['northeast']['lat']

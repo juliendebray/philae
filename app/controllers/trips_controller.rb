@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:update_order, :create, :start, :show_guest_user, :notification_for_sharing_email, :providers]
-  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display, :explore_map]
   respond_to :js, only: [:selection_display, :share_trip_email]
 
   def create
@@ -50,10 +50,28 @@ class TripsController < ApplicationController
   end
 
   def explore_map
+    bounding_box = []
+    if @trip.viewport_set?
+      bounding_box[0] = @trip.vp_sw_lat
+      bounding_box[1] = @trip.vp_sw_lng
+      bounding_box[2] = @trip.vp_ne_lat
+      bounding_box[3] = @trip.vp_ne_lng
+    elsif destination = @trip.destination
+      bounding_box[0] = destination.sw_lat
+      bounding_box[1] = destination.sw_lng
+      bounding_box[2] = destination.ne_lat
+      bounding_box[3] = destination.ne_lng
+    else
+      distance = 150
+      center_point = [@trip.latitude, @trip.longitude]
+      bounding_box = Geocoder::Calculations.bounding_box(center_point, distance)
+    end
+    experiences_within_bounds = Experience.where(published: true).within_bounding_box(bounding_box)
+    @markers = build_markers(experiences_within_bounds.sort_by{|e| e.average_rating}.reverse, @trip, true)
+    raise
   end
 
   def show
-    @trip
   end
 
   def update
@@ -168,5 +186,84 @@ class TripsController < ApplicationController
   def authenticate_guest!
     @trip = Trip.find(params[:id])
     @guest_user = true if @trip.token == params[:token]
+  end
+
+  def build_markers(experiences, trip, experience_block_required)
+    Gmaps4rails.build_markers(experiences) do |experience, marker|
+      marker.lat experience.latitude
+      marker.lng experience.longitude
+      marker.title experience.name
+      trip_experiences = TripExperience.where("trip_id = ? AND experience_id = ?", trip.id, experience.id)
+      if trip_experiences.any?
+        # experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png"
+        marker.picture({
+        url: "https://philae-floju.s3.amazonaws.com/markers/selection.png",
+        width:  25,
+        height: 39
+        })
+        if experience_block_required
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: trip_experiences.first,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+            experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+              trip_exp: trip_experiences.first,
+              guest_user: false,
+              experience: experience,
+              trip: trip
+            })
+          })
+        else
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: trip_experiences.first,
+              guest_user: false
+            }),
+            experience_id: experience.id
+          })
+        end
+      else
+        # experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top.png"
+        experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_2.png"
+        marker.picture({
+          url: picture_url,
+          width:  25,
+          height: 39
+        })
+        if experience_block_required
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+            experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+              trip_exp: false,
+              guest_user: false,
+              experience: experience,
+              trip: trip
+            })
+          })
+        else
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+          })
+        end
+      end
+    end
   end
 end
