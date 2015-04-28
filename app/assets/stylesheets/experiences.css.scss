@@ -3,29 +3,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// .modal-body {
-//   .experience-content {
-//     height: 545px;
-//     overflow-y: auto;
-//   }
-// }
+#exp-page-container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
 
 .experience-page {
   padding-top: 12px;
   img {
     width: 100%;
   }
-
-  .exp-page-banner {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  #carousel-exp-page {
     position: relative;
-    // img {
-    //   max-height: 550px;
-    // }
     .experience-name {
       width: 100%;
       letter-spacing: 1px;
       color: white;
-      // bottom: 0px;
       top: 0px;
       background: rgba(0,0,0,0.1);
       position: absolute;
@@ -36,22 +33,60 @@
         font-weight: 400;
         text-align: left;
         margin-bottom: 0px;
-        padding-left: 15px;
+        padding-left: 30px;
+        text-transform: uppercase;
       }
     }
   }
-
   p {
-    font-size: 18px;
+    font-size: 25px;
     line-height: 1.555556;
-    font-weight: 400;
+    font-weight: 200;
     text-align: center;
   }
-}
-
-.exp-page-pictures {
-  img {
-    width: 100%;
+  h4 {
+    font-size: 35px;
+    line-height: 1.0769;
+    font-weight: 300;
+  }
+  h5 {
+    font-size: 20px;
+    line-height: 1.0769;
+    font-weight: 300;
+  }
+  #block-separator {
+    border-top: solid 1px #CCCCCC;
+    margin-top: 45px;
+    margin-bottom: 25px;
+  }
+  .tr-grey-bg {
+    background: rgba(0,0,0,0);
+    padding-bottom: 0px;
+    margin: 10px auto;
+    a {
+      white-space: normal;
+    }
+    input#trip_query {
+      font-style: normal;
+      font-weight: 300;
+      width: 300px;
+      font-size: 20px;
+    }
+    .minor-block {
+      font-size: 1.5em;
+      font-weight: 300;
+      color: #525252;
+      margin: 30px;
+      padding-bottom: 30px;
+    }
+    .form-group{
+      margin: 10px auto;
+      margin-top: 0;
+    }
+    .btn {
+      font-size: 15px;
+      vertical-align: bottom;
+    }
   }
 }
 
@@ -93,20 +128,15 @@
   padding: 15px;
   font-size: 15px;
   img {
-    width: 40%;
     max-width: 130px;
-  }
-  h4 {
-    font-size: 18px;
-    margin-top: 0px;
   }
   p {
     margin-bottom: 5px;
-    font-size:  20px;
+    font-size: 18px;
     text-align: center;
+    font-weight: 300;
   }
 }
-
 
 #exp_review_block {
   box-sizing: content-box;
@@ -115,16 +145,13 @@
   font-size: 15px;
   background-color: white;
   img {
-    max-width: 170px;
-  }
-  h4 {
-    font-size: 18px;
-    margin-top: 0px;
+    max-width: 225px;
   }
   p {
     margin-bottom: 5px;
-    font-size:  18px;
+    font-size:  16px;
     text-align: left;
+    font-weight: 300;
   }
   .fa {
     font-size: 6px;
@@ -243,3 +270,64 @@ body.newexperience {
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .experience-page {
+    #carousel-exp-page {
+      .experience-name {
+        p {
+          font-size: 1.225em;
+        }
+      }
+    }
+    p {
+      font-size: 20px;
+    }
+    h4 {
+      font-size: 25px;
+    }
+    #exp_review_block {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    #leader_review_block {
+      padding-left: 0;
+      padding-right: 0;
+      .vcenter {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      img {
+        max-width: 130px;
+      }
+      p {
+        margin-bottom: 5px;
+        font-size: 15px;
+        text-align: center;
+        font-weight: 300;
+      }
+    }
+    .tr-grey-bg {
+      .minor-block {
+        font-size: 1.4em;
+      }
+      input#trip_query {
+        width: 80%;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .experience-page {
+    #carousel-exp-page {
+      .experience-name {
+        p {
+          font-size: 2.225em;
+        }
+      }
+    }
+  }
+}
+

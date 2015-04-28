@@ -17,12 +17,14 @@ $font-family-sans-serif: 'Roboto';
 
 
 // SCSS files installed with gems
+@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-social";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "owl.carousel";
 @import "owl.theme";
+
 
 
 // SCSS stylesheets files

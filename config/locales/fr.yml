@@ -125,6 +125,10 @@ fr:
     new:
       title: "Partager une experience"
       text2: "Pour assurer une qualité maximale sur Explorizers, les contributions sont validées par notre équipe. Cela évite les doublons, la pub, les trolls, les pirates et les clowns en tous genres. Pour toute question, écrivez à dora@explorizers.com."
+    show:
+      searchplaceholder: "Où vas-tu ?"
+      searchbutton: "Voyager"
+
   exp_share_text1: "Contribue au projet Explorizers en partageant tes conseils de voyage!"
   expbuttonadd: "Partager"
 
