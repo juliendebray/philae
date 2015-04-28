@@ -1,7 +1,7 @@
-// TODO: set overflowhidden
-// html, body#explore-map {
-//   overflow: hidden;
-// }
+// TODO: set overflow hidden and remove x-overflow
+body#explore-map {
+  overflow-x: hidden;
+}
 
 
 #map-navigation-menu {
@@ -12,6 +12,8 @@
   right: 0px;
   z-index: 1030;
   border-top: 1px solid #dce0e0;
+  box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.1);
+  background: red;
 }
 
 #sidebar-container {
@@ -22,14 +24,18 @@
   width: 45%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  background: #f7f7f7;
+  background: blue;
+  box-shadow: 0px 4px 7px 0px #888;
 }
 
 #map-container {
-  position: absolute;
-  top: 110px;
-  left: 55%;
-  // right: 0;
-  bottom: 0;
   display: block;
+  width: 55%;
+  position: fixed;
+  right: 0;
+  left: auto;
+  bottom: 0;
+  top: 110px;
+  background: yellow;
+  overflow: hidden;
 }
