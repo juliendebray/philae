@@ -1,15 +1,72 @@
 <body id="explore-map">
   <div id="map-navigation-menu">
-    <div class="row">
-      <div class="col-sm-2 v-middle">
-
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+          <select name="experiences-sorting"
+          class="form-control flatten">
+            <option value="1"> Trier par note moyenne</option>
+            <option value="2"> Trier par popularité</option>
+        </select>
+      </div>
+      <div class="col-sm-1 padding-top-6">
+        <i class="fa fa-question-circle toggle-select-option"></i>
+      </div>
+      <div class="col-sm-7 col-sm-offset-2">
+        <table class="categories">
+          <tbody>
+            <tr>
+              <td>
+                <label class="checkbox-inline category">
+                  <input type="checkbox" id="inlineCheckbox1" value="option1">
+                  </input>
+                  <i class="fa fa-star"></i>
+                  Incontournables
+                </label>
+              </td>
+              <td>
+                <label class="checkbox-inline category">
+                  <input type="checkbox" id="inlineCheckbox1" value="option1">
+                  </input>
+                  <i class="fa fa-paw"></i>
+                  Aventure
+                </label>
+              </td>
+              <td>
+                <label class="checkbox-inline category">
+                  <input type="checkbox" id="inlineCheckbox1" value="option1">
+                  </input>
+                  <i class="fa fa-glass"></i>
+                  Détente
+                </label>
+              </td>
+              <td>
+                <label class="checkbox-inline category">
+                  <input type="checkbox" id="inlineCheckbox1" value="option1">
+                  </input>
+                  <i class="fa fa-university"></i>
+                  Culture
+                </label>
+              </td>
+              <td>
+                <label class="checkbox-inline category">
+                  <input type="checkbox" id="inlineCheckbox1" value="option1">
+                  </input>
+                  <i class="fa fa-road"></i>
+                  Insolites
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-  <div id="sidebar-container">
-    <h1>side bar</h1>
-  </div>
-  <div id="map-container" class="hidden-sm">
-    <h1>map cont</h1>
-  </div>
+</div>
+<div id="sidebar-container">
+  <h1>side bar</h1>
+</div>
+<div id="map-container" class="hidden-sm">
+  <h1>map cont</h1>
+</div>
 </body>

@@ -3,28 +3,27 @@ body#explore-map {
   overflow-x: hidden;
 }
 
-
 #map-navigation-menu {
   position: absolute;
   top: 55px;
-  height: 55px;
+  // height: 55px;
+  height: 36px;
   left: 0px;
   right: 0px;
   z-index: 1030;
-  border-top: 1px solid #dce0e0;
+  // border-top: 1px solid #dce0e0;
   box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.1);
-  background: red;
+  background: whitesmoke;
 }
 
 #sidebar-container {
   position: fixed;
-  top: 110px;
+  top: 91px;
   left: 0;
   bottom: 0;
   width: 45%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  background: blue;
   box-shadow: 0px 4px 7px 0px #888;
 }
 
@@ -35,7 +34,77 @@ body#explore-map {
   right: 0;
   left: auto;
   bottom: 0;
-  top: 110px;
-  background: yellow;
+  top: 91px;
   overflow: hidden;
 }
+
+
+// Customize select options
+select.flatten, select.flatten:focus {
+  border: none;
+  box-shadow: none;
+  // font-size: 14px;
+  // font-weight: 300;
+  width: auto;
+  margin: 0px auto;
+  color: black;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  background: transparent;
+}
+
+select.flatten:hover {
+  cursor: pointer;
+  font-weight: 400;
+}
+
+i.toggle-select-option {
+  position: relative;
+  left: -25px;
+}
+
+table.categories {
+  td {
+    padding-right: 1%;
+    padding-left: 1%;
+  }
+}
+
+label.category {
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
+// .select {
+//   position: relative;
+//   display: inline-block;
+//   vertical-align: bottom;
+// }
+
+// .select:before {
+//   content: '\25bc';
+//   position: absolute;
+//   pointer-events: none;
+//   color: #82888a;
+//   top: 0;
+//   bottom: 1px;
+//   padding-top: 0.7em;
+//   line-height: 1;
+//   right: 0;
+//   width: 2em;
+//   text-align: center;
+//   transform: scale(0.84, 0.42);
+//   -webkit-transform: scale(0.84, 0.42);
+//   -moz-transform: scale(0.84, 0.42);
+//   -ms-transform: scale(0.84, 0.42);
+//   -o-transform: scale(0.84, 0.42);
+//   -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.84, M12=0, M21=0, M22=0.42, SizingMethod='auto expand')";
+//   filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.84, M12=0, M21=0, M22=0.42, SizingMethod='auto expand');
+// }
+
+// select {
+//   border: none;
+//   border-radius: none;
+//   background-color: #fff;
+//   color: #565a5c;
+// }
+
