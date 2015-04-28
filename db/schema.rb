@@ -120,13 +120,13 @@ ActiveRecord::Schema.define(version: 20150421080754) do
     t.string   "wikipedia_link"
     t.integer  "nb_votes"
     t.boolean  "thousand_places"
+    t.boolean  "unesco"
     t.float    "ta_rating"
     t.integer  "ta_votes"
     t.float    "gg_rating"
     t.integer  "gg_votes"
     t.float    "fsq_rating"
     t.integer  "fsq_votes"
-    t.boolean  "unesco"
     t.integer  "destination_id"
   end
 
