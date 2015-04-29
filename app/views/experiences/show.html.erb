@@ -8,8 +8,15 @@
   <!--       Ajouter data-ride="carousel" dans la div pour un défilement auto -->
         <ol class="carousel-indicators">
           <li data-target="#carousel-exp-page" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-exp-page" data-slide-to="1"></li>
-          <li data-target="#carousel-exp-page" data-slide-to="2"></li>
+          <% if @experience.experience_pictures.second %>
+            <li data-target="#carousel-exp-page" data-slide-to="1"></li>
+          <% end %>
+          <% if @experience.experience_pictures.third %>
+            <li data-target="#carousel-exp-page" data-slide-to="2"></li>
+          <% end %>
+          <% if @experience.experience_pictures.fourth %>
+            <li data-target="#carousel-exp-page" data-slide-to="3"></li>
+          <% end %>
         </ol>
         <div class="carousel-inner" role="listbox">
           <div class="item active">
@@ -177,8 +184,25 @@
           </div>
         </div>
         <div class="row text-center">
-          <p>Tu aimes cet endroit? Partage-le!</p>
-          <div class="fb-share-button" data-href="http://www.explorizers.com/experiences/<%= "#{@experience.id}" %>" data-layout="button">
+          <p>Partage</p>
+        </div>
+        <div class="row text-center">
+          <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+            <div class="col-xs-4">
+              <div class="fb-share-button" data-href="http://www.explorizers.com/experiences/<%= "#{@experience.id}" %>" data-layout="button">
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="pinterest-widget">
+              <a href="//fr.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <a class="twitter-share-button"
+              href="www.explorizers.com/experience/<%= "#{@experience.id}" %>" data-count="none" data-text="Checking out Explorizers">
+            Tweet this
+              </a>
+            </div>
           </div>
         </div>
         <!-- Twitter: https://dev.twitter.com/web/tweet-button
