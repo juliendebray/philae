@@ -30,7 +30,7 @@ function collectUserChoice() {
   $.each(activeButton, function(index, value) {
     categories.push(value.id);
   });
-  return { 'sortBy': sortBy, 'categories': categories }
+  return { 'sort_by': sortBy, 'categories': categories }
 }
 
 function requestDataFromAPI(trip_id, dataToSend) {
