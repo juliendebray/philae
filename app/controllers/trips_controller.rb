@@ -68,7 +68,6 @@ class TripsController < ApplicationController
     end
     experiences_within_bounds = Experience.where(published: true).within_bounding_box(bounding_box)
     @markers = build_markers(experiences_within_bounds.sort_by{|e| e.average_rating}.reverse, @trip, true)
-    raise
   end
 
   def show
