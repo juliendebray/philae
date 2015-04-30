@@ -1,5 +1,5 @@
 class Experience < ActiveRecord::Base
-  serialize :category, Array
+  serialize :categories_tab, Array
 
   belongs_to :user
   belongs_to :category

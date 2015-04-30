@@ -102,6 +102,7 @@ class TripsController < ApplicationController
         experiences_selection = experiences_tmp
       end
     end
+    # Sort experience selection
     raise
   end
 

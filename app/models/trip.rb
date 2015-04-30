@@ -60,8 +60,6 @@ class Trip < ActiveRecord::Base
 
   def geocode_trip
     if results = Geocoder.search(self.query).first
-      puts "in geocoder results"
-      puts results
       self.set_location_lat_and_lng(results)
       self.set_country_code(results)
       self.set_viewport_if_available(results)
