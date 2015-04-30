@@ -1,4 +1,6 @@
 class Experience < ActiveRecord::Base
+  serialize :category, Array
+
   belongs_to :user
   belongs_to :category
   belongs_to :trip_comment
