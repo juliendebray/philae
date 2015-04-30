@@ -1,6 +1,10 @@
 <%= content_for :title do %>
  <%= @experience.name %>
 <% end %>
+<%= content_for (:description) do %>
+ <%= @experience.description %>
+<% end %>
+
 <div class="wrapper">
   <div class="container-fluid" id="exp-page-container-fluid">
     <div class="experience-page">
