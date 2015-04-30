@@ -17,7 +17,7 @@
     <% if @trip %>
       <meta property="og:title" content="Vos conseils pour mon voyage" />
       <meta property="og:site_name" content="Explorizers" />
-      <meta property="og:type" content="article" />
+      <meta property="og:type" content="explorizers:trip" />
       <meta property="og:url" content="http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>" />
       <meta property="og:image" content="http://philae-floju.s3.amazonaws.com/explorizers_cover.png" />
       <meta property="og:description" content="Votre ami(e) prépare son voyage sur Explorizers, et l'a posté sur Facebook pour avoir vos conseils. Cliquez sur le lien, visualisez sa carte de voyage et donnez-lui vos meilleurs plans!"/>
@@ -41,14 +41,24 @@
     </script>
   </head>
   <body>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=476354419169210&version=v2.3";
-        fjs.parentNode.insertBefore(js, fjs);
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=476354419169210";
+      fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));</script>
-    <script>
+
+
+    //   <script>(function(d, s, id) {
+    //     var js, fjs = d.getElementsByTagName(s)[0];
+    //     if (d.getElementById(id)) return;
+    //     js = d.createElement(s); js.id = id;
+    //     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=476354419169210&version=v2.3";
+    //     fjs.parentNode.insertBefore(js, fjs);
+    //   }(document, 'script', 'facebook-jssdk'));</script>
+    // <script>
     window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
     </script>
     <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
