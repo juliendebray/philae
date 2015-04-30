@@ -1,3 +1,4 @@
+// General styles
 // TODO: set overflow hidden and remove x-overflow
 body#explore-map {
   overflow-x: hidden;
@@ -13,7 +14,7 @@ body#explore-map {
   z-index: 1030;
   // border-top: 1px solid #dce0e0;
   box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.1);
-  background: whitesmoke;
+  // background: whitesmoke;
 }
 
 #sidebar-container {
@@ -39,72 +40,17 @@ body#explore-map {
 }
 
 
-// Customize select options
-select.flatten, select.flatten:focus {
-  border: none;
-  box-shadow: none;
-  // font-size: 14px;
-  // font-weight: 300;
-  width: auto;
-  margin: 0px auto;
-  color: black;
-  padding-top: 4%;
-  padding-bottom: 4%;
-  background: transparent;
+// Customize categories buttons
+a.category-btn, a#sort-experiences {
+  font-size: 17px;
 }
 
-select.flatten:hover {
-  cursor: pointer;
-  font-weight: 400;
+a.category-btn:hover {
+  background: #0081ba;
+  color: white;
 }
 
-i.toggle-select-option {
-  position: relative;
-  left: -25px;
+a.category-btn:active,a.category-btn:focus, a.category-btn.active {
+  background: #2196F3;
+  color: white;
 }
-
-table.categories {
-  td {
-    padding-right: 1%;
-    padding-left: 1%;
-  }
-}
-
-label.category {
-  padding-top: 4%;
-  padding-bottom: 4%;
-}
-// .select {
-//   position: relative;
-//   display: inline-block;
-//   vertical-align: bottom;
-// }
-
-// .select:before {
-//   content: '\25bc';
-//   position: absolute;
-//   pointer-events: none;
-//   color: #82888a;
-//   top: 0;
-//   bottom: 1px;
-//   padding-top: 0.7em;
-//   line-height: 1;
-//   right: 0;
-//   width: 2em;
-//   text-align: center;
-//   transform: scale(0.84, 0.42);
-//   -webkit-transform: scale(0.84, 0.42);
-//   -moz-transform: scale(0.84, 0.42);
-//   -ms-transform: scale(0.84, 0.42);
-//   -o-transform: scale(0.84, 0.42);
-//   -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.84, M12=0, M21=0, M22=0.42, SizingMethod='auto expand')";
-//   filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.84, M12=0, M21=0, M22=0.42, SizingMethod='auto expand');
-// }
-
-// select {
-//   border: none;
-//   border-radius: none;
-//   background-color: #fff;
-//   color: #565a5c;
-// }
-

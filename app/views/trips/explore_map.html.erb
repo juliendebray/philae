@@ -1,72 +1,49 @@
 <body id="explore-map">
-  <div id="map-navigation-menu">
+  <div id="map-navigation-menu" class="hidden-xs">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2">
-          <select name="experiences-sorting"
-          class="form-control flatten">
-            <option value="1"> Trier par note moyenne</option>
-            <option value="2"> Trier par popularité</option>
-        </select>
+          <div class="btn-group">
+            <a id= "sort-experiences" class="btn btn-block btn-info dropdown-toggle no-border" data-toggle="dropdown" href="#">
+              Trier par note moyenne <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Trier par note moyenne </a></li>
+              <li><a href="#">Trier par popularité </a></li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-sm-10">
+          <div class="btn-group btn-group-block btn-group-justified" role="group" aria-label="Category selection">
+            <a href="#" class="btn no-border btn-default category-btn" role="button">
+              <i class="fa fa-star"></i>
+              Incontournables
+            </a>
+            <a href="#" class="btn no-border btn-default category-btn" role="button">
+              <i class="fa fa-paw"></i>
+              Hors des sentiers battus
+            </a>
+            <a href="#" class="btn no-border btn-default category-btn" role="button">
+              <i class="fa fa-glass"></i>
+              Détente
+            </a>
+            <a href="#" class="btn no-border btn-default category-btn" role="button">
+              <i class="fa fa-university"></i>
+              Culture
+            </a>
+            <a href="#" class="btn no-border btn-default category-btn" role="button">
+              <i class="fa fa-bicycle"></i>
+              Sport
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-1 padding-top-6">
-        <i class="fa fa-question-circle toggle-select-option"></i>
-      </div>
-      <div class="col-sm-7 col-sm-offset-2">
-        <table class="categories">
-          <tbody>
-            <tr>
-              <td>
-                <label class="checkbox-inline category">
-                  <input type="checkbox" id="inlineCheckbox1" value="option1">
-                  </input>
-                  <i class="fa fa-star"></i>
-                  Incontournables
-                </label>
-              </td>
-              <td>
-                <label class="checkbox-inline category">
-                  <input type="checkbox" id="inlineCheckbox1" value="option1">
-                  </input>
-                  <i class="fa fa-paw"></i>
-                  Aventure
-                </label>
-              </td>
-              <td>
-                <label class="checkbox-inline category">
-                  <input type="checkbox" id="inlineCheckbox1" value="option1">
-                  </input>
-                  <i class="fa fa-glass"></i>
-                  Détente
-                </label>
-              </td>
-              <td>
-                <label class="checkbox-inline category">
-                  <input type="checkbox" id="inlineCheckbox1" value="option1">
-                  </input>
-                  <i class="fa fa-university"></i>
-                  Culture
-                </label>
-              </td>
-              <td>
-                <label class="checkbox-inline category">
-                  <input type="checkbox" id="inlineCheckbox1" value="option1">
-                  </input>
-                  <i class="fa fa-road"></i>
-                  Insolites
-                </label>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
   </div>
-</div>
-<div id="sidebar-container">
-  <h1>side bar</h1>
-</div>
-<div id="map-container" class="hidden-sm">
-  <h1>map cont</h1>
-</div>
+  </div>
+  <div id="sidebar-container">
+    <h1>side bar</h1>
+  </div>
+  <div id="map-container" class="hidden-xs">
+    <h1>map cont</h1>
+  </div>
 </body>
