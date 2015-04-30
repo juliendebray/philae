@@ -4,6 +4,11 @@
 <%= content_for (:description) do %>
  <%= @experience.description %>
 <% end %>
+<%= content_for (:image) do %>
+ <%= image_tag @experience.experience_pictures.first.picture.url %>
+<% end %>
+
+<meta property="og:image" content="http://philae-floju.s3.amazonaws.com/explorizers_cover.png" />
 
 <div class="wrapper">
   <div class="container-fluid" id="exp-page-container-fluid">
