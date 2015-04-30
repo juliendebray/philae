@@ -5,7 +5,7 @@
  <%= @experience.description %>
 <% end %>
 <%= content_for (:image) do %>
- <%= image_tag @experience.experience_pictures.first.picture.url %>
+ <%= @experience.experience_pictures.first.picture.url %>
 <% end %>
 
 <div class="wrapper">
