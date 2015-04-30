@@ -4,7 +4,7 @@
 <%= content_for (:description) do %>
   <%= @experience.description %>
 <% end %>
-<%= content_for (og:image) do %>
+<%= content_for (:image) do %>
   <%= image_tag @experience.experience_pictures.first.picture.url %>
 <% end %>
 
