@@ -1,11 +1,11 @@
 <%= content_for :title do %>
- <%= @experience.name %>
+  <%= @experience.name %>
 <% end %>
 <%= content_for (:description) do %>
- <%= @experience.description %>
+  <%= @experience.description %>
 <% end %>
 <%= content_for (:image) do %>
- <%= @experience.experience_pictures.first.picture.url %>
+  <%= image_tag @experience.experience_pictures.first.picture.url(:banner) %>
 <% end %>
 
 <div class="wrapper">
