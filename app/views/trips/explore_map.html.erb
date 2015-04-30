@@ -12,30 +12,30 @@
             Trier par note moyenne <span class="caret"></span>
           </a>
           <ul class="dropdown-menu dropdown-titles">
-            <li><a href="#">Trier par note moyenne </a></li>
-            <li><a href="#">Trier par popularité </a></li>
+            <li><a id="score" class="sort-by-btn active" href="#">Trier par note moyenne </a></li>
+            <li><a id="popularity" class="sort-by-btn" href="#">Trier par popularité </a></li>
           </ul>
           </div>
       </div>
       <div class="col-sm-10">
         <div class="btn-group btn-group-block btn-group-justified" role="group" aria-label="Category selection">
-          <a href="#" class="btn no-border btn-default category-btn" role="button">
+          <a id="must" href="#" class="btn no-border btn-default category-btn" role="button">
             <i class="fa fa-star"></i>
             Incontournables
           </a>
-          <a href="#" class="btn no-border btn-default category-btn" role="button">
-            <i class="fa fa-paw"></i>
+          <a id="otbt" href="#" class="btn no-border btn-default category-btn" role="button">
+            <i class="fa fa-compass"></i>
             Hors des sentiers battus
           </a>
-          <a href="#" class="btn no-border btn-default category-btn" role="button">
+          <a id="relax" href="#" class="btn no-border btn-default category-btn" role="button">
             <i class="fa fa-glass"></i>
             Détente
           </a>
-          <a href="#" class="btn no-border btn-default category-btn" role="button">
+          <a id="culture" href="#" class="btn no-border btn-default category-btn" role="button">
             <i class="fa fa-university"></i>
             Culture
           </a>
-          <a href="#" class="btn no-border btn-default category-btn" role="button">
+          <a id="sport" href="#" class="btn no-border btn-default category-btn" role="button">
             <i class="fa fa-bicycle"></i>
             Sport
           </a>
@@ -54,7 +54,6 @@
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
   <%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js" %>
 <% end %>
-
 <% content_for(:after_js) do %>
   <script>
     $(document).on('ready', function() {
@@ -74,7 +73,6 @@
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
         setExperienceInfowindowForGlobalMap(<%= raw @markers.to_json %>)
-        // initializeMapSearchBar('pac-input');
       });
     });
   </script>
