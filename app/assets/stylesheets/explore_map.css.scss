@@ -11,7 +11,7 @@ body#explore-map {
   height: 36px;
   left: 0px;
   right: 0px;
-  z-index: 1030;
+  // z-index: 1030;
   // border-top: 1px solid #dce0e0;
   box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.1);
   // background: whitesmoke;
@@ -45,12 +45,16 @@ a.category-btn, a#sort-experiences {
   font-size: 17px;
 }
 
+a.category-btn:active,a.category-btn:focus {
+  background: none;
+}
+
 a.category-btn:hover {
   background: #0081ba;
   color: white;
 }
 
-a.category-btn:active,a.category-btn:focus, a.category-btn.active {
+a.category-btn.active {
   background: #2196F3;
   color: white;
 }
