@@ -73,6 +73,38 @@ class TripsController < ApplicationController
   def show
   end
 
+  def search_results
+    @trip = Trip.find(params[:trip_id])
+    # Experience selection
+    experiences_selection = Experience.where(country_code: @trip.country_code)
+    if params[:categories].empty? || params[:categories].lenght == 5
+      return
+    else
+      # Fetch experiences according to categories
+      if params[:categories].include?('must')
+        formatted_categories = params[:categories].reject('must')
+        experiences_selection = experiences_selection.where(must_see: true)
+        if formatted_categories.empty?
+          # Fetch only must_see
+          return
+        else
+          experiences_tmp = []
+          experiences_selection.each do |experience|
+            experiences_tmp << experience if (experience.category - formatted_categories).lenght < formatted_categories.lenght
+          end
+         experiences_selection = experiences_tmp
+        end
+      else
+         experiences_tmp = []
+         experiences_selection.each do |experience|
+           experiences_tmp << experience if (experience.category - formatted_categories).lenght < formatted_categories.lenght
+         end
+        experiences_selection = experiences_tmp
+      end
+    end
+    raise
+  end
+
   def update
     @trip.update(user_id: current_user.id)
     if params[:order]
