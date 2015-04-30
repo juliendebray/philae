@@ -81,7 +81,7 @@
                 <p class= 'light'>
                   <%= @trip.trip_experiences.count %> expériences ajoutés au voyage
                   <br>
-                  (dernier ajout: <%= "#{@trip.trip_experiences.last.name} le #{@trip.trip_experiences.last.created_at.strftime('%d-%m-%Y')}" %>)
+                  (dernier ajout: <%= "#{@trip.trip_experiences.last.experience.name} le #{@trip.trip_experiences.last.experience.created_at.strftime('%d-%m-%Y')}" %>)
                 </p>
                 <p class= 'light'>
                   <a class='black' href="#add-experiences" aria-controls="add-experiences" role="tab" data-toggle="tab" onclick="setClassActiveOnLink(this);">
