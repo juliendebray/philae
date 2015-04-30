@@ -1,8 +1,8 @@
 // General styles
 // TODO: set overflow hidden and remove x-overflow
-body#explore-map {
-  overflow-x: hidden;
-}
+// body#explore-map {
+//   overflow-x: hidden;
+// }
 
 #map-navigation-menu {
   position: absolute;
@@ -29,9 +29,8 @@ body#explore-map {
 }
 
 #map-container {
-  display: block;
   width: 55%;
-  position: fixed;
+  position: absolute;
   right: 0;
   left: auto;
   bottom: 0;
@@ -42,7 +41,7 @@ body#explore-map {
 
 // Customize categories buttons
 a.category-btn, a#sort-experiences {
-  font-size: 17px;
+  font-size: 16px;
 }
 
 a.category-btn:active,a.category-btn:focus {
