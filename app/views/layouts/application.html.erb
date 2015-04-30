@@ -7,7 +7,9 @@
     </title>
     <meta name="description" content="<%= yield_with_default(:description,"Avec Explorizers, simplifie la préparation de ton voyage, avec les conseils de tes amis, d'autres voyageurs et de professionnels.")%>" >
     <meta name="p:domain_verify" content="d6d8c001e555d111c1398d6c829b75c0"/>
-    <meta property="og:image" content="<%= @experience.experience_pictures.first.picture.url %>" />
+    <% if @trip %>
+      <meta property="og:image" content="<%= @experience.experience_pictures.first.picture.url %>" />
+    <% end %>
     <meta property="og:image:width" content="300" />
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= yield :navbar_hp_css %>
