@@ -17,7 +17,19 @@
   }
 }
 .destination-item {
+  box-sizing: border-box;
   position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  img {
+    max-width: 100%;
+    -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+    -moz-transition: all 0.5s ease; /* Firefox */
+    -ms-transition: all 0.5s ease; /* IE 9 */
+    -o-transition: all 0.5s ease; /* Opera */
+    transition: all 0.5s ease;
+  }
 }
 
 .destination-name {
@@ -282,7 +294,7 @@ div.homepage_story {
 
 .img-responsive {
   margin: 0 auto;
-  height: 150px;
+  // height: 150px;
 }
 
 .feature {

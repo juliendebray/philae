@@ -1,5 +1,5 @@
 class ExperiencesController < ApplicationController
-  before_action :authenticate_user!, except: [:detail, :show, :map]
+  before_action :authenticate_user!, except: [:detail, :show, :map, :index]
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   respond_to :js, only: [:detail, :detail_for_user]
 
@@ -32,6 +32,11 @@ class ExperiencesController < ApplicationController
   def new
     @experience = Experience.new
     # 3.times { @experience.experience_pictures.build }
+  end
+
+  # GET /experiences
+  def index
+    @experiences = Experience.all
   end
 
   # GET /experiences/1/edit

@@ -110,7 +110,7 @@
                   <div class="experience-box">
                     <%= link_to experience_path(421), target: "_blank" do %>
                       <div class="experience-picture text-center">
-                        <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/photos_usa/usa_glacier_park_1.jpg' %>
+                        <%= image_tag Experience.find(421).experience_pictures.first.picture.url(:banner) %>
                       </div>
                       <div class="experience-name text-center">
                         <small>Parc National du Glacier - Montana</small><br>
@@ -124,11 +124,10 @@
                   <div class="experience-box">
                     <%= link_to experience_path(214), target: "_blank" do %>
                       <div class="experience-picture text-center">
-                        <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/photos_indonesia/indonesia_pemuteran_1_1.jpg' %>
+                        <%= image_tag Experience.find(214).experience_pictures.first.picture.url(:banner) %>
                       </div>
                       <div class="experience-name text-center">
                         <small>Plongée à Bali</small><br>
-  <!--                       <small>Liban</small> -->
                       </div>
                     <% end %>
                   </div>
@@ -138,11 +137,10 @@
                   <div class="experience-box">
                     <%= link_to experience_path(239), target: "_blank" do %>
                       <div class="experience-picture text-center">
-                        <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/photos_madagascar/madagascar_baobabs_1_1.jpg' %>
+                        <%= image_tag Experience.find(239).experience_pictures.first.picture.url(:banner) %>
                       </div>
                       <div class="experience-name text-center">
                         <small>Allée des Baobabs</small><br>
-  <!--                       <small>Liban</small> -->
                       </div>
                     <% end %>
                   </div>
