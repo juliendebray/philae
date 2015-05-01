@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="container-fluid">
+    <div id="titleblock" class="text-center">
+      <div class="title">
+        <h2><%= t('.title') %></h2>
+      </div>
+    </div>
+    <% Experience.where(published:true).each do |experience| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="experience-box">
+          <%= link_to experience_path(experience.id), target: "_blank" do %>
+            <div class="experience-picture text-center">
+              <% if experience.experience_pictures.first %>
+                <%= image_tag experience.experience_pictures.first.picture.url(:banner), class: "img-responsive" %>
+              <% else %>
+                <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/photos_usa/usa_glacier_park_1.jpg' %>
+              <% end %>
+            </div>
+            <div class="experience-name text-center">
+              <small><%= experience.name %></small><br>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="vertical-spacer-xs"></div>
+  <%= render partial: 'shared/footer' %>
+</div>

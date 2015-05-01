@@ -142,6 +142,8 @@ en:
     show:
       searchplaceholder: "Where are you going?"
       searchbutton: "Travel"
+    index:
+      title: "Experiences"
   exp_share_text1: "Contribute to Explorizers: share your tips!"
   expbuttonadd: "Share"
 
