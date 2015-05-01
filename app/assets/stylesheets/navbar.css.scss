@@ -32,7 +32,8 @@ $profile-border-color: white;
 $profile-border-width: 0px;
 
 .navbar {
-  position: fixed;
+  // position: fixed;
+  position: absolute;
   background: $bg2;
   opacity: 0.97;
 }

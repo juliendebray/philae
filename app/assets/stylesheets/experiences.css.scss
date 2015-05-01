@@ -316,6 +316,21 @@ body.newexperience {
       }
     }
   }
+  .all-exp-page {
+    .col-xs-12 {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .container-fluid {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .experience-box {
+      .experience-name {
+        display: block;
+      }
+    }
+  }
 }
 
 
@@ -326,6 +341,17 @@ body.newexperience {
         h1 {
           font-size: 2.225em;
         }
+      }
+    }
+  }
+  .all-exp-page {
+    .container-fluid {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .experience-box {
+      .experience-name {
+        display: block;
       }
     }
   }
