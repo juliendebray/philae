@@ -5,17 +5,17 @@
 // }
 
 #sign-form {
-background: rgba(0,0,0,0.5);
-color: lightgrey;
-width: 60%;
-margin: 10px auto;
-padding: 10px 10px;
-border-radius: 5px;
-text-align: center;
+  background: rgba(0,0,0,0.3);
+  color: white;
+  width: 60%;
+  margin: 10px auto;
+  padding: 10px 10px;
+  // border-radius: 5px;
+  text-align: center;
 }
 
 body.signup-signin {
-  background-image: image-url("beach.jpg");
+  background-image: image-url("clouds.jpeg");
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
@@ -24,7 +24,7 @@ body.signup-signin {
   padding-top: 80px;
   h2 {
     color: white;
-    text-shadow: 0px 0px 3px white, 0px 0px 6px black;
+    text-shadow: 0px 0px 3px white, 0px 0px 3px black;
   }
 
   #sign-form a {

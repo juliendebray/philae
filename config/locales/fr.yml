@@ -14,7 +14,7 @@ fr:
 
 
   #sign up / sign in
-  sign_up: "Jette un oeil - c'est gratuit."
+  sign_up: "Explore le monde"
   sign_in: "Connexion"
   sign_in_btn: "Connexion"
   passwordplaceholder: "Mot de passe (> 6 car.)"
@@ -23,7 +23,7 @@ fr:
   fbsignupbutton: "Continuer avec Facebook"
   noaccount: "(Pas encore inscrit?)"
   alreadyaccount: "(Déjà inscrit?)"
-  fbencourage: "Afin de pouvoir demander à tes amis Facebook d'apporter leurs conseils directement sur la carte de ton voyage"
+  fbencourage: "Recommandé pour partager des conseils de voyage entre amis"
   emailsignup: "Ou"
   forgot: "Mot de passe oublié?"
 
