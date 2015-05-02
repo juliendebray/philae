@@ -326,13 +326,16 @@ body.newexperience {
       padding-left: 0;
     }
     .experience-box {
+      margin-top: 15px;
       .experience-name {
         display: block;
+        small {
+          font-weight: 300;
+        }
       }
     }
   }
 }
-
 
 @media screen and (min-width: 769px) and (max-width: 992px) {
   .experience-page {
@@ -352,6 +355,9 @@ body.newexperience {
     .experience-box {
       .experience-name {
         display: block;
+        small {
+          font-weight: 300;
+        }
       }
     }
   }

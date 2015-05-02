@@ -25,7 +25,7 @@ fr:
   alreadyaccount: "(Déjà inscrit?)"
   fbencourage: "Recommandé pour partager des conseils de voyage entre amis"
   emailsignup: "Ou"
-  forgot: "Mot de passe oublié?"
+  forgot: "Mot de passe oublié ?"
 
   my_trips: "Mes voyages"
 
@@ -215,10 +215,10 @@ fr:
   user_mailer:
     welcome:
       hi: "Bienvenue !"
-      w_line1: "Nous sommes ravis de te voir rejoindre la communauté Explorizers."
-      w_line2: "Explorizers est en amélioration constante et écoute ses utilisateurs : dis-nous ce qui te manque, nous ferons de notre mieux pour te l'offrir rapidement!"
+      w_line1: "Nous sommes ravis de vous voir rejoindre la communauté Explorizers."
+      w_line2: "Explorizers vous permettra de trouver l'inspiration et l'information nécessaire pour votre prochain voyage."
       w_line3: "A très vite,"
-      w_line4: "La team Explorizers"
+      w_line4: "Dora"
     share_trip:
       hi: "Bonjour,"
       s_line1: "Pour que tes amis puissent te donner leurs conseils, copie l'URL ou transfère l'email ci-dessous."
