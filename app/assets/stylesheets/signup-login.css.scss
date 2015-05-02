@@ -1,17 +1,19 @@
-
-// @media (max-width: $screen-sm-min) {
-//   #sign-form {
-
-// }
-
 #sign-form {
   background: rgba(0,0,0,0.3);
   color: white;
   width: 60%;
   margin: 10px auto;
   padding: 10px 10px;
-  // border-radius: 5px;
   text-align: center;
+  label {
+    margin-bottom: 0;
+    font-weight: 300;
+  }
+
+  #forgot-password {
+    margin-left: 55px;
+    font-weight: 300;
+  }
 }
 
 body.signup-signin {
@@ -26,7 +28,6 @@ body.signup-signin {
     color: white;
     text-shadow: 0px 0px 3px white, 0px 0px 3px black;
   }
-
   #sign-form a {
     color: white;
   }
@@ -59,19 +60,19 @@ padding-bottom: 20px;
 
 #user_email {
   color: grey;
-  font-weight: normal;
+  font-weight: 300;
   width: 170px;
 }
 
 #user_password {
   color: grey;
-  font-weight: normal;
+  font-weight: 300;
    width: 170px;
 }
 
 #user_password_confirmation {
   color: grey;
-  font-weight: normal;
+  font-weight: 300;
    width: 170px;
 }
 

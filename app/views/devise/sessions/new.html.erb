@@ -1,10 +1,5 @@
 <body class="signup-signin">
 
-<!--   <video id="video1" loop autoplay poster="1minutedrivejpg">
-  <source src="1minutedrive.webm" type="video/webm">
-  <source src="1minutedrive.mp4" type="video/mp4">
-  </video> -->
-
   <div id="titleblock" class="text-center">
     <h2><%= t('sign_in', :default => "Sign in") %></h2>
   </div>
@@ -14,7 +9,8 @@
 
       <div id="sign-form">
 
-        <div><%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <div>
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
           <%= link_to t('noaccount'), new_registration_path(resource_name) %><br />
           <% end -%>
         </div>
@@ -30,7 +26,6 @@
           <div><%= f.label :email do %>
             <br />
             <span class="col-xs-1 col-xs-offset-1 text-center"><i class="fa fa-envelope fa-2x icon-alignement"></i></span>
-  <!--           <i class="fa fa-envelope fa-2x icon-alignement"></i> -->
             <%= f.email_field :email, placeholder: "indiana.jones@nyu.edu" %>
             <% end %>
           </div>
@@ -38,21 +33,23 @@
           <div><%= f.label :password do %>
             <br />
             <span class="col-xs-1 col-xs-offset-1 text-center"><i class="fa fa-lock fa-2x icon-alignement"></i></span>
-  <!--           <i class="fa fa-lock fa-2x icon-alignement"></i> -->
             <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
           <% end %>
+          <div class="vertical-spacer-xxs"></div>
 
-          <% if devise_mapping.rememberable? -%>
-            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-          <% end %>
-
-          <div>
-            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-            <%= link_to t('forgot'), new_password_path(resource_name) %>
+          <div id="forgot-password">
+            <i><%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to t('forgot'), new_password_path(resource_name) %></i>
             <br />
             <br />
             <% end -%>
           </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+          <% end %>
+          <div class="vertical-spacer-xxs"></div>
+
 
             <div><%= f.submit t('sign_in_btn', :default => "Log in"), class: 'btn btn-warning' %></div>
           <% end %>

@@ -2,24 +2,30 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+    #email-banner {
+      background-image: url("https://s3-eu-west-1.amazonaws.com/philae-floju/banners/user_page_banner.jpeg");
+      height: 250px;
+      width: 100%;
+      background-size: cover;
+      background-position: center 75%;
+    }
+    </style>
   </head>
 
 <body>
+  <div id="email-banner">
+  </div>
 
   <div class="title text center">
     <h1><%= t('.hi') %></h1>
   </div>
 
   <p><%= t('.w_line1') %></p>
-
   <p><%= t('.w_line2') %></p>
-
   <p><%= t('.w_line3') %></p>
-
   <p><%= t('.w_line4') %></p>
 
-
-  <a href="www.explorizers.com">
-
+  <a href="www.explorizers.com">Explorizers</a>
 
 </body>
