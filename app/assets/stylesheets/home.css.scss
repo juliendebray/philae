@@ -349,6 +349,9 @@ div.homepage_story {
     width: 100%;
     .experience-name {
       display: block;
+      small {
+        font-weight: 300;
+      }
     }
   }
 

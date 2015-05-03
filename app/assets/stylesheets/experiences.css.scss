@@ -281,7 +281,9 @@ body.newexperience {
       }
     }
     p {
-      font-size: 20px;
+      font-size: 17px;
+      text-align: left;
+      font-weight: 300;
     }
     h4 {
       font-size: 25px;
@@ -326,7 +328,7 @@ body.newexperience {
       padding-left: 0;
     }
     .experience-box {
-      margin-top: 15px;
+      margin-top: 5px;
       .experience-name {
         display: block;
         small {
