@@ -37,7 +37,7 @@ class HomeController < ApplicationController
 
   def relief_hp_hash
     return {
-      title: 'relief',
+      title: 'TON VOYAGE COMMENCE ICI',
       subtitle: 'Le meilleur du web pour organiser le voyage de tes rêves',
       description: 'EXPLORIZERS te permet de savoir "que faire" et "que voir" lors de ton prochain voyage en se basant sur les recommandations et services des principaux sites de voyage.',
       item: {
