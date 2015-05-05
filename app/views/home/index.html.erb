@@ -4,6 +4,27 @@
 <% content_for :logo_hp do %>
   <%= true %>
 <% end %>
+<% content_for :registration_scripts do %>
+  <% if flash[:notice] %>
+    <!-- Facebook Conversion Code for Registration -->
+    <script>(function() {
+      var _fbq = window._fbq || (window._fbq = []);
+      if (!_fbq.loaded) {
+        var fbds = document.createElement('script');
+        fbds.async = true;
+        fbds.src = '//connect.facebook.net/en_US/fbds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(fbds, s);
+        _fbq.loaded = true;
+      }
+    })();
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', '6026156032989', {'value':'0.00','currency':'EUR'}]);
+    </script>
+    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6026156032989&amp;cd[value]=0.00&amp;cd[currency]=EUR&amp;noscript=1" /></noscript>
+  <% end %>
+<% end %>
+
 <div class="homepage_story">
   <div class="fullpage">
     <div id="homeblock" class="banner text-center">
@@ -130,7 +151,7 @@
           <div class="experience-box">
             <%= link_to experience_path(421), target: "_blank" do %>
               <div class="experience-picture text-center">
-                <%= image_tag Experience.find(42).experience_pictures.first.picture.url(:banner) %>
+                <%= image_tag Experience.find(421).experience_pictures.first.picture.url(:banner) %>
               </div>
               <div class="experience-name text-center">
                 <small>Parc National du Glacier - Montana</small><br>
@@ -143,7 +164,7 @@
           <div class="experience-box">
             <%= link_to experience_path(214), target: "_blank" do %>
               <div class="experience-picture text-center">
-                <%= image_tag Experience.find(42).experience_pictures.first.picture.url(:banner) %>
+                <%= image_tag Experience.find(214).experience_pictures.first.picture.url(:banner) %>
               </div>
               <div class="experience-name text-center">
                 <small>Plongée à Bali</small><br>
@@ -156,7 +177,7 @@
           <div class="experience-box">
             <%= link_to experience_path(239), target: "_blank" do %>
               <div class="experience-picture text-center">
-                <%= image_tag Experience.find(42).experience_pictures.first.picture.url(:banner) %>
+                <%= image_tag Experience.find(239).experience_pictures.first.picture.url(:banner) %>
               </div>
               <div class="experience-name text-center">
                 <small>Allée des Baobabs</small><br>
@@ -189,4 +210,12 @@
 </div>
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
+<% end %>
+<%= content_for(:after_js) do %>
+  <% if flash[:notice] %>
+    <script>
+      // Google analytics event
+      ga('send', 'event', 'User', 'Sign up / Sign in / Sign out', 'Flash notice message detected');
+    </script>
+  <% end %>
 <% end %>

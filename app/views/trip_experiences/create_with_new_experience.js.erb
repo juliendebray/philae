@@ -3,9 +3,9 @@ $( document ).ready(function() {
   if ($('#myTab').length > 0) {
     // demo liban
     var id = $('.tab-pane.active').prop('id');
-    console.log(id);
+    // console.log(id);
     if (id == "user-experiences-selection") {
-      console.log('test2');
+      // console.log('test2');
       setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
         requestingMarkers = r;
       });

@@ -43,6 +43,7 @@
     window._fbq = window._fbq || [];
     window._fbq.push(['track', 'PixelInitialized', {}]);
     </script>
+    <%= yield :registration_scripts %>
   </head>
   <body>
     <div id="fb-root"></div>

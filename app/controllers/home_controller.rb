@@ -37,9 +37,9 @@ class HomeController < ApplicationController
 
   def relief_hp_hash
     return {
-      title: 'Vous partez en voyage ?',
-      subtitle: 'Organisez le voyage parfait en quelques minutes: où aller, combien de temps, par quels moyens, ...',
-      description: "Explorizers simplifie l'organisation de votre voyage et vous permet de partir l'esprit tranquille avec votre itinéraire personalisé.",
+      title: 'Préparez votre voyage en toute simplicité',
+      subtitle: 'Organisez le voyage parfait en quelques minutes... sans prises de tête',
+      description: "Explorizers simplifie l'organisation de votre voyage et vous permet de partir l'esprit tranquille avec un itinéraire complétement personalisé.",
       item: {
         one: "<div class='how-header'><i class='fa fa-map-marker'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Selectionnez les <strong>meilleures expériences</strong> à vivre en fonction de vos envies et des recommandations des principaux sites de voyages (TripAdvisor, Lonely Planet, Le Guide du Routard).</div>",
         two: "<div class='how-header'><i class='fa fa-comment'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Evitez les attrapes-touristes et autres galères en vous inspirant des <strong>conseils de vos amis et d'autres voyageurs</strong>.</div>",
