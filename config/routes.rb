@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
+    # get :from, to: 'home#index'
     get :map, to: 'experiences#map'
 
     resources :providers, only: [:index, :show]
