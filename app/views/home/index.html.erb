@@ -8,9 +8,9 @@
   <div class="fullpage">
     <div id="homeblock" class="banner text-center">
       <div class="title fader">
-        <h1><%= t('.firstline') %></h1>
+        <h1><%= @hp_hash[:title] %></h1>
         <!-- <div class="vertical-spacer-xs"></div> -->
-        <h3>Le meilleur du web pour organiser le voyage de tes rêves</h3>
+        <h3><%= @hp_hash[:subtitle] %></h3>
       </div>
       <div class="vertical-spacer-xxs"></div>
       <div class="tr-grey-bg">
@@ -24,7 +24,7 @@
             </div>
           <% end %>
         <% else %>
-          <h3><%= link_to 'INSCRIPTION', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
+          <h3><%= link_to 'INSCRIS-TOI POUR COMMENCER', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
         <% end %>
       </div>
     </div>
@@ -32,73 +32,78 @@
   <div class="help hp-section">
     <div class="vertical-spacer-xs"></div>
     <h2 class="text-center">Comment ça marche ?</h2>
-    <p class='text-center container'>EXPLORIZERS te permet de savoir "que faire" et "que voir" lors de ton prochain voyage en se basant sur les recommandations et services des principaux sites de voyage.</p>
+    <p class='text-center container'><%= @hp_hash[:description] %></p>
     <div class="vertical-spacer-sm"></div>
-    <div class="logo-container container">
-      <div class="row">
-        <div class="col-xs-4 col-sm-2 vcenter">
-          <div class="logo-item text-center">
-            <%= image_tag('ta_logo.png', alt:'Tripadvisor Logo Officiel') %>
-          </div>
-        </div><!-- Remove space when return to the line
-        --><div class="col-xs-4 col-sm-2 vcenter">
-          <div class="logo-item text-center">
-            <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
-          </div>
-        </div><!-- Remove space when return to the line
-        --><div class="col-xs-4 col-sm-2 vcenter">
-          <div class="logo-item text-center">
-            <%= image_tag('f_logo.png', alt:'Facebook Logo Officiel') %>
-          </div>
-        </div><!-- Remove space when return to the line
-        --><div class="col-xs-4 col-sm-2 vcenter">
-          <div class="logo-item text-center">
-            <%= image_tag('gg_logo.png', alt:'Google Logo Officiel') %>
-          </div>
-        </div><!-- Remove space when return to the line
-        --><div class="col-xs-4 col-sm-2 vcenter">
-          <div class="logo-item text-center">
-            <%= image_tag('fsq_logo.png', alt:'Foursquare Logo Officiel') %>
-          </div>
-        </div><!-- Remove space when return to the line
-        --><div class="col-xs-4 col-sm-2 vcenter">
-          <div class="logo-item text-center">
-            <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
+    <% unless @hp_hash %>
+      <div class="logo-container container">
+        <div class="row">
+          <div class="col-xs-4 col-sm-2 vcenter">
+            <div class="logo-item text-center">
+              <%= image_tag('ta_logo.png', alt:'Tripadvisor Logo Officiel') %>
+            </div>
+          </div><!-- Remove space when return to the line
+          --><div class="col-xs-4 col-sm-2 vcenter">
+            <div class="logo-item text-center">
+              <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
+            </div>
+          </div><!-- Remove space when return to the line
+          --><div class="col-xs-4 col-sm-2 vcenter">
+            <div class="logo-item text-center">
+              <%= image_tag('f_logo.png', alt:'Facebook Logo Officiel') %>
+            </div>
+          </div><!-- Remove space when return to the line
+          --><div class="col-xs-4 col-sm-2 vcenter">
+            <div class="logo-item text-center">
+              <%= image_tag('gg_logo.png', alt:'Google Logo Officiel') %>
+            </div>
+          </div><!-- Remove space when return to the line
+          --><div class="col-xs-4 col-sm-2 vcenter">
+            <div class="logo-item text-center">
+              <%= image_tag('fsq_logo.png', alt:'Foursquare Logo Officiel') %>
+            </div>
+          </div><!-- Remove space when return to the line
+          --><div class="col-xs-4 col-sm-2 vcenter">
+            <div class="logo-item text-center">
+              <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="vertical-spacer"></div>
+    <% end %>
+    <div class="vertical-spacer-xs"></div>
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-4 text-center text-contrast">
-          <div class="how-header">
+          <%= simple_format(@hp_hash[:item][:one]) %>
+          <!-- <div class="how-header">
             <i class="fa fa-map-marker"></i>
           </div>
           <div class="vertical-spacer-xs"></div>
           <div class="how-content">
             Sélectionne les <strong>meilleures expériences</strong> à faire pendant ton voyage sur la base de milliers de notes et d'avis.
-          </div>
+          </div> -->
           <div class="vertical-spacer"></div>
         </div>
         <div class="col-sm-12 col-md-4 text-center text-contrast">
-          <div class="how-header">
+          <%= simple_format(@hp_hash[:item][:two]) %>
+          <!-- <div class="how-header">
             <i class="fa fa-comment"></i>
           </div>
           <div class="vertical-spacer-xs"></div>
           <div class="how-content">
             Inspire-toi des <strong>conseils les plus utiles</strong> des guides et voyageurs afin d'éviter attrapes-touristes et autres galères.
-          </div>
+          </div> -->
           <div class="vertical-spacer"></div>
         </div>
         <div class="col-sm-12 col-md-4 text-center text-contrast">
-          <div class="how-header">
+          <%= simple_format(@hp_hash[:item][:three]) %>
+          <!-- <div class="how-header">
             <i class="fa fa-cloud-download"></i>
           </div>
           <div class="vertical-spacer-xs"></div>
           <div class="how-content">
             Récupère ton <strong>itinéraire personnalisé</strong>, partage-le avec tes amis et emmène-le dans tes valises.
-          </div>
+          </div> -->
           <div class="vertical-spacer"></div>
         </div>
       </div>
