@@ -105,6 +105,11 @@ div.homepage_story {
     color: white;
     text-size: 16px;
   }
+  i.fa-angle-down {
+    color: white;
+    font-size: 60px;
+    margin-top: 15%;
+  }
 }
 
 .hp-section{
@@ -164,9 +169,10 @@ div.homepage_story {
   h1 {
     color: white;
     text-shadow: 0px 0px 4px white, 0px 0px 2px black;
-    font-size: 60px;
+    font-size: 45px;
     padding-bottom: 0px;
     font-weight: 700;
+    text-transform: uppercase;
   }
   h3, h4 {
     color: white;
@@ -178,7 +184,7 @@ div.homepage_story {
     }
   }
   h3 {
-    font-size: 22px;
+    font-size: 25px;
   }
 
   #references-logos {

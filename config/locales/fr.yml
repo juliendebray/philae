@@ -14,13 +14,14 @@ fr:
 
 
   #sign up / sign in
-  sign_up: "Explore le monde"
+  # sign_up: "Explore le monde"
+  sign_up: "S'INSCRIRE POUR COMMENCER"
   sign_in: "Connexion"
   sign_in_btn: "Connexion"
   passwordplaceholder: "Mot de passe (> 6 car.)"
   passwordconfirmplaceholder: "Confirmer mot de passe"
   fbloginbutton: "Connexion Facebook"
-  fbsignupbutton: "Continuer avec Facebook"
+  fbsignupbutton: "S'inscrire en un clic"
   noaccount: "(Pas encore inscrit?)"
   alreadyaccount: "(Déjà inscrit?)"
   fbencourage: "Recommandé pour partager des conseils de voyage entre amis"
@@ -41,7 +42,7 @@ fr:
       thirdline: "Explorizers est le 1er site de conseils de voyageurs orienté exclusivement sur les expériences de voyage"
       fourthline: "Laisse-toi inspirer par les conseils de tes amis, ceux des voyageurs, et des professionnels"
       fifthline: "Construis ton itinéraire au fur et à mesure et emporte-le en voyage"
-      searchplaceholder: "Où vas-tu ?"
+      searchplaceholder: "Où allez-vous ?"
       searchbutton: "Voyager"
       subtitle1: "Aurelia - Sri Lanka"
       text1: "En mélangeant les conseils de mes amis et mes propres attentes, j'ai pu organiser un voyage au top taillé sur-mesure."

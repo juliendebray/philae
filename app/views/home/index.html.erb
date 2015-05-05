@@ -24,9 +24,10 @@
             </div>
           <% end %>
         <% else %>
-          <h3><%= link_to 'INSCRIS-TOI POUR COMMENCER', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
+          <h3><%= link_to 'INSCRIVEZ-VOUS POUR COMMENCER', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
         <% end %>
       </div>
+      <i class="fa fa-angle-down"></i>
     </div>
   </div>
   <div class="help hp-section">
@@ -108,8 +109,8 @@
         </div>
       </div>
     </div>
-    <h2 class="text-center">Explore la destination du moment</h2>
-    <p class='text-center'>Laisse-toi inspirer par la destination du moment.</p>
+    <h2 class="text-center">Explorez la destination du moment</h2>
+    <p class='text-center'>Laissez-vous inspirer par la destination du moment.</p>
     <%= link_to Destination.first do %>
       <div class="destination-item text-center">
         <%= image_tag(Destination.first.picture.url(:banner), class: 'max-width') %>
@@ -122,14 +123,14 @@
     <% end %>
     <div class="vertical-spacer-sm"></div>
     <div class="experience-promo">
-      <h2 class="text-center">Découvre ces expériences uniques</h2>
-      <p class='text-center'>Prends quelques minutes pour t'évader.</p>
+      <h2 class="text-center">Découvrez ces expériences uniques</h2>
+      <p class='text-center'>Prenez quelques minutes pour vous évader.</p>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="experience-box">
             <%= link_to experience_path(421), target: "_blank" do %>
               <div class="experience-picture text-center">
-                <%= image_tag Experience.find(421).experience_pictures.first.picture.url(:banner) %>
+                <%= image_tag Experience.find(42).experience_pictures.first.picture.url(:banner) %>
               </div>
               <div class="experience-name text-center">
                 <small>Parc National du Glacier - Montana</small><br>
@@ -142,7 +143,7 @@
           <div class="experience-box">
             <%= link_to experience_path(214), target: "_blank" do %>
               <div class="experience-picture text-center">
-                <%= image_tag Experience.find(214).experience_pictures.first.picture.url(:banner) %>
+                <%= image_tag Experience.find(42).experience_pictures.first.picture.url(:banner) %>
               </div>
               <div class="experience-name text-center">
                 <small>Plongée à Bali</small><br>
@@ -155,7 +156,7 @@
           <div class="experience-box">
             <%= link_to experience_path(239), target: "_blank" do %>
               <div class="experience-picture text-center">
-                <%= image_tag Experience.find(239).experience_pictures.first.picture.url(:banner) %>
+                <%= image_tag Experience.find(42).experience_pictures.first.picture.url(:banner) %>
               </div>
               <div class="experience-name text-center">
                 <small>Allée des Baobabs</small><br>
@@ -170,8 +171,8 @@
       </div>
     </div>
     <div class="vertical-spacer"></div>
-    <h2 class="text-center">Explore le monde</h2>
-    <p class='text-center'>Parcours la carte des expériences sur le monde entier.</p>
+    <h2 class="text-center">Explorez le monde</h2>
+    <p class='text-center'>Parcourez la carte des expériences sur le monde entier.</p>
     <%= link_to map_path do %>
       <div class="destination-item text-center">
         <%= image_tag('maphands.jpg', width: 851, height: 440, class: 'max-width') %>
