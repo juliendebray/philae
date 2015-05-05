@@ -41,11 +41,11 @@
               <%= f.hidden_field(:latitude) %>
               <%= f.hidden_field(:longitude) %>
               <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
-              <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
+              <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm', onclick:"ga('send', 'event', 'User', 'Search Button', 'Click on search button from hp');") %>
             </div>
           <% end %>
         <% else %>
-          <h3><%= link_to 'INSCRIVEZ-VOUS POUR COMMENCER', new_user_registration_path,  {class: "btn btn-info btn-lg fader"}%></h3>
+          <h3><%= link_to 'INSCRIVEZ-VOUS POUR COMMENCER', new_user_registration_path,  {class: "btn btn-info btn-lg fader", onclick:"ga('send', 'event', 'User', 'Sign Up Button', 'Click on sign up button from hp');"}%></h3>
         <% end %>
       </div>
       <i class="fa fa-angle-down"></i>
