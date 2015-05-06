@@ -76,7 +76,6 @@
 
   <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
     <div class="tab-pane" id="reviews">
-      <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
       <br>
       <table>
         <tr>
@@ -133,23 +132,18 @@
           <% end %>
         </tr>
       </table>
-        <% if experience.experience_reviews.any? %>
-          <div>
-            <span class="text-center"><p><u>Conseils des voyageurs</u></p></span>
-            <div class="user-reviews">
-              <% experience.experience_reviews.each do |experience_review| %>
-                <blockquote>
-                  <p>"<%= experience_review.comment %>"</p>
-                  <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date || experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
-                </blockquote>
-              <% end %>
-            </div>
+      <% if experience.experience_reviews.any? %>
+        <div>
+          <span class="text-center"><p><u>Conseils des voyageurs</u></p></span>
+          <div class="user-reviews">
+            <% experience.experience_reviews.each do |experience_review| %>
+              <blockquote>
+                <p>"<%= experience_review.comment %>"</p>
+                <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date || experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
+              </blockquote>
+            <% end %>
           </div>
-        <% end %>
-      <% else %>
-      <p>
-        Coming soon...
-      </p>
+        </div>
       <% end %>
     </div>
   <% end %>
