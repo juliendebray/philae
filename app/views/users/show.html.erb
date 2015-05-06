@@ -54,20 +54,20 @@
                         <i>Dernier voyage créé :</i> <br>
                         <p><%= @user.trips.last.title %></p>
                         <% if @user.trips.last.trip_experiences.any? %>
-                          <small>Complète ton voyage ou revois ta sélection</small>
+                          <small>Complétez votre voyage ou recevez votre sélection</small>
                         <% else %>
-                          <small>Découvre les points d'intérêt et ajoute-les à ta sélection</small>
+                          <small>Découvrez les points d'intérêt et ajoutez-les à votre sélection</small>
                         <% end %>
                         <br>
                         <% if @user.trips.last.trip_comments.any? %>
-                          <small>Tes amis ont donné leurs conseils: lis-les</small>
+                          <small>vos amis ont donné leurs conseils : lisez-les</small>
                         <% else %>
-                          <small>Demande les conseils de tes amis</small>
+                          <small>Demandez les conseils de vos amis</small>
                         <% end %>
                         <br>
                         <br>
                         <%= link_to @user.trips.last, { method: :delete, data: {confirm: t('.delete')} } do %>
-                          <i>Supprimer?</i>
+                          <i>Supprimer ?</i>
                         <% end %>
                       </div>
                     </div>
@@ -78,7 +78,7 @@
               <div class="col-xs-12 col-md-3">
                 <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
                   <div class="form-group minor-block" class="text-center">
-                    <p>Un nouveau voyage?</p>
+                    <p>Un nouveau voyage ?</p>
                     <%= f.hidden_field(:latitude) %>
                     <%= f.hidden_field(:longitude) %>
                     <%= f.search_field(:query, placeholder: "Destination ?", required: true ) %>
@@ -89,8 +89,8 @@
 
             </div>
             <div class="vertical-spacer-sm"></div>
-            <h2 class="text-center">Explore la destination du moment</h2>
-            <p class='text-center'>Découvre les destinations du moment et laisse-toi inspirer.</p>
+            <h2 class="text-center">Explorez la destination du moment</h2>
+            <p class='text-center'>Découvrez les destinations du moment et laissez-vous inspirer.</p>
             <%= link_to Destination.first, target: "_blank" do %>
               <div class="destination-item text-center">
                 <%= image_tag(Destination.first.picture.url(:banner), class: 'max-width') %>
@@ -103,7 +103,7 @@
             <% end %>
             <div class="vertical-spacer-sm"></div>
             <div class="experience-promo">
-              <h2 class="text-center">Découvre ces expériences uniques</h2>
+              <h2 class="text-center">Découvrez ces expériences uniques</h2>
               <div class="row">
 
                 <div class="col-xs-12 col-sm-6 col-md-4">
@@ -195,7 +195,7 @@
             <h2>Ma carte</h2>
           </div>
           <div class="user-content-detail">
-            <p>Coming soon!</p>
+            <p>Coming soon !</p>
           </div>
         </div>
         <div class="tab-pane" id="tab4">
@@ -204,7 +204,7 @@
               <h2>Mes amis</h2>
             </div>
           </div>
-          <p>Coming soon!</p>
+          <p>Coming soon !</p>
           <div class="user-content-detail">
             <h3>Envoyer une demande par email</h3>
             <%= form_tag(user_relationships_path(current_user)) do %>
@@ -259,7 +259,7 @@
             </div>
           </div>
           <div class="user-content-detail">
-            <p>Coming soon!</p>
+            <p>Coming soon !</p>
           </div>
         </div>
       </div>

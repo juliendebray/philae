@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       resources :relationships, only: [:create, :update, :destroy]
     end
 
+    resources :legal, only: [:index]
     resources :story, only: [:index]
     resources :destinations, only: [:index, :show]
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do
