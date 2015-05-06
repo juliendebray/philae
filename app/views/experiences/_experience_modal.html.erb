@@ -20,10 +20,10 @@
 <div id="exp-modal-tabs">
   <ul class="nav nav-tabs nav-justified" role="tablist">
     <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
+    <li><a href="#descriptif" data-toggle="tab">Descriptif</a></li>
     <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
       <li><a href="#reviews" data-toggle="tab">Avis et conseils</a></li>
     <% end %>
-    <li><a href="#descriptif" data-toggle="tab">Descriptif</a></li>
     <% unless global_map %>
       <li><a href="#getthere" data-toggle="tab">Comment s'y rendre</a></li>
     <% end %>
