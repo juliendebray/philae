@@ -165,9 +165,9 @@
     <div class="tab-pane" id="user_review">
       <div class="experience-content text center">
         <br>
-        <p>Tu connais cet endroit? Donne ton avis!</p>
+        <p>Vous connaissez cet endroit? Donnez votre avis!</p>
         <%= bootstrap_form_for([@experience, ExperienceReview.new]) do |f| %>
-              <%= f.text_field :comment, hide_label: true, placeholder: "Donne ton avis en 140 caractères max!", required: true, size: 75, maxlength: 140 %>
+              <%= f.text_field :comment, hide_label: true, placeholder: "Donnez votre avis en 140 caractères max !", required: true, size: 75, maxlength: 140 %>
               <%= f.text_field :name, hide_label: true, placeholder: "Nom", required: true %>
               <%= f.number_field :rating, hide_label: true, placeholder: "Note entre 0 et 10", required: true, min: 0, max: 10 %>
               <%= f.hidden_field(:created_at) %>

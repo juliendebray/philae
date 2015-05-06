@@ -187,9 +187,9 @@
         <div class="row">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1">
             <div id="exp_review_block" class="text-center">
-              <h5>Donne ton avis</h5>
+              <h5>Donnez votre avis</h5>
               <%= bootstrap_form_for([@experience, ExperienceReview.new], layout: :inline) do |f| %>
-                <%= f.text_field :comment, hide_label: true, placeholder: "Donne ton avis en 140 caractères max!", required: true, size: 65, maxlength: 140 %>
+                <%= f.text_field :comment, hide_label: true, placeholder: "Donnez votre avis en 140 caractères max !", required: true, size: 65, maxlength: 140 %>
                 <%= f.text_field :name, hide_label: true, placeholder: "Nom", required: true %>
                 <%= f.number_field :rating, hide_label: true, placeholder: "Note entre 0 et 10", required: true, min: 0, max: 10 %>
                 <%= f.hidden_field(:created_at) %>
