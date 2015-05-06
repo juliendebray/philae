@@ -117,7 +117,7 @@
                         <em>   <%= experience.nb_votes %> votes</em>
                       </small>
                         <% if experience.must_see? %>
-                                <span class="pull-right"> <i class="fa fa-star must-see"></i> <em>Incontournable!</em></span>
+                          <span class="pull-right"> <i class="fa fa-star must-see"></i> <em>Incontournable!</em></span>
                         <% end %>
                     </div>
                     <% if experience.category %>
@@ -136,6 +136,14 @@
                   <%= simple_format experience.description %>
                   <%= link_to t('experience_block_seemore'), modal_exp_path(trip.id, experience.id), remote: true, class: "readmore" %>
                 <% end %>
+                <span class="pull-right">
+                  <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
+                    <%= f.hidden_field :experience_id, value: experience.id %>
+                    <%= f.button :submit, class: "btn btn-link" do %><a id="addtotrip">Sélectionner</a>
+                      <i class='fa fa-heart pull-right'></i>
+                    <% end %>
+                  <% end %>
+                </span>
               </td>
             </tr>
             </tbody>

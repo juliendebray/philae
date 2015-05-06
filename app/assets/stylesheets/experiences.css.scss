@@ -94,6 +94,15 @@
   #reviews {
     height: 477px;
     overflow-y: auto;
+    blockquote {
+      font-size: 14px;
+      padding-top: 1px;
+      padding-bottom: 0px;
+    }
+    footer {
+      background-color: white;
+      padding: 0px;
+    }
   }
 }
 
