@@ -58,10 +58,15 @@
   vertical-align: middle;
   float: none;
 }
+.logo-container {
+  opacity: 0.8;
+}
 .logo-item {
   img {
     max-width: 100%;
+    max-height: 77px;
   }
+
 }
 
 .title {
@@ -155,7 +160,7 @@ div.homepage_story {
 }
 
 #homeblock {
-  padding-top: 10%;
+  padding-top: 7%;
   padding-bottom: 15%;
 }
 
