@@ -20,7 +20,7 @@
 <div id="exp-modal-tabs">
   <ul class="nav nav-tabs nav-justified" role="tablist">
     <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
-    <% unless global_map %>
+    <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
       <li><a href="#reviews" data-toggle="tab">Avis et conseils</a></li>
     <% end %>
     <li><a href="#descriptif" data-toggle="tab">Descriptif</a></li>
@@ -74,7 +74,7 @@
     </div>
   </div>
 
-  <% unless global_map %>
+  <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
     <div class="tab-pane" id="reviews">
       <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
       <br>
@@ -153,6 +153,7 @@
       <% end %>
     </div>
   <% end %>
+
   <% unless global_map %>
   <div class="tab-pane" id="getthere">
 <!--     <div class="subtitles-modal-exp">

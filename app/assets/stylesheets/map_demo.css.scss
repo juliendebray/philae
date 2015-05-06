@@ -100,8 +100,9 @@ i.must-see {
   margin-top: 8px;
   font-size: 15px;
   font-weight: 300;
+  color: #808080;
   em {
-    color: #939393;
+    color: #808080;
   }
 }
 
@@ -237,6 +238,9 @@ i.must-see {
       border-top-style: solid;
       border-color: lightgrey;
       border-width: 1px;
+      img {
+        max-height: 11em;
+      }
 
       .panel-body {
         padding: 0px 7px 10px 7px;
