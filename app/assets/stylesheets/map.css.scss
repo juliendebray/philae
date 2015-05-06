@@ -326,7 +326,7 @@ html, body {
       border: none;
       border-radius: 0px;
       margin-bottom: 15px;
-      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0);
       .panel-info {
 
       }
@@ -343,11 +343,9 @@ html, body {
 
       .panel-heading {
         padding-right: 2px;
-        margin-top: 5px;
         border-radius: 0px;
         background: white;
         border: none;
-        border-radius: 0px;
         font-weight: 300;
         color: #808080;
 
@@ -360,6 +358,10 @@ html, body {
         button.btn {
           margin: 0px;
           padding: 0px;
+          a {
+            font-size: 14px;
+            vertical-align: top;
+          }
         }
 
         button.btn:focus {
@@ -410,6 +412,20 @@ html, body {
         margin-bottom: 5px;
         font-size: 14px;
         p {
+          color: #808080;
+        }
+        .exp-quote {
+          margin-top: 8px;
+          font-size: 15px;
+          font-weight: 300;
+          color: #808080;
+          em {
+            color: #808080;
+          }
+        }
+        .exp-rating {
+          font-size: 15px;
+          font-weight: 300;
           color: #808080;
         }
 
