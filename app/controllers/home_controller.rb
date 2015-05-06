@@ -66,7 +66,7 @@ class HomeController < ApplicationController
   def agency_hp_hash
     return {
       title: 'Votre agence de voyage digitale',
-      subtitle: "Laissez-vous faire, on s'occupe de tout. Et c'est gratuit.",
+      subtitle: "Détendez-vous, on s'occupe de tout. Et c'est gratuit.",
       description: "Explorizers permet de concevoir son propre voyage de A à Z, du choix des destinations jusqu'aux réservations. Explorizers propose des expériences uniques, des informations pratiques et des outils pour l'explorateur connecté.",
       item: {
         one: "<div class='how-header'><i class='fa fa-globe'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Obtenez rapidement un <strong>parcours optimisé</strong> prenant en compte vos envies et vos contraintes.</div>",
