@@ -24,6 +24,7 @@ class HomeController < ApplicationController
 
   def default_hp_hash
     return {
+      tag: true,
       title: 'Votre voyage commence ici',
       subtitle: 'Le meilleur du web pour organiser le voyage de vos rêves',
       description: 'EXPLORIZERS vous permet de savoir "que faire" et "que voir" lors de votre prochain voyage en se basant sur les recommandations et services des principaux sites de voyage.',
