@@ -373,9 +373,19 @@ i.must-see {
     font-weight: bold;
   }
 
-  #destination-pill, #itineraries, #my-trip-pill {
+  // #destination-pill, #itineraries, #my-trip-pill {
+  //   width: 31%;
+  // }
+  #destination-pill, #friends-tips-pill, #my-trip-pill {
     width: 31%;
   }
+
+  // #friends-tips-pill {
+  //   i {
+  //     color: #0086B8;
+  //     font-size: 16px;
+  //   }
+  // }
 
   #destination-pill {
     i {
@@ -396,6 +406,13 @@ i.must-see {
     }
   }
 
+  #friends-tips-pill {
+    border-left: 2px solid white;
+    i {
+      color: #3b5998;
+      font-size: 16px;
+    }
+  }
 
   #itineraries {
     border-left: 2px solid white;
@@ -422,6 +439,9 @@ i.must-see {
   #friends-tips-pill:hover {
     a {
       background-color: #3b5998;
+      color: white;
+    }
+    i {
       color: white;
     }
   }
@@ -464,6 +484,9 @@ i.must-see {
   #friends-tips-pill.active {
     a {
       background-color: #3b5998;
+      color: white;
+    }
+    i {
       color: white;
     }
   }
