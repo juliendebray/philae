@@ -22,8 +22,8 @@ class TripsController < ApplicationController
         @trip.title = @trip.query
       end
       @trip.save
-      # redirect_to start_trip_path(@trip)
-      redirect_to demo_trip_path(@trip)
+      redirect_to start_trip_path(@trip)
+      # redirect_to demo_trip_path(@trip)
     end
   end
 
@@ -61,7 +61,6 @@ class TripsController < ApplicationController
     end
   end
 
-
   # Lebanes demo
   def selection_display
     @destination = Destination.first
@@ -73,6 +72,9 @@ class TripsController < ApplicationController
     # set_orders_if_nil!(@trip.trip_experiences)
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
       te.order
+    end
+    unless browser.mobile? || browser.tablet?
+      redirect_to demo_trip_path(@trip)
     end
   end
 
