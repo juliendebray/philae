@@ -17,7 +17,8 @@ class TripsController < ApplicationController
         @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
         @trip.title = 'Morocco'
       elsif params[:trip][:query]
-        @trip = Trip.new(trip_params)
+        authenticate_user!
+        @trip = current_user.trips.new(trip_params)
         @trip.title = @trip.query
       end
       @trip.save
