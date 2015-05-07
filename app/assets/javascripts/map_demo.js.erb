@@ -501,6 +501,10 @@ function displayMarkersAccordingToUserChoices(trip_id, map, id) {
 
 function demoListenToUserChoicesInsideSelection(trip_id, map) {
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    if (ibOpened) {
+      ib.close();
+      ibOpened = false;
+    }
     var id = $(e.target).attr('aria-controls');
     // console.log('id est ...');
     // console.log(id);
@@ -655,8 +659,8 @@ function listenToUserChoiceOnFilteringExperiences(map, trip_id) {
 function filterExperiences(map, trip_id) {
   clearDragendAndZoomChangedListeners();
   if (ibOpened) {
-  ib.close();
-  ibOpened = false;
+    ib.close();
+    ibOpened = false;
   }
   if ($('#experiences-score').prop('checked')){
     setMarkersAndKeepListening(map, trip_id);
