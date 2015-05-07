@@ -86,6 +86,9 @@ class TripsController < ApplicationController
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
       te.order
     end
+    if browser.mobile? || browser.tablet?
+      redirect_to trip_path(@trip)
+    end
   end
 
   def summarize
