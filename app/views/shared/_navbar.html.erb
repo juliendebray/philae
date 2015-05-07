@@ -46,7 +46,7 @@
                 <%= link_to t('my_profile'), user_path(current_user) %>
               </li>
               <li>
-                <%= link_to t('signout'), destroy_user_session_path, method: 'delete' %>
+                <%= link_to t('signout'), destroy_user_session_path, method: 'delete', onclick: "ga('send', 'event', 'User', 'Logout', 'Logout link clicked from navbar');" %>
               </li>
             </ul>
           </li>
