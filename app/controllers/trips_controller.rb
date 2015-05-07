@@ -4,7 +4,6 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display]
   respond_to :js, only: [:selection_display, :share_trip_email]
 
-
   def create
     # Libanese demo
     if params[:title] && params[:title] == 'Liban'
@@ -22,7 +21,8 @@ class TripsController < ApplicationController
         @trip.title = @trip.query
       end
       @trip.save
-      redirect_to start_trip_path(@trip)
+      # redirect_to start_trip_path(@trip)
+      redirect_to demo_trip_path(@trip)
     end
   end
 
@@ -75,9 +75,9 @@ class TripsController < ApplicationController
     end
   end
 
-  # Libanese demo
+  # Libanese demo - change for value proposition testing purpose
   def demo
-    @destination = Destination.first
+    # @destination = Destination.first
     @trip = Trip.find(params[:id])
     @guest_user = false
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
