@@ -1,9 +1,9 @@
 <div id="experience-infowindow">
   <% if experience.experience_pictures.size > 0 %>
     <% if guest_user %>
-      <%= link_to '', experience_detail_path(experience.id), remote: true, id:"link-to-detail" %>
+      <%= link_to '', experience_detail_path(experience.id), remote: true, id:"link-to-detail", onclick:"ga('send', 'event', 'Guest', 'Experience Detail', 'Guest clicked on experience infowindow from picture');" %>
     <% else %>
-      <%= link_to '', modal_exp_path(trip.id, experience.id), remote: true, id:"link-to-detail" %>
+      <%= link_to '', modal_exp_path(trip.id, experience.id), remote: true, id:"link-to-detail", onclick:"ga('send', 'event', 'User', 'Experience Detail', 'User clicked on experience infowindow from picture');" %>
     <% end %>
     <div id="owl-experiences" class="owl-carousel small text-center">
       <% experience.experience_pictures.sort_by {|pic| pic.id }.each do |pic| %>
@@ -22,14 +22,14 @@
       <span class="best">10</span>
       <% unless guest_user %>
         <% if trip_experience %>
-          <%= link_to [trip, trip_experience], remote: true, method: :delete do %>
+          <%= link_to [trip, trip_experience], remote: true, method: :delete, onclick:"ga('send', 'event', 'User', 'Experience Delete', 'User clicked on delete experience from infowindow');" do %>
             <span class="pull-right remove-from-trip"><i id='ib-remove-trip-exp' class="fa fa-heart"></i> <%= t('removefromtrip') %></span>
           <% end %>
         <% else %>
           <span class="pull-right">
             <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
               <%= f.hidden_field :experience_id, value: experience.id %>
-              <%= f.button :submit, class: "btn btn-link" do %>
+              <%= f.button :submit, class: "btn btn-link", onclick:"ga('send', 'event', 'User', 'Experience Add', 'User clicked on add experience from infowindow');" do %>
                 <i class='fa fa-heart'></i> <%= t('addtotrip') %>
               <% end %>
             <% end %>
@@ -40,11 +40,11 @@
   <% end %>
   <div class="infobox-content text-center">
     <% if guest_user %>
-      <%= link_to experience_detail_path(experience.id), remote: true do %>
+      <%= link_to experience_detail_path(experience.id), remote: true, onclick:"ga('send', 'event', 'Guest', 'Experience Detail', 'Guest clicked on experience infowindow from title');" do %>
         <%=experience.name%>
       <% end %>
     <% else %>
-      <%= link_to modal_exp_path(trip.id, experience.id), remote: true do %>
+      <%= link_to modal_exp_path(trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail', 'User clicked on experience infowindow from title');" do %>
         <%=experience.name%>
       <% end %>
     <% end %>

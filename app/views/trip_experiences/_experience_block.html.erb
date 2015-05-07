@@ -3,13 +3,13 @@
     <div class='exp-dotdotdot <%= "exp-#{trip_exp.id}" %>' data-experience_id='<%= trip_exp.experience.id %>' data-lat='<%= trip_exp.experience.latitude %>' data-lng='<%= trip_exp.experience.longitude %>'>
       <div class="panel-heading">
         <% unless guest_user %>
-          <%= link_to modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true do %>
+          <%= link_to modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail', 'User clicked on trip experience title from experience block');" do %>
             <%= "#{trip_exp.experience.name} #{'- ' + trip_exp.experience.average_rating.to_s+'/10' unless trip_exp.experience.leader_reviews.any?}" %>
             <% if trip_exp.experience.nb_votes && trip_exp.experience.leader_reviews.length == 0 %>
               <small><em><%= " (#{trip_exp.experience.nb_votes} votes)"%></em></small>
             <% end %>
           <% end %>
-          <%= link_to [trip_exp.trip, trip_exp], remote: true, method: :delete do %>
+          <%= link_to [trip_exp.trip, trip_exp], remote: true, method: :delete, onclick:"ga('send', 'event', 'User', 'Experience Delete', 'User clicked on delete experience from experience block');" do %>
             <i class="fa fa-heart pull-right"></i>
           <% end %>
         <% else %>
@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <div class="panel-body">
-        <%= link_to modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true do %>
+        <%= link_to modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true, onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on trip experience body from experience block');" do %>
           <table>
             <tbody>
             <tr>
@@ -59,10 +59,10 @@
                 <% else %>
                   <%= simple_format trip_exp.experience.description %>
                     <% if guest_user %>
-                      <%= link_to t('experience_block_seemore'), experience_detail_path(trip_exp.experience.id), remote: true, class: "readmore" %>
+                      <%= link_to t('experience_block_seemore'), experience_detail_path(trip_exp.experience.id), remote: true, class: "readmore", onclick:"ga('send', 'event', 'Guest', 'Experience Detail', 'Guest clicked on trip experience see more from experience block');" %>
                     <% else %>
                     <!-- TODO: link to add or remove this experience to trip -->
-                      <%= link_to t('experience_block_seemore'), modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true, class: "readmore" %>
+                      <%= link_to t('experience_block_seemore'), modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true, class: "readmore", onclick:"ga('send', 'event', 'User', 'Experience Detail', 'User clicked on trip experience see more from experience block');" %>
                     <% end %>
                 <% end %>
               </td>
@@ -77,7 +77,7 @@
   <li class="panel panel-info" id="<%= experience.id %>">
     <div class='exp-dotdotdot <%= "exp-#{experience.id}" %>' data-experience_id='<%= experience.id %>' data-lat='<%= experience.latitude %>' data-lng='<%= experience.longitude %>'>
       <div class="panel-heading">
-        <%= link_to modal_exp_path(trip.id, experience.id), remote: true do %>
+        <%= link_to modal_exp_path(trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on experience title from experience block');" do %>
           <%= "#{experience.name} #{'- ' + experience.average_rating.to_s+'/10' unless experience.leader_reviews.any?}" %>
           <% if experience.nb_votes && experience.leader_reviews.length == 0 %>
             <small><em><%= " (#{experience.nb_votes} votes)"%></em></small>
@@ -86,14 +86,14 @@
         <span class="pull-right">
           <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
             <%= f.hidden_field :experience_id, value: experience.id %>
-            <%= f.button :submit, class: "btn btn-link" do %><a id="addtotrip">Sélectionner</a>
+            <%= f.button :submit, class: "btn btn-link" do %><a id="addtotrip" onclick="ga('send', 'event', 'User', 'Experience Add', 'User clicked on add experience from experience block');">Sélectionner</a>
               <i class='fa fa-heart pull-right'></i>
             <% end %>
           <% end %>
         </span>
       </div>
       <div class="panel-body">
-        <%= link_to modal_exp_path(trip.id, experience.id), remote: true do %>
+        <%= link_to modal_exp_path(trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on experience body from experience block');" do %>
           <table>
             <tbody>
             <tr>
@@ -134,7 +134,7 @@
                   </div>
                 <% else %>
                   <%= simple_format experience.description %>
-                  <%= link_to t('experience_block_seemore'), modal_exp_path(trip.id, experience.id), remote: true, class: "readmore" %>
+                  <%= link_to t('experience_block_seemore'), modal_exp_path(trip.id, experience.id), remote: true, class: "readmore", onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on experience see more from experience block');" %>
                 <% end %>
               </td>
             </tr>
