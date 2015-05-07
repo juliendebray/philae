@@ -8,6 +8,8 @@ $( document ).ready(function() {
   if ($('#myTab').length > 0) {
     // demo liban
     var id = $('.tab-pane.active').prop('id');
+    // demoListenToUserChoicesInsideSelection(<%= @trip.id %>, map);
+    // console.log('create - before call to displayMarkersAccordingToUserChoicesInsideSelection');
     displayMarkersAccordingToUserChoicesInsideSelection(id, <%= @trip.id %>, map);
   } else {
     // Business As Usual

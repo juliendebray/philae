@@ -457,6 +457,7 @@ function displayMobileInterface(id) {
 }
 
 function displayMarkersAccordingToUserChoices(trip_id, map, id) {
+  // console.log('displayMarkersAccordingToUserChoices');
   if (id == 'user-experiences') {
     // Set map with booked experiences;
     $('#sidebar-title-content').html('<i class="fa fa-heart-o"></i> Ma selection <br><br> <p>Voici les expériences sélectionnées pour ton voyage. Supprime-les ou réorganise-les!</p>');
@@ -503,11 +504,14 @@ function demoListenToUserChoicesInsideSelection(trip_id, map) {
     var id = $(e.target).attr('aria-controls');
     // console.log('id est ...');
     // console.log(id);
+    // clearDragendAndZoomChangedListeners();
     displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map);
   });
 }
 
 function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
+  // console.log('displayMarkersAccordingToUserChoicesInsideSelection');
+  // console.log('id: ' + id);
   removePolyline();
   if (id == 'destination-overview' || id == 'help-menu') {
     return;
@@ -571,9 +575,9 @@ function buildMapForUser(mapOptions, trip_id) {
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
     // SET MARKERS ON MAP LOADING
-    var id = 'all-experiences';
-    // demoListenToUserChoicesInsideSelection(trip_id, map);
-    displayMarkersAccordingToUserChoices(trip_id, map, id);
+    // var id = 'all-experiences';
+    demoListenToUserChoicesInsideSelection(trip_id, map);
+    // displayMarkersAccordingToUserChoices(trip_id, map, id);
     // Display top from explorizers on landing
     displayMarkersAccordingToUserChoicesInsideSelection('top-from-explorizers', trip_id, map);
     // KEEP LISTENING AND DISPLAY MARKERS ACCORDING TO USERS CHOICES
@@ -663,7 +667,7 @@ function filterExperiences(map, trip_id) {
 
 function setMarkersAndKeepListening(map, trip_id) {
 
-
+// console.log('setMarkersAndKeepListening');
 
   // SET MARKERS ON MAP LOADING AND KEEP LISTENING
   // Set markers on loading
@@ -740,11 +744,14 @@ function setMarkersAccordingToBoundsByPopularity(map, trip_id, className, callba
 
 
 function setMarkersAccordingToBounds(map, trip_id, className, callback) {
-  var url = buildUrlWithBounds(map, trip_id);
-  setMarkersAccordingToApi(url, trip_id, className, function(r){
-    preventUserChoicesInitialization();
-    callback(r);
-  });
+  // TODO: Understand why removing listeners does not work
+  if ($('.tab-pane.active').prop('id') == "top-from-explorizers") {
+    var url = buildUrlWithBounds(map, trip_id);
+    setMarkersAccordingToApi(url, trip_id, className, function(r){
+      preventUserChoicesInitialization();
+      callback(r);
+    });
+  }
 }
 
 function clearDragendAndZoomChangedListeners() {
@@ -755,6 +762,7 @@ function clearDragendAndZoomChangedListeners() {
 }
 
 function setMapWithGuestComments(trip_id, map, callback) {
+  // console.log('setMapWithGuestComments');
   clearDragendAndZoomChangedListeners();
   // google.maps.event.clearListeners(map, 'dragend');
   // google.maps.event.clearListeners(map, 'zoom_changed');
@@ -766,6 +774,7 @@ function setMapWithGuestComments(trip_id, map, callback) {
 }
 
 function setMapWithUserExperiences(trip_id, map, callback) {
+  // console.log('setMapWithUserExperiences');
   clearDragendAndZoomChangedListeners();
   // google.maps.event.clearListeners(map, 'dragend');
   // google.maps.event.clearListeners(map, 'zoom_changed');

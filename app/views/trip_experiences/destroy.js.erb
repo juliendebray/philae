@@ -8,6 +8,7 @@ $( document ).ready(function() {
   if ($('#myTab').length > 0) {
     // demo liban
     var id = $('.tab-pane.active').prop('id');
+    // console.log('destroy - before call to displayMarkersAccordingToUserChoicesInsideSelection');
     displayMarkersAccordingToUserChoicesInsideSelection(id, <%= @trip.id %>, map);
   } else {
     // business as usual
