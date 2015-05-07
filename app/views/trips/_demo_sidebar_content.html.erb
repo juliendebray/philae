@@ -150,9 +150,9 @@
   <table>
     <tbody>
       <td>
-        <div id="share-bt" class="button-action update-order">
-          <a class="btn btn-facebook" id="sharefb" onclick="ga('send', 'event', 'User', 'Ask advice', 'Ask on facebook button clicked');", data: {toggle: "tooltip"}, placement: "bottom">
-                  Partager sur Facebook
+        <div id="share-fb" class="button-action update-order">
+          <a class="btn btn-facebook" id="sharefb" onclick="ga('send', 'event', 'User', 'Ask advice', 'Ask on facebook button clicked from demo page');">
+            Partager sur Facebook
           </a>
         </div>
       </td>
@@ -161,7 +161,7 @@
         <div id="share-bt" class="button-action update-order">
           <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
             <%= hidden_field_tag :id, value = @trip.id %>
-            <%= f.submit( "Demander par email", onclick: "ga('send', 'event', 'User', 'Ask advice', 'Ask with email button clicked');", class:'btn btn-success') %>
+            <%= f.submit( "Demander par email", onclick: 'ga("send", "event", "User", "Ask advice", "Ask with email button clicked from demo page");', class:'btn btn-success') %>
           <% end %>
         </div>
       </td>
@@ -178,9 +178,9 @@
 
 <% content_for(:after_js) do %>
   <script>
-  // $('a[aria-controls="user-guest-comments"]').on('shown.bs.tab', function (e) {
-    publishPostOnFbWall("#sharefb", "<%= j share_url("/trips/#{@trip.id}/#{@trip.token}") %>");
-  // });
+  $('a[aria-controls="user-guest-comments"]').on('shown.bs.tab', function (e) {
+    publishPostOnFbWall("#share-fb", "<%= j share_url("/trips/#{@trip.id}/#{@trip.token}") %>");
+  });
   </script>
 <% end %>
 
