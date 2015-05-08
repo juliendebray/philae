@@ -2,12 +2,12 @@
   <div class="container">
     <div class="vertical-spacer-sm"></div>
       <div class="row text-center">
-        <div class="col-xs-6 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-3 text-center">
+<!--         <div class="col-xs-6 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-3 text-center">
           <%= link_to trip_path(@trip), class:"btn btn-info btn-block white-space-normal" do %>
             <i class="fa fa-arrow-circle-left"></i><%= t('.gobacktotrip') %>
           <% end %>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-3 text-center">
+        </div> -->
+        <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
           <%= form_for @trip, url: summarize_trip_path(@trip.id) do |f| %>
             <%= hidden_field_tag :id, value = @trip.id %>
               <label for="mySubmit" class="btn btn-success btn-block white-space-normal"><%= t('.getbyemail') %><i class="fa fa-envelope"></i> </label>
@@ -20,9 +20,9 @@
     <div class="col-xs-12">
       <div id="titleblock" class="text-center">
         <div class="title">
-          <h2><%= @trip.title %></h2>
-          <p><%= t('.creation') %><%= @trip.created_at.strftime('%d-%m-%Y') %></br>
-          <%= t('.lastupdate') %> <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %> </p>
+          <h1><%= @trip.title %></h1>
+          <p><i><%= t('.creation') %><%= @trip.created_at.strftime('%d-%m-%Y') %> -
+          <%= t('.lastupdate') %> <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %></i></p>
         </div>
       </div>
     </div>
@@ -31,10 +31,22 @@
   <div class="container">
     <div class="row">
       <% @trip_exp_ordered.each do |trip_exp| %>
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 border-left">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 border-left">
           <%= render("/trips/experience_summary_block.html.erb", {trip_exp: trip_exp, comment: true} ) %>
         </div>
       <% end%>
     </div>
   </div>
+  <div class="vertical-spacer-sm"></div>
+  <div class="row text-center">
+    <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+      <%= form_for @trip, url: summarize_trip_path(@trip.id) do |f| %>
+        <%= hidden_field_tag :id, value = @trip.id %>
+          <label for="mySubmit" class="btn btn-success btn-block white-space-normal"><%= t('.getbyemail') %><i class="fa fa-envelope"></i> </label>
+        <%= f.submit(id:'mySubmit', class:'hidden') %>
+      <% end %>
+    </div>
+  </div>
+  <div class="vertical-spacer-sm"></div>
 </div>
+<%= render partial: 'shared/footer' %>
