@@ -1,7 +1,7 @@
 fr:
   hello: "Bonjour à tous"
 
-  #navbar
+  #navbar & footer
   ourstorynav: "Que fait Explorizers ?"
   login: "Connexion"
   signup: "Inscription"
@@ -11,6 +11,14 @@ fr:
   contribute: "Conseils à partager"
   my_profile: "Mon espace"
   nav_destinations: "Destinations couvertes"
+
+  allexperiences: "Toutes les expériences"
+  press: "Presse"
+  legal: "Mentions légales et CGU"
+  localproviders: "Prestataires locaux"
+  discover: "Découvrir"
+  languages: "Langues"
+
 
 
   #sign up / sign in
