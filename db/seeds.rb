@@ -10,7 +10,7 @@
 #Mise en ligne des avis du Routard
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1lT3aqMKPqTbSZAhP0BS3yU-_TN595sRyuBRt2A3riQI/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1K9Y1SZwpMXh6XFiGz70vQzZa_hHN2ZRjKT4zFJZaUg0/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |leader_review|
   leader_review = LeaderReview.create(
