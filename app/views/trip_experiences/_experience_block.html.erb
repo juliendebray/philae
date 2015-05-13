@@ -4,7 +4,7 @@
       <div class="panel-heading">
         <% unless guest_user %>
           <%= link_to modal_exp_path(trip_exp.trip.id, trip_exp.experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail', 'User clicked on trip experience title from experience block');" do %>
-            <%= "#{trip_exp.experience.name} #{'- ' + trip_exp.experience.average_rating.to_s+'/10' unless trip_exp.experience.leader_reviews.any?}" %>
+            <%= "#{trip_exp.experience.name}" %>
             <% if trip_exp.experience.nb_votes && trip_exp.experience.leader_reviews.length == 0 %>
               <small><em><%= " (#{trip_exp.experience.nb_votes} votes)"%></em></small>
             <% end %>
@@ -45,10 +45,12 @@
                     Temps de visite recommandé : <%= trip_exp.experience.timetospent %>
                   </div>
                 <% end %>
-                <div class="where-to-sleep text-center">
-                  <br>
-                  Où dormir : Jbeil
-                </div>
+                <% if trip_exp.experience.wheretosleep %>
+                  <div class="where-to-sleep text-center">
+                    <br>
+                    Où dormir : <%= trip_exp.experience.wheretosleep %>
+                  </div>
+                <% end %>
 <!--                 <div class="content-header">
                   <% if trip_exp.experience.must_see? %>
                     <span class="pull-right"> <i class="fa fa-star must-see"></i> <em>Incontournable!</em></span>
@@ -113,18 +115,18 @@
   <% elsif trip_comment %>
     <li class="panel panel-info" id="<%= trip_comment.id %>">
       <div class='exp-dotdotdot <%= "exp-#{trip_comment.id}" %>' data-experience_id='<%= trip_comment.id %>' data-lat='<%= trip_comment.latitude %>' data-lng='<%= trip_comment.longitude %>'>
-        <div class="panel-heading"><%= trip_comment.name %>
+        <div class="panel-heading" id="tripcom"><%= trip_comment.name %>
 
           <% unless guest_user %>
             <span class="pull-right">
               <!-- TODO:  Display comment even if added to trip with different action-->
               <% if trip_comment.add_to_trip %>
                 <%= link_to [trip_comment.trip, trip_comment.experience.trip_experiences.last], remote: true, method: :delete do %>
-                  <i class="fa fa-heart pull-right comment"></i>
+                  <i class="fa fa-heart pull-right"></i>
                 <% end %>
               <% else %>
                 <%= link_to experience_from_comment_path(trip_comment), remote: true, method: :post do %>
-                  <i class="fa fa-heart"></i>
+                  <i class="fa fa-heart pull-right comment"></i>
                 <% end %>
                 <%= link_to [trip_comment.trip, trip_comment], remote: true, method: :delete do %>
                   <i class="fa fa-trash-o"></i>
@@ -139,7 +141,7 @@
             <tr>
               <td>
                 <%= simple_format trip_comment.description %>
-                <%= simple_format trip_comment.address %>
+                <i><%= simple_format trip_comment.address %></i>
               </td>
             </tr>
             </tbody>

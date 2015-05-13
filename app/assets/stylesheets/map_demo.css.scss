@@ -415,12 +415,29 @@ i.must-see {
 
       i.fa-heart.comment {
         padding-right: 5px;
-        color: #FF5A5F;
+        color: #808080;
       }
-
       i.fa-heart.comment:hover {
         padding-right: 5px;
+        color: #FF5A5F;
+        text-shadow: none;
+      }
+      i.fa-trash-o {
+        padding-right: 5px;
         color: #808080;
+      }
+      i.fa-trash-o:hover {
+        padding-right: 5px;
+        color: #FF5A5F;
+      }
+      i.fa-trash-o.comment {
+        padding-right: 5px;
+        color: #808080;
+      }
+      i.fa-trash-o.comment:hover {
+        padding-right: 5px;
+        color: #FF5A5F;
+        text-shadow: none;
       }
     }
   }
@@ -995,14 +1012,22 @@ i.must-see {
 
 
 .experience-block-container {
-  .panel {
-    // margin-bottom: 0px;
-  }
   .panel-heading {
     // cursor: move;
     padding: 7px;
     padding-left: 0px;
   }
+  // #tripcom {
+  //   i {
+  //     color: #808080;
+  //     text-shadow: none;
+  //   }
+  //   i:hover {
+  //     color: #FF5A5F;
+  //     text-shadow: none;
+  //   }
+
+  // }
 
 }
 
