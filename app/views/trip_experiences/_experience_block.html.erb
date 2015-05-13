@@ -39,10 +39,10 @@
                     <br>
                   </div>
                 <% end %> -->
-                <% if trip_exp.experience.leader_reviews.any? %>
+                <% if trip_exp.experience.timetospent %>
                   <div class="time-to-spend text-center">
                     <br>
-                    Temps de visite recommandé : 3h
+                    Temps de visite recommandé : <%= trip_exp.experience.timetospent %>
                   </div>
                 <% end %>
                 <div class="where-to-sleep text-center">
