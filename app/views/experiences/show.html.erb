@@ -58,7 +58,7 @@
       <div class="experience-page-content">
         <div class="row text-center">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-            <p><%= @experience.description %></p>
+            <p><%= simple_format @experience.description %></p>
             <% if @experience.unesco %>
               <div class="vertical-spacer-xs"></div>
               <p>Classé au <a href="http://whc.unesco.org/fr/list/" target="_blank">Patrimoine mondial de l'UNESCO</a></p>

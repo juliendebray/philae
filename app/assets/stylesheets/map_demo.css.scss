@@ -68,15 +68,18 @@ img.small-height {
   display: inline;
 }
 .exp-rating {
+  position: absolute;
+  top: 10px;
+  left: 10px;
   background: green;
   color: white;
   font-size: 17px;
   padding: 0.5px 2px;
   display: inline;
   margin-right: 5px;
-   .best {
-      font-size: 10px;
-    }
+ .best {
+    font-size: 10px;
+  }
 }
 i.must-see {
   color: gold;
@@ -85,25 +88,30 @@ i.must-see {
 .exp-category {
   background: black;
   padding: 0px 2px;
-  color: whiye;
   color: white;
   opacity: 0.7;
   letter-spacing: 2px;
 }
 
-#addtotrip {
-  font-size: 12px;
-  vertical-align: text-top;
+.exp-quote {
+  font-size: 13px;
+  font-weight: 300;
+  color: #525252;
+  em {
+    color: #525252;
+  }
 }
 
-.exp-quote {
-  margin-top: 8px;
-  font-size: 15px;
+.time-to-spend {
+  font-size: 13px;
   font-weight: 300;
-  color: #808080;
-  em {
-    color: #808080;
-  }
+  color: #525252;
+}
+
+.where-to-sleep {
+  font-size: 13px;
+  font-weight: 300;
+  color: #525252;
 }
 
 #experiences-filter {
@@ -138,11 +146,11 @@ i.must-see {
 .sidebar {
   background: white;
   position: fixed;
-  width: 45%;
+  width: 38%;
   top: 54px;
   bottom: 0%;
   z-index: 1;
-  padding-right: 5px;
+  // padding-right: 5px;
   padding-left: 10px;
 
   .selection-header {
@@ -234,22 +242,104 @@ i.must-see {
     // }
 
     .exp-dotdotdot {
-      height: 11em;
+      max-height: 16em;
       border-top-style: solid;
       border-color: lightgrey;
       border-width: 1px;
-      img {
-        max-height: 11em;
+      position: relative;
+      .experience-picture {
+        position: relative;
+        img {
+          position: relative;
+          max-height: 16em;
+          background-size: cover;
+          background-position: center bottom;
+          background-attachment: fixed;
+          transition: none;
+        }
+      }
+      .experience-picture:hover {
+        img {
+          transform: none;
+        }
+      }
+      .experience-selector {
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        a {
+          color: white;
+        }
+        i {
+          color: white;
+        }
+        .fa {
+          font-size: 30px;
+        }
+       #addtotrip {
+        padding-right: 50px;
+        font-size: 20px;
+        display: none;
+       }
+      }
+      .experience-selector:hover {
+        i {
+          color: #FF5A5F;
+        }
+      #addtotrip {
+        display: block;
+       }
+      }
+      .experience-name {
+        position: absolute;
+        width: 100%;
+        letter-spacing: 0px;
+        font-size: 1em;
+        color: white;
+        bottom: 0px;
+        background: rgba(0,0,0,0.2);
+        position: absolute;
+        margin: auto;
+        small {
+          font-size: 16px;
+          font-weight: 300;
+          padding-left: 10px;
+        }
+        i {
+          padding-right: 8px;
+          float: right;
+        }
+      }
+      .leader-logo {
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        img {
+          max-height: 25px;
+        }
+        #logo_tripadvisor_expblock {
+          img {
+            max-height: 15px;
+          }
+        }
+      }
+      .leader-logo:hover {
+        background: rgba(255,255,255,0.3);
       }
 
+
       .panel-body {
-        padding: 0px 7px 10px 7px;
+        padding: 0px 7px 10px 0px;
         border: none;
         border-radius: 0px;
         p {
           margin-bottom: 5px;
-          font-size: 13px;
+          font-size: 15px;
           line-height: 17px;
+          text-align: center;
+        }
+        img {
+          height: 85%;
         }
       }
 
@@ -286,6 +376,7 @@ i.must-see {
       a {
         color: #525252;
         font-weight: 400;
+        font-size: 15px;
       }
 
       button.btn {
@@ -312,12 +403,12 @@ i.must-see {
         i {
           padding-right: 5px;
           font-size: 20px;
-          color: white;
-          text-shadow: -1px 0 #525252, 0 1px #525252, 1px 0 #525252, 0 -1px #525252;
+          color: #FF5A5F;
+          // text-shadow: -1px 0 #525252, 0 1px #525252, 1px 0 #525252, 0 -1px #525252;
         }
         i:hover {
           padding-right: 5px;
-          color: #FF5A5F;
+          color: #808080;
           text-shadow: none;
         }
       }
@@ -671,7 +762,7 @@ i.must-see {
 
 .map-container {
   position: fixed;
-  width: 55%;
+  width: 62%;
   // left: 5%;
   right: 0px;
   bottom: 0px;
@@ -905,11 +996,12 @@ i.must-see {
 
 .experience-block-container {
   .panel {
-    margin-bottom: 11px;
+    // margin-bottom: 0px;
   }
   .panel-heading {
     // cursor: move;
     padding: 7px;
+    padding-left: 0px;
   }
 
 }
