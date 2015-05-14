@@ -25,13 +25,13 @@ class HomeController < ApplicationController
   def default_hp_hash
     return {
       tag: true,
-      title: 'Votre voyage commence ici',
-      subtitle: 'Le meilleur du web pour organiser le voyage de vos rêves',
-      description: 'EXPLORIZERS vous permet de savoir "que faire" et "que voir" lors de votre prochain voyage en se basant sur les recommandations et services des principaux sites de voyage.',
+      title: 'Préparez votre voyage sans prise de tête',
+      subtitle: 'Organisez le voyage parfait en toute simplicité avec les informations les plus fiables du web, des conseils terrain de voyageurs et des outils pratiques qui font gagner du temps',
+      description: "Explorizers simplifie l'organisation de votre voyage et vous permet de partir l'esprit tranquille avec un itinéraire complétement personalisé.",
       item: {
-        one: "<div class='how-header'><i class='fa fa-map-marker'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Sélectionnez les <strong>meilleures expériences</strong> à faire pendant votre voyage sur la base de milliers de notes et d'avis.</div>",
-        two: "<div class='how-header'><i class='fa fa-comment'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Inspirez-vous des <strong>conseils les plus utiles</strong> des guides et voyageurs afin d'éviter attrapes-touristes et autres galères.</div>",
-        three: "<div class='how-header'><i class='fa fa-cloud-download'></i></div><div class='vertical-spacer-xs'></div>   <div class='how-content'>Récupérez votre <strong>itinéraire personnalisé</strong>, partagez-le avec vos amis et emmenez-le dans vos valises.</div>"
+        one: "<div class='how-header'><i class='fa fa-map-marker'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Selectionnez les <strong>meilleures expériences</strong> à vivre en fonction de vos envies et des recommandations des principaux sites de voyages.</div>",
+        two: "<div class='how-header'><i class='fa fa-comment'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Evitez les attrapes-touristes et autres galères en vous inspirant des <strong>conseils de vos amis et d'autres voyageurs</strong>.</div>",
+        three: "<div class='how-header'><i class='fa fa-cloud-download'></i></div><div class='vertical-spacer-xs'></div>   <div class='how-content'>Votre <strong>itinéraire se calcule automatiquement</strong>, vous n'avez plus qu'à l'emener dans vos valises et partir l'esprit tranquille.</div>"
       }
     }
   end

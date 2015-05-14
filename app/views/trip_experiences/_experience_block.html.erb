@@ -69,8 +69,8 @@
   <li class="panel panel-info" id="<%= experience.id %>">
     <div class='exp-dotdotdot <%= "exp-#{experience.id}" %>' data-experience_id='<%= experience.id %>' data-lat='<%= experience.latitude %>' data-lng='<%= experience.longitude %>'>
       <div class="experience-picture">
-        <% if experience.experience_pictures.first %>
-          <%= image_tag experience.experience_pictures.first.picture.url(:banner), class: "img-responsive" %>
+        <% if experience.experience_pictures.any? %>
+          <%= image_tag experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:banner), class: "img-responsive" %>
         <% end %>
         <%= link_to modal_exp_path(trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on experience body from experience block');" do %>
           <div class="exp-rating">
@@ -83,6 +83,19 @@
               <br>
             </span>
           </div>
+          <% if experience.leader_reviews.any? %>
+            <div class="exp-quote">
+              <% if experience.leader_reviews.second %>
+                "<%= experience.leader_reviews.second.comment %>"
+                <br><em><%= experience.leader_reviews.second.source %></em>
+                <br>
+              <% else %>
+                "<%= experience.leader_reviews.first.comment %>"
+                <br><em><%= experience.leader_reviews.first.source %>
+                <br>
+              <% end %>
+            </div>
+          <% end %>
           <!-- <div class="leader-logo">
             <span class="pull-left">
               <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %><br><br>

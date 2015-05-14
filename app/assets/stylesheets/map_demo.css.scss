@@ -276,6 +276,9 @@ i.must-see {
         .fa {
           font-size: 30px;
         }
+        .btn-link:focus, .btn-link:hover {
+          text-decoration: none;
+        }
        #addtotrip {
         padding-right: 50px;
         font-size: 20px;
@@ -300,6 +303,8 @@ i.must-see {
         background: rgba(0,0,0,0.2);
         position: absolute;
         margin: auto;
+        padding-bottom: 3px;
+        padding-top: 3px;
         small {
           font-size: 16px;
           font-weight: 300;
@@ -325,6 +330,22 @@ i.must-see {
       }
       .leader-logo:hover {
         background: rgba(255,255,255,0.3);
+      }
+      .exp-quote {
+        position: absolute;
+        padding-right: 66%;
+        top: 30%;
+        bottom: 15%;
+        left: 10px;
+        font-size: 14px;
+        font-weight: 300;
+        color: white;
+        text-shadow: 0px 0px 2px white, 0px 0px 3px black;
+        em {
+          font-weight: 300;
+          color: white;
+          text-shadow: 0px 0px 2px white, 0px 0px 3px black;
+        }
       }
 
 
