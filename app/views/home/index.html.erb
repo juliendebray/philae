@@ -149,12 +149,12 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="experience-box">
-            <%= link_to experience_path(421), target: "_blank" do %>
+            <%= link_to experience_path(176), target: "_blank" do %>
               <div class="experience-picture text-center">
-                <%= image_tag Experience.find(421).experience_pictures.first.picture.url(:banner) %>
+                <%= image_tag Experience.find(176).experience_pictures.first.picture.url(:banner) %>
               </div>
               <div class="experience-name text-center">
-                <small>Parc National du Glacier - Montana</small><br>
+                <small><%= Experience.find(176).name%></small><br>
               </div>
             <% end %>
           </div>
@@ -162,12 +162,12 @@
 
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="experience-box">
-            <%= link_to experience_path(214), target: "_blank" do %>
+            <%= link_to experience_path(175), target: "_blank" do %>
               <div class="experience-picture text-center">
-                <%= image_tag Experience.find(214).experience_pictures.first.picture.url(:banner) %>
+                <%= image_tag Experience.find(175).experience_pictures.first.picture.url(:banner) %>
               </div>
               <div class="experience-name text-center">
-                <small>Plongée à Bali</small><br>
+                <small><%= Experience.find(175).name%></small><br>
               </div>
             <% end %>
           </div>
@@ -175,12 +175,12 @@
 
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="experience-box">
-            <%= link_to experience_path(239), target: "_blank" do %>
+            <%= link_to experience_path(29), target: "_blank" do %>
               <div class="experience-picture text-center">
-                <%= image_tag Experience.find(239).experience_pictures.first.picture.url(:banner) %>
+                <%= image_tag Experience.find(29).experience_pictures.first.picture.url(:banner) %>
               </div>
               <div class="experience-name text-center">
-                <small>Allée des Baobabs</small><br>
+                <small><%= Experience.find(29).name%></small><br>
               </div>
             <% end %>
           </div>
