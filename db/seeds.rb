@@ -7,18 +7,27 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-#Mise en ligne des avis du Routard
+#Mise en ligne du temps à passer pour chaque experience
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1K9Y1SZwpMXh6XFiGz70vQzZa_hHN2ZRjKT4zFJZaUg0/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1Occ1v2yJMLTLBS6HdzFaswNWhCwCR0NJKNSXAPgk4gE/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |leader_review|
-  leader_review = LeaderReview.create(
-    experience_id: leader_review['gsx$experienceid']['$t'].to_f,
-    source: leader_review['gsx$source']['$t'],
-    comment: leader_review['gsx$comment']['$t'],
-  )
+data_hash['feed']['entry'].each do |exp_data|
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(timetospent: exp_data['gsx$timetospent']['$t'] )
 end
+
+#Mise en ligne des avis du Routard
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1K9Y1SZwpMXh6XFiGz70vQzZa_hHN2ZRjKT4zFJZaUg0/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |leader_review|
+#   leader_review = LeaderReview.create(
+#     experience_id: leader_review['gsx$experienceid']['$t'].to_f,
+#     source: leader_review['gsx$source']['$t'],
+#     comment: leader_review['gsx$comment']['$t'],
+#   )
+# end
 
 
 #Implémentation must-see et Liste des 1000 lieux à voir dans sa vie
