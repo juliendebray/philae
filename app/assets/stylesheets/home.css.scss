@@ -49,8 +49,11 @@
   }
 }
 
-#homeblock, .fullpage, .homepage_story {
+#homeblock, .homepage_story {
   height: 100%;
+}
+.fullpage {
+  min-height: 100%
 }
 
 .vcenter{
