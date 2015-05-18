@@ -28,7 +28,7 @@
       <li><a href="#getthere" data-toggle="tab">Comment s'y rendre</a></li>
     <% end %>
     <% if current_user %>
-      <li><a href="#user_review" data-toggle="tab"><i>Donne ton avis</i></a></li>
+      <li><a href="#user_review" data-toggle="tab"><i>Donnez votre avis</i></a></li>
     <% end %>
   </ul>
 </div>
@@ -48,28 +48,24 @@
   </div>
 
   <div class="tab-pane" id="descriptif">
-<!--     <div class="subtitles-modal-exp">
-      <br>
-      <p><u>Descriptif</u></p>
-    </div> -->
     <div class="experience-content text-justify">
       <br>
       <%= simple_format experience.description %>
-      <br>
-      <% if experience.wikipedia_link %>
-        <p>
-          <a href="<%= experience.wikipedia_link %>" target="_blank">
-            Voir sur Wikipedia
-          </a>
-        </p>
+      <% if experience.timetospent %>
+        <br>
+        Temps de visite recommandé : <%= experience.timetospent %>
       <% end %>
+      <br>
       <br>
       <% if experience.unesco %>
         <p>- Classé au <a href="http://whc.unesco.org/fr/list/" target="_blank">Patrimoine mondial de l'UNESCO</a></p>
       <% end %>
-      <br>
       <% if experience.thousand_places %>
         <p>- Figure sur la Liste des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+      <% end %>
+      <% if experience.wikipedia_link %>
+        <%= image_tag('wiki_logo.png', height: 30, alt:'Wikipedia Logo Officiel') %>
+        <a href="<%= experience.wikipedia_link %>" target="_blank">  Voir sur Wikipedia</a>
       <% end %>
     </div>
   </div>
@@ -77,71 +73,220 @@
   <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
     <div class="tab-pane" id="reviews">
       <br>
-      <table>
-        <tr>
-          <td class="vertical-align-top width-split">
-            <span class="text-center"><p><u>Avis des experts</u></p></span>
-            <% if experience.leader_reviews.any? %>
-              <div class="leader-reviews">
-                <% experience.leader_reviews.each do |leader_review| %>
-                  <blockquote>
-                    <p>"<b><%= leader_review.comment %></b>", selon le <%= leader_review.source %></p>
-                  </blockquote>
+      <% if experience.leader_reviews.any? %>
+        <div class="leader-reviews">
+          <% if experience.leader_reviews.first != experience.leader_reviews.last %>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <%= image_tag('lp_logo.png', height: 40, alt:'Lonely Planet Logo Officiel') %>
+              </div>
+              <div class="col-xs-6">
+                <%= image_tag('gdr_logo.png', height: 40, alt:'Le Guide du Routard Logo Officiel') %>
+              </div>
+            </div>
+            <br>
+            <div class="row text-center">
+              <div class="col-xs-6 col-sm-6">
+                <% if experience.leader_reviews.first.source =~ /Lonely Planet/ %>
+                  <p>"<%= experience.leader_reviews.first.comment %>"</p>
+                <% else %>
+                  <p>"<%= experience.leader_reviews.second.comment %>"</p>
                 <% end %>
               </div>
-            <% else %>
-              <p>Pas de critique trouvée pour cette expérience...</p>
-            <% end %>
-          </td>
-          <% if experience.ta_rating || experience.gg_rating || experience.fsq_rating %>
-          <td class="width-split vertical-align-top">
-            <span class="text-center"><p><u>Note globale: <%= experience.average_rating %>/10 <small><em>(<%=experience.nb_votes%> votes)</em></small></u></p></span>
-            <table>
-              <% if experience.ta_rating %>
-                <tr>
-                  <td class="rating-cell vertical-align-middle">
-                    <%= image_tag('ta_logo_rating.png', class: "fixed-height") %>
-                  </td>
-                  <td class="vertical-align-middle">
-                       <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
-                  </td>
-                </tr>
-              <% end %>
-              <% if experience.gg_rating %>
-                <tr>
-                  <td class="rating-cell vertical-align-middle">
-                    <%= image_tag('gg_logo_rating.png', class: "fixed-height") %>
-                  </td>
-                  <td class="vertical-align-middle">
-                       <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span> <small><em>(<%=experience.gg_votes%> votes)</em></small>
-                  </td>
-                </tr>
-              <% end %>
-              <% if experience.fsq_rating %>
-                <tr>
-                  <td class="rating-cell vertical-align-middle">
-                    <%= image_tag('fsq_logo_rating.png', class: "small-height") %>
-                  </td>
-                  <td class="vertical-align-middle">
-                       <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
-                  </td>
-                </tr>
-              <% end %>
-            </table>
-          </td>
+              <div class="col-xs-6 col-sm-6">
+                <% if experience.leader_reviews.first.source =~ /Lonely Planet/ %>
+                  <p>"<%= experience.leader_reviews.second.comment %>"</p>
+                <% else %>
+                  <p>"<%= experience.leader_reviews.first.comment %>"</p>
+                <% end %>
+              </div>
+            </div>
+          <% else %>
+            <div class="row text-center">
+              <div class="col-xs-6 vcenter">
+                <% if experience.leader_reviews.first.source =~ /Lonely Planet/ %>
+                  <div class="col-xs-6 vcenter">
+                    <%= image_tag('lp_logo.png', height: 40, alt:'Lonely Planet Logo Officiel') %>
+                  </div>
+                <% else %>
+                  <div class="col-xs-6 vcenter">
+                    <%= image_tag('gdr_logo.png', height: 40, alt:'Le Guide du Routard Logo Officiel') %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-6 vcenter">
+                <p>"<%= experience.leader_reviews.first.comment %>"</p>
+              </div>
+            </div>
           <% end %>
-        </tr>
-      </table>
+        </div>
+      <% else %>
+        <p>Pas de commentaire des guides pour cette expérience ; elle est hors des sentiers battus !</p>
+      <% end %>
+      <div class="experience-rating">
+        <% if experience.ta_rating || experience.gg_rating || experience.fsq_rating %>
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div id="block-separator"></div>
+            </div>
+          </div>
+
+          <% if experience.ta_rating && experience.gg_rating && experience.fsq_rating %>
+            <div class="row text-center">
+              <div class="col-xs-4">
+                <div class="ta_logo">
+                  <%= image_tag('ta_logo_rating.png')%>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="gg_logo">
+                  <%= image_tag('gg_logo_rating.png') %>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="fsq_logo">
+                  <%= image_tag('fsq_logo_rating.png') %>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-4">
+                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
+              </div>
+              <div class="col-xs-4">
+                <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span> <small><em>(<%=experience.gg_votes%> votes)</em></small>
+              </div>
+              <div class="col-xs-4">
+                <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
+              </div>
+            </div>
+          <% elsif experience.ta_rating  && experience.gg_rating %>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <div class="ta_logo">
+                  <div class="ta_logo">
+                    <%= image_tag('ta_logo_rating.png')%>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="gg_logo">
+                  <%= image_tag('gg_logo_rating.png') %>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
+              </div>
+              <div class="col-xs-6">
+                <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span> <small><em>(<%=experience.gg_votes%> votes)</em></small>
+              </div>
+            </div>
+          <% elsif experience.ta_rating  && experience.fsq_rating %>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <div class="ta_logo">
+                  <%= image_tag('ta_logo_rating.png')%>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="fsq_logo">
+                  <%= image_tag('fsq_logo_rating.png') %>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
+              </div>
+              <div class="col-xs-6">
+                <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
+              </div>
+            </div>
+          <% elsif experience.gg_rating  && experience.fsq_rating %>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <div class="gg_logo">
+                  <%= image_tag('gg_logo_rating.png') %>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="fsq_logo">
+                  <%= image_tag('fsq_logo_rating.png') %>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.gg_votes%> votes)</em></small>
+              </div>
+              <div class="col-xs-6">
+                <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
+              </div>
+            </div>
+          <% elsif experience.ta_rating %>
+            <div class="row text-center">
+              <div class="col-xs-12">
+                <div class="ta_logo">
+                  <%= image_tag('ta_logo_rating.png')%>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-12">
+                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
+              </div>
+            </div>
+          <% elsif experience.gg_rating %>
+            <div class="row text-center">
+              <div class="col-xs-12">
+                <div class="gg_logo">
+                  <%= image_tag('gg_logo_rating.png') %>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-12">
+                <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.gg_votes%> votes)</em></small>
+              </div>
+            </div>
+          <% elsif experience.fsq_rating %>
+            <div class="row text-center">
+              <div class="col-xs-12">
+                <div class="fsq_logo">
+                  <%= image_tag('fsq_logo_rating.png') %>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-12">
+                <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.fsq_votes%> votes)</em></small>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
       <% if experience.experience_reviews.any? %>
-        <div>
-          <span class="text-center"><p><u>Conseils des voyageurs</u></p></span>
-          <div class="user-reviews">
-            <% experience.experience_reviews.each do |experience_review| %>
-              <blockquote>
-                <p>"<%= experience_review.comment %>"</p>
-                <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date || experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
-              </blockquote>
-            <% end %>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+            <div id="block-separator"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <span class="text-center"><p><u>CONSEILS DES VOYAGEURS</u></p></span>
+            <div class="user-reviews">
+              <% experience.experience_reviews.each do |experience_review| %>
+                <blockquote>
+                  <p>"<%= experience_review.comment %>"</p>
+                  <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.original_date || experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
+                </blockquote>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>

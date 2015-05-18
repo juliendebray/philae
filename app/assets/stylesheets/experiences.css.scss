@@ -2,6 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.experience-content {
+  .leader-reviews {
+    text-align: center;
+  }
+}
+
+.experience-rating {
+  .rating-score {
+    padding-left: 0px;
+  }
+  .ta_logo {
+    img {
+      max-height: 29px;
+    }
+  }
+  .gg_logo {
+    img {
+      max-height: 35px;
+    }
+  }
+  .fsq_logo {
+    img {
+      max-height: 21px;
+    }
+  }
+}
+
+#block-separator {
+  border-top: solid 1px #CCCCCC;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
 
 #exp-page-container-fluid {
   padding-right: 0px;
@@ -92,7 +124,7 @@
 
 .tab-content {
   #reviews {
-    height: 250px;
+    height: 350px;
     overflow-y: auto;
     blockquote {
       font-size: 14px;
@@ -217,19 +249,15 @@
   }
 }
 
-.experience-reviews {
+.leader-reviews {
   p {
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 300;
   }
-  .leader-reviews, .user-reviews {
-    p {
-      font-size: 14px;
-    }
-  }
-  blockquote {
+}
+.user-reviews {
+  p {
     font-size: 14px;
-    padding-top: 1px;
-    padding-bottom: 0px;
   }
 }
 
@@ -277,6 +305,9 @@ body.newexperience {
       color: white;
       font-weight: 500;
     }
+  }
+  .exp-quote {
+    display: none;
   }
 }
 
@@ -344,6 +375,30 @@ body.newexperience {
           font-weight: 300;
         }
       }
+    }
+  }
+
+  .experience-rating {
+    .col-xs-4 {
+      padding: 0;
+    }
+    .ta_logo {
+      img {
+        max-height: 13px;
+      }
+    }
+    .gg_logo {
+      img {
+        max-height: 15px;
+      }
+    }
+    .fsq_logo {
+      img {
+        max-height: 8px;
+      }
+    }
+    .rating-score {
+      font-size: 14px;
     }
   }
 }
