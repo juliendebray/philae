@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.experience-content {
+  .leader-reviews {
+    text-align: center;
+  }
+}
 
 #exp-page-container-fluid {
   padding-right: 0px;
@@ -221,7 +226,13 @@
   p {
     font-size: 16px;
   }
-  .leader-reviews, .user-reviews {
+  .leader-reviews {
+    text-align: center;
+    p {
+      font-size: 14px;
+    }
+  }
+  .user-reviews {
     p {
       font-size: 14px;
     }
