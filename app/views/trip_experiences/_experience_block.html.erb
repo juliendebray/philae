@@ -112,6 +112,7 @@
               <%= f.hidden_field :experience_id, value: experience.id %>
               <%= f.button :submit, class: "btn btn-link" do %>
                 <i class='fa fa-heart pull-right'></i>
+
                 <a id="addtotrip" onclick="ga('send', 'event', 'User', 'Experience Add', 'User clicked on add experience from experience block');">Sélectionner</a>
               <% end %>
             <% end %>
