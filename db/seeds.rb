@@ -30,16 +30,24 @@
 # end
 
 
-Implémentation must-see et Liste des 1000 lieux à voir dans sa vie
+# Implémentation must-see et Liste des 1000 lieux à voir dans sa vie
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1yqaP4CpQUrI1gJGUuYmPqtIFGcclVM0BIX_T2xVrORQ/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
+#     must_see: exp_data['gsx$mustsee']['$t'],
+#     unesco: exp_data['gsx$unesco']['$t']
+#   )
+# end
+
 require 'json'
 require 'rest_client'
 url_json = 'https://spreadsheets.google.com/feeds/list/1yqaP4CpQUrI1gJGUuYmPqtIFGcclVM0BIX_T2xVrORQ/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
-  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
-    must_see: exp_data['gsx$mustsee']['$t'],
-    # unesco: exp_data['gsx$unesco']['$t']
-  )
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(must_see: exp_data['gsx$mustsee']['$t'])
 end
 
 
