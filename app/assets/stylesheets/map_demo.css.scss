@@ -81,6 +81,26 @@ img.small-height {
     font-size: 10px;
   }
 }
+.must-see {
+  position: absolute;
+  top: 7px;
+  left: 38px;
+  #must-see {
+    margin-left: 63px;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    display: none;
+    background: none;
+  }
+}
+
+.must-see:hover {
+  #must-see {
+    display: block;
+  }
+}
+
 i.must-see {
   color: gold;
   font-size: 20px;
