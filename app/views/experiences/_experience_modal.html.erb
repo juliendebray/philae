@@ -24,12 +24,7 @@
     <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
       <li><a href="#reviews" data-toggle="tab">Avis et conseils</a></li>
     <% end %>
-    <% unless global_map %>
-      <li><a href="#getthere" data-toggle="tab">Comment s'y rendre</a></li>
-    <% end %>
-    <% if current_user %>
-      <li><a href="#user_review" data-toggle="tab"><i>Donnez votre avis</i></a></li>
-    <% end %>
+    <li><a href="#getthere" data-toggle="tab">Infos pratiques</a></li>
   </ul>
 </div>
 
@@ -50,32 +45,128 @@
   <div class="tab-pane" id="descriptif">
     <div class="experience-content text-justify">
       <br>
-      <%= simple_format experience.description %>
-      <% if experience.timetospent %>
-        <br>
-        Temps de visite recommandé : <%= experience.timetospent %>
-      <% end %>
+      <div class="experience-description text-justify">
+        <%= simple_format experience.description %>
+      </div>
+      <div class="experience-onesentence text-center">
+        <%= simple_format experience.onesentence %>
+      </div>
+
+      <div class="experience-links text-center">
+        <% if experience.unesco && experience.thousand_places %>
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div id="block-separator"></div>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-xs-6">
+              <%= image_tag('unesco_logo.png', height: 30, alt:'UNESCO Logo Officiel') %>
+            </div>
+            <div class="col-xs-6">
+              <%= image_tag('thousandplaces_logo.png', height: 30, alt:'Thousand Places Logo Officiel') %>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-xs-6">
+              <p>Classé au <a href="http://whc.unesco.org/fr/list/" target="_blank">Patrimoine mondial de l'UNESCO</a></p>
+            </div>
+            <div class="col-xs-6">
+              <p>Figure sur la Liste des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+            </div>
+          </div>
+        <% elsif experience.unesco %>
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div id="block-separator"></div>
+            </div>
+          </div>
+          <%= image_tag('unesco_logo.png', height: 50, alt:'UNESCO Logo Officiel') %><br>
+          <p>Classé au <a href="http://whc.unesco.org/fr/list/" target="_blank">Patrimoine mondial de l'UNESCO</a></p>
+        <% elsif experience.thousand_places %>
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div id="block-separator"></div>
+            </div>
+          </div>
+          <%= image_tag('thousandplaces_logo.png', height: 40, alt:'Thousand Places Logo Officiel') %><br>
+          <p>Figure sur la Liste des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+        <% end %>
+        <% if experience.wikipedia_link %>
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div id="block-separator"></div>
+            </div>
+          </div>
+          <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %><br>
+          <a href="<%= experience.wikipedia_link %>" target="_blank">  Voir sur Wikipedia</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="tab-pane" id="getthere">
+    <div class="subtitles-modal-exp">
       <br>
-      <br>
-      <% if experience.unesco %>
-        <p>- Classé au <a href="http://whc.unesco.org/fr/list/" target="_blank">Patrimoine mondial de l'UNESCO</a></p>
-      <% end %>
-      <% if experience.thousand_places %>
-        <p>- Figure sur la Liste des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
-      <% end %>
-      <% if experience.wikipedia_link %>
-        <%= image_tag('wiki_logo.png', height: 30, alt:'Wikipedia Logo Officiel') %>
-        <a href="<%= experience.wikipedia_link %>" target="_blank">  Voir sur Wikipedia</a>
-      <% end %>
+      <div class="experience-content">
+        <div class="experience-detail">
+          <% if experience.timetospent %>
+            <u>Temps de visite recommandé</u> : <%= experience.timetospent %>
+          <% end %>
+          <% if experience.timetospent %>
+          <br><br>
+            <u>Où dormir</u> : <%= experience.wheretosleep %>
+          <% end %>
+          <% if experience.transportation %>
+          <br><br>
+            <u>Comment s'y rendre</u> : <%= simple_format experience.transportation %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 
   <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
     <div class="tab-pane" id="reviews">
       <br>
+      <br>
       <% if experience.leader_reviews.any? %>
         <div class="leader-reviews">
-          <% if experience.leader_reviews.first != experience.leader_reviews.last %>
+          <% if experience.leader_reviews.first != experience.leader_reviews.last && experience.ta_rating %>
+            <div class="row text-center">
+              <div class="col-xs-4">
+                <%= image_tag('lp_logo.png', height: 40, alt:'Lonely Planet Logo Officiel') %><br>
+              </div>
+              <div class="col-xs-4">
+                <%= image_tag('gdr_logo.png', height: 40, alt:'Le Guide du Routard Logo Officiel') %><br>
+              </div>
+              <div class="col-xs-4">
+                <div class="ta_logo">
+                  <%= image_tag('ta_logo_rating.png')%>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-4">
+                <% if experience.leader_reviews.first.source =~ /Lonely Planet/ %>
+                  <p>"<%= experience.leader_reviews.first.comment %>"</p>
+                <% else %>
+                  <p>"<%= experience.leader_reviews.second.comment %>"</p>
+                <% end %>
+              </div>
+              <div class="col-xs-4">
+                <% if experience.leader_reviews.first.source =~ /Lonely Planet/ %>
+                  <p>"<%= experience.leader_reviews.second.comment %>"</p>
+                <% else %>
+                  <p>"<%= experience.leader_reviews.first.comment %>"</p>
+                <% end %>
+              </div>
+              <div class="col-xs-4">
+                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
+              </div>
+            </div>
+          <% elsif experience.leader_reviews.first != experience.leader_reviews.last %>
             <div class="row text-center">
               <div class="col-xs-6">
                 <%= image_tag('lp_logo.png', height: 40, alt:'Lonely Planet Logo Officiel') %>
@@ -101,7 +192,34 @@
                 <% end %>
               </div>
             </div>
-          <% else %>
+          <% elsif experience.leader_reviews.first == experience.leader_reviews.last && experience.ta_rating %>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <div class="ta_logo">
+                  <%= image_tag('ta_logo_rating.png')%>
+                </div>
+              </div>
+              <div class="col-xs-6 vcenter">
+                <% if experience.leader_reviews.first.source =~ /Lonely Planet/ %>
+                  <div class="col-xs-6 vcenter">
+                    <%= image_tag('lp_logo.png', height: 40, alt:'Lonely Planet Logo Officiel') %>
+                  </div>
+                <% else %>
+                  <div class="col-xs-6 vcenter">
+                    <%= image_tag('gdr_logo.png', height: 40, alt:'Le Guide du Routard Logo Officiel') %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
+              </div>
+              <div class="col-xs-6">
+                <p>"<%= experience.leader_reviews.first.comment %>"</p>
+              </div>
+            </div>
+          <% elsif experience.leader_reviews.first == experience.leader_reviews.last %>
             <div class="row text-center">
               <div class="col-xs-6 vcenter">
                 <% if experience.leader_reviews.first.source =~ /Lonely Planet/ %>
@@ -125,7 +243,7 @@
       <% else %>
         <p>Pas de commentaire des guides pour cette expérience ; elle est hors des sentiers battus !</p>
       <% end %>
-      <div class="experience-rating">
+      <!-- <div class="experience-rating">
         <% if experience.ta_rating || experience.gg_rating || experience.fsq_rating %>
           <div class="row">
             <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
@@ -268,7 +386,7 @@
             </div>
           <% end %>
         <% end %>
-      </div>
+      </div> -->
 
       <% if experience.experience_reviews.any? %>
         <div class="row">
@@ -290,38 +408,27 @@
           </div>
         </div>
       <% end %>
-    </div>
-  <% end %>
-
-  <% unless global_map %>
-  <div class="tab-pane" id="getthere">
-<!--     <div class="subtitles-modal-exp">
-      <br>
-      <p><u>Comment s'y rendre</u></p>
-    </div> -->
-    <div class="experience-content">
-      <br>
-      <p>Coming soon...</p>
-    </div>
-    <br>
-  </div>
-  <% end %>
-  <% if current_user %>
-    <div class="tab-pane" id="user_review">
-      <div class="experience-content text center">
-        <br>
-        <p>Vous connaissez cet endroit? Donnez votre avis!</p>
-        <%= bootstrap_form_for([@experience, ExperienceReview.new]) do |f| %>
+      <% if current_user %>
+        <div class="experience-content text center">
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div id="block-separator"></div>
+            </div>
+          </div>
+          <br>
+          <div class="exp-modal-title text-center">
+            <p>Vous connaissez cet endroit ? Donnez un conseil ou un avis !</p>
+            <%= bootstrap_form_for([@experience, ExperienceReview.new]) do |f| %>
               <%= f.text_field :comment, hide_label: true, placeholder: "Donnez votre avis en 140 caractères max !", required: true, size: 75, maxlength: 140 %>
               <%= f.text_field :name, hide_label: true, placeholder: "Nom", required: true %>
               <%= f.number_field :rating, hide_label: true, placeholder: "Note entre 0 et 10", required: true, min: 0, max: 10 %>
               <%= f.hidden_field(:created_at) %>
               <%= f.submit( t('expbuttonadd'), class: "btn btn-info") %>
             <% end %>
-      </div>
-      <br>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
-
 </div>
 
