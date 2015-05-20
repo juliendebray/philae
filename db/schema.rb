@@ -109,10 +109,10 @@ ActiveRecord::Schema.define(version: 20150520174904) do
     t.integer  "fsq_votes"
     t.boolean  "unesco"
     t.integer  "destination_id"
-    t.text     "timetospent"
-    t.text     "wheretosleep"
-    t.text     "transportation"
-    t.text     "onesentence"
+    t.string   "timetospent"
+    t.string   "wheretosleep"
+    t.string   "transportation"
+    t.string   "onesentence"
     t.boolean  "landing_point",      default: false
   end
 
