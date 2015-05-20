@@ -5,6 +5,21 @@
 .experience-content {
   .leader-reviews {
     text-align: center;
+    p {
+      margin-top: 15px;
+    }
+  }
+  .experience-description {
+    font-size: 15px;
+    font-weight: 300;
+  }
+  .experience-onesentence {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .experience-detail {
+    font-size: 15px;
+    font-weight: 300;
   }
 }
 
@@ -124,7 +139,7 @@
 
 .tab-content {
   #reviews {
-    height: 350px;
+    max-height: 450px;
     overflow-y: auto;
     blockquote {
       font-size: 14px;

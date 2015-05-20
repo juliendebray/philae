@@ -86,10 +86,13 @@ img.small-height {
   top: 7px;
   left: 38px;
   #must-see {
+    position: absolute;
     margin-left: 63px;
     font-size: 15px;
     font-weight: 300;
     color: white;
+    top: 7px;
+    text-shadow: 0px 0px 2px white, 0px 0px 3px black;
     display: none;
     background: none;
   }
@@ -320,7 +323,7 @@ i.must-see {
         font-size: 1em;
         color: white;
         bottom: 0px;
-        background: rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.3);
         position: absolute;
         margin: auto;
         padding-bottom: 3px;

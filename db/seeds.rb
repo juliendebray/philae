@@ -7,6 +7,23 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+# Update experiences Cuba
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1aSeFG0CFAaI0C3bk05ipiEd3QG9MFiAr39ZLgDqruxg/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |exp_data|
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
+    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
+    description: exp_data['gsx$descriptionfrench']['$t'],
+    onesentence: exp_data['gsx$onesentence']['$t'],
+    timetospent: exp_data['gsx$timetospent']['$t'],
+    wheretosleep: exp_data['gsx$wheretosleep']['$t'],
+    transportation: exp_data['gsx$transportation']['$t'],
+    landing_point: exp_data['gsx$landingpoint']['$t']
+  )
+end
+
 #Mise en ligne du temps à passer pour chaque experience
 # require 'json'
 # require 'rest_client'
@@ -42,14 +59,13 @@
 #   )
 # end
 
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1yqaP4CpQUrI1gJGUuYmPqtIFGcclVM0BIX_T2xVrORQ/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |exp_data|
-  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(must_see: exp_data['gsx$mustsee']['$t'])
-end
-
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1yqaP4CpQUrI1gJGUuYmPqtIFGcclVM0BIX_T2xVrORQ/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(must_see: exp_data['gsx$mustsee']['$t'])
+# end
 
 #Mise à jour du lien Wikipedia
 # require 'json'
@@ -69,9 +85,6 @@ end
 #   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(nb_votes: exp_data['gsx$nbvotes']['$t'].to_i )
 # end
 
-
-
-
 # Ajout des experiences_reviews
 # require 'json'
 # require 'rest_client'
@@ -87,7 +100,6 @@ end
 #   )
 # end
 
-
 # Ajout des leaders reviews (citations guides)
 # require 'json'
 # require 'rest_client'
@@ -100,8 +112,6 @@ end
 #     comment: leader_review['gsx$comment']['$t'],
 #   )
 # end
-
-
 
 
 # Seed Destination
