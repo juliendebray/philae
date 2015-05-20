@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520174904) do
+ActiveRecord::Schema.define(version: 20150520215107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,10 +110,10 @@ ActiveRecord::Schema.define(version: 20150520174904) do
     t.boolean  "unesco"
     t.integer  "destination_id"
     t.string   "timetospent"
-    t.string   "wheretosleep"
-    t.string   "transportation"
-    t.string   "onesentence"
     t.boolean  "landing_point",      default: false
+    t.text     "onesentence"
+    t.text     "wheretosleep"
+    t.text     "transportation"
   end
 
   add_index "experiences", ["category_id"], name: "index_experiences_on_category_id", using: :btree
