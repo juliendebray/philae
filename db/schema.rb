@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520173516) do
+ActiveRecord::Schema.define(version: 20150520174244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20150520173516) do
     t.string   "timetospent"
     t.string   "wheretosleep"
     t.string   "transportation"
+    t.string   "onesentence"
   end
 
   add_index "experiences", ["category_id"], name: "index_experiences_on_category_id", using: :btree
