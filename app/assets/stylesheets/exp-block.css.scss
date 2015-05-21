@@ -1,0 +1,379 @@
+// Styles for all experiences block
+
+//Common CSS for
+.panel {
+  margin: 5px;
+  border: none;
+  border-radius: 0px;
+  margin-bottom: 15px;
+  -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+  // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  .exp-dotdotdot {
+    border-top-style: solid;
+    border-color: lightgrey;
+    border-width: 1px;
+    position: relative;
+  }
+}
+
+//CSS for experience
+.panel-info {
+  .exp-dotdotdot {
+    .experience-picture {
+      position: relative;
+      img {
+        position: relative;
+        background-size: cover;
+        background-position: center bottom;
+        background-attachment: fixed;
+        transition: none;
+      }
+      .exp-rating {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: green;
+        color: white;
+        font-size: 17px;
+        padding: 0.5px 2px;
+        display: inline;
+        margin-right: 5px;
+       .best {
+          font-size: 10px;
+        }
+      }
+      .must-see {
+        position: absolute;
+        top: 7px;
+        left: 38px;
+        i {
+          color: gold;
+          font-size: 20px;
+        }
+        #must-see {
+          position: absolute;
+          margin-left: 63px;
+          font-size: 15px;
+          font-weight: 300;
+          color: white;
+          top: 7px;
+          text-shadow: 0px 0px 2px white, 0px 0px 3px black;
+          display: none;
+          background: none;
+        }
+      }
+      .must-see:hover {
+        #must-see {
+          display: block;
+        }
+      }
+      .exp-quote {
+        position: absolute;
+        padding-right: 66%;
+        top: 30%;
+        bottom: 15%;
+        left: 10px;
+        font-size: 14px;
+        font-weight: 300;
+        color: white;
+        text-shadow: 0px 0px 2px white, 0px 0px 3px black;
+        em {
+          font-weight: 300;
+          color: white;
+          text-shadow: 0px 0px 2px white, 0px 0px 3px black;
+        }
+      }
+      .experience-selector {
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        a {
+          color: white;
+        }
+        i {
+          color: white;
+        }
+        .fa {
+          font-size: 30px;
+        }
+        .btn-link:focus, .btn-link:hover {
+          text-decoration: none;
+        }
+        #addtotrip {
+          padding-right: 50px;
+          font-size: 20px;
+          text-shadow: 0px 0px 3px white, 0px 0px 6px black;
+          display: none;
+        }
+      }
+      .experience-selector:hover {
+        i {
+          color: #FF5A5F;
+        }
+        #addtotrip {
+          display: block;
+        }
+      }
+      .experience-name {
+        position: absolute;
+        width: 100%;
+        letter-spacing: 0px;
+        font-size: 1em;
+        color: white;
+        bottom: 0px;
+        background: rgba(0,0,0,0.3);
+        position: absolute;
+        margin: auto;
+        padding-bottom: 3px;
+        padding-top: 3px;
+        small {
+          font-size: 16px;
+          font-weight: 300;
+          padding-left: 10px;
+        }
+        i {
+          padding-right: 8px;
+          float: right;
+        }
+      }
+    }
+    .experience-picture:hover {
+      img {
+        transform: none;
+      }
+    }
+  }
+}
+
+//CSS for trip_exp
+.panel-info {
+  .exp-dotdotdot {
+    .panel-heading {
+      padding-right: 2px;
+      margin-top: 5px;
+      border-radius: 0px;
+      background: white;
+      border: none;
+      border-radius: 0px;
+      font-weight: 300;
+      color: #808080;
+      a {
+        color: #525252;
+        font-weight: 400;
+        font-size: 15px;
+      }
+      button.btn {
+        margin: 0px;
+        padding: 0px;
+      }
+      button.btn:focus {
+        outline: none;
+      }
+      i {
+        padding-right: 5px;
+        color: #FF5A5F;
+        font-size: 20px;
+      }
+      i:hover {
+        padding-right: 5px;
+        color: #808080;
+      }
+      .pull-right {
+        i {
+          padding-right: 5px;
+          font-size: 20px;
+          color: #FF5A5F;
+        }
+        i:hover {
+          padding-right: 5px;
+          color: #808080;
+          text-shadow: none;
+        }
+      }
+      i.fa-heart.comment {
+        padding-right: 5px;
+        color: #808080;
+      }
+      i.fa-heart.comment:hover {
+        padding-right: 5px;
+        color: #FF5A5F;
+        text-shadow: none;
+      }
+    }
+    .panel-body {
+      padding: 0px;
+      border: none;
+      border-radius: 0px;
+      text-align: center;
+      font-size: 13px;
+      color: #525252;
+      .content {
+        color: #525252;
+      }
+      p {
+        margin-bottom: 5px;
+        line-height: 17px;
+        text-align: center;
+      }
+      img {
+        height: 85%;
+      }
+      td.thumb-pic {
+        vertical-align: top;
+        width: 165px;
+        img {
+          float: left;
+          margin-right: 2%;
+          height: auto;
+          // max-height: 8em;
+          max-width: 100%;
+        }
+      }
+      .time-to-spend {
+        font-size: 13px;
+        font-weight: 300;
+        color: #525252;
+      }
+      .where-to-sleep {
+        font-size: 13px;
+        font-weight: 300;
+        color: #525252;
+      }
+    }
+  }
+}
+
+//CSS for trip_comment
+.panel-info {
+  .exp-dotdotdot {
+    .panel-heading {
+      padding-right: 2px;
+      margin-top: 5px;
+      border-radius: 0px;
+      background: white;
+      border: none;
+      border-radius: 0px;
+      font-weight: 300;
+      color: #808080;
+      a {
+        color: #525252;
+        font-weight: 400;
+        font-size: 15px;
+      }
+      button.btn {
+        margin: 0px;
+        padding: 0px;
+      }
+      button.btn:focus {
+        outline: none;
+      }
+      i {
+        padding-right: 5px;
+        color: #FF5A5F;
+        font-size: 20px;
+      }
+      i:hover {
+        padding-right: 5px;
+        color: #808080;
+      }
+      .pull-right {
+        i {
+          padding-right: 5px;
+          font-size: 20px;
+          color: #FF5A5F;
+        }
+        i:hover {
+          padding-right: 5px;
+          color: #808080;
+          text-shadow: none;
+        }
+      }
+      i.fa-heart.comment {
+        padding-right: 5px;
+        color: #808080;
+      }
+      i.fa-heart.comment:hover {
+        padding-right: 5px;
+        color: #FF5A5F;
+        text-shadow: none;
+      }
+      i.fa-trash-o {
+        padding-right: 5px;
+        color: #808080;
+      }
+      i.fa-trash-o:hover {
+        padding-right: 5px;
+        color: #FF5A5F;
+      }
+      i.fa-trash-o.comment {
+        padding-right: 5px;
+        color: #808080;
+      }
+      i.fa-trash-o.comment:hover {
+        padding-right: 5px;
+        color: #FF5A5F;
+        text-shadow: none;
+      }
+    }
+  }
+}
+
+// .readmore {
+//   color: grey;
+//   text-decoration: underline;
+//   font-weight: 400;
+// }
+// .readmore:hover {
+//   color: coral;
+// }
+
+// .exp-category {
+//   background: black;
+//   padding: 0px 2px;
+//   color: white;
+//   opacity: 0.7;
+//   letter-spacing: 2px;
+// }
+
+@media screen and (max-width: 999px) {
+  .panel-info {
+    .exp-dotdotdot {
+      .experience-picture {
+        img {
+          width: 100%;
+        }
+        .exp-rating {
+          .rating-score {
+            font-size: 14px;
+          }
+        }
+        .exp-quote {
+          display: none;
+        }
+        .experience-selector {
+          #addtotrip {
+            display: block;
+            font-size: 15px;
+          }
+        }
+      }
+      .panel-body {
+        padding: 7px;
+        .thumb-pic {
+          img {
+            background-size: cover;
+            background-position: center bottom;
+            background-attachment: fixed;
+            width: 100%;
+            // max-height: none;
+            // height: auto;
+            margin-right: 0%;
+          }
+        }
+        .content {
+          display: none;
+        }
+      }
+    }
+  }
+}

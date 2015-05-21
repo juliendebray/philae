@@ -1,0 +1,169 @@
+//CSS for experience_modal
+
+.user-action {
+  .btn {
+    font-size: 15px;
+    vertical-align: middle;
+    color: #333333;
+    margin-top: -14px;
+    font-weight: 400;
+    .fa {
+      color: grey;
+    }
+  }
+  .btn:hover {
+    .fa {
+      color: #FF5A5F;
+    }
+  }
+  span {
+    font-size: 15px;
+    vertical-align: middle;
+    color: #333333;
+    margin-top: -14px;
+    font-weight: 400;
+    .fa {
+      color: #FF5A5F;
+    }
+  }
+  span:hover {
+    .fa {
+      color: grey;
+    }
+  }
+  .remove-from-trip {
+    color: white;
+    font-size: 14px;
+    font-weight: 300;
+    i#ib-remove-trip-exp {
+      color: #FF5A5F;
+    }
+  }
+  .remove-from-trip:hover {
+    text-decoration: underline;
+    i#ib-remove-trip-exp {
+      color: #808080;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+}
+
+#exp-modal-tabs {
+  webkit-border-radius: 0;
+  moz-border-radius: 0;
+  border-radius: 0;
+  font-size: 15px;
+  background-color: #eaeaea;
+  li > a {
+    color: #525252;
+  }
+  li > a:hover {
+    background-color: white;
+  }
+}
+#exp-modal-tabs.active {
+  a {
+    background-color: white;
+  }
+}
+
+.tab-content {
+  .subtitles-modal-exp {
+    p {
+      font-size: 16px;
+    }
+  }
+  #descriptif {
+    max-height: 450px;
+    .experience-description {
+      font-size: 15px;
+      font-weight: 300;
+    }
+    .experience-onesentence {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .experience-detail {
+      font-size: 15px;
+      font-weight: 300;
+    }
+  }
+  #reviews {
+    max-height: 450px;
+    overflow-y: auto;
+    blockquote {
+      font-size: 14px;
+      padding-top: 1px;
+      padding-bottom: 0px;
+    }
+    footer {
+      background-color: white;
+      padding: 0px;
+    }
+    .leader-reviews {
+      text-align: center;
+      p {
+        font-size: 15px;
+        font-weight: 300;
+        margin-top: 15px;
+      }
+    }
+    .rating-score {
+      padding-left: 0px;
+      color: #e7711b;
+      line-height: 2.5em;
+      font-size: 20px;
+    }
+    .ta_logo {
+      img {
+        max-height: 29px;
+      }
+    }
+    .gg_logo {
+      img {
+        max-height: 35px;
+      }
+    }
+    .fsq_logo {
+      img {
+        max-height: 21px;
+      }
+    }
+    .ta-color {
+      color:#3a8e1b;
+    }
+    .gg-color {
+      color:#e7711b;
+    }
+    .fsq-color {
+      color:#0732a2 ;
+    }
+    .user-reviews {
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Styles for modal experience
+// .vertical-align-top {
+//   vertical-align: top;
+// }
+// .vertical-align-middle {
+//   vertical-align: middle;
+// }
+// td.width-split {
+//   width: 50%;
+// }
+// td.rating-cell {
+//   border-left: 5px solid #eeeeee;
+//   padding-left:5%;
+// }
+// img.fixed-height {
+//   height: 31px;
+// }
+// img.small-height {
+//   height: 27px;
+// }

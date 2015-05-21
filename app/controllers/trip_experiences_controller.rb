@@ -157,6 +157,40 @@ class TripExperiencesController < ApplicationController
             experience_id: experience.id
           })
         end
+      elsif experience.landing_point
+        picture_url = "https://philae-floju.s3.amazonaws.com/markers/airport_logo.png"
+        marker.picture({
+          url: picture_url,
+          width:  25,
+          height: 39
+        })
+        if experience_block_required
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+            experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+              trip_exp: false,
+              guest_user: false,
+              experience: experience,
+              trip: trip
+            })
+          })
+        else
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+          })
+        end
       else
         # experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top.png"
         experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_2.png"

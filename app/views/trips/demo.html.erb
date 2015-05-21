@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag 'map_demo' %>
 <% end %>
 <% unless @guest_user %>
+<!-- 1ère ligne sur mobile -->
   <div class="mobile-menu-container container">
     <div class="row">
       <div class="col-xs-4 no-padding">
@@ -68,7 +69,9 @@
     </div>
   </div>
 <% end %>
+
 <div class="wrapper <%= 'no-display' if @guest_user %>">
+  <!-- Map -->
   <div class="map-container">
     <div class="overlay">
       <div class="overlay-loading">
@@ -82,7 +85,7 @@
       <%= link_to trip_ask_your_friends_path(@trip), class:"btn btn-info", id:"ask-friends-mobile-btn" do %>
         <small><%= t('show_need_tips') %></small>
       <% end %>
-      <% end %>
+    <% end %>
     <div id="map">
     </div>
     <div id='map-interaction'>
@@ -98,6 +101,8 @@
       <small><%= t('show_addmyexp') %></small>
     </button>
     <div id="map-legend" class="display-inline">
+      <%= image_tag 'https://philae-floju.s3.amazonaws.com/markers/airport_logo.png'%> Principal point d'arrivée
+      <br>
       <%= image_tag 'http://philae-floju.s3.amazonaws.com/markers/top_2.png'%> Toutes les expériences
       <br>
       <%= image_tag 'http://philae-floju.s3.amazonaws.com/markers/top_must_see.png'%> Les incontournables
@@ -121,6 +126,7 @@
     </button>
   <% end %>
   </div>
+<!--   Sidebar -->
   <div class="sidebar" role="tabpanel">
     <div class="selection-header text-center">
       <div class="selection-title text-center">

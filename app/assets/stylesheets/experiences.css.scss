@@ -2,286 +2,141 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.experience-content {
-  .leader-reviews {
-    text-align: center;
-    p {
-      margin-top: 15px;
-    }
-  }
-  .experience-description {
-    font-size: 15px;
-    font-weight: 300;
-  }
-  .experience-onesentence {
-    font-size: 16px;
-    font-weight: 400;
-  }
-  .experience-detail {
-    font-size: 15px;
-    font-weight: 300;
-  }
-}
-
-.experience-rating {
-  .rating-score {
-    padding-left: 0px;
-  }
-  .ta_logo {
-    img {
-      max-height: 29px;
-    }
-  }
-  .gg_logo {
-    img {
-      max-height: 35px;
-    }
-  }
-  .fsq_logo {
-    img {
-      max-height: 21px;
-    }
-  }
-}
-
-#block-separator {
-  border-top: solid 1px #CCCCCC;
-  margin-top: 20px;
-  margin-bottom: 25px;
-}
-
+// experience-page
 #exp-page-container-fluid {
   padding-right: 0px;
   padding-left: 0px;
-}
-
-.experience-page {
-  padding-top: 12px;
-  img {
-    width: 100%;
-  }
-  .row {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  #carousel-exp-page {
-    position: relative;
-    .experience-name {
+  .experience-page {
+    padding-top: 12px;
+    img {
       width: 100%;
-      letter-spacing: 1px;
-      color: white;
-      top: 0px;
-      background: rgba(0,0,0,0.1);
-      position: absolute;
-      margin: auto;
-      h1 {
-        font-size: 3.225em;
-        line-height: 1.555556;
-        font-weight: 400;
-        text-align: left;
-        margin-bottom: 0px;
-        margin-top: 0px;
-        padding-left: 30px;
-        text-transform: uppercase;
+    }
+    #carousel-exp-page {
+      position: relative;
+      .experience-name {
+        width: 100%;
+        letter-spacing: 1px;
+        color: white;
+        top: 0px;
+        background: rgba(0,0,0,0.1);
+        position: absolute;
+        margin: auto;
+        h1 {
+          font-size: 3.225em;
+          line-height: 1.555556;
+          font-weight: 400;
+          text-align: left;
+          margin-bottom: 0px;
+          margin-top: 0px;
+          padding-left: 30px;
+          text-transform: uppercase;
+        }
       }
     }
-  }
-  p {
-    font-size: 25px;
-    line-height: 1.555556;
-    font-weight: 200;
-    text-align: center;
-  }
-  h4 {
-    font-size: 35px;
-    line-height: 1.0769;
-    font-weight: 300;
-  }
-  h5 {
-    font-size: 20px;
-    line-height: 1.0769;
-    font-weight: 300;
-  }
-  #block-separator {
-    border-top: solid 1px #CCCCCC;
-    margin-top: 35px;
-    margin-bottom: 35px;
-  }
-  .tr-grey-bg {
-    background: rgba(0,0,0,0);
-    padding-bottom: 0px;
-    margin: 10px auto;
-    a {
-      white-space: normal;
+    p {
+      font-size: 25px;
+      line-height: 1.555556;
+      font-weight: 200;
+      text-align: center;
     }
-    input#trip_query {
-      font-style: normal;
+    h4 {
+      font-size: 35px;
+      line-height: 1.0769;
       font-weight: 300;
-      width: 200px;
+    }
+    h5 {
       font-size: 20px;
-    }
-    .minor-block {
-      font-size: 1.5em;
+      line-height: 1.0769;
       font-weight: 300;
-      color: #525252;
-      margin: 30px;
     }
-    .form-group{
-      margin: 10px auto;
-      margin-top: 0;
+    #block-separator {
+      border-top: solid 1px #CCCCCC;
+      margin-top: 35px;
+      margin-bottom: 35px;
     }
-    .btn {
-      font-size: 15px;
-      vertical-align: bottom;
-    }
-  }
-}
-
-.tab-content {
-  #reviews {
-    max-height: 450px;
-    overflow-y: auto;
-    blockquote {
-      font-size: 14px;
-      padding-top: 1px;
+    .tr-grey-bg {
+      background: rgba(0,0,0,0);
       padding-bottom: 0px;
+      margin: 10px auto;
+      a {
+        white-space: normal;
+      }
+      input#trip_query {
+        font-style: normal;
+        font-weight: 300;
+        width: 200px;
+        font-size: 20px;
+      }
+      .minor-block {
+        font-size: 1.5em;
+        font-weight: 300;
+        color: #525252;
+        margin: 30px;
+      }
+      .form-group{
+        margin: 10px auto;
+        margin-top: 0;
+      }
+      .btn {
+        font-size: 15px;
+        vertical-align: bottom;
+      }
     }
-    footer {
+    #leader_review_block {
+      box-sizing: content-box;
+      font-weight: 400;
+      padding: 15px;
+      font-size: 15px;
+      img {
+        max-width: 130px;
+      }
+      p {
+        margin-bottom: 5px;
+        font-size: 18px;
+        text-align: center;
+        font-weight: 300;
+      }
+    }
+    #exp_review_block {
+      box-sizing: content-box;
+      font-weight: 400;
+      padding: 15px;
+      font-size: 15px;
       background-color: white;
-      padding: 0px;
+      img {
+        max-width: 225px;
+      }
+      p {
+        margin-bottom: 5px;
+        font-size:  16px;
+        text-align: left;
+        font-weight: 300;
+      }
+      .fa {
+        font-size: 6px;
+      }
+      .btn {
+        font-size: 15px;
+      }
+      #experience_review_rating {
+        width: 151px;
+      }
+      blockquote {
+        font-size: 14px;
+        padding-top: 1px;
+        padding-bottom: 0px;
+      }
+      footer {
+        background-color: white;
+        padding: 0px;
+      }
+    }
+    .row {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 }
-
-#exp-modal-tabs {
-    webkit-border-radius: 0;
-    moz-border-radius: 0;
-    border-radius: 0;
-    font-size: 15px;
-    background-color: #eaeaea;
-    li > a {
-      color: #525252;
-    }
-}
-
-#exp-modal-tabs {
-  li {
-    a:hover {
-      background-color: white;
-    }
-  }
-}
-
-#exp-modal-tabs.active {
-  a {
-    background-color: white;
-  }
-}
-
-#leader_review_block {
-  box-sizing: content-box;
-  font-weight: 400;
-  padding: 15px;
-  font-size: 15px;
-  img {
-    max-width: 130px;
-  }
-  p {
-    margin-bottom: 5px;
-    font-size: 18px;
-    text-align: center;
-    font-weight: 300;
-  }
-}
-
-#exp_review_block {
-  box-sizing: content-box;
-  font-weight: 400;
-  padding: 15px;
-  font-size: 15px;
-  background-color: white;
-  img {
-    max-width: 225px;
-  }
-  p {
-    margin-bottom: 5px;
-    font-size:  16px;
-    text-align: left;
-    font-weight: 300;
-  }
-  .fa {
-    font-size: 6px;
-  }
-  .btn {
-    font-size: 15px;
-  }
-  #experience_review_rating {
-    width: 151px;
-  }
-  blockquote {
-    font-size: 14px;
-    padding-top: 1px;
-    padding-bottom: 0px;
-  }
-  footer {
-    background-color: white;
-    padding: 0px;
-  }
-}
-
-.user-action {
-  .btn {
-    font-size: 15px;
-    vertical-align: middle;
-    color: #333333;
-    margin-top: -14px;
-    font-weight: 400;
-    .fa {
-      color: grey;
-    }
-  }
-  .btn:hover {
-    .fa {
-      color: #FF5A5F;
-    }
-  }
-
-  span {
-    font-size: 15px;
-    vertical-align: middle;
-    color: #333333;
-    margin-top: -14px;
-    font-weight: 400;
-    .fa {
-      color: #FF5A5F;
-    }
-  }
-
-  span:hover {
-    .fa {
-      color: grey;
-    }
-  }
-}
-
-.leader-reviews {
-  p {
-    font-size: 15px;
-    font-weight: 300;
-  }
-}
-.user-reviews {
-  p {
-    font-size: 14px;
-  }
-}
-
-.subtitles-modal-exp {
-  p {
-    font-size: 16px;
-  }
-}
-
 
 // CSS pour experience NEW
 body.newexperience {
@@ -309,7 +164,7 @@ body.newexperience {
     heigth: 50%;
     color: white;
   }
- .form-control {
+  .form-control {
     border-radius: 0px;
   }
 }
@@ -321,55 +176,54 @@ body.newexperience {
       font-weight: 500;
     }
   }
-  .exp-quote {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 768px) {
-  .experience-page {
-    #carousel-exp-page {
-      .experience-name {
-        h1 {
-          font-size: 1.225em;
+  #exp-page-container-fluid {
+    .experience-page {
+      #carousel-exp-page {
+        .experience-name {
+          h1 {
+            font-size: 1.225em;
+          }
         }
       }
-    }
-    p {
-      font-size: 17px;
-      text-align: left;
-      font-weight: 300;
-    }
-    h4 {
-      font-size: 25px;
-    }
-    #exp_review_block {
-      padding-left: 0;
-      padding-right: 0;
-    }
-    #leader_review_block {
-      padding-left: 0;
-      padding-right: 0;
-      .vcenter {
-        padding-left: 5px;
-        padding-right: 5px;
-      }
-      img {
-        max-width: 130px;
-      }
       p {
-        margin-bottom: 5px;
-        font-size: 15px;
-        text-align: center;
+        font-size: 17px;
+        text-align: left;
         font-weight: 300;
       }
-    }
-    .tr-grey-bg {
-      .minor-block {
-        font-size: 1.4em;
+      h4 {
+        font-size: 25px;
       }
-      input#trip_query {
-        width: 80%;
+      #exp_review_block {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      #leader_review_block {
+        padding-left: 0;
+        padding-right: 0;
+        .vcenter {
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+        img {
+          max-width: 130px;
+        }
+        p {
+          margin-bottom: 5px;
+          font-size: 15px;
+          text-align: center;
+          font-weight: 300;
+        }
+      }
+      .tr-grey-bg {
+        .minor-block {
+          font-size: 1.4em;
+        }
+        input#trip_query {
+          width: 80%;
+        }
       }
     }
   }
@@ -390,30 +244,6 @@ body.newexperience {
           font-weight: 300;
         }
       }
-    }
-  }
-
-  .experience-rating {
-    .col-xs-4 {
-      padding: 0;
-    }
-    .ta_logo {
-      img {
-        max-height: 13px;
-      }
-    }
-    .gg_logo {
-      img {
-        max-height: 15px;
-      }
-    }
-    .fsq_logo {
-      img {
-        max-height: 8px;
-      }
-    }
-    .rating-score {
-      font-size: 14px;
     }
   }
 }
@@ -443,4 +273,3 @@ body.newexperience {
     }
   }
 }
-

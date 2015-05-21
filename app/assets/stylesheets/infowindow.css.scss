@@ -1,0 +1,172 @@
+// Infobox design
+.infoBox::before {
+  border-color: #fff transparent transparent transparent;
+  border-width: 15px;
+  border-style: solid;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: -18px;
+  margin: 0 0 0 126px;
+}
+
+.infobox-container {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  #experience-infowindow {
+    margin: 10px;
+    padding-top: 10px;
+      .btn {
+        font-size: 14px;
+        vertical-align: middle;
+      }
+    .infobox-content {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 14px;
+      a {
+        color: #525252;
+        font-family: 'Roboto';
+        font-weight: 300;
+      }
+      .fa-search {
+        font-weight: 600;
+      }
+      .comment-btn:hover {
+        .fa {
+          color: #FF5A5F;
+        }
+      }
+    }
+    .infobox-content:hover {
+      .fa-search {
+        color: coral;
+      }
+    }
+  }
+  #owl-experiences {
+    height: 174px;
+  }
+  .owl-controls.clickable {
+    margin: 0px;
+    position: relative;
+    top: -125px;
+    .owl-prev {
+      position: relative;
+      left: -95px;
+    }
+    .owl-next {
+      position: relative;
+      right: -95px;
+    }
+  }
+  .owl-theme .owl-controls .owl-buttons div {
+    font-size: 40px;
+    background: transparent;
+    opacity: 0;
+  }
+  #experience-infowindow:hover {
+    .owl-buttons div {
+    opacity: 0.5;
+    }
+    .owl-buttons div:hover {
+    opacity: 1;
+    }
+  }
+  .rating {
+    position: relative;
+    padding: 3px;
+    font-size: 15px;
+    background-color: #808080;
+    color: white;
+      form button {
+        padding: 0px;
+        margin: 0px;
+        font-size: 20px;
+        border: none;
+        color: white;
+        position: relative;
+        top: -2px;
+      }
+      form button i:hover {
+        color: #2196F3;
+      }
+    .best {
+      font-size: 10px;
+    }
+    .pull-right input {
+      background: transparent;
+      border-color: transparent;
+      font-size: 15px;
+    }
+    .pull-right input:focus {
+      outline: none;
+    }
+    .btn:hover {
+      .fa-heart {
+        color: #FF5A5F;
+      }
+    }
+  }
+}
+
+#experience-infowindow {
+  .comment-name {
+    padding-left: 7px;
+    font-weight: 400;
+    font-size: 15px;
+  }
+  .comment-content {
+    padding: 7px;
+    font-weight: 100;
+    font-size: 13px;
+  }
+  .comment-address {
+    padding: 7px;
+    font-weight: 100;
+    font-size: 11px;
+  }
+}
+
+.remove-from-trip {
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  i#ib-remove-trip-exp {
+    color: #FF5A5F;
+  }
+  .remove-from-trip:hover {
+    text-decoration: underline;
+    i#ib-remove-trip-exp {
+      color: #808080;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .owl-controls.clickable {
+    display: none;
+    .owl-prev {
+      display: none;
+    }
+    .owl-next {
+      display: none;
+    }
+  }
+  .owl-controls {
+    position: absolute;
+    top: 50px;
+    left: 85px;
+    .owl-prev {
+      position: absolute;
+      left: -85px;
+    }
+    .owl-next {
+      position: absolute;
+      left: 131px;
+    }
+  }
+}
