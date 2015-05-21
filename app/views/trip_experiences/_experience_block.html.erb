@@ -25,7 +25,7 @@
             <tr>
               <% if trip_exp.experience.experience_pictures.any? %>
                 <td class="thumb-pic">
-                  <%= image_tag trip_exp.experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:small), class: "img-#{trip_exp.id}" if trip_exp.experience.experience_pictures.first %>
+                  <%= image_tag trip_exp.experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:thumb), class: "img-#{trip_exp.id}" if trip_exp.experience.experience_pictures.first %>
                 </td>
               <% end %>
               <td class="content text-center">
@@ -72,7 +72,7 @@
     <div class='exp-dotdotdot <%= "exp-#{experience.id}" %>' data-experience_id='<%= experience.id %>' data-lat='<%= experience.latitude %>' data-lng='<%= experience.longitude %>'>
       <div class="experience-picture">
         <% if experience.experience_pictures.any? %>
-          <%= image_tag experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:banner), class: "img-responsive" %>
+          <%= image_tag experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:medium), class: "img-responsive" %>
         <% end %>
         <%= link_to modal_exp_path(trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on experience body from experience block');" do %>
           <div class="exp-rating">
