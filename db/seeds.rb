@@ -8,48 +8,46 @@
 
 
 # New experiences Cuba
-require 'json'
-require 'rest_client'
-url_json = "https://spreadsheets.google.com/feeds/list/1VNjWN-IZpIdh7tMNk8nUxzvsprkd2twDGVyJn0fGvxA/od6/public/values?alt=json"
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |exp_data|
-  if exp_data['gsx$new']['$t'] == 'o'
-    exp = Experience.create(
-      average_rating: exp_data['gsx$rating']['$t'].to_f,
-      name: exp_data['gsx$nomfrench']['$t'],
-      address: exp_data['gsx$lieufrench']['$t'],
-      latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
-      longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
-      description: exp_data['gsx$descriptionfrench']['$t'],
-      onesentence: exp_data['gsx$onesentence']['$t'],
-      timetospent: exp_data['gsx$timetospent']['$t'],
-      wheretosleep: exp_data['gsx$wheretosleep']['$t'],
-      transportation: exp_data['gsx$transportation']['$t'],
-      published: true
-    )
-    exp.leader_reviews.create(
-      source: "Lonely Planet",
-      comment: exp_data['gsx$commentairelp']['$t'],
-    )
-    exp.leader_reviews.create(
-      source: "Guide Du Routard",
-      comment: exp_data['gsx$commentairegdr']['$t'],
-    )
-    gen_url = "http://philae-floju.s3.amazonaws.com/photos_cuba_new_exp/"
-    code = exp_data['gsx$code']['$t']
-    (1..4).each do |i|
-      complete_url = gen_url + code + "_#{i}.jpg"
-      begin
-        doc = open(complete_url)
-      rescue OpenURI::HTTPError
-        next
-      end
-      exp.experience_pictures.create(picture: complete_url)
-    end
-  end
-end
-
-
+# require 'json'
+# require 'rest_client'
+# url_json = "https://spreadsheets.google.com/feeds/list/1VNjWN-IZpIdh7tMNk8nUxzvsprkd2twDGVyJn0fGvxA/od6/public/values?alt=json"
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   if exp_data['gsx$new']['$t'] == 'o'
+#     exp = Experience.create(
+#       average_rating: exp_data['gsx$rating']['$t'].to_f,
+#       name: exp_data['gsx$nomfrench']['$t'],
+#       address: exp_data['gsx$lieufrench']['$t'],
+#       latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
+#       longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
+#       description: exp_data['gsx$descriptionfrench']['$t'],
+#       onesentence: exp_data['gsx$onesentence']['$t'],
+#       timetospent: exp_data['gsx$timetospent']['$t'],
+#       wheretosleep: exp_data['gsx$wheretosleep']['$t'],
+#       transportation: exp_data['gsx$transportation']['$t'],
+#       published: true
+#     )
+#     exp.leader_reviews.create(
+#       source: "Lonely Planet",
+#       comment: exp_data['gsx$commentairelp']['$t'],
+#     )
+#     exp.leader_reviews.create(
+#       source: "Guide Du Routard",
+#       comment: exp_data['gsx$commentairegdr']['$t'],
+#     )
+#     gen_url = "http://philae-floju.s3.amazonaws.com/photos_cuba_new_exp/"
+#     code = exp_data['gsx$code']['$t']
+#     (1..4).each do |i|
+#       complete_url = gen_url + code + "_#{i}.jpg"
+#       begin
+#         doc = open(complete_url)
+#       rescue OpenURI::HTTPError
+#         next
+#       end
+#       exp.experience_pictures.create(picture: complete_url)
+#     end
+#   end
+# end
 
 
 # Update experiences Cuba
@@ -77,6 +75,15 @@ end
 # data_hash['feed']['entry'].each do |exp_data|
 #   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(timetospent: exp_data['gsx$timetospent']['$t'] )
 # end
+
+#Mise en ligne des landing_point
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1lJKLSs0tXP5TQQSVat3SCvRXUKU1Yw6Qr6ejy4ISWSI/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |exp_data|
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(landing_point: exp_data['gsx$landingpoint']['$t'] )
+end
 
 #Mise en ligne des avis du Routard
 # require 'json'
