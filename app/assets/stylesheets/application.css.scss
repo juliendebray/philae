@@ -43,6 +43,9 @@ $font-family-sans-serif: 'Roboto';
 @import "experience_summary_block";
 @import "summarize";
 @import "legal";
+@import "exp-block";
+@import "exp-modal";
+@import "infowindow";
 
 
 // General customized styles
@@ -60,6 +63,9 @@ html, body {
   z-index: 99999;
 }
 
+.display-inline {
+  display: inline;
+}
 
 .notices {
   text-align: center;
@@ -118,6 +124,12 @@ html, body {
 .line-separator {
   height:3px;
   border-bottom:3px solid white;
+}
+
+#block-separator {
+  border-top: solid 1px #CCCCCC;
+  margin-top: 20px;
+  margin-bottom: 25px;
 }
 
 @media screen and (max-width: 500px) {

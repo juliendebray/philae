@@ -2,59 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.experience-content {
-  .leader-reviews {
-    text-align: center;
-    p {
-      margin-top: 15px;
-    }
-  }
-  .experience-description {
-    font-size: 15px;
-    font-weight: 300;
-  }
-  .experience-onesentence {
-    font-size: 16px;
-    font-weight: 400;
-  }
-  .experience-detail {
-    font-size: 15px;
-    font-weight: 300;
-  }
-}
-
-.experience-rating {
-  .rating-score {
-    padding-left: 0px;
-  }
-  .ta_logo {
-    img {
-      max-height: 29px;
-    }
-  }
-  .gg_logo {
-    img {
-      max-height: 35px;
-    }
-  }
-  .fsq_logo {
-    img {
-      max-height: 21px;
-    }
-  }
-}
-
-#block-separator {
-  border-top: solid 1px #CCCCCC;
-  margin-top: 20px;
-  margin-bottom: 25px;
-}
-
+// experience-page
 #exp-page-container-fluid {
   padding-right: 0px;
   padding-left: 0px;
 }
-
 .experience-page {
   padding-top: 12px;
   img {
@@ -136,48 +88,6 @@
     }
   }
 }
-
-.tab-content {
-  #reviews {
-    max-height: 450px;
-    overflow-y: auto;
-    blockquote {
-      font-size: 14px;
-      padding-top: 1px;
-      padding-bottom: 0px;
-    }
-    footer {
-      background-color: white;
-      padding: 0px;
-    }
-  }
-}
-
-#exp-modal-tabs {
-    webkit-border-radius: 0;
-    moz-border-radius: 0;
-    border-radius: 0;
-    font-size: 15px;
-    background-color: #eaeaea;
-    li > a {
-      color: #525252;
-    }
-}
-
-#exp-modal-tabs {
-  li {
-    a:hover {
-      background-color: white;
-    }
-  }
-}
-
-#exp-modal-tabs.active {
-  a {
-    background-color: white;
-  }
-}
-
 #leader_review_block {
   box-sizing: content-box;
   font-weight: 400;
@@ -193,7 +103,6 @@
     font-weight: 300;
   }
 }
-
 #exp_review_block {
   box-sizing: content-box;
   font-weight: 400;
@@ -228,60 +137,6 @@
     padding: 0px;
   }
 }
-
-.user-action {
-  .btn {
-    font-size: 15px;
-    vertical-align: middle;
-    color: #333333;
-    margin-top: -14px;
-    font-weight: 400;
-    .fa {
-      color: grey;
-    }
-  }
-  .btn:hover {
-    .fa {
-      color: #FF5A5F;
-    }
-  }
-
-  span {
-    font-size: 15px;
-    vertical-align: middle;
-    color: #333333;
-    margin-top: -14px;
-    font-weight: 400;
-    .fa {
-      color: #FF5A5F;
-    }
-  }
-
-  span:hover {
-    .fa {
-      color: grey;
-    }
-  }
-}
-
-.leader-reviews {
-  p {
-    font-size: 15px;
-    font-weight: 300;
-  }
-}
-.user-reviews {
-  p {
-    font-size: 14px;
-  }
-}
-
-.subtitles-modal-exp {
-  p {
-    font-size: 16px;
-  }
-}
-
 
 // CSS pour experience NEW
 body.newexperience {
@@ -392,7 +247,6 @@ body.newexperience {
       }
     }
   }
-
   .experience-rating {
     .col-xs-4 {
       padding: 0;
@@ -443,4 +297,3 @@ body.newexperience {
     }
   }
 }
-
