@@ -29,9 +29,11 @@
                 </td>
               <% end %>
               <td class="content text-center">
-                <div class="text-center">
+                <% if trip_exp.experience.timetospent %>
+                  <%= trip_exp.experience.onesentence %>
+                <% else %>
                   <p>Expérience sélectionnée !</p>
-                </div>
+                <% end %>
 <!--                 <% if trip_exp.experience.leader_reviews.any? %>
                   <div class="exp-quote text-center">
                     "<%= trip_exp.experience.leader_reviews.shuffle.first.comment %>"

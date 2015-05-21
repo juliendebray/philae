@@ -145,3 +145,28 @@
     }
   }
 }
+
+@media screen and (max-width: 999px) {
+  .owl-controls.clickable {
+    display: none;
+    .owl-prev {
+      display: none;
+    }
+    .owl-next {
+      display: none;
+    }
+  }
+  .owl-controls {
+    position: absolute;
+    top: 50px;
+    left: 85px;
+    .owl-prev {
+      position: absolute;
+      left: -85px;
+    }
+    .owl-next {
+      position: absolute;
+      left: 131px;
+    }
+  }
+}
