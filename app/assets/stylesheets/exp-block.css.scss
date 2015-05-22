@@ -70,7 +70,7 @@
       .exp-quote {
         position: absolute;
         padding-right: 66%;
-        top: 30%;
+        top: 20%;
         bottom: 15%;
         left: 10px;
         font-size: 14px;
@@ -97,7 +97,9 @@
           font-size: 30px;
         }
         .btn-link:focus, .btn-link:hover {
+          display: inline;
           text-decoration: none;
+          outline: none;
         }
         #addtotrip {
           padding-right: 50px;
@@ -163,6 +165,7 @@
         font-size: 15px;
       }
       button.btn {
+        display: inline;
         margin: 0px;
         padding: 0px;
       }

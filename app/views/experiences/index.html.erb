@@ -12,7 +12,7 @@
             <%= link_to experience_path(experience.id), target: "_blank" do %>
               <div class="experience-picture text-center">
                 <% if experience.experience_pictures.first %>
-                  <%= image_tag experience.experience_pictures.first.picture.url(:banner), class: "img-responsive" %>
+                  <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
                 <% else %>
                   <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/photos_usa/usa_glacier_park_1.jpg' %>
                 <% end %>

@@ -25,39 +25,21 @@
             <tr>
               <% if trip_exp.experience.experience_pictures.any? %>
                 <td class="thumb-pic">
-                  <%= image_tag trip_exp.experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:thumb), class: "img-#{trip_exp.id}" if trip_exp.experience.experience_pictures.first %>
+                  <%= image_tag trip_exp.experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:small), class: "img-#{trip_exp.id}" if trip_exp.experience.experience_pictures.first %>
                 </td>
               <% end %>
               <td class="content text-center">
-                <% if trip_exp.experience.timetospent %>
+                <% if trip_exp.experience.onesentence %>
                   <%= trip_exp.experience.onesentence %>
                 <% else %>
                   <p>Expérience sélectionnée !</p>
                 <% end %>
-<!--                 <% if trip_exp.experience.leader_reviews.any? %>
-                  <div class="exp-quote text-center">
-                    "<%= trip_exp.experience.leader_reviews.shuffle.first.comment %>"
-                    <br><em><strong><%= trip_exp.experience.leader_reviews.first.source %></strong></em>
-                    <br>
-                  </div>
-                <% end %> -->
                 <% if trip_exp.experience.timetospent %>
                   <div class="time-to-spend text-center">
                     <br>
                     Temps de visite recommandé : <br><%= trip_exp.experience.timetospent %>
                   </div>
                 <% end %>
-<!--                 <% if trip_exp.experience.wheretosleep %>
-                  <div class="where-to-sleep text-center">
-                    <br>
-                    Où dormir : <%= trip_exp.experience.wheretosleep %>
-                  </div>
-                <% end %> -->
-<!--                 <div class="content-header">
-                  <% if trip_exp.experience.must_see? %>
-                    <span class="pull-right"> <i class="fa fa-star must-see"></i> <em>Incontournable!</em></span>
-                  <% end %>
-                </div> -->
               </td>
             </tr>
             </tbody>
@@ -85,7 +67,6 @@
               <br>
             </span>
           </div>
-
           <% if experience.must_see? %>
             <div class="must-see">
               <span class="pull-left">
@@ -94,7 +75,6 @@
               </span>
             </div>
           <% end %>
-
           <% if experience.leader_reviews.any? %>
             <div class="exp-quote">
               <% if experience.leader_reviews.second %>
@@ -115,7 +95,6 @@
               <%= f.hidden_field :experience_id, value: experience.id %>
               <%= f.button :submit, class: "btn btn-link" do %>
                 <i class='fa fa-heart pull-right'></i>
-
                 <a id="addtotrip" onclick="ga('send', 'event', 'User', 'Experience Add', 'User clicked on add experience from experience block');">Sélectionner</a>
               <% end %>
             <% end %>
