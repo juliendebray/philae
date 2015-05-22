@@ -77,26 +77,26 @@
 # end
 
 #Mise en ligne des landing_point
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1lJKLSs0tXP5TQQSVat3SCvRXUKU1Yw6Qr6ejy4ISWSI/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |exp_data|
-  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(landing_point: exp_data['gsx$landingpoint']['$t'] )
-end
-
-#Mise en ligne des avis du Routard
 # require 'json'
 # require 'rest_client'
-# url_json = 'https://spreadsheets.google.com/feeds/list/1K9Y1SZwpMXh6XFiGz70vQzZa_hHN2ZRjKT4zFJZaUg0/od6/public/values?alt=json'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1lJKLSs0tXP5TQQSVat3SCvRXUKU1Yw6Qr6ejy4ISWSI/od6/public/values?alt=json'
 # data_hash = JSON.parse(RestClient.get(url_json))
-# data_hash['feed']['entry'].each do |leader_review|
-  # leader_review = LeaderReview.create(
-  #   experience_id: leader_review['gsx$experienceid']['$t'].to_f,
-  #   source: leader_review['gsx$source']['$t'],
-  #   comment: leader_review['gsx$comment']['$t'],
-  # )
+# data_hash['feed']['entry'].each do |exp_data|
+#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(landing_point: exp_data['gsx$landingpoint']['$t'] )
 # end
+
+#Mise en ligne des avis du Routard
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1YimhH2yPPv7DBNulFNimHIFN2xCRZlNCqLP_Lladgk4/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |leader_review|
+  leader_review = LeaderReview.create(
+    experience_id: leader_review['gsx$experienceid']['$t'].to_f,
+    source: leader_review['gsx$source']['$t'],
+    comment: leader_review['gsx$comment']['$t'],
+  )
+end
 
 
 # Implémentation must-see et Liste des 1000 lieux à voir dans sa vie
