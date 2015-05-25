@@ -10,6 +10,7 @@ fr:
   ourcontact: "Contact"
   contribute: "Conseils à partager"
   my_profile: "Mon espace"
+  my_travels: "Mes voyages"
   nav_destinations: "Destinations couvertes"
 
   allexperiences: "Toutes les expériences"
@@ -73,7 +74,7 @@ fr:
       creation: "Créé le : "
       lastupdate: "Dernière mise à jour : "
   summarize_savecomment: "Sauvegarder le commentaire"
-  summarize_comment: "Ajouter un commentaire"
+  summarize_comment: "Ajouter un commentaire pour votre voyage"
 
   #trip_comments:
   trip_comment_add: "Sélectionner"

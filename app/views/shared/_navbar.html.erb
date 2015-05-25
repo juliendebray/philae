@@ -15,7 +15,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav brandname">
         <li><%= link_to 'E X P L O R I Z E R S', root_path %></li>
-
         <!-- <li>
           <div class="navbar-travel">
             <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
@@ -29,26 +28,10 @@
           </div>
         </li> -->
       </ul>
-
       <ul class="nav navbar-nav navbar-right">
-
         <% if user_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-             <% if current_user.provider %>
-                <%= image_tag current_user.picture, id:'profile-pic', class: "img img-circle" %>
-              <% end %>
-
-              <%= current_user.email %> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li>
-                <%= link_to t('my_profile'), user_path(current_user) %>
-              </li>
-              <li>
-                <%= link_to t('signout'), destroy_user_session_path, method: 'delete', onclick: "ga('send', 'event', 'User', 'Logout', 'Logout link clicked from navbar');" %>
-              </li>
-            </ul>
+          <li>
+            <%= link_to t('my_travels'), user_path(current_user) %>
           </li>
         <% else %>
         <li >
@@ -58,7 +41,6 @@
           <%= link_to t('login'), new_user_session_path %>
         </li>
         <% end -%>
-
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             Explorizers
@@ -71,7 +53,6 @@
             <!-- <li><%= link_to t('contribute'), new_experience_path %></li> -->
             <li><%= link_to t('ourcontact'), new_contact_path %></li>
           </ul>
-
         </li>
 
         <% if locale == :en %>
@@ -80,6 +61,20 @@
           <li><%= link_to 'English', url_for(:locale => 'en') %></li>
         <% end -%>
 
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+             <% if current_user.provider %>
+                <%= image_tag current_user.picture, id:'profile-pic', class: "img img-circle" %>
+              <% end %>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <%= link_to t('signout'), destroy_user_session_path, method: 'delete', onclick: "ga('send', 'event', 'User', 'Logout', 'Logout link clicked from navbar');" %>
+              </li>
+            </ul>
+          </li>
+        <% end -%>
       </ul>
     </div>
   </div>

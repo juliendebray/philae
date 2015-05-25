@@ -200,27 +200,34 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="helpModalLabel">Bienvenue sur EXPLORIZERS - Par où commencer?</h4>
+        <h4 class="modal-title text-center" id="helpModalLabel">Vous venez de créer un voyage !</h4>
+        <h5 class="text-center"><i>Accédez-y à tout moment en cliquant sur <b>Mes voyages</b> dans la barre de navigation.</i></h5>
       </div>
       <div class="modal-body">
       <ul class="list-unstyled">
-        <li>
-          <i class="fa fa-star"></i> Affiche les expériences les mieux notées par les Explorizers. <br><i><small>Ajoutez une expérience à votre sélection en cliquant sur l'icone<i class="fa fa-heart"></i></small></br></i><br>
-        </li>
-        <li>
-          <i class="fa fa-heart"></i> Affiche votre sélection d'expériences. <br><i><small>Vous pouvez ajouter votre propre experience en cliquant sur le bouton "Ajouter ma propre étape"</small></br></i><br>
-        </li>
-        <li>
-          <i class="fa fa-comments"></i> Affiche les conseils de vos amis. <br><i><small>Vous n'avez pas encore de conseils d'amis ? On vous explique comment faire ci-dessous.</small></br></i><br>
-        </li>
-        <li>
-          <i class="fa fa-users"></i> Cliquez ici pour demander conseil à vos amis. <br><i><small>Vous pouvez partager votre carte par email ou sur Facebook. Vos amis visualisent votre sélection et peuvent cliquer sur la carte pour ajouter leurs conseils. Pratique, non ?</small></br></i><br>
-        </li>
-        <li>
-          <i class="fa fa-road"></i> Cliquez ici pour accéder à une synthèse de ton voyage et la recevoir par email.<br><i><small>Vous pourrez aussi rajouter des infos utiles pour chaque expérience, par exemple, vos dates d'arrivée ou de départ, le numéro de votre hôtel, etc.</small></br></i><br>
-        </li>
+        <h3 class="text-center"><u>Comment ça marche ?</u></h3>
+        <strong><i class="fa fa-map-marker"></i> - 1. Inspiration</strong><br><br>
+        Cliquez sur les points de la carte ou sur la liste des expériences, triées par notes. Vous accèderez aux photos, aux descriptions, aux avis des guides et des voyageurs, et aux informations pratiques. Ce contenu vous est apporté grâce à :<br><br>
+        <div class="logo-line display-inline">
+          <%= image_tag('wiki_logo.png', alt:'Wikipedia Logo Officiel') %>
+          <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
+          <%= image_tag('unesco_logo.png', alt:'UNESCO Logo Officiel') %>
+          <%= image_tag('ta_logo.png', alt:'Trip Advisor Logo Officiel') %>
+          <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
+          <%= image_tag('thousandplaces_logo.png', alt:'Thousand Places Logo Officiel') %>
+        </div>
+        <br><br>
+        Sélectionnez les expériences qui vous plaisent en cliquant sur <i class="fa fa-heart-o"></i> ; <i class="fa fa-heart small"></i> indique que l'expérience est bien sélectionnée !
+        <br><br>
+        <strong><i class="fa fa-comments"></i> - 2. Conseils</strong><br><br>
+        Demandez les conseils de vos amis : partagez sur Facebook ou par email, et vos amis pourront accéder à la carte de votre voyage et ajouter leur conseils.
+        <br><br>
+        <strong><i class="fa fa-heart"></i> - 3. Mon itinéraire</strong><br><br>
+        Visualisez votre itinéraire, et réorganisez vos étapes. Accédez ensuite à la synthèse de votre voyage !
       </ul>
-      <%= link_to "N'hésitez pas à nous contacter, nous sommes là pour aider !", new_contact_path %>
+      <div class="help-line text-center">
+        A tout moment, cliquez sur <b>?</b> pour accéder à l'aide.
+      </div>
       </div>
     </div>
   </div>
