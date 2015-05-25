@@ -242,6 +242,36 @@
         font-weight: 300;
         color: #525252;
       }
+      .comment-module {
+        padding-top: 1%;
+        form {
+          margin: 0px auto;
+        }
+        input{
+          width: 95%;
+          font-size: 1em;
+          font-weight: 100;
+        }
+        input:focus {
+          outline: none;
+        }
+        textarea#trip_experience_comment {
+          width: 95%;
+          font-weight: 300;
+          height: 4.3em;
+          border-color: lightgrey;
+          color: black;
+        }
+        .btn-warning {
+          background-color: #EAEAEA;
+          color: #525252;
+          font-weight: 400;
+          width: 95%;
+          margin: 0;
+          padding: 0;
+          border: none;
+        }
+      }
     }
   }
 }
