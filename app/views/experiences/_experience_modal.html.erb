@@ -16,7 +16,6 @@
     <% end %>
   </div>
 <% end %>
-
 <div id="exp-modal-tabs">
   <ul class="nav nav-tabs nav-justified" role="tablist">
     <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
@@ -27,9 +26,7 @@
     <li><a href="#getthere" data-toggle="tab">Infos pratiques</a></li>
   </ul>
 </div>
-
 <div class="tab-content">
-
   <div class="tab-pane active" id="photos">
     <% if experience.experience_pictures.size > 0 %>
         <div id="owl-experiences-banner" class="owl-carousel banner text-center">
@@ -41,7 +38,6 @@
         </div>
     <% end %>
   </div>
-
   <div class="tab-pane" id="descriptif">
     <div class="experience-content text-justify">
       <br>
@@ -51,7 +47,6 @@
       <div class="experience-onesentence text-center">
         <%= simple_format experience.onesentence %>
       </div>
-
       <div class="experience-links text-center">
         <% if experience.unesco && experience.thousand_places %>
           <div class="row">
@@ -104,8 +99,6 @@
       </div>
     </div>
   </div>
-
-
   <div class="tab-pane" id="getthere">
     <div class="subtitles-modal-exp">
       <br>
@@ -126,7 +119,6 @@
       </div>
     </div>
   </div>
-
   <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
     <div class="tab-pane" id="reviews">
       <br>
@@ -387,7 +379,6 @@
           <% end %>
         <% end %>
       </div> -->
-
       <% if experience.experience_reviews.any? %>
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
@@ -431,4 +422,3 @@
     </div>
   <% end %>
 </div>
-

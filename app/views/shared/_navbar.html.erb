@@ -65,7 +65,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
              <% if current_user.provider %>
-                <%= image_tag current_user.picture, id:'profile-pic', class: "img img-circle" %>
+                <i class="fa fa-power-off"></i>
               <% end %>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -74,7 +74,7 @@
               </li>
             </ul>
           </li>
-        <% end -%>
+        <% end %>
       </ul>
     </div>
   </div>

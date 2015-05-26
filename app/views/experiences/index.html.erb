@@ -6,7 +6,7 @@
           <h2><%= t('.title') %></h2>
         </div>
       </div>
-      <% Experience.where(published:true).each do |experience| %>
+      <% Experience.where(published:true, landing_point:false).each do |experience| %>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="experience-box">
             <%= link_to experience_path(experience.id), target: "_blank" do %>
