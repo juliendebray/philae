@@ -28,7 +28,6 @@ class TripsController < ApplicationController
       redirect_to start_trip_path(@trip)
       # redirect_to demo_trip_path(@trip)
     # end
-    raise
   end
 
   def start
