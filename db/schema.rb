@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526154537) do
+ActiveRecord::Schema.define(version: 20150526163757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,31 @@ ActiveRecord::Schema.define(version: 20150526154537) do
     t.text     "sentence1"
     t.text     "sentence2"
     t.text     "sentence3"
+    t.text     "sentence4"
+    t.text     "sentence5"
+    t.text     "enter_title"
+    t.text     "enter_line1"
+    t.text     "enter_line2"
+    t.text     "enter_line3"
+    t.text     "visit_time_title"
+    t.text     "visit_line1"
+    t.text     "visit_line2"
+    t.text     "visit_line3"
+    t.text     "security_title"
+    t.text     "security_line1"
+    t.text     "security_line2"
+    t.text     "transport_title"
+    t.text     "transport_line1"
+    t.text     "transport_line2"
+    t.text     "transport_line3"
+    t.text     "transport_line4"
+    t.text     "transport_line5"
+    t.text     "toknow_title"
+    t.text     "toknow_line1"
+    t.text     "toknow_line2"
+    t.text     "toknow_line3"
+    t.text     "toknow_line4"
+    t.text     "toknow_line5"
   end
 
   create_table "experience_pictures", force: true do |t|

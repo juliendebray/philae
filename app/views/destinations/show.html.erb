@@ -14,45 +14,100 @@
       <h3 class="text-center"><%= @destination.intro_title %></h3>
       <br>
         <ol>
-          <li><p>Le Liban est un <b>petit pays</b>: tous les points d'intérêts sont à moins de 2h de route de Beyrouth.</p></li>
-          <li><p>C'est un pays riche de <b><a href="http://fr.wikipedia.org/wiki/Histoire_du_Liban" target="_blank">5 000 ans d'histoire</a></b>, et de <b>diversité géographique</b>: dans une même journée, on peut skier le matin, déjeuner dans une vallée verdoyante, finir l'après-midi à la plage, et passer la soirée à Beyrouth.</p></li>
-          <li><p>Sa spécificité tient également à sa <b>mosaïque culturelle et religieuse</b>, qui a donné lieu à de graves conflits, et qui fait du Liban un pays toujours <a href="http://fr.wikipedia.org/wiki/Liban#Les_tensions_entre_les_communaut.C3.A9s" target="_blank">sous tension</a>.</p></li>
+          <li><%= simple_format @destination.sentence1 %></p></li>
+          <li><%= simple_format @destination.sentence2 %></li>
+          <li><%= simple_format @destination.sentence3 %></li>
+<!--           <li><%= simple_format @destination.sentence4 %></li>
+          <li><%= simple_format @destination.sentence5 %></li> -->
           <li><p>Un pays où l'<b>on aime vivre vite</b>, tout de suite, et s'amuser: Beyrouth est la ville la plus festive du monde arabe, la <a href="http://fr.wikipedia.org/wiki/Cuisine_libanaise" target="_blank">gastronomie</a> est divine, la scène culturelle est florissante, et la musique fait référence dans tout le monde arabe.</p></li>
           <li><p>Le Liban, riche de son patrimoine et de son multiculturalisme, petit pays dans un environnement interne et voisin tendu, très ouvert sur le monde et assoiffé de progrès, est <b>un voyage marquant</b> et profondément attachant.</p></li>
         </ol>
       <br>
+<!--       <h3 class="text-center"><%= simple_format @destination.enter_title %></h3> -->
       <h3 class="text-center">Entrer au Liban</h3>
       <br>
       <ul>
+<!--         <li><p><%= simple_format @destination.enter_line1 %></p></li>
+        <% if @destination.enter_line2 %>
+          <li><p><%= simple_format @destination.enter_line2 %></p></li>
+        <% end %>
+        <% if @destination.enter_line3 %>
+          <li><p><%= simple_format @destination.enter_line3 %></p></li>
+        <% end %> -->
         <li><p><b>Visa obligatoire</b> pour les Français, délivré à l'arrivée (passeport valable 6 mois minimum)</p></li>
         <li><p>Le <b>visa peut être refusé</b> si la douane découvre un passage antérieur (tampon israélien sur le passeport) ou futur (billets d'avion par exemple) en Israël.</p></li>
       </ul>
       <br>
-      <h3 class="text-center">Quand visiter?</h3>
+      <!--       <h3 class="text-center"><%= simple_format @destination.visit_title %></h3> -->
+      <h3 class="text-center">Quand visiter ?</h3>
       <br>
       <ul>
+        <!--         <li><p><%= simple_format @destination.visit_line1 %></p></li>
+        <% if @destination.visit_line2 %>
+          <li><p><%= simple_format @destination.visit_line2 %></p></li>
+        <% end %>
+        <% if @destination.visit_line3 %>
+          <li><p><%= simple_format @destination.visit_line3 %></p></li>
+        <% end %> -->
         <li><p>En été: pas de pluie, températures confortables (20° à 30°C) - mais c'est la haute saison: il y a foule et les tarifs sont plus élevés</p></li>
         <li><p>Printemps et automne: plus frais, mais moins fréquenté et les hébergements sont moins chers</p></li>
         <li><p>En hiver: il fait frais (10-15°C) sur la côte, et il neige en altitude, les stations de ski vous attendent!</p></li>
       </ul>
       <br>
+      <!--       <h3 class="text-center"><%= simple_format @destination.security_title %></h3> -->
         <h3 class="text-center">Sécurité</h3>
         <br>
+        <!--         <li><p><%= simple_format @destination.security_line1 %></p></li>
+        <% if @destination.security_line2 %>
+          <li><p><%= simple_format @destination.security_line2 %></p></li>
+        <% end %> -->
         <p>Le <a href="http://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays/liban-12277/" target="_blank">Ministère français des Affaires étrangères</a> déconseille de se rendre dans le sud du pays (au sud de Tyr), près des frontières avec la Syrie, dans la Plaine de la Bekaa, dans les banlieues sud de Beyrouth, à Tripoli, et dans les camps de réfugiés palestiniens près de Saida. Rendez-vous sur <a href="http://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays/liban-12277/" target="_blank">diplomatie.gouv.fr</a> pour les informations les plus récentes.</p>
         <br>
-        <h3 class="text-center">Comment circuler?</h3>
+              <!--       <h3 class="text-center"><%= simple_format @destination.transport_title %></h3> -->
+        <h3 class="text-center">Comment circuler ?</h3>
         <br>
+       <!--  <ul> -->
+        <!--         <li><p><%= simple_format @destination.transport_line1 %></p></li>
+        <% if @destination.transport_line2 %>
+          <li><p><%= simple_format @destination.transport_line2 %></p></li>
+        <% end %>
+        <% if @destination.transport_line3 %>
+          <li><p><%= simple_format @destination.transport_line3 %></p></li>
+        <% end %>
+        <% if @destination.transport_line4 %>
+          <li><p><%= simple_format @destination.transport_line4 %></p></li>
+        <% end %>
+        <% if @destination.transport_line5 %>
+          <li><p><%= simple_format @destination.transport_line5 %></p></li>
+        <% end %>
+        </ul>
+        -->
         <p>Pas de transport aérien ni ferroviaire: tous les transports internes se font <b>par la route</b>:</p>
         <ul>
           <li><p>Taxis rattachés à des sociétés de taxi: il faut les appeler à l'avance; le tarif est déterminé par le compteur, ou en avance directement avec le chauffeur; on peut les réserver pour la journée</p></li>
           <li><p>Taxis sans compteur: le prix est fixé à l'avance par le conducteur; on peut les réserver pour la journée</p></li>
           <li><p>La location de voiture est abordable, mais la conduite est... sportive</p></li>
-          <li><p>Le car: le réseau est vaste, bien organisé, et peu onéreux</p></li>
+          <li><p>Le car : le réseau est vaste, bien organisé, et peu onéreux</p></li>
         </ul>
         <br>
+                      <!--       <h3 class="text-center"><%= simple_format @destination.toknow_title %></h3> -->
         <h3 class="text-center">3 choses à savoir</h3>
         <br>
         <ol>
+          <!--         <li><p><%= simple_format @destination.toknow_line1 %></p></li>
+        <% if @destination.toknow_line2 %>
+          <li><p><%= simple_format @destination.toknow_line2 %></p></li>
+        <% end %>
+        <% if @destination.toknow_line3 %>
+          <li><p><%= simple_format @destination.toknow_line3 %></p></li>
+        <% end %>
+        <% if @destination.toknow_line4 %>
+          <li><p><%= simple_format @destination.toknow_line4 %></p></li>
+        <% end %>
+        <% if @destination.toknow_line5 %>
+          <li><p><%= simple_format @destination.toknow_line5 %></p></li>
+        <% end %>
+        -->
           <li><p>La monnaie officielle est la livre libanaise, mais le dollar US est largement accepté</p></li>
           <li><p>La langue officielle est l'arabe - l'anglais et le français sont très répandus</p></li>
           <li><p>Les prises électriques sont les mêmes qu'en France</p></li>
