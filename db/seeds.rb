@@ -122,16 +122,29 @@
 #   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(timetospent: exp_data['gsx$timetospent']['$t'] )
 # end
 
+# Mise en ligne des experiences = landing_point
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1lJKLSs0tXP5TQQSVat3SCvRXUKU1Yw6Qr6ejy4ISWSI/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(landing_point: exp_data['gsx$landingpoint']['$t'] )
+# end
+
 # Mise en ligne des landing_point
 require 'json'
 require 'rest_client'
 url_json = 'https://spreadsheets.google.com/feeds/list/1lJKLSs0tXP5TQQSVat3SCvRXUKU1Yw6Qr6ejy4ISWSI/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
-  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(landing_point: exp_data['gsx$landingpoint']['$t'] )
+  exp = Experience.create(
+    name: exp_data['gsx$nomfrench']['$t'],
+    latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
+    longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
+    landing_point: exp_data['gsx$landingpoint']['$t'],
+    published: true
+  )
 end
-
-
 
 #Mise en ligne des avis du Routard
 # require 'json'
