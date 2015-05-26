@@ -53,64 +53,66 @@
     </div>
   </li>
 <% elsif experience %>
-  <li class="panel panel-info" id="<%= experience.id %>">
-    <div class='exp-dotdotdot <%= "exp-#{experience.id}" %>' data-experience_id='<%= experience.id %>' data-lat='<%= experience.latitude %>' data-lng='<%= experience.longitude %>'>
-      <div class="experience-picture">
-        <% if experience.experience_pictures.any? %>
-          <%= image_tag experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:medium), class: "img-responsive" %>
-        <% end %>
-        <%= link_to modal_exp_path(trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on experience body from experience block');" do %>
-          <div class="exp-rating">
-            <span class="pull-left">
-              <span class="average">
-                <%= experience.average_rating %>
+  <% if experience.experience_pictures.any? %>
+    <li class="panel panel-info" id="<%= experience.id %>">
+      <div class='exp-dotdotdot <%= "exp-#{experience.id}" %>' data-experience_id='<%= experience.id %>' data-lat='<%= experience.latitude %>' data-lng='<%= experience.longitude %>'>
+        <div class="experience-picture">
+          <% if experience.experience_pictures.any? %>
+            <%= image_tag experience.experience_pictures.sort_by {|pic| pic.id }.first.picture.url(:medium), class: "img-responsive" %>
+          <% end %>
+          <%= link_to modal_exp_path(trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on experience body from experience block');" do %>
+            <div class="exp-rating">
+              <span class="pull-left">
+                <span class="average">
+                  <%= experience.average_rating %>
+                </span>
+                <span class="out-of">/</span>
+                <span class="best">10</span>
+                <br>
               </span>
-              <span class="out-of">/</span>
-              <span class="best">10</span>
-              <br>
+            </div>
+            <% if experience.must_see? %>
+              <div class="must-see">
+                <span class="pull-left">
+                  <i class="fa fa-star must-see"></i>
+                  <a id="must-see">Incontournable</a>
+                </span>
+              </div>
+            <% end %>
+            <% if experience.leader_reviews.any? %>
+              <div class="exp-quote">
+                <% if experience.leader_reviews.second %>
+                  "<%= experience.leader_reviews.second.comment %>"
+                  <br><em><%= experience.leader_reviews.second.source %></em>
+                  <br>
+                <% else %>
+                  "<%= experience.leader_reviews.first.comment %>"
+                  <br><em><%= experience.leader_reviews.first.source %>
+                  <br>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+          <div class="experience-selector">
+            <span class="pull-right">
+              <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
+                <%= f.hidden_field :experience_id, value: experience.id %>
+                <%= f.button :submit, class: "btn btn-link" do %>
+                  <i class='fa fa-heart pull-right'></i>
+                  <a id="addtotrip" onclick="ga('send', 'event', 'User', 'Experience Add', 'User clicked on add experience from experience block');">Sélectionner</a>
+                <% end %>
+              <% end %>
             </span>
           </div>
-          <% if experience.must_see? %>
-            <div class="must-see">
-              <span class="pull-left">
-                <i class="fa fa-star must-see"></i>
-                <a id="must-see">Incontournable</a>
-              </span>
+          <%= link_to modal_exp_path(trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on experience body from experience block');" do %>
+            <div class="experience-name">
+              <small><%= experience.name %></small><i>Voir plus ?</i>
             </div>
           <% end %>
-          <% if experience.leader_reviews.any? %>
-            <div class="exp-quote">
-              <% if experience.leader_reviews.second %>
-                "<%= experience.leader_reviews.second.comment %>"
-                <br><em><%= experience.leader_reviews.second.source %></em>
-                <br>
-              <% else %>
-                "<%= experience.leader_reviews.first.comment %>"
-                <br><em><%= experience.leader_reviews.first.source %>
-                <br>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-        <div class="experience-selector">
-          <span class="pull-right">
-            <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
-              <%= f.hidden_field :experience_id, value: experience.id %>
-              <%= f.button :submit, class: "btn btn-link" do %>
-                <i class='fa fa-heart pull-right'></i>
-                <a id="addtotrip" onclick="ga('send', 'event', 'User', 'Experience Add', 'User clicked on add experience from experience block');">Sélectionner</a>
-              <% end %>
-            <% end %>
-          </span>
         </div>
-        <%= link_to modal_exp_path(trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User/Guest', 'Experience Detail', 'User/Guest clicked on experience body from experience block');" do %>
-          <div class="experience-name">
-            <small><%= experience.name %></small><i>Voir plus ?</i>
-          </div>
-        <% end %>
       </div>
-    </div>
-  </li>
+    </li>
+  <% end %>
 <% elsif trip_comment %>
   <li class="panel panel-info" id="<%= trip_comment.id %>">
     <div class='exp-dotdotdot <%= "exp-#{trip_comment.id}" %>' data-experience_id='<%= trip_comment.id %>' data-lat='<%= trip_comment.latitude %>' data-lng='<%= trip_comment.longitude %>'>

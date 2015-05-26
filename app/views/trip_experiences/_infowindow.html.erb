@@ -13,7 +13,7 @@
       <% end %>
     </div>
   <% end %>
-  <% if experience.published %>
+  <% if experience.published && experience.experience_pictures.size > 0%>
     <div class="rating">
       <span class="average">
         <%= experience.average_rating %>
