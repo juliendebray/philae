@@ -7,6 +7,56 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+# Seed Cuba's experiences with trip advisor
+require 'json'
+require 'rest_client'
+# Update Cuba's experiences with ta id
+# url_json = "https://spreadsheets.google.com/feeds/list/1VNjWN-IZpIdh7tMNk8nUxzvsprkd2twDGVyJn0fGvxA/od6/public/values?alt=json"
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   if exp_data['gsx$taid']['$t'] && exp_data['gsx$taid']['$t'].length > 0
+#     exp = Experience.find_by(onesentence: exp_data['gsx$onesentence']['$t'])
+#     exp.update(ta_id: exp_data['gsx$taid']['$t'])
+#   end
+# end
+# Update Cuba's experiences with ta ratings and comments
+url_json = "https://spreadsheets.google.com/feeds/list/1HnsPxssywuNPjNFTsZoHwfeefgN5huPr0QahdZwWHJE/od6/public/values?alt=json"
+data_hash = JSON.parse(RestClient.get(url_json))
+tab = []
+data_hash['feed']['entry'].each do |exp_data|
+  experience = Experience.find_by(ta_id: exp_data['gsx$experienceid']['$t'])
+  ta_votes = exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i
+  ta_rating = ((exp_data['gsx$nbfivestars']['$t'].to_i*5 + exp_data['gsx$nbfourstars']['$t'].to_i*4 + exp_data['gsx$nbthreestars']['$t'].to_i*3 + exp_data['gsx$nbtwostars']['$t'].to_i*2 + exp_data['gsx$nbonestars']['$t'].to_i*1).to_f / (exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i))
+  experience.update(
+    ta_votes: ta_votes,
+    ta_rating: ta_rating.round(2),
+    ta_url: exp_data['gsx$url']['$t']
+  )
+  experience.experience_reviews.create(
+    name: exp_data['gsx$commentonename']['$t'],
+    rating: exp_data['gsx$commentonescore']['$t'].to_i,
+    original_date: exp_data['gsx$commentonedate']['$t'],
+    comment: exp_data['gsx$commentonecontent']['$t']
+  )
+  experience.experience_reviews.create(
+    name: exp_data['gsx$commenttwoname']['$t'],
+    rating: exp_data['gsx$commenttwoscore']['$t'].to_i,
+    original_date: exp_data['gsx$commenttwodate']['$t'],
+    comment: exp_data['gsx$commenttwocontent']['$t']
+  )
+  experience.experience_reviews.create(
+    name: exp_data['gsx$commentthreename']['$t'],
+    rating: exp_data['gsx$commentthreescore']['$t'].to_i,
+    original_date: exp_data['gsx$commentthreedate']['$t'],
+    comment: exp_data['gsx$commentthreecontent']['$t']
+  )
+end
+
+
+
+
+
+
 # New experiences Cuba
 # require 'json'
 # require 'rest_client'
@@ -86,17 +136,17 @@
 # end
 
 #Mise en ligne des avis du Routard
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1YimhH2yPPv7DBNulFNimHIFN2xCRZlNCqLP_Lladgk4/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |leader_review|
-  leader_review = LeaderReview.create(
-    experience_id: leader_review['gsx$experienceid']['$t'].to_f,
-    source: leader_review['gsx$source']['$t'],
-    comment: leader_review['gsx$comment']['$t'],
-  )
-end
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1YimhH2yPPv7DBNulFNimHIFN2xCRZlNCqLP_Lladgk4/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |leader_review|
+#   leader_review = LeaderReview.create(
+#     experience_id: leader_review['gsx$experienceid']['$t'].to_f,
+#     source: leader_review['gsx$source']['$t'],
+#     comment: leader_review['gsx$comment']['$t'],
+#   )
+# end
 
 
 # Implémentation must-see et Liste des 1000 lieux à voir dans sa vie
@@ -119,7 +169,7 @@ end
 #   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(must_see: exp_data['gsx$mustsee']['$t'])
 # end
 
-#Mise à jour du lien Wikipedia
+# Mise à jour du lien Wikipedia
 # require 'json'
 # require 'rest_client'
 # url_json = 'https://spreadsheets.google.com/feeds/list/1XnCFrrMTgnyBjkW5rcaaub5dP00zL1DZNmXdvDo3szw/od6/public/values?alt=json'
@@ -143,13 +193,13 @@ end
 # url_json = 'https://spreadsheets.google.com/feeds/list/1SKEiOrcHDZJHdE12JU7NSSYDmkJRsEvUjXWxMP0O1R0/od6/public/values?alt=json'
 # data_hash = JSON.parse(RestClient.get(url_json))
 # data_hash['feed']['entry'].each do |experience_review|
-#   exp_review = ExperienceReview.create(
-#     experience_id: experience_review['gsx$experienceid']['$t'].to_f,
-#     name: experience_review['gsx$name']['$t'],
-#     rating: experience_review['gsx$rating']['$t'].to_f * 2,
-#     original_date: experience_review['gsx$originaldate']['$t'],
-#     comment: experience_review['gsx$comment']['$t']
-#   )
+  # exp_review = ExperienceReview.create(
+  #   experience_id: experience_review['gsx$experienceid']['$t'].to_f,
+  #   name: experience_review['gsx$name']['$t'],
+  #   rating: experience_review['gsx$rating']['$t'].to_f * 2,
+  #   original_date: experience_review['gsx$originaldate']['$t'],
+  #   comment: experience_review['gsx$comment']['$t']
+  # )
 # end
 
 # Ajout des leaders reviews (citations guides)
