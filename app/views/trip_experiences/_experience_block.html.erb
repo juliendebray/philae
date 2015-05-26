@@ -31,7 +31,7 @@
               <% end %>
               <td class="content text-center">
                 <div class="text-center">
-                  <p>Expérience sélectionnée !</p>
+                  Durée recommandée : <%= trip_exp.experience.timetospent %>
                 </div>
                 <div class="comment-module">
                   <%= form_for [trip_exp.trip, trip_exp], remote: true do |f| %>

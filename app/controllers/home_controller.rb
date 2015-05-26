@@ -30,7 +30,7 @@ class HomeController < ApplicationController
       description: "Explorizers simplifie l'organisation de votre voyage et vous permet de partir l'esprit tranquille avec un itinéraire complétement personalisé.",
       item: {
         one: "<div class='how-header'><i class='fa fa-map-marker'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Selectionnez les <strong>meilleures expériences</strong> à vivre en fonction de vos envies et des recommandations des principaux sites de voyage.</div>",
-        two: "<div class='how-header'><i class='fa fa-comment'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Evitez les attrapes-touristes et autres galères en vous inspirant des <strong>conseils d'autres voyageurs, et de vos amis grâce aux réseaux sociaux</strong>.</div>",
+        two: "<div class='how-header'><i class='fa fa-comment'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Evitez les attrapes-touristes et autres galères en vous inspirant des <strong>conseils d'autres voyageurs, et de vos amis</strong> grâce aux réseaux sociaux.</div>",
         three: "<div class='how-header'><i class='fa fa-cloud-download'></i></div><div class='vertical-spacer-xs'></div>   <div class='how-content'>Votre <strong>itinéraire se calcule automatiquement</strong>, vous n'avez plus qu'à l'emmener dans vos valises et partir l'esprit tranquille.</div>"
       }
     }
