@@ -5,27 +5,29 @@ class TripsController < ApplicationController
   respond_to :js, only: [:selection_display, :share_trip_email]
 
   def create
-    raise
-    # Libanese demo
-    if params[:title] && params[:title] == 'Liban'
-      authenticate_user!
-      @destination = Destination.first
-      @trip = current_user.trips.create(query: @destination.name, title: @destination.name, latitude: 33.89120770946144, longitude: 35.88151107421868)
-      redirect_to demo_trip_path(@trip)
-    else
-    # TODO: change Morocco default behavior
-      if params[:trip].nil?
-        @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
-        @trip.title = 'Morocco'
-      elsif params[:trip][:query]
-        authenticate_user!
-        @trip = current_user.trips.new(trip_params)
-        @trip.title = @trip.query
-      end
-      @trip.save
+    @trip = current_user.trips.new(trip_params)
+    @trip.title = @trip.query
+    @trip.save
+    # # Libanese demo
+    # if params[:title] && params[:title] == 'Liban'
+    #   authenticate_user!
+    #   @destination = Destination.first
+    #   @trip = current_user.trips.create(query: @destination.name, title: @destination.name, latitude: 33.89120770946144, longitude: 35.88151107421868)
+    #   redirect_to demo_trip_path(@trip)
+    # else
+    # # TODO: change Morocco default behavior
+    #   if params[:trip].nil?
+    #     @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
+    #     @trip.title = 'Morocco'
+    #   elsif params[:trip][:query]
+    #     authenticate_user!
+    #     @trip = current_user.trips.new(trip_params)
+    #     @trip.title = @trip.query
+    #   end
+    #   @trip.save
       redirect_to start_trip_path(@trip)
       # redirect_to demo_trip_path(@trip)
-    end
+    # end
   end
 
   def start
