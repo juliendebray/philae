@@ -21,11 +21,21 @@ function initializeAutocomplete(id, setLatAndLng) {
 
 function onPlaceChanged() {
   var place = this.getPlace();
+  if (!place.geometry) {
+    return;
+  }
   var lat = place.geometry.location.lat();
   var lng = place.geometry.location.lng();
   if ($('#trip_latitude').length + $('#trip_longitude').length > 1) {
     $('#trip_latitude').attr('value', lat);
     $('#trip_longitude').attr('value', lng);
+    $('#trip_country_code').attr('value', $(place.address_components).get(-1).short_name);
+    if(place.geometry.viewport) {
+      $('#trip_vp_ne_lat').attr('value', place.geometry.viewport.getNorthEast().lat());
+      $('#trip_vp_ne_lng').attr('value', place.geometry.viewport.getNorthEast().lng());
+      $('#trip_vp_sw_lat').attr('value', place.geometry.viewport.getSouthWest().lat());
+      $('#trip_vp_sw_lng').attr('value', place.geometry.viewport.getSouthWest().lng());
+    }
   } else if ($('#experience_latitude').length + $('#experience_longitude').length > 1) {
     $('#experience_latitude').attr('value', lat);
     $('#experience_longitude').attr('value', lng);
