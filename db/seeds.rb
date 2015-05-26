@@ -247,6 +247,19 @@
 #   )
 # end
 
+#update Destination Liban
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1f5WSB7ew6aCspE1IysJ3RYZiCqeOjJBYZ-UYzzEBR18/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |dest_data|
+  Destination.find(dest_data['gsx$destinationid']['$t'].to_i).update(
+    intro_title: dest_data['gsx$introtitle']['$t'],
+    sentence1: dest_data['gsx$sentence1']['$t'],
+    sentence2: dest_data['gsx$sentence2']['$t'],
+    sentence3: dest_data['gsx$sentence3']['$t'],
+  )
+end
 
 # Seed experiences
 
