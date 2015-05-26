@@ -268,7 +268,7 @@ data_hash['feed']['entry'].each do |dest_data|
     visit_line1: dest_data['gsx$visitline1']['$t'],
     visit_line2: dest_data['gsx$visitline2']['$t'],
     visit_line3: dest_data['gsx$visitline3']['$t'],
-    security_title: dest_data['gsx$security']['$t'],
+    security_title: dest_data['gsx$securitytitle']['$t'],
     security_line1: dest_data['gsx$securityline1']['$t'],
     security_line2: dest_data['gsx$securityline2']['$t'],
     transport_title: dest_data['gsx$transporttitle']['$t'],
