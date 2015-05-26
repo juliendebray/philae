@@ -574,11 +574,14 @@ function displayRecommendedTripExperiences(recommended_trip_id, trip_id, map, ca
 }
 
 
-function buildMapForUser(mapOptions, trip_id) {
+function buildMapForUser(mapOptions, trip_id, bounds) {
   $('#helpModal').modal('show');
   handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5, clusterer: undefined } });
   handler.buildMap({ provider: mapOptions, internal: { id: 'map' } }, function(){
     var map = handler.getMap();
+    if (bounds != '') {
+      map.fitBounds(bounds);
+    }
     // SET MARKERS ON MAP LOADING
     // var id = 'all-experiences';
     demoListenToUserChoicesInsideSelection(trip_id, map);

@@ -132,19 +132,19 @@
 # end
 
 # Mise en ligne des landing_point
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1D1iZrRVEGdco6_FAeSI7btcWH3Z43x9uV199qWniTj0/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |exp_data|
-  exp = Experience.create(
-    name: exp_data['gsx$nomfrench']['$t'],
-    latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
-    longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
-    landing_point: exp_data['gsx$landingpoint']['$t'],
-    published: true
-  )
-end
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1D1iZrRVEGdco6_FAeSI7btcWH3Z43x9uV199qWniTj0/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   exp = Experience.create(
+#     name: exp_data['gsx$nomfrench']['$t'],
+#     latitude: exp_data['gsx$coord']['$t'].split(", ")[0].to_f,
+#     longitude: exp_data['gsx$coord']['$t'].split(", ")[1].to_f,
+#     landing_point: exp_data['gsx$landingpoint']['$t'],
+#     published: true
+#   )
+# end
 
 #Mise en ligne des avis du Routard
 # require 'json'

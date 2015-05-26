@@ -274,7 +274,12 @@
             style: google.maps.ZoomControlStyle.SMALL
           }
         };
-        buildMapForUser(userMapOptions, <%= @trip.id %>);
+
+        var bounds = '';
+        <% if @trip.viewport_set? %>
+          bounds = new google.maps.LatLngBounds( new google.maps.LatLng(<%= @trip.vp_sw_lat %>,<%= @trip.vp_sw_lng %>), new google.maps.LatLng(<%= @trip.vp_ne_lat %>,<%= @trip.vp_ne_lng %>))
+        <% end %>
+        buildMapForUser(userMapOptions, <%= @trip.id %>, bounds);
         makeTableRowlinkActionnable();
         placeHelpButton();
       }
