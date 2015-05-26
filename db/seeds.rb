@@ -8,53 +8,49 @@
 
 
 # Seed Cuba's experiences with trip advisor
-require 'json'
-require 'rest_client'
-# Update Cuba's experiences with ta id
-# url_json = "https://spreadsheets.google.com/feeds/list/1VNjWN-IZpIdh7tMNk8nUxzvsprkd2twDGVyJn0fGvxA/od6/public/values?alt=json"
+# require 'json'
+# require 'rest_client'
+# # Update Cuba's experiences with ta id
+# # url_json = "https://spreadsheets.google.com/feeds/list/1VNjWN-IZpIdh7tMNk8nUxzvsprkd2twDGVyJn0fGvxA/od6/public/values?alt=json"
+# # data_hash = JSON.parse(RestClient.get(url_json))
+# # data_hash['feed']['entry'].each do |exp_data|
+# #   if exp_data['gsx$taid']['$t'] && exp_data['gsx$taid']['$t'].length > 0
+# #     exp = Experience.find_by(onesentence: exp_data['gsx$onesentence']['$t'])
+# #     exp.update(ta_id: exp_data['gsx$taid']['$t'])
+# #   end
+# # end
+# # Update Cuba's experiences with ta ratings and comments
+# url_json = "https://spreadsheets.google.com/feeds/list/1HnsPxssywuNPjNFTsZoHwfeefgN5huPr0QahdZwWHJE/od6/public/values?alt=json"
 # data_hash = JSON.parse(RestClient.get(url_json))
+# tab = []
 # data_hash['feed']['entry'].each do |exp_data|
-#   if exp_data['gsx$taid']['$t'] && exp_data['gsx$taid']['$t'].length > 0
-#     exp = Experience.find_by(onesentence: exp_data['gsx$onesentence']['$t'])
-#     exp.update(ta_id: exp_data['gsx$taid']['$t'])
-#   end
+#   experience = Experience.find_by(ta_id: exp_data['gsx$experienceid']['$t'])
+#   ta_votes = exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i
+#   ta_rating = ((exp_data['gsx$nbfivestars']['$t'].to_i*5 + exp_data['gsx$nbfourstars']['$t'].to_i*4 + exp_data['gsx$nbthreestars']['$t'].to_i*3 + exp_data['gsx$nbtwostars']['$t'].to_i*2 + exp_data['gsx$nbonestars']['$t'].to_i*1).to_f / (exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i))
+#   experience.update(
+#     ta_votes: ta_votes,
+#     ta_rating: ta_rating.round(2),
+#     ta_url: exp_data['gsx$url']['$t']
+#   )
+#   experience.experience_reviews.create(
+#     name: exp_data['gsx$commentonename']['$t'],
+#     rating: exp_data['gsx$commentonescore']['$t'].to_i,
+#     original_date: exp_data['gsx$commentonedate']['$t'],
+#     comment: exp_data['gsx$commentonecontent']['$t']
+#   )
+#   experience.experience_reviews.create(
+#     name: exp_data['gsx$commenttwoname']['$t'],
+#     rating: exp_data['gsx$commenttwoscore']['$t'].to_i,
+#     original_date: exp_data['gsx$commenttwodate']['$t'],
+#     comment: exp_data['gsx$commenttwocontent']['$t']
+#   )
+#   experience.experience_reviews.create(
+#     name: exp_data['gsx$commentthreename']['$t'],
+#     rating: exp_data['gsx$commentthreescore']['$t'].to_i,
+#     original_date: exp_data['gsx$commentthreedate']['$t'],
+#     comment: exp_data['gsx$commentthreecontent']['$t']
+#   )
 # end
-# Update Cuba's experiences with ta ratings and comments
-url_json = "https://spreadsheets.google.com/feeds/list/1HnsPxssywuNPjNFTsZoHwfeefgN5huPr0QahdZwWHJE/od6/public/values?alt=json"
-data_hash = JSON.parse(RestClient.get(url_json))
-tab = []
-data_hash['feed']['entry'].each do |exp_data|
-  experience = Experience.find_by(ta_id: exp_data['gsx$experienceid']['$t'])
-  ta_votes = exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i
-  ta_rating = ((exp_data['gsx$nbfivestars']['$t'].to_i*5 + exp_data['gsx$nbfourstars']['$t'].to_i*4 + exp_data['gsx$nbthreestars']['$t'].to_i*3 + exp_data['gsx$nbtwostars']['$t'].to_i*2 + exp_data['gsx$nbonestars']['$t'].to_i*1).to_f / (exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i))
-  experience.update(
-    ta_votes: ta_votes,
-    ta_rating: ta_rating.round(2),
-    ta_url: exp_data['gsx$url']['$t']
-  )
-  experience.experience_reviews.create(
-    name: exp_data['gsx$commentonename']['$t'],
-    rating: exp_data['gsx$commentonescore']['$t'].to_i,
-    original_date: exp_data['gsx$commentonedate']['$t'],
-    comment: exp_data['gsx$commentonecontent']['$t']
-  )
-  experience.experience_reviews.create(
-    name: exp_data['gsx$commenttwoname']['$t'],
-    rating: exp_data['gsx$commenttwoscore']['$t'].to_i,
-    original_date: exp_data['gsx$commenttwodate']['$t'],
-    comment: exp_data['gsx$commenttwocontent']['$t']
-  )
-  experience.experience_reviews.create(
-    name: exp_data['gsx$commentthreename']['$t'],
-    rating: exp_data['gsx$commentthreescore']['$t'].to_i,
-    original_date: exp_data['gsx$commentthreedate']['$t'],
-    comment: exp_data['gsx$commentthreecontent']['$t']
-  )
-end
-
-
-
-
 
 
 # New experiences Cuba
@@ -126,14 +122,14 @@ end
 #   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(timetospent: exp_data['gsx$timetospent']['$t'] )
 # end
 
-#Mise en ligne des landing_point
-# require 'json'
-# require 'rest_client'
-# url_json = 'https://spreadsheets.google.com/feeds/list/1lJKLSs0tXP5TQQSVat3SCvRXUKU1Yw6Qr6ejy4ISWSI/od6/public/values?alt=json'
-# data_hash = JSON.parse(RestClient.get(url_json))
-# data_hash['feed']['entry'].each do |exp_data|
-#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(landing_point: exp_data['gsx$landingpoint']['$t'] )
-# end
+Mise en ligne des landing_point
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1lJKLSs0tXP5TQQSVat3SCvRXUKU1Yw6Qr6ejy4ISWSI/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |exp_data|
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(landing_point: exp_data['gsx$landingpoint']['$t'] )
+end
 
 #Mise en ligne des avis du Routard
 # require 'json'
