@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526072139) do
+ActiveRecord::Schema.define(version: 20150526154537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(version: 20150526072139) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.text     "intro_title"
+    t.text     "sentence1"
+    t.text     "sentence2"
+    t.text     "sentence3"
   end
 
   create_table "experience_pictures", force: true do |t|
@@ -116,6 +120,7 @@ ActiveRecord::Schema.define(version: 20150526072139) do
     t.text     "wheretosleep"
     t.string   "ta_url"
     t.string   "ta_id"
+    t.string   "country_code"
   end
 
   add_index "experiences", ["category_id"], name: "index_experiences_on_category_id", using: :btree
@@ -240,6 +245,11 @@ ActiveRecord::Schema.define(version: 20150526072139) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "country_code"
+    t.float    "vp_ne_lat"
+    t.float    "vp_ne_lng"
+    t.float    "vp_sw_lat"
+    t.float    "vp_sw_lng"
   end
 
   add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree
