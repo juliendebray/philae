@@ -5,6 +5,7 @@ class TripsController < ApplicationController
   respond_to :js, only: [:selection_display, :share_trip_email]
 
   def create
+    raise
     # Libanese demo
     if params[:title] && params[:title] == 'Liban'
       authenticate_user!
