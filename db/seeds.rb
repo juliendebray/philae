@@ -134,7 +134,7 @@
 # Mise en ligne des landing_point
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1lJKLSs0tXP5TQQSVat3SCvRXUKU1Yw6Qr6ejy4ISWSI/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1D1iZrRVEGdco6_FAeSI7btcWH3Z43x9uV199qWniTj0/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
   exp = Experience.create(
