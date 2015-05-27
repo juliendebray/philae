@@ -25,7 +25,7 @@ class HomeController < ApplicationController
   def default_hp_hash
     return {
       tag: true,
-      title: 'Préparez votre voyage sans prise de tête',
+      title: 'Planifiez votre voyage sans prise de tête',
       subtitle: 'Organisez le voyage parfait en toute simplicité avec les informations les plus fiables du web, des conseils terrain de voyageurs et des outils pratiques qui font gagner du temps',
       description: "Explorizers simplifie l'organisation de votre voyage et vous permet de partir l'esprit tranquille avec un itinéraire complétement personalisé.",
       item: {
