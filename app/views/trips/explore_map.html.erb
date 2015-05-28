@@ -33,9 +33,6 @@
     </div>
   </div>
 </div>
-<!-- <div id="sidebar-container">
-  <h1>side bar</h1>
-</div> -->
 <div id="map-container">
 </div>
 <%= content_for(:before_js) do %>
@@ -56,7 +53,7 @@
           style: google.maps.ZoomControlStyle.SMALL
         }
       };
-      handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5 } });
+      handler = Gmaps.build('Google', { markers: { maxRandomDistance: 5, clusterer: undefined } });
       handler.buildMap({provider: mapOptions, internal: {id: 'map-container'}}, function(){
         markers = handler.addMarkers(<%= raw @markers.to_json %>);
         handler.bounds.extendWith(markers);
