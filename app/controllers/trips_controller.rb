@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:update_order, :create, :start, :show_guest_user, :notification_for_sharing_email, :providers]
-  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display, :explore_map]
   respond_to :js, only: [:selection_display, :share_trip_email]
 
   def create
@@ -31,7 +31,8 @@ class TripsController < ApplicationController
   end
 
   def explore_map
-
+    experiences = Experience.where(published: true, country_code: @trip.country_code)
+    @markers = build_markers(experiences.sort_by{|e| e.average_rating}.reverse, @trip, false)
   end
 
   def start
@@ -177,5 +178,118 @@ class TripsController < ApplicationController
   def authenticate_guest!
     @trip = Trip.find(params[:id])
     @guest_user = true if @trip.token == params[:token]
+  end
+
+  def build_markers(experiences, trip, experience_block_required)
+    Gmaps4rails.build_markers(experiences) do |experience, marker|
+      marker.lat experience.latitude
+      marker.lng experience.longitude
+      marker.title experience.name
+      trip_experiences = TripExperience.where("trip_id = ? AND experience_id = ?", trip.id, experience.id)
+      if trip_experiences.any?
+        # experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/selection.png"
+        marker.picture({
+        url: "https://philae-floju.s3.amazonaws.com/markers/selection.png",
+        width:  25,
+        height: 39
+        })
+        if experience_block_required
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: trip_experiences.first,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+            experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+              trip_exp: trip_experiences.first,
+              guest_user: false,
+              experience: experience,
+              trip: trip
+            })
+          })
+        else
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: trip_experiences.first,
+              guest_user: false
+            }),
+            experience_id: experience.id
+          })
+        end
+      elsif experience.landing_point
+        picture_url = "https://philae-floju.s3.amazonaws.com/markers/airport_logo.png"
+        marker.picture({
+          url: picture_url,
+          width:  25,
+          height: 39
+        })
+        if experience_block_required
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+            experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+              trip_exp: false,
+              guest_user: false,
+              experience: experience,
+              trip: trip
+            })
+          })
+        else
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+          })
+        end
+      else
+        # experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top.png"
+        experience.must_see ? picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_must_see.png" : picture_url = "https://philae-floju.s3.amazonaws.com/markers/top_2.png"
+        marker.picture({
+          url: picture_url,
+          width:  25,
+          height: 39
+        })
+        if experience_block_required
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+            experience_block: render_to_string(partial: "/trip_experiences/experience_block.html.erb", locals: {
+              trip_exp: false,
+              guest_user: false,
+              experience: experience,
+              trip: trip
+            })
+          })
+        else
+          marker.json({
+            infobox:  render_to_string(partial: "/trip_experiences/infowindow.html.erb", locals: {
+              experience: experience,
+              trip: trip,
+              trip_experience: false,
+              guest_user: false
+            }),
+            experience_id: experience.id,
+          })
+        end
+      end
+    end
   end
 end
