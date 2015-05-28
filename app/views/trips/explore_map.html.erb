@@ -71,7 +71,8 @@
         markers = handler.addMarkers(<%= raw @markers.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-        setExperienceInfowindowForGlobalMap(<%= raw @markers.to_json %>)
+        setExperienceInfowindowForGlobalMap(<%= raw @markers.to_json %>);
+        initializeFilterButtons(<%= @trip.id %>);
       });
     });
   </script>

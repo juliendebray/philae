@@ -35,6 +35,42 @@ class TripsController < ApplicationController
     @markers = build_markers(experiences.sort_by{|e| e.average_rating}.reverse, @trip, false)
   end
 
+  def search_results
+    raise
+    @trip = Trip.find(params[:trip_id])
+    # Experiences selection
+    experiences_selection = Experience.where(country_code: @trip.country_code)
+    if !(params[:categories].empty? || params[:categories].length == 4)
+      # Fetch experiences according to categories
+      if params[:categories].include?('must')
+        formatted_categories = params[:categories] - ['must']
+        experiences_selection = experiences_selection.where(must_see: true)
+        if !(formatted_categories.empty?)
+          # Fetch only must_see
+          experiences_tmp = []
+          experiences_selection.each do |experience|
+            experiences_tmp << experience if (experience.categories_tab.any?) && ((experience.categories_tab - formatted_categories).length < formatted_categories.length)
+          end
+         experiences_selection = experiences_tmp
+        end
+      else
+         experiences_tmp = []
+         experiences_selection.each do |experience|
+           experiences_tmp << experience if (experience.categories_tab.any?) && ((experience.categories_tab - params[:categories]).length < params[:categories].length)
+         end
+        experiences_selection = experiences_tmp
+      end
+    end
+    # Sort experience selection
+    @markers
+    if params[:sort_by] == 'popularity'
+      # TODO: sort inside model?
+      experiences_selection = experiences_selection.sort_by{ |e| [e.nb_votes, e.average_rating]}.reverse
+    else
+    end
+  end
+
+
   def start
     @trip = Trip.find(params[:id])
     if current_user
