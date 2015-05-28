@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do
       resources :ask_your_friends, only: [:index]
       member do
+        get :explore_map
         get :start
         get :demo
         get :providers

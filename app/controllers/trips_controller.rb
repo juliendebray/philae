@@ -30,6 +30,10 @@ class TripsController < ApplicationController
     # end
   end
 
+  def explore_map
+
+  end
+
   def start
     @trip = Trip.find(params[:id])
     if current_user
