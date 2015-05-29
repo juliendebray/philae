@@ -1,27 +1,32 @@
 $( document ).ready(function() {
-  var map = handler.getMap();
   if (ibOpened) {
     ib.close();
     ibOpened = false;
   }
   $('#myExperienceModal').modal('hide');
-  if ($('#myTab').length > 0) {
-    // demo liban
-    var id = $('.tab-pane.active').prop('id');
-    // console.log('destroy - before call to displayMarkersAccordingToUserChoicesInsideSelection');
-    displayMarkersAccordingToUserChoicesInsideSelection(id, <%= @trip.id %>, map);
+  var map = handler.getMap();
+  var url = window.location.href;
+  if (url.toLowerCase().indexOf("explore_map")>0) {
+    requestDataFromAPI(<%= @trip.id %>, collectUserChoice());
   } else {
-    // business as usual
-    if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
-      $('li#<%= @trip_experience.id %>').remove();
-      setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
-        requestingMarkers = r;
-      });
-      drawPolyline();
+    if ($('#myTab').length > 0) {
+      // demo liban
+      var id = $('.tab-pane.active').prop('id');
+      // console.log('destroy - before call to displayMarkersAccordingToUserChoicesInsideSelection');
+      displayMarkersAccordingToUserChoicesInsideSelection(id, <%= @trip.id %>, map);
     } else {
-      setMarkersAccordingToBounds(map, <%= @trip.id %>, function(r){
-        requestingMarkers = r;
-      });
+      // business as usual
+      if ($('tr#user-experiences').hasClass('menu-selected') || $('div#user-experiences').hasClass('menu-selected')) {
+        $('li#<%= @trip_experience.id %>').remove();
+        setMapWithUserExperiences(<%= @trip.id %>, map, function(r) {
+          requestingMarkers = r;
+        });
+        drawPolyline();
+      } else {
+        setMarkersAccordingToBounds(map, <%= @trip.id %>, function(r){
+          requestingMarkers = r;
+        });
+      }
     }
   }
 });

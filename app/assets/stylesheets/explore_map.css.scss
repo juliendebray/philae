@@ -1,0 +1,57 @@
+// General styles
+// TODO: set overflow hidden and remove x-overflow
+// body#explore-map {
+//   overflow-x: hidden;
+// }
+
+#map-navigation-menu {
+  position: absolute;
+  top: 55px;
+  height: 36px;
+  left: 0px;
+  right: 0px;
+  box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+#map-container {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  left: auto;
+  bottom: 0;
+  top: 91px;
+  overflow: hidden;
+}
+
+
+// Customize categories buttons
+a.category-btn {
+  font-size: 16px;
+}
+
+a.category-btn:active,a.category-btn:focus {
+  background: none;
+}
+
+a.category-btn:hover {
+  background: #0081ba;
+  color: white;
+}
+
+a.category-btn.active {
+  background: #2196F3;
+  color: white;
+}
+
+a.sort-by-btn.active {
+  font-weight: 500;
+  background-color: #edefed;
+}
+
+
+@media screen and (max-width: 1000px) {
+  a.category-btn span {
+    font-size: 11px;
+  }
+}

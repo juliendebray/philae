@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526163757) do
+ActiveRecord::Schema.define(version: 20150529073036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,13 +130,13 @@ ActiveRecord::Schema.define(version: 20150526163757) do
     t.string   "wikipedia_link"
     t.integer  "nb_votes"
     t.boolean  "thousand_places"
+    t.boolean  "unesco"
     t.float    "ta_rating"
     t.integer  "ta_votes"
     t.float    "gg_rating"
     t.integer  "gg_votes"
     t.float    "fsq_rating"
     t.integer  "fsq_votes"
-    t.boolean  "unesco"
     t.integer  "destination_id"
     t.string   "timetospent"
     t.boolean  "landing_point",      default: false
@@ -146,12 +146,22 @@ ActiveRecord::Schema.define(version: 20150526163757) do
     t.string   "ta_url"
     t.string   "ta_id"
     t.string   "country_code"
+    t.string   "category_tab"
   end
 
   add_index "experiences", ["category_id"], name: "index_experiences_on_category_id", using: :btree
   add_index "experiences", ["destination_id"], name: "index_experiences_on_destination_id", using: :btree
   add_index "experiences", ["trip_comment_id"], name: "index_experiences_on_trip_comment_id", using: :btree
   add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
+
+  create_table "filters", force: true do |t|
+    t.string   "name"
+    t.integer  "experience_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "filters", ["experience_id"], name: "index_filters_on_experience_id", using: :btree
 
   create_table "leader_reviews", force: true do |t|
     t.integer  "experience_id"

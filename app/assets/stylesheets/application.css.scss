@@ -46,6 +46,7 @@ $font-family-sans-serif: 'Roboto';
 @import "exp-block";
 @import "exp-modal";
 @import "infowindow";
+@import "explore_map";
 
 
 // General customized styles
@@ -54,6 +55,56 @@ html, body {
   height: 100%;
 }
 
+.no-border {
+  border: none;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.no_margin {
+  margin: 0px;
+}
+
+.padding-top-6 {
+  padding-top: 6px;
+}
+
+.max-width-100 {
+  max-width: 100%
+}
+
+.v-middle {
+  vertical-align: middle;
+}
+
+.medium-style {
+  letter-spacing: .01rem;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.black {
+  color: black;
+}
+
+.red {
+  color: red;
+}
+
+.fb-blue {
+  color: #3b5998;
+}
+.light {
+  font-weight: 300;
+}
+
+.text-indent-35{
+  text-indent: 35px;
+}
 
 .btn, input, button, .modal-content, ul.dropdown-menu {
     border-radius: 0px;

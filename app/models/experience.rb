@@ -1,4 +1,6 @@
 class Experience < ActiveRecord::Base
+  serialize :category_tab, Array
+
   belongs_to :user
   belongs_to :category
   belongs_to :trip_comment
@@ -18,6 +20,8 @@ class Experience < ActiveRecord::Base
 
   has_many :experience_pictures, dependent: :destroy
   accepts_nested_attributes_for :experience_pictures
+
+  has_many :filters
 
   geocoded_by :address
   after_validation :geocode, if: :geocoding_needed?

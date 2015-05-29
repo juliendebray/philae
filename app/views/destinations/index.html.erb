@@ -10,7 +10,7 @@
     <div id="destinations">
       <div class="row text-center">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-          <h4> <%= t('.destasia') %></h4><br>
+          <h4> <%= t('.destasia')+', ' %> <%= link_to 'Japon', explore_map_trip_path(Trip.create(title: 'Japon', query: 'Japon')), class: 'liban' %></h4><br>
           <h4> <%= t('.destafrica') %></h4><br>
           <h4> <%= t('.destamerica') %></h4><br>
           <h4>

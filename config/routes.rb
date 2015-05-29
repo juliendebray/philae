@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/experiences/:experience_id/detail', to: 'experiences#detail', as: 'experience_detail'
   get '/trips/:trip_id/experiences/:experience_id/detail_for_user', to: 'experiences#detail_for_user', as: 'modal_exp'
+  get '/trips/:trip_id/search_results', to: 'trips#search_results', as: 'search_results_trip'
 
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
     resources :trips, only: [:update, :show, :create, :orders, :destroy] do
       resources :ask_your_friends, only: [:index]
       member do
+        get :explore_map
         get :start
         get :demo
         get :providers
