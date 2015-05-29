@@ -50,14 +50,14 @@ class TripsController < ApplicationController
 
 
           experiences_selection.each do |experience|
-            experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab - formatted_categories).length <= formatted_categories.length) && ((experience.category_tab - formatted_categories).length < experience.category_tab.length)
+            experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - formatted_categories).length <= formatted_categories.length) && ((experience.category_tab.to_a - formatted_categories).length < experience.category_tab.to_a.length)
           end
          experiences_selection = experiences_tmp
         end
       else
          experiences_tmp = []
          experiences_selection.each do |experience|
-           experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab - params[:categories]).length <= params[:categories].length) && ((experience.category_tab - params[:categories]).length < experience.category_tab.length)
+           experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - params[:categories]).length <= params[:categories].length) && ((experience.category_tab.to_a - params[:categories]).length < experience.category_tab.to_a.length)
          end
         experiences_selection = experiences_tmp
       end
