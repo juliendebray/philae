@@ -28,7 +28,6 @@ function collectUserChoice() {
 function requestDataFromAPI(trip_id, dataToSend) {
   var url = "/trips/" + trip_id + "/search_results";
   $.getJSON(url,  dataToSend, function( data ) {
-    console.log(data);
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
   });

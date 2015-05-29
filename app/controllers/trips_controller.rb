@@ -39,7 +39,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     # Experiences selection
     experiences_selection = Experience.where(published: true, country_code: @trip.country_code)
-    if !(params[:categories].empty? || params[:categories].length == 4)
+    if !(params[:categories].nil? || params[:categories].length == 5)
       # Fetch experiences according to categories
       if params[:categories].include?('must')
         formatted_categories = params[:categories] - ['must']
@@ -47,15 +47,17 @@ class TripsController < ApplicationController
         if !(formatted_categories.empty?)
           # Fetch only must_see
           experiences_tmp = []
+
+
           experiences_selection.each do |experience|
-            experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab - formatted_categories).length < formatted_categories.length)
+            experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab - formatted_categories).length <= formatted_categories.length) && ((experience.category_tab - formatted_categories).length < experience.category_tab.length)
           end
          experiences_selection = experiences_tmp
         end
       else
          experiences_tmp = []
          experiences_selection.each do |experience|
-           experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab - params[:categories]).length < params[:categories].length)
+           experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab - params[:categories]).length <= params[:categories].length) && ((experience.category_tab - params[:categories]).length < experience.category_tab.length)
          end
         experiences_selection = experiences_tmp
       end
@@ -179,6 +181,16 @@ class TripsController < ApplicationController
   end
 
   private
+
+  def name_array(filters)
+    name_array = []
+    if filters.any?
+      filters.each do |filter|
+        name_array << filter.name
+      end
+    end
+    return name_array
+  end
 
   def trip_params
     params.require(:trip).permit(
