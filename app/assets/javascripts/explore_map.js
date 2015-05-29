@@ -30,5 +30,12 @@ function requestDataFromAPI(trip_id, dataToSend) {
   $.getJSON(url,  dataToSend, function( data ) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
+    commonInitializationForExploreMap(data);
   });
 }
+
+function commonInitializationForExploreMap(data) {
+  setExperienceInfowindowForGlobalMap(data);
+}
+
+// TODO: put all common function to map interaction in a global map js file and keep specifi file for specific functions
