@@ -21,6 +21,8 @@ class Experience < ActiveRecord::Base
   has_many :experience_pictures, dependent: :destroy
   accepts_nested_attributes_for :experience_pictures
 
+  has_many :filters
+
   geocoded_by :address
   after_validation :geocode, if: :geocoding_needed?
   after_validation :set_country_code, if: :country_code_needed?
