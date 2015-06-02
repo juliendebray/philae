@@ -532,6 +532,7 @@ function displayMarkersAccordingToUserChoicesInsideSelection(id, trip_id, map) {
       requestingMarkers = r;
     });
   } else if (id == "top-from-explorizers") {
+    removeFiltersActiveClass();
     setMarkersAndKeepListening(map, trip_id);
     // listenToUserChoiceOnFilteringExperiences(map, trip_id);
   } else if (id == "user-experiences-selection") {

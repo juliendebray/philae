@@ -5,6 +5,10 @@ function initializeFilterButtons(trip_id) {
   SetAndRemoveButtonActiveClassOnClick(trip_id);
 }
 
+function removeFiltersActiveClass() {
+  $('a.category-btn.active').removeClass('active');
+}
+
 function SetAndRemoveButtonActiveClassOnClick(trip_id) {
   $('a.category-btn').on('click', function() {
     if ($(this).hasClass('active')) {

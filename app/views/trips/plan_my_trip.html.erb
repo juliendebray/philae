@@ -282,6 +282,7 @@
         buildMapForUser(userMapOptions, <%= @trip.id %>, bounds);
         makeTableRowlinkActionnable();
         placeHelpButton();
+        initializeFilterButtons(<%= @trip.id %>);
       }
     });
   </script>
