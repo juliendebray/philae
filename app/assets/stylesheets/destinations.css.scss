@@ -12,11 +12,13 @@
   h1 {
     position: absolute;
     top: 40%;
+    bottom: 46%;
     left: 0;
     right: 0;
     font-size: 60px;
     color: white;
     text-align: center;
+    background: rgba(255,255,255,0.3)
   }
 }
 
@@ -53,18 +55,16 @@
   h2 {
     position: absolute;
     top: 40%;
-    bottom: 0;
+    bottom: 51%;
     left: 0;
     right: 0;
     font-size: 4em;
     letter-spacing: 2px;
     color: white;
     text-shadow: 0px 0px 1px white, 0px 0px 3px black;
+    background: rgba(255,255,255,0.3)
   }
 }
-
-
-
 
 
 

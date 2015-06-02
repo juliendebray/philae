@@ -89,7 +89,7 @@
             <li><p><%= simple_format @destination.toknow_line3 %></p></li>
           <% end %>
           <% if @destination.toknow_line4.length > 0 %>
-            <li><p><%= @destination.toknow_line4 %></p></li>
+            <li><p><%= simple_format @destination.toknow_line4 %></p></li>
           <% end %>
           <% if @destination.toknow_line5.length > 0 %>
             <li><p><%= simple_format @destination.toknow_line5 %></p></li>
@@ -110,8 +110,27 @@
      <div class="destination-content">
       <div class="container-fluid">
         <div class="row">
+          <% Experience.where(destination: @destination, published:true, landing_point:false).each do |experience| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="experience-box">
+                <%= link_to experience_path(experience.id), target: "_blank" do %>
+                  <div class="experience-picture text-center">
+                    <% if experience.experience_pictures.first %>
+                      <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
+                    <% end %>
+                  </div>
+                  <div class="experience-name text-center">
+                    <small><%= experience.name %></small><br>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
 
-          <% Experience.where(destination: @destination, published:true).each do |experience| %>
+
+
+
+<!--           <% Experience.where(destination: @destination, published:true).each do |experience| %>
             <%= link_to experience_detail_path(experience.id), remote: true, id: "must-see-img" do %>
               <div class="col-xs-12 col-sm-6 col-md-4">
               <figure>
@@ -122,7 +141,7 @@
               <br>
               </div>
             <% end %>
-          <% end %>
+          <% end %> -->
         </div>
       </div>
     </div>
