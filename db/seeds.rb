@@ -330,17 +330,16 @@ data_hash['feed']['entry'].each do |dest_data|
     toknow_line5: dest_data['gsx$toknowline5']['$t'],
   )
   gen_url = "http://philae-floju.s3.amazonaws.com/photos_japon/"
-    name = dest_data['gsx$name']['$t']
-    (1..4).each do |i|
-      complete_url = gen_url + name + "_#{i}.jpg"
-      begin
-        doc = open(complete_url)
-      rescue OpenURI::HTTPError
-        next
-      end
-      destination.destination_pictures.create(picture: complete_url)
+  name = dest_data['gsx$name']['$t']
+  (1..4).each do |i|
+    complete_url = gen_url + "japon_#{i}.jpg"
+    begin
+      doc = open(complete_url)
+    rescue OpenURI::HTTPError
+      next
     end
-
+    destination.destination_pictures.create(picture: complete_url)
+  end
 end
 
 # Seed experiences
