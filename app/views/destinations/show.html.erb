@@ -1,6 +1,11 @@
-<!-- <div id="start-planning" class="text-center">
-  <%= link_to "Accéder à la carte interactive", trips_path(Trip.new, title: 'Liban'), method: :post, class:"btn btn-info btn-sm" %>
-</div> -->
+<div id="start-planning" class="text-center">
+  <%= link_to trips_path(Trip.new), method: :post do %>
+    <label class="btn btn-info btn-sm"><i class="fa fa-map-marker"></i></label>
+    <a id="go-to-map">Voir la carte</a>
+  <% end %>
+
+<!--   <%= link_to "Carte", trips_path(Trip.new, title: 'Liban'), method: :post, class:"btn btn-info btn-sm" %> -->
+</div>
 
 <div class="wrapper bg-white black">
   <div class="destination-banner">
@@ -126,9 +131,6 @@
               <% end %>
             </div>
           <% end %>
-
-
-
 
 <!--           <% Experience.where(destination: @destination, published:true).each do |experience| %>
             <%= link_to experience_detail_path(experience.id), remote: true, id: "must-see-img" do %>

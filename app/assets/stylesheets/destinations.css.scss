@@ -145,15 +145,32 @@ a#must-see-img:hover {
 #start-planning {
   z-index: 2;
   position: fixed;
-  right: 10px;
-  top: 60px;
+  right: 0px;
+  top: 45%;
+  #go-to-map {
+    display: none;
+    color: white;
+  }
+  .btn {
+    height: 70px;
+    width: 45px;
+    border-radius: 90px 90px 0 0;
+    -moz-border-radius: 90px 90px 0 0;
+    -webkit-border-radius: 90px 0 0 90px;
+    background: #FF7519;
+  }
+  .fa {
+    color: white;
+    font-size: 30px;
+    padding-top: 15px;
+    padding-left: 5px;
+  }
 }
-
-
-
-
-
-
+#start-planning:hover {
+  #go-to-map {
+    display: block;
+  }
+}
 
 
 // Styles for modal experience
