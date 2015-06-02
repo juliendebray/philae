@@ -39,7 +39,11 @@ function requestDataFromAPI(trip_id, dataToSend, expBlockRequired) {
   $.getJSON(url,  dataToSend, function( data ) {
     handler.removeMarkers(markers);
     markers = handler.addMarkers(data);
-    commonInitializationForExploreMap(data);
+    if (expBlockRequired) {
+      commonInitialization(data, ".top-from-explorizers");
+    } else {
+      commonInitializationForExploreMap(data);
+    }
   });
 }
 
