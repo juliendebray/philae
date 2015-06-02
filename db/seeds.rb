@@ -292,7 +292,6 @@ require 'json'
 require 'rest_client'
 url_json = 'https://spreadsheets.google.com/feeds/list/1dIKTmwVnlIuA62_DUjYyaIwG-VnCzx2tpklDrB42XXY/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
-
 data_hash['feed']['entry'].each do |dest_data|
   destination = Destination.create(
     name: dest_data['gsx$name']['$t'],
@@ -339,7 +338,7 @@ data_hash['feed']['entry'].each do |dest_data|
       rescue OpenURI::HTTPError
         next
       end
-      exp.destination_pictures.create(picture: complete_url)
+      dest_data.destination_pictures.create(picture: complete_url)
     end
 
 end
