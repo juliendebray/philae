@@ -330,7 +330,7 @@ data_hash['feed']['entry'].each do |destination_data|
     toknow_line4: dest_data['gsx$toknowline4']['$t'],
     toknow_line5: dest_data['gsx$toknowline5']['$t'],
   )
-  gen_url = "http://philae-floju.s3.amazonaws.com/photos_liban/"
+  gen_url = "http://philae-floju.s3.amazonaws.com/photos_japon/"
     code = dest_data['gsx$name']['$t']
     (1..3).each do |i|
       complete_url = gen_url + code + "_#{i}.jpg"
