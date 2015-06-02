@@ -2,7 +2,162 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// Styles for show destination
+.destination-banner {
+  position: relative;
+  img {
+    width: 100%;
+  }
+  h1 {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    font-size: 60px;
+    color: white;
+    text-align: center;
+  }
+}
+
+.destination-content{
+  padding: 2% 8%;
+  padding-top: 35px;
+  p {
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 1.5;
+  }
+}
+.destination-collapse {
+  position: relative;
+  img {
+    width: 100%;
+  }
+  a.destination-collapse:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  a.destination-collapse:focus {
+    color: white;;
+  }
+}
+
+#overview, #must-see, #recommended-trip {
+  position: relative;
+  img {
+    width: 100%;
+  }
+  h2 {
+    position: absolute;
+    top: 40%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 4em;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 0px 0px 1px white, 0px 0px 3px black;
+  }
+}
+
+
+
+
+
+
+a#must-see-img:hover {
+  img {
+    opacity: 0.7;
+  }
+  .hover-img {
+    display: block;
+  }
+}
+.hover-img {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 25%;
+  font-size: 4em;
+  color: white;
+  text-shadow: 0px 0px 1px white, 0px 0px 3px black;
+}
+
+.navbar-wagon .navbar-nav > li > a {
+  color: black;
+}
+.bg-black{
+  background: black;
+}
+
+#bottom-start-planning {
+ color: white;
+ background: #2b2d2e;
+ height: 100%;
+ padding-top: 5%;
+ padding-bottom: 5%;
+}
+
+.wrapper.bg-white.black {
+  background-color: white;
+  // color: black;
+  padding-bottom: 0px;
+}
+
+.medium {
+  letter-spacing: .01rem;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.no-margin {
+  position: absolute;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+// #overview{
+//   background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg");
+// }
+// #must-see{
+//   background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_jbeil_byblos_une_journee_1.jpg");
+// }
+// #recommended-trip{
+//   background-image: image-url("destination_liban_demo_2.jpg");
+// }
+
+.destination-tagline {
+  color: white;
+  font-size: 2em;
+  font-weight: 100;
+  margin-top: 20px;
+}
+
+#start-planning {
+  z-index: 2;
+  position: fixed;
+  right: 10px;
+  top: 60px;
+}
+
+
+
+
+
+
+
+
 // Styles for modal experience
+// ?????
 .vertical-align-top {
   vertical-align: top;
 }
@@ -44,120 +199,7 @@ img.small-height {
   color:#0732a2 ;
 }
 
-// Styles for show destination
 
-a#must-see-img:hover {
-  img {
-    opacity: 0.7;
-  }
-  .hover-img {
-    display: block;
-  }
-}
-.hover-img {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding-top: 25%;
-  font-size: 4em;
-  color: white;
-  text-shadow: 0px 0px 1px white, 0px 0px 3px black;
-}
-
-.navbar-wagon .navbar-nav > li > a {
-  color: black;
-}
-.bg-black{
-  background: black;
-}
-
-#bottom-start-planning {
- color: white;
- background: #2b2d2e;
- height: 100%;
- padding-top: 5%;
- padding-bottom: 5%;
-}
-
-.wrapper.bg-white.black {
-  background-color: white;
-  color: black;
-  padding-bottom: 0px;
-}
-
-.medium {
-  letter-spacing: .01rem;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 22px;
-  line-height: 1.5;
-}
-.no-margin {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-}
-.destination-title {
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  padding-top: 25%;
-  padding-bottom: 25%;
-  h2 {
-    font-size: 4em;
-    letter-spacing: 5px;
-    color: white;
-    text-shadow: 0px 0px 1px white, 0px 0px 3px black;
-  }
-}
-#overview{
-  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg");
-}
-#must-see{
-  background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_jbeil_byblos_une_journee_1.jpg");
-}
-#recommended-trip{
-  background-image: image-url("destination_liban_demo_2.jpg");
-}
-
-.destination-tagline {
-  color: white;
-  font-size: 2em;
-  font-weight: 100;
-  margin-top: 20px;
-}
-
-a.destination-collapse:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-a.destination-collapse:focus {
-  color: white;;
-}
-
-.destination-content{
-  padding: 2% 8%;
-  padding-top: 35px;
-  p {
-    letter-spacing: .01rem;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 22px;
-    line-height: 1.5;
-  }
-}
-
-#start-planning {
-  z-index: 2;
-  position: fixed;
-  right: 10px;
-  top: 60px;
-}
 
 // .destination-box {
 //   // background-color: white;

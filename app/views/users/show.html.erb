@@ -132,9 +132,9 @@
           <div class="user-content-detail">
             <h2 class="text-center">Explorez la destination du moment</h2>
             <p class='text-center'>Découvrez les destinations du moment et laissez-vous inspirer.</p>
-            <%= link_to Destination.first, target: "_blank" do %>
+            <%= link_to Destination.find(2), target: "_blank" do %>
               <div class="destination-item text-center">
-                <%= image_tag(Destination.first.picture.url(:banner), class: 'max-width') %>
+                <%= image_tag(Destination.find(2).destination_pictures.second.picture.url(:banner), class: 'max-width') %>
                 <div class="destination-name text-center">
                   <%= Destination.first.name %>
                   <br>

@@ -331,7 +331,7 @@ data_hash['feed']['entry'].each do |dest_data|
   )
   gen_url = "http://philae-floju.s3.amazonaws.com/photos_japon/"
     name = dest_data['gsx$name']['$t']
-    (1..3).each do |i|
+    (1..4).each do |i|
       complete_url = gen_url + name + "_#{i}.jpg"
       begin
         doc = open(complete_url)
