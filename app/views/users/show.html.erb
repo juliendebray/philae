@@ -130,6 +130,18 @@
             </div>
           </div>
           <div class="user-content-detail">
+            <h2 class="text-center">Explorez la destination du moment</h2>
+            <p class='text-center'>Laissez-vous inspirer par la destination du moment.</p>
+            <%= link_to Destination.find(7) do %>
+              <div class="destination-item text-center">
+                <%= image_tag(Destination.find(7).destination_pictures.first.picture.url(:banner), class: 'max-width') %>
+                <div class="destination-name text-center">
+                  <%= Destination.find(7).name.upcase %>
+                  <br>
+                  <small>Découvrir les meilleures expériences</small>
+                </div>
+              </div>
+            <% end %>
             <div class="vertical-spacer-sm"></div>
             <div class="experience-promo">
               <h2 class="text-center">Découvrez ces expériences uniques</h2>
