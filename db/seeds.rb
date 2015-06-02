@@ -248,12 +248,58 @@
 # end
 
 #update Destination Liban
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1f5WSB7ew6aCspE1IysJ3RYZiCqeOjJBYZ-UYzzEBR18/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |dest_data|
+#   Destination.find(dest_data['gsx$destinationid']['$t'].to_i).update(
+#     intro_title: dest_data['gsx$introtitle']['$t'],
+#     sentence1: dest_data['gsx$sentence1']['$t'],
+#     sentence2: dest_data['gsx$sentence2']['$t'],
+#     sentence3: dest_data['gsx$sentence3']['$t'],
+#     sentence4: dest_data['gsx$sentence4']['$t'],
+#     sentence5: dest_data['gsx$sentence5']['$t'],
+#     enter_title: dest_data['gsx$entertitle']['$t'],
+#     enter_line1: dest_data['gsx$enterline1']['$t'],
+#     enter_line2: dest_data['gsx$enterline2']['$t'],
+#     enter_line3: dest_data['gsx$enterline3']['$t'],
+#     visit_time_title: dest_data['gsx$visittimetitle']['$t'],
+#     visit_line1: dest_data['gsx$visitline1']['$t'],
+#     visit_line2: dest_data['gsx$visitline2']['$t'],
+#     visit_line3: dest_data['gsx$visitline3']['$t'],
+#     security_title: dest_data['gsx$securitytitle']['$t'],
+#     security_line1: dest_data['gsx$securityline1']['$t'],
+#     security_line2: dest_data['gsx$securityline2']['$t'],
+#     transport_title: dest_data['gsx$transporttitle']['$t'],
+#     transport_line1: dest_data['gsx$transportline1']['$t'],
+#     transport_line2: dest_data['gsx$transportline2']['$t'],
+#     transport_line3: dest_data['gsx$transportline3']['$t'],
+#     transport_line4: dest_data['gsx$transportline4']['$t'],
+#     transport_line5: dest_data['gsx$transportline5']['$t'],
+#     toknow_title: dest_data['gsx$toknowtitle']['$t'],
+#     toknow_line1: dest_data['gsx$toknowline1']['$t'],
+#     toknow_line2: dest_data['gsx$toknowline2']['$t'],
+#     toknow_line3: dest_data['gsx$toknowline3']['$t'],
+#     toknow_line4: dest_data['gsx$toknowline4']['$t'],
+#     toknow_line5: dest_data['gsx$toknowline5']['$t'],
+#   )
+# end
+
+
+#create Destination Japon
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1f5WSB7ew6aCspE1IysJ3RYZiCqeOjJBYZ-UYzzEBR18/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1dIKTmwVnlIuA62_DUjYyaIwG-VnCzx2tpklDrB42XXY/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |dest_data|
-  Destination.find(dest_data['gsx$destinationid']['$t'].to_i).update(
+
+data_hash['feed']['entry'].each do |destination_data|
+  destination = Destination.create(
+    name: destination_data['gsx$name']['$t'],
+    ne_lat: destination_data['gsx$nelat']['$t'].to_f,
+    ne_lng: destination_data['gsx$nelng']['$t'].to_f,
+    sw_lat: destination_data['gsx$swlat']['$t'].to_f,
+    sw_lng: destination_data['gsx$swlng']['$t'].to_f,
     intro_title: dest_data['gsx$introtitle']['$t'],
     sentence1: dest_data['gsx$sentence1']['$t'],
     sentence2: dest_data['gsx$sentence2']['$t'],
@@ -284,6 +330,18 @@ data_hash['feed']['entry'].each do |dest_data|
     toknow_line4: dest_data['gsx$toknowline4']['$t'],
     toknow_line5: dest_data['gsx$toknowline5']['$t'],
   )
+  gen_url = "http://philae-floju.s3.amazonaws.com/photos_liban/"
+    code = dest_data['gsx$name']['$t']
+    (1..3).each do |i|
+      complete_url = gen_url + code + "_#{i}.jpg"
+      begin
+        doc = open(complete_url)
+      rescue OpenURI::HTTPError
+        next
+      end
+      exp.destination_pictures.create(picture: complete_url)
+    end
+
 end
 
 # Seed experiences
