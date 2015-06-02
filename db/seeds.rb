@@ -295,11 +295,11 @@ data_hash = JSON.parse(RestClient.get(url_json))
 
 data_hash['feed']['entry'].each do |dest_data|
   destination = Destination.create(
-    name: destination_data['gsx$name']['$t'],
-    ne_lat: destination_data['gsx$nelat']['$t'].to_f,
-    ne_lng: destination_data['gsx$nelng']['$t'].to_f,
-    sw_lat: destination_data['gsx$swlat']['$t'].to_f,
-    sw_lng: destination_data['gsx$swlng']['$t'].to_f,
+    name: dest_data['gsx$name']['$t'],
+    ne_lat: dest_data['gsx$nelat']['$t'].to_f,
+    ne_lng: dest_data['gsx$nelng']['$t'].to_f,
+    sw_lat: dest_data['gsx$swlat']['$t'].to_f,
+    sw_lng: dest_data['gsx$swlng']['$t'].to_f,
     intro_title: dest_data['gsx$introtitle']['$t'],
     sentence1: dest_data['gsx$sentence1']['$t'],
     sentence2: dest_data['gsx$sentence2']['$t'],
