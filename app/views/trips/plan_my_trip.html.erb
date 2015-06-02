@@ -1,0 +1,288 @@
+<% content_for :map_css do %>
+<%= stylesheet_link_tag 'map_demo' %>
+<% end %>
+<% unless @guest_user %>
+<!-- 1ère ligne sur mobile -->
+  <div class="mobile-menu-container container">
+    <div class="row">
+      <div class="col-xs-4 no-padding">
+        <div id="all-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.empty? %>">
+          <i class="map-menu-item-top"><%= t('show_bestexp_mobile')%></i>
+        </div>
+      </div>
+      <div class="col-xs-4 no-padding">
+        <div id="guests-comments" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.any? %>">
+          <i class="map-menu-item-top"><%= t('show_friendstips_mobile')%></i>
+        </div>
+      </div>
+      <div class="col-xs-4 no-padding">
+        <div id="user-experiences" class="user-choices text-center map-side-menu-content <%= "menu-selected" if @trip.trip_comments.empty? && @trip.trip_experiences.any? %>">
+          <i class="map-menu-item-top"><%= t('show_myselection_mobile')%></i>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="guest-mobile wrapper">
+    <div class="intro text-center">
+      <p><i><% if locale == :en %>
+            <%= link_to '(En français ?)', url_for(:locale => 'fr') %>
+          <% else %>
+            <%= link_to '(In English ?)', url_for(:locale => 'en') %>
+          <% end -%></i>
+      </p>
+      <strong><%= t('show_guest_user_welcome') %></strong> <br><br>
+      <ul class="list-unstyled text-left">
+        <li>
+          <strong><%= @trip.user.name || @trip.user.email || 'Un ami' %></strong><%= t('show_guest_user_friend_needs_tips') %>
+        </li>
+        <li>
+          <%= t('show_guest_user_destination') %><strong><%= @trip.title || @trip.query %></strong>
+        </li>
+        <li>
+          <%= t('show_guest_user_incite_tips1') %><strong>3</strong> <%= t('show_guest_user_incite_tips2') %>
+        </li>
+      </ul>
+    </div>
+    <div class="vertical-spacer-xs"></div>
+    <div class="add-experience text-center">
+      <p><i><%= t('show_guest_user_click_buttons') %></i></p><br>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4 text-center">
+            <button id="1" class="btn btn-lg btn-default todo" data-toggle="modal" data-target="#myModalGuest"><i class="fa fa-plus"></i></button>
+          </div>
+          <div class="col-xs-4 text-center">
+            <button id="2" class="btn btn-lg btn-default todo" data-toggle="modal" data-target="#myModalGuest"><i class="fa fa-plus"></i></button>
+          </div>
+          <div class="col-xs-4 text-center">
+            <button id="3" class="btn btn-lg btn-default todo" data-toggle="modal" data-target="#myModalGuest"><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vertical-spacer-sm"></div>
+    <div id="save-guest" class="button-action text-center">
+      <%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
+      <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked');", class: "btn btn-info btn-block", disabled: true, id: 'guest-submit-button') %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="wrapper <%= 'no-display' if @guest_user %>">
+  <!-- Map -->
+  <div class="map-container">
+    <div class="overlay">
+      <div class="overlay-loading">
+        Loading
+        <b>.</b>
+        <b>.</b>
+        <b>.</b>
+      </div>
+    </div>
+    <% unless @guest_user %>
+      <%= link_to trip_ask_your_friends_path(@trip), class:"btn btn-info", id:"ask-friends-mobile-btn" do %>
+        <small><%= t('show_need_tips') %></small>
+      <% end %>
+    <% end %>
+    <div id="map">
+    </div>
+    <div id='map-interaction'>
+      <fieldset id="search-bar">
+        <i class="fa fa-search"></i>
+        <%= search_field_tag('pac-input') %>
+      </fieldset>
+    </div>
+    <% unless @guest_user %>
+    <!-- User Modal to let him add his own experience -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-default map-up-btn" data-toggle="modal" data-target="#myModal" id="new-exp" >
+      <small><%= t('show_addmyexp') %></small>
+    </button>
+    <div id="map-legend" class="display-inline">
+      <%= image_tag 'http://philae-floju.s3.amazonaws.com/markers/top_must_see.png'%> Les incontournables
+      <%= image_tag 'http://philae-floju.s3.amazonaws.com/markers/top_2.png'%> Toutes les expériences
+      <%= image_tag 'https://philae-floju.s3.amazonaws.com/markers/airport_logo.png'%> Principal point d'arrivée
+
+    </div>
+    <% else %>
+    <!-- Guest Modal to let him add his own experience -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-default map-up-btn1" data-toggle="modal" data-target="#myModalGuest">
+      <small><%= t('show_addcomment_place') %></small>
+    <button type="button" class="btn btn-default map-up-btn2" data-toggle="modal" data-target="#myModalGuest">
+      <small><%= t('show_addcomment_restaurant') %></small>
+    <button type="button" class="btn btn-default map-up-btn3" data-toggle="modal" data-target="#myModalGuest">
+      <small><%= t('show_addcomment_hotel') %></small>
+    </button>
+
+    <button type="button" class="btn btn-facebook map-bottom-btn-tips" id="set-orders">
+      <small><%= form_for @trip, url: notif_trip_path(@trip.id), remote: true do |f|%>
+      <%= f.submit( t('show_saveguest'), onclick: "ga('send', 'event', 'Guest user', 'Share comments', 'Save my comments button clicked')") %>
+      <% end %>
+      </small>
+    </button>
+  <% end %>
+  </div>
+<!--   Sidebar -->
+  <div class="sidebar" role="tabpanel">
+    <div class="selection-header text-center">
+      <div class="selection-title text-center">
+        <span id="sidebar-title-content">
+          <!-- Nav tabs -->
+          <%= render 'demo_sidebar_title' %>
+        </span>
+      </div>
+    </div>
+    <div class="selection-content tab-content">
+    <!-- Nav content -->
+      <%= render 'demo_sidebar_content', {destination: @destination, trip: @trip} %>
+    </div>
+  </div>
+</div>
+<% unless @guest_user %>
+  <div class="mobile-tapbar-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4 no-padding">
+          <div id= "list-selection" class="tapbar-choices text-center map-side-menu-content mobile-selection">
+            <i class="fa fa-list map-menu-item-bottom"></i>
+          </div>
+        </div>
+        <div class="col-xs-4 no-padding">
+          <div id= "map-selection" class="tapbar-choices text-center map-side-menu-content">
+            <i class="fa fa-globe map-menu-item-bottom"></i>
+          </div>
+        </div>
+        <div class="col-xs-4 no-padding">
+          <%= link_to summarize_trip_path(@trip), onclick:"tr('send', 'event', 'User', 'See providers', 'Show local providers button clicked');" do %>
+            <div  id= "other-selection" class="text-center map-side-menu-content">
+              <i class="fa fa-external-link map-menu-item-bottom"></i>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<!-- Experience Modal to display -->
+<div class="modal fade" id="myExperienceModal" tabindex="-1" role="dialog" aria-labelledby="myExperienceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title experience-title text-center" id="myExperienceModalLabel">Chargement...</h4>
+      </div>
+      <div class="modal-body experience-content">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modals to display -->
+<!-- User Modal to display -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel"> <%= t('trip_show_title') %></h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="helpModalLabel">Vous venez de créer un voyage !</h4>
+        <h5 class="text-center"><i>Accédez-y à tout moment en cliquant sur <b>Mes voyages</b> dans la barre de navigation.</i></h5>
+      </div>
+      <div class="modal-body">
+      <ul class="list-unstyled">
+        <h3 class="text-center"><u>Comment ça marche ?</u></h3>
+        <strong><i class="fa fa-map-marker"></i> - 1. Inspiration</strong><br><br>
+        Cliquez sur les points de la carte ou sur la liste des expériences, triées par notes. Vous accèderez aux photos, aux descriptions, aux avis des guides et des voyageurs, et aux informations pratiques. Ce contenu vous est apporté grâce à :<br><br>
+        <div class="logo-line display-inline">
+          <%= image_tag('wiki_logo.png', alt:'Wikipedia Logo Officiel') %>
+          <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
+          <%= image_tag('unesco_logo.png', alt:'UNESCO Logo Officiel') %>
+          <%= image_tag('ta_logo.png', alt:'Trip Advisor Logo Officiel') %>
+          <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
+          <%= image_tag('thousandplaces_logo.png', alt:'Thousand Places Logo Officiel') %>
+        </div>
+        <br><br>
+        Sélectionnez les expériences qui vous plaisent en cliquant sur <i class="fa fa-heart-o"></i> ; <i class="fa fa-heart small"></i> indique que l'expérience est bien sélectionnée !
+        <br><br>
+        <strong><i class="fa fa-comments"></i> - 2. Conseils</strong><br><br>
+        Demandez les conseils de vos amis : partagez sur Facebook ou par email, et vos amis pourront accéder à la carte de votre voyage et ajouter leur conseils.
+        <br><br>
+        <strong><i class="fa fa-heart"></i> - 3. Mon itinéraire</strong><br><br>
+        Visualisez votre itinéraire, et réorganisez vos étapes. Accédez ensuite à la synthèse de votre voyage !
+      </ul>
+      <div class="help-line text-center">
+        A tout moment, cliquez sur <b>?</b> pour accéder à l'aide.
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= content_for(:before_js) do %>
+  <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
+  <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
+  <%= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js" %>
+  <script>
+    // Use of a global variable to know if the user is authentificated or guest
+    var GUEST_USER = <%= @guest_user ? 'true' : 'false' %>;
+  </script>
+<% end %>
+<% content_for :map_js do %>
+  <% javascript_include_tag 'map_demo' %>
+<% end %>
+<% content_for(:after_js) do %>
+  <script>
+    $(document).on('ready', function() {
+      if (GUEST_USER) {
+        $('.map-container').width('65%').css('left', '0px');
+        var guestUserMapOptions = {
+          center: new google.maps.LatLng(<%= @trip.latitude %>, <%= @trip.longitude %>),
+          zoom: 6,
+          disableDoubleClickZoom: false,
+          panControl: false,
+          zoomControl: true,
+          zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+          }
+        };
+        buildMapForGuestUser(guestUserMapOptions, <%= @trip.id %>);
+        // Remove cursor css on panel heading and remove submit btn
+        $('#draggablePanelList .panel-heading').css('cursor', 'auto')
+      } else {
+        var userMapOptions = {
+          center: new google.maps.LatLng(<%= @trip.latitude %>, <%= @trip.longitude %>),
+          zoom: 6,
+          disableDoubleClickZoom: false,
+          scaleControl: true,
+          disableDefaultUI: true,
+          zoomControl: true,
+          zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+          }
+        };
+
+        var bounds = '';
+        <% if @trip.viewport_set? %>
+          bounds = new google.maps.LatLngBounds( new google.maps.LatLng(<%= @trip.vp_sw_lat %>,<%= @trip.vp_sw_lng %>), new google.maps.LatLng(<%= @trip.vp_ne_lat %>,<%= @trip.vp_ne_lng %>))
+        <% end %>
+        buildMapForUser(userMapOptions, <%= @trip.id %>, bounds);
+        makeTableRowlinkActionnable();
+        placeHelpButton();
+      }
+    });
+  </script>
+<% end %>

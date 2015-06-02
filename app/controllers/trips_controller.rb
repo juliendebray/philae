@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:update_order, :create, :start, :show_guest_user, :notification_for_sharing_email, :providers]
-  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display, :explore_map]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :selection_display, :explore_map]
   respond_to :js, only: [:selection_display, :share_trip_email]
 
   def create
@@ -121,6 +121,17 @@ class TripsController < ApplicationController
   # Libanese demo - change for value proposition testing purpose
   def demo
     # @destination = Destination.first
+    @trip = Trip.find(params[:id])
+    @guest_user = false
+    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
+    if browser.mobile? || browser.tablet?
+      redirect_to trip_path(@trip)
+    end
+  end
+
+  def plan_my_trip
     @trip = Trip.find(params[:id])
     @guest_user = false
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|

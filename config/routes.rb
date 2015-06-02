@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       member do
         get :explore_map
         get :start
+        get :plan_my_trip
         get :demo
         get :providers
         get :summarize
