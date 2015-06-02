@@ -293,7 +293,7 @@ require 'rest_client'
 url_json = 'https://spreadsheets.google.com/feeds/list/1dIKTmwVnlIuA62_DUjYyaIwG-VnCzx2tpklDrB42XXY/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 
-data_hash['feed']['entry'].each do |destination_data|
+data_hash['feed']['entry'].each do |dest_data|
   destination = Destination.create(
     name: destination_data['gsx$name']['$t'],
     ne_lat: destination_data['gsx$nelat']['$t'].to_f,
