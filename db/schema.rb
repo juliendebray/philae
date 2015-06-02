@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529073036) do
+ActiveRecord::Schema.define(version: 20150602091843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 20150529073036) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "destination_pictures", force: true do |t|
+    t.integer  "destination_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "destination_pictures", ["destination_id"], name: "index_destination_pictures_on_destination_id", using: :btree
 
   create_table "destinations", force: true do |t|
     t.float    "ne_lat"
@@ -130,13 +142,13 @@ ActiveRecord::Schema.define(version: 20150529073036) do
     t.string   "wikipedia_link"
     t.integer  "nb_votes"
     t.boolean  "thousand_places"
-    t.boolean  "unesco"
     t.float    "ta_rating"
     t.integer  "ta_votes"
     t.float    "gg_rating"
     t.integer  "gg_votes"
     t.float    "fsq_rating"
     t.integer  "fsq_votes"
+    t.boolean  "unesco"
     t.integer  "destination_id"
     t.string   "timetospent"
     t.boolean  "landing_point",      default: false
