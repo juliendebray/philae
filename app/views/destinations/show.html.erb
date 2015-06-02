@@ -1,6 +1,11 @@
-<!-- <div id="start-planning" class="text-center">
-  <%= link_to "Accéder à la carte interactive", trips_path(Trip.new, title: 'Liban'), method: :post, class:"btn btn-info btn-sm" %>
-</div> -->
+<div id="start-planning" class="text-center">
+  <%= link_to trips_path(Trip.new), method: :post do %>
+    <label class="btn btn-info btn-sm"><i class="fa fa-map-marker"></i></label>
+    <a id="go-to-map">Voir la carte</a>
+  <% end %>
+
+<!--   <%= link_to "Carte", trips_path(Trip.new, title: 'Liban'), method: :post, class:"btn btn-info btn-sm" %> -->
+</div>
 
 <div class="wrapper bg-white black">
   <div class="destination-banner">
@@ -89,7 +94,7 @@
             <li><p><%= simple_format @destination.toknow_line3 %></p></li>
           <% end %>
           <% if @destination.toknow_line4.length > 0 %>
-            <li><p><%= @destination.toknow_line4 %></p></li>
+            <li><p><%= simple_format @destination.toknow_line4 %></p></li>
           <% end %>
           <% if @destination.toknow_line5.length > 0 %>
             <li><p><%= simple_format @destination.toknow_line5 %></p></li>
@@ -97,7 +102,7 @@
         </ol>
     </div>
   </div>
-  <!-- <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee">
+  <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee">
   <div id="must-see" class="text-center">
     <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
     <h2 class="no-margin">Que voir et que faire ?</h2>
@@ -110,7 +115,24 @@
      <div class="destination-content">
       <div class="container-fluid">
         <div class="row">
-          <% Experience.where(destination: Destination.first, must_see:true).each do |experience| %>
+          <% Experience.where(destination: @destination, published:true, landing_point:false).each do |experience| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="experience-box">
+                <%= link_to experience_path(experience.id), target: "_blank" do %>
+                  <div class="experience-picture text-center">
+                    <% if experience.experience_pictures.first %>
+                      <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
+                    <% end %>
+                  </div>
+                  <div class="experience-name text-center">
+                    <small><%= experience.name %></small><br>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+
+<!--           <% Experience.where(destination: @destination, published:true).each do |experience| %>
             <%= link_to experience_detail_path(experience.id), remote: true, id: "must-see-img" do %>
               <div class="col-xs-12 col-sm-6 col-md-4">
               <figure>
@@ -121,11 +143,11 @@
               <br>
               </div>
             <% end %>
-          <% end %>
+          <% end %> -->
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
   <!-- <a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip">
   <div id="recommended-trip" class="text-center destination-title">
     <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
@@ -218,6 +240,7 @@
     <br>
   </div> -->
 </div>
+<%= render partial: 'shared/footer' %>
 
 <!-- Experience Modal to display -->
 <div class="modal fade" id="myExperienceModal" tabindex="-1" role="dialog" aria-labelledby="myExperienceModalLabel" aria-hidden="true">
