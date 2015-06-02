@@ -97,7 +97,7 @@
         </ol>
     </div>
   </div>
-  <!-- <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee">
+  <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee">
   <div id="must-see" class="text-center">
     <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
     <h2 class="no-margin">Que voir et que faire ?</h2>
@@ -110,7 +110,8 @@
      <div class="destination-content">
       <div class="container-fluid">
         <div class="row">
-          <% Experience.where(destination: Destination.first, must_see:true).each do |experience| %>
+
+          <% Experience.where(destination: @destination, published:true).each do |experience| %>
             <%= link_to experience_detail_path(experience.id), remote: true, id: "must-see-img" do %>
               <div class="col-xs-12 col-sm-6 col-md-4">
               <figure>
@@ -125,7 +126,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
   <!-- <a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip">
   <div id="recommended-trip" class="text-center destination-title">
     <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
@@ -218,6 +219,7 @@
     <br>
   </div> -->
 </div>
+<%= render partial: 'shared/footer' %>
 
 <!-- Experience Modal to display -->
 <div class="modal fade" id="myExperienceModal" tabindex="-1" role="dialog" aria-labelledby="myExperienceModalLabel" aria-hidden="true">
