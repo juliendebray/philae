@@ -66,6 +66,37 @@ class TripsController < ApplicationController
     render json: @markers
   end
 
+  def search_results_with_block
+    @trip = Trip.find(params[:trip_id])
+    # Experiences selection
+    experiences_selection = Experience.where(published: true, country_code: @trip.country_code)
+    if !(params[:categories].nil? || params[:categories].length == 5)
+      # Fetch experiences according to categories
+      if params[:categories].include?('must')
+        formatted_categories = params[:categories] - ['must']
+        experiences_selection = experiences_selection.where(must_see: true)
+        if !(formatted_categories.empty?)
+          # Fetch only must_see
+          experiences_tmp = []
+
+
+          experiences_selection.each do |experience|
+            experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - formatted_categories).length <= formatted_categories.length) && ((experience.category_tab.to_a - formatted_categories).length < experience.category_tab.to_a.length)
+          end
+         experiences_selection = experiences_tmp
+        end
+      else
+         experiences_tmp = []
+         experiences_selection.each do |experience|
+           experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - params[:categories]).length <= params[:categories].length) && ((experience.category_tab.to_a - params[:categories]).length < experience.category_tab.to_a.length)
+         end
+        experiences_selection = experiences_tmp
+      end
+    end
+    @markers = build_markers(experiences_selection.sort_by{|e| e.average_rating}.reverse, @trip, true)
+    render json: @markers
+  end
+
 
   def start
     @trip = Trip.find(params[:id])
