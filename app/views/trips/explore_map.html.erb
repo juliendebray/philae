@@ -72,7 +72,7 @@
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
         setExperienceInfowindowForGlobalMap(<%= raw @markers.to_json %>);
-        initializeFilterButtons(<%= @trip.id %>);
+        initializeFilterButtons(<%= @trip.id %>, false);
       });
     });
   </script>

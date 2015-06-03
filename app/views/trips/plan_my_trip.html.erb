@@ -137,7 +137,7 @@
     </div>
     <div class="selection-content tab-content">
     <!-- Nav content -->
-      <%= render 'demo_sidebar_content', {destination: @destination, trip: @trip, display_filters: false} %>
+      <%= render 'demo_sidebar_content', {destination: @destination, trip: @trip, display_filters: true} %>
     </div>
   </div>
 </div>
@@ -282,6 +282,7 @@
         buildMapForUser(userMapOptions, <%= @trip.id %>, bounds);
         makeTableRowlinkActionnable();
         placeHelpButton();
+        initializeFilterButtons(<%= @trip.id %>, true);
       }
     });
   </script>
