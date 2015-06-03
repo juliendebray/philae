@@ -46,7 +46,7 @@
       </div>
       <br>
       <div class="experience-description text-justify">
-        <%= simple_format experience.description %>
+        <%= raw experience.description %>
       </div>
       <div class="experience-links text-center">
         <% if experience.unesco && experience.thousand_places && experience.wikipedia_link %>
@@ -57,7 +57,7 @@
           </div>
           <div class="row text-center">
             <div class="col-xs-4">
-              <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %>
+              <%= image_tag('unesco_logo.png', height: 30, alt:'UNESCO Logo Officiel') %>
             </div>
             <div class="col-xs-4">
               <%= image_tag('thousandplaces_logo.png', height: 30, alt:'Thousand Places Logo Officiel') %>
@@ -481,11 +481,11 @@
           <div class="col-xs-12 col-sm-8 col-sm-offset-2">
             <div class="experience-detail">
               <% if experience.timetospent %>
-                <blockquote><i class="fa fa-calendar"></i> - <i>temps de visite</i> :  <%= experience.timetospent %></blockquote>
+                <blockquote><i class="fa fa-clock-o"></i> - <i>temps de visite</i> :  <%= experience.timetospent %></blockquote>
               <% end %>
               <% if experience.wheretosleep %>
               <br>
-                <blockquote><i class="fa fa-bed"></i> - <i>où dormir</i> :  <%= experience.wheretosleep %></blockquote>
+                <blockquote><i class="fa fa-home"></i> - <i>où dormir</i> :  <%= experience.wheretosleep %></blockquote>
               <% end %>
               <% if experience.transportation %>
               <br>
