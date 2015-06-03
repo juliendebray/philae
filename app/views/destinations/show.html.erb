@@ -106,7 +106,7 @@
   <div id="must-see" class="text-center">
     <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
     <h2 class="no-margin">Que voir et que faire ?</h2>
-    <p class="destination-tagline">Lieux et activités qui font l'unanimité auprès des guides et voyageurs</p>
+<!--     <p class="destination-tagline">Lieux et activités qui font l'unanimité auprès des guides et voyageurs</p> -->
   </div>
   </a>
   <div class="collapse" id="collapseMustSee">
@@ -114,11 +114,12 @@
   <br>
      <div class="destination-content">
       <div class="container-fluid">
-        <div class="row">
-          <% Experience.where(destination: @destination, published:true, landing_point:false).each do |experience| %>
+        <div class="row text-center">
+          <p>Les expériences incontournables</p>
+          <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).each do |experience| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="experience-box">
-                <%= link_to experience_path(experience.id), target: "_blank" do %>
+                <%= link_to experience_detail_path(experience.id), remote: true do %>
                   <div class="experience-picture text-center">
                     <% if experience.experience_pictures.first %>
                       <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
@@ -131,6 +132,27 @@
               <% end %>
             </div>
           <% end %>
+        </div>
+        <br><br><br>
+        <div class="row text-center">
+          <p>Toutes les expériences</p>
+          <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).each do |experience| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="experience-box">
+                <%= link_to experience_detail_path(experience.id), remote: true do %>
+                  <div class="experience-picture text-center">
+                    <% if experience.experience_pictures.first %>
+                      <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
+                    <% end %>
+                  </div>
+                  <div class="experience-name text-center">
+                    <small><%= experience.name %></small><br>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
 
 <!--           <% Experience.where(destination: @destination, published:true).each do |experience| %>
             <%= link_to experience_detail_path(experience.id), remote: true, id: "must-see-img" do %>
@@ -144,7 +166,7 @@
               </div>
             <% end %>
           <% end %> -->
-        </div>
+
       </div>
     </div>
   </div>
