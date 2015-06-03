@@ -120,6 +120,7 @@ url_json = 'https://spreadsheets.google.com/feeds/list/1ngH0TnyNUa2LHx6TBcwtoAk2
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
+    name: exp_data['gsx$name']['$t'],
     average_rating: exp_data['gsx$averagerating']['$t'].to_f,
     description: exp_data['gsx$descriptionfrench']['$t'],
     onesentence: exp_data['gsx$onesentence']['$t'],
