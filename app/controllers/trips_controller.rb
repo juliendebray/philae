@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :authenticate_guest!, only: [:show_guest_user]
   before_action :authenticate_user!, except: [:update_order, :create, :start, :show_guest_user, :notification_for_sharing_email, :providers]
-  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :demo, :selection_display, :explore_map]
+  before_action :set_trip, only: [:start, :update, :show, :show_guest_user, :share_trip_email, :notification_for_sharing_email, :providers, :summarize, :update_order, :send_my_trip_email, :selection_display, :explore_map]
   respond_to :js, only: [:selection_display, :share_trip_email]
 
   def create
@@ -66,6 +66,37 @@ class TripsController < ApplicationController
     render json: @markers
   end
 
+  def search_results_with_block
+    @trip = Trip.find(params[:trip_id])
+    # Experiences selection
+    experiences_selection = Experience.where(published: true, country_code: @trip.country_code)
+    if !(params[:categories].nil? || params[:categories].length == 5)
+      # Fetch experiences according to categories
+      if params[:categories].include?('must')
+        formatted_categories = params[:categories] - ['must']
+        experiences_selection = experiences_selection.where(must_see: true)
+        if !(formatted_categories.empty?)
+          # Fetch only must_see
+          experiences_tmp = []
+
+
+          experiences_selection.each do |experience|
+            experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - formatted_categories).length <= formatted_categories.length) && ((experience.category_tab.to_a - formatted_categories).length < experience.category_tab.to_a.length)
+          end
+         experiences_selection = experiences_tmp
+        end
+      else
+         experiences_tmp = []
+         experiences_selection.each do |experience|
+           experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - params[:categories]).length <= params[:categories].length) && ((experience.category_tab.to_a - params[:categories]).length < experience.category_tab.to_a.length)
+         end
+        experiences_selection = experiences_tmp
+      end
+    end
+    @markers = build_markers(experiences_selection.sort_by{|e| e.average_rating}.reverse, @trip, true)
+    render json: @markers
+  end
+
 
   def start
     @trip = Trip.find(params[:id])
@@ -121,6 +152,17 @@ class TripsController < ApplicationController
   # Libanese demo - change for value proposition testing purpose
   def demo
     # @destination = Destination.first
+    @trip = Trip.find(params[:id])
+    @guest_user = false
+    @trip_exp_tab = @trip.trip_experiences.sort_by do |te|
+      te.order
+    end
+    if browser.mobile? || browser.tablet?
+      redirect_to trip_path(@trip)
+    end
+  end
+
+  def plan_my_trip
     @trip = Trip.find(params[:id])
     @guest_user = false
     @trip_exp_tab = @trip.trip_experiences.sort_by do |te|

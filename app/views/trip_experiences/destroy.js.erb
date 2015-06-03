@@ -8,6 +8,8 @@ $( document ).ready(function() {
   var url = window.location.href;
   if (url.toLowerCase().indexOf("explore_map")>0) {
     requestDataFromAPI(<%= @trip.id %>, collectUserChoice());
+  } else if (url.toLowerCase().indexOf("plan_my_trip")>0 && $('.tab-pane.active').prop('id')=='top-from-explorizers') {
+    requestDataFromAPI(<%= @trip.id %>, collectUserChoice(), true);
   } else {
     if ($('#myTab').length > 0) {
       // demo liban
