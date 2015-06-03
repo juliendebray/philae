@@ -113,6 +113,23 @@
 #   )
 # end
 
+# Update experiences Japon
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1ngH0TnyNUa2LHx6TBcwtoAk2Ql3E8vM2__1l4HDLiGM/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |exp_data|
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
+    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
+    description: exp_data['gsx$descriptionfrench']['$t'],
+    onesentence: exp_data['gsx$onesentence']['$t'],
+    timetospent: exp_data['gsx$timetospent']['$t'],
+    wheretosleep: exp_data['gsx$wheretosleep']['$t'],
+    transportation: exp_data['gsx$transportation']['$t'],
+    landing_point: exp_data['gsx$landingpoint']['$t']
+  )
+end
+
 #Mise en ligne du temps à passer pour chaque experience
 # require 'json'
 # require 'rest_client'
