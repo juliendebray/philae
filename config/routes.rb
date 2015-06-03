@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'faq/index'
+
   resources :sitemap, only: [:index]
 
   ActiveAdmin.routes(self)
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
       resources :relationships, only: [:create, :update, :destroy]
     end
 
+    resources :faq, only: [:index]
     resources :legal, only: [:index]
     resources :story, only: [:index]
     resources :destinations, only: [:index, :show]
