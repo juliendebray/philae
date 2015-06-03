@@ -113,12 +113,32 @@ div.homepage_story {
     color: white;
     text-size: 16px;
   }
-  i.fa-angle-down {
+}
+
+#go-to-faq {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  // margin-top: 180px;
+}
+
+// .arrow-down {
+//   position: absolute;
+//   bottom: 10px;
+//   width: 100%;
+// }
+
+i.fa-angle-down {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
     color: white;
     font-size: 60px;
-    margin-top: 15%;
+    font-weight: 100;
   }
-}
 
 .hp-section{
   background:white;
@@ -261,6 +281,7 @@ div.homepage_story {
   }
 }
 
+
 .trending {
   h4 {
     color: white;
@@ -288,16 +309,7 @@ div.homepage_story {
   size: 15px;
 }
 
-.arrow-down {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  i.fa {
-    color: white;
-    font-size: 80px;
-    font-weight: 100;
-  }
-}
+
 
 #homepage-content {
   background: rgba(0,0,0,0.5);

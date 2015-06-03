@@ -1,0 +1,16 @@
+// Place all the styles related to the faq controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.faq-page {
+  font-size: 17px;
+  font-weight: 300;
+}
+
+body.faq {
+  background-image: image-url("overclouds.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  height: 800px;
+  padding-top: 80px;
+}
