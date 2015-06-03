@@ -2,7 +2,7 @@
 
 .user-action {
   .btn {
-    font-size: 15px;
+    font-size: 20px;
     vertical-align: middle;
     color: #333333;
     margin-top: -14px;
@@ -76,12 +76,15 @@
   }
   #descriptif {
     max-height: 450px;
+    // .wikipedia-link {
+    //   text-align: center;
+    // }
     .experience-description {
       font-size: 15px;
       font-weight: 300;
     }
     .experience-onesentence {
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 400;
     }
     .experience-detail {
@@ -92,6 +95,7 @@
   #reviews {
     max-height: 450px;
     overflow-y: auto;
+    font-size: 18px;
     blockquote {
       font-size: 14px;
       padding-top: 1px;
@@ -104,7 +108,7 @@
     .leader-reviews {
       text-align: center;
       p {
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 300;
         margin-top: 15px;
       }
@@ -142,6 +146,19 @@
     .user-reviews {
       p {
         font-size: 14px;
+      }
+    }
+  }
+  #getthere {
+    font-size: 15px;
+    font-weight: 300;
+    .fa {
+      font-size: 20px;
+    }
+    blockquote {
+      p {
+        font-size: 15px;
+        font-weight: 300;
       }
     }
   }
