@@ -127,8 +127,7 @@ data_hash['feed']['entry'].each do |exp_data|
     onesentence: exp_data['gsx$onesentence']['$t'],
     timetospent: exp_data['gsx$timetospent']['$t'],
     wheretosleep: exp_data['gsx$wheretosleep']['$t'],
-    transportation: exp_data['gsx$transportation']['$t'],
-    landing_point: exp_data['gsx$landingpoint']['$t']
+    transportation: exp_data['gsx$transportation']['$t']
   )
 end
 
