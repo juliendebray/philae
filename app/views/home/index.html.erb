@@ -137,11 +137,11 @@
     <% end %>
     <h2 class="text-center">Explorez la destination du moment</h2>
     <p class='text-center'>Laissez-vous inspirer par la destination du moment.</p>
-    <%= link_to Destination.first do %>
+    <%= link_to Destination.find(7) do %>
       <div class="destination-item text-center">
-        <%= image_tag(Destination.first.picture.url(:banner), class: 'max-width') %>
+        <%= image_tag(Destination.find(7).destination_pictures.first.picture.url(:banner), class: 'max-width') %>
         <div class="destination-name text-center">
-          <%= Destination.first.name %>
+          <%= Destination.find(7).name.upcase %>
           <br>
           <small>Découvrir les meilleures expériences</small>
         </div>
