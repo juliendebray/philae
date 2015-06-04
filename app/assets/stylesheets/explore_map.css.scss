@@ -50,6 +50,39 @@ a.sort-by-btn.active {
 }
 
 
+#see-trip-summary-from-map {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 60%;
+
+  a.btn{
+    font-size: 14px;
+    font-weight: normal;
+    border-radius: 90px 90px 0 0;
+      -moz-border-radius: 90px 90px 0 0;
+      -webkit-border-radius: 90px 0 0 90px;
+  }
+}
+
+#see-destination-from-map {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 60%;
+
+  a.btn{
+    font-size: 14px;
+    font-weight: normal;
+    border-radius: 0px 0px 90px 90px;
+      -moz-border-radius: 0px 0px 90px 90px;
+      -webkit-border-radius: 0px 90px 90px 0px;
+  }
+}
+
+
+
+
 @media screen and (max-width: 1000px) {
   a.category-btn span {
     font-size: 11px;
