@@ -32,6 +32,7 @@ class TripsController < ApplicationController
 
   def explore_map
     experiences = Experience.where(published: true, country_code: @trip.country_code)
+    Destination.where(country_code: @trip.country_code).any? ? @destination = Destination.where(country_code: @trip.country_code).first : @destination = nil
     @markers = build_markers(experiences.sort_by{|e| e.average_rating}.reverse, @trip, false)
   end
 

@@ -33,6 +33,18 @@
     </div>
   </div>
 </div>
+<div id="see-trip-summary-from-map" class="hidden-xs">
+  <%= link_to summarize_trip_path(@trip), target: "_blank", onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');", class: "btn btn-info" do %>
+  Ma synthèse  <i class="fa fa-arrow-circle-right"></i>
+  <% end %>
+</div>
+<% if @destination %>
+  <div id="see-destination-from-map" class="hidden-xs">
+    <%= link_to destination_path(@destination), target: "_blank", onclick: "ga('send', 'event', 'User', 'See inspiration from explore_map', 'Inspiration button clicked');", class: "btn btn-danger" do %>
+    <i class="fa fa-arrow-circle-left"></i>  Inspiration
+    <% end %>
+  </div>
+<% end %>
 <div id="map-container">
 </div>
 <!-- Experience Modal to display -->
