@@ -1,11 +1,9 @@
 <div id="start-planning" class="text-center">
-  <%= link_to trips_path(Trip.new), method: :post do %>
-    <label class="btn btn-info btn-sm"><i class="fa fa-map-marker"></i></label>
-    <a id="go-to-map">Voir la carte</a>
+  <%= link_to explore_map_trip_path(Trip.create(title: @destination.name, query: @destination.name)), class: 'liban btn btn-info' do %>
+    <i class="fa fa-map-marker"></i> Voir la carte
   <% end %>
-
-<!--   <%= link_to "Carte", trips_path(Trip.new, title: 'Liban'), method: :post, class:"btn btn-info btn-sm" %> -->
 </div>
+
 
 <div class="wrapper bg-white black">
   <div class="destination-banner">
@@ -166,62 +164,232 @@
               </div>
             <% end %>
           <% end %> -->
-
       </div>
     </div>
   </div>
-  <!-- <a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip">
+  <a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip">
   <div id="recommended-trip" class="text-center destination-title">
     <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
     <h2 class="no-margin">Itinéraires conseillés</h2>
-    <p class="destination-tagline">Itinéraires conseillés en fonction de la durée de votre séjour</p>
-  </div>
+<!--     <p class="destination-tagline">Itinéraires conseillés en fonction de la durée de votre séjour</p>
+ -->  </div>
   </a>
   <div class="collapse" id="collapseRecommendedTrip">
-     <div class="destination-content">
+    <div class="destination-content">
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
-
+        <div class="col-xs-12">
           <div class="destination-box-nobordertop">
             <div class="row">
               <div class="col-xs-12">
-                <h3 class="text-center">1. L'essentiel du Liban en 5-6 jours</h3>
-                <br>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-7">
-                <p>Au total: 250km, 5h de route</p>
-                <p>Les <b>faibles distances</b> et la <b>position centrale de Beyrouth</b> permettent de visiter le Liban tout en restant dans la capitale. La location d’une voiture ou la réservation d’un taxi sur la journée est facile et relativement bon marché.</p>
-                <p>On peut diviser 5-6 de voyage au Liban, basé à Beyrouth, comme ceci:</p>
-                <ul>
-                  <li><p><b>2-3 jours à Beyrouth</b>, pour visiter le typique quartier d’Achrafieh, la Corniche, le Rawcheh, emblème de la ville, et passer la soirée à Gemmayzé ou rue Monnot</p></li>
-                  <li><p><b>1 journée sur la côte nord</b>, incluant Jounieh et la magnifique vue depuis Notre-Dame du Liban, l’impressionnante Grotte de Jeita et la ville de Jbeil, tous ces sites étant très proches</p></li>
-                  <li><p><b>1 jour dans le nord du pays</b>, jusqu’au village d'Ehden, pour randonner dans la vallée de Qadisha et voir les Cèdres de Dieu, emblèmes du pays</p></li>
-                  <li><p><b>1 jour dans la vallée du Chouf</b>, pour visiter notamment les villages traditionnels de Beiteddine et Deir el Qamar, et pourquoi pas pousser jusqu’au vignoble de Kefraya pour une dégustation</p></li>
-                </ul>
-                <br>
-              </div>
-
-              <div class="col-xs-12 col-sm-12 col-md-4">
-                <div class="itinerary_image">
-                  <%= image_tag 'itineraire_liban_1.png'%>
+                <h3 class="text-center">1. Une semaine : Tokyo et Mont Fuji</h3><br>
+                <p>Si vous n'avez que peu de temps, concentrez-vous sur le plus simple : quelques jours à Tokyo, et une excursion au Mont Fuji.</p>
+                <div class="itinerary_image text-center">
+                  <%= image_tag 'japon_trip_1.png'%>
                 </div>
               </div>
             </div>
-            <p class="text-center">Retrouvez cet itinéraire sur la <b>carte interactive du Liban</b> en bas de page</p>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-9">
+                <ul>
+                  <li><p><b>Jour 1</b> : à Tokyo, commencez par une immersion dans la cuisine japonaise par un passage au <span class="text-exp"><%= link_to "Tsukiji Fish Market", experience_detail_path(162), remote: true %></span>, où vous pourrez déguster les meilleurs sushis au monde. Passez l'après-midi dans le quartier voisin de <span class="text-exp"><%= link_to "Ginza", experience_detail_path(159), remote: true %></span>.</p></li>
+                  <li><p><b>Jour 2</b> : allez vous promener dans le <span class="text-exp"><%= link_to "parc Ueno", experience_detail_path(163), remote: true %></span>, puis perdez-vous dans les quartiers alentours, très agréables pour des balades et des pauses gourmandes.</p></li>
+                  <li><p><b>Jour 3</b> : explorez <span class="text-exp" ><%= link_to "Shibuya", experience_detail_path(161), remote: true %></span>, d'abord le fameux passage piéton, puis les rues commerçantes adajcentes. Continuez dans le quartier des <span class="text-exp" ><%= link_to "Harajuku Girls", experience_detail_path(164), remote: true %></span> pour refaire votre garde-robe !</p></li>
+                  <li><p><b>Jour 4</b> : allez faire un tour à Akihabara, le quartier des 'gamers', puis allez rendez-vous vers Shinjuku. Dinez dans le coin, et allez boire des verres dans les <span class="text-exp" ><%= link_to "micro-bars de Golden Gai", experience_detail_path(160), remote: true %></span>.</p></li>
+                  <li><p><b>Jour 5 et 6</b> : partez de bon matin pour le <span class="text-exp" ><%= link_to "Mont Fuji", experience_detail_path(150), remote: true %></span>. Selon la saison, vous pouvez faire l'ascension, ou le voir d'en bas, ce qui est déjà magnifique. </p></li>
+                </ul>
+                <br>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="itinerary_image">
+                  <%= image_tag Experience.find(162).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(161).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(150).experience_pictures.first.picture.url(:small) %>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+          <div id="block-separator">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="destination-box-nobordertop">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3 class="text-center">2. Un maximum de culture en 10 jours : Tokyo - Kyoto - Nara</h3><br>
+                <p>Ce parcours permet de découvrir la modernité de Tokyo, et de plonger dans l'histoire et le patrimoine japonais à Kyoto et Nara.</p>
+                <div class="itinerary_image text-center">
+                  <%= image_tag 'japon_trip_2.png'%>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-9">
+                <ul>
+                  <li><p><b>Jour 1</b> : à Tokyo, commencez par une immersion dans la cuisine japonaise par un passage au <span class="text-exp" ><%= link_to "Tsukiji Fish Market", experience_detail_path(162), remote: true %></span>, où vous pourrez déguster les meilleurs sushis au monde. Passez l'après-midi dans le quartier voisin de <span class="text-exp" ><%= link_to "Ginza", experience_detail_path(159), remote: true %></span>.</p></li>
+                  <li><p><b>Jour 2</b> : allez vous promener dans le <span class="text-exp" ><%= link_to "parc Ueno", experience_detail_path(163), remote: true %></span>, puis perdez-vous dans les quartiers alentours, très agréables pour des balades et des pauses gourmandes.</p></li>
+                  <li><p><b>Jour 3</b> : explorez <span class="text-exp" ><%= link_to "Shibuya", experience_detail_path(161), remote: true %></span>, d'abord le fameux passage piéton, puis les rues commerçantes adajcentes. Continuez dans le quartier des <span class="text-exp" ><%= link_to "Harajuku Girls", experience_detail_path(164), remote: true %></span> pour refaire votre garde-robe !</p></li>
+                  <li><p><b>Jour 4</b> : allez faire un tour à Akihabara, le quartier des 'gamers', puis allez rendez-vous vers Shinjuku. Dinez dans le coin, et allez boire des verres dans les <span class="text-exp" ><%= link_to "micro-bars de Golden Gai", experience_detail_path(160), remote: true %></span>.</p></li>
+                  <li><p><b>Jour 5</b> : partez pour Kyoto, et profitez de l'après-midi pour vous promenez en ville, tomber par hasard sur un temple, ou faire les courses dans les rues commerçantes.</p></li>
+                  <li><p><b>Jour 6</b> : rendez-vous dans la <span class="text-exp" ><%= link_to "forêt de bambous d'Arashiyama", experience_detail_path(148), remote: true %></span>, et passez la journée dans les environs, il y a plein d'autres choses à y découvrir !</p></li>
+                  <li><p><b>Jour 7</b> : prenez le train pour Inari, et visitez le <span class="text-exp" ><%= link_to "Fushimi Inari-Taisha", experience_detail_path(149), remote: true %></span>. Passez l'après-midi près du Palais impérial, et partez à la découverte des dizaines de temples disséminés dans les environs.</p></li>
+                  <li><p><b>Jour 8</b> : partez de bon matin pour <span class="text-exp" ><%= link_to "Nara", experience_detail_path(153), remote: true %></span> (35 mn de train), et découvrez les richesses historiques de cette ancienne capitale.</p></li>
+                  <li><p><b>Jour 9</b> : rendez-vous dans le nord de Kyoto pour admirer le magnifique pavillon doré de Kinkaku-ji. Enfin, finissez votre séjour à Kyoto par le chemin de la philosophie, qui longe une petite rivière, dans le quartier de Higashiyama. </p></li>
+                  <li><p><b>Jour 10</b> : retour à Tokyo </p></li>
+                </ul>
+                <br>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="itinerary_image">
+                  <%= image_tag Experience.find(159).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(163).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(161).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(148).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(149).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(153).experience_pictures.first.picture.url(:small) %>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+          <div id="block-separator">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="destination-box-nobordertop">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3 class="text-center">3. Tradition et modernité en 2 semaines : Tokyo - Alpes japonaises - Kyoto</h3><br>
+                <p>C'est l'essentiel du Japon : le dynamisme de Tokyo, suivi de la tradition et des beautés naturelles des Alpes japonaises, puis le patrimoine de Kyoto.</p>
+                <div class="itinerary_image text-center">
+                  <%= image_tag 'japon_trip_3.png'%>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-9">
+                <ul>
+                  <li><p><b>Jour 1</b> : à Tokyo, commencez par une immersion dans la cuisine japonaise par un passage au <span class="text-exp" ><%= link_to "Tsukiji Fish Market", experience_detail_path(162), remote: true %></span>, où vous pourrez déguster les meilleurs sushis au monde. Passez l'après-midi dans le quartier voisin de <span class="text-exp" ><%= link_to "Ginza", experience_detail_path(159), remote: true %></span>.</p></li>
+                  <li><p><b>Jour 2</b> : allez vous promener dans le <span class="text-exp" ><%= link_to "parc Ueno", experience_detail_path(163), remote: true %></span>, puis perdez-vous dans les quartiers alentours, très agréables pour des balades et des pauses gourmandes.</p></li>
+                  <li><p><b>Jour 3</b> : explorez <span class="text-exp" ><%= link_to "Shibuya", experience_detail_path(161), remote: true %></span>, d'abord le fameux passage piéton, puis les rues commerçantes adajcentes. Continuez dans le quartier des <span class="text-exp"><%= link_to "Harajuku Girls", experience_detail_path(164), remote: true %></span> pour refaire votre garde-robe !</p></li>
+                  <li><p><b>Jour 4</b> : allez faire un tour à Akihabara, le quartier des 'gamers', puis allez rendez-vous vers Shinjuku. Dinez dans le coin, et allez boire des verres dans les <span class="text-exp" ><%= link_to "micro-bars de Golden Gai", experience_detail_path(160), remote: true %></span>.</p></li>
+                  <li><p><b>Jour 5 et 6</b> : partez de bon matin pour <span class="text-exp" ><%= link_to "Kamikochi", experience_detail_path(146), remote: true %></span>, et prenez vos marques dans le ryokan vous devez absolument séjourner ! Le lendemain, promenez-vous dans les montagnes avoisinantes, et laissez-vous gagner par la zenitude des paysages.</p></li>
+                  <li><p><b>Jour 7 et 8 </b> : quittez Kamikochi pour <span class="text-exp"><%= link_to "Takayama", experience_detail_path(156), remote: true %></span>, où vous pourrez passer deux jours à vous promener, découvrir la ville, ses environs, et vous laisser tenter par un onsen.</p></li>
+                  <li><p><b>Jour 9</b> : partez pour Kyoto, et profitez de l'après-midi pour vous promenez en ville, tomber par hasard sur un temple, ou faire les courses dans les rues commerçantes.</p></li>
+                  <li><p><b>Jour 10</b> : rendez-vous dans la <span class="text-exp" ><%= link_to "forêt de bambous d'Arashiyama", experience_detail_path(148), remote: true %></span>, et passez la journée dans les environs, il y a plein d'autres choses à y découvrir !</p></li>
+                  <li><p><b>Jour 11</b> : prenez le train pour Inari, et visitez le <span class="text-exp" ><%= link_to "Fushimi Inari-Taisha", experience_detail_path(149), remote: true %></span>. Passez l'après-midi près du Palais impérial, et partez à la découverte des dizaines de temples disséminés dans les environs.</p></li>
+                  <li><p><b>Jour 12</b> : partez de bon matin pour <span class="text-exp" ><%= link_to "Nara", experience_detail_path(153), remote: true %></span> (35 mn de train), et découvrez les richesses historiques de cette ancienne capitale.</p></li>
+                  <li><p><b>Jour 13</b> : rendez-vous dans le nord de Kyoto pour admirer le magnifique pavillon doré de Kinkaku-ji. Enfin, finissez votre séjour à Kyoto par le chemin de la philosophie, qui longe une petite rivière, dans le quartier de Higashiyama. </p></li>
+                  <li><p><b>Jour 14</b> : retour à Tokyo </p></li>
+                </ul>
+                <br>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="itinerary_image">
+                  <%= image_tag Experience.find(161).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(162).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(146).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(156).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(148).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(149).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(153).experience_pictures.first.picture.url(:small) %>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+          <div id="block-separator">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="destination-box-nobordertop">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3 class="text-center">4. Histoire et modernité en 2 semaines : Tokyo - Kyoto - Hiroshima</h3><br>
+                <p>Ce parcours permet de découvrir la modernité de Tokyo, et de plonger dans l'histoire et le patrimoine japonais à Kyoto et Nara.</p>
+                <div class="itinerary_image text-center">
+                  <%= image_tag 'japon_trip_4.png'%>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-9">
+                <ul>
+                  <li><p><b>Jour 1</b> : à Tokyo, commencez par une immersion dans la cuisine japonaise par un passage au <span class="text-exp" ><%= link_to "Tsukiji Fish Market", experience_detail_path(162), remote: true %></span>, où vous pourrez déguster les meilleurs sushis au monde. Passez l'après-midi dans le quartier voisin de <span class="text-exp" ><%= link_to "Ginza", experience_detail_path(159), remote: true %></span>.</p></li>
+                  <li><p><b>Jour 2</b> : allez vous promener dans le <span class="text-exp" ><%= link_to "parc Ueno", experience_detail_path(163), remote: true %></span>, puis perdez-vous dans les quartiers alentours, très agréables pour des balades et des pauses gourmandes.</p></li>
+                  <li><p><b>Jour 3</b> : explorez <span class="text-exp" ><%= link_to "Shibuya", experience_detail_path(161), remote: true %></span>, d'abord le fameux passage piéton, puis les rues commerçantes adajcentes. Continuez dans le quartier des <span class="text-exp" ><%= link_to "Harajuku Girls", experience_detail_path(164), remote: true %></span> pour refaire votre garde-robe !</p></li>
+                  <li><p><b>Jour 4</b> : allez faire un tour à Akihabara, le quartier des 'gamers', puis allez rendez-vous vers Shinjuku. Dinez dans le coin, et allez boire des verres dans les <span class="text-exp" ><%= link_to "micro-bars de Golden Gai", experience_detail_path(160), remote: true %></span>.</p></li>
+                  <li><p><b>Jour 5</b> : partez pour Kyoto, et profitez de l'après-midi pour vous promenez en ville, tomber par hasard sur un temple, ou faire les courses dans les rues commerçantes.</p></li>
+                  <li><p><b>Jour 6</b> : rendez-vous dans la <span class="text-exp" ><%= link_to "forêt de bambous d'Arashiyama", experience_detail_path(148), remote: true %></span>, et passez la journée dans les environs, il y a plein d'autres choses à y découvrir !</p></li>
+                  <li><p><b>Jour 7</b> : prenez le train pour Inari, et visitez le <span class="text-exp" ><%= link_to "Fushimi Inari-Taisha", experience_detail_path(149), remote: true %></span>. Passez l'après-midi près du Palais impérial, et partez à la découverte des dizaines de temples disséminés dans les environs.</p></li>
+                  <li><p><b>Jour 8</b> : partez de bon matin pour <span class="text-exp" ><%= link_to "Nara", experience_detail_path(153), remote: true %></span> (35 mn de train), et découvrez les richesses historiques de cette ancienne capitale.</p></li>
+                  <li><p><b>Jour 9</b> : rendez-vous dans le nord de Kyoto pour admirer le magnifique pavillon doré de Kinkaku-ji. Enfin, finissez votre séjour à Kyoto par le chemin de la philosophie, qui longe une petite rivière, dans le quartier de Higashiyama. </p></li>
+                  <li><p><b>Jour 10 et 11</b> : rendez-vous à Okayama, puis prenez un bateau pour la surprenante <span class="text-exp" ><%= link_to "île de Naoshima", experience_detail_path(152), remote: true %></span>, dédiée à l'art contemporain, où vous passerez deux jours </p></li>
+                  <li><p><b>Jour 12 et 13</b> : direction <span class="text-exp" ><%= link_to "Hiroshima", experience_detail_path(145), remote: true %></span>, où vous pourrez visiter monuments commémoratifs, jardins et château, et goûtez aux spécialités culinaires régionales !</p></li>
+                  <li><p><b>Jour 14</b> : retour à Tokyo </p></li>
+                </ul>
+                <br>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="itinerary_image">
+                  <%= image_tag Experience.find(159).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(161).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(148).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(149).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(153).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(152).experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                  <%= image_tag Experience.find(145).experience_pictures.first.picture.url(:small) %>
+                  <br>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="vertical-spacer-xs"></div>
-
       <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
         <div class="line-separator"></div>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
           <div class="destination-box-nobordertop">
             <div class="row">
@@ -232,7 +400,7 @@
             </div>
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-7">
-                <p>Au total : 400 km, 8h de route</p>
+              <p>Au total : 400 km, 8h de route</p>
                 <ul>
                   <li><p><b>Jours 1, 2 et 3</b> : à Beyrouth, visitez le typique quartier d’Achrafieh, la Corniche et le Rawcheh", et passez la soirée rue Monnot.</p></li>
                   <li><p><b>Jour 4</b> (50km / 1h de route) : quittez Beyrouth pour démarrer la journée avec l’impressionnante Grotte de Jeita. Rejoignez ensuite Jounieh, et montez en téléphérique vers Notre-Dame du Liban pour son point de vue époustouflant. Continuez vers le nord pour visiter Jbeil et y passer la nuit.</p></li>
@@ -252,9 +420,9 @@
             <p class="text-center">Retrouvez cet itinéraire sur la <b>carte interactive du Liban</b> en bas de page</p>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
-  </div> -->
+  </div>
   <!-- <div class="text-center" id="bottom-start-planning">
     <h2 class="text-center">Fini de lire ? Commence à organiser ton voyage !</h2>
     <br>
