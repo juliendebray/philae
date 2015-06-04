@@ -21,8 +21,8 @@
   }
 }
 
-.destination-content{
-  padding: 2% 8%;
+.destination-content {
+  padding: 2% 15%;
   padding-top: 35px;
   p {
     letter-spacing: .01rem;
@@ -142,17 +142,14 @@ a#must-see-img:hover {
 }
 
 #start-planning {
-  z-index: 2;
+  z-index: 1;
   position: fixed;
   right: 0px;
   top: 45%;
-  #go-to-map {
-    display: none;
-    color: white;
-  }
   .btn {
-    height: 70px;
-    width: 45px;
+    font-size: 14px;
+    // height: 70px;
+    // width: 45px;
     border-radius: 90px 90px 0 0;
     -moz-border-radius: 90px 90px 0 0;
     -webkit-border-radius: 90px 0 0 90px;
@@ -160,15 +157,13 @@ a#must-see-img:hover {
   }
   .fa {
     color: white;
-    font-size: 30px;
-    padding-top: 15px;
-    padding-left: 5px;
+    font-size: 14px;
+    // padding-top: 15px;
+    // padding-left: 5px;
   }
 }
-#start-planning:hover {
-  #go-to-map {
-    display: block;
-  }
+.itinerary_image {
+  margin-bottom: 30px;
 }
 
 
