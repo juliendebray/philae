@@ -10,6 +10,17 @@
   margin: 0 0 0 126px;
 }
 
+#link-to-detail {
+  background: transparent;
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  bottom: 87px;
+  left: 55px;
+  right: 55px;
+  z-index: 1;
+}
+
 .infobox-container {
   background: #fff;
   border-radius: 4px;
