@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       resources :ask_your_friends, only: [:index]
       member do
         get :explore_map
+        get :explore_destination
         get :start
         get :plan_my_trip
         get :demo
