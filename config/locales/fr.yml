@@ -22,7 +22,6 @@ fr:
   languages: "Langues"
 
   #sign up / sign in
-  # sign_up: "Explore le monde"
   sign_up: "S'INSCRIRE POUR COMMENCER"
   sign_in: "Connexion"
   sign_in_btn: "Connexion"
@@ -72,7 +71,7 @@ fr:
     index:
       title: "A propos d'Explorizers"
       who_is_explorizers: "Qui est Explorizers ?"
-      who_is_one: "Passionnés de voyage, et nous sommes décidés à partager notre passion et notre expérience au service des voyageurs."
+      who_is_one: "Passionnés de voyage, nous sommes décidés à partager notre passion et notre expérience au service des voyageurs."
       who_is_two: "Au-delà de"
       who_is_three: "et"
       who_is_four: ", les deux fondateurs, Explorizers c’est aussi une communauté de voyageurs qui aident à construire une base de données de conseils et bons plans, à laquelle chacun peut contribuer !"
@@ -100,7 +99,7 @@ fr:
       how_one: "Explorizers est un site vivant et en constante évolution. "
       how_two: "Vous pouvez y contribuer de trois manières :"
       how_three: "Depuis"
-      how_four: "cette page"
+      how_four: " cette page, "
       how_five: "vous pouvez recommander des expériences à ajouter à la base de données"
       how_six: "Vous pouvez nous dire ce qui vous plait, ce que vous n’aimez pas, et ce que vous aimeriez trouver sur Explorizers, en envoyant un email à"
       how_seven: "Partagez Explorizers ! Le succès du projet dépendra en partie des contributions des utilisateurs : plus vous en parlez autour de vous, plus le site sera complet !"
@@ -111,18 +110,20 @@ fr:
       delete_account_two: "pour nous demander la suppression de votre compte."
       contact_explorizers: "Comment contacter Explorizers ?"
       contact_one: "Vous pouvez contacter Explorizers en nous écrivant un email à"
+      contact_two: ", ou depuis la page "
 
   addreview: "Donnez votre avis!"
   addtotrip: "Sélectionner"
   removefromtrip: "Retirer du voyage"
 
-  #trips
-  trips:
-    summarize:
-      gobacktotrip: " Retour au voyage"
-      getbyemail: "Recevoir par email "
-      creation: "Créé le : "
-      lastupdate: "Dernière mise à jour : "
+  #experience_modal
+  description: "Descriptif"
+
+  #trip_summary
+  summarize_gobacktotrip: " Retour au voyage"
+  summarize_getbyemail: "Recevoir par email "
+  summarize_creation: "Créé le : "
+  summarize_lastupdate: "Dernière mise à jour : "
   summarize_savecomment: "Sauvegarder le commentaire"
   summarize_comment: "Ajouter un commentaire pour votre voyage"
 
@@ -139,12 +140,30 @@ fr:
     show:
       title: "Mon espace"
       mytrips: "Mes voyages"
+      inspire_me: "Inspirez-moi"
       myfriends: "Mes amis"
-      delete: "Etes-vous sûr de vouloir supprimer ce voyage ?"
+      current_trip: "Mon voyage en cours"
+      complete_trip: "Complétez votre voyage ou recevez votre sélection"
+      find_places: "Découvrez les points d'intérêt et ajoutez-les à votre sélection"
+      read_tips: "Vos amis ont donné leurs conseils : lisez-les"
+      ask_tips: "Demandez les conseils de vos amis"
+      delete: "Supprimer ?"
+      other_trips: "Mes autres voyages"
+      destination_title: "Explorez la destination du moment"
+      destination_tagline: "Découvrez et laissez-vous tenter pour votre prochain voyage."
+      experiences_title: "Découvrez ces expériences uniques"
+      experiences_tagline: "Prenez quelques minutes pour vous évader..."
+      friends_on_explorizers: "Mes amis sur Explorizers"
+      send_email_request: "Envoyer une demande par email"
+      my_requests: "Mes demandes"
+      sent_requests: "Envoyées"
+      received_requests: "Reçues"
+      friends_list: "Liste des amis"
+      my_map: "Ma carte"
+      settings: "Paramètres"
       new_trip: "Créer un nouveau voyage"
       searchplaceholder: "Un nouveau voyage ?"
       searchbutton: "Voyager"
-
 
   #contact
   contacts:
@@ -205,6 +224,26 @@ fr:
       gobacktotrip: "Retourner sur la page de mon voyage"
 
   #trips
+
+  trips:
+    demo:
+      legend_mustsee: "Les incontournables"
+      legend_allexperiences: "Toutes les expériences"
+      legend_landing_point: "Principal point d'arrivée"
+
+  #sidebar
+  sidebar_inspiration: "Inspiration"
+  sidebar_tips: "Conseils"
+  sidebar_mytrip: "Mon itinéraire"
+  sidebar_inspiration_text_1: "Voici les meilleures expériences,"
+  sidebar_inspiration_text_2: " triées par note"
+  sidebar_tips_text_1: "Pas encore de conseils ? Pour que vos amis les ajoutent sur votre carte, cliquez sur :"
+  sidebar_tips_text_2: "Partager sur Facebook"
+  sidebar_tips_text_3: "ou"
+  sidebar_tips_text_4: "Demander par email"
+  sidebar_tips_text_5: "Ci-dessous, voici les conseils de vos amis. Ajoutez-les à votre voyage en cliquant dessus."
+  sidebar_mytrip_1: "Voici vos expériences sélectionnées ! Supprimez-les ou réorganisez-les dans le bon ordre."
+  sidebar_mytrip_2: "Voir la synthèse éditable et recevoir par email"
 
   trip_show_title: "Ajouter une autre étape à mon voyage"
   form_new_exp_intro: "Quelque chose manque sur la carte Explorizers? Ajoutez votre propre étape à votre voyage ici !"

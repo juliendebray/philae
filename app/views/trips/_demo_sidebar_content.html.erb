@@ -1,7 +1,6 @@
 <div role="tabpanel" class="tab-pane active" id="top-from-explorizers">
   <div id="tab-pane-introduction">
-    <p>
-      Voici les meilleures expériences,<b> triées par note</b>.
+    <p><%= t('sidebar_inspiration_text_1') %><b><%= t('sidebar_inspiration_text_2') %></b>.
       <br>
     </p>
     <% if display_filters %>
@@ -53,23 +52,23 @@
 </div>
 <div role="tabpanel" class="tab-pane" id="user-guest-comments">
   <p>
-    <i>Pas encore de conseils ? Pour que vos amis les ajoutent sur votre carte, cliquez sur :</i>
+    <i><%= t('sidebar_tips_text_1') %></i>
   </p>
   <table>
     <tbody>
       <td>
         <div id="share-fb" class="button-action update-order">
           <a class="btn btn-facebook" id="sharefb" onclick="ga('send', 'event', 'User', 'Ask advice', 'Ask on facebook button clicked from demo page');">
-            Partager sur Facebook
+            <%= t('sidebar_tips_text_2') %>
           </a>
         </div>
       </td>
-      <td>ou</td>
+      <td><%= t('sidebar_tips_text_3') %></td>
       <td>
         <div id="share-bt" class="button-action update-order">
           <%= form_for @trip, url: share_trip_path(@trip.id), remote: true do |f| %>
             <%= hidden_field_tag :id, value = @trip.id %>
-            <%= f.submit( "Demander par email", onclick: 'ga("send", "event", "User", "Ask advice", "Ask with email button clicked from demo page");', class:'btn btn-success') %>
+            <%= f.submit( t('sidebar_tips_text_4'), onclick: 'ga("send", "event", "User", "Ask advice", "Ask with email button clicked from demo page");', class:'btn btn-success') %>
           <% end %>
         </div>
       </td>
@@ -77,20 +76,20 @@
   </table>
   <br>
   <p class="text-center">
-    <b>Ci-dessous, voici les conseils de vos amis. Ajoutez-les à votre voyage en cliquant dessus.</b>
+    <b><%= t('sidebar_tips_text_5') %></b>
   </p>
   <ul id="draggablePanelList" class="list-unstyled experience-block-container guest-comments-content">
   </ul>
 </div>
 <div role="tabpanel" class="tab-pane" id="user-experiences-selection">
   <div id="tab-pane-introduction">
-    <p>Voici vos expériences sélectionnées! Supprimez-les ou réorganisez-les dans le bon ordre.</p><br>
+    <p><%= t('sidebar_mytrip_1') %></p><br>
   </div>
   <ul id="draggablePanelList" class="list-unstyled experience-block-container user-experiences-content">
   </ul>
   <div id="see-trip-summary" class="button-action update-order">
     <%= link_to summarize_trip_path(trip), target: "_blank", onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked');", class: "btn btn-success btn-block", data: {toggle: "tooltip", placement: "bottom",  title: "Voir la synthèse de mon trip et me l'envoyer par mail", json: 'data'} do %>
-    Voir la synthèse éditable et recevoir par email
+    <%= t('sidebar_mytrip_2') %>
     <% end %>
   </div>
 </div>

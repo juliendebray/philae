@@ -118,8 +118,8 @@ en:
       how_contrib_explorizers: "How to contribute to Explorizers?"
       how_one: "Explorizers is constantly evolving. "
       how_two: "You can contribute in 3 ways: "
-      how_three: "From"
-      how_four: "this page,"
+      how_three: "From "
+      how_four: " this page, "
       how_five: "you can recommend experiences that we should add to our database"
       how_six: "You can tell us what you like, what you dislike, and what you would like to find on Explorizers, just by sending us an email at"
       how_seven: "Share Explorizers! The success of the project will depend on our users’ contributions : the more you talk about us, the more complete Explorizers will be!"
@@ -130,19 +130,20 @@ en:
       delete_account_two: "and ask us to delete your account."
       contact_explorizers: "How can I contact Explorizers?"
       contact_one: "You can send us an email at "
-
+      contact_two: ", or from the page "
 
   addreview: "Add a review"
   addtotrip: "Add to my trip"
   removefromtrip: "Remove from trip"
 
+  #experience_modal
+  description: "Description"
+
   #trips
-  trips:
-    summarize:
-      gobacktotrip: " Go back to my trip"
-      getbyemail: "Get by email "
-      creation: "Created on: "
-      lastupdate: "Last update: "
+  summarize_gobacktotrip: " Go back to my trip"
+  summarize_getbyemail: "Get by email "
+  summarize_creation: "Created on: "
+  summarize_lastupdate: "Last update: "
   summarize_comment: "Add a comment"
   summarize_savecomment: "Save"
 
@@ -159,8 +160,27 @@ en:
     show:
       title: "My personal page"
       mytrips: "My trips"
+      inspire_me: "Inspire me"
       myfriends: "My friends"
-      delete: "Are you sure you want to delete this trip?"
+      current_trip: "My current trip"
+      complete_trip: "Finalize your trip or get your summary"
+      find_places: "Find out more highlights and add them to your trip"
+      read_tips: "Your friends have given you tips: read them!"
+      ask_tips: "Ask for your friends' tips"
+      delete: "Delete?"
+      other_trips: "My other trips"
+      destination_title: "Explore our selected destination"
+      destination_tagline: "Find out more about this potential next trip for you."
+      experiences_title: "Find out about these unique experiences"
+      experiences_tagline: "Take a few seconds to wander..."
+      friends_on_explorizers: "My friends on Explorizers"
+      send_email_request: "Send a request by email"
+      my_requests: "My requests"
+      sent_requests: "Sent"
+      received_requests: "Received"
+      friends_list: "Friends list"
+      my_map: "My map"
+      settings: "Settings"
       new_trip: "Create a new trip"
       searchplaceholder: "A new trip?"
       searchbutton: "Travel"
@@ -223,6 +243,27 @@ en:
       gobacktotrip: "Go back to my trip"
 
   #trips
+
+  trips:
+    demo:
+      legend_mustsee: "Must-see places"
+      legend_allexperiences: "All experiences"
+      legend_landing_point: "Main landing point"
+
+  #sidebar
+  sidebar_inspiration: "Inspiration"
+  sidebar_tips: "Tips"
+  sidebar_mytrip: "My itinerary"
+  sidebar_inspiration_text_1: "Here are the best experiences,"
+  sidebar_inspiration_text_2: " sorted by grade"
+  sidebar_tips_text_1: "No tips yet? To get your friends' tips, click on:"
+  sidebar_tips_text_2: "Ask on Facebook"
+  sidebar_tips_text_3: "or"
+  sidebar_tips_text_4: "Ask by email"
+  sidebar_tips_text_5: "Here are your friends' tips. Click on them to add them to your trip."
+  sidebar_mytrip_1: "These are the experiences you selected! Delete them or rearrange them in the right order."
+  sidebar_mytrip_2: "See your trip summary and get it by email."
+
   trip_show_title: "Add another stop-over to my trip"
   form_new_exp_intro: "Something missing on Explorizers' map? Add your own stop-over right here."
   form_name: "Name this stop-over"
