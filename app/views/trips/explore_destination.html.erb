@@ -352,6 +352,7 @@
                   <li><p><b>Jour 12 et 13</b> : direction <span class="text-exp" ><%= link_to "Hiroshima", experience_detail_path(145), remote: true %></span>, où vous pourrez visiter monuments commémoratifs, jardins et château, et goûtez aux spécialités culinaires régionales !</p></li>
                   <li><p><b>Jour 14</b> : retour à Tokyo </p></li>
                 </ul>
+                <%= link_to 'Sélectionner', add_to_trip_path(@trip.id, 3), remote: true, class: "text-center btn btn-info" %>
                 <br>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-3">
