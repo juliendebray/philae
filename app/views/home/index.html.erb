@@ -29,9 +29,11 @@
   <div class="fullpage">
     <div id="homeblock" class="banner text-center">
       <div class="title fader">
-        <h1><%= @hp_hash[:title] %></h1>
+<!--         <h1><%= @hp_hash[:title] %></h1> -->
+        <h1><%= t('.title') %></h1>
         <!-- <div class="vertical-spacer-xs"></div> -->
-        <h3><%= @hp_hash[:subtitle] %></h3>
+<!--         <h3><%= @hp_hash[:subtitle] %></h3> -->
+        <h3><%= t('.subtitle') %></h3>
       </div>
       <div class="vertical-spacer-xxs"></div>
       <div class="tr-grey-bg">
@@ -50,7 +52,7 @@
             </div>
           <% end %>
         <% else %>
-          <h3><%= link_to 'INSCRIVEZ-VOUS POUR COMMENCER', new_user_registration_path,  {class: "btn btn-info btn-lg fader", onclick:"ga('send', 'event', 'User', 'Sign Up Button', 'Click on sign up button from hp');"}%></h3>
+          <h3><%= link_to t('.signup'), new_user_registration_path,  {class: "btn btn-info btn-lg fader", onclick:"ga('send', 'event', 'User', 'Sign Up Button', 'Click on sign up button from hp');"}%></h3>
         <% end %>
       </div>
       <div id="go-to-faq">
@@ -63,44 +65,45 @@
   </div>
   <div class="help hp-section">
     <div class="vertical-spacer-xs"></div>
-    <h2 class="text-center">Comment ça marche ?</h2>
-    <p class='text-center container'><%= @hp_hash[:description] %></p>
+    <h2 class="text-center"><%= t('.howitworks') %></h2>
+<!--     <p class='text-center container'><%= @hp_hash[:description] %></p> -->
+    <p class='text-center container'><%= t('.description') %></p>
     <div class="vertical-spacer-sm"></div>
 
     <div class="vertical-spacer-xs"></div>
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-4 text-center text-contrast">
-          <%= simple_format(@hp_hash[:item][:one]) %>
-          <!-- <div class="how-header">
+<!--           <%= simple_format(@hp_hash[:item][:one]) %> -->
+          <div class="how-header">
             <i class="fa fa-map-marker"></i>
           </div>
           <div class="vertical-spacer-xs"></div>
           <div class="how-content">
-            Sélectionne les <strong>meilleures expériences</strong> à faire pendant ton voyage sur la base de milliers de notes et d'avis.
-          </div> -->
+            <%= t('.item_one') %>
+          </div>
           <div class="vertical-spacer"></div>
         </div>
         <div class="col-sm-12 col-md-4 text-center text-contrast">
-          <%= simple_format(@hp_hash[:item][:two]) %>
-          <!-- <div class="how-header">
+<!--           <%= simple_format(@hp_hash[:item][:two]) %> -->
+          <div class="how-header">
             <i class="fa fa-comment"></i>
           </div>
           <div class="vertical-spacer-xs"></div>
           <div class="how-content">
-            Inspire-toi des <strong>conseils les plus utiles</strong> des guides et voyageurs afin d'éviter attrapes-touristes et autres galères.
-          </div> -->
+            <%= t('.item_two') %>
+          </div>
           <div class="vertical-spacer"></div>
         </div>
         <div class="col-sm-12 col-md-4 text-center text-contrast">
-          <%= simple_format(@hp_hash[:item][:three]) %>
-          <!-- <div class="how-header">
+<!--           <%= simple_format(@hp_hash[:item][:three]) %> -->
+          <div class="how-header">
             <i class="fa fa-cloud-download"></i>
           </div>
           <div class="vertical-spacer-xs"></div>
           <div class="how-content">
-            Récupère ton <strong>itinéraire personnalisé</strong>, partage-le avec tes amis et emmène-le dans tes valises.
-          </div> -->
+            <%= t('.item_three') %>
+          </div>
           <div class="vertical-spacer"></div>
         </div>
       </div>
@@ -140,22 +143,22 @@
       </div>
       <div class="vertical-spacer"></div>
     <% end %>
-    <h2 class="text-center">Explorez la destination du moment</h2>
-    <p class='text-center'>Laissez-vous inspirer par la destination du moment.</p>
+    <h2 class="text-center"><%= t('.destination_title') %></h2>
+    <p class='text-center'><%= t('.destination_tagline') %></p>
     <%= link_to Destination.find(7) do %>
       <div class="destination-item text-center">
         <%= image_tag(Destination.find(7).destination_pictures.first.picture.url(:banner), class: 'max-width') %>
         <div class="destination-name text-center">
           <%= Destination.find(7).name.upcase %>
-          <br>
-          <small>Découvrir les meilleures expériences</small>
+<!--           <br>
+          <small>Découvrir les meilleures expériences</small> -->
         </div>
       </div>
     <% end %>
     <div class="vertical-spacer-sm"></div>
     <div class="experience-promo">
-      <h2 class="text-center">Découvrez ces expériences uniques</h2>
-      <p class='text-center'>Prenez quelques minutes pour vous évader.</p>
+      <h2 class="text-center"><%= t('.experiences_title') %></h2>
+      <p class='text-center'><%= t('.experiences_tagline') %></p>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="experience-box">
@@ -196,19 +199,19 @@
       </div>
       <div class="vertical-spacer-xs"></div>
       <div class="row text-center">
-        <%= link_to "Voir d'autres expériences", experiences_path, {class: "btn btn-info"} %>
+        <%= link_to t('.other_experiences'), experiences_path, {class: "btn btn-info"} %>
       </div>
     </div>
     <div class="vertical-spacer"></div>
-    <h2 class="text-center">Explorez le monde</h2>
-    <p class='text-center'>Parcourez la carte des expériences sur le monde entier.</p>
+    <h2 class="text-center"><%= t('.explore_map_title') %></h2>
+    <p class='text-center'><%= t('.explore_map_tagline') %></p>
     <%= link_to map_path do %>
       <div class="destination-item text-center">
         <%= image_tag('maphands.jpg', width: 851, height: 440, class: 'max-width') %>
         <div class="destination-name text-center">
-          Carte interactive
-          <br>
-          <small>Voir les expériences du monde entier</small>
+          <%= t('.interactive_map') %>
+<!--           <br>
+          <small>Voir les expériences du monde entier</small> -->
         </div>
       </div>
     <% end %>

@@ -7,8 +7,20 @@
     </title>
     <meta name="description" content="<%= yield_with_default(:description,"Avec Explorizers, simplifie la préparation de ton voyage, avec les conseils de tes amis, d'autres voyageurs et de professionnels.")%>" >
     <meta name="p:domain_verify" content="852a947bbf6d9d4c38ef54cf6ff7422b"/>
+    <% if @trip %>
+      <meta property="og:title" content="Vos conseils pour mon voyage" />
+      <meta property="og:site_name" content="Explorizers" />
+      <meta property="og:type" content="explorizers:trip" />
+      <meta property="og:url" content="http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>" />
+      <meta property="og:image" content="http://philae-floju.s3.amazonaws.com/explorizers_cover.png" />
+      <meta property="og:description" content="Votre ami(e) prépare son voyage sur Explorizers, et l'a posté sur Facebook pour avoir vos conseils. Cliquez sur le lien, visualisez sa carte de voyage et donnez-lui vos meilleurs plans!"/>
+    <% end %>
     <% if @experience %>
-      <meta property="og:image" content="<%= "#{@experience.experience_pictures.first.picture.url}" %>" />
+      <% if @experience.name %>
+        <meta property="og:image" content="<%= "#{@experience.experience_pictures.first.picture.url}" %>" />
+      <% end %>
+    <% else %>
+      <meta property="og:image" content="http://philae-floju.s3.amazonaws.com/explorizers_cover.png" />
     <% end %>
     <meta property="og:image:width" content="300" />
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -18,14 +30,6 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <% if @trip %>
-      <meta property="og:title" content="Vos conseils pour mon voyage" />
-      <meta property="og:site_name" content="Explorizers" />
-      <meta property="og:type" content="explorizers:trip" />
-      <meta property="og:url" content="http://www.explorizers.com/trips/<%= "#{@trip.id}/#{@trip.token}" %>" />
-      <meta property="og:image" content="http://philae-floju.s3.amazonaws.com/explorizers_cover.png" />
-      <meta property="og:description" content="Votre ami(e) prépare son voyage sur Explorizers, et l'a posté sur Facebook pour avoir vos conseils. Cliquez sur le lien, visualisez sa carte de voyage et donnez-lui vos meilleurs plans!"/>
-    <% end %>
     <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=351072325084597&amp;ev=PixelInitialized" /></noscript>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <script>(function() {
