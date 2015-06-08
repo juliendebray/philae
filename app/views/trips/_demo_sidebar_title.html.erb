@@ -1,7 +1,7 @@
 <div id="ul-sidebar">
   <ul id="myTab" class="nav nav-pills nav-justified" role="tablist">
     <li role="presentation" class="active" id="destination-pill">
-      <a role="menuitem" data-toggle="tab" href="#top-from-explorizers" aria-controls="top-from-explorizers" onclick= "ga('send', 'event', 'User', 'Inspiration', 'Inspiration link clicked from demo page');"><i class="fa fa-map-marker"></i>Inspiration</a>
+      <a role="menuitem" data-toggle="tab" href="#top-from-explorizers" aria-controls="top-from-explorizers" onclick= "ga('send', 'event', 'User', 'Inspiration', 'Inspiration link clicked from demo page');"><i class="fa fa-map-marker"></i><%= t('sidebar_inspiration') %></a>
     </li>
     <!-- <li role="presentation" class="dropdown" id="itineraries">
       <a id="myTabDrop" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false" aria-controls="myTabDrop-content"><i>Itinéraires</i><span class="caret"></span>
@@ -15,10 +15,10 @@
       </ul>
     </li> -->
     <li role="presentation" id="friends-tips-pill">
-      <a role="menuitem"  data-toggle="tab" href="#user-guest-comments" aria-controls="user-guest-comments" onclick= "ga('send', 'event', 'User', 'Advice', 'Advice link clicked from demo page');"><i class="fa fa-comment"></i>Conseils</a>
+      <a role="menuitem"  data-toggle="tab" href="#user-guest-comments" aria-controls="user-guest-comments" onclick= "ga('send', 'event', 'User', 'Advice', 'Advice link clicked from demo page');"><i class="fa fa-comment"></i><%= t('sidebar_tips') %></a>
     </li>
     <li role="presentation" id="my-trip-pill">
-      <a role="menuitem"  data-toggle="tab" href="#user-experiences-selection" aria-controls="user-experiences-selection" onclick= "ga('send', 'event', 'User', 'Itinerary', 'Itinerary link clicked from demo page');"><i class="fa fa-heart"></i>Mon itinéraire</a>
+      <a role="menuitem"  data-toggle="tab" href="#user-experiences-selection" aria-controls="user-experiences-selection" onclick= "ga('send', 'event', 'User', 'Itinerary', 'Itinerary link clicked from demo page');"><i class="fa fa-heart"></i><%= t('sidebar_mytrip') %></a>
     </li>
     <li role="presentation" id="help-menu-pill">
       <a role="menuitem" data-toggle="tab" href="#help-menu" aria-controls="help-menu" onclick= "ga('send', 'event', 'User', 'Help', 'Help link clicked from demo page');">?</a>

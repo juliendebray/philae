@@ -7,12 +7,12 @@ fr:
   signup: "Inscription"
   signout: "Déconnexion"
   tripsnav: "Mon compte"
+  navexperiences: "Expériences"
   ourcontact: "Contact"
   contribute: "Conseils à partager"
   my_profile: "Mon espace"
   my_travels: "Mes voyages"
   nav_destinations: "Destinations couvertes"
-
   about: "A propos d'Explorizers"
   allexperiences: "Toutes les expériences"
   press: "Presse"
@@ -21,10 +21,7 @@ fr:
   discover: "Découvrir"
   languages: "Langues"
 
-
-
   #sign up / sign in
-  # sign_up: "Explore le monde"
   sign_up: "S'INSCRIRE POUR COMMENCER"
   sign_in: "Connexion"
   sign_in_btn: "Connexion"
@@ -43,15 +40,22 @@ fr:
   home:
     index:
       brand: "E X P L O R I Z E R S"
-      firstline: "VOTRE VOYAGE COMMENCE ICI"
-      # secondline: "Retrouve ici les conseils de voyage des meilleures sources : tes amis, d'autres voyageurs, et des professionnels"
-      secondline: "Simplifiez la préparation de votre voyage, avec les conseils de vos amis, d'autres voyageurs et de professionnels"
-      thirdline_title: "Le principe"
-      fourthline_title: "La qualité"
-      fifthline_title: "Le voyage"
-      thirdline: "Explorizers est le 1er site de conseils de voyageurs orienté exclusivement sur les expériences de voyage"
-      fourthline: "Laissez-vous inspirer par les conseils de vos amis, ceux des voyageurs, et des professionnels"
-      fifthline: "Construisez votre itinéraire au fur et à mesure et emportez-le en voyage"
+      title: "Planifiez votre voyage sans prise de tête"
+      subtitle: "Organisez le voyage parfait en toute simplicité avec les informations les plus fiables du web, des conseils terrain de voyageurs et des outils pratiques qui font gagner du temps"
+      howitworks: "Comment ça marche ?"
+      description: "Explorizers simplifie l'organisation de votre voyage et vous permet de partir l'esprit tranquille avec un itinéraire complétement personalisé."
+      item_one: 'Selectionnez les meilleures expériences à vivre en fonction de vos envies et des recommandations des principaux sites de voyage.'
+      item_two: "Evitez les attrapes-touristes et autres galères en vous inspirant des conseils d'autres voyageurs, et de vos amis grâce aux réseaux sociaux."
+      item_three: "Votre itinéraire se calcule automatiquement, vous n'avez plus qu'à l'emmener dans vos valises et partir l'esprit tranquille."
+      destination_title: "Explorez la destination du moment"
+      destination_tagline: "Découvrez et laissez-vous tenter pour votre prochain voyage."
+      experiences_title: "Découvrez ces expériences uniques"
+      experiences_tagline: "Prenez quelques minutes pour vous évader..."
+      other_experiences: "Voir d'autres expériences"
+      explore_map_title: "Explorez le monde"
+      explore_map_tagline: "Parcourez la carte des expériences sur le monde entier."
+      interactive_map: "Carte interactive"
+      signup: "INSCRIVEZ-VOUS POUR COMMENCER"
       searchplaceholder: "Où allez-vous ?"
       searchbutton: "Créer un voyage"
       subtitle1: "Aurelia - Sri Lanka"
@@ -63,17 +67,63 @@ fr:
       seedestinations: "Voir les DESTINATIONS déjà couvertes"
       alreadyaccount: "Déjà inscrit ?"
 
+  faq:
+    index:
+      title: "A propos d'Explorizers"
+      who_is_explorizers: "Qui est Explorizers ?"
+      who_is_one: "Passionnés de voyage, nous sommes décidés à partager notre passion et notre expérience au service des voyageurs."
+      who_is_two: "Au-delà de"
+      who_is_three: "et"
+      who_is_four: ", les deux fondateurs, Explorizers c’est aussi une communauté de voyageurs qui aident à construire une base de données de conseils et bons plans, à laquelle chacun peut contribuer !"
+      why_explorizers: "Pourquoi avons-nous créé Explorizers ?"
+      why_one: "Sitôt la destination choisie, chaque voyageur se pose LA question : comment profiter au maximum de mon voyage ? Que voir, que faire, quels sont les lieux et expériences qui me ressemblent et que je tiens à vivre lors de ce voyage ? Vais-je pouvoir tout faire ? Comment je m’organise ?"
+      why_two: "On se lance alors dans des recherches qui demandent du temps : on lit des blogs de voyage, on regarde les forums, on demande des conseils à ses amis, on lit des guides, on regarde des circuits proposés par des agences… Bref, on se noie sous la tonne d'information et il est difficile de faire des choix pertinents. Et ça en devient stressant !"
+      why_three: "Nous avons conçu Explorizers dans le but de simplifier la préparation du voyage. Sur la base de nos voyages, des conseils d’autres voyageurs et de locaux, et en profitant de la masse d’informations disponibles en ligne, nous avons fait le travail de compilation des informations issues de sources fiables pour aider les voyageurs à construire et planifier leur voyage plus facilement."
+      why_four: "Notre but est de faire de la préparation du voyage une étape aussi fluide et agréable que le voyage en lui-même !"
+      what_explorizers: "Que fait Explorizers ?"
+      what_one: "Explorizers a fait 90% du travail pour vous. Nous avons recoupé et compilé les conseils des meilleurs sites de voyage et toutes les informations indispensables pour préparer votre voyage : "
+      what_two: "Tous les lieux et expériences de votre destination, les incontournables comme les pépites hors des sentiers battus"
+      what_three: "Les avis des guides référence, Lonely Planet et Guide du Routard"
+      what_four: "Les avis des voyageurs, issus de TripAdvisor"
+      what_five: "Les informations pratiques : combien de temps rester dans chaque endroit, comment s’y rendre, dans quel endroit dormir…"
+      what_six: "Et des détails sur votre destination : pourquoi y aller, itinéraires recommandés, formalités, …"
+      what_seven: "Cerise sur le gâteau, nous avons développé une fonctionnalité exclusive de recueil des conseils de vos proches, par Facebook ou email, pour votre prochain voyage !"
+      what_eight: "Il ne vous reste plus qu’à sélectionner ce qui vous plaît pour construire votre voyage sur-mesure, et explorer le monde à votre façon !"
+      where_explorizers: "Quelles sont les destinations couvertes par Explorizers ?"
+      where_one: "Pour assurer une excellente qualité et fiabilité du contenu, les destinations sont travaillées et mises en ligne progressivement. La liste des destinations est disponible"
+      where_two: "ici."
+      values: "Quelles sont nos valeurs ?"
+      values_one: "Nous pensons que la vie est courte et que les voyages sont le meilleur moyen pour en profiter au maximum ! C’est pourquoi Explorizers recense les meilleurs endroits à visiter et les meilleures expériences à vivre partout dans le monde."
+      values_two: "Le partage fait partie intégrante du voyage, et il n’y a rien de plus généreux que d’échanger ses conseils pour que ses amis découvrent les merveilles de ce monde. Nous avons conçu Explorizers pour faire profiter tous les voyageurs des meilleurs conseils, accessibles simplement sur une plate-forme unique."
+      how_contrib_explorizers: "Comment contribuer à Explorizers ?"
+      how_one: "Explorizers est un site vivant et en constante évolution. "
+      how_two: "Vous pouvez y contribuer de trois manières :"
+      how_three: "Depuis"
+      how_four: " cette page, "
+      how_five: "vous pouvez recommander des expériences à ajouter à la base de données"
+      how_six: "Vous pouvez nous dire ce qui vous plait, ce que vous n’aimez pas, et ce que vous aimeriez trouver sur Explorizers, en envoyant un email à"
+      how_seven: "Partagez Explorizers ! Le succès du projet dépendra en partie des contributions des utilisateurs : plus vous en parlez autour de vous, plus le site sera complet !"
+      personal_data: "Mes données personnelles sont-elles protégées ?"
+      personal_data_one: "Explorizers permet, via l’espace personnel du voyageur, de garder en mémoire vos voyages en projet ou passés. Ces informations sont purement confidentielles, et toutes vos données personnelles sont protégées."
+      delete_account: "Puis-je supprimer mon compte ?"
+      delete_account_one: "Nous en serions déçu, mais vous pouvez nous envoyer un email à"
+      delete_account_two: "pour nous demander la suppression de votre compte."
+      contact_explorizers: "Comment contacter Explorizers ?"
+      contact_one: "Vous pouvez contacter Explorizers en nous écrivant un email à"
+      contact_two: ", ou depuis la page "
+
   addreview: "Donnez votre avis!"
   addtotrip: "Sélectionner"
   removefromtrip: "Retirer du voyage"
 
-  #trips
-  trips:
-    summarize:
-      gobacktotrip: " Retour au voyage"
-      getbyemail: "Recevoir par email "
-      creation: "Créé le : "
-      lastupdate: "Dernière mise à jour : "
+  #experience_modal
+  description: "Descriptif"
+
+  #trip_summary
+  summarize_gobacktotrip: " Retour au voyage"
+  summarize_getbyemail: "Recevoir par email "
+  summarize_creation: "Créé le : "
+  summarize_lastupdate: "Dernière mise à jour : "
   summarize_savecomment: "Sauvegarder le commentaire"
   summarize_comment: "Ajouter un commentaire pour votre voyage"
 
@@ -90,12 +140,30 @@ fr:
     show:
       title: "Mon espace"
       mytrips: "Mes voyages"
+      inspire_me: "Inspirez-moi"
       myfriends: "Mes amis"
-      delete: "Etes-vous sûr de vouloir supprimer ce voyage ?"
+      current_trip: "Mon voyage en cours"
+      complete_trip: "Complétez votre voyage ou recevez votre sélection"
+      find_places: "Découvrez les points d'intérêt et ajoutez-les à votre sélection"
+      read_tips: "Vos amis ont donné leurs conseils : lisez-les"
+      ask_tips: "Demandez les conseils de vos amis"
+      delete: "Supprimer ?"
+      other_trips: "Mes autres voyages"
+      destination_title: "Explorez la destination du moment"
+      destination_tagline: "Découvrez et laissez-vous tenter pour votre prochain voyage."
+      experiences_title: "Découvrez ces expériences uniques"
+      experiences_tagline: "Prenez quelques minutes pour vous évader..."
+      friends_on_explorizers: "Mes amis sur Explorizers"
+      send_email_request: "Envoyer une demande par email"
+      my_requests: "Mes demandes"
+      sent_requests: "Envoyées"
+      received_requests: "Reçues"
+      friends_list: "Liste des amis"
+      my_map: "Ma carte"
+      settings: "Paramètres"
       new_trip: "Créer un nouveau voyage"
       searchplaceholder: "Un nouveau voyage ?"
       searchbutton: "Voyager"
-
 
   #contact
   contacts:
@@ -156,6 +224,26 @@ fr:
       gobacktotrip: "Retourner sur la page de mon voyage"
 
   #trips
+
+  trips:
+    demo:
+      legend_mustsee: "Les incontournables"
+      legend_allexperiences: "Toutes les expériences"
+      legend_landing_point: "Principal point d'arrivée"
+
+  #sidebar
+  sidebar_inspiration: "Inspiration"
+  sidebar_tips: "Conseils"
+  sidebar_mytrip: "Mon itinéraire"
+  sidebar_inspiration_text_1: "Voici les meilleures expériences,"
+  sidebar_inspiration_text_2: " triées par note"
+  sidebar_tips_text_1: "Pas encore de conseils ? Pour que vos amis les ajoutent sur votre carte, cliquez sur :"
+  sidebar_tips_text_2: "Partager sur Facebook"
+  sidebar_tips_text_3: "ou"
+  sidebar_tips_text_4: "Demander par email"
+  sidebar_tips_text_5: "Ci-dessous, voici les conseils de vos amis. Ajoutez-les à votre voyage en cliquant dessus."
+  sidebar_mytrip_1: "Voici vos expériences sélectionnées ! Supprimez-les ou réorganisez-les dans le bon ordre."
+  sidebar_mytrip_2: "Voir la synthèse éditable et recevoir par email"
 
   trip_show_title: "Ajouter une autre étape à mon voyage"
   form_new_exp_intro: "Quelque chose manque sur la carte Explorizers? Ajoutez votre propre étape à votre voyage ici !"

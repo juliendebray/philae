@@ -4,13 +4,13 @@
       <div class="row text-center">
 <!--         <div class="col-xs-6 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-3 text-center">
           <%= link_to trip_path(@trip), class:"btn btn-info btn-block white-space-normal" do %>
-            <i class="fa fa-arrow-circle-left"></i><%= t('.gobacktotrip') %>
+            <i class="fa fa-arrow-circle-left"></i><%= t('summarize_gobacktotrip') %>
           <% end %>
         </div> -->
         <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
           <%= form_for @trip, url: summarize_trip_path(@trip.id) do |f| %>
             <%= hidden_field_tag :id, value = @trip.id %>
-              <label for="mySubmit" class="btn btn-success btn-block white-space-normal"><%= t('.getbyemail') %><i class="fa fa-envelope"></i> </label>
+              <label for="mySubmit" class="btn btn-success btn-block white-space-normal"><%= t('summarize_getbyemail') %><i class="fa fa-envelope"></i> </label>
             <%= f.submit(id:'mySubmit', class:'hidden') %>
           <% end %>
         </div>
@@ -21,13 +21,12 @@
       <div id="titleblock" class="text-center">
         <div class="title">
           <h1><%= @trip.title %></h1>
-          <p><i><%= t('.creation') %><%= @trip.created_at.strftime('%d-%m-%Y') %> -
-          <%= t('.lastupdate') %> <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %></i></p>
+          <p><i><%= t('summarize_creation') %><%= @trip.created_at.strftime('%d-%m-%Y') %> -
+          <%= t('summarize_lastupdate') %> <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %></i></p>
         </div>
       </div>
     </div>
   </div>
-
   <div class="container">
     <div class="row">
       <% @trip_exp_ordered.each do |trip_exp| %>

@@ -3,9 +3,9 @@
     <div id="user-sidebar">
       <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-plane"></i> <br>Mes voyages</a></li>
-          <li><a href="#tab2" data-toggle="tab"><i class="fa fa-globe"></i> <br>Inspirez-moi</a></li>
-          <li><a href="#tab3" data-toggle="tab"><i class="fa fa-users"></i> <br>Mes amis</a></li>
+          <li class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-plane"></i> <br><%= t('.mytrips') %></a></li>
+          <li><a href="#tab2" data-toggle="tab"><i class="fa fa-globe"></i> <br><%= t('.inspire_me') %></a></li>
+          <li><a href="#tab3" data-toggle="tab"><i class="fa fa-users"></i> <br><%= t('.myfriends') %></a></li>
 <!--           <li><a href="#tab4" data-toggle="tab"><i class="fa fa-map-marker"></i> <br>Ma carte</a></li>
           <li><a href="#tab5" data-toggle="tab"><i class="fa fa-cog"></i> <br>Paramètres</a></li> -->
         </ul>
@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="user-content-detail">
-            <h2 class="text-center">Mon voyage en cours</h2>
+            <h2 class="text-center"><%= t('.current_trip') %></h2>
             <div class="vertical-spacer-xs"></div>
             <div class="row">
               <div class="col-xs-12">
@@ -52,20 +52,20 @@
                         <div class="vertical-spacer-xs"></div>
                         <p><%= @user.trips.last.title %></p>
                         <% if @user.trips.last.trip_experiences.any? %>
-                          <small>Complétez votre voyage ou recevez votre sélection</small>
+                          <small><%= t('.complete_trip') %></small>
                         <% else %>
-                          <small>Découvrez les points d'intérêt et ajoutez-les à votre sélection</small>
+                          <small><%= t('.find_places') %></small>
                         <% end %>
                         <br>
                         <% if @user.trips.last.trip_comments.any? %>
-                          <small>vos amis ont donné leurs conseils : lisez-les</small>
+                          <small><%= t('.read_tips') %></small>
                         <% else %>
-                          <small>Demandez les conseils de vos amis</small>
+                          <small><%= t('.ask_tips') %></small>
                         <% end %>
                         <br>
                         <br>
                         <%= link_to @user.trips.last, { method: :delete, data: {confirm: t('.delete')} } do %>
-                          <i>Supprimer ?</i>
+                          <i><%= t('.delete') %></i>
                         <% end %>
                       </div>
                     </div>
@@ -87,7 +87,7 @@
 
             </div>
             <div class="vertical-spacer-sm"></div>
-            <h2 class="text-center">Mes autres voyages</h2>
+            <h2 class="text-center"><%= t('.other_trips') %></h2>
             <div class="vertical-spacer-xs"></div>
             <% @user.trips.each do |trip| %>
               <div class="col-xs-12 col-sm-6 col-md-4">
@@ -126,25 +126,25 @@
         <div class="tab-pane" id="tab2">
           <div id="inspiration-banner">
             <div id="titleblock" class="text-center">
-              <h2>Inspirez-moi</h2>
+              <h2><%= t('.inspire_me') %></h2>
             </div>
           </div>
           <div class="user-content-detail">
-            <h2 class="text-center">Explorez la destination du moment</h2>
-            <p class='text-center'>Laissez-vous inspirer par la destination du moment.</p>
+            <h2 class="text-center"><%= t('.destination_title') %></h2>
+            <p class='text-center'><%= t('.destination_tagline') %></p>
             <%= link_to Destination.find(7) do %>
               <div class="destination-item text-center">
                 <%= image_tag(Destination.find(7).destination_pictures.first.picture.url(:banner), class: 'max-width') %>
                 <div class="destination-name text-center">
                   <%= Destination.find(7).name.upcase %>
-                  <br>
-                  <small>Découvrir les meilleures expériences</small>
+<!--                   <br>
+                  <small>Découvrir les meilleures expériences</small> -->
                 </div>
               </div>
             <% end %>
             <div class="vertical-spacer-sm"></div>
             <div class="experience-promo">
-              <h2 class="text-center">Découvrez ces expériences uniques</h2>
+              <h2 class="text-center"><%= t('.experiences_title') %></h2>
               <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4">
                   <div class="experience-box">
@@ -189,19 +189,19 @@
         <div class="tab-pane" id="tab3">
           <div id="user-friends-banner">
             <div id="titleblock" class="text-center">
-              <h2>Mes amis sur Explorizers</h2>
+              <h2><%= t('.friends_on_explorizers') %></h2>
             </div>
           </div>
           <div class="user-content-detail">
-            <h3>Envoyer une demande par email</h3>
+            <h3><%= t('.send_email_request') %></h3>
             <%= form_tag(user_relationships_path(current_user)) do %>
               <%= text_field_tag :email %>
               <%= submit_tag 'Send request' %>
             <% end %>
             <div class="row">
               <div class="col-xs-12 col-sm-3">
-                <h3>Mes demandes</h3>
-                <h4>Envoyées</h4>
+                <h3><%= t('.my_requests') %></h3>
+                <h4><%= t('.sent_requests') %></h4>
                 <ul>
                   <% current_user.relationships.where(sender_id: current_user.id).where(status: 'pending').each do |r| %>
                     <li>
@@ -209,7 +209,7 @@
                     </li>
                   <% end %>
                 </ul>
-                <h4>Reçues</h4>
+                <h4><%= t('.received_requests') %></h4>
                 <ul>
                   <% current_user.relationships.where.not(sender_id: current_user).where(status: 'pending').each do |r| %>
                     <li>
@@ -225,7 +225,7 @@
               </div>
             </div>
             <div class="col-xs-12 col-sm-3">
-              <h3>Liste des amis</h3>
+              <h3><%= t('.friends_list') %></h3>
               <ul>
                 <% current_user.relationships.where(status: 'accepted').each do |r| %>
                   <li>
@@ -238,7 +238,7 @@
         </div>
         <div class="tab-pane" id="tab4">
           <div id="titleblock" class="text-center">
-            <h2>Ma carte</h2>
+            <h2><%= t('.my_map') %></h2>
           </div>
           <div class="user-content-detail">
             <p>Coming soon !</p>
@@ -247,7 +247,7 @@
         <div class="tab-pane" id="tab5">
           <div id="user-settings-banner">
             <div id="titleblock" class="text-center">
-              <h2>Paramètres</h2>
+              <h2><%= t('.settings') %></h2>
             </div>
           </div>
           <div class="user-content-detail">
