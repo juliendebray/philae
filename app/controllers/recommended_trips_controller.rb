@@ -1,5 +1,6 @@
 class RecommendedTripsController < ApplicationController
   before_action :authenticate_user!
+  respond_to :js
 
   def add_to_trip
     @trip = Trip.find(params[:trip_id])

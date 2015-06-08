@@ -1,0 +1,8 @@
+// Disabler les autres boutons
+$('a.select_trip').addClass('disabled');
+$('a[data-recommended-trip-id = <%= @recommended_trip_id %>]').removeClass('disabled', 'btn-info').addClass('btn-sucess');
+// Changer le boutton en permettant la suppression de la selection de l'itinéraire
+// Indiquer en bas du bouton que l'itinéraire à bien été selectionné
+// Mettre les marqueurs sur la carte
+// Connecter les points de la carte pour montrer l'itinéraire - boutton pour afficher itinéraire
+
