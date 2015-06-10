@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/trips/:trip_id/search_results', to: 'trips#search_results', as: 'search_results_trip'
   get '/trips/:trip_id/search_results_with_block', to: 'trips#search_results_with_block', as: 'search_results_with_block_trip'
   get '/trips/:trip_id/recommended_trips/:recommended_trip_id/add_to_trip', to: 'recommended_trips#add_to_trip', as: 'add_to_trip'
+  get '/trips/:trip_id/recommended_trips/:recommended_trip_id/remove_from_trip', to: 'recommended_trips#remove_from_trip', as: 'remove_from_trip'
 
   scope '(:locale)', locale: /fr|en/ do
     root 'home#index'
