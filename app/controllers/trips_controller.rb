@@ -46,29 +46,37 @@ class TripsController < ApplicationController
   def search_results
     @trip = Trip.find(params[:trip_id])
     # Experiences selection
-    experiences_selection = Experience.where(published: true, country_code: @trip.country_code)
+    experiences_selection = Experience.where(published: true, country_code: @trip.country_code, landing_point: false)
+    experiences_list = []
     if !(params[:categories].nil? || params[:categories].length == 5)
+      experiences_list = experiences_selection.where(must_see: true) if params[:categories].include?('must')
+      experiences_selection.each {|e| experiences_list << e if e.category_tab.include?('otbt')} if params[:categories].include?('otbt')
+      experiences_selection.each {|e| experiences_list << e if e.category_tab.include?('relax')} if params[:categories].include?('relax')
+      experiences_selection.each {|e| experiences_list << e if e.category_tab.include?('culture')} if params[:categories].include?('culture')
+      experiences_selection.each {|e| experiences_list << e if e.category_tab.include?('sport')} if params[:categories].include?('sport')
+      experiences_selection = experiences_list.uniq
+
       # Fetch experiences according to categories
-      if params[:categories].include?('must')
-        formatted_categories = params[:categories] - ['must']
-        experiences_selection = experiences_selection.where(must_see: true)
-        if !(formatted_categories.empty?)
-          # Fetch only must_see
-          experiences_tmp = []
+      # if params[:categories].include?('must')
+      #   formatted_categories = params[:categories] - ['must']
+      #   experiences_selection = experiences_selection.where(must_see: true)
+      #   if !(formatted_categories.empty?)
+      #     # Fetch only must_see
+      #     experiences_tmp = []
 
 
-          experiences_selection.each do |experience|
-            experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - formatted_categories).length <= formatted_categories.length) && ((experience.category_tab.to_a - formatted_categories).length < experience.category_tab.to_a.length)
-          end
-         experiences_selection = experiences_tmp
-        end
-      else
-         experiences_tmp = []
-         experiences_selection.each do |experience|
-           experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - params[:categories]).length <= params[:categories].length) && ((experience.category_tab.to_a - params[:categories]).length < experience.category_tab.to_a.length)
-         end
-        experiences_selection = experiences_tmp
-      end
+      #     experiences_selection.each do |experience|
+      #       experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - formatted_categories).length <= formatted_categories.length) && ((experience.category_tab.to_a - formatted_categories).length < experience.category_tab.to_a.length)
+      #     end
+      #    experiences_selection = experiences_tmp
+      #   end
+      # else
+      #    experiences_tmp = []
+      #    experiences_selection.each do |experience|
+      #      experiences_tmp << experience if (experience.category_tab.any?) && ((experience.category_tab.to_a - params[:categories]).length <= params[:categories].length) && ((experience.category_tab.to_a - params[:categories]).length < experience.category_tab.to_a.length)
+      #    end
+      #   experiences_selection = experiences_tmp
+      # end
     end
     @markers = build_markers(experiences_selection.sort_by{|e| e.average_rating}.reverse, @trip, false)
     render json: @markers
