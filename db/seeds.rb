@@ -8,8 +8,8 @@
 
 
 # Seed  experiences with trip advisor
-require 'json'
-require 'rest_client'
+# require 'json'
+# require 'rest_client'
 # Update Cuba's experiences with ta id
 # url_json = "https://spreadsheets.google.com/feeds/list/1VNjWN-IZpIdh7tMNk8nUxzvsprkd2twDGVyJn0fGvxA/od6/public/values?alt=json"
 # data_hash = JSON.parse(RestClient.get(url_json))
@@ -20,38 +20,38 @@ require 'rest_client'
 #   end
 # end
 # Update Cuba's experiences with ta ratings and comments
-url_json = "https://spreadsheets.google.com/feeds/list/1rQ8RaI66PmtdvarLSPOl3C4LKV2Wcapg41V86vJXcSc/od6/public/values?alt=json"
-data_hash = JSON.parse(RestClient.get(url_json))
-tab = []
-data_hash['feed']['entry'].each do |exp_data|
-  experience = Experience.find(exp_data['gsx$experienceid']['$t'].to_i)
-  ta_votes = exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i
-  ta_rating = ((exp_data['gsx$nbfivestars']['$t'].to_i*5 + exp_data['gsx$nbfourstars']['$t'].to_i*4 + exp_data['gsx$nbthreestars']['$t'].to_i*3 + exp_data['gsx$nbtwostars']['$t'].to_i*2 + exp_data['gsx$nbonestars']['$t'].to_i*1).to_f / (exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i))
-  experience.update(
-    ta_id: exp_data['gsx$experiencetaid']['$t'],
-    ta_votes: ta_votes,
-    ta_rating: ta_rating.round(2),
-    ta_url: exp_data['gsx$url']['$t']
-  )
-  experience.experience_reviews.create(
-    name: exp_data['gsx$commentonename']['$t'],
-    rating: exp_data['gsx$commentonescore']['$t'].to_i,
-    original_date: exp_data['gsx$commentonedate']['$t'],
-    comment: exp_data['gsx$commentonecontent']['$t']
-  )
-  experience.experience_reviews.create(
-    name: exp_data['gsx$commenttwoname']['$t'],
-    rating: exp_data['gsx$commenttwoscore']['$t'].to_i,
-    original_date: exp_data['gsx$commenttwodate']['$t'],
-    comment: exp_data['gsx$commenttwocontent']['$t']
-  )
-  experience.experience_reviews.create(
-    name: exp_data['gsx$commentthreename']['$t'],
-    rating: exp_data['gsx$commentthreescore']['$t'].to_i,
-    original_date: exp_data['gsx$commentthreedate']['$t'],
-    comment: exp_data['gsx$commentthreecontent']['$t']
-  )
-end
+# url_json = "https://spreadsheets.google.com/feeds/list/1rQ8RaI66PmtdvarLSPOl3C4LKV2Wcapg41V86vJXcSc/od6/public/values?alt=json"
+# data_hash = JSON.parse(RestClient.get(url_json))
+# tab = []
+# data_hash['feed']['entry'].each do |exp_data|
+#   experience = Experience.find(exp_data['gsx$experienceid']['$t'].to_i)
+#   ta_votes = exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i
+#   ta_rating = ((exp_data['gsx$nbfivestars']['$t'].to_i*5 + exp_data['gsx$nbfourstars']['$t'].to_i*4 + exp_data['gsx$nbthreestars']['$t'].to_i*3 + exp_data['gsx$nbtwostars']['$t'].to_i*2 + exp_data['gsx$nbonestars']['$t'].to_i*1).to_f / (exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i))
+#   experience.update(
+#     ta_id: exp_data['gsx$experiencetaid']['$t'],
+#     ta_votes: ta_votes,
+#     ta_rating: ta_rating.round(2),
+#     ta_url: exp_data['gsx$url']['$t']
+#   )
+#   experience.experience_reviews.create(
+#     name: exp_data['gsx$commentonename']['$t'],
+#     rating: exp_data['gsx$commentonescore']['$t'].to_i,
+#     original_date: exp_data['gsx$commentonedate']['$t'],
+#     comment: exp_data['gsx$commentonecontent']['$t']
+#   )
+#   experience.experience_reviews.create(
+#     name: exp_data['gsx$commenttwoname']['$t'],
+#     rating: exp_data['gsx$commenttwoscore']['$t'].to_i,
+#     original_date: exp_data['gsx$commenttwodate']['$t'],
+#     comment: exp_data['gsx$commenttwocontent']['$t']
+#   )
+#   experience.experience_reviews.create(
+#     name: exp_data['gsx$commentthreename']['$t'],
+#     rating: exp_data['gsx$commentthreescore']['$t'].to_i,
+#     original_date: exp_data['gsx$commentthreedate']['$t'],
+#     comment: exp_data['gsx$commentthreecontent']['$t']
+#   )
+# end
 
 
 # New experiences Cuba
@@ -115,21 +115,21 @@ end
 # end
 
 # Update experiences Japon
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1ngH0TnyNUa2LHx6TBcwtoAk2Ql3E8vM2__1l4HDLiGM/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |exp_data|
-  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
-    name: exp_data['gsx$name']['$t'],
-    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
-    description: exp_data['gsx$descriptionfrench']['$t'],
-    onesentence: exp_data['gsx$onesentence']['$t'],
-    timetospent: exp_data['gsx$timetospent']['$t'],
-    wheretosleep: exp_data['gsx$wheretosleep']['$t'],
-    transportation: exp_data['gsx$transportation']['$t']
-  )
-end
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1ngH0TnyNUa2LHx6TBcwtoAk2Ql3E8vM2__1l4HDLiGM/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
+#     name: exp_data['gsx$name']['$t'],
+#     average_rating: exp_data['gsx$averagerating']['$t'].to_f,
+#     description: exp_data['gsx$descriptionfrench']['$t'],
+#     onesentence: exp_data['gsx$onesentence']['$t'],
+#     timetospent: exp_data['gsx$timetospent']['$t'],
+#     wheretosleep: exp_data['gsx$wheretosleep']['$t'],
+#     transportation: exp_data['gsx$transportation']['$t']
+#   )
+# end
 
 #Mise en ligne du temps à passer pour chaque experience
 # require 'json'
@@ -306,48 +306,48 @@ end
 
 
 #create Destination Japon
-# require 'json'
-# require 'rest_client'
-# url_json = 'https://spreadsheets.google.com/feeds/list/1dIKTmwVnlIuA62_DUjYyaIwG-VnCzx2tpklDrB42XXY/od6/public/values?alt=json'
-# data_hash = JSON.parse(RestClient.get(url_json))
-# data_hash['feed']['entry'].each do |dest_data|
-#   destination = Destination.create(
-#     name: dest_data['gsx$name']['$t'],
-#     ne_lat: dest_data['gsx$nelat']['$t'].to_f,
-#     ne_lng: dest_data['gsx$nelng']['$t'].to_f,
-#     sw_lat: dest_data['gsx$swlat']['$t'].to_f,
-#     sw_lng: dest_data['gsx$swlng']['$t'].to_f,
-#     intro_title: dest_data['gsx$introtitle']['$t'],
-#     sentence1: dest_data['gsx$sentence1']['$t'],
-#     sentence2: dest_data['gsx$sentence2']['$t'],
-#     sentence3: dest_data['gsx$sentence3']['$t'],
-#     sentence4: dest_data['gsx$sentence4']['$t'],
-#     sentence5: dest_data['gsx$sentence5']['$t'],
-#     enter_title: dest_data['gsx$entertitle']['$t'],
-#     enter_line1: dest_data['gsx$enterline1']['$t'],
-#     enter_line2: dest_data['gsx$enterline2']['$t'],
-#     enter_line3: dest_data['gsx$enterline3']['$t'],
-#     visit_time_title: dest_data['gsx$visittimetitle']['$t'],
-#     visit_line1: dest_data['gsx$visitline1']['$t'],
-#     visit_line2: dest_data['gsx$visitline2']['$t'],
-#     visit_line3: dest_data['gsx$visitline3']['$t'],
-#     security_title: dest_data['gsx$securitytitle']['$t'],
-#     security_line1: dest_data['gsx$securityline1']['$t'],
-#     security_line2: dest_data['gsx$securityline2']['$t'],
-#     security_line3: dest_data['gsx$securityline3']['$t'],
-#     transport_title: dest_data['gsx$transporttitle']['$t'],
-#     transport_line1: dest_data['gsx$transportline1']['$t'],
-#     transport_line2: dest_data['gsx$transportline2']['$t'],
-#     transport_line3: dest_data['gsx$transportline3']['$t'],
-#     transport_line4: dest_data['gsx$transportline4']['$t'],
-#     transport_line5: dest_data['gsx$transportline5']['$t'],
-#     toknow_title: dest_data['gsx$toknowtitle']['$t'],
-#     toknow_line1: dest_data['gsx$toknowline1']['$t'],
-#     toknow_line2: dest_data['gsx$toknowline2']['$t'],
-#     toknow_line3: dest_data['gsx$toknowline3']['$t'],
-#     toknow_line4: dest_data['gsx$toknowline4']['$t'],
-#     toknow_line5: dest_data['gsx$toknowline5']['$t'],
-#   )
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1iXltmoUn6ycLdJ3HrEQWx6B4KDIBlnsjEZPGpRfgGVQ/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |dest_data|
+  destination = Destination.create(
+    name: dest_data['gsx$name']['$t'],
+    ne_lat: dest_data['gsx$nelat']['$t'].to_f,
+    ne_lng: dest_data['gsx$nelng']['$t'].to_f,
+    sw_lat: dest_data['gsx$swlat']['$t'].to_f,
+    sw_lng: dest_data['gsx$swlng']['$t'].to_f,
+    intro_title: dest_data['gsx$introtitle']['$t'],
+    sentence1: dest_data['gsx$sentence1']['$t'],
+    sentence2: dest_data['gsx$sentence2']['$t'],
+    sentence3: dest_data['gsx$sentence3']['$t'],
+    sentence4: dest_data['gsx$sentence4']['$t'],
+    sentence5: dest_data['gsx$sentence5']['$t'],
+    enter_title: dest_data['gsx$entertitle']['$t'],
+    enter_line1: dest_data['gsx$enterline1']['$t'],
+    enter_line2: dest_data['gsx$enterline2']['$t'],
+    enter_line3: dest_data['gsx$enterline3']['$t'],
+    visit_time_title: dest_data['gsx$visittimetitle']['$t'],
+    visit_line1: dest_data['gsx$visitline1']['$t'],
+    visit_line2: dest_data['gsx$visitline2']['$t'],
+    visit_line3: dest_data['gsx$visitline3']['$t'],
+    security_title: dest_data['gsx$securitytitle']['$t'],
+    security_line1: dest_data['gsx$securityline1']['$t'],
+    security_line2: dest_data['gsx$securityline2']['$t'],
+    security_line3: dest_data['gsx$securityline3']['$t'],
+    transport_title: dest_data['gsx$transporttitle']['$t'],
+    transport_line1: dest_data['gsx$transportline1']['$t'],
+    transport_line2: dest_data['gsx$transportline2']['$t'],
+    transport_line3: dest_data['gsx$transportline3']['$t'],
+    transport_line4: dest_data['gsx$transportline4']['$t'],
+    transport_line5: dest_data['gsx$transportline5']['$t'],
+    toknow_title: dest_data['gsx$toknowtitle']['$t'],
+    toknow_line1: dest_data['gsx$toknowline1']['$t'],
+    toknow_line2: dest_data['gsx$toknowline2']['$t'],
+    toknow_line3: dest_data['gsx$toknowline3']['$t'],
+    toknow_line4: dest_data['gsx$toknowline4']['$t'],
+    toknow_line5: dest_data['gsx$toknowline5']['$t'],
+  )
 #   gen_url = "http://philae-floju.s3.amazonaws.com/photos_japon/"
 #   name = dest_data['gsx$name']['$t']
 #   (1..4).each do |i|
@@ -359,7 +359,7 @@ end
 #     end
 #     destination.destination_pictures.create(picture: complete_url)
 #   end
-# end
+end
 
 # Seed experiences
 
