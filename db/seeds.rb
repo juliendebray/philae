@@ -305,10 +305,10 @@
 # end
 
 
-#create Destination Bresil
+#create Destination
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1iXltmoUn6ycLdJ3HrEQWx6B4KDIBlnsjEZPGpRfgGVQ/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1a_DrZ-X1N3Wv4fdafVFu3sh-msdtboBHDzybgccl9dI/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |dest_data|
   destination = Destination.create(
@@ -348,10 +348,10 @@ data_hash['feed']['entry'].each do |dest_data|
     toknow_line4: dest_data['gsx$toknowline4']['$t'],
     toknow_line5: dest_data['gsx$toknowline5']['$t'],
   )
-  gen_url = "http://philae-floju.s3.amazonaws.com/photos_bresil/"
+  gen_url = "http://philae-floju.s3.amazonaws.com/photos_mexique/"
   name = dest_data['gsx$name']['$t']
   (1..4).each do |i|
-    complete_url = gen_url + "bresil_#{i}.jpg"
+    complete_url = gen_url + "mexique_#{i}.jpg"
     begin
       doc = open(complete_url)
     rescue OpenURI::HTTPError

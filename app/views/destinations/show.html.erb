@@ -7,7 +7,7 @@
 <div class="wrapper bg-white black">
   <div class="destination-banner">
     <%= image_tag @destination.destination_pictures.first.picture.url(:banner) %>
-    <h1><%= @destination.name.upcase %></h1>
+    <h1><%= @destination.name.capitalize %></h1>
   </div>
   <div class="destination-content">
     <h3 class="text-center"><%= @destination.intro_title %></h3>
