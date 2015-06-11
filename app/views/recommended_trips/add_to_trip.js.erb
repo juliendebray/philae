@@ -1,0 +1,10 @@
+// Disabler les autres boutons
+$('a.select-trip').addClass('hidden');
+// Changer le boutton en permettant la suppression de la selection de l'itinéraire
+// Indiquer en bas du bouton que l'itinéraire à bien été selectionné
+$('.remove-trip[data-recommended-trip-id = <%= @recommended_trip.id %>]').removeClass('hidden');
+// Mettre les marqueurs sur la carte
+requestDataFromAPI(<%= @trip.id %>, collectUserChoice(), false);
+// Connecter les points de la carte pour montrer l'itinéraire - boutton pour afficher itinéraire
+// Gérer le cas où un recommended trip a déjà été selectionner
+// Gérer les cas où il y a dejà des trip experiences qui existe

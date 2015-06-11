@@ -1,0 +1,3 @@
+$('.remove-trip[data-recommended-trip-id = <%= @recommended_trip.id %>]').addClass('hidden');
+$('.select-trip').removeClass('hidden');
+requestDataFromAPI(<%= @trip.id %>, collectUserChoice(), false);

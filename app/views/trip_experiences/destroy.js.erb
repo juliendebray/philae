@@ -6,7 +6,7 @@ $( document ).ready(function() {
   $('#myExperienceModal').modal('hide');
   var map = handler.getMap();
   var url = window.location.href;
-  if (url.toLowerCase().indexOf("explore_map")>0) {
+  if (url.toLowerCase().indexOf("explore_")>0) {
     requestDataFromAPI(<%= @trip.id %>, collectUserChoice());
   } else if (url.toLowerCase().indexOf("plan_my_trip")>0 && $('.tab-pane.active').prop('id')=='top-from-explorizers') {
     requestDataFromAPI(<%= @trip.id %>, collectUserChoice(), true);
