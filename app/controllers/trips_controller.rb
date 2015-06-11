@@ -49,11 +49,23 @@ class TripsController < ApplicationController
     experiences_selection = Experience.where(published: true, country_code: @trip.country_code, landing_point: false)
     experiences_list = []
     if !(params[:categories].nil? || params[:categories].length == 5)
-      experiences_list = experiences_selection.where(must_see: true) if params[:categories].include?('must')
-      experiences_selection.each {|e| experiences_list << e if e.category_tab.include?('otbt')} if params[:categories].include?('otbt')
-      experiences_selection.each {|e| experiences_list << e if e.category_tab.include?('relax')} if params[:categories].include?('relax')
-      experiences_selection.each {|e| experiences_list << e if e.category_tab.include?('culture')} if params[:categories].include?('culture')
-      experiences_selection.each {|e| experiences_list << e if e.category_tab.include?('sport')} if params[:categories].include?('sport')
+      if params[:categories].include?('must')
+        experiences_list += (experiences_selection.where(must_see: true).to_a) if params[:categories].include?('must')
+      end
+      if params[:categories].include?('otbt')
+        experiences_selection.each{|e| experiences_list << e if e.category_tab.to_a.include?('otbt')}
+      end
+      if params[:categories].include?('relax')
+        experiences_selection.each{|e| experiences_list << e if e.category_tab.to_a.include?('relax')}
+      end
+      if params[:categories].include?('culture')
+        puts 'CULTURE'
+        experiences_selection.each{|e| experiences_list << e if e.category_tab.to_a.include?('culture')}
+      end
+      if params[:categories].include?('sport')
+        puts 'SPORT'
+        experiences_selection.each{|e| experiences_list << e if e.category_tab.to_a.include?('sport')}
+      end
       experiences_selection = experiences_list.uniq
 
       # Fetch experiences according to categories
