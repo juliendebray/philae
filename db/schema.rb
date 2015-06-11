@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611144924) do
+ActiveRecord::Schema.define(version: 20150611204501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -230,6 +230,21 @@ ActiveRecord::Schema.define(version: 20150611144924) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer  "destination_id"
+    t.text     "step_1"
+    t.text     "step_2"
+    t.text     "step_3"
+    t.text     "step_4"
+    t.text     "step_5"
+    t.text     "step_6"
+    t.text     "step_7"
+    t.text     "step_8"
+    t.text     "step_9"
+    t.text     "step_10"
+    t.text     "step_11"
+    t.text     "step_12"
+    t.text     "step_13"
+    t.text     "step_14"
+    t.text     "step_15"
   end
 
   add_index "recommended_trips", ["destination_id"], name: "index_recommended_trips_on_destination_id", using: :btree
