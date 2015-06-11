@@ -244,6 +244,33 @@
 #   )
 # end
 
+# Seed recommended_trips
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1Wpmu-trbmTKVsDap3Ap0hW9mZG5qZa8--s9qrVUltv8/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |destination_data|
+  Destination.find(destination_data['gsx$destinationid']['$t'].to_i).create(
+  destination = Destination.create(
+    title: destination_data['gsx$title']['$t'],
+    description: destination_data['gsx$description']['$t'],
+    step_1: destination_data['gsx$step1']['$t'],
+    step_2: destination_data['gsx$step2']['$t'],
+    step_3: destination_data['gsx$step3']['$t'],
+    step_4: destination_data['gsx$step4']['$t'],
+    step_5: destination_data['gsx$step5']['$t'],
+    step_6: destination_data['gsx$step6']['$t'],
+    step_7: destination_data['gsx$step7']['$t'],
+    step_8: destination_data['gsx$step8']['$t'],
+    step_9: destination_data['gsx$step9']['$t'],
+    step_10: destination_data['gsx$step10']['$t'],
+    step_11: destination_data['gsx$step11']['$t'],
+    step_12: destination_data['gsx$step12']['$t'],
+    step_13: destination_data['gsx$step13']['$t'],
+    step_14: destination_data['gsx$step14']['$t'],
+    step_15: destination_data['gsx$step15']['$t']
+  )
+end
 
 # Seed Destination
 
