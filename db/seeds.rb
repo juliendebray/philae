@@ -251,7 +251,6 @@ url_json = 'https://spreadsheets.google.com/feeds/list/1Wpmu-trbmTKVsDap3Ap0hW9m
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |destination_data|
   Destination.find(destination_data['gsx$destinationid']['$t'].to_i).create(
-  destination = Destination.create(
     title: destination_data['gsx$title']['$t'],
     description: destination_data['gsx$description']['$t'],
     step_1: destination_data['gsx$step1']['$t'],
