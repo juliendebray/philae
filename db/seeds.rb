@@ -273,12 +273,25 @@
 # end
 
 # Seed recommended_trip_experiences
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1lNzMqUvKF8kZ2iH_Rs-_gOVCMR-ZGtLMewwaFo255BQ/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |rec_trip_exp|
+#   rec_trip_exp = RecommendedTripExperience.create(
+#     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
+#     experience_id: rec_trip_exp['gsx$experienceid']['$t'],
+#     order: rec_trip_exp['gsx$order']['$t'].to_i
+#   )
+# end
+
+# Update recommended_trip_experiences
 require 'json'
 require 'rest_client'
 url_json = 'https://spreadsheets.google.com/feeds/list/1lNzMqUvKF8kZ2iH_Rs-_gOVCMR-ZGtLMewwaFo255BQ/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |rec_trip_exp|
-  rec_trip_exp = RecommendedTripExperience.update(
+  RecommendedTripExperience.find(rec_trip_exp['gsx$recommendedtripexperienceid']['$t'].to_i).update(
     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
     experience_id: rec_trip_exp['gsx$experienceid']['$t'],
     order: rec_trip_exp['gsx$order']['$t'].to_i
