@@ -169,220 +169,95 @@
   </a>
   <div class="collapse" id="collapseRecommendedTrip">
     <div class="destination-content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="destination-box-nobordertop">
-            <div class="row">
-              <div class="col-xs-12">
-                <h3 class="text-center">1. Une semaine : Tokyo et Mont Fuji</h3><br>
-                <p>Si vous n'avez que peu de temps, concentrez-vous sur le plus simple : quelques jours à Tokyo, et une excursion au Mont Fuji.</p>
-                <div class="itinerary_image text-center">
-                  <%= image_tag 'japon_trip_1.png'%>
-                </div>
+      <% RecommendedTrip.where(destination_id: @destination.id).each do |rec_trip| %>
+        <div class="destination-box-nobordertop">
+          <div class="row">
+            <div class="col-xs-12">
+              <h3 class="text-center"><%= rec_trip.title %></h3><br>
+              <p><%= rec_trip.description %></p>
+              <div class="itinerary_image text-center">
+                <%= image_tag rec_trip.picture.url(:banner) %>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-9">
-                <ul>
-                  <li><p><b>Jour 1</b> : à Tokyo, commencez par une immersion dans la cuisine japonaise par un passage au <span class="text-exp"><%= link_to "Tsukiji Fish Market", experience_detail_path(162), remote: true %></span>, où vous pourrez déguster les meilleurs sushis au monde. Passez l'après-midi dans le quartier voisin de <span class="text-exp"><%= link_to "Ginza", experience_detail_path(159), remote: true %></span>.</p></li>
-                  <li><p><b>Jour 2</b> : allez vous promener dans le <span class="text-exp"><%= link_to "parc Ueno", experience_detail_path(163), remote: true %></span>, puis perdez-vous dans les quartiers alentours, très agréables pour des balades et des pauses gourmandes.</p></li>
-                  <li><p><b>Jour 3</b> : explorez <span class="text-exp" ><%= link_to "Shibuya", experience_detail_path(161), remote: true %></span>, d'abord le fameux passage piéton, puis les rues commerçantes adajcentes. Continuez dans le quartier des <span class="text-exp" ><%= link_to "Harajuku Girls", experience_detail_path(164), remote: true %></span> pour refaire votre garde-robe !</p></li>
-                  <li><p><b>Jour 4</b> : allez faire un tour à Akihabara, le quartier des 'gamers', puis allez rendez-vous vers Shinjuku. Dinez dans le coin, et allez boire des verres dans les <span class="text-exp" ><%= link_to "micro-bars de Golden Gai", experience_detail_path(160), remote: true %></span>.</p></li>
-                  <li><p><b>Jour 5 et 6</b> : partez de bon matin pour le <span class="text-exp" ><%= link_to "Mont Fuji", experience_detail_path(150), remote: true %></span>. Selon la saison, vous pouvez faire l'ascension, ou le voir d'en bas, ce qui est déjà magnifique. </p></li>
-                </ul>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-9">
+              <ul>
+                <li><p><%= raw(rec_trip.step_1) %></p></li>
+                <li><p><%= raw(rec_trip.step_2) %></p></li>
+                <li><p><%= raw rec_trip.step_3 %></p></li>
+                <li><p><%= raw rec_trip.step_4 %></p></li>
+                <li><p><%= raw rec_trip.step_5 %></p></li>
+                <% if rec_trip.step_6.length > 0 %>
+                  <li><p><%= raw rec_trip.step_6 %></p></li>
+                <% end %>
+                <% if rec_trip.step_7.length > 0 %>
+                  <li><p><%= simple_format rec_trip.step_7 %></p></li>
+                <% end %>
+                <% if rec_trip.step_8.length > 0 %>
+                  <li><p><%= simple_format rec_trip.step_8 %></p></li>
+                <% end %>
+                <% if rec_trip.step_9.length > 0 %>
+                  <li><p><%= simple_format rec_trip.step_9 %></p></li>
+                <% end %>
+                <% if rec_trip.step_10.length > 0 %>
+                  <li><p><%= simple_format rec_trip.step_10 %></p></li>
+                <% end %>
+                <% if rec_trip.step_11.length > 0 %>
+                  <li><p><%= simple_format rec_trip.step_11 %></p></li>
+                <% end %>
+                 <% if rec_trip.step_12.length > 0 %>
+                  <li><p><%= simple_format rec_trip.step_12 %></p></li>
+                <% end %>
+                <% if rec_trip.step_13.length > 0 %>
+                  <li><p><%= simple_format rec_trip.step_13 %></p></li>
+                <% end %>
+                <% if rec_trip.step_14.length > 0 %>
+                  <li><p><%= simple_format rec_trip.step_14 %></p></li>
+                <% end %>
+                <% if rec_trip.step_15.length > 0 %>
+                  <li><p><%= simple_format rec_trip.step_15 %></p></li>
+                <% end %>
+              </ul>
+              <br>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+              <div class="itinerary_image">
+                <%= image_tag rec_trip.recommended_trip_experiences.first.experience.experience_pictures.first.picture.url(:small) %>
+                <br><br>
+                <%= image_tag rec_trip.recommended_trip_experiences.third.experience.experience_pictures.first.picture.url(:small) %>
+                <br><br>
+                <% if rec_trip.step_6.length > 0 %>
+                  <%= image_tag rec_trip.recommended_trip_experiences.fifth.experience.experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                <% end %>
+                <% if rec_trip.step_9.length > 0 %>
+                  <%= image_tag rec_trip.recommended_trip_experiences[7].experience.experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                <% end %>
+                <% if rec_trip.step_11.length > 0 %>
+                  <%= image_tag rec_trip.recommended_trip_experiences[9].experience.experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                <% end %>
+                <% if rec_trip.step_13.length > 0 %>
+                  <%= image_tag rec_trip.recommended_trip_experiences[11].experience.experience_pictures.first.picture.url(:small) %>
+                  <br><br>
+                <% end %>
+                <%= image_tag rec_trip.recommended_trip_experiences.last.experience.experience_pictures.first.picture.url(:small) %>
                 <br>
               </div>
-              <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="itinerary_image">
-                  <%= image_tag Experience.find(162).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(161).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(150).experience_pictures.first.picture.url(:small) %>
-                  <br>
-                </div>
-              </div>
+            </div>
+          </div>
+          <%= render('add_recommended_trip', {recommended_trip_id: rec_trip.id}) %>
+        </div>
+        <div class="row text-center">
+          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+            <div id="block-separator">
             </div>
           </div>
         </div>
-      </div>
-      <div class="row text-center">
-        <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-          <div id="block-separator">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="destination-box-nobordertop">
-            <div class="row">
-              <div class="col-xs-12">
-                <h3 class="text-center">2. Un maximum de culture en 10 jours : Tokyo - Kyoto - Nara</h3><br>
-                <p>Ce parcours permet de découvrir la modernité de Tokyo, et de plonger dans l'histoire et le patrimoine japonais à Kyoto et Nara.</p>
-                <div class="itinerary_image text-center">
-                  <%= image_tag 'japon_trip_2.png'%>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-9">
-                <ul>
-                  <li><p><b>Jour 1</b> : à Tokyo, commencez par une immersion dans la cuisine japonaise par un passage au <span class="text-exp" ><%= link_to "Tsukiji Fish Market", experience_detail_path(162), remote: true %></span>, où vous pourrez déguster les meilleurs sushis au monde. Passez l'après-midi dans le quartier voisin de <span class="text-exp" ><%= link_to "Ginza", experience_detail_path(159), remote: true %></span>.</p></li>
-                  <li><p><b>Jour 2</b> : allez vous promener dans le <span class="text-exp" ><%= link_to "parc Ueno", experience_detail_path(163), remote: true %></span>, puis perdez-vous dans les quartiers alentours, très agréables pour des balades et des pauses gourmandes.</p></li>
-                  <li><p><b>Jour 3</b> : explorez <span class="text-exp" ><%= link_to "Shibuya", experience_detail_path(161), remote: true %></span>, d'abord le fameux passage piéton, puis les rues commerçantes adajcentes. Continuez dans le quartier des <span class="text-exp" ><%= link_to "Harajuku Girls", experience_detail_path(164), remote: true %></span> pour refaire votre garde-robe !</p></li>
-                  <li><p><b>Jour 4</b> : allez faire un tour à Akihabara, le quartier des 'gamers', puis allez rendez-vous vers Shinjuku. Dinez dans le coin, et allez boire des verres dans les <span class="text-exp" ><%= link_to "micro-bars de Golden Gai", experience_detail_path(160), remote: true %></span>.</p></li>
-                  <li><p><b>Jour 5</b> : partez pour Kyoto, et profitez de l'après-midi pour vous promenez en ville, tomber par hasard sur un temple, ou faire les courses dans les rues commerçantes.</p></li>
-                  <li><p><b>Jour 6</b> : rendez-vous dans la <span class="text-exp" ><%= link_to "forêt de bambous d'Arashiyama", experience_detail_path(148), remote: true %></span>, et passez la journée dans les environs, il y a plein d'autres choses à y découvrir !</p></li>
-                  <li><p><b>Jour 7</b> : prenez le train pour Inari, et visitez le <span class="text-exp" ><%= link_to "Fushimi Inari-Taisha", experience_detail_path(149), remote: true %></span>. Passez l'après-midi près du Palais impérial, et partez à la découverte des dizaines de temples disséminés dans les environs.</p></li>
-                  <li><p><b>Jour 8</b> : partez de bon matin pour <span class="text-exp" ><%= link_to "Nara", experience_detail_path(153), remote: true %></span> (35 mn de train), et découvrez les richesses historiques de cette ancienne capitale.</p></li>
-                  <li><p><b>Jour 9</b> : rendez-vous dans le nord de Kyoto pour admirer le magnifique pavillon doré de Kinkaku-ji. Enfin, finissez votre séjour à Kyoto par le chemin de la philosophie, qui longe une petite rivière, dans le quartier de Higashiyama. </p></li>
-                  <li><p><b>Jour 10</b> : retour à Tokyo </p></li>
-                </ul>
-                <br>
-              </div>
-              <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="itinerary_image">
-                  <%= image_tag Experience.find(159).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(163).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(161).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(148).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(149).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(153).experience_pictures.first.picture.url(:small) %>
-                  <br>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row text-center">
-        <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-          <div id="block-separator">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="destination-box-nobordertop">
-            <div class="row">
-              <div class="col-xs-12">
-                <h3 class="text-center">3. Tradition et modernité en 2 semaines : Tokyo - Alpes japonaises - Kyoto</h3><br>
-                <p>C'est l'essentiel du Japon : le dynamisme de Tokyo, suivi de la tradition et des beautés naturelles des Alpes japonaises, puis le patrimoine de Kyoto.</p>
-                <div class="itinerary_image text-center">
-                  <%= image_tag 'japon_trip_3.png'%>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-9">
-                <ul>
-                  <li><p><b>Jour 1</b> : à Tokyo, commencez par une immersion dans la cuisine japonaise par un passage au <span class="text-exp" ><%= link_to "Tsukiji Fish Market", experience_detail_path(162), remote: true %></span>, où vous pourrez déguster les meilleurs sushis au monde. Passez l'après-midi dans le quartier voisin de <span class="text-exp" ><%= link_to "Ginza", experience_detail_path(159), remote: true %></span>.</p></li>
-                  <li><p><b>Jour 2</b> : allez vous promener dans le <span class="text-exp" ><%= link_to "parc Ueno", experience_detail_path(163), remote: true %></span>, puis perdez-vous dans les quartiers alentours, très agréables pour des balades et des pauses gourmandes.</p></li>
-                  <li><p><b>Jour 3</b> : explorez <span class="text-exp" ><%= link_to "Shibuya", experience_detail_path(161), remote: true %></span>, d'abord le fameux passage piéton, puis les rues commerçantes adajcentes. Continuez dans le quartier des <span class="text-exp"><%= link_to "Harajuku Girls", experience_detail_path(164), remote: true %></span> pour refaire votre garde-robe !</p></li>
-                  <li><p><b>Jour 4</b> : allez faire un tour à Akihabara, le quartier des 'gamers', puis allez rendez-vous vers Shinjuku. Dinez dans le coin, et allez boire des verres dans les <span class="text-exp" ><%= link_to "micro-bars de Golden Gai", experience_detail_path(160), remote: true %></span>.</p></li>
-                  <li><p><b>Jour 5 et 6</b> : partez de bon matin pour <span class="text-exp" ><%= link_to "Kamikochi", experience_detail_path(146), remote: true %></span>, et prenez vos marques dans le ryokan vous devez absolument séjourner ! Le lendemain, promenez-vous dans les montagnes avoisinantes, et laissez-vous gagner par la zenitude des paysages.</p></li>
-                  <li><p><b>Jour 7 et 8 </b> : quittez Kamikochi pour <span class="text-exp"><%= link_to "Takayama", experience_detail_path(156), remote: true %></span>, où vous pourrez passer deux jours à vous promener, découvrir la ville, ses environs, et vous laisser tenter par un onsen.</p></li>
-                  <li><p><b>Jour 9</b> : partez pour Kyoto, et profitez de l'après-midi pour vous promenez en ville, tomber par hasard sur un temple, ou faire les courses dans les rues commerçantes.</p></li>
-                  <li><p><b>Jour 10</b> : rendez-vous dans la <span class="text-exp" ><%= link_to "forêt de bambous d'Arashiyama", experience_detail_path(148), remote: true %></span>, et passez la journée dans les environs, il y a plein d'autres choses à y découvrir !</p></li>
-                  <li><p><b>Jour 11</b> : prenez le train pour Inari, et visitez le <span class="text-exp" ><%= link_to "Fushimi Inari-Taisha", experience_detail_path(149), remote: true %></span>. Passez l'après-midi près du Palais impérial, et partez à la découverte des dizaines de temples disséminés dans les environs.</p></li>
-                  <li><p><b>Jour 12</b> : partez de bon matin pour <span class="text-exp" ><%= link_to "Nara", experience_detail_path(153), remote: true %></span> (35 mn de train), et découvrez les richesses historiques de cette ancienne capitale.</p></li>
-                  <li><p><b>Jour 13</b> : rendez-vous dans le nord de Kyoto pour admirer le magnifique pavillon doré de Kinkaku-ji. Enfin, finissez votre séjour à Kyoto par le chemin de la philosophie, qui longe une petite rivière, dans le quartier de Higashiyama. </p></li>
-                  <li><p><b>Jour 14</b> : retour à Tokyo </p></li>
-                </ul>
-                <br>
-              </div>
-              <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="itinerary_image">
-                  <%= image_tag Experience.find(161).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(162).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(146).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(156).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(148).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(149).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(153).experience_pictures.first.picture.url(:small) %>
-                  <br>
-                </div>
-              </div>
-            </div>
-            <%= render('add_recommended_trip', {recommended_trip_id: 2}) %>
-          </div>
-        </div>
-      </div>
-      <div class="row text-center">
-        <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-          <div id="block-separator">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="destination-box-nobordertop">
-            <div class="row">
-              <div class="col-xs-12">
-                <h3 class="text-center">4. Histoire et modernité en 2 semaines : Tokyo - Kyoto - Hiroshima</h3><br>
-                <p>Ce parcours permet de découvrir la modernité de Tokyo, le patrimoine de Kyoto et Nara, et une partie de l'histoire du Japon à Hiroshima.</p>
-                <div class="itinerary_image text-center">
-                  <%= image_tag 'japon_trip_4.png'%>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-9">
-                <ul>
-                  <li><p><b>Jour 1</b> : à Tokyo, commencez par une immersion dans la cuisine japonaise par un passage au <span class="text-exp" ><%= link_to "Tsukiji Fish Market", experience_detail_path(162), remote: true %></span>, où vous pourrez déguster les meilleurs sushis au monde. Passez l'après-midi dans le quartier voisin de <span class="text-exp" ><%= link_to "Ginza", experience_detail_path(159), remote: true %></span>.</p></li>
-                  <li><p><b>Jour 2</b> : allez vous promener dans le <span class="text-exp" ><%= link_to "parc Ueno", experience_detail_path(163), remote: true %></span>, puis perdez-vous dans les quartiers alentours, très agréables pour des balades et des pauses gourmandes.</p></li>
-                  <li><p><b>Jour 3</b> : explorez <span class="text-exp" ><%= link_to "Shibuya", experience_detail_path(161), remote: true %></span>, d'abord le fameux passage piéton, puis les rues commerçantes adajcentes. Continuez dans le quartier des <span class="text-exp" ><%= link_to "Harajuku Girls", experience_detail_path(164), remote: true %></span> pour refaire votre garde-robe !</p></li>
-                  <li><p><b>Jour 4</b> : allez faire un tour à Akihabara, le quartier des 'gamers', puis allez rendez-vous vers Shinjuku. Dinez dans le coin, et allez boire des verres dans les <span class="text-exp" ><%= link_to "micro-bars de Golden Gai", experience_detail_path(160), remote: true %></span>.</p></li>
-                  <li><p><b>Jour 5</b> : partez pour Kyoto, et profitez de l'après-midi pour vous promenez en ville, tomber par hasard sur un temple, ou faire les courses dans les rues commerçantes.</p></li>
-                  <li><p><b>Jour 6</b> : rendez-vous dans la <span class="text-exp" ><%= link_to "forêt de bambous d'Arashiyama", experience_detail_path(148), remote: true %></span>, et passez la journée dans les environs, il y a plein d'autres choses à y découvrir !</p></li>
-                  <li><p><b>Jour 7</b> : prenez le train pour Inari, et visitez le <span class="text-exp" ><%= link_to "Fushimi Inari-Taisha", experience_detail_path(149), remote: true %></span>. Passez l'après-midi près du Palais impérial, et partez à la découverte des dizaines de temples disséminés dans les environs.</p></li>
-                  <li><p><b>Jour 8</b> : partez de bon matin pour <span class="text-exp" ><%= link_to "Nara", experience_detail_path(153), remote: true %></span> (35 mn de train), et découvrez les richesses historiques de cette ancienne capitale.</p></li>
-                  <li><p><b>Jour 9</b> : rendez-vous dans le nord de Kyoto pour admirer le magnifique pavillon doré de Kinkaku-ji. Enfin, finissez votre séjour à Kyoto par le chemin de la philosophie, qui longe une petite rivière, dans le quartier de Higashiyama. </p></li>
-                  <li><p><b>Jour 10 et 11</b> : rendez-vous à Okayama, puis prenez un bateau pour la surprenante <span class="text-exp" ><%= link_to "île de Naoshima", experience_detail_path(152), remote: true %></span>, dédiée à l'art contemporain, où vous passerez deux jours </p></li>
-                  <li><p><b>Jour 12 et 13</b> : direction <span class="text-exp" ><%= link_to "Hiroshima", experience_detail_path(145), remote: true %></span>, où vous pourrez visiter monuments commémoratifs, jardins et château, et goûtez aux spécialités culinaires régionales !</p></li>
-                  <li><p><b>Jour 14</b> : retour à Tokyo </p></li>
-                </ul>
-                <br>
-              </div>
-              <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="itinerary_image">
-                  <%= image_tag Experience.find(159).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(161).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(148).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(149).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(153).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(152).experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                  <%= image_tag Experience.find(145).experience_pictures.first.picture.url(:small) %>
-                  <br>
-                </div>
-              </div>
-            </div>
-            <%= render('add_recommended_trip', {recommended_trip_id: 3}) %>
-          </div>
-        </div>
-      </div>
+      <% end %>
 
-      <div class="vertical-spacer-xs"></div>
-      <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
-        <div class="line-separator"></div>
-      </div>
 
       <!-- <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
