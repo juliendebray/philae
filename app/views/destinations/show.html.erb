@@ -175,7 +175,7 @@
   </a>
   <div class="collapse" id="collapseRecommendedTrip">
     <div class="destination-content">
-      <% RecommendedTrip.where(destination_id: @destination.id).each do |rec_trip| %>
+      <% RecommendedTrip.where(destination_id: @destination.id).sort_by {|rc| rc.id }.each do |rec_trip| %>
         <div class="destination-box-nobordertop">
           <div class="row">
             <div class="col-xs-12">
