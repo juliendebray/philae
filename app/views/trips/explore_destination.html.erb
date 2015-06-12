@@ -425,6 +425,7 @@
     <br>
   </div> -->
     <div>
+      <div class="vertical-spacer-xs"></div>
       <h2 class='text-center map-title'>Personaliser mon voyage</h2>
       <div class="container-fluid">
         <div class="row">
@@ -460,6 +461,7 @@
           </div>
         </div>
       </div>
+      <div class="vertical-spacer-xs"></div>
     </div>
 </div>
 <%= render partial: 'shared/footer' %>
@@ -488,6 +490,7 @@
     $(document).on('ready', function() {
       var mapOptions = {
         center: new google.maps.LatLng(0, 0),
+        scrollwheel: false,
         zoom: 1,
         disableDoubleClickZoom: false,
         panControl: false,
