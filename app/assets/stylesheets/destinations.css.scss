@@ -164,6 +164,9 @@ a#must-see-img:hover {
 }
 .itinerary_image {
   margin-bottom: 30px;
+  img {
+    max-height: 250px;
+  }
 }
 
 
