@@ -244,6 +244,33 @@
 #   )
 # end
 
+# Seed recommended_trips
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1Wpmu-trbmTKVsDap3Ap0hW9mZG5qZa8--s9qrVUltv8/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |rec_trip|
+  rec_trip = RecommendedTrip.create(
+    destination_id: rec_trip['gsx$destinationid']['$t'].to_i,
+    title: rec_trip['gsx$title']['$t'],
+    description: rec_trip['gsx$description']['$t'],
+    step_1: rec_trip['gsx$step1']['$t'],
+    step_2: rec_trip['gsx$step2']['$t'],
+    step_3: rec_trip['gsx$step3']['$t'],
+    step_4: rec_trip['gsx$step4']['$t'],
+    step_5: rec_trip['gsx$step5']['$t'],
+    step_6: rec_trip['gsx$step6']['$t'],
+    step_7: rec_trip['gsx$step7']['$t'],
+    step_8: rec_trip['gsx$step8']['$t'],
+    step_9: rec_trip['gsx$step9']['$t'],
+    step_10: rec_trip['gsx$step10']['$t'],
+    step_11: rec_trip['gsx$step11']['$t'],
+    step_12: rec_trip['gsx$step12']['$t'],
+    step_13: rec_trip['gsx$step13']['$t'],
+    step_14: rec_trip['gsx$step14']['$t'],
+    step_15: rec_trip['gsx$step15']['$t']
+  )
+end
 
 # Seed Destination
 
@@ -306,60 +333,60 @@
 
 
 #create Destination
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1m31RmoiMAI_fdjLnHISsgP4OTGZCGFBbcMYfM5FsphQ/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |dest_data|
-  destination = Destination.create(
-    name: dest_data['gsx$name']['$t'],
-    ne_lat: dest_data['gsx$nelat']['$t'].to_f,
-    ne_lng: dest_data['gsx$nelng']['$t'].to_f,
-    sw_lat: dest_data['gsx$swlat']['$t'].to_f,
-    sw_lng: dest_data['gsx$swlng']['$t'].to_f,
-    intro_title: dest_data['gsx$introtitle']['$t'],
-    sentence1: dest_data['gsx$sentence1']['$t'],
-    sentence2: dest_data['gsx$sentence2']['$t'],
-    sentence3: dest_data['gsx$sentence3']['$t'],
-    sentence4: dest_data['gsx$sentence4']['$t'],
-    sentence5: dest_data['gsx$sentence5']['$t'],
-    enter_title: dest_data['gsx$entertitle']['$t'],
-    enter_line1: dest_data['gsx$enterline1']['$t'],
-    enter_line2: dest_data['gsx$enterline2']['$t'],
-    enter_line3: dest_data['gsx$enterline3']['$t'],
-    visit_time_title: dest_data['gsx$visittimetitle']['$t'],
-    visit_line1: dest_data['gsx$visitline1']['$t'],
-    visit_line2: dest_data['gsx$visitline2']['$t'],
-    visit_line3: dest_data['gsx$visitline3']['$t'],
-    security_title: dest_data['gsx$securitytitle']['$t'],
-    security_line1: dest_data['gsx$securityline1']['$t'],
-    security_line2: dest_data['gsx$securityline2']['$t'],
-    security_line3: dest_data['gsx$securityline3']['$t'],
-    transport_title: dest_data['gsx$transporttitle']['$t'],
-    transport_line1: dest_data['gsx$transportline1']['$t'],
-    transport_line2: dest_data['gsx$transportline2']['$t'],
-    transport_line3: dest_data['gsx$transportline3']['$t'],
-    transport_line4: dest_data['gsx$transportline4']['$t'],
-    transport_line5: dest_data['gsx$transportline5']['$t'],
-    toknow_title: dest_data['gsx$toknowtitle']['$t'],
-    toknow_line1: dest_data['gsx$toknowline1']['$t'],
-    toknow_line2: dest_data['gsx$toknowline2']['$t'],
-    toknow_line3: dest_data['gsx$toknowline3']['$t'],
-    toknow_line4: dest_data['gsx$toknowline4']['$t'],
-    toknow_line5: dest_data['gsx$toknowline5']['$t'],
-  )
-  gen_url = "http://philae-floju.s3.amazonaws.com/photos_thailande/"
-  name = dest_data['gsx$name']['$t']
-  (1..4).each do |i|
-    complete_url = gen_url + "thailande_#{i}.jpg"
-    begin
-      doc = open(complete_url)
-    rescue OpenURI::HTTPError
-      next
-    end
-    destination.destination_pictures.create(picture: complete_url)
-  end
-end
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1m31RmoiMAI_fdjLnHISsgP4OTGZCGFBbcMYfM5FsphQ/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |dest_data|
+#   destination = Destination.create(
+#     name: dest_data['gsx$name']['$t'],
+#     ne_lat: dest_data['gsx$nelat']['$t'].to_f,
+#     ne_lng: dest_data['gsx$nelng']['$t'].to_f,
+#     sw_lat: dest_data['gsx$swlat']['$t'].to_f,
+#     sw_lng: dest_data['gsx$swlng']['$t'].to_f,
+#     intro_title: dest_data['gsx$introtitle']['$t'],
+#     sentence1: dest_data['gsx$sentence1']['$t'],
+#     sentence2: dest_data['gsx$sentence2']['$t'],
+#     sentence3: dest_data['gsx$sentence3']['$t'],
+#     sentence4: dest_data['gsx$sentence4']['$t'],
+#     sentence5: dest_data['gsx$sentence5']['$t'],
+#     enter_title: dest_data['gsx$entertitle']['$t'],
+#     enter_line1: dest_data['gsx$enterline1']['$t'],
+#     enter_line2: dest_data['gsx$enterline2']['$t'],
+#     enter_line3: dest_data['gsx$enterline3']['$t'],
+#     visit_time_title: dest_data['gsx$visittimetitle']['$t'],
+#     visit_line1: dest_data['gsx$visitline1']['$t'],
+#     visit_line2: dest_data['gsx$visitline2']['$t'],
+#     visit_line3: dest_data['gsx$visitline3']['$t'],
+#     security_title: dest_data['gsx$securitytitle']['$t'],
+#     security_line1: dest_data['gsx$securityline1']['$t'],
+#     security_line2: dest_data['gsx$securityline2']['$t'],
+#     security_line3: dest_data['gsx$securityline3']['$t'],
+#     transport_title: dest_data['gsx$transporttitle']['$t'],
+#     transport_line1: dest_data['gsx$transportline1']['$t'],
+#     transport_line2: dest_data['gsx$transportline2']['$t'],
+#     transport_line3: dest_data['gsx$transportline3']['$t'],
+#     transport_line4: dest_data['gsx$transportline4']['$t'],
+#     transport_line5: dest_data['gsx$transportline5']['$t'],
+#     toknow_title: dest_data['gsx$toknowtitle']['$t'],
+#     toknow_line1: dest_data['gsx$toknowline1']['$t'],
+#     toknow_line2: dest_data['gsx$toknowline2']['$t'],
+#     toknow_line3: dest_data['gsx$toknowline3']['$t'],
+#     toknow_line4: dest_data['gsx$toknowline4']['$t'],
+#     toknow_line5: dest_data['gsx$toknowline5']['$t'],
+#   )
+#   gen_url = "http://philae-floju.s3.amazonaws.com/photos_thailande/"
+#   name = dest_data['gsx$name']['$t']
+#   (1..4).each do |i|
+#     complete_url = gen_url + "thailande_#{i}.jpg"
+#     begin
+#       doc = open(complete_url)
+#     rescue OpenURI::HTTPError
+#       next
+#     end
+#     destination.destination_pictures.create(picture: complete_url)
+#   end
+# end
 
 
 # Seed experiences
