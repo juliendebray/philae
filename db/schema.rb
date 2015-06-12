@@ -96,10 +96,6 @@ ActiveRecord::Schema.define(version: 20150611144924) do
     t.text     "toknow_line5"
     t.string   "country_code"
     t.text     "security_line3"
-    t.string   "recommended_trips_file_name"
-    t.string   "recommended_trips_content_type"
-    t.integer  "recommended_trips_file_size"
-    t.datetime "recommended_trips_updated_at"
   end
 
   create_table "experience_pictures", force: true do |t|
@@ -148,13 +144,13 @@ ActiveRecord::Schema.define(version: 20150611144924) do
     t.string   "wikipedia_link"
     t.integer  "nb_votes"
     t.boolean  "thousand_places"
+    t.boolean  "unesco"
     t.float    "ta_rating"
     t.integer  "ta_votes"
     t.float    "gg_rating"
     t.integer  "gg_votes"
     t.float    "fsq_rating"
     t.integer  "fsq_votes"
-    t.boolean  "unesco"
     t.integer  "destination_id"
     t.string   "timetospent"
     t.boolean  "landing_point",      default: false
