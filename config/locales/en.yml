@@ -207,7 +207,8 @@ en:
   destinations:
     index:
       title: "Explorizers' destinations"
-      destination_pitch: "Explorizers chose to display only recommendations that come from expert travelers and local professionals. Their tips are double-checked, and filtered, to keep only the best of each destination. Today, Explorizers covers 27 destinations. "
+      destination_pitch: "To ensure an excellent quality and reliability of our content, we work on and put online our destinations progressively."
+      # destination_pitch: "Explorizers chose to display only recommendations that come from expert travelers and local professionals. Their tips are double-checked, and filtered, to keep only the best of each destination. Today, Explorizers covers 27 destinations. "
       contribute: "Your recommendations"
       destination_pitch2: " are very welcome to help us extend the coverage!"
       destasia: "Cambodia, India, Indonesia, Japan, Malaysia, Myanmar, Nepal, Sri Lanka, Taiwan, Thailand, Vietnam, Uzbekistan"

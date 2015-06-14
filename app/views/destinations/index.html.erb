@@ -1,21 +1,87 @@
-<body class="destinations">
+<body class="destinations_experiences">
   <div class="container">
     <div id="titleblock" class="text-center">
       <div class="title">
-        <h2><%= t('.title', :default => "Destinations") %></h2>
-        <h4><%= t('.destination_pitch') %><i><%= link_to t('.contribute'), new_experience_path %></i><%= t('.destination_pitch2') %></h4>
+        <h1><%= t('.title', :default => "Destinations") %></h1>
+<!--         <h4><%= t('.destination_pitch') %><i><%= link_to t('.contribute'), new_experience_path %></i><%= t('.destination_pitch2') %></h4> -->
       </div>
     </div>
     <div class="vertical-spacer-xs"></div>
     <div id="destinations">
       <div class="row text-center">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="destination-box">
+            <%= link_to destination_path(@destination.find(10)), target: "_blank" do %>
+              <div class="destination-picture text-center">
+                <%= image_tag @destination.find(10).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+              </div>
+              <div class="destination-name text-center">
+                <small><%= @destination.find(10).name.capitalize %></small><br>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="destination-box">
+            <%= link_to destination_path(@destination.find(8)), target: "_blank" do %>
+              <div class="destination-picture text-center">
+                <%= image_tag @destination.find(8).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+              </div>
+              <div class="destination-name text-center">
+                <small><%= @destination.find(8).name.capitalize %></small><br>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="destination-box">
+            <%= link_to destination_path(@destination.find(9)), target: "_blank" do %>
+              <div class="destination-picture text-center">
+                <%= image_tag @destination.find(9).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+              </div>
+              <div class="destination-name text-center">
+                <small><%= @destination.find(9).name.capitalize %></small><br>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="destination-box">
+            <%= link_to destination_path(@destination.find(7)), target: "_blank" do %>
+              <div class="destination-picture text-center">
+                <%= image_tag @destination.find(7).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+              </div>
+              <div class="destination-name text-center">
+                <small><%= @destination.find(7).name.capitalize %></small><br>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="destination-box">
+            <%= link_to destination_path(@destination.first), target: "_blank" do %>
+              <div class="destination-picture text-center">
+                <%= image_tag @destination.first.destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+              </div>
+              <div class="destination-name text-center">
+                <small><%= @destination.first.name.capitalize %></small><br>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="vertical-spacer"></div>
+      <div class="row text-center">
+        <h3><%= link_to t('.nextdest'), new_contact_path %></h3>
+      </div>
+
+      <!-- <div class="row text-center">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-          <h4> <%= t('.destasia')+', ' %> <%= link_to 'Japon', destination_path(Destination.last), class: 'liban' %></h4><br>
+          <h4> <%= t('.destasia') %></h4><br>
           <h4> <%= t('.destafrica') %></h4><br>
           <h4> <%= t('.destamerica') %></h4><br>
           <h4>
-            <%= t('.destmiddleeast') %> <%= link_to 'Liban', destination_path(Destination.first), class: 'liban' %>
-          </h4>
+            <%= t('.destmiddleeast') %></h4>
           <br>
           <h4> <%= t('.desteurope') %></h4><br>
         </div>
@@ -35,14 +101,13 @@
             <% end %>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="vertical-spacer"></div>
 </body>
 
 <%= render partial: 'shared/footer' %>
-
 
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>

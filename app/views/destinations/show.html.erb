@@ -31,6 +31,9 @@
   </a>
   <div class="collapse" id="collapseOverview">
     <div class="destination-content">
+      <div class="row text-center">
+        <small>Dernière mise à jour : <%= @destination.updated_at.strftime('%d-%m-%Y') %></small><br>
+      </div>
       <h3 class="text-center"><%= simple_format @destination.enter_title %></h3>
       <br>
       <ul>
@@ -170,7 +173,7 @@
   <div id="recommended-trip" class="text-center destination-title">
     <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
     <h2 class="no-margin">Itinéraires conseillés</h2>
-    <p class="destination-tagline">Sélectionnez un itinéraire à personnaliser</p>
+<!--     <p class="destination-tagline">Sélectionnez un itinéraire à personnaliser</p> -->
   </div>
   </a>
   <div class="collapse" id="collapseRecommendedTrip">

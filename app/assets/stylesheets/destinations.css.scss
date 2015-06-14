@@ -3,6 +3,63 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+// Styles for Destination index
+
+.destination-box {
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  .destination-picture {
+    img {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center bottom;
+      background-attachment: fixed;
+      -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+      -moz-transition: all 0.5s ease; /* Firefox */
+      -ms-transition: all 0.5s ease; /* IE 9 */
+      -o-transition: all 0.5s ease; /* Opera */
+      transition: all 0.5s ease;
+    }
+  }
+  .destination-name {
+    display: block;
+    text-align: center;
+    width: 100%;
+    letter-spacing: 0px;
+    font-size: 1em;
+    color: white;
+    bottom: 0px;
+    // background: rgba(0,0,0,0.3);
+    position: absolute;
+    margin: auto;
+    small {
+      font-size: 35px;
+      font-weight: 300;
+    }
+  }
+}
+
+.destination-box:hover {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  img {
+    // filter: grayscale(25%);
+    // -webkit-filter: grayscale(25%);
+    // -moz-filter: grayscale(25%);
+    // -ms-filter: grayscale(25%);
+    // -o-filter: grayscale(25%);
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+
 // Styles for show destination
 .destination-banner {
   position: relative;
@@ -215,32 +272,6 @@ img.small-height {
 
 
 
-// .destination-box {
-//   // background-color: white;
-//   // border: 1px #c4d9d9 solid;
-//   border-top: 3px white solid;
-//   padding: 16px 16px 16px 16px;
-//   img {
-//     width: 120%;
-//     border: 1px #F7F7F7 solid;
-//   }
-//   h4 {
-//     text-align: center;
-//   }
-// }
-// .destination-box-nobordertop {
-//   padding: 16px 16px 16px 16px;
-// }
-
-// .destination-image-box {
-//   border-top: 3px white solid;
-//   padding: 16px 16px 16px 16px;
-//   img {
-//     width: 100%;
-//     border: 1px #F7F7F7 solid;
-//   }
-// }
-
 // .destination_title {
 //   background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg");
 //   background-size: cover;
@@ -315,8 +346,8 @@ img.small-height {
 //   }
 // }
 
-body.destinations {
-  background-image: image-url("beachtrip.jpeg");
+body.destinations_experiences {
+  background-image: image-url("overclouds.jpg");
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
@@ -358,6 +389,9 @@ body.destinations {
   }
   .btn {
     font-size: 16px;
+  }
+  p {
+    font-size: 20px;
   }
 }
 

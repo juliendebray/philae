@@ -187,13 +187,14 @@ fr:
   destinations:
     index:
       title: "Destinations Explorizers"
-      destination_pitch: "Explorizers choisit de ne présenter que les conseils de voyageurs expérimentés et de professionnels sur le terrain. Ces conseils sont recoupés, et filtrés, pour ne garder que le meilleur de chaque destination. A ce jour, Explorizers couvre 28 destinations. "
+      destination_pitch: "Pour assurer une excellente qualité et fiabilité du contenu, les destinations sont travaillées et mises en ligne progressivement."
+      # destination_pitch: "Explorizers choisit de ne présenter que les conseils de voyageurs expérimentés et de professionnels sur le terrain. Ces conseils sont recoupés, et filtrés, pour ne garder que le meilleur de chaque destination. A ce jour, Explorizers couvre 28 destinations. "
       contribute: "Vos recommandations"
       destination_pitch2: " sont les bienvenues pour étendre notre couverture!"
-      destasia: "Birmanie, Cambodge, Inde, Indonésie, Malaisie, Népal, Ouzbékistan, Sri Lanka, Taiwan, Thaïlande, Vietnam"
+      destasia: "Birmanie, Cambodge, Inde, Indonésie, Malaisie, Népal, Ouzbékistan, Sri Lanka, Taiwan, Vietnam"
       destafrica: "Botswana, Ethiopie, Madagascar, Maroc, La Réunion / Maurice"
-      destamerica: "Brésil, Colombie, Cuba, Etats-Unis, Mexique, Pérou"
-      destmiddleeast: "Israël, Jordanie, "
+      destamerica: "Colombie, Cuba, Etats-Unis, Pérou"
+      destmiddleeast: "Israël, Jordanie, Istanbul"
       desteurope: "Istanbul"
       nextdest: "Quelle prochaine destination souhaitez-vous voir?"
       searchplaceholder: "Où allez-vous ?"

@@ -1,9 +1,9 @@
-<div class="wrapper">
+<body class="destinations_experiences">
   <div class="all-exp-page">
     <div class="container-fluid">
       <div id="titleblock" class="text-center">
         <div class="title">
-          <h2><%= t('.title') %></h2>
+          <h1><%= t('.title') %></h1>
         </div>
       </div>
       <% Experience.where(published:true, landing_point:false).each do |experience| %>
@@ -27,5 +27,5 @@
     </div>
   </div>
   <div class="vertical-spacer-xs"></div>
-  <%= render partial: 'shared/footer' %>
-</div>
+</body>
+<%= render partial: 'shared/footer' %>
