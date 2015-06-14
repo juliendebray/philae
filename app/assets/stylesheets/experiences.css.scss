@@ -4,7 +4,7 @@
 
 // experience-page
 #exp-page-container-fluid {
-  background-image: image-url("overclouds.jpg");
+  // background-image: image-url("overclouds.jpg");
   padding-right: 0px;
   padding-left: 0px;
   .experience-page {
@@ -35,7 +35,7 @@
       }
     }
     p {
-      font-size: 25px;
+      font-size: 22px;
       line-height: 1.555556;
       font-weight: 200;
       text-align: center;
@@ -49,6 +49,18 @@
       font-size: 20px;
       line-height: 1.0769;
       font-weight: 300;
+    }
+    .experience-details {
+      i {
+        font-size: 25px;
+      }
+      p {
+        font-size: 18px;
+      }
+      b {
+        font-size: 18px;
+        font-weight: 400;
+      }
     }
     #block-separator {
       border-top: solid 1px #CCCCCC;
@@ -137,7 +149,11 @@
       margin-right: 0;
     }
   }
+  .experience-name {
+    display: block;
+  }
 }
+
 
 // CSS pour experience NEW
 body.newexperience {
@@ -191,7 +207,7 @@ body.newexperience {
       }
       p {
         font-size: 17px;
-        text-align: left;
+        text-align: center;
         font-weight: 300;
       }
       h4 {
@@ -200,6 +216,9 @@ body.newexperience {
       #exp_review_block {
         padding-left: 0;
         padding-right: 0;
+        p {
+          text-align: center;
+        }
       }
       #leader_review_block {
         padding-left: 0;

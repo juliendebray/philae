@@ -55,193 +55,216 @@
         </div>
       </div>
       <div class="vertical-spacer-xs"></div>
-      <div class="experience-page-content">
+      <div class="row text-center">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <p><%= simple_format @experience.description %></p>
+        </div>
+      </div>
+      <div class="experience-details">
         <div class="row text-center">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-            <p><%= simple_format @experience.description %></p>
-            <br>
             <% if @experience.timetospent %>
-              <div class="time-to-spend text-center">
-                <br>
-                <p>Temps de visite recommandé : <br>
-                <%= @experience.timetospent %></p>
-              </div>
+            <br>
+              <i class="fa fa-clock-o"></i> - <b>Temps de visite</b> :  <p><%= @experience.timetospent %></p>
             <% end %>
-            <% if @experience.unesco %>
-              <div class="vertical-spacer-xs"></div>
-              <p>Classé au <a href="http://whc.unesco.org/fr/list/" target="_blank">Patrimoine mondial de l'UNESCO</a></p>
+            <br>
+            <% if @experience.wheretosleep %>
+              <i class="fa fa-home"></i> - <b>Où dormir</b> :  <p><%= @experience.wheretosleep %></p>
             <% end %>
-            <% if @experience.thousand_places %>
-              <div class="vertical-spacer-xs"></div>
-              <p>Figure sur la Liste des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+            <% if @experience.transportation %>
+            <br>
+              <i class="fa fa-bicycle"></i> - <b>Comment s'y rendre</b> : <p><%= simple_format @experience.transportation %></p>
             <% end %>
           </div>
         </div>
-        <div class="vertical-spacer-xs"></div>
-        <div class="row text-center">
-          <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-            <div class="col-xs-4">
-              <div class="fb-share-button" data-href="http://www.explorizers.com/experiences/<%= "#{@experience.id}" %>" data-layout="button">
-              </div>
-            </div>
-            <div class="col-xs-4">
-              <div class="pinterest-widget">
-              <a href="//fr.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a>
-              </div>
-            </div>
-            <div class="col-xs-4">
-              <a href="www.explorizers.com/experience/<%= "#{@experience.id}" %>" class="twitter-share-button" data-via="Explorizers_" data-count="none">Tweet</a>
+      </div>
+      <div class="row text-center">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <% if @experience.unesco %>
+            <div class="vertical-spacer-xs"></div>
+            <p>Classé au <a href="http://whc.unesco.org/fr/list/" target="_blank">Patrimoine mondial de l'UNESCO</a></p>
+          <% end %>
+          <% if @experience.thousand_places %>
+            <div class="vertical-spacer-xs"></div>
+            <p>Figure sur la Liste des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+          <% end %>
+        </div>
+      </div>
+      <div class="vertical-spacer-xs"></div>
+      <div class="row text-center">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+          <div class="col-xs-4">
+            <div class="fb-share-button" data-href="http://www.explorizers.com/experiences/<%= "#{@experience.id}" %>" data-layout="button">
             </div>
           </div>
+          <div class="col-xs-4">
+            <div class="pinterest-widget">
+            <a href="//fr.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <a href="www.explorizers.com/experience/<%= "#{@experience.id}" %>" class="twitter-share-button" data-via="Explorizers_" data-count="none">Tweet</a>
+          </div>
         </div>
-        <div class="row text-center">
-          <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-            <div id="leader_review_block">
-              <% if @experience.leader_reviews.any? %>
+      </div>
+      <div class="row text-center">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <div id="leader_review_block">
+            <% if @experience.leader_reviews.any? %>
+              <div class="row text-center">
+                <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                  <div id="block-separator">
+                  </div>
+                </div>
+              </div>
+              <h4>L'avis des experts</h4>
+              <div class="vertical-spacer-xs"></div>
+              <% if @experience.leader_reviews.first != @experience.leader_reviews.last %>
                 <div class="row text-center">
-                  <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-                    <div id="block-separator">
+                  <div class="col-xs-5 vcenter">
+                    <div class="logo-item text-center">
+                      <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
+                    </div>
+                  </div>
+                  <div class="col-xs-5 vcenter">
+                    <div class="logo-item text-center">
+                      <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
                     </div>
                   </div>
                 </div>
-                <h4>L'avis des experts</h4>
-                <div class="vertical-spacer-xs"></div>
-                <% if @experience.leader_reviews.first != @experience.leader_reviews.last %>
-                  <div class="row text-center">
-                    <div class="col-xs-5 vcenter">
-                      <div class="logo-item text-center">
-                        <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
-                      </div>
-                    </div>
-                    <div class="col-xs-5 vcenter">
-                      <div class="logo-item text-center">
-                        <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row text-center">
-                    <div class="col-xs-5 vcenter">
-                      <% if @experience.leader_reviews.first.source =~ /Lonely Planet/ %>
-                        <p>"<%= @experience.leader_reviews.first.comment %>"</p>
-                      <% else %>
-                        <p>"<%= @experience.leader_reviews.second.comment %>"</p>
-                      <% end %>
-                    </div>
-                    <div class="col-xs-5 vcenter">
-                      <% if @experience.leader_reviews.first.source =~ /Lonely Planet/ %>
-                        <p>"<%= @experience.leader_reviews.second.comment %>"</p>
-                      <% else %>
-                        <p>"<%= @experience.leader_reviews.first.comment %>"</p>
-                      <% end %>
-                    </div>
-                  </div>
-                <% else %>
-                  <div class="row text-center">
-                    <div class="col-xs-12 vcenter">
-                      <div class="logo-item text-center">
-                        <% if @experience.leader_reviews.first.source =~ /Guide du Routard/ %>
-                          <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
-                        <% else %>
-                          <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row text-center">
-                    <div class="col-xs-12 vcenter">
+                <br>
+                <div class="row text-center">
+                  <div class="col-xs-5 vcenter">
+                    <% if @experience.leader_reviews.first.source =~ /Lonely Planet/ %>
                       <p>"<%= @experience.leader_reviews.first.comment %>"</p>
+                    <% else %>
+                      <p>"<%= @experience.leader_reviews.second.comment %>"</p>
+                    <% end %>
+                  </div>
+                  <div class="col-xs-5 vcenter">
+                    <% if @experience.leader_reviews.first.source =~ /Lonely Planet/ %>
+                      <p>"<%= @experience.leader_reviews.second.comment %>"</p>
+                    <% else %>
+                      <p>"<%= @experience.leader_reviews.first.comment %>"</p>
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="row text-center">
+                  <div class="col-xs-12 vcenter">
+                    <div class="logo-item text-center">
+                      <% if @experience.leader_reviews.first.source =~ /Guide du Routard/ %>
+                        <%= image_tag('gdr_logo.png', alt:'Le Guide du Routard Logo Officiel') %>
+                      <% else %>
+                        <%= image_tag('lp_logo.png', alt:'Lonely Planet Logo Officiel') %>
+                      <% end %>
                     </div>
                   </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-            <div class="row text-center">
-              <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-                <div id="block-separator">
                 </div>
+                <br>
+                <div class="row text-center">
+                  <div class="col-xs-12 vcenter">
+                    <p>"<%= @experience.leader_reviews.first.comment %>"</p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <div class="row text-center">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div id="block-separator">
               </div>
             </div>
-            <div id="exp_review_block">
-              <div class="row text-center">
-                <h4>L'avis des voyageurs</i></h4>
-              </div>
-              <div class="vertical-spacer-xxs"></div>
-              <div class="row text-center">
-                <small><i>powered by</i></small>
-              </div>
-              <div class="row text-center">
-                <%= image_tag('ta_logo.png', alt:'Tripadvisor Logo Officiel') %>
-              </div>
-              <div class="vertical-spacer-xs"></div>
+          </div>
+          <div id="exp_review_block">
+            <div class="row text-center">
+              <h4>L'avis des voyageurs</i></h4>
+            </div>
+            <div class="vertical-spacer-xxs"></div>
+            <div class="row text-center">
+              <small><i>powered by</i></small>
+            </div>
+            <div class="row text-center">
+              <%= image_tag('ta_logo.png', alt:'Tripadvisor Logo Officiel') %>
+            </div>
+            <div class="vertical-spacer-xs"></div>
+            <div class="row text-center">
               <p>Note moyenne: <b><%= @experience.average_rating %></b>/10</p>
-              <% if @experience.experience_reviews.any? %>
-                <div class="vertical-spacer-xs"></div>
-                <% @experience.experience_reviews.each do |experience_review| %>
-                  <blockquote>
-                    <p>"<%= experience_review.comment %>"</p>
-                    <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
-                  </blockquote>
+            </div>
+            <% if @experience.experience_reviews.any? %>
+              <div class="vertical-spacer-xs"></div>
+              <% @experience.experience_reviews.each do |experience_review| %>
+                <blockquote>
+                  <p>"<%= experience_review.comment %>"</p>
+                  <footer><cite title="Source Title"><%= "#{experience_review.name} le #{experience_review.created_at.strftime("%d/%m/%y")} (note: #{experience_review.rating} / 10)" %></cite></footer>
+                </blockquote>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+          <div id="exp_review_block" class="text-center">
+            <h5>Donnez votre avis</h5>
+            <%= bootstrap_form_for([@experience, ExperienceReview.new], layout: :inline) do |f| %>
+              <%= f.text_field :comment, hide_label: true, placeholder: "Donnez votre avis en 140 caractères max !", required: true, size: 65, maxlength: 140 %>
+              <%= f.text_field :name, hide_label: true, placeholder: "Nom", required: true %>
+              <%= f.number_field :rating, hide_label: true, placeholder: "Note entre 0 et 10", required: true, min: 0, max: 10 %>
+              <%= f.hidden_field(:created_at) %>
+              <%= f.submit( t('expbuttonadd'), class: "btn btn-info") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+          <div id="block-separator">
+          </div>
+        </div>
+      </div>
+      <% if @experience.destination %>
+        <div class="row text-center">
+          <h4><%= @experience.destination.name.capitalize %> - Voir les autres expériences</h4>
+          <% Experience.where(destination: @experience.destination, published:true, landing_point:false).each do |experience| %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="experience-box">
+                <%= link_to experience_path(experience.id), target: "_blank" do %>
+                  <div class="experience-picture text-center">
+                    <% if experience.experience_pictures.first %>
+                      <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
+                    <% else %>
+                      <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/photos_usa/usa_glacier_park_1.jpg' %>
+                    <% end %>
+                  </div>
+                  <div class="experience-name text-center">
+                    <small><%= experience.name %></small><br>
+                  </div>
                 <% end %>
-              <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-            <div id="exp_review_block" class="text-center">
-              <h5>Donnez votre avis</h5>
-              <%= bootstrap_form_for([@experience, ExperienceReview.new], layout: :inline) do |f| %>
-                <%= f.text_field :comment, hide_label: true, placeholder: "Donnez votre avis en 140 caractères max !", required: true, size: 65, maxlength: 140 %>
-                <%= f.text_field :name, hide_label: true, placeholder: "Nom", required: true %>
-                <%= f.number_field :rating, hide_label: true, placeholder: "Note entre 0 et 10", required: true, min: 0, max: 10 %>
-                <%= f.hidden_field(:created_at) %>
-                <%= f.submit( t('expbuttonadd'), class: "btn btn-info") %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-            <div id="block-separator">
-            </div>
-          </div>
-        </div>
-        <div class="row text-center">
-          <%= link_to "Voir d'autres expériences", experiences_path, {class: "btn btn-info"} %>
-        </div>
+        <br>
         <div class="row text-center">
           <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
             <div id="block-separator"></div>
           </div>
         </div>
         <div class="row text-center">
-          <h5>Un voyage de prévu ?</h5>
+          <br>
+          <%= link_to "Voir la destination - #{@experience.destination.name.capitalize}", destination_path(@experience.destination.id), {class: "btn btn-info"} %>
         </div>
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-          <div class="tr-grey-bg text-center">
-            <% if user_signed_in? %>
-            <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
-              <div class="form-group minor-block" class="text-center">
-                <%= f.hidden_field(:latitude) %>
-                <%= f.hidden_field(:longitude) %>
-                <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
-                <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm') %>
-              </div>
-            <% end %>
-            <% else %>
-              <h4><%= link_to t('signup'), new_user_registration_path,  {class: "btn btn-info btn-lg"}%></h4>
-            <% end %>
-          </div>
+      <% else %>
+        <div class="row text-center">
+          <%= link_to "Voir d'autres expériences", experiences_path, {class: "btn btn-info"} %>
         </div>
-        <div class="vertical-spacer-sm"></div>
-      </div>
-  <!--     Démarrer voyage avec lat et lon de l'expérience -->
+      <% end %>
+      <div class="vertical-spacer-sm"></div>
     </div>
   </div>
 </div>
