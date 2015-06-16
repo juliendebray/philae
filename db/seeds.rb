@@ -7,6 +7,53 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+# Seed new experiences for Mexico
+require 'json'
+require 'rest_client'
+url_json = "https://spreadsheets.google.com/feeds/list/10D9p73yHIZVKqMRRedOo1JiHouD-FJVfkzZeb6KDG0Q/od6/public/values?alt=json"
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |exp_data|
+  exp = Experience.create(
+    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
+    name: exp_data['gsx$name']['$t'],
+    address: exp_data['gsx$address']['$t'],
+    latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
+    longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
+    description: exp_data['gsx$description']['$t'],
+    timetospent: exp_data['gsx$timetospent']['$t'],
+    country_code: 'MX',
+    wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
+    published: true
+  )
+  if exp_data['gsx$lpreview']['$t'].length > 0
+    exp.leader_reviews.create(
+      source: "Lonely Planet",
+      comment: exp_data['gsx$lpreview']['$t'],
+    )
+  end
+  if exp_data['gsx$gdrreview']['$t'].length > 0
+    exp.leader_reviews.create(
+      source: "Guide Du Routard",
+      comment: exp_data['gsx$gdrreview']['$t'],
+    )
+  end
+  gen_url = "https://philae-floju.s3.amazonaws.com/photos_mexique_new_exp/"
+  # complete_url = gen_url + exp_data['gsx$pictureone']['$t']
+  exp.experience_pictures.create(picture: gen_url + exp_data['gsx$pictureone']['$t'] + '.jpg')
+  exp.experience_pictures.create(picture: gen_url + exp_data['gsx$picturetwo']['$t'] + '.jpg')
+  exp.experience_pictures.create(picture: gen_url + exp_data['gsx$picturethree']['$t'] + '.jpg')
+  # code = exp_data['gsx$code']['$t']
+  # (1..4).each do |i|
+  #   complete_url = gen_url + code + "_#{i}.jpg"
+  #   begin
+  #     doc = open(complete_url)
+  #   rescue OpenURI::HTTPError
+  #     next
+  #   end
+  #   exp.experience_pictures.create(picture: complete_url)
+  # end
+end
+
 # Seed  experiences with trip advisor
 # require 'json'
 # require 'rest_client'
