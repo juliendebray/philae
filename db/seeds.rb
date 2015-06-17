@@ -16,9 +16,21 @@
 #   dest_pic.update(picture: dest_pic.picture.url.gsub("\/development\/", "\/production\/"))
 # end
 # RecommendedTrip.all.each do |reco_trip|
-#   reco_trip.update(picture: reco_trip.picture.url.gsub("\/development\/", "\/production\/"))
+#   reco_trip.update(picture: reco_trip.picture.url.gsub("\/development\/", "\/production\/")) unless reco_trip.picture.url.include?('missing')
 # end
 # !!!!!!!!_________________________________________________________!!!!!!!!
+
+#Update categories from terminal
+# Experience.where(published: true, landing_point: false, country_code: 'MX').each do |e|
+#   puts e.id
+#   puts e.name
+#   puts e.description
+#   puts e.category_tab
+#   input = gets.chomp.split(", ")
+#   e.update(category_tab: input)
+# end
+
+
 
 # Update experiences
 require 'json'
