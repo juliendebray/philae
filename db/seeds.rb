@@ -20,6 +20,31 @@
 # end
 # !!!!!!!!_________________________________________________________!!!!!!!!
 
+# Update experiences
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1nwPoW4dpo1OPzweDVjO4xxe2A9_IK-HG469R3HFXhGU/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |exp_data|
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
+    country_code: exp_data['gsx$countrycode']['$t'],
+    name: exp_data['gsx$name']['$t'],
+    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
+    description: exp_data['gsx$descriptionfrench']['$t'],
+    onesentence: exp_data['gsx$onesentence']['$t'],
+    timetospent: exp_data['gsx$timetospent']['$t'],
+    wheretosleep: exp_data['gsx$wheretosleep']['$t'],
+    transportation: exp_data['gsx$transportation']['$t'],
+    category_tab: exp_data['gsx$categorytab']['$t'],
+    landing_point: exp_data['gsx$landingpoint']['$t'],
+    latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
+    longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
+    wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
+    must_see: exp_data['gsx$mustsee']['$t'],
+    unesco: exp_data['gsx$unesco']['$t'],
+    thousand_places: exp_data['gsx$thousandplaces']['$t']
+  )
+end
 
 # Seed create recommended_trips
 # require 'json'
@@ -54,7 +79,13 @@
 #       order: 1 + i.to_i
 #     )
 #   end
-# end
+
+  # RecommendedTripExperience.create(
+  #     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
+  #     experience_id: rec_trip_exp['gsx$experienceid']['$t'],
+  #     order: rec_trip_exp['gsx$order']['$t'].to_i
+  #   )
+  # end
 
 # Seed new experiences for Mexico
 # require 'json'
@@ -207,23 +238,6 @@
 #     wheretosleep: exp_data['gsx$wheretosleep']['$t'],
 #     transportation: exp_data['gsx$transportation']['$t'],
 #     landing_point: exp_data['gsx$landingpoint']['$t']
-#   )
-# end
-
-# Update experiences Japon
-# require 'json'
-# require 'rest_client'
-# url_json = 'https://spreadsheets.google.com/feeds/list/1ngH0TnyNUa2LHx6TBcwtoAk2Ql3E8vM2__1l4HDLiGM/od6/public/values?alt=json'
-# data_hash = JSON.parse(RestClient.get(url_json))
-# data_hash['feed']['entry'].each do |exp_data|
-#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
-#     name: exp_data['gsx$name']['$t'],
-#     average_rating: exp_data['gsx$averagerating']['$t'].to_f,
-#     description: exp_data['gsx$descriptionfrench']['$t'],
-#     onesentence: exp_data['gsx$onesentence']['$t'],
-#     timetospent: exp_data['gsx$timetospent']['$t'],
-#     wheretosleep: exp_data['gsx$wheretosleep']['$t'],
-#     transportation: exp_data['gsx$transportation']['$t']
 #   )
 # end
 
