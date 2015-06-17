@@ -223,12 +223,12 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
               <div class="itinerary_image">
-                <%= image_tag rec_trip.recommended_trip_experiences.first.experience.experience_pictures.first.picture.url(:small) %>
+                <%= image_tag rec_trip.recommended_trip_experiences[0].experience.experience_pictures.first.picture.url(:small) %>
                 <br><br>
-                <%= image_tag rec_trip.recommended_trip_experiences.third.experience.experience_pictures.first.picture.url(:small) %>
+                <%= image_tag rec_trip.recommended_trip_experiences[2].experience.experience_pictures.first.picture.url(:small) %>
                 <br><br>
                 <% if rec_trip.step_6.length > 0 %>
-                  <%= image_tag rec_trip.recommended_trip_experiences.fifth.experience.experience_pictures.first.picture.url(:small) %>
+                  <%= image_tag rec_trip.recommended_trip_experiences[4].experience.experience_pictures.first.picture.url(:small) %>
                   <br><br>
                 <% end %>
                 <% if rec_trip.step_9.length > 0 %>
