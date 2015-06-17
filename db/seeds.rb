@@ -7,41 +7,81 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-# Seed new experiences for Mexico
+# Seed create recommended_trips
 require 'json'
 require 'rest_client'
-url_json = "https://spreadsheets.google.com/feeds/list/10D9p73yHIZVKqMRRedOo1JiHouD-FJVfkzZeb6KDG0Q/od6/public/values?alt=json"
+url_json = 'https://spreadsheets.google.com/feeds/list/15yPzyaqyZE8DUUMPq4pbQQhPAOaH-EMXU4qiYe-_i7I/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |exp_data|
-  exp = Experience.create(
-    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
-    name: exp_data['gsx$name']['$t'],
-    address: exp_data['gsx$address']['$t'],
-    latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
-    longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
-    description: exp_data['gsx$description']['$t'],
-    timetospent: exp_data['gsx$timetospent']['$t'],
-    country_code: 'MX',
-    wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
-    published: true
+data_hash['feed']['entry'].each do |rec_trip|
+  recommended_trip = RecommendedTrip.create(
+    destination_id: Destination.find_by(country_code:'MX').id,
+    title: rec_trip['gsx$title']['$t'],
+    description: rec_trip['gsx$description']['$t'],
+    step_1: rec_trip['gsx$step1']['$t'],
+    step_2: rec_trip['gsx$step2']['$t'],
+    step_3: rec_trip['gsx$step3']['$t'],
+    step_4: rec_trip['gsx$step4']['$t'],
+    step_5: rec_trip['gsx$step5']['$t'],
+    step_6: rec_trip['gsx$step6']['$t'],
+    step_7: rec_trip['gsx$step7']['$t'],
+    step_8: rec_trip['gsx$step8']['$t'],
+    step_9: rec_trip['gsx$step9']['$t'],
+    step_10: rec_trip['gsx$step10']['$t'],
+    step_11: rec_trip['gsx$step11']['$t'],
+    step_12: rec_trip['gsx$step12']['$t'],
+    step_13: rec_trip['gsx$step13']['$t'],
+    step_14: rec_trip['gsx$step14']['$t'],
+    step_15: rec_trip['gsx$step15']['$t'],
+    picture: "https://philae-floju.s3.amazonaws.com/itineraires_mexique/"+ rec_trip['gsx$picturename']['$t'] + ".png"
   )
-  if exp_data['gsx$lpreview']['$t'].length > 0
-    exp.leader_reviews.create(
-      source: "Lonely Planet",
-      comment: exp_data['gsx$lpreview']['$t'],
+  rec_trip['gsx$recotripexptab']['$t'].split(", ").each_with_index do |v, i|
+    recommended_trip.recommended_trip_experiences.create(
+      experience_id: v.to_i,
+      order: 1 + i.to_i
     )
   end
-  if exp_data['gsx$gdrreview']['$t'].length > 0
-    exp.leader_reviews.create(
-      source: "Guide Du Routard",
-      comment: exp_data['gsx$gdrreview']['$t'],
-    )
-  end
-  gen_url = "https://philae-floju.s3.amazonaws.com/photos_mexique_new_exp/"
-  # complete_url = gen_url + exp_data['gsx$pictureone']['$t']
-  exp.experience_pictures.create(picture: gen_url + exp_data['gsx$pictureone']['$t'] + '.jpg')
-  exp.experience_pictures.create(picture: gen_url + exp_data['gsx$picturetwo']['$t'] + '.jpg')
-  exp.experience_pictures.create(picture: gen_url + exp_data['gsx$picturethree']['$t'] + '.jpg')
+  # RecommendedTripExperience.create(
+  #     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
+  #     experience_id: rec_trip_exp['gsx$experienceid']['$t'],
+  #     order: rec_trip_exp['gsx$order']['$t'].to_i
+  #   )
+end
+
+# Seed new experiences for Mexico
+# require 'json'
+# require 'rest_client'
+# url_json = "https://spreadsheets.google.com/feeds/list/10D9p73yHIZVKqMRRedOo1JiHouD-FJVfkzZeb6KDG0Q/od6/public/values?alt=json"
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   exp = Experience.create(
+#     average_rating: exp_data['gsx$averagerating']['$t'].to_f,
+#     name: exp_data['gsx$name']['$t'],
+#     address: exp_data['gsx$address']['$t'],
+#     latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
+#     longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
+#     description: exp_data['gsx$description']['$t'],
+#     timetospent: exp_data['gsx$timetospent']['$t'],
+#     country_code: 'MX',
+#     wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
+#     published: true
+#   )
+#   if exp_data['gsx$lpreview']['$t'].length > 0
+#     exp.leader_reviews.create(
+#       source: "Lonely Planet",
+#       comment: exp_data['gsx$lpreview']['$t'],
+#     )
+#   end
+#   if exp_data['gsx$gdrreview']['$t'].length > 0
+#     exp.leader_reviews.create(
+#       source: "Guide Du Routard",
+#       comment: exp_data['gsx$gdrreview']['$t'],
+#     )
+#   end
+#   gen_url = "https://philae-floju.s3.amazonaws.com/photos_mexique_new_exp/"
+#   # complete_url = gen_url + exp_data['gsx$pictureone']['$t']
+#   exp.experience_pictures.create(picture: gen_url + exp_data['gsx$pictureone']['$t'] + '.jpg')
+#   exp.experience_pictures.create(picture: gen_url + exp_data['gsx$picturetwo']['$t'] + '.jpg')
+#   exp.experience_pictures.create(picture: gen_url + exp_data['gsx$picturethree']['$t'] + '.jpg')
   # code = exp_data['gsx$code']['$t']
   # (1..4).each do |i|
   #   complete_url = gen_url + code + "_#{i}.jpg"
@@ -52,7 +92,7 @@ data_hash['feed']['entry'].each do |exp_data|
   #   end
   #   exp.experience_pictures.create(picture: complete_url)
   # end
-end
+# end
 
 # Seed  experiences with trip advisor
 # require 'json'
@@ -211,7 +251,7 @@ end
 #   )
 # end
 
-#Mise en ligne des avis du Routard
+# Mise en ligne des avis du Routard
 # require 'json'
 # require 'rest_client'
 # url_json = 'https://spreadsheets.google.com/feeds/list/1YimhH2yPPv7DBNulFNimHIFN2xCRZlNCqLP_Lladgk4/od6/public/values?alt=json'
