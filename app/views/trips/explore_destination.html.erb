@@ -10,8 +10,12 @@
         <li><%= simple_format @destination.sentence1 %></p></li>
         <li><%= simple_format @destination.sentence2 %></li>
         <li><%= simple_format @destination.sentence3 %></li>
-        <li><%= simple_format @destination.sentence4 %></li>
-        <li><%= simple_format @destination.sentence5 %></li>
+        <% if @destination.sentence4.length > 0 %>
+          <li><%= simple_format @destination.sentence4 %></li>
+        <% end %>
+        <% if @destination.sentence5.length > 0 %>
+          <li><%= simple_format @destination.sentence5 %></li>
+        <% end %>
       </ol>
     <br>
   </div>
