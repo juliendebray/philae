@@ -6,46 +6,55 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# !!!!!!!!_______________W_A_R_N_I_N_G____________________________!!!!!!!!
+# LOCAL USE ONLY -> Generate pictures after import_from_heroku
+# Never push this block uncommented to github or heroku
+# ExperiencePicture.all.each do |exp_pic|
+#   exp_pic.update(picture: exp_pic.picture.url.gsub("\/development\/", "\/production\/"))
+# end
+# DestinationPicture.all.each do |dest_pic|
+#   dest_pic.update(picture: dest_pic.picture.url.gsub("\/development\/", "\/production\/"))
+# end
+# RecommendedTrip.all.each do |reco_trip|
+#   reco_trip.update(picture: reco_trip.picture.url.gsub("\/development\/", "\/production\/"))
+# end
+# !!!!!!!!_________________________________________________________!!!!!!!!
+
 
 # Seed create recommended_trips
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/15yPzyaqyZE8DUUMPq4pbQQhPAOaH-EMXU4qiYe-_i7I/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |rec_trip|
-  recommended_trip = RecommendedTrip.create(
-    destination_id: Destination.find_by(country_code:'MX').id,
-    title: rec_trip['gsx$title']['$t'],
-    description: rec_trip['gsx$description']['$t'],
-    step_1: rec_trip['gsx$step1']['$t'],
-    step_2: rec_trip['gsx$step2']['$t'],
-    step_3: rec_trip['gsx$step3']['$t'],
-    step_4: rec_trip['gsx$step4']['$t'],
-    step_5: rec_trip['gsx$step5']['$t'],
-    step_6: rec_trip['gsx$step6']['$t'],
-    step_7: rec_trip['gsx$step7']['$t'],
-    step_8: rec_trip['gsx$step8']['$t'],
-    step_9: rec_trip['gsx$step9']['$t'],
-    step_10: rec_trip['gsx$step10']['$t'],
-    step_11: rec_trip['gsx$step11']['$t'],
-    step_12: rec_trip['gsx$step12']['$t'],
-    step_13: rec_trip['gsx$step13']['$t'],
-    step_14: rec_trip['gsx$step14']['$t'],
-    step_15: rec_trip['gsx$step15']['$t'],
-    picture: "https://philae-floju.s3.amazonaws.com/itineraires_mexique/"+ rec_trip['gsx$picturename']['$t'] + ".png"
-  )
-  rec_trip['gsx$recotripexptab']['$t'].split(", ").each_with_index do |v, i|
-    recommended_trip.recommended_trip_experiences.create(
-      experience_id: v.to_i,
-      order: 1 + i.to_i
-    )
-  end
-  # RecommendedTripExperience.create(
-  #     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
-  #     experience_id: rec_trip_exp['gsx$experienceid']['$t'],
-  #     order: rec_trip_exp['gsx$order']['$t'].to_i
-  #   )
-end
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/15yPzyaqyZE8DUUMPq4pbQQhPAOaH-EMXU4qiYe-_i7I/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |rec_trip|
+#   recommended_trip = RecommendedTrip.create(
+#     destination_id: Destination.find_by(country_code:'MX').id,
+#     title: rec_trip['gsx$title']['$t'],
+#     description: rec_trip['gsx$description']['$t'],
+#     step_1: rec_trip['gsx$step1']['$t'],
+#     step_2: rec_trip['gsx$step2']['$t'],
+#     step_3: rec_trip['gsx$step3']['$t'],
+#     step_4: rec_trip['gsx$step4']['$t'],
+#     step_5: rec_trip['gsx$step5']['$t'],
+#     step_6: rec_trip['gsx$step6']['$t'],
+#     step_7: rec_trip['gsx$step7']['$t'],
+#     step_8: rec_trip['gsx$step8']['$t'],
+#     step_9: rec_trip['gsx$step9']['$t'],
+#     step_10: rec_trip['gsx$step10']['$t'],
+#     step_11: rec_trip['gsx$step11']['$t'],
+#     step_12: rec_trip['gsx$step12']['$t'],
+#     step_13: rec_trip['gsx$step13']['$t'],
+#     step_14: rec_trip['gsx$step14']['$t'],
+#     step_15: rec_trip['gsx$step15']['$t'],
+#     picture: "https://philae-floju.s3.amazonaws.com/itineraires_mexique/"+ rec_trip['gsx$picturename']['$t'] + ".png"
+#   )
+#   rec_trip['gsx$recotripexptab']['$t'].split(", ").each_with_index do |v, i|
+#     recommended_trip.recommended_trip_experiences.create(
+#       experience_id: v.to_i,
+#       order: 1 + i.to_i
+#     )
+#   end
+# end
 
 # Seed new experiences for Mexico
 # require 'json'
