@@ -32,12 +32,12 @@
       <h3 class="text-center"><%= simple_format @destination.enter_title %></h3>
       <br>
       <ul>
-         <li><p><%= simple_format @destination.enter_line1 %></p></li>
+         <li><p><%= raw @destination.enter_line1 %></p></li>
         <% if @destination.enter_line2.length > 0 %>
-          <li><p><%= simple_format @destination.enter_line2 %></p></li>
+          <li><p><%= raw @destination.enter_line2 %></p></li>
         <% end %>
         <% if @destination.enter_line3.length > 0 %>
-          <li><p><%= simple_format @destination.enter_line3 %></p></li>
+          <li><p><%= raw @destination.enter_line3 %></p></li>
         <% end %>
       </ul>
       <br>
@@ -63,36 +63,36 @@
         <h3 class="text-center"><%= simple_format @destination.transport_title %></h3>
         <br>
         <ul>
-          <li><p><%= simple_format @destination.transport_line1 %></p></li>
+          <li><p><%= raw @destination.transport_line1 %></p></li>
           <% if @destination.transport_line2.length > 0 %>
-            <li><p><%= simple_format @destination.transport_line2 %></p></li>
+            <li><p><%= raw @destination.transport_line2 %></p></li>
           <% end %>
           <% if @destination.transport_line3.length > 0 %>
-            <li><p><%= simple_format @destination.transport_line3 %></p></li>
+            <li><p><%= raw @destination.transport_line3 %></p></li>
           <% end %>
           <% if @destination.transport_line4.length > 0 %>
-            <li><p><%= simple_format @destination.transport_line4 %></p></li>
+            <li><p><%= raw @destination.transport_line4 %></p></li>
           <% end %>
           <% if @destination.transport_line5.length > 0 %>
-            <li><p><%= simple_format @destination.transport_line5 %></p></li>
+            <li><p><%= raw @destination.transport_line5 %></p></li>
           <% end %>
         </ul>
         <br>
         <h3 class="text-center"><%= simple_format @destination.toknow_title %></h3>
         <br>
         <ol>
-            <li><p><%= simple_format @destination.toknow_line1 %></p></li>
+            <li><p><%= raw @destination.toknow_line1 %></p></li>
           <% if @destination.toknow_line2.length > 0 %>
-            <li><p><%= simple_format @destination.toknow_line2 %></p></li>
+            <li><p><%= raw @destination.toknow_line2 %></p></li>
           <% end %>
           <% if @destination.toknow_line3.length > 0 %>
-            <li><p><%= simple_format @destination.toknow_line3 %></p></li>
+            <li><p><%= raw @destination.toknow_line3 %></p></li>
           <% end %>
           <% if @destination.toknow_line4.length > 0 %>
-            <li><p><%= simple_format @destination.toknow_line4 %></p></li>
+            <li><p><%= raw @destination.toknow_line4 %></p></li>
           <% end %>
           <% if @destination.toknow_line5.length > 0 %>
-            <li><p><%= simple_format @destination.toknow_line5 %></p></li>
+            <li><p><%= raw @destination.toknow_line5 %></p></li>
           <% end %>
         </ol>
     </div>
