@@ -49,37 +49,59 @@
                     <% end %>
                   <% else %>
                     <%= link_to '#', onclick:"showSignUpModal();"  do %>
-                    <div class="destination-picture text-center">
-                      <%= image_tag Destination.find(10).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
-                    </div>
-                    <div class="destination-name text-center">
-                      <small><%= Destination.find(10).name.capitalize %></small><br>
-                    </div>
-                  <% end %>
-                  <% end %>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-4">
-                <div class="destination-box">
-                  <%= link_to destination_path(Destination.find(8)) do %>
-                    <div class="destination-picture text-center">
-                      <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
-                    </div>
-                    <div class="destination-name text-center">
-                      <small><%= Destination.find(8).name.capitalize %></small><br>
-                    </div>
+                      <div class="destination-picture text-center">
+                        <%= image_tag Destination.find(10).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                      </div>
+                      <div class="destination-name text-center">
+                        <small><%= Destination.find(10).name.capitalize %></small><br>
+                      </div>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-4">
                 <div class="destination-box">
-                  <%= link_to destination_path(Destination.find(9)) do %>
-                    <div class="destination-picture text-center">
-                      <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
-                    </div>
-                    <div class="destination-name text-center">
-                      <small><%= Destination.find(9).name.capitalize %></small><br>
-                    </div>
+                  <% if user_signed_in? %>
+                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(8).name)) do %>
+                      <div class="destination-picture text-center">
+                        <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                      </div>
+                      <div class="destination-name text-center">
+                        <small><%= Destination.find(8).name.capitalize %></small><br>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to '#', onclick:"showSignUpModal();"  do %>
+                      <div class="destination-picture text-center">
+                        <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                      </div>
+                      <div class="destination-name text-center">
+                        <small><%= Destination.find(8).name.capitalize %></small><br>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <div class="destination-box">
+                  <% if user_signed_in? %>
+                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(9).name)) do %>
+                      <div class="destination-picture text-center">
+                        <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                      </div>
+                      <div class="destination-name text-center">
+                        <small><%= Destination.find(9).name.capitalize %></small><br>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to '#', onclick:"showSignUpModal();"  do %>
+                      <div class="destination-picture text-center">
+                        <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                      </div>
+                      <div class="destination-name text-center">
+                        <small><%= Destination.find(9).name.capitalize %></small><br>
+                      </div>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
