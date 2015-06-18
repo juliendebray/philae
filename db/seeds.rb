@@ -35,7 +35,7 @@
 # Update experiences
 require 'json'
 require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1nwPoW4dpo1OPzweDVjO4xxe2A9_IK-HG469R3HFXhGU/od6/public/values?alt=json'
+url_json = 'https://spreadsheets.google.com/feeds/list/1fAehN-kU04f1Kw5MWbRkv9wLRhHIsS9-tQ79hd50H9o/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
@@ -47,7 +47,7 @@ data_hash['feed']['entry'].each do |exp_data|
     timetospent: exp_data['gsx$timetospent']['$t'],
     wheretosleep: exp_data['gsx$wheretosleep']['$t'],
     transportation: exp_data['gsx$transportation']['$t'],
-    category_tab: exp_data['gsx$categorytab']['$t'],
+    category_tab: exp_data['gsx$categorytab']['$t'].split(", "),
     landing_point: exp_data['gsx$landingpoint']['$t'],
     latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
     longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
