@@ -54,7 +54,8 @@ data_hash['feed']['entry'].each do |exp_data|
     wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
     must_see: exp_data['gsx$mustsee']['$t'],
     unesco: exp_data['gsx$unesco']['$t'],
-    thousand_places: exp_data['gsx$thousandplaces']['$t']
+    thousand_places: exp_data['gsx$thousandplaces']['$t'],
+    published: exp_data['gsx$published']['$t']
   )
 end
 
