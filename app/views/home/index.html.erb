@@ -52,7 +52,7 @@
             </div>
           <% end %>
         <% else %>
-          <h3><%= link_to t('.signup'), new_user_registration_path,  {class: "btn btn-info btn-lg fader", onclick:"ga('send', 'event', 'User', 'Sign Up Button', 'Click on sign up button from hp');"}%></h3>
+          <h3><%= link_to t('.signup'), '#mySignUpModal',  {class: "btn btn-info btn-lg fader", data: {toggle: 'modal'}, onclick:"ga('send', 'event', 'User', 'Sign Up Button', 'Click on sign up button from hp');"}%></h3>
         <% end %>
       </div>
       <div id="go-to-faq">
@@ -218,6 +218,16 @@
     <div class="vertical-spacer hide-xs"></div>
     </div>
   <%= render partial: 'shared/footer' %>
+</div>
+<!-- Modal Sign Up-->
+<div class="modal fade" id="mySignUpModal" tabindex="-1" role="dialog" aria-labelledby="mySignUpModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render "devise/shared/sign_up_form" %>
+      </div>
+    </div>
+  </div>
 </div>
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
