@@ -67,7 +67,26 @@
     <%= render 'shared/navbar' %>
 
     <%= yield %>
-
+    <!-- Modal Sign Up-->
+    <div class="modal fade" id="mySignUpModal" tabindex="-1" role="dialog" aria-labelledby="mySignUpModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <%= render "devise/shared/sign_up_form" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Sign ip-->
+    <div class="modal fade" id="mySignInModal" tabindex="-1" role="dialog" aria-labelledby="mySignInModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <%= render "devise/shared/sign_in_form" %>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="fb-root"></div>
     <%= yield(:before_js) %>
     <%= javascript_include_tag 'application' %>

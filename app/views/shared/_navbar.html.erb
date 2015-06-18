@@ -52,10 +52,10 @@
           </li>
         <% else %>
         <li >
-          <%= link_to t('signup'), new_user_registration_path %>
+          <%= link_to t('signup'),'#', {onclick:"showSignUpModal();"} %>
         </li>
         <li>
-          <%= link_to t('login'), new_user_session_path %>
+          <%= link_to t('login'),'#', {onclick:"showSignInModal();"} %>
         </li>
         <% end -%>
         <li class="dropdown">

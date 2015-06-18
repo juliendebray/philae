@@ -38,7 +38,7 @@
   <br>
   <div class='text-center'>
     <%- if controller_name != 'sessions' %>
-      Vous avez déjà un compte? <%= link_to 'Se connecter', new_session_path(resource_name) %>
+      Vous avez déjà un compte? <%= link_to 'Se connecter', '#', {onclick:"showSignInModal();"} %>
       <br />
     <% end -%>
   </div>
