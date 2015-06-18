@@ -91,6 +91,7 @@ data_hash['feed']['entry'].each do |rec_trip|
       order: 1 + i.to_i
     )
   end
+end
 
   # RecommendedTripExperience.create(
   #     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
