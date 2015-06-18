@@ -65,7 +65,7 @@ url_json = 'https://spreadsheets.google.com/feeds/list/1AimcYIV9yUKOjB-50wrjtCDf
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |rec_trip|
   recommended_trip = RecommendedTrip.create(
-    destination_id: Destination.find_by(country_code:'TH').id,
+    destination_id: Destination.find_by(country_code:'BR').id,
     title: rec_trip['gsx$title']['$t'],
     description: rec_trip['gsx$description']['$t'],
     step_1: rec_trip['gsx$step1']['$t'],
