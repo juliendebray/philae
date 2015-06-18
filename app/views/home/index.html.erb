@@ -52,7 +52,7 @@
             </div>
           <% end %>
         <% else %>
-          <h3><%= link_to t('.signup'), '#mySignUpModal',  {class: "btn btn-info btn-lg fader", data: {toggle: 'modal'}, onclick:"ga('send', 'event', 'User', 'Sign Up Button', 'Click on sign up button from hp');"}%></h3>
+          <h3><%= link_to t('.signup'), '#mySignIpModal',  {class: "btn btn-info btn-lg fader", data: {toggle: 'modal'}, onclick:"ga('send', 'event', 'User', 'Sign Up Button', 'Click on sign up button from hp');"}%></h3>
         <% end %>
       </div>
       <div id="go-to-faq">
@@ -225,6 +225,16 @@
     <div class="modal-content">
       <div class="modal-body">
         <%= render "devise/shared/sign_up_form" %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Sign ip-->
+<div class="modal fade" id="mySignIpModal" tabindex="-1" role="dialog" aria-labelledby="mySignIpModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render "devise/shared/sign_in_form" %>
       </div>
     </div>
   </div>
