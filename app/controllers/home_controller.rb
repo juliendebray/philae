@@ -1,10 +1,11 @@
 class HomeController < ApplicationController
   def index
     @trip = Trip.new
-    @hp_hash = create_hash_according_traffic_source(params[:from])
+    @coming_from_campaign = false
+    if params[:from] == 'fb_planning'
+      session[:from] = 'fb_planning'
+    end
   end
-
-
 
   private
   def create_hash_according_traffic_source(traffic_source)

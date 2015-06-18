@@ -29,33 +29,72 @@
   <div class="fullpage">
     <div id="homeblock" class="banner text-center">
       <div class="title fader">
-<!--         <h1><%= @hp_hash[:title] %></h1> -->
         <h1><%= t('.title') %></h1>
-        <!-- <div class="vertical-spacer-xs"></div> -->
-<!--         <h3><%= @hp_hash[:subtitle] %></h3> -->
         <h3><%= t('.subtitle') %></h3>
       </div>
       <div class="vertical-spacer-xxs"></div>
       <div class="tr-grey-bg">
-        <% if user_signed_in? %>
-          <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
-            <div class="form-group minor-block" class="text-center">
-              <%= f.hidden_field(:latitude, class: 'trip_params') %>
-              <%= f.hidden_field(:longitude, class: 'trip_params') %>
-              <%= f.hidden_field(:vp_ne_lat, class: 'trip_params') %>
-              <%= f.hidden_field(:vp_ne_lng, class: 'trip_params') %>
-              <%= f.hidden_field(:vp_sw_lat, class: 'trip_params') %>
-              <%= f.hidden_field(:vp_sw_lng, class: 'trip_params') %>
-              <%= f.hidden_field(:country_code, class: 'trip_params') %>
-              <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
-              <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm', onclick:"ga('send', 'event', 'User', 'Search Button', 'Click on search button from hp');") %>
-            </div>
-          <% end %>
+        <% if session[:from] %>
+          <div class="container">
+            <div class="row text-center">
+              <div class="col-xs-12 col-sm-4">
+                <div class="destination-box">
+                  <%= link_to destination_path(Destination.find(10)), target: "_blank" do %>
+                    <div class="destination-picture text-center">
+                      <%= image_tag Destination.find(10).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                    </div>
+                    <div class="destination-name text-center">
+                      <small><%= Destination.find(10).name.capitalize %></small><br>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <div class="destination-box">
+                  <%= link_to destination_path(Destination.find(8)), target: "_blank" do %>
+                    <div class="destination-picture text-center">
+                      <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                    </div>
+                    <div class="destination-name text-center">
+                      <small><%= Destination.find(8).name.capitalize %></small><br>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <div class="destination-box">
+                  <%= link_to destination_path(Destination.find(9)), target: "_blank" do %>
+                    <div class="destination-picture text-center">
+                      <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                    </div>
+                    <div class="destination-name text-center">
+                      <small><%= Destination.find(9).name.capitalize %></small><br>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+          </div>
         <% else %>
-          <h3><%= link_to t('.signup'),'#',  {class: "btn btn-info btn-lg fader", data: {toggle: 'modal'}, onclick:"showSignUpModal(); ga('send', 'event', 'User', 'Sign Up Button', 'Click on sign up button from hp');"}%></h3>
+          <% if user_signed_in? %>
+            <%= form_for(Trip.new, html: { class: "form-inline" }) do |f| %>
+              <div class="form-group minor-block" class="text-center">
+                <%= f.hidden_field(:latitude, class: 'trip_params') %>
+                <%= f.hidden_field(:longitude, class: 'trip_params') %>
+                <%= f.hidden_field(:vp_ne_lat, class: 'trip_params') %>
+                <%= f.hidden_field(:vp_ne_lng, class: 'trip_params') %>
+                <%= f.hidden_field(:vp_sw_lat, class: 'trip_params') %>
+                <%= f.hidden_field(:vp_sw_lng, class: 'trip_params') %>
+                <%= f.hidden_field(:country_code, class: 'trip_params') %>
+                <%= f.search_field(:query, placeholder: t('.searchplaceholder'), required: true ) %>
+                <%= f.submit( t('.searchbutton'), class: 'btn btn-info btn-sm', onclick:"ga('send', 'event', 'User', 'Search Button', 'Click on search button from hp');") %>
+              </div>
+            <% end %>
+          <% else %>
+            <h3><%= link_to t('.signup'),'#',  {class: "btn btn-info btn-lg fader", data: {toggle: 'modal'}, onclick:"showSignUpModal(); ga('send', 'event', 'User', 'Sign Up Button', 'Click on sign up button from hp');"}%></h3>
+          <% end %>
         <% end %>
       </div>
-      <div id="go-to-faq">
+      <div id="go-to-faq" class='hidden-xs'>
         <%= link_to t('about'), faq_index_path, target: "_blank" %><br>
       </div>
       <div id="arrow-down">
@@ -66,7 +105,6 @@
   <div class="help hp-section">
     <div class="vertical-spacer-xs"></div>
     <h2 class="text-center"><%= t('.howitworks') %></h2>
-<!--     <p class='text-center container'><%= @hp_hash[:description] %></p> -->
     <p class='text-center container'><%= t('.description') %></p>
     <div class="vertical-spacer-sm"></div>
 
@@ -74,7 +112,6 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-4 text-center text-contrast">
-<!--           <%= simple_format(@hp_hash[:item][:one]) %> -->
           <div class="how-header">
             <i class="fa fa-map-marker"></i>
           </div>
@@ -85,7 +122,6 @@
           <div class="vertical-spacer"></div>
         </div>
         <div class="col-sm-12 col-md-4 text-center text-contrast">
-<!--           <%= simple_format(@hp_hash[:item][:two]) %> -->
           <div class="how-header">
             <i class="fa fa-comment"></i>
           </div>
@@ -96,7 +132,6 @@
           <div class="vertical-spacer"></div>
         </div>
         <div class="col-sm-12 col-md-4 text-center text-contrast">
-<!--           <%= simple_format(@hp_hash[:item][:three]) %> -->
           <div class="how-header">
             <i class="fa fa-cloud-download"></i>
           </div>
@@ -108,7 +143,6 @@
         </div>
       </div>
     </div>
-    <% if @hp_hash[:tag] %>
       <div class="logo-container container">
           <div class="row text-center">
             <p><i>powered by</i></p>
@@ -142,7 +176,6 @@
         </div>
       </div>
       <div class="vertical-spacer"></div>
-    <% end %>
     <h2 class="text-center"><%= t('.destination_title') %></h2>
     <p class='text-center'><%= t('.destination_tagline') %></p>
     <%= link_to Destination.find(7) do %>
