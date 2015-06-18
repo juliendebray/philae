@@ -231,7 +231,6 @@ data_hash['feed']['entry'].each do |exp_data|
         comment: exp_data['gsx$gdrreview']['$t'],
       )
     end
-    )
     gen_url = "http://philae-floju.s3.amazonaws.com/photos_thailande/"
     code = exp_data['gsx$code']['$t']
     (1..4).each do |i|
