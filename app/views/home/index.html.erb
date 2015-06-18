@@ -39,7 +39,7 @@
             <div class="row text-center">
               <div class="col-xs-12 col-sm-4">
                 <div class="destination-box">
-                  <%= link_to destination_path(Destination.find(10)), target: "_blank" do %>
+                  <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(10).name)) do %>
                     <div class="destination-picture text-center">
                       <%= image_tag Destination.find(10).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
                     </div>
@@ -51,7 +51,7 @@
               </div>
               <div class="col-xs-12 col-sm-4">
                 <div class="destination-box">
-                  <%= link_to destination_path(Destination.find(8)), target: "_blank" do %>
+                  <%= link_to destination_path(Destination.find(8)) do %>
                     <div class="destination-picture text-center">
                       <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
                     </div>
@@ -63,7 +63,7 @@
               </div>
               <div class="col-xs-12 col-sm-4">
                 <div class="destination-box">
-                  <%= link_to destination_path(Destination.find(9)), target: "_blank" do %>
+                  <%= link_to destination_path(Destination.find(9)) do %>
                     <div class="destination-picture text-center">
                       <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
                     </div>
@@ -176,79 +176,77 @@
         </div>
       </div>
       <div class="vertical-spacer"></div>
-    <h2 class="text-center"><%= t('.destination_title') %></h2>
-    <p class='text-center'><%= t('.destination_tagline') %></p>
-    <%= link_to Destination.find(7) do %>
-      <div class="destination-item text-center">
-        <%= image_tag(Destination.find(7).destination_pictures.first.picture.url(:banner), class: 'max-width') %>
-        <div class="destination-name text-center">
-          <%= Destination.find(7).name.upcase %>
-<!--           <br>
-          <small>Découvrir les meilleures expériences</small> -->
-        </div>
-      </div>
-    <% end %>
-    <div class="vertical-spacer-sm"></div>
-    <div class="experience-promo">
-      <h2 class="text-center"><%= t('.experiences_title') %></h2>
-      <p class='text-center'><%= t('.experiences_tagline') %></p>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="experience-box">
-            <%= link_to experience_path(176), target: "_blank" do %>
-              <div class="experience-picture text-center">
-                <%= image_tag Experience.find(176).experience_pictures.first.picture.url(:medium) %>
-              </div>
-              <div class="experience-name text-center">
-                <small><%= Experience.find(176).name%></small><br>
-              </div>
-            <% end %>
+      <h2 class="text-center"><%= t('.destination_title') %></h2>
+      <p class='text-center'><%= t('.destination_tagline') %></p>
+      <%= link_to Destination.find(7) do %>
+        <div class="destination-item text-center">
+          <%= image_tag(Destination.find(7).destination_pictures.first.picture.url(:banner), class: 'max-width') %>
+          <div class="destination-name text-center">
+            <%= Destination.find(7).name.upcase %>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="experience-box">
-            <%= link_to experience_path(175), target: "_blank" do %>
-              <div class="experience-picture text-center">
-                <%= image_tag Experience.find(175).experience_pictures.first.picture.url(:medium) %>
-              </div>
-              <div class="experience-name text-center">
-                <small><%= Experience.find(175).name%></small><br>
-              </div>
-            <% end %>
+      <% end %>
+      <div class="vertical-spacer-sm"></div>
+      <div class="experience-promo">
+        <h2 class="text-center"><%= t('.experiences_title') %></h2>
+        <p class='text-center'><%= t('.experiences_tagline') %></p>
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="experience-box">
+              <%= link_to experience_path(176), target: "_blank" do %>
+                <div class="experience-picture text-center">
+                  <%= image_tag Experience.find(176).experience_pictures.first.picture.url(:medium) %>
+                </div>
+                <div class="experience-name text-center">
+                  <small><%= Experience.find(176).name%></small><br>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="experience-box">
+              <%= link_to experience_path(175), target: "_blank" do %>
+                <div class="experience-picture text-center">
+                  <%= image_tag Experience.find(175).experience_pictures.first.picture.url(:medium) %>
+                </div>
+                <div class="experience-name text-center">
+                  <small><%= Experience.find(175).name%></small><br>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="experience-box">
+              <%= link_to experience_path(29), target: "_blank" do %>
+                <div class="experience-picture text-center">
+                  <%= image_tag Experience.find(29).experience_pictures.first.picture.url(:medium) %>
+                </div>
+                <div class="experience-name text-center">
+                  <small><%= Experience.find(29).name%></small><br>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="experience-box">
-            <%= link_to experience_path(29), target: "_blank" do %>
-              <div class="experience-picture text-center">
-                <%= image_tag Experience.find(29).experience_pictures.first.picture.url(:medium) %>
-              </div>
-              <div class="experience-name text-center">
-                <small><%= Experience.find(29).name%></small><br>
-              </div>
-            <% end %>
+        <div class="vertical-spacer-xs"></div>
+        <div class="row text-center">
+          <%= link_to t('.other_experiences'), experiences_path, {class: "btn btn-info"} %>
+        </div>
+      </div>
+      <div class="vertical-spacer"></div>
+      <h2 class="text-center"><%= t('.explore_map_title') %></h2>
+      <p class='text-center'><%= t('.explore_map_tagline') %></p>
+      <%= link_to map_path do %>
+        <div class="destination-item text-center">
+          <%= image_tag('maphands.jpg', width: 851, height: 440, class: 'max-width') %>
+          <div class="destination-name text-center">
+            <%= t('.interactive_map') %> <br>
+            <small>Voir les expériences du monde entier</small>
           </div>
         </div>
+      <% end %>
+      <div class="vertical-spacer hide-xs"></div>
       </div>
-      <div class="vertical-spacer-xs"></div>
-      <div class="row text-center">
-        <%= link_to t('.other_experiences'), experiences_path, {class: "btn btn-info"} %>
-      </div>
-    </div>
-    <div class="vertical-spacer"></div>
-    <h2 class="text-center"><%= t('.explore_map_title') %></h2>
-    <p class='text-center'><%= t('.explore_map_tagline') %></p>
-    <%= link_to map_path do %>
-      <div class="destination-item text-center">
-        <%= image_tag('maphands.jpg', width: 851, height: 440, class: 'max-width') %>
-        <div class="destination-name text-center">
-          <%= t('.interactive_map') %>
-<!--           <br>
-          <small>Voir les expériences du monde entier</small> -->
-        </div>
-      </div>
-    <% end %>
-    <div class="vertical-spacer hide-xs"></div>
     </div>
   <%= render partial: 'shared/footer' %>
 </div>
