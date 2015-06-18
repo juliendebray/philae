@@ -203,7 +203,6 @@ data_hash['feed']['entry'].each do |exp_data|
   exp = Experience.create(
     average_rating: exp_data['gsx$rating']['$t'].to_f,
     name: exp_data['gsx$nomfrench']['$t'],
-    address: exp_data['gsx$lieufrench']['$t'],
     latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
     longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
     description: exp_data['gsx$description']['$t'],
