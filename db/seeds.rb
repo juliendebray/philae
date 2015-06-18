@@ -48,7 +48,6 @@ data_hash['feed']['entry'].each do |exp_data|
     wheretosleep: exp_data['gsx$wheretosleep']['$t'],
     transportation: exp_data['gsx$transportation']['$t'],
     category_tab: exp_data['gsx$categorytab']['$t'].split(", "),
-    landing_point: exp_data['gsx$landingpoint']['$t'],
     latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
     longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
     wikipedia_link: exp_data['gsx$wikipedialink']['$t'],

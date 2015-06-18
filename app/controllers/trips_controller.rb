@@ -66,6 +66,10 @@ class TripsController < ApplicationController
         puts 'SPORT'
         experiences_selection.each{|e| experiences_list << e if e.category_tab.to_a.include?('sport')}
       end
+      if params[:categories].include?('nature')
+        puts 'NATURE'
+        experiences_selection.each{|e| experiences_list << e if e.category_tab.to_a.include?('nature')}
+      end
       experiences_selection = experiences_list.uniq
 
       # Fetch experiences according to categories
