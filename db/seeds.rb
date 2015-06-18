@@ -59,39 +59,39 @@
 # end
 
 # Seed create recommended_trips
-# require 'json'
-# require 'rest_client'
-# url_json = 'https://spreadsheets.google.com/feeds/list/1AimcYIV9yUKOjB-50wrjtCDfx3ZJDWZaU3CToDJQVIg/od6/public/values?alt=json'
-# data_hash = JSON.parse(RestClient.get(url_json))
-# data_hash['feed']['entry'].each do |rec_trip|
-#   recommended_trip = RecommendedTrip.create(
-#     destination_id: Destination.find_by(country_code:'BR').id,
-#     title: rec_trip['gsx$title']['$t'],
-#     description: rec_trip['gsx$description']['$t'],
-#     step_1: rec_trip['gsx$step1']['$t'],
-#     step_2: rec_trip['gsx$step2']['$t'],
-#     step_3: rec_trip['gsx$step3']['$t'],
-#     step_4: rec_trip['gsx$step4']['$t'],
-#     step_5: rec_trip['gsx$step5']['$t'],
-#     step_6: rec_trip['gsx$step6']['$t'],
-#     step_7: rec_trip['gsx$step7']['$t'],
-#     step_8: rec_trip['gsx$step8']['$t'],
-#     step_9: rec_trip['gsx$step9']['$t'],
-#     step_10: rec_trip['gsx$step10']['$t'],
-#     step_11: rec_trip['gsx$step11']['$t'],
-#     step_12: rec_trip['gsx$step12']['$t'],
-#     step_13: rec_trip['gsx$step13']['$t'],
-#     step_14: rec_trip['gsx$step14']['$t'],
-#     step_15: rec_trip['gsx$step15']['$t'],
-#     picture: "https://philae-floju.s3.amazonaws.com/photos_bresil/"+ rec_trip['gsx$picturename']['$t'] + ".png"
-#   )
-#   rec_trip['gsx$recotripexptab']['$t'].split(", ").each_with_index do |v, i|
-#     recommended_trip.recommended_trip_experiences.create(
-#       experience_id: v.to_i,
-#       order: 1 + i.to_i
-#     )
-#   end
-# end
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1AimcYIV9yUKOjB-50wrjtCDfx3ZJDWZaU3CToDJQVIg/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |rec_trip|
+  recommended_trip = RecommendedTrip.create(
+    destination_id: Destination.find_by(country_code:'BR').id,
+    title: rec_trip['gsx$title']['$t'],
+    description: rec_trip['gsx$description']['$t'],
+    step_1: rec_trip['gsx$step1']['$t'],
+    step_2: rec_trip['gsx$step2']['$t'],
+    step_3: rec_trip['gsx$step3']['$t'],
+    step_4: rec_trip['gsx$step4']['$t'],
+    step_5: rec_trip['gsx$step5']['$t'],
+    step_6: rec_trip['gsx$step6']['$t'],
+    step_7: rec_trip['gsx$step7']['$t'],
+    step_8: rec_trip['gsx$step8']['$t'],
+    step_9: rec_trip['gsx$step9']['$t'],
+    step_10: rec_trip['gsx$step10']['$t'],
+    step_11: rec_trip['gsx$step11']['$t'],
+    step_12: rec_trip['gsx$step12']['$t'],
+    step_13: rec_trip['gsx$step13']['$t'],
+    step_14: rec_trip['gsx$step14']['$t'],
+    step_15: rec_trip['gsx$step15']['$t'],
+    picture: "https://philae-floju.s3.amazonaws.com/photos_bresil/"+ rec_trip['gsx$picturename']['$t'] + ".png"
+  )
+  rec_trip['gsx$recotripexptab']['$t'].split(", ").each_with_index do |v, i|
+    recommended_trip.recommended_trip_experiences.create(
+      experience_id: v.to_i,
+      order: 1 + i.to_i
+    )
+  end
+end
 
   # RecommendedTripExperience.create(
   #     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
@@ -201,7 +201,7 @@ url_json = "https://spreadsheets.google.com/feeds/list/1sX2byNlJJllbOiU4nVkviYlM
 data_hash = JSON.parse(RestClient.get(url_json))
 data_hash['feed']['entry'].each do |exp_data|
   exp = Experience.create(
-    average_rating: exp_data['gsx$rating']['$t'].to_f,
+    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
     name: exp_data['gsx$nomfrench']['$t'],
     latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
     longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
