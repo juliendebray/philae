@@ -8,26 +8,12 @@ class TripsController < ApplicationController
     @trip = current_user.trips.new(trip_params)
     @trip.title = @trip.query
     @trip.save
-    # # Libanese demo
-    # if params[:title] && params[:title] == 'Liban'
-    #   authenticate_user!
-    #   @destination = Destination.first
-    #   @trip = current_user.trips.create(query: @destination.name, title: @destination.name, latitude: 33.89120770946144, longitude: 35.88151107421868)
-    #   redirect_to demo_trip_path(@trip)
-    # else
-    # # TODO: change Morocco default behavior
-    #   if params[:trip].nil?
-    #     @trip = Trip.new(query: 'Maroc without query', latitude: 31.943808, longitude: -6.271945)
-    #     @trip.title = 'Morocco'
-    #   elsif params[:trip][:query]
-    #     authenticate_user!
-    #     @trip = current_user.trips.new(trip_params)
-    #     @trip.title = @trip.query
-    #   end
-    #   @trip.save
+    @destination = Destination.find_by(country_code: @trip.country_code)
+    if @destination
+      redirect_to explore_destination_trip_path(@trip)
+    else
       redirect_to start_trip_path(@trip)
-      # redirect_to demo_trip_path(@trip)
-    # end
+    end
   end
 
   def explore_map
