@@ -192,9 +192,15 @@
                   <ul>
                     <li><p><%= raw(rec_trip.step_1) %></p></li>
                     <li><p><%= raw(rec_trip.step_2) %></p></li>
-                    <li><p><%= raw rec_trip.step_3 %></p></li>
-                    <li><p><%= raw rec_trip.step_4 %></p></li>
-                    <li><p><%= raw rec_trip.step_5 %></p></li>
+                    <% if rec_trip.step_4.length > 0 %>
+                      <li><p><%= raw rec_trip.step_3 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_4.length > 0 %>
+                      <li><p><%= raw rec_trip.step_4 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_5.length > 0 %>
+                      <li><p><%= raw rec_trip.step_5 %></p></li>
+                    <% end %>
                     <% if rec_trip.step_6.length > 0 %>
                       <li><p><%= raw rec_trip.step_6 %></p></li>
                     <% end %>
@@ -232,7 +238,7 @@
                   <div class="itinerary_image">
                     <%= image_tag rec_trip.recommended_trip_experiences.first.experience.experience_pictures.first.picture.url(:small) %>
                     <br><br>
-                    <%= image_tag rec_trip.recommended_trip_experiences.third.experience.experience_pictures.first.picture.url(:small) %>
+                    <%= image_tag rec_trip.recommended_trip_experiences.second.experience.experience_pictures.first.picture.url(:small) %>
                     <br><br>
                     <% if rec_trip.step_6.length > 0 %>
                       <%= image_tag rec_trip.recommended_trip_experiences.fifth.experience.experience_pictures.first.picture.url(:small) %>

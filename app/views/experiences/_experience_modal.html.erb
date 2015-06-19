@@ -46,7 +46,7 @@
       </div>
       <br>
       <div class="experience-description text-justify">
-        <%= raw experience.description %>
+        <%= simple_format experience.description %>
       </div>
       <div class="experience-links text-center">
         <% if experience.unesco && experience.thousand_places && experience.wikipedia_link %>
@@ -483,13 +483,13 @@
               <% if experience.timetospent %>
                 <blockquote><i class="fa fa-clock-o"></i> - <i>temps de visite</i> :  <%= experience.timetospent %></blockquote>
               <% end %>
-              <% if experience.wheretosleep %>
+              <% if experience.wheretosleep.length > 0 %>
               <br>
                 <blockquote><i class="fa fa-home"></i> - <i>où dormir</i> :  <%= experience.wheretosleep %></blockquote>
               <% end %>
-              <% if experience.transportation %>
+              <% if experience.transportation.length > 0 %>
               <br>
-                <blockquote><i class="fa fa-bicycle"></i> - <i>comment s'y rendre</i> : <%= simple_format experience.transportation %></blockquote>
+                <blockquote><i class="fa fa-bicycle"></i> - <i>comment s'y rendre</i> : <%= simple_format experience.transportation.length > 0 %></blockquote>
               <% end %>
             </div>
           </div>
