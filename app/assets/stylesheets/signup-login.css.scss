@@ -119,22 +119,10 @@ padding-bottom: 20px;
   vertical-align: bottom;
 }
 
-#user_email {
+#user_email, #user_name, #user_password, #user_password_confirmation {
   color: grey;
   font-weight: 300;
   width: 170px;
-}
-
-#user_password {
-  color: grey;
-  font-weight: 300;
-   width: 170px;
-}
-
-#user_password_confirmation {
-  color: grey;
-  font-weight: 300;
-   width: 170px;
 }
 
 @media screen and (min-width: 200px) and (max-width: 580px) {

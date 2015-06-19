@@ -16,6 +16,13 @@
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), class: 'text-center') do |f| %>
         <%= devise_error_messages! %>
         <div>
+          <%= f.label :name do %>
+            <br />
+            <span class="col-xs-1 text-center"><i class="fa fa-user fa-2x icon-alignement"></i></span>
+            <%= f.text_field :name, placeholder: "Marco Polo" %>
+          <% end %>
+        </div>
+        <div>
           <%= f.label :email do %>
             <br />
             <span class="col-xs-1 text-center"><i class="fa fa-envelope fa-2x icon-alignement"></i></span>
