@@ -63,15 +63,15 @@
       <div class="experience-details">
         <div class="row text-center">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-            <% if @experience.timetospent %>
+            <% if @experience.timetospent.length > 0 %>
             <br>
               <i class="fa fa-clock-o"></i> - <b>Temps de visite</b> :  <p><%= @experience.timetospent %></p>
             <% end %>
             <br>
-            <% if @experience.wheretosleep %>
+            <% if @experience.wheretosleep.length > 0 %>
               <i class="fa fa-home"></i> - <b>Où dormir</b> :  <p><%= @experience.wheretosleep %></p>
             <% end %>
-            <% if @experience.transportation %>
+            <% if @experience.transportation.length > 0 %>
             <br>
               <i class="fa fa-bicycle"></i> - <b>Comment s'y rendre</b> : <p><%= simple_format @experience.transportation %></p>
             <% end %>
