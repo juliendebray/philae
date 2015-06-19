@@ -14,25 +14,25 @@
       <em class="text-center light"><i class="fa fa-envelope-o light"></i> Inscrivez-vous par email</em>
     </div>
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), class: 'text-center') do |f| %>
-      <%= devise_error_messages! %>
-      <div><%= f.label :email do %>
+        <%= devise_error_messages! %>
+        <div>
+          <%= f.label :email do %>
+            <br />
+            <span class="col-xs-1 text-center"><i class="fa fa-envelope fa-2x icon-alignement"></i></span>
+            <%= f.email_field :email, placeholder: "marco.polo@navy.com" %>
+          <% end %>
+        </div>
+        <div>
+          <%= f.label :password do %>
+            <br />
+            <span class="col-xs-1 text-center"><i class="fa fa-lock fa-2x icon-alignement"></i></span>
+            <%= f.password_field :password, placeholder: t('passwordplaceholder') %>
+          <% end %>
+        </div>
         <br />
-        <span class="col-xs-1 text-center"><i class="fa fa-envelope fa-2x icon-alignement"></i></span>
-        <%= f.email_field :email, placeholder: "marco.polo@navy.com" %>
-        <% end %>
-      </div>
-      <div><%= f.label :password do %>
-        <br />
-        <span class="col-xs-1 text-center"><i class="fa fa-lock fa-2x icon-alignement"></i></span>
-        <%= f.password_field :password, placeholder: t('passwordplaceholder') %></div>
-      <% end %>
-      <div><%= f.label :password_confirmation do %>
-        <br />
-        <span class="col-xs-1 text-center"><i class="fa fa-lock fa-2x icon-alignement"></i></span>
-        <%= f.password_field :password_confirmation, placeholder: t('passwordconfirmplaceholder') %></div>
-      <% end %>
-      <br />
-      <div><%= f.submit 'Inscription par email', class: 'btn btn-info' %></div>
+        <div>
+          <%= f.submit 'Inscription par email', class: 'btn btn-info' %>
+        </div>
     <% end %>
   </div>
   <br>
