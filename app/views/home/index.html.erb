@@ -7,7 +7,7 @@
 <% content_for :registration_scripts do %>
   <% if flash[:notice] && user_signed_in? %>
     <% if session[:from]  %>
-      <% current_user.update(from_campaign: session[:from]) %>
+      <% current_user.update(from_campaign: session[:from]) if current_user.from_campaign.nil?   %>
     <% end %>
     <!-- Facebook Conversion Code for Registration -->
     <script>(function() {
