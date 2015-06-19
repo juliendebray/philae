@@ -36,6 +36,11 @@
             <%= f.password_field :password, placeholder: t('passwordplaceholder') %>
           <% end %>
         </div>
+        <% if session[:from] %>
+            <%= f.label :from_campaign do %>
+              <%= f.hidden_field :from_campaign, value: session[:from] %>
+            <% end %>
+        <% end %>
         <br />
         <div>
           <%= f.submit 'Inscription par email', class: 'btn btn-info' %>
