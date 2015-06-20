@@ -29,7 +29,7 @@
   </a>
   <div class="collapse" id="collapseOverview">
     <div class="destination-content">
-      <h3 class="text-center"><%= simple_format @destination.enter_title %></h3>
+      <h3 class="text-center"><%= raw @destination.enter_title %></h3>
       <br>
       <ul>
          <li><p><%= raw @destination.enter_line1 %></p></li>
@@ -55,9 +55,9 @@
       <br>
       <h3 class="text-center"><%= simple_format @destination.security_title %></h3>
         <br>
-        <li><p><%= simple_format @destination.security_line1 %></p></li>
+        <li><p><%= raw @destination.security_line1 %></p></li>
         <% if @destination.security_line2.length > 0 %>
-          <li><p><%= simple_format @destination.security_line2 %></p></li>
+          <li><p><%= raw @destination.security_line2 %></p></li>
         <% end %>
         <br>
         <h3 class="text-center"><%= simple_format @destination.transport_title %></h3>
@@ -114,7 +114,7 @@
           <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).each do |experience| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="experience-box">
-                <%= link_to experience_detail_path(experience.id), remote: true do %>
+                <%= link_to modal_exp_path(@trip.id, experience.id), remote: true do %>
                   <div class="experience-picture text-center">
                     <% if experience.experience_pictures.first %>
                       <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
