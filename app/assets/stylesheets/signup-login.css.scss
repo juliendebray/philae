@@ -1,3 +1,64 @@
+// Sign up and sign in MODALS
+#sign-up-modal-form {
+  #fb-signup {
+    border-bottom: none;
+  }
+  .division {
+    float: none;
+    margin: 0 auto 5px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    .line {
+      border-top: 1px solid #DFDFDF;
+      position: absolute;
+      top: 13px;
+      width: 45%;
+    }
+    .l {
+      left: 0;
+    }
+    .r {
+      right: 0;
+    }
+    span {
+      color: #565a5c;
+      font-size: 17px;
+    }
+  }
+  #email-signup{
+    padding-bottom: 8px;
+    border-bottom: 1px solid #DFDFDF;
+    em, i {
+      color: #565a5c;
+    }
+    form.new_user {
+      text-align: center;
+    }
+    i.icon-alignement {
+      color: #565a5c;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Sign up and sign in VIEWS
+
 #sign-form {
   background: rgba(0,0,0,0.3);
   color: white;
@@ -58,22 +119,10 @@ padding-bottom: 20px;
   vertical-align: bottom;
 }
 
-#user_email {
+#user_email, #user_name, #user_password, #user_password_confirmation {
   color: grey;
   font-weight: 300;
   width: 170px;
-}
-
-#user_password {
-  color: grey;
-  font-weight: 300;
-   width: 170px;
-}
-
-#user_password_confirmation {
-  color: grey;
-  font-weight: 300;
-   width: 170px;
 }
 
 @media screen and (min-width: 200px) and (max-width: 580px) {
