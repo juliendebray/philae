@@ -1,7 +1,7 @@
 <div class="wrapper bg-white black">
   <div class="destination-banner">
     <%= image_tag @destination.destination_pictures.first.picture.url(:banner) %>
-    <h1><%= @destination.name.upcase %></h1>
+    <h1 class='title-destination-page'><%= @destination.name.upcase %></h1>
   </div>
   <div class="destination-content">
     <h3 class="text-center"><%= @destination.intro_title %></h3>
@@ -19,12 +19,10 @@
       </ol>
     <br>
   </div>
-
   <a class="destination-collapse" data-toggle="collapse" href="#collapseOverview" aria-expanded="false" aria-controls="collapseOverview">
     <div id="overview" class="text-center">
       <%= image_tag @destination.destination_pictures.second.picture.url(:banner) %>
-      <h2 class="no-margin">A savoir avant de partir</h2>
-<!--       <p class="destination-tagline">Informations générales, formalités d'entrée, climat</p> -->
+      <h2 class="no-margin title-destination-page">A savoir avant de partir</h2>
     </div>
   </a>
   <div class="collapse" id="collapseOverview">
@@ -100,7 +98,7 @@
   <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee">
   <div id="must-see" class="text-center">
     <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
-    <h2 class="no-margin">Que voir et que faire ?</h2>
+    <h2 class="no-margin title-destination-page">Que voir et que faire ?</h2>
 <!--     <p class="destination-tagline">Lieux et activités qui font l'unanimité auprès des guides et voyageurs</p> -->
   </div>
   </a>
@@ -167,7 +165,7 @@
   <a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip">
   <div id="recommended-trip" class="text-center destination-title">
     <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
-    <h2 class="no-margin">Itinéraires conseillés</h2>
+    <h2 class="no-margin title-destination-page">Itinéraires conseillés</h2>
 <!--     <p class="destination-tagline">Itinéraires conseillés en fonction de la durée de votre séjour</p>
  -->  </div>
   </a>
@@ -305,7 +303,7 @@
   </div> -->
     <div>
       <div class="vertical-spacer-xs"></div>
-      <h2 class='text-center map-title'>Personaliser mon voyage</h2>
+      <h2 class='text-center map-title title-destination-page'>Personaliser mon voyage</h2>
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
