@@ -58,7 +58,7 @@
 #   )
 # end
 
-Seed create recommended_trips
+# Seed create recommended_trips
 require 'json'
 require 'rest_client'
 url_json = 'https://spreadsheets.google.com/feeds/list/17cS22y5DE_C9EbCESvMGt6QUUcpicLLaPDrsUJktKz4/od6/public/values?alt=json'
