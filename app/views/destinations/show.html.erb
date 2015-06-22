@@ -9,6 +9,50 @@
     <%= image_tag @destination.destination_pictures.first.picture.url(:banner) %>
     <h1 class='title-destination-page'><%= @destination.name.capitalize %></h1>
   </div>
+  <div class="container destination-explanation">
+    <div class="row">
+      <div class="col-sm-12 col-md-3 text-center text-contrast">
+        <div class="how-header">
+          <i class="fa fa-camera-retro"></i>
+        </div>
+        <div class="vertical-spacer-xs"></div>
+        <div class="how-content">
+          <p>1. Découvrez toutes les expériences à destination</p>
+        </div>
+        <div class="vertical-spacer-xs"></div>
+      </div>
+      <div class="col-sm-12 col-md-3 text-center text-contrast">
+        <div class="how-header">
+          <i class="fa fa-bus"></i>
+        </div>
+        <div class="vertical-spacer-xs"></div>
+        <div class="how-content">
+          <p>2. Choisissez l'itinéraire qui vous ressemble</p>
+        </div>
+        <div class="vertical-spacer-xs"></div>
+      </div>
+      <div class="col-sm-12 col-md-3 text-center text-contrast">
+        <div class="how-header">
+          <i class="fa fa-bicycle"></i>
+        </div>
+        <div class="vertical-spacer-xs"></div>
+        <div class="how-content">
+          <p>3. Voyagez à votre façon en personnalisant votre itinéraire</p>
+        </div>
+        <div class="vertical-spacer-xs"></div>
+      </div>
+      <div class="col-sm-12 col-md-3 text-center text-contrast">
+        <div class="how-header">
+          <i class="fa fa-suitcase"></i>
+        </div>
+        <div class="vertical-spacer-xs"></div>
+        <div class="how-content">
+          <p>4. Enregistrez et partagez votre projet de voyage</p>
+        </div>
+        <div class="vertical-spacer-xs"></div>
+      </div>
+    </div>
+  </div>
   <div class="destination-content">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
@@ -32,7 +76,7 @@
   <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee">
   <div id="must-see" class="text-center">
     <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
-    <h2 class="no-margin title-destination-page">Que voir et que faire ?</h2>
+    <h2 class="no-margin title-destination-page">Découvrez les plus belles expériences</h2>
   </div>
   </a>
   <div class="collapse" id="collapseMustSee">
@@ -41,7 +85,7 @@
     <div class="destination-content">
       <div class="container-fluid">
         <div class="row text-center">
-          <p><%= @destination.name.capitalize %> - les meilleures expériences</p><br>
+          <h3><%= @destination.name.capitalize %> - les meilleures expériences</h3><br>
           <ol>
             <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
               <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
@@ -84,7 +128,7 @@
                         <% end %>
                       </div>
                       <div class="experience-description">
-                        <%= simple_format truncate(experience.description, length: 250, separator: ' ') %>
+                        <%= simple_format truncate(experience.description, length: 350, separator: ' ') %>
                       </div>
                       <div class="experience-know-more">
                         <p><%= link_to "En savoir plus", experience_detail_path(experience.id), remote: true %></p>
@@ -98,22 +142,51 @@
         </div>
         <br><br><br>
         <div class="row text-center">
-          <p>Les autres expériences</p><br>
+          <h3>Les autres expériences</h3><br>
           <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="experience-big-box">
-                <%= link_to experience_detail_path(experience.id), remote: true do %>
-                  <div class="experience-picture text-center">
-                    <% if experience.experience_pictures.first %>
-                      <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
-                    <% end %>
-                  </div>
-                  <div class="experience-name text-center">
-                    <small><%= experience.name %></small><br>
-                  </div>
-                <% end %>
+            <% if experience.category_tab.exclude?('otbt') %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="experience-big-box">
+                  <%= link_to experience_detail_path(experience.id), remote: true do %>
+                    <div class="experience-picture text-center">
+                      <% if experience.experience_pictures.first %>
+                        <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
+                      <% end %>
+                    </div>
+                    <div class="experience-name text-center">
+                      <small><%= experience.name %></small><br>
+                    </div>
+                    <div class="experience-one-sentence text-center">
+                      <small><%= experience.onesentence %></small><br>
+                    </div>
+                  <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="row text-center">
+          <h3>Coup de projecteur sur les expériences hors des sentiers battus</h3><br>
+          <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
+            <% if experience.category_tab.include?('otbt') %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="experience-big-box">
+                  <%= link_to experience_detail_path(experience.id), remote: true do %>
+                    <div class="experience-picture text-center">
+                      <% if experience.experience_pictures.first %>
+                        <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
+                      <% end %>
+                    </div>
+                    <div class="experience-name text-center">
+                      <small><%= experience.name %></small><br>
+                    </div>
+                    <div class="experience-one-sentence text-center">
+                      <small><%= experience.onesentence %></small><br>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -122,12 +195,20 @@
   <a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip">
   <div id="recommended-trip" class="text-center destination-title">
     <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
-    <h2 class="no-margin title-destination-page">Itinéraires conseillés</h2>
+    <h2 class="no-margin title-destination-page">Trouvez l'inspiration avec nos itinéraires</h2>
 <!--     <p class="destination-tagline">Sélectionnez un itinéraire à personnaliser</p> -->
   </div>
   </a>
   <div class="collapse" id="collapseRecommendedTrip">
     <div class="destination-content">
+      <p class="text-center"><i>Ces itinéraires ont été conçus par nos experts.</i></p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
+          <% RecommendedTrip.where(destination_id: @destination.id).sort_by {|rc| rc.id }.each do |rec_trip| %>
+            <p class="text-center"><%= raw rec_trip.title %></p>
+          <% end %>
+        </div>
+      </div>
       <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
           <% RecommendedTrip.where(destination_id: @destination.id).sort_by {|rc| rc.id }.each do |rec_trip| %>

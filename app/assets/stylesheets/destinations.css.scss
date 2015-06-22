@@ -80,6 +80,36 @@
   text-shadow: 0px 0px 1px white, 0px 0px 4px black;
 }
 
+.destination-explanation {
+  padding: 20px 20px 0px 20px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.03);
+  h2 {
+    color: #525252;
+    text-shadow: none;
+  }
+  p {
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .how-header {
+    i {
+      font-size: 4em;
+      color: #0086B8;
+    }
+  }
+  .how-content{
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+}
+
 .destination-content {
   padding: 2%;
   p {
@@ -111,6 +141,7 @@
     position: relative;
     overflow: hidden;
     width: 100%;
+    background: rgba(0,0,0,0.1);
     .experience-picture {
       img {
         width: 100%;
@@ -125,18 +156,42 @@
         transition: all 0.5s ease;
       }
     }
+    .experience-one-sentence {
+      padding: 5px;
+      display: none;
+      text-align: center;
+      width: 100%;
+      top: 0;
+      height: 100%;
+      letter-spacing: 0px;
+      font-size: 1em;
+      color: white;
+      background: rgba(0,0,0,0.3);
+      position: absolute;
+      margin: auto;
+      small {
+        position: absolute;
+        top: 40%;
+        left: 0;
+        right: 0;
+        font-size: 20px;
+        font-weight: 200;
+        text-shadow: 0px 0px 1px white, 0px 0px 3px black;
+      }
+    }
     .experience-name {
       text-align: center;
       width: 100%;
       letter-spacing: 0px;
       font-size: 1em;
       color: white;
-      bottom: 0px;
-      background: rgba(0,0,0,0.1);
+      top: 40%;
+      // bottom: 0px;
+      // background: rgba(0,0,0,0.1);
       position: absolute;
       margin: auto;
       small {
-        font-size: 22px;
+        font-size: 25px;
         font-weight: 200;
         text-shadow: 0px 0px 1px white, 0px 0px 6px black;
       }
@@ -146,6 +201,12 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    .experience-name {
+      display: none;
+    }
+    .experience-one-sentence {
+      display: block;
+    }
     img {
       // filter: grayscale(25%);
       // -webkit-filter: grayscale(25%);
