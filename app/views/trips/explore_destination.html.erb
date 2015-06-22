@@ -1,105 +1,32 @@
 <div class="wrapper bg-white black">
   <div class="destination-banner">
     <%= image_tag @destination.destination_pictures.first.picture.url(:banner) %>
-    <h1 class='title-destination-page'><%= @destination.name.upcase %></h1>
+    <h1 class='title-destination-page'><%= @destination.name.capitalize %></h1>
   </div>
   <div class="destination-content">
-    <h3 class="text-center"><%= @destination.intro_title %></h3>
-    <br>
-      <ol>
-        <li><%= simple_format @destination.sentence1 %></p></li>
-        <li><%= simple_format @destination.sentence2 %></li>
-        <li><%= simple_format @destination.sentence3 %></li>
-        <% if @destination.sentence4.length > 0 %>
-          <li><%= simple_format @destination.sentence4 %></li>
-        <% end %>
-        <% if @destination.sentence5.length > 0 %>
-          <li><%= simple_format @destination.sentence5 %></li>
-        <% end %>
-      </ol>
-    <br>
-  </div>
-  <a class="destination-collapse" data-toggle="collapse" href="#collapseOverview" aria-expanded="false" aria-controls="collapseOverview">
-    <div id="overview" class="text-center">
-      <%= image_tag @destination.destination_pictures.second.picture.url(:banner) %>
-      <h2 class="no-margin title-destination-page">A savoir avant de partir</h2>
-    </div>
-  </a>
-  <div class="collapse" id="collapseOverview">
-    <div class="destination-content">
-      <h3 class="text-center"><%= raw @destination.enter_title %></h3>
-      <br>
-      <ul>
-         <li><p><%= raw @destination.enter_line1 %></p></li>
-        <% if @destination.enter_line2.length > 0 %>
-          <li><p><%= raw @destination.enter_line2 %></p></li>
-        <% end %>
-        <% if @destination.enter_line3.length > 0 %>
-          <li><p><%= raw @destination.enter_line3 %></p></li>
-        <% end %>
-      </ul>
-      <br>
-      <h3 class="text-center"><%= simple_format @destination.visit_time_title %></h3>
-      <br>
-      <ul>
-        <li><p><%= simple_format @destination.visit_line1 %></p></li>
-        <% if @destination.visit_line2.length > 0 %>
-          <li><p><%= simple_format @destination.visit_line2 %></p></li>
-        <% end %>
-        <% if @destination.visit_line3.length > 0 %>
-          <li><p><%= simple_format @destination.visit_line3 %></p></li>
-        <% end %>
-      </ul>
-      <br>
-      <h3 class="text-center"><%= simple_format @destination.security_title %></h3>
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
+        <h3 class="text-center"><%= @destination.intro_title %></h3>
         <br>
-        <li><p><%= raw @destination.security_line1 %></p></li>
-        <% if @destination.security_line2.length > 0 %>
-          <li><p><%= raw @destination.security_line2 %></p></li>
-        <% end %>
+          <ol>
+            <li><%= simple_format @destination.sentence1 %></p></li>
+            <li><%= simple_format @destination.sentence2 %></li>
+            <li><%= simple_format @destination.sentence3 %></li>
+            <% if @destination.sentence4.length > 0 %>
+              <li><%= simple_format @destination.sentence4 %></li>
+            <% end %>
+            <% if @destination.sentence5.length > 0 %>
+              <li><%= simple_format @destination.sentence5 %></li>
+            <% end %>
+          </ol>
         <br>
-        <h3 class="text-center"><%= simple_format @destination.transport_title %></h3>
-        <br>
-        <ul>
-          <li><p><%= raw @destination.transport_line1 %></p></li>
-          <% if @destination.transport_line2.length > 0 %>
-            <li><p><%= raw @destination.transport_line2 %></p></li>
-          <% end %>
-          <% if @destination.transport_line3.length > 0 %>
-            <li><p><%= raw @destination.transport_line3 %></p></li>
-          <% end %>
-          <% if @destination.transport_line4.length > 0 %>
-            <li><p><%= raw @destination.transport_line4 %></p></li>
-          <% end %>
-          <% if @destination.transport_line5.length > 0 %>
-            <li><p><%= raw @destination.transport_line5 %></p></li>
-          <% end %>
-        </ul>
-        <br>
-        <h3 class="text-center"><%= simple_format @destination.toknow_title %></h3>
-        <br>
-        <ol>
-            <li><p><%= raw @destination.toknow_line1 %></p></li>
-          <% if @destination.toknow_line2.length > 0 %>
-            <li><p><%= raw @destination.toknow_line2 %></p></li>
-          <% end %>
-          <% if @destination.toknow_line3.length > 0 %>
-            <li><p><%= raw @destination.toknow_line3 %></p></li>
-          <% end %>
-          <% if @destination.toknow_line4.length > 0 %>
-            <li><p><%= raw @destination.toknow_line4 %></p></li>
-          <% end %>
-          <% if @destination.toknow_line5.length > 0 %>
-            <li><p><%= raw @destination.toknow_line5 %></p></li>
-          <% end %>
-        </ol>
+      </div>
     </div>
   </div>
   <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee">
   <div id="must-see" class="text-center">
     <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
     <h2 class="no-margin title-destination-page">Que voir et que faire ?</h2>
-<!--     <p class="destination-tagline">Lieux et activités qui font l'unanimité auprès des guides et voyageurs</p> -->
   </div>
   </a>
   <div class="collapse" id="collapseMustSee">
@@ -171,128 +98,104 @@
   </a>
   <div class="collapse" id="collapseRecommendedTrip">
     <div class="destination-content">
-      <% RecommendedTrip.where(destination_id: @destination.id).each do |rec_trip| %>
-        <div class="destination-box-nobordertop">
-          <div class="row">
-            <div class="col-xs-12">
-              <h3 class="text-center"><%= rec_trip.title %></h3><br>
-              <p><%= rec_trip.description %></p>
-              <div class="itinerary_image text-center">
-                <%= image_tag rec_trip.picture.url(:banner) %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
+          <% RecommendedTrip.where(destination_id: @destination.id).sort_by {|rc| rc.id }.each do |rec_trip| %>
+            <div class="destination-box-nobordertop">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h3 class="text-center"><%= rec_trip.title %></h3><br>
+                  <p><%= rec_trip.description %></p>
+                  <div class="itinerary_image text-center">
+                    <%= image_tag rec_trip.picture.url(:banner) %>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-9">
-              <ul>
-                <li><p><%= raw(rec_trip.step_1) %></p></li>
-                <li><p><%= raw(rec_trip.step_2) %></p></li>
-                <li><p><%= raw rec_trip.step_3 %></p></li>
-                <li><p><%= raw rec_trip.step_4 %></p></li>
-                <li><p><%= raw rec_trip.step_5 %></p></li>
-                <% if rec_trip.step_6.length > 0 %>
-                  <li><p><%= raw rec_trip.step_6 %></p></li>
-                <% end %>
-                <% if rec_trip.step_7.length > 0 %>
-                  <li><p><%= raw rec_trip.step_7 %></p></li>
-                <% end %>
-                <% if rec_trip.step_8.length > 0 %>
-                  <li><p><%= raw rec_trip.step_8 %></p></li>
-                <% end %>
-                <% if rec_trip.step_9.length > 0 %>
-                  <li><p><%= raw rec_trip.step_9 %></p></li>
-                <% end %>
-                <% if rec_trip.step_10.length > 0 %>
-                  <li><p><%= raw rec_trip.step_10 %></p></li>
-                <% end %>
-                <% if rec_trip.step_11.length > 0 %>
-                  <li><p><%= raw rec_trip.step_11 %></p></li>
-                <% end %>
-                 <% if rec_trip.step_12.length > 0 %>
-                  <li><p><%= raw rec_trip.step_12 %></p></li>
-                <% end %>
-                <% if rec_trip.step_13.length > 0 %>
-                  <li><p><%= raw rec_trip.step_13 %></p></li>
-                <% end %>
-                <% if rec_trip.step_14.length > 0 %>
-                  <li><p><%= raw rec_trip.step_14 %></p></li>
-                <% end %>
-                <% if rec_trip.step_15.length > 0 %>
-                  <li><p><%= raw rec_trip.step_15 %></p></li>
-                <% end %>
-              </ul>
-              <br>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-              <div class="itinerary_image">
-                <%= image_tag rec_trip.recommended_trip_experiences[0].experience.experience_pictures.first.picture.url(:small) %>
-                <br><br>
-                <%= image_tag rec_trip.recommended_trip_experiences[2].experience.experience_pictures.first.picture.url(:small) %>
-                <br><br>
-                <% if rec_trip.step_6.length > 0 %>
-                  <%= image_tag rec_trip.recommended_trip_experiences[4].experience.experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                <% end %>
-                <% if rec_trip.step_9.length > 0 %>
-                  <%= image_tag rec_trip.recommended_trip_experiences[7].experience.experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                <% end %>
-                <% if rec_trip.step_11.length > 0 %>
-                  <%= image_tag rec_trip.recommended_trip_experiences[9].experience.experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                <% end %>
-                <% if rec_trip.step_13.length > 0 %>
-                  <%= image_tag rec_trip.recommended_trip_experiences[11].experience.experience_pictures.first.picture.url(:small) %>
-                  <br><br>
-                <% end %>
-                <%= image_tag rec_trip.recommended_trip_experiences.last.experience.experience_pictures.first.picture.url(:small) %>
-                <br>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-9">
+                  <ul>
+                    <li><p><%= raw(rec_trip.step_1) %></p></li>
+                    <li><p><%= raw(rec_trip.step_2) %></p></li>
+                    <% if rec_trip.step_3.length > 0 %>
+                      <li><p><%= raw rec_trip.step_3 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_4.length > 0 %>
+                      <li><p><%= raw rec_trip.step_4 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_5.length > 0 %>
+                      <li><p><%= raw rec_trip.step_5 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_6.length > 0 %>
+                      <li><p><%= raw rec_trip.step_6 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_7.length > 0 %>
+                      <li><p><%= raw rec_trip.step_7 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_8.length > 0 %>
+                      <li><p><%= raw rec_trip.step_8 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_9.length > 0 %>
+                      <li><p><%= raw rec_trip.step_9 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_10.length > 0 %>
+                      <li><p><%= raw rec_trip.step_10 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_11.length > 0 %>
+                      <li><p><%= raw rec_trip.step_11 %></p></li>
+                    <% end %>
+                     <% if rec_trip.step_12.length > 0 %>
+                      <li><p><%= raw rec_trip.step_12 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_13.length > 0 %>
+                      <li><p><%= raw rec_trip.step_13 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_14.length > 0 %>
+                      <li><p><%= raw rec_trip.step_14 %></p></li>
+                    <% end %>
+                    <% if rec_trip.step_15.length > 0 %>
+                      <li><p><%= raw rec_trip.step_15 %></p></li>
+                    <% end %>
+                  </ul>
+                  <br>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3">
+                  <div class="itinerary_image">
+                    <%= image_tag rec_trip.recommended_trip_experiences[0].experience.experience_pictures.first.picture.url(:small) %>
+                    <br><br>
+                    <%= image_tag rec_trip.recommended_trip_experiences[1].experience.experience_pictures.first.picture.url(:small) %>
+                    <br><br>
+                    <% if rec_trip.step_6.length > 0 %>
+                      <%= image_tag rec_trip.recommended_trip_experiences[4].experience.experience_pictures.first.picture.url(:small) %>
+                      <br><br>
+                    <% end %>
+                    <% if rec_trip.step_9.length > 0 %>
+                      <%= image_tag rec_trip.recommended_trip_experiences[7].experience.experience_pictures.first.picture.url(:small) %>
+                      <br><br>
+                    <% end %>
+                    <% if rec_trip.step_11.length > 0 %>
+                      <%= image_tag rec_trip.recommended_trip_experiences[9].experience.experience_pictures.first.picture.url(:small) %>
+                      <br><br>
+                    <% end %>
+                    <% if rec_trip.step_13.length > 0 %>
+                      <%= image_tag rec_trip.recommended_trip_experiences[11].experience.experience_pictures.first.picture.url(:small) %>
+                      <br><br>
+                    <% end %>
+                    <%= image_tag rec_trip.recommended_trip_experiences.last.experience.experience_pictures.first.picture.url(:small) %>
+                    <br>
+                  </div>
+                </div>
               </div>
+              <%= render('add_recommended_trip', {recommended_trip_id: rec_trip.id}) %>
             </div>
-          </div>
-          <%= render('add_recommended_trip', {recommended_trip_id: rec_trip.id}) %>
-        </div>
-        <div class="row text-center">
-          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-            <div id="block-separator">
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-
-      <!-- <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
-          <div class="destination-box-nobordertop">
-            <div class="row">
-              <div class="col-xs-12">
-                <h3 class="text-center">2. Le Liban incontournable et authentique en 1 semaine</h3>
-                <br>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-7">
-              <p>Au total : 400 km, 8h de route</p>
-                <ul>
-                  <li><p><b>Jours 1, 2 et 3</b> : à Beyrouth, visitez le typique quartier d’Achrafieh, la Corniche et le Rawcheh", et passez la soirée rue Monnot.</p></li>
-                  <li><p><b>Jour 4</b> (50km / 1h de route) : quittez Beyrouth pour démarrer la journée avec l’impressionnante Grotte de Jeita. Rejoignez ensuite Jounieh, et montez en téléphérique vers Notre-Dame du Liban pour son point de vue époustouflant. Continuez vers le nord pour visiter Jbeil et y passer la nuit.</p></li>
-                  <li><p><b>Jour 5</b> (80km / 1h30 de route) : faites un passage par Batroun, puis continuez pour visiter Tripoli, et rendez-vous dans le village d'Ehden pour y passer la nuit.</p></li>
-                  <li><p><b>Jour 6</b> : Autour d’Ehden, faites la randonnée dans la vallée de Qadisha, allez voir les Cèdres de Dieu et poussez éventuellement jusqu’au Qornet es Sawda, sommet du Liban. Restez dormir à Ehden.</p></li>
-                  <li><p><b>Jour 7</b> : quittez Ehden tôt, traversez le Liban du nord au sud par les magnifiques routes de montagne (170km, 4h) pour passer l’après-midi dans la vallée du Chouf, notamment les villages de Deir el Qamar et Beiteddine. Puis retournez à Beyrouth boire un dernier verre à Gemmayzé!</p></li><br>
-                </ul>
-                <br>
-              </div>
-
-              <div class="col-xs-12 col-sm-12 col-md-4">
-                <div class="itinerary_image">
-                  <%= image_tag 'itineraire_liban_2.png'%>
+            <div class="row text-center">
+              <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                <div id="block-separator">
                 </div>
               </div>
             </div>
-            <p class="text-center">Retrouvez cet itinéraire sur la <b>carte interactive du Liban</b> en bas de page</p>
-          </div>
+          <% end %>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
   <!-- <div class="text-center" id="bottom-start-planning">
@@ -301,45 +204,128 @@
     <%= link_to "Découvrir les activités à faire et les lieux à visiter pour le Liban", trips_path(Trip.new, title: 'Liban'), method: :post, class: "btn btn-info btn-lg" %>
     <br>
   </div> -->
-    <div>
-      <div class="vertical-spacer-xs"></div>
-      <h2 class='text-center map-title title-destination-page'>Personaliser mon voyage</h2>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="btn-group btn-group-block btn-group-justified" role="group" aria-label="Category selection">
-              <a id="must" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-star"></i>
-                <span class="hidden-xs">Incontournables</span>
-              </a>
-              <a id="otbt" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-compass"></i>
-                <span class="hidden-xs">Hors des sentiers battus</span>
-              </a>
-              <a id="relax" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-glass"></i>
-                <span class="hidden-xs">Détente</span>
-              </a>
-              <a id="culture" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-university"></i>
-                <span class="hidden-xs">Culture</span>
-              </a>
-              <a id="sport" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-bicycle"></i>
-                <span class="hidden-xs">Sport</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div id="map-container-destination">
-            </div>
-          </div>
+  <div class="vertical-spacer-xs"></div>
+  <h2 class='text-center map-title'>Personnaliser mon voyage</h2>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="btn-group btn-group-block btn-group-justified" role="group" aria-label="Category selection">
+          <a id="must" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
+            <i class="fa fa-star"></i>
+            <span class="hidden-xs">Incontournables</span>
+          </a>
+          <a id="otbt" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
+            <i class="fa fa-compass"></i>
+            <span class="hidden-xs">Hors des sentiers battus</span>
+          </a>
+          <a id="relax" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
+            <i class="fa fa-glass"></i>
+            <span class="hidden-xs">Détente</span>
+          </a>
+          <a id="culture" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
+            <i class="fa fa-university"></i>
+            <span class="hidden-xs">Culture</span>
+          </a>
+          <a id="sport" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
+            <i class="fa fa-bicycle"></i>
+            <span class="hidden-xs">Sport</span>
+          </a>
         </div>
       </div>
-      <div class="vertical-spacer-xs"></div>
     </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="map-container-destination">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="vertical-spacer-xs"></div>
+  <a class="destination-collapse" data-toggle="collapse" href="#collapseOverview" aria-expanded="false" aria-controls="collapseOverview">
+    <div id="overview" class="text-center">
+      <%= image_tag @destination.destination_pictures.second.picture.url(:banner) %>
+      <h2 class="no-margin title-destination-page">A savoir avant de partir</h2>
+    </div>
+  </a>
+  <div class="collapse" id="collapseOverview">
+    <div class="destination-content">
+      <div class="row text-center">
+        <small>Dernière mise à jour : <%= @destination.updated_at.strftime('%d-%m-%Y') %></small><br>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
+          <h3 class="text-center"><%= simple_format @destination.enter_title %></h3>
+          <br>
+          <ul>
+            <li><p><%= simple_format @destination.enter_line1 %></p></li>
+            <% if @destination.enter_line2.length > 0 %>
+              <li><p><%= simple_format @destination.enter_line2 %></p></li>
+            <% end %>
+            <% if @destination.enter_line3.length > 0 %>
+              <li><p><%= simple_format @destination.enter_line3 %></p></li>
+            <% end %>
+          </ul>
+          <br>
+          <h3 class="text-center"><%= simple_format @destination.visit_time_title %></h3>
+          <br>
+          <ul>
+            <li><p><%= simple_format @destination.visit_line1 %></p></li>
+            <% if @destination.visit_line2.length > 0 %>
+              <li><p><%= simple_format @destination.visit_line2 %></p></li>
+            <% end %>
+            <% if @destination.visit_line3.length > 0 %>
+              <li><p><%= simple_format @destination.visit_line3 %></p></li>
+            <% end %>
+          </ul>
+          <br>
+          <h3 class="text-center"><%= simple_format @destination.security_title %></h3>
+          <br>
+          <ul>
+            <li><p><%= simple_format @destination.security_line1 %></p></li>
+            <% if @destination.security_line2.length > 0 %>
+              <li><p><%= simple_format @destination.security_line2 %></p></li>
+            <% end %>
+          </ul>
+          <br>
+          <h3 class="text-center"><%= simple_format @destination.transport_title %></h3>
+          <br>
+          <ul>
+            <li><p><%= simple_format @destination.transport_line1 %></p></li>
+            <% if @destination.transport_line2.length > 0 %>
+              <li><p><%= simple_format @destination.transport_line2 %></p></li>
+            <% end %>
+            <% if @destination.transport_line3.length > 0 %>
+              <li><p><%= simple_format @destination.transport_line3 %></p></li>
+            <% end %>
+            <% if @destination.transport_line4.length > 0 %>
+              <li><p><%= simple_format @destination.transport_line4 %></p></li>
+            <% end %>
+            <% if @destination.transport_line5.length > 0 %>
+              <li><p><%= simple_format @destination.transport_line5 %></p></li>
+            <% end %>
+          </ul>
+          <br>
+          <h3 class="text-center"><%= simple_format @destination.toknow_title %></h3>
+          <br>
+          <ol>
+            <li><p><%= simple_format @destination.toknow_line1 %></p></li>
+            <% if @destination.toknow_line2.length > 0 %>
+              <li><p><%= simple_format @destination.toknow_line2 %></p></li>
+            <% end %>
+            <% if @destination.toknow_line3.length > 0 %>
+              <li><p><%= simple_format @destination.toknow_line3 %></p></li>
+            <% end %>
+            <% if @destination.toknow_line4.length > 0 %>
+              <li><p><%= simple_format @destination.toknow_line4 %></p></li>
+            <% end %>
+            <% if @destination.toknow_line5.length > 0 %>
+              <li><p><%= simple_format @destination.toknow_line5 %></p></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <%= render partial: 'shared/footer' %>
 
