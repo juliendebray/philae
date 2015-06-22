@@ -3,7 +3,7 @@
     <%= "#{trip_exp.order}. #{trip_exp.experience.name}" %>
   </div>
   <div class="exp-description">
-    <%= trip_exp.experience.description %>
+    <%= simple_format trip_exp.experience.description %>
   </div>
   <% if trip_exp.experience.experience_pictures.any? %>
     <div class="exp-picture-block table-responsive text-center">

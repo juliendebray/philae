@@ -20,7 +20,7 @@
     <div class="col-xs-12">
       <div id="titleblock" class="text-center">
         <div class="title">
-          <h1><%= @trip.title %></h1>
+          <h1><%= @trip.title.capitalize %></h1>
           <p><i><%= t('summarize_creation') %><%= @trip.created_at.strftime('%d-%m-%Y') %> -
           <%= t('summarize_lastupdate') %> <%= @trip.trip_experiences.any? ? @trip.trip_experiences.last.updated_at.strftime('%d-%m-%Y') : @trip.updated_at.strftime('%d-%m-%Y') %></i></p>
         </div>
