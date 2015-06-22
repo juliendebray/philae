@@ -101,9 +101,9 @@
     color: #525252;
     bottom: 0px;
     margin: auto;
-    small {
-      font-size: 19px;
-      font-weight: 200;
+    p {
+      font-size: 22px;
+      font-weight: 400;
     }
   }
   .experience-big-box {
@@ -123,6 +123,22 @@
         -ms-transition: all 0.5s ease; /* IE 9 */
         -o-transition: all 0.5s ease; /* Opera */
         transition: all 0.5s ease;
+      }
+    }
+    .experience-name {
+      text-align: center;
+      width: 100%;
+      letter-spacing: 0px;
+      font-size: 1em;
+      color: white;
+      bottom: 0px;
+      background: rgba(0,0,0,0.1);
+      position: absolute;
+      margin: auto;
+      small {
+        font-size: 22px;
+        font-weight: 200;
+        text-shadow: 0px 0px 1px white, 0px 0px 6px black;
       }
     }
   }
@@ -152,14 +168,21 @@
     .experience-category {
       p {
         font-size: 16px;
+        margin-bottom: 0;
       }
     }
     .experience-description {
       p {
+        margin-top: 10px;
         font-size: 16px;
         font-weight: 300;
       }
     }
+    .experience-know-more
+      p {
+        font-size: 16px;
+        font-weight: 300;
+      }
   }
 }
 .destination-collapse {
@@ -284,6 +307,43 @@ a#must-see-img:hover {
   margin-bottom: 30px;
   img {
     max-height: 250px;
+  }
+}
+
+.itinerary_exp-images {
+  position: relative;
+  margin-bottom: 15px;
+  overflow: hidden;
+  max-height: 250px;
+  .experience-picture {
+    img {
+      background-size: cover;
+      background-position: center bottom;
+      background-attachment: fixed;
+      -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+      -moz-transition: all 0.5s ease; /* Firefox */
+      -ms-transition: all 0.5s ease; /* IE 9 */
+      -o-transition: all 0.5s ease; /* Opera */
+      transition: all 0.5s ease;
+    }
+  }
+  .experience-name {
+    position: absolute;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    letter-spacing: 0px;
+    font-size: 1em;
+    color: white;
+    top: 45%;
+    background: rgba(0,0,0,0.1);
+    p {
+      font-size: 18px;
+      font-weight: 200;
+      text-shadow: 0px 0px 1px white, 0px 0px 6px black;
+      padding: 0;
+      margin: 0;
+    }
   }
 }
 
