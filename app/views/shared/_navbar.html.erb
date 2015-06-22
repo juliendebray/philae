@@ -52,10 +52,10 @@
           </li>
         <% else %>
         <li >
-          <%= link_to t('signup'),'#', {onclick:"showSignUpModal();"} %>
+          <%= link_to t('signup'),'#', {onclick:"showSignUpModal(); ga('send', 'event', 'User', 'Sign Up Link', 'Sign up link clicked from navbar');"} %>
         </li>
         <li>
-          <%= link_to t('login'),'#', {onclick:"showSignInModal();"} %>
+          <%= link_to t('login'),'#', {onclick:"showSignInModal(); ga('send', 'event', 'User', 'Sign In Link', 'Sign in link clicked from navbar');"} %>
         </li>
         <% end -%>
         <li class="dropdown">

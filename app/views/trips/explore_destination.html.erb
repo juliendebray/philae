@@ -19,7 +19,7 @@
       </ol>
     <br>
   </div>
-  <a class="destination-collapse" data-toggle="collapse" href="#collapseOverview" aria-expanded="false" aria-controls="collapseOverview">
+  <a class="destination-collapse" data-toggle="collapse" href="#collapseOverview" aria-expanded="false" aria-controls="collapseOverview" onclick= "ga('send', 'event', 'User', 'Click A savoir avant de partir', 'User clicks on à savoir avant de partir depuis la page explore_destination');" >
     <div id="overview" class="text-center">
       <%= image_tag @destination.destination_pictures.second.picture.url(:banner) %>
       <h2 class="no-margin title-destination-page">A savoir avant de partir</h2>
@@ -95,7 +95,7 @@
         </ol>
     </div>
   </div>
-  <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee">
+  <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee" onclick="ga('send', 'event', 'User', 'Click Que voir et que faire', 'User clicks on Que voir et que faire depuis la page explore_destination');">
   <div id="must-see" class="text-center">
     <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
     <h2 class="no-margin title-destination-page">Que voir et que faire ?</h2>
@@ -112,7 +112,7 @@
           <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).each do |experience| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="experience-box">
-                <%= link_to modal_exp_path(@trip.id, experience.id), remote: true do %>
+                <%= link_to modal_exp_path(@trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - incontournables', 'User clicks on experience #{experience.name} from explore_destination');" do %>
                   <div class="experience-picture text-center">
                     <% if experience.experience_pictures.first %>
                       <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
@@ -132,7 +132,7 @@
           <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).each do |experience| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="experience-box">
-                <%= link_to experience_detail_path(experience.id), remote: true do %>
+                <%= link_to experience_detail_path(experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - toutes les expériences', 'User clicks on experience #{experience.name} from explore_destination');" do %>
                   <div class="experience-picture text-center">
                     <% if experience.experience_pictures.first %>
                       <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
@@ -162,7 +162,7 @@
       </div>
     </div>
   </div>
-  <a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip">
+  <a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip" onclick="ga('send', 'event', 'User', 'Click Itinéraires', 'User clicks on Itinéraire depuis la page explore_destination');">
   <div id="recommended-trip" class="text-center destination-title">
     <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
     <h2 class="no-margin title-destination-page">Itinéraires conseillés</h2>
@@ -295,51 +295,54 @@
       </div> -->
     </div>
   </div>
-  <!-- <div class="text-center" id="bottom-start-planning">
-    <h2 class="text-center">Fini de lire ? Commence à organiser ton voyage !</h2>
-    <br>
-    <%= link_to "Découvrir les activités à faire et les lieux à visiter pour le Liban", trips_path(Trip.new, title: 'Liban'), method: :post, class: "btn btn-info btn-lg" %>
-    <br>
-  </div> -->
-    <div>
-      <div class="vertical-spacer-xs"></div>
-      <h2 class='text-center map-title title-destination-page'>Personaliser mon voyage</h2>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="btn-group btn-group-block btn-group-justified" role="group" aria-label="Category selection">
-              <a id="must" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-star"></i>
-                <span class="hidden-xs">Incontournables</span>
-              </a>
-              <a id="otbt" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-compass"></i>
-                <span class="hidden-xs">Hors des sentiers battus</span>
-              </a>
-              <a id="relax" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-glass"></i>
-                <span class="hidden-xs">Détente</span>
-              </a>
-              <a id="culture" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-university"></i>
-                <span class="hidden-xs">Culture</span>
-              </a>
-              <a id="sport" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-                <i class="fa fa-bicycle"></i>
-                <span class="hidden-xs">Sport</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div id="map-container-destination">
-            </div>
+  <div>
+    <div class="vertical-spacer-xs"></div>
+    <h2 class='text-center map-title title-destination-page'>Personaliser mon voyage</h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="btn-group btn-group-block btn-group-justified" role="group" aria-label="Category selection">
+            <a id="must" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on must-see button from explore destination');">
+              <i class="fa fa-star"></i>
+              <span class="hidden-xs">Incontournables</span>
+            </a>
+            <a id="otbt" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on otbt button from explore destination');">
+              <i class="fa fa-compass"></i>
+              <span class="hidden-xs">Hors des sentiers battus</span>
+            </a>
+            <a id="relax" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on relax button from explore destination');">
+              <i class="fa fa-glass"></i>
+              <span class="hidden-xs">Détente</span>
+            </a>
+            <a id="culture" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
+              <i class="fa fa-university"></i>
+              <span class="hidden-xs">Culture</span>
+            </a>
+            <a id="sport" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on sport button from explore destination');">
+              <i class="fa fa-bicycle"></i>
+              <span class="hidden-xs">Sport</span>
+            </a>
           </div>
         </div>
       </div>
-      <div class="vertical-spacer-xs"></div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="map-container-destination">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <div class="vertical-spacer-xs"></div>
+          <p><em>Vous avez terminé ?</em></p>
+          <%= link_to summarize_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked from explore destination page');", class: "btn btn-info" do %>
+          Accéder à la synthèse de mon voyage
+          <% end %>
+        </div>
+      </div>
     </div>
+    <div class="vertical-spacer-xs"></div>
+  </div>
 </div>
 <%= render partial: 'shared/footer' %>
 

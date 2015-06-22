@@ -1,14 +1,14 @@
 <% if trip && trip.user == current_user %>
   <div class="user-action text-center">
     <% if trip_experiences.any? %>
-      <%= link_to [trip, trip_experiences.first], remote: true, method: :delete do %>
+      <%= link_to [trip, trip_experiences.first], remote: true, method: :delete, onclick:"ga('send', 'event', 'User', 'Experience Delete', 'User clicked on delete experience from modal');" do %>
         <span><i id='ib-remove-trip-exp' class="fa fa-heart"></i> <%= t('removefromtrip') %></span>
       <% end %>
     <% else %>
       <span>
         <%= form_for([trip, TripExperience.new], remote: true) do |f| %>
           <%= f.hidden_field :experience_id, value: experience.id %>
-          <%= f.button :submit, class: "btn btn-link" do %>
+          <%= f.button :submit, class: "btn btn-link", onclick:"ga('send', 'event', 'User', 'Experience Add', 'User clicked on add experience from modal');" do %>
             <b><i class='fa fa-heart'></i></b> <%= t('addtotrip') %>
           <% end %>
         <% end %>
@@ -483,13 +483,17 @@
               <% if experience.timetospent %>
                 <blockquote><i class="fa fa-clock-o"></i> - <i>temps de visite</i> :  <%= experience.timetospent %></blockquote>
               <% end %>
-              <% if experience.wheretosleep.length > 0 %>
-              <br>
-                <blockquote><i class="fa fa-home"></i> - <i>où dormir</i> :  <%= experience.wheretosleep %></blockquote>
+              <% if experience.wheretosleep %>
+                <% if experience.wheretosleep.length > 0 %>
+                  <br>
+                    <blockquote><i class="fa fa-home"></i> - <i>où dormir</i> :  <%= experience.wheretosleep %></blockquote>
+                <% end %>
               <% end %>
-              <% if experience.transportation.length > 0 %>
-              <br>
-                <blockquote><i class="fa fa-bicycle"></i> - <i>comment s'y rendre</i> : <%= simple_format experience.transportation %></blockquote>
+              <% if experience.transportation %>
+                <% if experience.transportation.length > 0 %>
+                <br>
+                  <blockquote><i class="fa fa-bicycle"></i> - <i>comment s'y rendre</i> : <%= simple_format experience.transportation %></blockquote>
+                  <% end %>
               <% end %>
             </div>
           </div>

@@ -1,37 +1,37 @@
 <% if @recommended_trip_id && @recommended_trip_id == recommended_trip_id %>
   <div class='add-reco-trip text-center'>
     <div "text-center">
-      <%= link_to('Sélectionner', add_to_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-info select-trip hidden", data: {recommended_trip_id: recommended_trip_id }) %>
+      <%= link_to('Sélectionner', add_to_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-info select-trip hidden", data: {recommended_trip_id: recommended_trip_id }, onclick: "ga('send', 'event', 'User', 'Itinerary Added', 'User clicked on add recommended trip from explore destination');") %>
       <em class='text-center remove-trip' data-recommended-trip-id=<%= recommended_trip_id %> >
         <p><em>Cet itinéraire a bien été sélectionné. Visualisez-le sur la carte de votre voyage ou retirez-le en cliquant ci-dessous :</em> </p>
       </em>
     </div>
     <div class = "text-center">
-    <%= link_to('Retirer de mon voyage', remove_from_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-warning remove-trip", data: {recommended_trip_id: recommended_trip_id }) %>
+    <%= link_to('Retirer de mon voyage', remove_from_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-warning remove-trip", data: {recommended_trip_id: recommended_trip_id }, onclick: "ga('send', 'event', 'User', 'Itinerary Removed', 'User clicked on remove recommended trip from explore destination');") %>
     </div>
   </div>
 <% elsif @recommended_trip_id %>
   <div class='add-reco-trip text-center'>
     <div "text-center">
-      <%= link_to('Sélectionner', add_to_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-info select-trip hidden", data: {recommended_trip_id: recommended_trip_id }) %>
+      <%= link_to('Sélectionner', add_to_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-info select-trip hidden", data: {recommended_trip_id: recommended_trip_id }, onclick: "ga('send', 'event', 'User', 'Itinerary Added', 'User clicked on add recommended trip from explore destination');") %>
       <em class='text-center remove-trip hidden' data-recommended-trip-id=<%= recommended_trip_id %> >
         <p><em>Cet itinéraire a bien été sélectionné. Visualisez-le sur la carte de votre voyage ou retirez-le en cliquant ci-dessous :</em> </p>
       </em>
     </div>
     <div class = "text-center">
-    <%= link_to('Retirer de mon voyage', remove_from_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-warning remove-trip hidden", data: {recommended_trip_id: recommended_trip_id }) %>
+    <%= link_to('Retirer de mon voyage', remove_from_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-warning remove-trip hidden", data: {recommended_trip_id: recommended_trip_id }, onclick: "ga('send', 'event', 'User', 'Itinerary Removed', 'User clicked on remove recommended trip from explore destination');") %>
     </div>
   </div>
 <% else %>
   <div class='add-reco-trip text-center'>
     <div "text-center">
-      <%= link_to('Sélectionner', add_to_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-info select-trip", data: {recommended_trip_id: recommended_trip_id }) %>
+      <%= link_to('Sélectionner', add_to_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-info select-trip", data: {recommended_trip_id: recommended_trip_id }, onclick: "ga('send', 'event', 'User', 'Itinerary Added', 'User clicked on add recommended trip from explore destination');") %>
       <em class='text-center remove-trip hidden' data-recommended-trip-id=<%= recommended_trip_id %> >
         <p><em>Cet itinéraire a bien été sélectionné. Visualisez-le sur la carte de votre voyage ou retirez-le en cliquant ci-dessous :</em> </p>
       </em>
     </div>
     <div class = "text-center">
-    <%= link_to('Retirer de mon voyage', remove_from_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-warning remove-trip hidden", data: {recommended_trip_id: recommended_trip_id }) %>
+    <%= link_to('Retirer de mon voyage', remove_from_trip_path(@trip.id, recommended_trip_id), remote: true, class: "btn btn-warning remove-trip hidden", data: {recommended_trip_id: recommended_trip_id }, onclick: "ga('send', 'event', 'User', 'Itinerary Removed', 'User clicked on remove recommended trip from explore destination');") %>
     </div>
   </div>
 
