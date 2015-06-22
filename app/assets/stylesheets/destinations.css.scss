@@ -66,28 +66,184 @@
   img {
     width: 100%;
   }
-  h1 {
-    position: absolute;
-    top: 40%;
-    bottom: 46%;
-    left: 0;
-    right: 0;
-    font-size: 60px;
-    color: white;
-    text-align: center;
-    text-shadow: 0px 0px 1px white, 0px 0px 6px black;
+}
+.title-destination-page {
+  position: absolute;
+  top: 40%;
+  bottom: 46%;
+  left: 0;
+  right: 0;
+  font-size: 60px;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  text-shadow: 0px 0px 1px white, 0px 0px 4px black;
+}
+
+.destination-explanation {
+  padding: 20px 20px 0px 20px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.03);
+  h2 {
+    color: #525252;
+    text-shadow: none;
+  }
+  p {
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .how-header {
+    i {
+      font-size: 4em;
+      color: #0086B8;
+    }
+  }
+  .how-content{
+    letter-spacing: .01rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.5;
   }
 }
 
 .destination-content {
   padding: 2%;
-  padding-top: 35px;
   p {
     letter-spacing: .01rem;
     font-weight: 300;
     font-style: normal;
     font-size: 22px;
     line-height: 1.5;
+  }
+  ol, li {
+    font-size: 22px;
+    font-weight: 400;
+  }
+  .experience-name {
+    text-align: left;
+    width: 100%;
+    letter-spacing: 0px;
+    font-size: 1em;
+    color: #525252;
+    bottom: 0px;
+    margin: auto;
+    p {
+      font-size: 22px;
+      font-weight: 400;
+    }
+  }
+  .experience-big-box {
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: rgba(0,0,0,0.1);
+    .experience-picture {
+      img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center bottom;
+        background-attachment: fixed;
+        -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+        -moz-transition: all 0.5s ease; /* Firefox */
+        -ms-transition: all 0.5s ease; /* IE 9 */
+        -o-transition: all 0.5s ease; /* Opera */
+        transition: all 0.5s ease;
+      }
+    }
+    .experience-one-sentence {
+      padding: 5px;
+      display: none;
+      text-align: center;
+      width: 100%;
+      top: 0;
+      height: 100%;
+      letter-spacing: 0px;
+      font-size: 1em;
+      color: white;
+      background: rgba(0,0,0,0.3);
+      position: absolute;
+      margin: auto;
+      small {
+        position: absolute;
+        top: 40%;
+        left: 0;
+        right: 0;
+        font-size: 20px;
+        font-weight: 200;
+        text-shadow: 0px 0px 1px white, 0px 0px 3px black;
+      }
+    }
+    .experience-name {
+      text-align: center;
+      width: 100%;
+      letter-spacing: 0px;
+      font-size: 1em;
+      color: white;
+      top: 40%;
+      // bottom: 0px;
+      // background: rgba(0,0,0,0.1);
+      position: absolute;
+      margin: auto;
+      small {
+        font-size: 25px;
+        font-weight: 200;
+        text-shadow: 0px 0px 1px white, 0px 0px 6px black;
+      }
+    }
+  }
+  .experience-big-box:hover {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    .experience-name {
+      display: none;
+    }
+    .experience-one-sentence {
+      display: block;
+    }
+    img {
+      // filter: grayscale(25%);
+      // -webkit-filter: grayscale(25%);
+      // -moz-filter: grayscale(25%);
+      // -ms-filter: grayscale(25%);
+      // -o-filter: grayscale(25%);
+      -moz-transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+      -o-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+  }
+  .experience-details {
+    text-align: left;
+    .experience-one-sentence {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .experience-category {
+      p {
+        font-size: 16px;
+        margin-bottom: 0;
+      }
+    }
+    .experience-description {
+      p {
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+    .experience-know-more
+      p {
+        font-size: 16px;
+        font-weight: 300;
+      }
   }
 }
 .destination-collapse {
@@ -122,8 +278,6 @@
 
   }
 }
-
-
 
 a#must-see-img:hover {
   img {
@@ -182,16 +336,6 @@ a#must-see-img:hover {
   margin-right: 0px;
 }
 
-// #overview{
-//   background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg");
-// }
-// #must-see{
-//   background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_jbeil_byblos_une_journee_1.jpg");
-// }
-// #recommended-trip{
-//   background-image: image-url("destination_liban_demo_2.jpg");
-// }
-
 .destination-tagline {
   color: white;
   font-size: 2em;
@@ -227,6 +371,80 @@ a#must-see-img:hover {
   }
 }
 
+.itinerary_exp-images {
+  position: relative;
+  margin-bottom: 15px;
+  overflow: hidden;
+  max-height: 250px;
+  .experience-picture {
+    img {
+      background-size: cover;
+      background-position: center bottom;
+      background-attachment: fixed;
+      -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+      -moz-transition: all 0.5s ease; /* Firefox */
+      -ms-transition: all 0.5s ease; /* IE 9 */
+      -o-transition: all 0.5s ease; /* Opera */
+      transition: all 0.5s ease;
+    }
+  }
+  .experience-name {
+    position: absolute;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    letter-spacing: 0px;
+    font-size: 1em;
+    color: white;
+    top: 45%;
+    background: rgba(0,0,0,0.1);
+    p {
+      font-size: 18px;
+      font-weight: 200;
+      text-shadow: 0px 0px 1px white, 0px 0px 6px black;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.experience-big-box {
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  .experience-picture {
+    img {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center bottom;
+      background-attachment: fixed;
+      -webkit-transition: all 0.5s ease; /* Safari and Chrome */
+      -moz-transition: all 0.5s ease; /* Firefox */
+      -ms-transition: all 0.5s ease; /* IE 9 */
+      -o-transition: all 0.5s ease; /* Opera */
+      transition: all 0.5s ease;
+    }
+  }
+}
+.experience-big-box:hover {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  img {
+    // filter: grayscale(25%);
+    // -webkit-filter: grayscale(25%);
+    // -moz-filter: grayscale(25%);
+    // -ms-filter: grayscale(25%);
+    // -o-filter: grayscale(25%);
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
 
 // Styles for modal experience
 // ?????
@@ -271,66 +489,6 @@ img.small-height {
   color:#0732a2 ;
 }
 
-
-
-// .destination_title {
-//   background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_qadisha_vallee_1.jpg");
-//   background-size: cover;
-//   background-position: center top;
-//   background-attachment: fixed;
-//   color: white;
-//   height: 570px;
-//   padding-top: 1px;
-//   h1 {
-//     padding-top: 180px;
-//     font-size: 65px;
-//     font-weight: 400;
-//   }
-// }
-
-// .destination_must-see {
-//   background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_jbeil_byblos_une_journee_1.jpg");
-//   background-size: cover;
-//   background-position: center top;
-//   background-attachment: fixed;
-//   color: white;
-//   height: 470px;
-//   padding-top: 1px;
-//   h1 {
-//     padding-top: 180px;
-//     font-size: 65px;
-//     text-align: center;
-//     font-weight: 300;
-//   }
-// }
-
-// .must-see-box {
-//   background-color: white;
-//   padding: 16px 16px 16px 16px;
-//   img {
-//     width: 100%;
-//     text-align: center;
-//   }
-//   // p {
-//   //   vertical-align: middle;
-//   // }
-// }
-
-// .destination_itineraries {
-//   background-image: image-url("destination_liban_demo_2.jpg");
-//   // background-image: url("http://philae-floju.s3.amazonaws.com/photos_liban/liban_beyrouth_rawcheh_1.jpg");
-//   background-size: cover;
-//   background-position: center top;
-//   background-attachment: fixed;
-//   color: white;
-//   height: 470px;
-//   padding-top: 1px;
-//   h1 {
-//     padding-top: 180px;
-//     font-size: 65px;
-//     text-align: center;
-//   }
-// }
 
 // .onboarding-box {
 //   background-color: white;
