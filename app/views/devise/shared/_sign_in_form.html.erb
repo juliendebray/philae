@@ -1,6 +1,6 @@
 <div id="sign-up-modal-form">
   <div id="fb-signup">
-    <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-lg btn-facebook" do %>
+    <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-social btn-lg btn-facebook", onclick: "ga('send', 'event', 'User', 'Submit Facebook Sign In', 'User clicks on submit button with fb from sign in modal');" do %>
     <i class="fa fa-facebook"></i> Connectez-vous avec facebook
     <% end %>
   </div>
@@ -49,7 +49,7 @@
       <div class="vertical-spacer-xxs"></div>
       <br>
       <div>
-        <%= f.submit t('sign_in_btn', :default => "Log in"), class: 'btn btn-info' %>
+        <%= f.submit t('sign_in_btn', :default => "Log in"), class: 'btn btn-info', onclick: "ga('send', 'event', 'User', 'Submit Email Sign In', 'User clicks on email submit button from sign in modal');" %>
       </div>
     <% end %>
   </div>
