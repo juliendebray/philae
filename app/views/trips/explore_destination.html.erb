@@ -67,6 +67,91 @@
       </div>
     </div>
   </div>
+  <a class="destination-collapse" data-toggle="collapse" href="#collapseOverview" aria-expanded="false" aria-controls="collapseOverview" onclick= "ga('send', 'event', 'User', 'Click A savoir avant de partir', 'User clicks on à savoir avant de partir depuis la page explore_destination');" >
+    <div id="overview" class="text-center">
+      <%= image_tag @destination.destination_pictures.second.picture.url(:banner) %>
+      <h2 class="no-margin title-destination-page">A savoir avant de partir</h2>
+    </div>
+  </a>
+  <div class="collapse" id="collapseOverview">
+    <div class="destination-content">
+      <div class="row text-center">
+        <small>Dernière mise à jour : <%= @destination.updated_at.strftime('%d-%m-%Y') %></small><br>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
+          <h3 class="text-center"><%= simple_format @destination.enter_title %></h3>
+          <br>
+          <ul>
+            <li><p><%= simple_format @destination.enter_line1 %></p></li>
+            <% if @destination.enter_line2.length > 0 %>
+              <li><p><%= simple_format @destination.enter_line2 %></p></li>
+            <% end %>
+            <% if @destination.enter_line3.length > 0 %>
+              <li><p><%= simple_format @destination.enter_line3 %></p></li>
+            <% end %>
+          </ul>
+          <br>
+          <h3 class="text-center"><%= simple_format @destination.visit_time_title %></h3>
+          <br>
+          <ul>
+            <li><p><%= simple_format @destination.visit_line1 %></p></li>
+            <% if @destination.visit_line2.length > 0 %>
+              <li><p><%= simple_format @destination.visit_line2 %></p></li>
+            <% end %>
+            <% if @destination.visit_line3.length > 0 %>
+              <li><p><%= simple_format @destination.visit_line3 %></p></li>
+            <% end %>
+          </ul>
+          <br>
+          <h3 class="text-center"><%= simple_format @destination.security_title %></h3>
+          <br>
+          <ul>
+            <li><p><%= simple_format @destination.security_line1 %></p></li>
+            <% if @destination.security_line2.length > 0 %>
+              <li><p><%= simple_format @destination.security_line2 %></p></li>
+            <% end %>
+          </ul>
+          <br>
+          <h3 class="text-center"><%= simple_format @destination.transport_title %></h3>
+          <br>
+          <ul>
+            <li><p><%= simple_format @destination.transport_line1 %></p></li>
+            <% if @destination.transport_line2.length > 0 %>
+              <li><p><%= simple_format @destination.transport_line2 %></p></li>
+            <% end %>
+            <% if @destination.transport_line3.length > 0 %>
+              <li><p><%= simple_format @destination.transport_line3 %></p></li>
+            <% end %>
+            <% if @destination.transport_line4.length > 0 %>
+              <li><p><%= simple_format @destination.transport_line4 %></p></li>
+            <% end %>
+            <% if @destination.transport_line5.length > 0 %>
+              <li><p><%= simple_format @destination.transport_line5 %></p></li>
+            <% end %>
+          </ul>
+          <br>
+          <h3 class="text-center"><%= simple_format @destination.toknow_title %></h3>
+          <br>
+          <ol>
+            <li><p><%= simple_format @destination.toknow_line1 %></p></li>
+            <% if @destination.toknow_line2.length > 0 %>
+              <li><p><%= simple_format @destination.toknow_line2 %></p></li>
+            <% end %>
+            <% if @destination.toknow_line3.length > 0 %>
+              <li><p><%= simple_format @destination.toknow_line3 %></p></li>
+            <% end %>
+            <% if @destination.toknow_line4.length > 0 %>
+              <li><p><%= simple_format @destination.toknow_line4 %></p></li>
+            <% end %>
+            <% if @destination.toknow_line5.length > 0 %>
+              <li><p><%= simple_format @destination.toknow_line5 %></p></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
   <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee" onclick="ga('send', 'event', 'User', 'Click Que voir et que faire', 'User clicks on Que voir et que faire depuis la page explore_destination');">
   <div id="must-see" class="text-center">
     <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
@@ -421,91 +506,6 @@
     </div>
   </div>
   <div class="vertical-spacer-xs"></div>
-  <a class="destination-collapse" data-toggle="collapse" href="#collapseOverview" aria-expanded="false" aria-controls="collapseOverview" onclick= "ga('send', 'event', 'User', 'Click A savoir avant de partir', 'User clicks on à savoir avant de partir depuis la page explore_destination');" >
-    <div id="overview" class="text-center">
-      <%= image_tag @destination.destination_pictures.second.picture.url(:banner) %>
-      <h2 class="no-margin title-destination-page">A savoir avant de partir</h2>
-    </div>
-  </a>
-  <div class="collapse" id="collapseOverview">
-    <div class="destination-content">
-      <div class="row text-center">
-        <small>Dernière mise à jour : <%= @destination.updated_at.strftime('%d-%m-%Y') %></small><br>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
-          <h3 class="text-center"><%= simple_format @destination.enter_title %></h3>
-          <br>
-          <ul>
-            <li><p><%= simple_format @destination.enter_line1 %></p></li>
-            <% if @destination.enter_line2.length > 0 %>
-              <li><p><%= simple_format @destination.enter_line2 %></p></li>
-            <% end %>
-            <% if @destination.enter_line3.length > 0 %>
-              <li><p><%= simple_format @destination.enter_line3 %></p></li>
-            <% end %>
-          </ul>
-          <br>
-          <h3 class="text-center"><%= simple_format @destination.visit_time_title %></h3>
-          <br>
-          <ul>
-            <li><p><%= simple_format @destination.visit_line1 %></p></li>
-            <% if @destination.visit_line2.length > 0 %>
-              <li><p><%= simple_format @destination.visit_line2 %></p></li>
-            <% end %>
-            <% if @destination.visit_line3.length > 0 %>
-              <li><p><%= simple_format @destination.visit_line3 %></p></li>
-            <% end %>
-          </ul>
-          <br>
-          <h3 class="text-center"><%= simple_format @destination.security_title %></h3>
-          <br>
-          <ul>
-            <li><p><%= simple_format @destination.security_line1 %></p></li>
-            <% if @destination.security_line2.length > 0 %>
-              <li><p><%= simple_format @destination.security_line2 %></p></li>
-            <% end %>
-          </ul>
-          <br>
-          <h3 class="text-center"><%= simple_format @destination.transport_title %></h3>
-          <br>
-          <ul>
-            <li><p><%= simple_format @destination.transport_line1 %></p></li>
-            <% if @destination.transport_line2.length > 0 %>
-              <li><p><%= simple_format @destination.transport_line2 %></p></li>
-            <% end %>
-            <% if @destination.transport_line3.length > 0 %>
-              <li><p><%= simple_format @destination.transport_line3 %></p></li>
-            <% end %>
-            <% if @destination.transport_line4.length > 0 %>
-              <li><p><%= simple_format @destination.transport_line4 %></p></li>
-            <% end %>
-            <% if @destination.transport_line5.length > 0 %>
-              <li><p><%= simple_format @destination.transport_line5 %></p></li>
-            <% end %>
-          </ul>
-          <br>
-          <h3 class="text-center"><%= simple_format @destination.toknow_title %></h3>
-          <br>
-          <ol>
-            <li><p><%= simple_format @destination.toknow_line1 %></p></li>
-            <% if @destination.toknow_line2.length > 0 %>
-              <li><p><%= simple_format @destination.toknow_line2 %></p></li>
-            <% end %>
-            <% if @destination.toknow_line3.length > 0 %>
-              <li><p><%= simple_format @destination.toknow_line3 %></p></li>
-            <% end %>
-            <% if @destination.toknow_line4.length > 0 %>
-              <li><p><%= simple_format @destination.toknow_line4 %></p></li>
-            <% end %>
-            <% if @destination.toknow_line5.length > 0 %>
-              <li><p><%= simple_format @destination.toknow_line5 %></p></li>
-            <% end %>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 <%= render partial: 'shared/footer' %>
 
