@@ -125,7 +125,7 @@
                         <%= simple_format truncate(experience.description, length: 250, separator: ' ') %>
                       </div>
                       <div class="experience-know-more">
-                        <p><%= link_to "En savoir plus", experience_detail_path(experience.id), remote: true %></p>
+                        <p><%= link_to "En savoir plus", modal_exp_path(@trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - incontournables', 'User clicks on experience #{experience.name} from explore_destination');" %></p>
                       </div>
                     </div>
                   </div>
@@ -141,7 +141,7 @@
             <% if experience.category_tab.exclude?('otbt') %>
               <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="experience-big-box">
-                  <%= link_to experience_detail_path(experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - toutes les expériences', 'User clicks on experience #{experience.name} from explore_destination');" do %>
+                  <%= link_to modal_exp_path(@trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - incontournables', 'User clicks on experience #{experience.name} from explore_destination');" do %>
                     <div class="experience-picture text-center">
                       <% if experience.experience_pictures.first %>
                         <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
@@ -165,7 +165,7 @@
             <% if experience.category_tab.include?('otbt') %>
               <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="experience-big-box">
-                  <%= link_to experience_detail_path(experience.id), remote: true do %>
+                  <%= link_to modal_exp_path(@trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - incontournables', 'User clicks on experience #{experience.name} from explore_destination');" do %>
                     <div class="experience-picture text-center">
                       <% if experience.experience_pictures.first %>
                         <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
@@ -190,8 +190,6 @@
   <div id="recommended-trip" class="text-center destination-title">
     <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
     <h2 class="no-margin title-destination-page">Trouvez l'inspiration avec nos itinéraires</h2>
-<!--     <p class="destination-tagline">Itinéraires conseillés en fonction de la durée de votre séjour</p>
- -->
   </div>
   </a>
   <div class="collapse" id="collapseRecommendedTrip">
@@ -507,7 +505,7 @@
         </div>
       </div>
     </div>
-  <div>
+  </div>
 </div>
 <%= render partial: 'shared/footer' %>
 
