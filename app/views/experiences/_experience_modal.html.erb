@@ -459,16 +459,18 @@
             </div>
           </div>
           <br>
-          <div class="exp-modal-title text-center">
-            <p>Vous connaissez cet endroit ? Donnez un conseil ou un avis !</p>
-            <%= bootstrap_form_for([@experience, ExperienceReview.new]) do |f| %>
-              <%= f.text_field :comment, hide_label: true, placeholder: "Donnez votre avis en 140 caractères max !", required: true, size: 75, maxlength: 140 %>
-              <%= f.text_field :name, hide_label: true, placeholder: "Nom", required: true %>
-              <%= f.number_field :rating, hide_label: true, placeholder: "Note entre 0 et 10", required: true, min: 0, max: 10 %>
-              <%= f.hidden_field(:created_at) %>
-              <%= f.submit( t('expbuttonadd'), class: "btn btn-info") %>
-            <% end %>
-          </div>
+          <% if trip.nil? || trip.user != current_user %>
+            <div class="exp-modal-title text-center">
+              <p>Vous connaissez cet endroit ? Donnez un conseil ou un avis !</p>
+              <%= bootstrap_form_for([@experience, ExperienceReview.new]) do |f| %>
+                <%= f.text_field :comment, hide_label: true, placeholder: "Donnez votre avis en 140 caractères max !", required: true, size: 75, maxlength: 140 %>
+                <%= f.text_field :name, hide_label: true, placeholder: "Nom", required: true %>
+                <%= f.number_field :rating, hide_label: true, placeholder: "Note entre 0 et 10", required: true, min: 0, max: 10 %>
+                <%= f.hidden_field(:created_at) %>
+                <%= f.submit( t('expbuttonadd'), class: "btn btn-info") %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
