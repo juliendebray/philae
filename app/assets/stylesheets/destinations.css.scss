@@ -94,6 +94,7 @@
     font-style: normal;
     font-size: 20px;
     line-height: 1.5;
+
   }
   .how-header {
     i {
@@ -107,6 +108,8 @@
     font-style: normal;
     font-size: 20px;
     line-height: 1.5;
+    padding-left: 8%;
+    padding-right: 8%;
   }
 }
 
@@ -116,11 +119,14 @@
     letter-spacing: .01rem;
     font-weight: 300;
     font-style: normal;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 1.5;
   }
+  b {
+    font-weight: 500;
+  }
   ol, li {
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 400;
   }
   .experience-name {
@@ -230,6 +236,7 @@
       p {
         font-size: 16px;
         margin-bottom: 0;
+        font-weight: 300;
       }
     }
     .experience-description {
@@ -347,7 +354,7 @@ a#must-see-img:hover {
   z-index: 1;
   position: fixed;
   right: 0px;
-  top: 45%;
+  top: 42%;
   .btn {
     font-size: 14px;
     // height: 70px;
@@ -364,20 +371,29 @@ a#must-see-img:hover {
     // padding-left: 5px;
   }
 }
+
 .itinerary_image {
   margin-bottom: 30px;
   img {
     max-height: 250px;
   }
 }
+.destination-itineraries {
+  padding-left: 5%;
+  padding-right: 5%;
+}
 
 .itinerary_exp-images {
   position: relative;
   margin-bottom: 15px;
   overflow: hidden;
-  max-height: 250px;
+  width: 100%;
   .experience-picture {
+    position: relative;
+    margin: 0 auto;
     img {
+      width: 100%;
+      height: 100%;
       background-size: cover;
       background-position: center bottom;
       background-attachment: fixed;
@@ -390,20 +406,18 @@ a#must-see-img:hover {
   }
   .experience-name {
     position: absolute;
-    margin: auto;
-    text-align: center;
+    // margin: 0 auto;
+    // text-align: center;
     width: 100%;
-    letter-spacing: 0px;
-    font-size: 1em;
+    // height: 100%;
     color: white;
     top: 45%;
-    background: rgba(0,0,0,0.1);
     p {
-      font-size: 18px;
-      font-weight: 200;
+      text-align: center;
+      padding: 2px;
+      font-size: 16px;
+      font-weight: 300;
       text-shadow: 0px 0px 1px white, 0px 0px 6px black;
-      padding: 0;
-      margin: 0;
     }
   }
 }
