@@ -355,96 +355,152 @@
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <div class="itinerary_exp-images">
+                      <div class="experience-picture text-center">
+                        <% if rec_trip.recommended_trip_experiences[0].experience.experience_pictures.first %>
+                          <%= image_tag rec_trip.recommended_trip_experiences[0].experience.experience_pictures.first.picture.url(:small) %>
+                        <% end %>
+                      </div>
                       <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[0].experience.id), remote: true do %>
-                        <div class="experience-picture text-center">
-                          <% if rec_trip.recommended_trip_experiences[0].experience.experience_pictures.first %>
-                            <%= image_tag rec_trip.recommended_trip_experiences[0].experience.experience_pictures.first.picture.url(:small) %>
-                          <% end %>
+                        <div class="experience-name text-center">
+                          <p><%= rec_trip.recommended_trip_experiences[0].experience.name %></p>
                         </div>
                       <% end %>
-                      <div class="experience-name text-center">
-                        <p><%= rec_trip.recommended_trip_experiences[0].experience.name %></p><br>
-                      </div>
                     </div>
                     <div class="itinerary_exp-images">
+                      <div class="experience-picture text-center">
+                        <% if rec_trip.recommended_trip_experiences[1].experience.experience_pictures.first %>
+                          <%= image_tag rec_trip.recommended_trip_experiences[1].experience.experience_pictures.first.picture.url(:small) %>
+                        <% end %>
+                      </div>
                       <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[1].experience.id), remote: true do %>
-                        <div class="experience-picture text-center">
-                          <% if rec_trip.recommended_trip_experiences[1].experience.experience_pictures.first %>
-                            <%= image_tag rec_trip.recommended_trip_experiences[1].experience.experience_pictures.first.picture.url(:small) %>
-                          <% end %>
+                        <div class="experience-name text-center">
+                          <p><%= rec_trip.recommended_trip_experiences[1].experience.name %></p><br>
                         </div>
                       <% end %>
-                      <div class="experience-name text-center">
-                        <p><%= rec_trip.recommended_trip_experiences[1].experience.name %></p><br>
-                      </div>
                     </div>
                     <% if rec_trip.step_6.length > 0 %>
                       <div class="itinerary_exp-images">
-                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[4].experience.id), remote: true do %>
-                          <div class="experience-picture text-center">
-                            <% if rec_trip.recommended_trip_experiences[4].experience.experience_pictures.first %>
-                              <%= image_tag rec_trip.recommended_trip_experiences[4].experience.experience_pictures.first.picture.url(:small) %>
-                            <% end %>
+                        <div class="experience-picture text-center">
+                          <% if rec_trip.recommended_trip_experiences[2].experience.experience_pictures.first %>
+                            <%= image_tag rec_trip.recommended_trip_experiences[2].experience.experience_pictures.first.picture.url(:small) %>
+                          <% end %>
+                        </div>
+                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[2].experience.id), remote: true do %>
+                          <div class="experience-name text-center">
+                            <p><%= rec_trip.recommended_trip_experiences[2].experience.name %></p><br>
                           </div>
                         <% end %>
-                        <div class="experience-name text-center">
-                          <p><%= rec_trip.recommended_trip_experiences[4].experience.name %></p><br>
+                      </div>
+                    <% end %>
+                    <% if rec_trip.step_7.length > 0 %>
+                      <div class="itinerary_exp-images">
+                        <div class="experience-picture text-center">
+                          <% if rec_trip.recommended_trip_experiences[4].experience.experience_pictures.first %>
+                            <%= image_tag rec_trip.recommended_trip_experiences[4].experience.experience_pictures.first.picture.url(:small) %>
+                          <% end %>
                         </div>
+                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[4].experience.id), remote: true do %>
+                          <div class="experience-name text-center">
+                            <p><%= rec_trip.recommended_trip_experiences[4].experience.name %></p><br>
+                          </div>
+                        <% end %>
+                      </div>
+                    <% end %>
+                    <% if rec_trip.step_8.length > 0 %>
+                      <div class="itinerary_exp-images">
+                        <div class="experience-picture text-center">
+                          <% if rec_trip.recommended_trip_experiences[6].experience.experience_pictures.first %>
+                            <%= image_tag rec_trip.recommended_trip_experiences[6].experience.experience_pictures.first.picture.url(:small) %>
+                          <% end %>
+                        </div>
+                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[6].experience.id), remote: true do %>
+                          <div class="experience-name text-center">
+                            <p><%= rec_trip.recommended_trip_experiences[6].experience.name %></p><br>
+                          </div>
+                        <% end %>
                       </div>
                     <% end %>
                     <% if rec_trip.step_9.length > 0 %>
                       <div class="itinerary_exp-images">
+                        <div class="experience-picture text-center">
+                          <% if rec_trip.recommended_trip_experiences[7].experience.experience_pictures.first %>
+                            <%= image_tag rec_trip.recommended_trip_experiences[7].experience.experience_pictures.first.picture.url(:small) %>
+                          <% end %>
+                        </div>
                         <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[7].experience.id), remote: true do %>
-                          <div class="experience-picture text-center">
-                            <% if rec_trip.recommended_trip_experiences[7].experience.experience_pictures.first %>
-                              <%= image_tag rec_trip.recommended_trip_experiences[7].experience.experience_pictures.first.picture.url(:small) %>
-                            <% end %>
+                          <div class="experience-name text-center">
+                            <p><%= rec_trip.recommended_trip_experiences[7].experience.name %></p><br>
                           </div>
                         <% end %>
-                        <div class="experience-name text-center">
-                          <p><%= rec_trip.recommended_trip_experiences[7].experience.name %></p><br>
-                        </div>
                       </div>
                     <% end %>
                     <% if rec_trip.step_11.length > 0 %>
                       <div class="itinerary_exp-images">
-                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[9].experience.id), remote: true do %>
-                          <div class="experience-picture text-center">
-                            <% if rec_trip.recommended_trip_experiences[9].experience.experience_pictures.first %>
-                              <%= image_tag rec_trip.recommended_trip_experiences[9].experience.experience_pictures.first.picture.url(:small) %>
-                            <% end %>
+                        <div class="experience-picture text-center">
+                          <% if rec_trip.recommended_trip_experiences[8].experience.experience_pictures.first %>
+                            <%= image_tag rec_trip.recommended_trip_experiences[8].experience.experience_pictures.first.picture.url(:small) %>
+                          <% end %>
+                        </div>
+                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[8].experience.id), remote: true do %>
+                          <div class="experience-name text-center">
+                            <p><%= rec_trip.recommended_trip_experiences[8].experience.name %></p><br>
                           </div>
                         <% end %>
-                        <div class="experience-name text-center">
-                          <p><%= rec_trip.recommended_trip_experiences[9].experience.name %></p><br>
-                        </div>
                       </div>
                     <% end %>
                     <% if rec_trip.step_13.length > 0 %>
                       <div class="itinerary_exp-images">
-                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[11].experience.id), remote: true do %>
-                          <div class="experience-picture text-center">
-                            <% if rec_trip.recommended_trip_experiences[11].experience.experience_pictures.first %>
-                              <%= image_tag rec_trip.recommended_trip_experiences[11].experience.experience_pictures.first.picture.url(:small) %>
-                            <% end %>
+                        <div class="experience-picture text-center">
+                          <% if rec_trip.recommended_trip_experiences[9].experience.experience_pictures.first %>
+                            <%= image_tag rec_trip.recommended_trip_experiences[9].experience.experience_pictures.first.picture.url(:small) %>
+                          <% end %>
+                        </div>
+                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[9].experience.id), remote: true do %>
+                          <div class="experience-name text-center">
+                            <p><%= rec_trip.recommended_trip_experiences[9].experience.name %></p><br>
                           </div>
                         <% end %>
-                        <div class="experience-name text-center">
-                          <p><%= rec_trip.recommended_trip_experiences[11].experience.name %></p><br>
+                      </div>
+                    <% end %>
+                    <% if rec_trip.step_14.length > 0 %>
+                      <div class="itinerary_exp-images">
+                        <div class="experience-picture text-center">
+                          <% if rec_trip.recommended_trip_experiences[11].experience.experience_pictures.first %>
+                            <%= image_tag rec_trip.recommended_trip_experiences[11].experience.experience_pictures.first.picture.url(:small) %>
+                          <% end %>
                         </div>
+                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[11].experience.id), remote: true do %>
+                          <div class="experience-name text-center">
+                            <p><%= rec_trip.recommended_trip_experiences[11].experience.name %></p><br>
+                          </div>
+                        <% end %>
+                      </div>
+                    <% end %>
+                    <% if rec_trip.step_15.length > 0 %>
+                      <div class="itinerary_exp-images">
+                        <div class="experience-picture text-center">
+                          <% if rec_trip.recommended_trip_experiences[13].experience.experience_pictures.first %>
+                            <%= image_tag rec_trip.recommended_trip_experiences[13].experience.experience_pictures.first.picture.url(:small) %>
+                          <% end %>
+                        </div>
+                        <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences[13].experience.id), remote: true do %>
+                          <div class="experience-name text-center">
+                            <p><%= rec_trip.recommended_trip_experiences[13].experience.name %></p><br>
+                          </div>
+                        <% end %>
                       </div>
                     <% end %>
                     <div class="itinerary_exp-images">
+                      <div class="experience-picture text-center">
+                        <% if rec_trip.recommended_trip_experiences.last.experience.experience_pictures.first %>
+                          <%= image_tag rec_trip.recommended_trip_experiences.last.experience.experience_pictures.first.picture.url(:small) %>
+                        <% end %>
+                      </div>
                       <%= link_to experience_detail_path(rec_trip.recommended_trip_experiences.last.experience.id), remote: true do %>
-                        <div class="experience-picture text-center">
-                          <% if rec_trip.recommended_trip_experiences.last.experience.experience_pictures.first %>
-                            <%= image_tag rec_trip.recommended_trip_experiences.last.experience.experience_pictures.first.picture.url(:small) %>
-                          <% end %>
+                        <div class="experience-name text-center">
+                          <p><%= rec_trip.recommended_trip_experiences.last.experience.name %></p><br>
                         </div>
                       <% end %>
-                      <div class="experience-name text-center">
-                        <p><%= rec_trip.recommended_trip_experiences.last.experience.name %></p><br>
-                      </div>
                     </div>
                   </div>
                 </div>
