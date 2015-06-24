@@ -299,7 +299,7 @@
               <div class="destination-box-nobordertop">
                 <div class="row">
                   <div class="col-xs-12">
-                    <h3 class="text-center"><%= rec_trip.title %></h3><br>
+                    <h3 class="text-center"><%= raw rec_trip.title %></h3><br>
                     <p><%= raw rec_trip.description %></p>
                     <div class="itinerary_image text-center">
                       <%= image_tag rec_trip.picture.url(:banner) %>
