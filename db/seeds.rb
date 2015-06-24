@@ -20,6 +20,48 @@
 # end
 # !!!!!!!!_________________________________________________________!!!!!!!!
 
+
+
+# Seed  experiences with trip advisor
+require 'json'
+require 'rest_client'
+# Update experiences with ta ratings and comments
+url_json = "https://spreadsheets.google.com/feeds/list/1xv5uM7Vr2quDMPIIJyQkHEoB5caaSRPj0mr2ZrosztE/od6/public/values?alt=json"
+data_hash = JSON.parse(RestClient.get(url_json))
+tab = []
+data_hash['feed']['entry'].each do |exp_data|
+  if Experience.where(id: exp_data['gsx$experienceid']['$t'].to_i).any? # In case of mismatch between local and heroku ids
+    experience = Experience.find(exp_data['gsx$experienceid']['$t'].to_i)
+    ta_votes = exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i
+    ta_rating = ((exp_data['gsx$nbfivestars']['$t'].to_i*5 + exp_data['gsx$nbfourstars']['$t'].to_i*4 + exp_data['gsx$nbthreestars']['$t'].to_i*3 + exp_data['gsx$nbtwostars']['$t'].to_i*2 + exp_data['gsx$nbonestars']['$t'].to_i*1).to_f / (exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i))
+    experience.update(
+      ta_id: exp_data['gsx$experiencetaid']['$t'],
+      ta_votes: ta_votes,
+      ta_rating: ta_rating.round(2),
+      ta_url: exp_data['gsx$url']['$t']
+    )
+    experience.experience_reviews.create(
+      name: exp_data['gsx$commentonename']['$t'],
+      rating: exp_data['gsx$commentonescore']['$t'].to_i,
+      original_date: exp_data['gsx$commentonedate']['$t'],
+      comment: exp_data['gsx$commentonecontent']['$t']
+    )
+    experience.experience_reviews.create(
+      name: exp_data['gsx$commenttwoname']['$t'],
+      rating: exp_data['gsx$commenttwoscore']['$t'].to_i,
+      original_date: exp_data['gsx$commenttwodate']['$t'],
+      comment: exp_data['gsx$commenttwocontent']['$t']
+    )
+    experience.experience_reviews.create(
+      name: exp_data['gsx$commentthreename']['$t'],
+      rating: exp_data['gsx$commentthreescore']['$t'].to_i,
+      original_date: exp_data['gsx$commentthreedate']['$t'],
+      comment: exp_data['gsx$commentthreecontent']['$t']
+    )
+  end
+end
+
+
 #Update categories from terminal
 # Experience.where(published: true, landing_point: false, country_code: 'MX').each do |e|
 #   puts e.id
@@ -58,47 +100,47 @@
 #   )
 # end
 
-# Seed create recommended_trips
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/17cS22y5DE_C9EbCESvMGt6QUUcpicLLaPDrsUJktKz4/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |rec_trip|
-  recommended_trip = RecommendedTrip.create(
-    destination_id: Destination.find_by(country_code:'TH').id,
-    title: rec_trip['gsx$title']['$t'],
-    description: rec_trip['gsx$description']['$t'],
-    step_1: rec_trip['gsx$step1']['$t'],
-    step_2: rec_trip['gsx$step2']['$t'],
-    step_3: rec_trip['gsx$step3']['$t'],
-    step_4: rec_trip['gsx$step4']['$t'],
-    step_5: rec_trip['gsx$step5']['$t'],
-    step_6: rec_trip['gsx$step6']['$t'],
-    step_7: rec_trip['gsx$step7']['$t'],
-    step_8: rec_trip['gsx$step8']['$t'],
-    step_9: rec_trip['gsx$step9']['$t'],
-    step_10: rec_trip['gsx$step10']['$t'],
-    step_11: rec_trip['gsx$step11']['$t'],
-    step_12: rec_trip['gsx$step12']['$t'],
-    step_13: rec_trip['gsx$step13']['$t'],
-    step_14: rec_trip['gsx$step14']['$t'],
-    step_15: rec_trip['gsx$step15']['$t'],
-    picture: "https://philae-floju.s3.amazonaws.com/photos_thailande/"+ rec_trip['gsx$picturename']['$t'] + ".png"
-  )
-  rec_trip['gsx$recotripexptab']['$t'].split(", ").each_with_index do |v, i|
-    recommended_trip.recommended_trip_experiences.create(
-      experience_id: v.to_i,
-      order: 1 + i.to_i
-    )
-  end
-end
+# # Seed create recommended_trips
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/17cS22y5DE_C9EbCESvMGt6QUUcpicLLaPDrsUJktKz4/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |rec_trip|
+#   recommended_trip = RecommendedTrip.create(
+#     destination_id: Destination.find_by(country_code:'TH').id,
+#     title: rec_trip['gsx$title']['$t'],
+#     description: rec_trip['gsx$description']['$t'],
+#     step_1: rec_trip['gsx$step1']['$t'],
+#     step_2: rec_trip['gsx$step2']['$t'],
+#     step_3: rec_trip['gsx$step3']['$t'],
+#     step_4: rec_trip['gsx$step4']['$t'],
+#     step_5: rec_trip['gsx$step5']['$t'],
+#     step_6: rec_trip['gsx$step6']['$t'],
+#     step_7: rec_trip['gsx$step7']['$t'],
+#     step_8: rec_trip['gsx$step8']['$t'],
+#     step_9: rec_trip['gsx$step9']['$t'],
+#     step_10: rec_trip['gsx$step10']['$t'],
+#     step_11: rec_trip['gsx$step11']['$t'],
+#     step_12: rec_trip['gsx$step12']['$t'],
+#     step_13: rec_trip['gsx$step13']['$t'],
+#     step_14: rec_trip['gsx$step14']['$t'],
+#     step_15: rec_trip['gsx$step15']['$t'],
+#     picture: "https://philae-floju.s3.amazonaws.com/photos_thailande/"+ rec_trip['gsx$picturename']['$t'] + ".png"
+#   )
+#   rec_trip['gsx$recotripexptab']['$t'].split(", ").each_with_index do |v, i|
+#     recommended_trip.recommended_trip_experiences.create(
+#       experience_id: v.to_i,
+#       order: 1 + i.to_i
+#     )
+#   end
+# end
 
-  # RecommendedTripExperience.create(
-  #     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
-  #     experience_id: rec_trip_exp['gsx$experienceid']['$t'],
-  #     order: rec_trip_exp['gsx$order']['$t'].to_i
-  #   )
-  # end
+# RecommendedTripExperience.create(
+#     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
+#     experience_id: rec_trip_exp['gsx$experienceid']['$t'],
+#     order: rec_trip_exp['gsx$order']['$t'].to_i
+#   )
+# end
 
 # Seed new experiences for Mexico
 # require 'json'
@@ -147,11 +189,11 @@ end
   # end
 # end
 
-# Seed  experiences with trip advisor
+# # Seed  experiences with trip advisor
 # require 'json'
 # require 'rest_client'
-# Update Cuba's experiences with ta id
-# url_json = "https://spreadsheets.google.com/feeds/list/1VNjWN-IZpIdh7tMNk8nUxzvsprkd2twDGVyJn0fGvxA/od6/public/values?alt=json"
+# # Update Cuba's experiences with ta id
+# url_json = "https://spreadsheets.google.com/feeds/list/1xv5uM7Vr2quDMPIIJyQkHEoB5caaSRPj0mr2ZrosztE/od6/public/values?alt=json"
 # data_hash = JSON.parse(RestClient.get(url_json))
 # data_hash['feed']['entry'].each do |exp_data|
 #   if exp_data['gsx$taid']['$t'] && exp_data['gsx$taid']['$t'].length > 0
@@ -159,7 +201,7 @@ end
 #     exp.update(ta_id: exp_data['gsx$taid']['$t'])
 #   end
 # end
-# Update Cuba's experiences with ta ratings and comments
+# # Update Cuba's experiences with ta ratings and comments
 # url_json = "https://spreadsheets.google.com/feeds/list/1rQ8RaI66PmtdvarLSPOl3C4LKV2Wcapg41V86vJXcSc/od6/public/values?alt=json"
 # data_hash = JSON.parse(RestClient.get(url_json))
 # tab = []
