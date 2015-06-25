@@ -211,7 +211,7 @@
                         <% end %>
                       </div>
                       <div class="experience-description">
-                        <%= simple_format truncate(experience.description, length: 420, separator: ' ') %>
+                        <%= simple_format truncate(experience.description, length: 380, separator: ' ') %>
                       </div>
                       <div class="experience-know-more">
                         <p><%= link_to "En savoir plus", modal_exp_path(@trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - incontournables', 'User clicks on experience #{experience.name} from explore_destination');" %></p>
