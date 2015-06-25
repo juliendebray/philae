@@ -290,9 +290,27 @@
   </div>
   <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
     <div class="tab-pane" id="reviews">
-      <br>
-      <br>
+      <% if experience.explorizers_tip.length > 0 %>
+        <div class="row text-center">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="experience-explorizers-tip-title text-center">
+              <br><p>Le conseil Explorizers</p>
+            </div>
+            <div class="experience-explorizers-tip text-center">
+              <%= simple_format experience.explorizers_tip %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+            <div id="block-separator"></div>
+          </div>
+        </div>
+      <% end %>
       <% if experience.leader_reviews.any? %>
+        <div class="experience-explorizers-tip-title text-center">
+          <br><p>Avis des guides</p>
+        </div>
         <div class="leader-reviews">
           <% if experience.leader_reviews.first != experience.leader_reviews.last && experience.ta_rating %>
             <div class="row text-center">
