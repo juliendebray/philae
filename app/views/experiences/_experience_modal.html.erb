@@ -19,9 +19,9 @@
 <div id="exp-modal-tabs">
   <ul class="nav nav-tabs nav-justified" role="tablist">
     <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
-    <li><a href="#descriptif" data-toggle="tab">Descriptif</a></li>
+    <li><a href="#descriptif" data-toggle="tab">Pourquoi y aller ?</a></li>
     <% if experience.experience_reviews.any? || experience.leader_reviews.any? %>
-      <li><a href="#reviews" data-toggle="tab">Avis et conseils</a></li>
+      <li><a href="#reviews" data-toggle="tab">Conseils et avis</a></li>
     <% end %>
     <li><a href="#getthere" data-toggle="tab">Infos pratiques</a></li>
   </ul>
@@ -40,93 +40,68 @@
   </div>
   <div class="tab-pane" id="descriptif">
     <div class="experience-content text-justify">
-      <br>
-      <div class="experience-onesentence text-center">
-        <%= simple_format experience.onesentence %>
+      <div class="row text-center">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+          <div class="experience-onesentence text-center">
+            <br>
+            <%= simple_format experience.onesentence %>
+          </div>
+          <% if experience.category_tab.length > 0 %>
+            <div class="experience-category">
+              <p> Pour ceux qui veulent :
+              <% if experience.category_tab.include?('otbt') %>
+                <b>sortir des sentiers battus</b> |
+              <% end %>
+              <% if experience.category_tab.include?('nature') %>
+                <b>être dépaysé</b> |
+              <% end %>
+              <% if experience.category_tab.include?('culture') %>
+                <b>se cultiver</b> |
+              <% end %>
+              <% if experience.category_tab.include?('sport') %>
+                <b>se dépenser</b> |
+              <% end %>
+              <% if experience.category_tab.include?('relax') %>
+                <b>se reposer</b> |
+              <% end %>
+              </p>
+            </div>
+          <% end %>
+        </div>
       </div>
       <br>
-      <div class="experience-description text-justify">
-        <%= simple_format experience.description %>
-      </div>
-      <div class="experience-links text-center">
-        <% if experience.unesco && experience.thousand_places && experience.wikipedia_link %>
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-              <div id="block-separator"></div>
+      <% if experience.good_points.length > 0 || experience.bad_points.length > 0 %>
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="good-bad-points">
+              <div class="row text-center">
+                <div class="col-xs-12 col-sm-6">
+                  <i class="fa fa-plus-circle"></i>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <i class="fa fa-minus-circle"></i>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-xs-12 col-sm-6">
+                  <p><%= simple_format experience.good_points %></p>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <p><%= simple_format experience.bad_points %></p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row text-center">
-            <div class="col-xs-4">
-              <%= image_tag('unesco_logo.png', height: 30, alt:'UNESCO Logo Officiel') %>
-            </div>
-            <div class="col-xs-4">
-              <%= image_tag('thousandplaces_logo.png', height: 30, alt:'Thousand Places Logo Officiel') %>
-            </div>
-            <div class="col-xs-4">
-              <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+            <div id="block-separator"></div>
           </div>
-          <div class="row text-center">
-            <div class="col-xs-4">
-              <p>Patrimoine mondial de l'<a href="http://whc.unesco.org/fr/list/" target="_blank">UNESCO</a></p>
-            </div>
-            <div class="col-xs-4">
-              <p>L'un des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
-            </div>
-            <div class="col-xs-4">
-              <p>Voir sur <a href="<%= experience.wikipedia_link %>" target="_blank"> Wikipedia</a></p>
-            </div>
-          </div>
-        <% elsif experience.unesco && experience.wikipedia_link %>
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-              <div id="block-separator"></div>
-            </div>
-          </div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <%= image_tag('unesco_logo.png', height: 30, alt:'UNESCO Logo Officiel') %>
-            </div>
-            <div class="col-xs-6">
-              <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %>
-            </div>
-          </div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <p>Patrimoine mondial de l'<a href="http://whc.unesco.org/fr/list/" target="_blank">UNESCO</a></p>
-            </div>
-            <div class="col-xs-6">
-              <p>Voir sur <a href="<%= experience.wikipedia_link %>" target="_blank"> Wikipedia</a></p>
-            </div>
-          </div>
-        <% elsif experience.thousand_places && experience.wikipedia_link %>
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-              <div id="block-separator"></div>
-            </div>
-          </div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <%= image_tag('thousandplaces_logo.png', height: 30, alt:'Thousand Places Logo Officiel') %>
-            </div>
-            <div class="col-xs-6">
-              <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %>
-            </div>
-          </div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <p>L'un des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
-            </div>
-            <div class="col-xs-6">
-              <p>Voir sur <a href="<%= experience.wikipedia_link %>" target="_blank"> Wikipedia</a></p>
-            </div>
-          </div>
-        <% elsif experience.unesco && experience.thousand_places %>
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-              <div id="block-separator"></div>
-            </div>
-          </div>
+        </div>
+      <% end %>
+      <br>
+      <% if experience.unesco && experience.thousand_places %>
+        <div class="experience-links text-center">
           <div class="row text-center">
             <div class="col-xs-6">
               <%= image_tag('unesco_logo.png', height: 30, alt:'UNESCO Logo Officiel') %>
@@ -143,15 +118,14 @@
               <p>L'un des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
             </div>
           </div>
-        <% elsif experience.wikipedia_link %>
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-              <div id="block-separator"></div>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+            <div id="block-separator"></div>
           </div>
-          <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %><br>
-          <p>Voir sur <a href="<%= experience.wikipedia_link %>" target="_blank"> Wikipedia</a></p>
-        <% elsif experience.unesco %>
+        </div>
+      <% elsif experience.unesco %>
+        <div class="experience-links text-center">
           <div class="row">
             <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
               <div id="block-separator"></div>
@@ -159,7 +133,14 @@
           </div>
           <%= image_tag('unesco_logo.png', height: 50, alt:'UNESCO Logo Officiel') %><br>
           <p>Patrimoine mondial de l'<a href="http://whc.unesco.org/fr/list/" target="_blank">UNESCO</a></p>
-        <% elsif experience.thousand_places %>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+            <div id="block-separator"></div>
+          </div>
+        </div>
+      <% elsif experience.thousand_places %>
+        <div class="experience-links text-center">
           <div class="row">
             <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
               <div id="block-separator"></div>
@@ -167,7 +148,143 @@
           </div>
           <%= image_tag('thousandplaces_logo.png', height: 40, alt:'Thousand Places Logo Officiel') %><br>
           <p>L'un des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
-        <% end %>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+            <div id="block-separator"></div>
+          </div>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+          <div class="experience-description-title">
+            <p>Description</p>
+          </div>
+          <div class="experience-description text-justify">
+            <%= simple_format experience.description %>
+          </div>
+          <!-- <div class="experience-links text-center">
+            <% if experience.unesco && experience.thousand_places && experience.wikipedia_link %>
+              <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                  <div id="block-separator"></div>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-xs-4">
+                  <%= image_tag('unesco_logo.png', height: 30, alt:'UNESCO Logo Officiel') %>
+                </div>
+                <div class="col-xs-4">
+                  <%= image_tag('thousandplaces_logo.png', height: 30, alt:'Thousand Places Logo Officiel') %>
+                </div>
+                <div class="col-xs-4">
+                  <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-xs-4">
+                  <p>Patrimoine mondial de l'<a href="http://whc.unesco.org/fr/list/" target="_blank">UNESCO</a></p>
+                </div>
+                <div class="col-xs-4">
+                  <p>L'un des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+                </div>
+                <div class="col-xs-4">
+                  <p>Voir sur <a href="<%= experience.wikipedia_link %>" target="_blank"> Wikipedia</a></p>
+                </div>
+              </div>
+            <% elsif experience.unesco && experience.wikipedia_link %>
+              <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                  <div id="block-separator"></div>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-xs-6">
+                  <%= image_tag('unesco_logo.png', height: 30, alt:'UNESCO Logo Officiel') %>
+                </div>
+                <div class="col-xs-6">
+                  <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-xs-6">
+                  <p>Patrimoine mondial de l'<a href="http://whc.unesco.org/fr/list/" target="_blank">UNESCO</a></p>
+                </div>
+                <div class="col-xs-6">
+                  <p>Voir sur <a href="<%= experience.wikipedia_link %>" target="_blank"> Wikipedia</a></p>
+                </div>
+              </div>
+            <% elsif experience.thousand_places && experience.wikipedia_link %>
+              <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                  <div id="block-separator"></div>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-xs-6">
+                  <%= image_tag('thousandplaces_logo.png', height: 30, alt:'Thousand Places Logo Officiel') %>
+                </div>
+                <div class="col-xs-6">
+                  <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-xs-6">
+                  <p>L'un des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+                </div>
+                <div class="col-xs-6">
+                  <p>Voir sur <a href="<%= experience.wikipedia_link %>" target="_blank"> Wikipedia</a></p>
+                </div>
+              </div>
+            <% elsif experience.unesco && experience.thousand_places %>
+              <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                  <div id="block-separator"></div>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-xs-6">
+                  <%= image_tag('unesco_logo.png', height: 30, alt:'UNESCO Logo Officiel') %>
+                </div>
+                <div class="col-xs-6">
+                  <%= image_tag('thousandplaces_logo.png', height: 30, alt:'Thousand Places Logo Officiel') %>
+                </div>
+              </div>
+              <div class="row text-center">
+                <div class="col-xs-6">
+                  <p>Patrimoine mondial de l'<a href="http://whc.unesco.org/fr/list/" target="_blank">UNESCO</a></p>
+                </div>
+                <div class="col-xs-6">
+                  <p>L'un des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+                </div>
+              </div>
+            <% elsif experience.wikipedia_link %>
+              <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                  <div id="block-separator"></div>
+                </div>
+              </div>
+              <%= image_tag('wiki_logo.png', height: 40, alt:'Wikipedia Logo Officiel') %><br>
+              <p>Voir sur <a href="<%= experience.wikipedia_link %>" target="_blank"> Wikipedia</a></p>
+            <% elsif experience.unesco %>
+              <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                  <div id="block-separator"></div>
+                </div>
+              </div>
+              <%= image_tag('unesco_logo.png', height: 50, alt:'UNESCO Logo Officiel') %><br>
+              <p>Patrimoine mondial de l'<a href="http://whc.unesco.org/fr/list/" target="_blank">UNESCO</a></p>
+            <% elsif experience.thousand_places %>
+              <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                  <div id="block-separator"></div>
+                </div>
+              </div>
+              <%= image_tag('thousandplaces_logo.png', height: 40, alt:'Thousand Places Logo Officiel') %><br>
+              <p>L'un des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
+            <% end %>
+          </div> -->
+        </div>
       </div>
     </div>
   </div>
@@ -287,150 +404,6 @@
       <% else %>
         <p>Pas de commentaire des guides pour cette expérience ; elle est hors des sentiers battus !</p>
       <% end %>
-      <!-- <div class="experience-rating">
-        <% if experience.ta_rating || experience.gg_rating || experience.fsq_rating %>
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-              <div id="block-separator"></div>
-            </div>
-          </div>
-
-          <% if experience.ta_rating && experience.gg_rating && experience.fsq_rating %>
-            <div class="row text-center">
-              <div class="col-xs-4">
-                <div class="ta_logo">
-                  <%= image_tag('ta_logo_rating.png')%>
-                </div>
-              </div>
-              <div class="col-xs-4">
-                <div class="gg_logo">
-                  <%= image_tag('gg_logo_rating.png') %>
-                </div>
-              </div>
-              <div class="col-xs-4">
-                <div class="fsq_logo">
-                  <%= image_tag('fsq_logo_rating.png') %>
-                </div>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-xs-4">
-                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
-              </div>
-              <div class="col-xs-4">
-                <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span> <small><em>(<%=experience.gg_votes%> votes)</em></small>
-              </div>
-              <div class="col-xs-4">
-                <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
-              </div>
-            </div>
-          <% elsif experience.ta_rating  && experience.gg_rating %>
-            <div class="row text-center">
-              <div class="col-xs-6">
-                <div class="ta_logo">
-                  <div class="ta_logo">
-                    <%= image_tag('ta_logo_rating.png')%>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div class="gg_logo">
-                  <%= image_tag('gg_logo_rating.png') %>
-                </div>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-xs-6">
-                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
-              </div>
-              <div class="col-xs-6">
-                <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span> <small><em>(<%=experience.gg_votes%> votes)</em></small>
-              </div>
-            </div>
-          <% elsif experience.ta_rating  && experience.fsq_rating %>
-            <div class="row text-center">
-              <div class="col-xs-6">
-                <div class="ta_logo">
-                  <%= image_tag('ta_logo_rating.png')%>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div class="fsq_logo">
-                  <%= image_tag('fsq_logo_rating.png') %>
-                </div>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-xs-6">
-                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
-              </div>
-              <div class="col-xs-6">
-                <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
-              </div>
-            </div>
-          <% elsif experience.gg_rating  && experience.fsq_rating %>
-            <div class="row text-center">
-              <div class="col-xs-6">
-                <div class="gg_logo">
-                  <%= image_tag('gg_logo_rating.png') %>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div class="fsq_logo">
-                  <%= image_tag('fsq_logo_rating.png') %>
-                </div>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-xs-6">
-                <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.gg_votes%> votes)</em></small>
-              </div>
-              <div class="col-xs-6">
-                <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/10</small></span> <small><em>(<%=experience.fsq_votes%> votes)</em></small>
-              </div>
-            </div>
-          <% elsif experience.ta_rating %>
-            <div class="row text-center">
-              <div class="col-xs-12">
-                <div class="ta_logo">
-                  <%= image_tag('ta_logo_rating.png')%>
-                </div>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-xs-12">
-                <span class="ta-color rating-score"><strong><%= experience.ta_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.ta_votes%> votes)</em></small>
-              </div>
-            </div>
-          <% elsif experience.gg_rating %>
-            <div class="row text-center">
-              <div class="col-xs-12">
-                <div class="gg_logo">
-                  <%= image_tag('gg_logo_rating.png') %>
-                </div>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-xs-12">
-                <span class="gg-color rating-score"><strong><%= experience.gg_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.gg_votes%> votes)</em></small>
-              </div>
-            </div>
-          <% elsif experience.fsq_rating %>
-            <div class="row text-center">
-              <div class="col-xs-12">
-                <div class="fsq_logo">
-                  <%= image_tag('fsq_logo_rating.png') %>
-                </div>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-xs-12">
-                <span class="fsq-color rating-score"><strong><%= experience.fsq_rating %></strong> <small>/5</small></span>   <small><em>(<%=experience.fsq_votes%> votes)</em></small>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div> -->
       <% if experience.experience_reviews.any? %>
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">

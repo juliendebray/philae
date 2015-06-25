@@ -76,21 +76,67 @@
   }
   #descriptif {
     max-height: 450px;
+    overflow-y: auto;
     // .wikipedia-link {
     //   text-align: center;
     // }
-    .experience-description {
+    .experience-onesentence {
+      font-size: 22px;
+      font-weight: 400;
+    }
+    .experience-category {
+      font-size: 14px;
+      font-weight: 300;
+      p {
+        margin: 0;
+      }
+      b {
+        font-weight: 400;
+      }
+    }
+    .good-bad-points {
+      p {
+        margin-top: 5px;
+      }
+      font-size: 16px;
+      font-weight: 300;
+      .fa {
+        font-size: 32px;
+      }
+      .fa-minus-circle {
+        color: red;
+      }
+      .fa-plus-circle {
+        color: green;
+      }
+    }
+    .experience-links {
+      font-size: 15px;
+      font-weight: 300;
+      img {
+        max-height: 40px;
+      }
+    }
+    .experience-description-title {
+      text-align: center;
+      text-decoration: underline;
       font-size: 15px;
       font-weight: 300;
     }
-    .experience-onesentence {
-      font-size: 20px;
-      font-weight: 400;
+    .experience-description {
+      text-align: justify;
+      font-size: 15px;
+      font-weight: 300;
     }
     .experience-detail {
       font-size: 15px;
       font-weight: 300;
     }
+    #block-separator {
+      border-top: solid 1px #CCCCCC;
+      margin-top: 15px;
+      margin-bottom: 15px;
+}
   }
   #reviews {
     max-height: 450px;
@@ -163,24 +209,4 @@
     }
   }
 }
-
-// Styles for modal experience
-// .vertical-align-top {
-//   vertical-align: top;
-// }
-// .vertical-align-middle {
-//   vertical-align: middle;
-// }
-// td.width-split {
-//   width: 50%;
-// }
-// td.rating-cell {
-//   border-left: 5px solid #eeeeee;
-//   padding-left:5%;
-// }
-// img.fixed-height {
-//   height: 31px;
-// }
-// img.small-height {
-//   height: 27px;
 // }
