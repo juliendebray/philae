@@ -22,44 +22,44 @@
 
 
 
-# Seed  experiences with trip advisor
-require 'json'
-require 'rest_client'
-# Update experiences with ta ratings and comments
-url_json = "https://spreadsheets.google.com/feeds/list/1xv5uM7Vr2quDMPIIJyQkHEoB5caaSRPj0mr2ZrosztE/od6/public/values?alt=json"
-data_hash = JSON.parse(RestClient.get(url_json))
-tab = []
-data_hash['feed']['entry'].each do |exp_data|
-  if Experience.where(id: exp_data['gsx$experienceid']['$t'].to_i).any? # In case of mismatch between local and heroku ids
-    experience = Experience.find(exp_data['gsx$experienceid']['$t'].to_i)
-    ta_votes = exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i
-    ta_rating = ((exp_data['gsx$nbfivestars']['$t'].to_i*5 + exp_data['gsx$nbfourstars']['$t'].to_i*4 + exp_data['gsx$nbthreestars']['$t'].to_i*3 + exp_data['gsx$nbtwostars']['$t'].to_i*2 + exp_data['gsx$nbonestars']['$t'].to_i*1).to_f / (exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i))
-    experience.update(
-      ta_id: exp_data['gsx$experiencetaid']['$t'],
-      ta_votes: ta_votes,
-      ta_rating: ta_rating.round(2),
-      ta_url: exp_data['gsx$url']['$t']
-    )
-    experience.experience_reviews.create(
-      name: exp_data['gsx$commentonename']['$t'],
-      rating: exp_data['gsx$commentonescore']['$t'].to_i,
-      original_date: exp_data['gsx$commentonedate']['$t'],
-      comment: exp_data['gsx$commentonecontent']['$t']
-    )
-    experience.experience_reviews.create(
-      name: exp_data['gsx$commenttwoname']['$t'],
-      rating: exp_data['gsx$commenttwoscore']['$t'].to_i,
-      original_date: exp_data['gsx$commenttwodate']['$t'],
-      comment: exp_data['gsx$commenttwocontent']['$t']
-    )
-    experience.experience_reviews.create(
-      name: exp_data['gsx$commentthreename']['$t'],
-      rating: exp_data['gsx$commentthreescore']['$t'].to_i,
-      original_date: exp_data['gsx$commentthreedate']['$t'],
-      comment: exp_data['gsx$commentthreecontent']['$t']
-    )
-  end
-end
+# # Seed  experiences with trip advisor
+# require 'json'
+# require 'rest_client'
+# # Update experiences with ta ratings and comments
+# url_json = "https://spreadsheets.google.com/feeds/list/1xv5uM7Vr2quDMPIIJyQkHEoB5caaSRPj0mr2ZrosztE/od6/public/values?alt=json"
+# data_hash = JSON.parse(RestClient.get(url_json))
+# tab = []
+# data_hash['feed']['entry'].each do |exp_data|
+#   if Experience.where(id: exp_data['gsx$experienceid']['$t'].to_i).any? # In case of mismatch between local and heroku ids
+#     experience = Experience.find(exp_data['gsx$experienceid']['$t'].to_i)
+#     ta_votes = exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i
+#     ta_rating = ((exp_data['gsx$nbfivestars']['$t'].to_i*5 + exp_data['gsx$nbfourstars']['$t'].to_i*4 + exp_data['gsx$nbthreestars']['$t'].to_i*3 + exp_data['gsx$nbtwostars']['$t'].to_i*2 + exp_data['gsx$nbonestars']['$t'].to_i*1).to_f / (exp_data['gsx$nbfivestars']['$t'].to_i + exp_data['gsx$nbfourstars']['$t'].to_i + exp_data['gsx$nbthreestars']['$t'].to_i + exp_data['gsx$nbtwostars']['$t'].to_i + exp_data['gsx$nbonestars']['$t'].to_i))
+#     experience.update(
+#       ta_id: exp_data['gsx$experiencetaid']['$t'],
+#       ta_votes: ta_votes,
+#       ta_rating: ta_rating.round(2),
+#       ta_url: exp_data['gsx$url']['$t']
+#     )
+#     experience.experience_reviews.create(
+#       name: exp_data['gsx$commentonename']['$t'],
+#       rating: exp_data['gsx$commentonescore']['$t'].to_i,
+#       original_date: exp_data['gsx$commentonedate']['$t'],
+#       comment: exp_data['gsx$commentonecontent']['$t']
+#     )
+#     experience.experience_reviews.create(
+#       name: exp_data['gsx$commenttwoname']['$t'],
+#       rating: exp_data['gsx$commenttwoscore']['$t'].to_i,
+#       original_date: exp_data['gsx$commenttwodate']['$t'],
+#       comment: exp_data['gsx$commenttwocontent']['$t']
+#     )
+#     experience.experience_reviews.create(
+#       name: exp_data['gsx$commentthreename']['$t'],
+#       rating: exp_data['gsx$commentthreescore']['$t'].to_i,
+#       original_date: exp_data['gsx$commentthreedate']['$t'],
+#       comment: exp_data['gsx$commentthreecontent']['$t']
+#     )
+#   end
+# end
 
 
 #Update categories from terminal
@@ -75,30 +75,34 @@ end
 
 
 # Update experiences
-# require 'json'
-# require 'rest_client'
-# url_json = 'https://spreadsheets.google.com/feeds/list/1fAehN-kU04f1Kw5MWbRkv9wLRhHIsS9-tQ79hd50H9o/od6/public/values?alt=json'
-# data_hash = JSON.parse(RestClient.get(url_json))
-# data_hash['feed']['entry'].each do |exp_data|
-#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
-#     country_code: exp_data['gsx$countrycode']['$t'],
-#     name: exp_data['gsx$name']['$t'],
-#     average_rating: exp_data['gsx$averagerating']['$t'].to_f,
-#     description: exp_data['gsx$descriptionfrench']['$t'],
-#     onesentence: exp_data['gsx$onesentence']['$t'],
-#     timetospent: exp_data['gsx$timetospent']['$t'],
-#     wheretosleep: exp_data['gsx$wheretosleep']['$t'],
-#     transportation: exp_data['gsx$transportation']['$t'],
-#     category_tab: exp_data['gsx$categorytab']['$t'].split(", "),
-#     latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
-#     longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
-#     wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
-#     must_see: exp_data['gsx$mustsee']['$t'],
-#     unesco: exp_data['gsx$unesco']['$t'],
-#     thousand_places: exp_data['gsx$thousandplaces']['$t'],
-#     published: exp_data['gsx$published']['$t']
-#   )
-# end
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1fAehN-kU04f1Kw5MWbRkv9wLRhHIsS9-tQ79hd50H9o/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |exp_data|
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
+    country_code: exp_data['gsx$countrycode']['$t'],
+    name: exp_data['gsx$name']['$t'],
+    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
+    description: exp_data['gsx$descriptionfrench']['$t'],
+    onesentence: exp_data['gsx$onesentence']['$t'],
+    good_points: exp_data['gsx$goodpoints']['$t'],
+    bad_points: exp_data['gsx$badpoints']['$t'],
+    explorizers_tip: exp_data['gsx$explorizerstip']['$t'],
+    where_to_eat: exp_data['gsx$wheretoeat']['$t'],
+    timetospent: exp_data['gsx$timetospent']['$t'],
+    wheretosleep: exp_data['gsx$wheretosleep']['$t'],
+    transportation: exp_data['gsx$transportation']['$t'],
+    category_tab: exp_data['gsx$categorytab']['$t'].split(", "),
+    latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
+    longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
+    wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
+    must_see: exp_data['gsx$mustsee']['$t'],
+    unesco: exp_data['gsx$unesco']['$t'],
+    thousand_places: exp_data['gsx$thousandplaces']['$t'],
+    published: exp_data['gsx$published']['$t']
+  )
+end
 
 # # Seed create recommended_trips
 # require 'json'
