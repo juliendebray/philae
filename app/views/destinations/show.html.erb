@@ -199,7 +199,7 @@
                         <%= raw experience.onesentence %>
                       </div>
                       <div class="experience-category">
-                        <p>Pour ceux qui veulent :</p>
+                        <p><b>Pour ceux qui veulent</b> :</p>
                         <% if experience.category_tab.include?('otbt') %>
                           <p>- sortir des sentiers battus</p>
                         <% end %>
@@ -216,8 +216,18 @@
                           <p>- se reposer</p>
                         <% end %>
                       </div>
+                      <!-- <div class="experience-good-bad-points">
+                        <% if experience.good_points.length > 0 %>
+                          <p>Les <b>plus</b> :</p>
+                          <p><%= simple_format experience.good_points %></p>
+                        <% end %>
+                        <% if experience.bad_points.length > 0 %>
+                          <p>Les <b>moins</b> :</p>
+                          <p><%= simple_format experience.bad_points %></p>
+                        <% end %>
+                      </div> -->
                       <div class="experience-description">
-                        <%= simple_format truncate(experience.description, length: 380, separator: ' ') %>
+                        <%= simple_format truncate(experience.description, length: 350, separator: ' ') %>
                       </div>
                       <div class="experience-know-more">
                         <p><%= link_to "En savoir plus", experience_detail_path(experience.id), remote: true %></p>
