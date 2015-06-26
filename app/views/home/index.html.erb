@@ -37,6 +37,7 @@
       <div class="vertical-spacer-xxs"></div>
       <div class="tr-grey-bg">
         <% if session[:from] %>
+        <h4><i>Les destinations préférées des Explorizers</i></h4>
           <div class="container">
             <div class="row text-center">
               <div class="col-xs-12 col-sm-4">
@@ -44,19 +45,25 @@
                   <% if user_signed_in? %>
                     <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(10).name, title: Destination.find(10).name)), onclick: "ga('send', 'event', 'User', 'Thailand', 'Thailand link clicked from hp after being signed in');" do %>
                       <div class="destination-picture text-center">
-                        <%= image_tag Destination.find(10).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                        <%= image_tag Destination.find(10).destination_pictures.third.picture.url(:medium), class: "img-responsive" %>
                       </div>
                       <div class="destination-name text-center">
                         <small><%= Destination.find(10).name.capitalize %></small><br>
+                      </div>
+                      <div class="destination-subname text-center">
+                        <small>Découvrez les itinéraires</small><br>
                       </div>
                     <% end %>
                   <% else %>
                     <%= link_to '#', onclick:"showSignUpModal(); ga('send', 'event', 'User', 'Thailand', 'Thailand link clicked from hp without being signed in');"  do %>
                       <div class="destination-picture text-center">
-                        <%= image_tag Destination.find(10).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                        <%= image_tag Destination.find(10).destination_pictures.first.picture.url(:medium), class: "img-responsive" %>
                       </div>
                       <div class="destination-name text-center">
                         <small><%= Destination.find(10).name.capitalize %></small><br>
+                      </div>
+                      <div class="destination-subname text-center">
+                        <small>Découvrez les itinéraires</small><br>
                       </div>
                     <% end %>
                   <% end %>
@@ -67,19 +74,25 @@
                   <% if user_signed_in? %>
                     <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(8).name, title: Destination.find(8).name)), onclick: "ga('send', 'event', 'User', 'Brazil', 'Brazil link clicked from hp after being signed in');" do %>
                       <div class="destination-picture text-center">
-                        <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                        <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:medium), class: "img-responsive" %>
                       </div>
                       <div class="destination-name text-center">
                         <small><%= Destination.find(8).name.capitalize %></small><br>
+                      </div>
+                      <div class="destination-subname text-center">
+                        <small>Découvrez les itinéraires</small><br>
                       </div>
                     <% end %>
                   <% else %>
                     <%= link_to '#', onclick:"showSignUpModal(); ga('send', 'event', 'User', 'Brazil', 'Brazil link clicked from hp without being signed in');"  do %>
                       <div class="destination-picture text-center">
-                        <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                        <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:medium), class: "img-responsive" %>
                       </div>
                       <div class="destination-name text-center">
                         <small><%= Destination.find(8).name.capitalize %></small><br>
+                      </div>
+                      <div class="destination-subname text-center">
+                        <small>Découvrez les itinéraires</small><br>
                       </div>
                     <% end %>
                   <% end %>
@@ -90,19 +103,25 @@
                   <% if user_signed_in? %>
                     <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(9).name, title: Destination.find(9).name)), onclick: "ga('send', 'event', 'User', 'Mexico', 'Mexico link clicked from hp after being signed in');" do %>
                       <div class="destination-picture text-center">
-                        <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                        <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:medium), class: "img-responsive" %>
                       </div>
                       <div class="destination-name text-center">
                         <small><%= Destination.find(9).name.capitalize %></small><br>
+                      </div>
+                      <div class="destination-subname text-center">
+                        <small>Découvrez les itinéraires</small><br>
                       </div>
                     <% end %>
                   <% else %>
                     <%= link_to '#', onclick:"showSignUpModal(); ga('send', 'event', 'User', 'Mexico', 'Mexico link clicked from hp without being signed in');"  do %>
                       <div class="destination-picture text-center">
-                        <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+                        <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:medium), class: "img-responsive" %>
                       </div>
                       <div class="destination-name text-center">
                         <small><%= Destination.find(9).name.capitalize %></small><br>
+                      </div>
+                      <div class="destination-subname text-center">
+                        <small>Découvrez les itinéraires</small><br>
                       </div>
                     <% end %>
                   <% end %>
@@ -142,11 +161,50 @@
     <h2 class="text-center"><%= t('.howitworks') %></h2>
     <p class='text-center container'><%= t('.description') %></p>
     <div class="vertical-spacer-sm"></div>
-
     <div class="vertical-spacer-xs"></div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-4 text-center text-contrast">
+        <div class="col-sm-12 col-md-3 text-center text-contrast">
+          <div class="how-header">
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="vertical-spacer-xs"></div>
+          <div class="how-content">
+            <p>1. Lisez les <b>infos</b> à savoir avant de partir</p>
+          </div>
+          <div class="vertical-spacer"></div>
+        </div>
+        <div class="col-sm-12 col-md-3 text-center text-contrast">
+          <div class="how-header">
+            <i class="fa fa-camera-retro"></i>
+          </div>
+          <div class="vertical-spacer-xs"></div>
+          <div class="how-content">
+            <p>2. Découvrez les <b>expériences</b> à destination</p>
+          </div>
+          <div class="vertical-spacer-xs"></div>
+        </div>
+        <div class="col-sm-12 col-md-3 text-center text-contrast">
+          <div class="how-header">
+            <i class="fa fa-bicycle"></i>
+          </div>
+          <div class="vertical-spacer-xs"></div>
+          <div class="how-content">
+            <p>3. Créez votre <b>itinéraire</b> personnel</p>
+          </div>
+          <div class="vertical-spacer-xs"></div>
+        </div>
+        <div class="col-sm-12 col-md-3 text-center text-contrast">
+          <div class="how-header">
+            <i class="fa fa-suitcase"></i>
+          </div>
+          <div class="vertical-spacer-xs"></div>
+          <div class="how-content">
+            <p>4. Imprimez ou emportez votre <b>synthèse</b> sur mobile</p>
+          </div>
+          <div class="vertical-spacer-xs"></div>
+        </div>
+        <!-- <div class="col-sm-12 col-md-4 text-center text-contrast">
           <div class="how-header">
             <i class="fa fa-map-marker"></i>
           </div>
@@ -175,7 +233,7 @@
             <%= t('.item_three') %>
           </div>
           <div class="vertical-spacer"></div>
-        </div>
+        </div> -->
       </div>
     </div>
       <div class="logo-container container">
@@ -213,11 +271,11 @@
       <div class="vertical-spacer"></div>
       <h2 class="text-center"><%= t('.destination_title') %></h2>
       <p class='text-center'><%= t('.destination_tagline') %></p>
-      <%= link_to Destination.find(7) do %>
+      <%= link_to Destination.find(10) do %>
         <div class="destination-item text-center">
-          <%= image_tag(Destination.find(7).destination_pictures.first.picture.url(:banner), class: 'max-width') %>
+          <%= image_tag(Destination.find(10).destination_pictures.second.picture.url(:banner), class: 'max-width') %>
           <div class="destination-name text-center">
-            <%= Destination.find(7).name.upcase %>
+            <%= Destination.find(10).name.capitalize %>
           </div>
         </div>
       <% end %>
@@ -228,36 +286,36 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4 col-md-4">
             <div class="experience-box">
-              <%= link_to experience_path(176), target: "_blank" do %>
+              <%= link_to experience_path(557), target: "_blank" do %>
                 <div class="experience-picture text-center">
-                  <%= image_tag Experience.find(176).experience_pictures.first.picture.url(:medium) %>
+                  <%= image_tag Experience.find(557).experience_pictures.first.picture.url(:medium) %>
                 </div>
                 <div class="experience-name text-center">
-                  <small><%= Experience.find(176).name%></small><br>
+                  <small><%= Experience.find(557).name%></small><br>
                 </div>
               <% end %>
             </div>
           </div>
           <div class="col-xs-12 col-sm-4 col-md-4">
             <div class="experience-box">
-              <%= link_to experience_path(175), target: "_blank" do %>
+              <%= link_to experience_path(272), target: "_blank" do %>
                 <div class="experience-picture text-center">
-                  <%= image_tag Experience.find(175).experience_pictures.first.picture.url(:medium) %>
+                  <%= image_tag Experience.find(272).experience_pictures.first.picture.url(:medium) %>
                 </div>
                 <div class="experience-name text-center">
-                  <small><%= Experience.find(175).name%></small><br>
+                  <small><%= Experience.find(272).name%></small><br>
                 </div>
               <% end %>
             </div>
           </div>
           <div class="col-xs-12 col-sm-4 col-md-4">
             <div class="experience-box">
-              <%= link_to experience_path(29), target: "_blank" do %>
+              <%= link_to experience_path(311), target: "_blank" do %>
                 <div class="experience-picture text-center">
-                  <%= image_tag Experience.find(29).experience_pictures.first.picture.url(:medium) %>
+                  <%= image_tag Experience.find(311).experience_pictures.first.picture.url(:medium) %>
                 </div>
                 <div class="experience-name text-center">
-                  <small><%= Experience.find(29).name%></small><br>
+                  <small><%= Experience.find(311).name%></small><br>
                 </div>
               <% end %>
             </div>
