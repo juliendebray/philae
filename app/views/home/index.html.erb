@@ -36,7 +36,7 @@
       </div>
       <div class="vertical-spacer-xxs"></div>
       <div class="tr-grey-bg">
-        <% if session[:from] %>
+        <% if session[:from] == 'fb_planning' %>
         <h4><i>Les destinations préférées des Explorizers</i></h4>
           <div class="container">
             <div class="row text-center">
@@ -127,6 +127,40 @@
                   <% end %>
                 </div>
               </div>
+          </div>
+        <% elsif session[:from] == 'gg_thailand' %>
+          <div class="container">
+            <div class="row text-center">
+              <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+                <div class="destination-box">
+                  <% if user_signed_in? %>
+                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(10).name, title: Destination.find(10).name)), onclick: "ga('send', 'event', 'User', 'Thailand', 'Thailand link clicked from hp after being signed in');" do %>
+                      <div class="destination-picture text-center">
+                        <%= image_tag Destination.find(10).destination_pictures.third.picture.url(:medium), class: "img-responsive" %>
+                      </div>
+                      <div class="destination-name text-center">
+                        <small><%= Destination.find(10).name.capitalize %></small><br>
+                      </div>
+                      <div class="destination-subname text-center">
+                        <small>Découvrez les itinéraires</small><br>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to '#', onclick:"showSignUpModal(); ga('send', 'event', 'User', 'Thailand', 'Thailand link clicked from hp without being signed in');"  do %>
+                      <div class="destination-picture text-center">
+                        <%= image_tag Destination.find(10).destination_pictures.first.picture.url(:medium), class: "img-responsive" %>
+                      </div>
+                      <div class="destination-name text-center">
+                        <small><%= Destination.find(10).name.capitalize %></small><br>
+                      </div>
+                      <div class="destination-subname text-center">
+                        <small>Découvrez les itinéraires</small><br>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
         <% else %>
           <% if user_signed_in? %>
@@ -347,6 +381,9 @@
 <% end %>
 <%= content_for(:after_js) do %>
   <% if flash[:notice] && user_signed_in? %>
+  <% if session[:from]  %>
+    <% current_user.update(from_campaign: session[:from]) if current_user.from_campaign.nil?   %>
+  <% end %>
     <script>
       // Google analytics event
       ga('send', 'event', 'User', 'Sign up / Sign in', 'Flash notice message detected');

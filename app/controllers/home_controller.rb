@@ -2,9 +2,7 @@ class HomeController < ApplicationController
   def index
     @trip = Trip.new
     @coming_from_campaign = false
-    if params[:from] == 'fb_planning'
-      session[:from] = 'fb_planning'
-    end
+    session[:from] = params[:from] if params[:from]
   end
 
   private
