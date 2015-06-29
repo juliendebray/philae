@@ -51,4 +51,39 @@ function commonInitializationForExploreMap(data) {
   setExperienceInfowindowForGlobalMap(data);
 }
 
+function makeExperiencesSortable() {
+  var panelList = $('#draggablePanelList');
+  if (panelList.hasClass('ui-sortable-disabled')) {
+    panelList.sortable('enable');
+  }
+  panelList.sortable({
+  // Only make the .panel-heading child elements support dragging.
+  // Omit this to make the entire <li>...</li> draggable.
+    handle: '.panel-heading',
+    update: function() {
+      $('.panel', panelList).each(function(index, elem) {
+        var $listItem = $(elem),
+          newIndex = $listItem.index(); // Persist the new indices.
+      });
+    }
+  });
+  addBoxShadowEffectWhileDraggingBox();
+}
+
+function preventExperiencesFromBeingSortable() {
+    if ($('#draggablePanelList').hasClass('ui-sortable')) {
+      $('#draggablePanelList').sortable('disable');
+    }
+}
+
+function addBoxShadowEffectWhileDraggingBox() {
+  $('.panel-heading').on('mousedown', function(){
+    $(this).parent().parent().css('box-shadow', '2px 2px 1px 1px rgba(0, 0, 0, 0.5)');
+    $(document).on('mouseup', function(){
+      $('.panel').css('box-shadow', '1px 1px 1px 1px rgba(0, 0, 0, 0.1)');
+      $(this).unbind('mouseup');
+    });
+  });
+}
+
 // TODO: put all common function to map interaction in a global map js file and keep specifi file for specific functions

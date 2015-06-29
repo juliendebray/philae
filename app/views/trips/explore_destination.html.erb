@@ -168,7 +168,7 @@
      <div class="destination-content">
       <div class="container-fluid">
         <div class="row text-center">
-          <h3><%= @destination.name.capitalize %> - les meilleures expériences</h3><br>
+          <h3><%= @destination.name.capitalize %> - les expériences incontournables</h3><br>
           <ol>
             <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
               <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
@@ -225,7 +225,7 @@
         </div>
         <br><br><br>
         <div class="row text-center">
-          <h3>Les autres expériences</h3><br>
+          <h3>Les expériences préférées des Explorizers</h3><br>
           <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
             <% if experience.category_tab.exclude?('otbt') %>
               <div class="col-xs-12 col-sm-6 col-md-4">
