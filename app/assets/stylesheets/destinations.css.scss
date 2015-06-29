@@ -236,29 +236,49 @@
       display: inline-flex;
       margin-bottom: 10px;
       p {
-        margin-left: 10px;
-        font-size: 16px;
+        margin-left: 15px;
+        font-size: 15px;
         margin-bottom: 0;
         font-weight: 300;
       }
     }
     .experience-good-bad-points {
+      td {
+        padding-top: 5px;
+      }
+
       p {
-        font-size: 16px;
+        font-size: 15px;
         margin-bottom: 0;
         font-weight: 300;
+        padding-left: 10px;
+        text-align: left;
+        text-align: justify;
+      }
+      i {
+        margin-top: 2px;
+      }
+      .fa {
+        font-size: 23px;
+      }
+      .fa-minus-circle {
+        color: red;
+      }
+      .fa-plus-circle {
+        color: green;
       }
     }
     .experience-description {
+      text-align: justify;
       p {
         margin-top: 10px;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 300;
       }
     }
     .experience-know-more
       p {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 300;
       }
   }
