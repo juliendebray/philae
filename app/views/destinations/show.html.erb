@@ -174,7 +174,7 @@
     <div class="destination-content">
       <div class="container-fluid">
         <div class="row text-center">
-          <h3><%= @destination.name.capitalize %> - les meilleures expériences</h3><br>
+          <h3><%= @destination.name.capitalize %> - les incontournables</h3><br>
           <ol>
             <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
               <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
@@ -199,6 +199,24 @@
                         <%= raw experience.onesentence %>
                       </div>
                       <div class="experience-category">
+                       <!--  <p><b>Pour ceux qui veulent</b> :</p> -->
+                        <% if experience.category_tab.include?('otbt') %>
+                          <i class="fa fa-compass"></i><p>  Hors des sentiers battus</p>
+                        <% end %>
+                        <% if experience.category_tab.include?('nature') %>
+                          <i class="fa fa-tree"></i><p>  Nature</p>
+                        <% end %>
+                        <% if experience.category_tab.include?('culture') %>
+                          <i class="fa fa-university"></i><p>  Villes et culture</p>
+                        <% end %>
+                        <% if experience.category_tab.include?('sport') %>
+                          <i class="fa fa-bicycle"></i><p>  Sport</p>
+                        <% end %>
+                        <% if experience.category_tab.include?('relax') %>
+                          <i class="fa fa-sun-o"></i><p>  Détente</p>
+                        <% end %>
+                      </div>
+<!--                       <div class="experience-category">
                         <p><b>Pour ceux qui veulent</b> :</p>
                         <% if experience.category_tab.include?('otbt') %>
                           <p>- sortir des sentiers battus</p>
@@ -215,7 +233,7 @@
                         <% if experience.category_tab.include?('relax') %>
                           <p>- se reposer</p>
                         <% end %>
-                      </div>
+                      </div> -->
                       <!-- <div class="experience-good-bad-points">
                         <% if experience.good_points.length > 0 %>
                           <p>Les <b>plus</b> :</p>
@@ -241,7 +259,7 @@
         </div>
         <br><br><br>
         <div class="row text-center">
-          <h3>Les autres expériences</h3><br>
+          <h3>Les expériences préférées des Explorizers</h3><br>
           <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
             <% if experience.category_tab.exclude?('otbt') %>
               <div class="col-xs-12 col-sm-6 col-md-4">
