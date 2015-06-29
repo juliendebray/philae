@@ -75,34 +75,34 @@
 
 
 # Update experiences
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1fAehN-kU04f1Kw5MWbRkv9wLRhHIsS9-tQ79hd50H9o/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |exp_data|
-  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
-    country_code: exp_data['gsx$countrycode']['$t'],
-    name: exp_data['gsx$name']['$t'],
-    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
-    description: exp_data['gsx$descriptionfrench']['$t'],
-    onesentence: exp_data['gsx$onesentence']['$t'],
-    good_points: exp_data['gsx$goodpoints']['$t'],
-    bad_points: exp_data['gsx$badpoints']['$t'],
-    explorizers_tip: exp_data['gsx$explorizerstip']['$t'],
-    where_to_eat: exp_data['gsx$wheretoeat']['$t'],
-    timetospent: exp_data['gsx$timetospent']['$t'],
-    wheretosleep: exp_data['gsx$wheretosleep']['$t'],
-    transportation: exp_data['gsx$transportation']['$t'],
-    category_tab: exp_data['gsx$categorytab']['$t'].split(", "),
-    latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
-    longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
-    wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
-    must_see: exp_data['gsx$mustsee']['$t'],
-    unesco: exp_data['gsx$unesco']['$t'],
-    thousand_places: exp_data['gsx$thousandplaces']['$t'],
-    published: exp_data['gsx$published']['$t']
-  )
-end
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1fAehN-kU04f1Kw5MWbRkv9wLRhHIsS9-tQ79hd50H9o/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |exp_data|
+#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
+#     country_code: exp_data['gsx$countrycode']['$t'],
+#     name: exp_data['gsx$name']['$t'],
+#     average_rating: exp_data['gsx$averagerating']['$t'].to_f,
+#     description: exp_data['gsx$descriptionfrench']['$t'],
+#     onesentence: exp_data['gsx$onesentence']['$t'],
+#     good_points: exp_data['gsx$goodpoints']['$t'],
+#     bad_points: exp_data['gsx$badpoints']['$t'],
+#     explorizers_tip: exp_data['gsx$explorizerstip']['$t'],
+#     where_to_eat: exp_data['gsx$wheretoeat']['$t'],
+#     timetospent: exp_data['gsx$timetospent']['$t'],
+#     wheretosleep: exp_data['gsx$wheretosleep']['$t'],
+#     transportation: exp_data['gsx$transportation']['$t'],
+#     category_tab: exp_data['gsx$categorytab']['$t'].split(", "),
+#     latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
+#     longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
+#     wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
+#     must_see: exp_data['gsx$mustsee']['$t'],
+#     unesco: exp_data['gsx$unesco']['$t'],
+#     thousand_places: exp_data['gsx$thousandplaces']['$t'],
+#     published: exp_data['gsx$published']['$t']
+#   )
+# end
 
 # # Seed create recommended_trips
 # require 'json'
@@ -138,6 +138,41 @@ end
 #     )
 #   end
 # end
+
+# # Seed update recommended_trips
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/17cS22y5DE_C9EbCESvMGt6QUUcpicLLaPDrsUJktKz4/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |rec_trip|
+  # RecommendedTrip.find(exp_data['gsx$rectripid']['$t'].to_i).update(
+  #   destination_id: Destination.find_by(country_code:'TH').id,
+  #   title: rec_trip['gsx$title']['$t'],
+  #   description: rec_trip['gsx$description']['$t'],
+  #   step_1: rec_trip['gsx$step1']['$t'],
+  #   step_2: rec_trip['gsx$step2']['$t'],
+  #   step_3: rec_trip['gsx$step3']['$t'],
+  #   step_4: rec_trip['gsx$step4']['$t'],
+  #   step_5: rec_trip['gsx$step5']['$t'],
+  #   step_6: rec_trip['gsx$step6']['$t'],
+  #   step_7: rec_trip['gsx$step7']['$t'],
+  #   step_8: rec_trip['gsx$step8']['$t'],
+  #   step_9: rec_trip['gsx$step9']['$t'],
+  #   step_10: rec_trip['gsx$step10']['$t'],
+  #   step_11: rec_trip['gsx$step11']['$t'],
+  #   step_12: rec_trip['gsx$step12']['$t'],
+  #   step_13: rec_trip['gsx$step13']['$t'],
+  #   step_14: rec_trip['gsx$step14']['$t'],
+  #   step_15: rec_trip['gsx$step15']['$t'],
+  #   picture: "https://philae-floju.s3.amazonaws.com/photos_thailande/"+ rec_trip['gsx$picturename']['$t'] + ".png"
+  # )
+  rec_trip['gsx$recotripexptab']['$t'].split(", ").each_with_index do |v, i|
+    recommended_trip.recommended_trip_experiences.update(
+      experience_id: v.to_i,
+      order: 1 + i.to_i
+    )
+  end
+end
 
 # RecommendedTripExperience.create(
 #     recommended_trip_id: rec_trip_exp['gsx$recommendedtripid']['$t'].to_i,
