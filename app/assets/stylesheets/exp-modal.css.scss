@@ -85,8 +85,11 @@
       font-weight: 400;
     }
     .experience-category {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 300;
+      i {
+        font-size: 18px;
+      }
       p {
         margin: 0;
       }

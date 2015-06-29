@@ -193,22 +193,48 @@
                         <%= raw experience.onesentence %>
                       </div>
                       <div class="experience-category">
-                        <p>Pour ceux qui veulent :</p>
+                       <!--  <p><b>Pour ceux qui veulent</b> :</p> -->
                         <% if experience.category_tab.include?('otbt') %>
-                          <p>- sortir des sentiers battus</p>
+                          <i class="fa fa-compass"></i><p>  Hors des sentiers battus</p>
                         <% end %>
                         <% if experience.category_tab.include?('nature') %>
-                          <p>- être dépaysé</p>
+                          <i class="fa fa-tree"></i><p>  Nature</p>
                         <% end %>
                         <% if experience.category_tab.include?('culture') %>
-                          <p>- se cultiver</p>
+                          <i class="fa fa-university"></i><p>  Villes et culture</p>
                         <% end %>
                         <% if experience.category_tab.include?('sport') %>
-                          <p>- se dépenser</p>
+                          <i class="fa fa-bicycle"></i><p>  Sport</p>
                         <% end %>
                         <% if experience.category_tab.include?('relax') %>
-                          <p>- se reposer</p>
+                          <i class="fa fa-sun-o"></i><p>  Détente</p>
                         <% end %>
+                      </div>
+                      <div class="experience-good-bad-points text-center">
+                        <div class="table-responsive">
+                          <table>
+                            <% if experience.good_points.length > 0 %>
+                              <tr>
+                                <td>
+                                  <i class="fa fa-plus-circle"></i>
+                                </td>
+                                <td>
+                                  <p><%= simple_format experience.good_points %></p>
+                                </td>
+                              </tr>
+                            <% end %>
+                            <% if experience.bad_points.length > 0 %>
+                              <tr>
+                                <td>
+                                  <i class="fa fa-minus-circle"></i>
+                                </td>
+                                <td>
+                                  <p><%= simple_format experience.bad_points %></p>
+                                </td>
+                              </tr>
+                            <% end %>
+                          </table>
+                        </div>
                       </div>
                       <div class="experience-description">
                         <%= simple_format truncate(experience.description, length: 380, separator: ' ') %>
