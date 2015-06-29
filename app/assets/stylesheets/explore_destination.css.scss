@@ -3,8 +3,60 @@
   height: 600px;
 }
 
+#category-buttons {
+  position: absolute;
+  top: 15px;
+  left: 8%;
+  right: 8%;
+  i {
+    font-size: 22px;
+    color: #525252;
+  }
+  span {
+    font-size: 14px;
+    color: #525252;
+  }
+  .gold {
+    color: gold;
+  }
+  a.category-btn:visited {
+    background: white;
+  }
+  .category-btn.active, .category-btn:hover, {
+    i {
+    font-size: 22px;
+    color: white;
+    }
+    span {
+      font-size: 14px;
+      color: white;
+    }
+  }
+  a.category-btn.active {
+    background: #2196F3;
+  }
+}
+
 .map-title {
   font-size: 4em;
   letter-spacing: 2px;
   color: #525252;
 }
+
+.destination-map-explanation {
+  width: 100%;
+  vertical-align: middle;
+  .how-content {
+    vertical-align: middle;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 1.5;
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+  i {
+    font-size: 30px;
+  }
+}
+
