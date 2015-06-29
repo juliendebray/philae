@@ -9,7 +9,7 @@
     </div>
     <div class="vertical-spacer-xs"></div>
     <div class="row">
-      <div class="col-sm-12 col-md-3 text-center text-contrast">
+      <div class="col-xs-12 col-md-3 text-center text-contrast">
         <div class="how-header">
           <i class="fa fa-info-circle"></i>
         </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="vertical-spacer-xs"></div>
       </div>
-      <div class="col-sm-12 col-md-3 text-center text-contrast">
+      <div class="col-xs-12 col-md-3 text-center text-contrast">
         <div class="how-header">
           <i class="fa fa-camera-retro"></i>
         </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="vertical-spacer-xs"></div>
       </div>
-      <div class="col-sm-12 col-md-3 text-center text-contrast">
+      <div class="col-xs-12 col-md-3 text-center text-contrast">
         <div class="how-header">
           <i class="fa fa-bicycle"></i>
         </div>
@@ -39,13 +39,13 @@
         </div>
         <div class="vertical-spacer-xs"></div>
       </div>
-      <div class="col-sm-12 col-md-3 text-center text-contrast">
+      <div class="col-xs-12 col-md-3 text-center text-contrast">
         <div class="how-header">
           <i class="fa fa-suitcase"></i>
         </div>
         <div class="vertical-spacer-xs"></div>
         <div class="how-content">
-          <p>4. Obtenez et emportez votre <b>synthèse</b> complète</p>
+          <p>4. Obtenez et emportez votre <b>parcours</b> complet</p>
         </div>
         <div class="vertical-spacer-xs"></div>
       </div>
@@ -562,40 +562,70 @@
   </div>
   <div class="vertical-spacer-xs"></div>
   <h2 class='text-center map-title'>Personnaliser mon voyage</h2>
-  <div class="container-fluid">
+  <div class="container destination-map-explanation">
     <div class="row">
-      <div class="col-xs-12">
-        <div class="btn-group btn-group-block btn-group-justified" role="group" aria-label="Category selection">
-          <a id="must" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on must-see button from explore destination');">
-            <i class="fa fa-star"></i>
-            <span class="hidden-xs">Incontournables</span>
-          </a>
-          <a id="otbt" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on otbt button from explore destination');">
-            <i class="fa fa-compass"></i>
-            <span class="hidden-xs">Hors des sentiers battus</span>
-          </a>
-          <a id="relax" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on relax button from explore destination');">
-            <i class="fa fa-glass"></i>
-            <span class="hidden-xs">Détente</span>
-          </a>
-          <a id="culture" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-            <i class="fa fa-university"></i>
-            <span class="hidden-xs">Culture</span>
-          </a>
-          <a id="nature" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
-            <i class="fa fa-tree"></i>
-            <span class="hidden-xs">Nature</span>
-          </a>
-          <a id="sport" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on sport button from explore destination');">
-            <i class="fa fa-bicycle"></i>
-            <span class="hidden-xs">Sport</span>
-          </a>
+      <div class="col-xs-12 col-md-2 col-md-offset-1 text-center text-contrast">
+        <div class="how-content">
+          <p>Je clique sur les points pour voir les expériences</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-1 text-center text-contrast">
+        <i class="fa fa-angle-right"></i>
+      </div>
+      <div class="col-xs-12 col-md-2 text-center text-contrast">
+        <div class="how-content">
+          <p>Je les ajoute ou les retire de mon voyage</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-1 text-center text-contrast">
+        <i class="fa fa-angle-right"></i>
+      </div>
+      <div class="col-xs-12 col-md-2 text-center text-contrast">
+        <div class="how-content">
+          <p>Je récupère mon parcours complet...</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3 text-center text-contrast">
+        <div class="how-content">
+          <p>... accessible à tout moment dans mon espace perso</p>
         </div>
       </div>
     </div>
+  </div>
+  <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
-        <div id="map-container-destination">
+        <div id="map-destination-categories">
+          <div id="map-container-destination">
+          </div>
+          <div id="category-buttons">
+            <div class="btn-group btn-group-block btn-group-justified" role="group" aria-label="Category selection">
+              <a id="must" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on must-see button from explore destination');">
+                <i class="gold fa fa-star"></i><br>
+                <span class="hidden-xs">Incontournables</span>
+              </a>
+              <a id="culture" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
+                <i class="fa fa-university"></i><br>
+                <span class="hidden-xs">Villes et culture</span>
+              </a>
+               <a id="nature" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true'>
+                <i class="fa fa-tree"></i><br>
+                <span class="hidden-xs">Nature</span>
+              </a>
+              <a id="sport" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on sport button from explore destination');">
+                <i class="fa fa-bicycle"></i><br>
+                <span class="hidden-xs">Sport</span>
+              </a>
+              <a id="relax" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on relax button from explore destination');">
+                <i class="fa fa-sun-o"></i><br>
+                <span class="hidden-xs">Détente</span>
+              </a>
+              <a id="otbt" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on otbt button from explore destination');">
+                <i class="fa fa-compass"></i><br>
+                <span class="hidden-xs">Hors des sentiers battus</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
