@@ -620,7 +620,21 @@
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="my-selection">
+        <div class="col-xs-2">
+          <div class="my-selection-title">
+            <p><u>Mon parcours</u></p>
+          </div>
+          <% unless @trip.trip_experiences.count > 0 %>
+            <p>Sélectionnez un itinéraire ci-dessus, ou des expériences depuis la carte</p>
+          <% end %>
+          <div id="user-experiences-selection">
+            <ol id="draggablePanelList" class="experience-block-container user-experiences-content">
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-10">
         <div id="map-destination-categories">
           <div id="map-container-destination">
           </div>

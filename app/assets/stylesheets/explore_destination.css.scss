@@ -13,7 +13,7 @@
     color: #525252;
   }
   span {
-    font-size: 14px;
+    font-size: 12px;
     color: #525252;
   }
   .gold {
@@ -28,7 +28,7 @@
     color: white;
     }
     span {
-      font-size: 14px;
+      font-size: 12px;
       color: white;
     }
   }
@@ -57,5 +57,64 @@
   }
   i {
     font-size: 30px;
+  }
+}
+
+.my-selection {
+  max-height: 600px;
+  // overflow-y: auto;
+  .col-xs-2 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .my-selection-title {
+    p {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      margin-left: 15px;
+    }
+  }
+  p {
+    margin-left: 15px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+  #user-experiences-selection {
+    max-height: 563px;
+    overflow-y: auto;
+    #draggablePanelList {
+      li {
+        color: #525252;
+        margin-bottom: 8px;
+        float: left;
+        // text-align: center;
+        background-color: white;
+        width: 100%;
+        border-style: solid;
+        border-width: 0;
+        border-left-width: 2px;
+        // border-color: lightgrey;
+        border-left-color: #F20000;
+        h4 {
+          font-size: 15px;
+          font-weight: 400;
+          margin-top: 5px;
+          margin-bottom: 5px;
+          margin-left: 10px;
+        }
+        h5 {
+          margin-top: 5px;
+          margin-bottom: 5px;
+          font-size: 13px;
+          font-weight: 300;
+          font-style: italic;
+          margin-left: 10px;
+        }
+      }
+    }
   }
 }
