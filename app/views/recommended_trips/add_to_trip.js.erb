@@ -5,6 +5,10 @@ $('a.select-trip').addClass('hidden');
 $('.remove-trip[data-recommended-trip-id = <%= @recommended_trip.id %>]').removeClass('hidden');
 // Mettre les marqueurs sur la carte
 requestDataFromAPI(<%= @trip.id %>, collectUserChoice(), false);
+
+<% @recommended_trip.recommended_trip_experiences.each do |rte| %>
+  $('.experience-block-container').append('<li> <h4><%= rte.experience.name %></h4><h5><%= rte.experience.timetospent %></h5> </li>');
+<% end %>
 // Connecter les points de la carte pour montrer l'itinéraire - boutton pour afficher itinéraire
 // Gérer le cas où un recommended trip a déjà été selectionner
 // Gérer les cas où il y a dejà des trip experiences qui existe
