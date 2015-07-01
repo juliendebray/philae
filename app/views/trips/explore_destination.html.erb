@@ -48,7 +48,7 @@
         </div>
         <div class="vertical-spacer-xs"></div>
         <div class="how-content">
-          <p>2. Découvrez les <b>expériences</b> à destination</p>
+          <p>2. Découvrez les <b>attractions</b> à destination</p>
         </div>
         <div class="vertical-spacer-xs"></div>
       </div>
@@ -182,7 +182,7 @@
   <div class="destination-collapse">
     <div id="must-see" class="text-center">
       <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
-      <h2 class="no-margin title-destination-page">Découvrez les plus belles expériences</h2>
+      <h2 class="no-margin title-destination-page">Découvrez les plus belles attractions</h2>
     </div>
   </div>
   <div class="" id="">
@@ -191,7 +191,7 @@
      <div class="destination-content">
       <div class="container-fluid">
         <div class="row text-center">
-          <h3><%= @destination.name.capitalize %> - les expériences incontournables</h3><br>
+          <h3><%= @destination.name.capitalize %> - les attractions incontournables</h3><br>
           <ol>
             <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
               <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
@@ -274,7 +274,7 @@
         </div>
         <br><br><br>
         <div class="row text-center">
-          <h3>Les expériences préférées des Explorizers</h3><br>
+          <h3>Les attractions préférées des Explorizers</h3><br>
           <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
             <% if experience.category_tab.exclude?('otbt') %>
               <div class="col-xs-12 col-sm-6 col-md-4">
@@ -298,7 +298,7 @@
           <% end %>
         </div>
         <div class="row text-center">
-          <h3>Coup de projecteur sur les expériences hors des sentiers battus</h3><br>
+          <h3>Coup de projecteur sur les attractions hors des sentiers battus</h3><br>
           <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
             <% if experience.category_tab.include?('otbt') %>
               <div class="col-xs-12 col-sm-6 col-md-4">
@@ -618,7 +618,7 @@
     <div class="row">
       <div class="col-xs-12 col-md-2 col-md-offset-1 text-center text-contrast">
         <div class="how-content">
-          <p>Je clique sur les points pour voir les expériences</p>
+          <p>Je clique sur les points pour voir les attractions</p>
         </div>
       </div>
       <div class="col-xs-12 col-md-1 text-center text-contrast">
@@ -652,7 +652,7 @@
             <p><u>Mon parcours</u></p>
           </div>
           <% unless @trip.trip_experiences.count > 0 %>
-            <p>Sélectionnez un itinéraire ci-dessus, ou des expériences depuis la carte</p>
+            <p>Sélectionnez un itinéraire ci-dessus, ou des attractions depuis la carte</p>
           <% end %>
           <div id="user-experiences-selection">
             <ol id="draggablePanelList" class="experience-block-container user-experiences-content">
