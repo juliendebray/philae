@@ -1,5 +1,28 @@
+<body style="position=relative;" data-spy="scroll" data-target="#navbar-menu">
+<!-- Menu bar -->
+<div id="navbar-menu" role="navigation" class="hidden-xs">
+  <ul class="nav nav-pills nav-justified" role="tablist">
+    <li>
+      <a href="#intro" onclick="ga('send', 'event', 'User', 'Intro Menu', 'User clicked on intro from explore destination navbar menu');">Intro</a>
+    </li>
+    <li>
+      <a href="#overview" onclick="ga('send', 'event', 'User', 'Must know Menu', 'User clicked on must know from explore destination navbar menu');">A savoir</a>
+    </li>
+    <li>
+      <a href="#must-see" onclick="ga('send', 'event', 'User', 'Attractions Menu', 'User clicked on attractions from explore destination navbar menu');">Attractions</a>
+    </li>
+    <li>
+      <a href="#recommended-trip" onclick="ga('send', 'event', 'User', 'Itinerary Menu', 'User clicked on itinerary from explore destination navbar menu');">Itinéraires</a>
+    </li>
+    <li>
+      <a href="#my-trip" onclick="ga('send', 'event', 'User', 'My Trip Menu', 'User clicked on my trip from explore destination navbar menu');">Mon voyage</a>
+    </li>
+  </ul>
+</div>
+<!-- End of menu bar -->
+
 <div class="wrapper bg-white black">
-  <div class="destination-banner">
+  <div id="intro" class="destination-banner">
     <%= image_tag @destination.destination_pictures.first.picture.url(:banner) %>
     <h1 class='title-destination-page'><%= @destination.name.capitalize %></h1>
   </div>
@@ -25,7 +48,7 @@
         </div>
         <div class="vertical-spacer-xs"></div>
         <div class="how-content">
-          <p>2. Découvrez les <b>expériences</b> à destination</p>
+          <p>2. Découvrez les <b>attractions</b> à destination</p>
         </div>
         <div class="vertical-spacer-xs"></div>
       </div>
@@ -71,13 +94,13 @@
       </div>
     </div>
   </div>
-  <a class="destination-collapse" data-toggle="collapse" href="#collapseOverview" aria-expanded="false" aria-controls="collapseOverview" onclick= "ga('send', 'event', 'User', 'Click A savoir avant de partir', 'User clicks on à savoir avant de partir depuis la page explore_destination');" >
+  <div class="destination-collapse">
     <div id="overview" class="text-center">
       <%= image_tag @destination.destination_pictures.second.picture.url(:banner) %>
       <h2 class="no-margin title-destination-page">A savoir avant de partir</h2>
     </div>
-  </a>
-  <div class="collapse" id="collapseOverview">
+  </div>
+  <div class="" id="">
     <div class="destination-content">
       <div class="row text-center">
         <small>Dernière mise à jour : <%= @destination.updated_at.strftime('%d-%m-%Y') %></small><br>
@@ -156,19 +179,19 @@
       </div>
     </div>
   </div>
-  <a class="destination-collapse" data-toggle="collapse" href="#collapseMustSee" aria-expanded="false" aria-controls="collapseMustSee" onclick="ga('send', 'event', 'User', 'Click Que voir et que faire', 'User clicks on Que voir et que faire depuis la page explore_destination');">
-  <div id="must-see" class="text-center">
-    <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
-    <h2 class="no-margin title-destination-page">Découvrez les plus belles expériences</h2>
+  <div class="destination-collapse">
+    <div id="must-see" class="text-center">
+      <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
+      <h2 class="no-margin title-destination-page">Découvrez les plus belles attractions</h2>
+    </div>
   </div>
-  </a>
-  <div class="collapse" id="collapseMustSee">
+  <div class="" id="">
   <br>
   <br>
      <div class="destination-content">
       <div class="container-fluid">
         <div class="row text-center">
-          <h3><%= @destination.name.capitalize %> - les expériences incontournables</h3><br>
+          <h3><%= @destination.name.capitalize %> - les attractions incontournables</h3><br>
           <ol>
             <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
               <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
@@ -213,7 +236,7 @@
                       <div class="experience-good-bad-points text-center">
                         <div class="table-responsive">
                           <table>
-                            <% if experience.good_points.length > 0 %>
+                            <% if experience.good_points && experience.good_points.length > 0 %>
                               <tr>
                                 <td>
                                   <i class="fa fa-plus-circle"></i>
@@ -223,7 +246,7 @@
                                 </td>
                               </tr>
                             <% end %>
-                            <% if experience.bad_points.length > 0 %>
+                            <% if experience.bad_points && experience.bad_points.length > 0 %>
                               <tr>
                                 <td>
                                   <i class="fa fa-minus-circle"></i>
@@ -251,7 +274,7 @@
         </div>
         <br><br><br>
         <div class="row text-center">
-          <h3>Les expériences préférées des Explorizers</h3><br>
+          <h3>Les attractions préférées des Explorizers</h3><br>
           <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
             <% if experience.category_tab.exclude?('otbt') %>
               <div class="col-xs-12 col-sm-6 col-md-4">
@@ -275,7 +298,7 @@
           <% end %>
         </div>
         <div class="row text-center">
-          <h3>Coup de projecteur sur les expériences hors des sentiers battus</h3><br>
+          <h3>Coup de projecteur sur les attractions hors des sentiers battus</h3><br>
           <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
             <% if experience.category_tab.include?('otbt') %>
               <div class="col-xs-12 col-sm-6 col-md-4">
@@ -301,13 +324,13 @@
       </div>
     </div>
   </div>
-  <a class="destination-collapse" data-toggle="collapse" href="#collapseRecommendedTrip" aria-expanded="false" aria-controls="collapseRecommendedTrip" onclick="ga('send', 'event', 'User', 'Click Itinéraires', 'User clicks on Itinéraire depuis la page explore_destination');">
+  <div class="destination-collapse" >
   <div id="recommended-trip" class="text-center destination-title">
     <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
     <h2 class="no-margin title-destination-page">Trouvez l'inspiration avec nos itinéraires</h2>
   </div>
-  </a>
-  <div class="collapse" id="collapseRecommendedTrip">
+  </div>
+  <div class="" id="">
     <div class="destination-content">
       <div class="destination-itineraries">
         <p class="text-center"><i>Ces itinéraires ont été conçus par nos experts. Sélectionnez l'un d'entre eux, puis <b>personnalisez-le selon vos envies</b>.</i></p>
@@ -587,12 +610,15 @@
     </div>
   </div>
   <div class="vertical-spacer-xs"></div>
-  <h2 class='text-center map-title'>Personnaliser mon voyage</h2>
+  <div id="my-trip">
+    <div class="vertical-spacer-sm"></div>
+    <h2 class='text-center map-title'>Personnaliser mon voyage</h2>
+  </div>
   <div class="container destination-map-explanation">
     <div class="row">
       <div class="col-xs-12 col-md-2 col-md-offset-1 text-center text-contrast">
         <div class="how-content">
-          <p>Je clique sur les points pour voir les expériences</p>
+          <p>Je clique sur les points pour voir les attractions</p>
         </div>
       </div>
       <div class="col-xs-12 col-md-1 text-center text-contrast">
@@ -626,7 +652,7 @@
             <p><u>Mon parcours</u></p>
           </div>
           <% unless @trip.trip_experiences.count > 0 %>
-            <p>Sélectionnez un itinéraire ci-dessus, ou des expériences depuis la carte</p>
+            <p>Sélectionnez un itinéraire ci-dessus, ou des attractions depuis la carte</p>
           <% end %>
           <div id="user-experiences-selection">
             <ol id="draggablePanelList" class="experience-block-container user-experiences-content">
@@ -674,7 +700,7 @@
         <div class="vertical-spacer-xs"></div>
         <p><em>Vous avez terminé ?</em></p>
         <%= link_to summarize_trip_path(@trip), onclick: "ga('send', 'event', 'User', 'See trip summary', 'Show trip summary button clicked from explore destination page');", class: "btn btn-info" do %>
-        Accéder à la synthèse de mon voyage
+        Accédez à la synthèse de votre voyage
         <% end %>
       </div>
     </div>
@@ -696,7 +722,7 @@
     </div>
   </div>
 </div>
-
+</body>
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
