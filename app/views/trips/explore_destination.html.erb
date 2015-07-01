@@ -71,13 +71,13 @@
       </div>
     </div>
   </div>
-  <a class="destination-collapse" data-toggle="collapse" href="#collapseOverview" aria-expanded="false" aria-controls="collapseOverview" onclick= "ga('send', 'event', 'User', 'Click A savoir avant de partir', 'User clicks on à savoir avant de partir depuis la page explore_destination');" >
+  <div class="destination-collapse">
     <div id="overview" class="text-center">
       <%= image_tag @destination.destination_pictures.second.picture.url(:banner) %>
       <h2 class="no-margin title-destination-page">A savoir avant de partir</h2>
     </div>
-  </a>
-  <div class="collapse" id="collapseOverview">
+  </div>
+  <div class="" id="">
     <div class="destination-content">
       <div class="row text-center">
         <small>Dernière mise à jour : <%= @destination.updated_at.strftime('%d-%m-%Y') %></small><br>
