@@ -213,7 +213,7 @@
                       <div class="experience-good-bad-points text-center">
                         <div class="table-responsive">
                           <table>
-                            <% if experience.good_points.length > 0 %>
+                            <% if experience.good_points && experience.good_points.length > 0 %>
                               <tr>
                                 <td>
                                   <i class="fa fa-plus-circle"></i>
@@ -223,7 +223,7 @@
                                 </td>
                               </tr>
                             <% end %>
-                            <% if experience.bad_points.length > 0 %>
+                            <% if experience.bad_points && experience.bad_points.length > 0 %>
                               <tr>
                                 <td>
                                   <i class="fa fa-minus-circle"></i>
