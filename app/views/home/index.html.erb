@@ -43,7 +43,7 @@
               <div class="col-xs-12 col-sm-4">
                 <div class="destination-box">
                   <% if user_signed_in? %>
-                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(10).name, title: Destination.find(10).name)), onclick: "ga('send', 'event', 'User', 'Thailand', 'Thailand link clicked from hp after being signed in');" do %>
+                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(10).name, title: Destination.find(10).name)) do %>
                       <div class="destination-picture text-center">
                         <%= image_tag Destination.find(10).destination_pictures.third.picture.url(:medium), class: "img-responsive" %>
                       </div>
@@ -72,7 +72,7 @@
               <div class="col-xs-12 col-sm-4">
                 <div class="destination-box">
                   <% if user_signed_in? %>
-                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(8).name, title: Destination.find(8).name)), onclick: "ga('send', 'event', 'User', 'Brazil', 'Brazil link clicked from hp after being signed in');" do %>
+                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(8).name, title: Destination.find(8).name)) do %>
                       <div class="destination-picture text-center">
                         <%= image_tag Destination.find(8).destination_pictures.first.picture.url(:medium), class: "img-responsive" %>
                       </div>
@@ -101,7 +101,7 @@
               <div class="col-xs-12 col-sm-4">
                 <div class="destination-box">
                   <% if user_signed_in? %>
-                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(9).name, title: Destination.find(9).name)), onclick: "ga('send', 'event', 'User', 'Mexico', 'Mexico link clicked from hp after being signed in');" do %>
+                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(9).name, title: Destination.find(9).name)) do %>
                       <div class="destination-picture text-center">
                         <%= image_tag Destination.find(9).destination_pictures.first.picture.url(:medium), class: "img-responsive" %>
                       </div>
@@ -134,7 +134,7 @@
               <div class="col-xs-12 col-sm-4 col-sm-offset-4">
                 <div class="destination-box">
                   <% if user_signed_in? %>
-                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(10).name, title: Destination.find(10).name)), onclick: "ga('send', 'event', 'User', 'Thailand', 'Thailand link clicked from hp after being signed in');" do %>
+                    <%= link_to explore_destination_trip_path(current_user.trips.create(query: Destination.find(10).name, title: Destination.find(10).name)) do %>
                       <div class="destination-picture text-center">
                         <%= image_tag Destination.find(10).destination_pictures.third.picture.url(:medium), class: "img-responsive" %>
                       </div>
