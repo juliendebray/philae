@@ -208,6 +208,8 @@
     }
   }
   #getthere {
+    max-height: 450px;
+    overflow-y: auto;
     font-size: 15px;
     font-weight: 300;
     .fa {
