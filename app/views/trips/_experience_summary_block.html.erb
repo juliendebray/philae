@@ -2,24 +2,37 @@
   <div class="exp-header">
     <%= "#{trip_exp.order}. #{trip_exp.experience.name}" %>
   </div>
-  <div class="exp-description">
-    <%= simple_format trip_exp.experience.description %>
-  </div>
-  <% if trip_exp.experience.experience_pictures.any? %>
-    <div class="exp-picture-block table-responsive text-center">
-      <table class="table">
-        <tbody>
-          <tr>
-            <% trip_exp.experience.experience_pictures(1..3).each do |pic| %>
-              <td>
-                <%= image_tag pic.picture.url(:thumb) %>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
+  <div class="row text-center">
+    <div class="col-xs-12 col-sm-6">
+      <div class="experience-big-box">
+        <div class="experience-picture text-center">
+          <% if trip_exp.experience.experience_pictures.first %>
+            <%= image_tag trip_exp.experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="experience-details">
+        <div class="experience-timetospent">
+          <% if trip_exp.experience.timetospent && trip_exp.experience.timetospent.length > 0 %>
+          <p><i class="fa fa-clock-o"></i> - <i>temps de visite</i> :  <%= simple_format trip_exp.experience.timetospent %></p>
+          <% end %>
+        </div>
+        <div class="experience-wheretosleep">
+          <% if trip_exp.experience.wheretosleep && trip_exp.experience.wheretosleep.length > 0 %>
+            <p><i class="fa fa-home"></i> - <i>où dormir</i> :  <%= simple_format trip_exp.experience.wheretosleep %>
+          <% end %></p>
+        </div>
+        <div class="experience-transportation">
+          <% if trip_exp.experience.transportation && trip_exp.experience.transportation.length > 0 %>
+            <p><i class="fa fa-bicycle"></i> - <i>comment s'y rendre</i> : <%= simple_format trip_exp.experience.transportation %></p>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
   <% if comment %>
     <div class="comment-module">
       <%= form_for [trip_exp.trip, trip_exp], remote: true do |f| %>

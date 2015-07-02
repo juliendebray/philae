@@ -126,11 +126,6 @@
         </div>
       <% elsif experience.unesco %>
         <div class="experience-links text-center">
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-              <div id="block-separator"></div>
-            </div>
-          </div>
           <%= image_tag('unesco_logo.png', height: 50, alt:'UNESCO Logo Officiel') %><br>
           <p>Patrimoine mondial de l'<a href="http://whc.unesco.org/fr/list/" target="_blank">UNESCO</a></p>
         </div>
@@ -141,11 +136,6 @@
         </div>
       <% elsif experience.thousand_places %>
         <div class="experience-links text-center">
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-              <div id="block-separator"></div>
-            </div>
-          </div>
           <%= image_tag('thousandplaces_logo.png', height: 40, alt:'Thousand Places Logo Officiel') %><br>
           <p>L'un des <a href="http://1000places.com/" target="_blank">1 000 lieux à voir dans sa vie</a></p>
         </div>
@@ -430,7 +420,7 @@
         </div>
         <div class="row">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-            <span class="text-center"><p><u>CONSEILS DES VOYAGEURS</u></p></span>
+            <span class="text-center"><p><u>Conseils et avis des voyageurs</u></p></span>
             <div class="user-reviews">
               <% experience.experience_reviews.each do |experience_review| %>
                 <blockquote>

@@ -3,16 +3,16 @@
 <div id="navbar-menu" role="navigation" class="hidden-xs">
   <ul class="nav nav-pills nav-justified" role="tablist">
     <li>
-      <a href="#intro" onclick="ga('send', 'event', 'User', 'Intro Menu', 'User clicked on intro from explore destination navbar menu');">Intro</a>
+      <a href="#intro" onclick="ga('send', 'event', 'User', 'Intro Menu', 'User clicked on intro from explore destination navbar menu');">Introduction</a>
     </li>
     <li>
       <a href="#overview" onclick="ga('send', 'event', 'User', 'Must know Menu', 'User clicked on must know from explore destination navbar menu');">A savoir</a>
     </li>
     <li>
-      <a href="#must-see" onclick="ga('send', 'event', 'User', 'Attractions Menu', 'User clicked on attractions from explore destination navbar menu');">Attractions</a>
+      <a href="#must-see" onclick="ga('send', 'event', 'User', 'Attractions Menu', 'User clicked on attractions from explore destination navbar menu');">Voir les attractions</a>
     </li>
     <li>
-      <a href="#recommended-trip" onclick="ga('send', 'event', 'User', 'Itinerary Menu', 'User clicked on itinerary from explore destination navbar menu');">Itinéraires</a>
+      <a href="#recommended-trip" onclick="ga('send', 'event', 'User', 'Itinerary Menu', 'User clicked on itinerary from explore destination navbar menu');">Voir les itinéraires</a>
     </li>
     <li>
       <a href="#my-trip" onclick="ga('send', 'event', 'User', 'My Trip Menu', 'User clicked on my trip from explore destination navbar menu');">Mon voyage</a>
@@ -27,56 +27,129 @@
     <h1 class='title-destination-page'><%= @destination.name.capitalize %></h1>
   </div>
   <div class="container destination-explanation">
-    <div class="row text-center">
-      <h3>Tout ce qu'il vous faut pour préparer votre prochain voyage</h3>
-    </div>
-    <div class="vertical-spacer-xs"></div>
-    <div class="row">
-      <div class="col-xs-12 col-md-3 text-center text-contrast">
-        <div class="how-header">
+    <a data-toggle="collapse" href="#onboarding" aria-expanded="false" aria-controls="collapseOnboarding" >
+      <div class="onboarding-intro">
+        <div class="row text-center">
+          <i>Cliquez ici pour voir comment Explorizers peut vous aider</i>
+          <h3>Voir les <b>5 commandements</b> du voyageur pour <b>préparer et optimiser</b> votre voyage.</h3>
+          <h3>Avec le plus de <b>plaisir</b> et de <b>simplicité</b> possible.</h3>
           <i class="fa fa-info-circle"></i>
-        </div>
-        <div class="vertical-spacer-xs"></div>
-        <div class="how-content">
-          <p>1. Lisez les <b>infos</b> à savoir avant de partir</p>
-        </div>
-        <div class="vertical-spacer-xs"></div>
-      </div>
-      <div class="col-xs-12 col-md-3 text-center text-contrast">
-        <div class="how-header">
           <i class="fa fa-camera-retro"></i>
-        </div>
-        <div class="vertical-spacer-xs"></div>
-        <div class="how-content">
-          <p>2. Découvrez les <b>attractions</b> à destination</p>
-        </div>
-        <div class="vertical-spacer-xs"></div>
-      </div>
-      <div class="col-xs-12 col-md-3 text-center text-contrast">
-        <div class="how-header">
-          <i class="fa fa-bicycle"></i>
-        </div>
-        <div class="vertical-spacer-xs"></div>
-        <div class="how-content">
-          <p>3. Créez votre <b>itinéraire</b> personnel</p>
-        </div>
-        <div class="vertical-spacer-xs"></div>
-      </div>
-      <div class="col-xs-12 col-md-3 text-center text-contrast">
-        <div class="how-header">
           <i class="fa fa-suitcase"></i>
+          <i class="fa fa-globe"></i>
+          <i class="fa fa-mobile"></i>
         </div>
-        <div class="vertical-spacer-xs"></div>
-        <div class="how-content">
-          <p>4. Obtenez et emportez votre <b>parcours</b> complet</p>
-        </div>
-        <div class="vertical-spacer-xs"></div>
       </div>
+    </a>
+    <div class="vertical-spacer-xs"></div>
+    <div class="collapse" id="onboarding">
+      <div class="row">
+        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
+          <div class="onboarding-picture text-center">
+            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_1.png' %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6 text-center text-contrast">
+          <div class="how-header">
+            <i class="fa fa-info-circle"></i><br>
+            <p>1. Simplifiez-vous la vie</p>
+          </div>
+          <div class="how-content">
+            <p>Nous avons réuni <b>sur un seul site</b> l'essentiel des <b>informations à savoir</b> avant de partir. Fini les recherches Google à n'en plus finir.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <i class="fa fa-angle-down"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
+          <div class="onboarding-picture text-center">
+            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_2.png' %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6 text-center text-contrast">
+          <div class="how-header">
+            <i class="fa fa-camera-retro"></i><br>
+            <p>2. Ne passez pas à côté des plus belles expériences</p>
+          </div>
+          <div class="how-content">
+            <p>Vous voulez le <b>meilleur pour votre voyage</b>, alors nous présentons les <b>10 principales attractions</b> de chaque pays. Et pour ceux qui veulent explorer, nous avons ajouté <b>plein expériences à découvrir</b>, avec des conseils de voyageurs et de professionnels.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <i class="fa fa-angle-down"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
+          <div class="onboarding-picture text-center">
+            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_3.png' %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6 text-center text-contrast">
+          <div class="how-header">
+            <i class="fa fa-suitcase"></i><br>
+            <p>3. Passez plus de temps à voyagez qu'à planifier</p>
+          </div>
+          <div class="how-content">
+            <p>Nous savons qu'il est <b>compliqué de tout faire dans un temps limité</b>... Alors <b>nous proposons des itinéraires</b>, à choisir par durée de voyage et par thématique. Simple et rapide.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <i class="fa fa-angle-down"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
+          <div class="onboarding-picture text-center">
+            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_4.png' %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6 text-center text-contrast">
+          <div class="how-header">
+            <i class="fa fa-globe"></i><br>
+            <p>4. Explorez le monde à votre façon</p>
+          </div>
+          <div class="how-content">
+            <p>Vous voulez un voyage unique : notre carte interactive permet de personnaliser votre itinéraire ! Plus besoin de jongler entre Google Maps, les guides et les forums. Vous avez <b>toutes les informations sur la carte</b>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <i class="fa fa-angle-down"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
+          <div class="onboarding-picture text-center">
+            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_5.png' %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6 text-center text-contrast">
+          <div class="how-header">
+            <i class="fa fa-mobile"></i><br>
+            <p>5. Revenez quand vous voulez </p>
+          </div>
+          <div class="how-content">
+            <p>Un voyage mérite réflexion. Votre <b>parcours est enregistré en temps réel</b> dans votre espace personnel. Vous pouvez y revenir quand vous voulez, <b>imprimer votre parcours</b>, le recevoir et le partager par email, et y avoir <b>accès sur votre mobile pendant votre voyage</b> !</p>
+          </div>
+        </div>
+      </div>
+      <br>
     </div>
   </div>
   <div class="destination-content">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2">
+        <h3 class="text-center">Introduction</h3>
         <h3 class="text-center"><%= @destination.intro_title %></h3>
         <br>
           <ol>
@@ -191,12 +264,14 @@
      <div class="destination-content">
       <div class="container-fluid">
         <div class="row text-center">
-          <h3><%= @destination.name.capitalize %> - les attractions incontournables</h3><br>
+          <h3><%= @destination.name.capitalize %> - les incontournables</h3><br>
           <ol>
             <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
               <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
-                <div class="experience-name">
+                <%= link_to modal_exp_path(@trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - incontournables', 'User clicks on experience #{experience.name} from explore_destination');" do %>
+                  <div class="experience-name">
                   <li><p><%= experience.name %></p></li>
+                <% end %>
                 </div>
                 <div class="row text-center">
                   <div class="col-xs-12 col-sm-6">
@@ -289,7 +364,7 @@
                       <small><%= experience.name %></small><br>
                     </div>
                     <div class="experience-one-sentence text-center">
-                      <small><%= experience.onesentence %></small><br>
+                      <small><%= experience.onesentence %><br>-<br>En savoir plus</small>
                     </div>
                   <% end %>
                 </div>
@@ -313,7 +388,7 @@
                       <small><%= experience.name %></small><br>
                     </div>
                     <div class="experience-one-sentence text-center">
-                      <small><%= experience.onesentence %></small><br>
+                      <small><%= experience.onesentence %><br>-<br>En savoir plus</small><br>
                     </div>
                   <% end %>
                 </div>
@@ -615,8 +690,9 @@
     <h2 class='text-center map-title'>Personnaliser mon voyage</h2>
   </div>
   <div class="container destination-map-explanation">
-    <div class="row">
-      <div class="col-xs-12 col-md-2 col-md-offset-1 text-center text-contrast">
+    <div class="row text-center">
+      <p>Rappel : à tout moment, revenez à votre parcours depuis votre espace personnel</p>
+      <!-- <div class="col-xs-12 col-md-2 col-md-offset-1 text-center text-contrast">
         <div class="how-content">
           <p>Je clique sur les points pour voir les attractions</p>
         </div>
@@ -641,7 +717,7 @@
         <div class="how-content">
           <p>... accessible à tout moment dans mon espace perso</p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="container-fluid">

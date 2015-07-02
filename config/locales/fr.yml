@@ -225,7 +225,6 @@ fr:
       gobacktotrip: "Retourner sur la page de mon voyage"
 
   #trips
-
   trips:
     demo:
       legend_mustsee: "Les incontournables"
@@ -316,9 +315,21 @@ fr:
     welcome:
       hi: "Bienvenue !"
       w_line1: "Nous sommes ravis de vous voir rejoindre la communauté Explorizers."
-      w_line2: "Explorizers vous permettra de trouver l'inspiration et l'information nécessaire pour votre prochain voyage."
-      w_line3: "A très vite,"
-      w_line4: "Dora"
+      w_line2: "Explorizers, c'est la mise en oeuvre concrète des 5 commandements des voyageurs pour préparer et optimiser son voyage facilement, et en prenant du plaisir :"
+      w_line3: "1. Simplifiez-vous la vie"
+      w_line4: "Nous avons réuni sur un seul site l'essentiel des informations à savoir avant de partir. Fini les recherches Google à n'en plus finir."
+      w_line5: "2. Ne passez pas à côté des plus belles expériences"
+      w_line6: "Vous voulez le meilleur pour votre voyage, alors nous présentons les 10 principales attractions de chaque pays. Et pour ceux qui veulent explorer, nous avons ajouté plein expériences à découvrir, avec des conseils de voyageurs et de professionnels."
+      w_line7: "3. Passez plus de temps à voyagez qu'à planifier"
+      w_line8: "Nous savons qu'il est compliqué de tout faire dans un temps limité... Alors nous proposons des itinéraires, à choisir par durée de voyage et par thématique. Simple et rapide."
+      w_line9: "4. Explorez le monde à votre façon"
+      w_line10: "Vous voulez un voyage unique : notre carte interactive permet de personnaliser votre itinéraire ! Plus besoin de jongler entre Google Maps, les guides et les forums. Vous avez toutes les informations sur la carte."
+      w_line11: "5. Revenez quand vous voulez"
+      w_line12: "Un voyage mérite réflexion. Votre parcours est enregistré en temps réel dans votre espace personnel. Vous pouvez y revenir quand vous voulez, imprimer votre parcours, le recevoir et le partager par email, et y avoir accès sur votre mobile pendant votre voyage !"
+      w_line13: "Une question ? Consultez notre "
+      w_line14: ", ou répondez directement à ce mail."
+      w_line15: "A très vite sur Explorizers,"
+      w_line16: "Dora"
     share_trip:
       hi: "Bonjour,"
       s_line1: "Pour que vos amis puissent vous donner leurs conseils, copiez l'URL ou transférez l'email ci-dessous."
