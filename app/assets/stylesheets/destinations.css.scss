@@ -119,6 +119,11 @@
       padding-top: 1%;
     }
   }
+  .onboarding-intro:hover {
+    .fa {
+      color: #FF7519;
+    }
+  }
   .onboarding-picture {
     img {
       vertical-align: middle;
@@ -457,12 +462,60 @@ a#must-see-img:hover {
 .itinerary_image {
   margin-bottom: 30px;
   img {
-    max-height: 250px;
+    // max-height: 250px;
+    width: 100%;
   }
 }
 .destination-itineraries {
   padding-left: 5%;
   padding-right: 5%;
+  .panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
+    border-top: none;
+  }
+  .panel {
+    .panel-heading {
+      border-top-width: 1px;
+      border-top-color: lightgrey;
+      border-top-style: solid;
+      padding-bottom: 25px;
+      padding-top: 25px;
+      .fa {
+        position: relative;
+        vertical-align: sub;
+        color: #525252;
+        font-size: 25px;
+      }
+      .itinerary-title {
+        text-align: left;
+        width: 100%;
+        letter-spacing: 0px;
+        font-size: 1em;
+        color: #525252;
+        bottom: 0px;
+        margin: auto;
+        p {
+          font-size: 22px;
+          font-weight: 400;
+        }
+      }
+      .rec-trip-description {
+        text-align: justify;
+        p {
+          font-size: 16px;
+          font-weight: 300;
+        }
+      }
+      .see-rec-trip-detail {
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+
+    // .panel-group .panel-heading + .panel-collapse > .panel-body {
+    //   border-top: none;
+    // }
+  }
 }
 
 .itinerary_exp-images {
