@@ -186,6 +186,24 @@
     font-size: 19px;
     font-weight: 400;
   }
+  .things-to-know {
+    .panel {
+      .panel-heading {
+        text-align: center;
+        vertical-align: middle;
+        border-width: 1px;
+        border-color: lightgrey;
+        border-style: solid;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        p {
+          font-size: 22px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
   .experience-name {
     text-align: left;
     width: 100%;
@@ -477,8 +495,8 @@ a#must-see-img:hover {
       border-top-width: 1px;
       border-top-color: lightgrey;
       border-top-style: solid;
-      padding-bottom: 25px;
-      padding-top: 25px;
+      padding-bottom: 0px;
+      padding-top: 15px;
       .fa {
         position: relative;
         vertical-align: sub;
@@ -548,10 +566,6 @@ a#must-see-img:hover {
         }
       }
     }
-
-    // .panel-group .panel-heading + .panel-collapse > .panel-body {
-    //   border-top: none;
-    // }
   }
 }
 
