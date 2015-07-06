@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625163159) do
+ActiveRecord::Schema.define(version: 20150705142001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -245,6 +245,11 @@ ActiveRecord::Schema.define(version: 20150625163159) do
     t.text     "step_13"
     t.text     "step_14"
     t.text     "step_15"
+    t.text     "duration"
+    t.text     "good_points"
+    t.text     "rythm"
+    t.string   "suggested_by"
+    t.text     "suggested_by_detail"
   end
 
   add_index "recommended_trips", ["destination_id"], name: "index_recommended_trips_on_destination_id", using: :btree
