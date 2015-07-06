@@ -419,24 +419,59 @@
                 <div class="panel-heading">
                   <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
-                      <div class="itinerary-title">
-                        <p><%= raw rec_trip.title %></p>
-                      </div>
                       <div class="row">
-                        <div class="col-xs-12 col-sm-5">
+                        <div class="col-xs-12 col-sm-8">
+                          <div class="itinerary-title">
+                            <li><p><%= raw rec_trip.title %></p></li>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                          <div class="customize-trip-btn">
+                            <%= render('add_recommended_trip', {recommended_trip_id: rec_trip.id}) %>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                    </a>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-4">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
                           <div class="itinerary_image text-center">
                             <%= image_tag rec_trip.picture.url(:banner) %>
                           </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-7">
+                        </a>
+                      </div>
+                      <div class="col-xs-12 col-sm-8">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
+                          <div class="rec-trip-duration">
+                            <p><%= raw rec_trip.duration %></p>
+                          </div>
                           <div class="rec-trip-description">
                             <p><%= raw rec_trip.description %></p>
                           </div>
-                        </div>
+                          <div class="itinerary-good-points text-center">
+                            <div class="table-responsive">
+                              <table>
+                                <% if rec_trip.good_points && rec_trip.good_points.length > 0 %>
+                                  <tr>
+                                    <td>
+                                      <i class="fa fa-plus-circle"></i>
+                                    </td>
+                                    <td>
+                                      <p><%= simple_format rec_trip.good_points %></p>
+                                    </td>
+                                  </tr>
+                                <% end %>
+                              </table>
+                            </div>
+                          </div>
+                        </a>
                       </div>
+                    </div>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
                       <div class="row text-center">
                         <div class="see-rec-trip-detail">
-                          <p>Voir le détail <i class="fa fa-angle-down"></i></p>
+                          <p>Voir le détail <i class="fa fa-angle-right"></i></p>
                         </div>
                       </div>
                     </a>
@@ -688,7 +723,6 @@
                         </div>
                       </div>
                     </div>
-                    <%= render('add_recommended_trip', {recommended_trip_id: rec_trip.id}) %>
                   </div>
                 </div>
               </div>

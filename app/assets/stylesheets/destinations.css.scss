@@ -498,13 +498,50 @@ a#must-see-img:hover {
           font-weight: 400;
         }
       }
+      .customize-trip-btn {
+        text-align: right;
+        .select-trip {
+          font-size: 17px;
+        }
+      }
       .rec-trip-description {
         text-align: justify;
         p {
           font-size: 16px;
           font-weight: 300;
+          color: #525252;
         }
       }
+      .rec-trip-duration {
+        p {
+          font-size: 22px;
+          font-weight: 400;
+          color: #525252;
+        }
+      }
+      .itinerary-good-points {
+      td {
+        padding-top: 5px;
+      }
+      p {
+        color: #525252;
+        font-size: 15px;
+        margin-bottom: 0;
+        font-weight: 300;
+        padding-left: 10px;
+        text-align: left;
+        text-align: justify;
+      }
+      i {
+        margin-top: 2px;
+      }
+      .fa {
+        font-size: 23px;
+      }
+      .fa-plus-circle {
+        color: green;
+      }
+    }
       .see-rec-trip-detail {
         p {
           font-size: 15px;
