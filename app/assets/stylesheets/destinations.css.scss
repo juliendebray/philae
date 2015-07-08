@@ -98,7 +98,8 @@
 .destination-explanation {
   padding: 20px 20px 0px 20px;
   width: 100%;
-  background-color: rgba(0,0,0,0.03);
+  // background-color: rgba(0,0,0,0.03);
+  background-color: #FAFAFA;
   h3 {
     color: #525252;
     text-shadow: none;
@@ -165,7 +166,7 @@
 }
 
 .destination-content {
-  padding: 2%;
+  // padding: 2%;
   p {
     letter-spacing: .01rem;
     font-weight: 300;
@@ -186,22 +187,52 @@
     font-size: 19px;
     font-weight: 400;
   }
-  .things-to-know {
-    .panel {
-      .panel-heading {
-        text-align: center;
-        vertical-align: middle;
-        border-width: 1px;
-        border-color: lightgrey;
-        border-style: solid;
-        padding-bottom: 0px;
-        padding-top: 0px;
-        p {
-          font-size: 22px;
-          font-weight: 400;
-        }
-      }
+  .destination-intro {
+    // background-color: #F4E8D8;
+    background-color: #F9F9F9;
+    p {
+      text-align: center;
+      font-size: 17px;
+      margin-bottom: 0;
     }
+    .block-separator {
+      border-top: solid 1px #CCCCCC;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  }
+  .things-to-know {
+    background-color: #FFFFFF;
+    .col-md-2 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    p {
+      font-size: 15px;
+    }
+    .to-know-box {
+      border-top-width: 1px;
+      border-top-color: #525252;
+      border-top-style: solid;
+      background-color: #FAFAFA;
+      height: 130px;
+      // width: 140%;
+    }
+    // .panel {
+    //   .panel-heading {
+    //     text-align: center;
+    //     vertical-align: middle;
+    //     border-width: 1px;
+    //     border-color: lightgrey;
+    //     border-style: solid;
+    //     padding-bottom: 0px;
+    //     padding-top: 0px;
+    //     p {
+    //       font-size: 22px;
+    //       font-weight: 400;
+    //     }
+    //   }
+    // }
   }
 
   .experience-name {
