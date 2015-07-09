@@ -3,19 +3,16 @@
 <div id="navbar-menu" role="navigation" class="hidden-xs">
   <ul class="nav nav-pills nav-justified" role="tablist">
     <li>
-      <a href="#intro" onclick="ga('send', 'event', 'User', 'Intro Menu', 'User clicked on intro from explore destination navbar menu');">Mode d'emploi</a>
-    </li>
-    <li>
       <a href="#overview" onclick="ga('send', 'event', 'User', 'Must know Menu', 'User clicked on must know from explore destination navbar menu');">A savoir</a>
     </li>
     <li>
-      <a href="#must-see" onclick="ga('send', 'event', 'User', 'Attractions Menu', 'User clicked on attractions from explore destination navbar menu');">Les attractions</a>
+      <a href="#must-see" onclick="ga('send', 'event', 'User', 'Attractions Menu', 'User clicked on attractions from explore destination navbar menu');">Les incontournables</a>
     </li>
     <li>
       <a href="#recommended-trip" onclick="ga('send', 'event', 'User', 'Itinerary Menu', 'User clicked on itinerary from explore destination navbar menu');">Les itinéraires</a>
     </li>
     <li>
-      <a href="#my-trip" onclick="ga('send', 'event', 'User', 'My Trip Menu', 'User clicked on my trip from explore destination navbar menu');">Mon voyage</a>
+      <a href="#my-trip" onclick="ga('send', 'event', 'User', 'My Trip Menu', 'User clicked on my trip from explore destination navbar menu');">Carte interactive</a>
     </li>
   </ul>
 </div>
@@ -26,370 +23,158 @@
     <%= image_tag @destination.destination_pictures.first.picture.url(:banner) %>
     <h1 class='title-destination-page'><%= @destination.name.capitalize %></h1>
   </div>
-  <div class="container destination-explanation" id="intro" >
-    <a data-toggle="collapse" href="#onboarding" aria-expanded="false" aria-controls="collapseOnboarding" >
-      <div class="onboarding-intro">
-        <div class="row text-center">
-          <i>Cliquez ici pour voir comment Explorizers peut vous aider</i>
-          <h3>Voir les <b>5 commandements</b> du voyageur pour <b>préparer et optimiser</b> votre voyage.</h3>
-          <h3>Avec le plus de <b>plaisir</b> et de <b>simplicité</b> possible.</h3>
-          <i class="fa fa-info-circle"></i>
-          <i class="fa fa-camera-retro"></i>
-          <i class="fa fa-suitcase"></i>
-          <i class="fa fa-globe"></i>
-          <i class="fa fa-mobile"></i>
-        </div>
-        <div class="row text-center">
-          <i class="fa fa-angle-down"></i>
-        </div>
-      </div>
-    </a>
-    <div class="vertical-spacer-xs"></div>
-    <div class="collapse" id="onboarding">
-      <div class="row">
-        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
-          <div class="onboarding-picture text-center">
-            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_1.png' %>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-6 text-center text-contrast">
-          <div class="how-header">
-            <i class="fa fa-info-circle"></i><br>
-            <p>1. Simplifiez-vous la vie</p>
-          </div>
-          <div class="how-content">
-            <p>Nous avons réuni <b>sur un seul site</b> l'essentiel des <b>informations à savoir</b> avant de partir. Fini les recherches Google à n'en plus finir.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 text-center">
-          <i class="fa fa-angle-down"></i>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
-          <div class="onboarding-picture text-center">
-            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_2.png' %>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-6 text-center text-contrast">
-          <div class="how-header">
-            <i class="fa fa-camera-retro"></i><br>
-            <p>2. Ne passez pas à côté des plus belles expériences</p>
-          </div>
-          <div class="how-content">
-            <p>Vous voulez le <b>meilleur pour votre voyage</b>, alors nous présentons les <b>10 principales attractions</b> de chaque pays. Et pour ceux qui veulent explorer, nous avons ajouté <b>plein expériences à découvrir</b>, avec des conseils de voyageurs et de professionnels.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 text-center">
-          <i class="fa fa-angle-down"></i>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
-          <div class="onboarding-picture text-center">
-            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_3.png' %>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-6 text-center text-contrast">
-          <div class="how-header">
-            <i class="fa fa-suitcase"></i><br>
-            <p>3. Passez plus de temps à voyagez qu'à planifier</p>
-          </div>
-          <div class="how-content">
-            <p>Nous savons qu'il est <b>compliqué de tout faire dans un temps limité</b>... Alors <b>nous proposons des itinéraires</b>, à choisir par durée de voyage et par thématique. Simple et rapide.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 text-center">
-          <i class="fa fa-angle-down"></i>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
-          <div class="onboarding-picture text-center">
-            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_4.png' %>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-6 text-center text-contrast">
-          <div class="how-header">
-            <i class="fa fa-globe"></i><br>
-            <p>4. Explorez le monde à votre façon</p>
-          </div>
-          <div class="how-content">
-            <p>Vous voulez un voyage unique : notre carte interactive permet de personnaliser votre itinéraire ! Plus besoin de jongler entre Google Maps, les guides et les forums. Vous avez <b>toutes les informations sur la carte</b>.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 text-center">
-          <i class="fa fa-angle-down"></i>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-5 col-md-offset-1 text-center">
-          <div class="onboarding-picture text-center">
-            <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/onboarding/onboarding_5.png' %>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-6 text-center text-contrast">
-          <div class="how-header">
-            <i class="fa fa-mobile"></i><br>
-            <p>5. Revenez quand vous voulez </p>
-          </div>
-          <div class="how-content">
-            <p>Un voyage mérite réflexion. Votre <b>parcours est enregistré en temps réel</b> dans votre espace personnel. Vous pouvez y revenir quand vous voulez, <b>imprimer votre parcours</b>, le recevoir et le partager par email, et y avoir <b>accès sur votre mobile pendant votre voyage</b> !</p>
-          </div>
-        </div>
-      </div>
-      <br>
-    </div>
-  </div>
   <div class="destination-content">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2">
-        <h3 class="text-center">Introduction</h3>
-        <h3 class="text-center"><%= @destination.intro_title %></h3>
-        <br>
-          <ol>
-            <li><%= simple_format @destination.sentence1 %></p></li>
-            <li><%= simple_format @destination.sentence2 %></li>
-            <li><%= simple_format @destination.sentence3 %></li>
-            <% if @destination.sentence4.length > 0 %>
-              <li><%= simple_format @destination.sentence4 %></li>
-            <% end %>
-            <% if @destination.sentence5.length > 0 %>
-              <li><%= simple_format @destination.sentence5 %></li>
-            <% end %>
-          </ol>
-        <br>
+    <div class="destination-intro">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2">
+          <h3 class="text-center"><%= @destination.intro_title %></h3>
+          <br>
+          <p class="text-center">1</p>
+          <p class="text-center"><%= simple_format @destination.sentence1 %></p>
+          <div class="row text-center">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div class="block-separator"></div>
+            </div>
+          </div>
+          <p class="text-center">2</p>
+          <p class="text-center"><%= simple_format @destination.sentence2 %></p>
+          <div class="row text-center">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div class="block-separator"></div>
+            </div>
+          </div>
+          <p class="text-center">3</p>
+          <p class="text-center"><%= simple_format @destination.sentence3 %></p>
+          <div class="row text-center">
+            <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+              <div class="block-separator"></div>
+            </div>
+          </div>
+          <% if @destination.sentence4.length > 0 %>
+            <p class="text-center">4</p>
+            <p class="text-center"><%= simple_format @destination.sentence4 %></p>
+            <div class="row text-center">
+              <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                <div class="block-separator"></div>
+              </div>
+            </div>
+          <% end %>
+          <% if @destination.sentence5.length > 0 %>
+            <p class="text-center">5</p>
+            <p class="text-center"><%= simple_format @destination.sentence5 %></p>
+          <% end %>
+          <br>
+        </div>
       </div>
     </div>
   </div>
   <div class="destination-collapse">
     <div id="overview" class="text-center">
-      <%= image_tag @destination.destination_pictures.second.picture.url(:banner) %>
+      <%= image_tag @destination.destination_pictures.second.picture.url(:flat) %>
       <h2 class="no-margin title-destination-page">A savoir avant de partir</h2>
     </div>
   </div>
   <div class="" id="">
     <div class="destination-content">
-      <div class="row text-center">
-        <small>Dernière mise à jour : <%= @destination.updated_at.strftime('%d-%m-%Y') %></small><br>
-      </div>
-      <!-- <div class="things-to-know">
-        <div class="row">
-          <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2">
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                  <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#visa" aria-expanded="false" aria-controls="visa">
-                      <p><%= simple_format @destination.enter_title %></p>
-                    </a>
-                  </h4>
-                </div>
-                <div id="visa" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                  <div class="panel-body">
-                    <ul>
-                      <li><p><%= simple_format @destination.enter_line1 %></p></li>
-                      <% if @destination.enter_line2.length > 0 %>
-                        <li><p><%= simple_format @destination.enter_line2 %></p></li>
-                      <% end %>
-                      <% if @destination.enter_line3.length > 0 %>
-                        <li><p><%= simple_format @destination.enter_line3 %></p></li>
-                      <% end %>
-                    </ul>
+      <div class="things-to-know">
+        <div class="row text-center">
+          <small>Dernière mise à jour : <%= @destination.updated_at.strftime('%d-%m-%Y') %></small><br><br>
+        </div>
+        <div class="things-to-know">
+          <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2">
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#visa" aria-expanded="false" aria-controls="visa">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <p><%= simple_format @destination.enter_title %><i class="fa fa-angle-down"></i></p>
+                      </h4>
+                    </div>
+                  </a>
+                  <div id="visa" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                      <p><%= simple_format @destination.enter_line1 %></p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#visit" aria-expanded="false" aria-controls="collapseTwo">
-                      <p><%= simple_format @destination.visit_time_title %></p>
-                    </a>
-                  </h4>
-                </div>
-                <div id="visit" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                  <div class="panel-body">
-                    <ul>
-                      <li><p><%= simple_format @destination.visit_line1 %></p></li>
-                      <% if @destination.visit_line2.length > 0 %>
-                        <li><p><%= simple_format @destination.visit_line2 %></p></li>
-                      <% end %>
-                      <% if @destination.visit_line3.length > 0 %>
-                        <li><p><%= simple_format @destination.visit_line3 %></p></li>
-                      <% end %>
-                    </ul>
+                <div class="panel panel-default">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#visit" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                      <h4 class="panel-title">
+                        <p><%= simple_format @destination.visit_time_title %><i class="fa fa-angle-down"></i></p>
+                      </h4>
+                    </div>
+                  </a>
+                  <div id="visit" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                      <p><%= simple_format @destination.visit_line1 %></p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#security" aria-expanded="false" aria-controls="collapseThree">
-                      <%= simple_format @destination.security_title %>
-                    </a>
-                  </h4>
-                </div>
-                <div id="security" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                  <div class="panel-body">
-                    <ul>
-                      <li><p><%= simple_format @destination.security_line1 %></p></li>
-                      <% if @destination.security_line2.length > 0 %>
-                        <li><p><%= simple_format @destination.security_line2 %></p></li>
-                      <% end %>
-                    </ul>
+                <div class="panel panel-default">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#security" aria-expanded="false" aria-controls="collapseThree">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                      <h4 class="panel-title">
+                        <p><%= simple_format @destination.security_title %><i class="fa fa-angle-down"></i></p>
+                      </h4>
+                    </div>
+                  </a>
+                  <div id="security" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                      <p><%= simple_format @destination.security_line1 %></p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingFour">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#transport" aria-expanded="false" aria-controls="collapseFour">
-                      <%= simple_format @destination.transport_title %>
-                    </a>
-                  </h4>
-                </div>
-                <div id="transport" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                  <div class="panel-body">
-                    <ul>
-                      <li><p><%= simple_format @destination.transport_line1 %></p></li>
-                      <% if @destination.transport_line2.length > 0 %>
-                        <li><p><%= simple_format @destination.transport_line2 %></p></li>
-                      <% end %>
-                      <% if @destination.transport_line3.length > 0 %>
-                        <li><p><%= simple_format @destination.transport_line3 %></p></li>
-                      <% end %>
-                      <% if @destination.transport_line4.length > 0 %>
-                        <li><p><%= simple_format @destination.transport_line4 %></p></li>
-                      <% end %>
-                      <% if @destination.transport_line5.length > 0 %>
-                        <li><p><%= simple_format @destination.transport_line5 %></p></li>
-                      <% end %>
-                    </ul>
+                <div class="panel panel-default">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#transport" aria-expanded="false" aria-controls="collapseFour">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                      <h4 class="panel-title">
+                        <p><%= simple_format @destination.transport_title %><i class="fa fa-angle-down"></i></p>
+                      </h4>
+                    </div>
+                  </a>
+                  <div id="transport" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body">
+                      <p><%= simple_format @destination.transport_line1 %></p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingFive">
-                  <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#to-know" aria-expanded="true" aria-controls="collapseFive">
-                      <%= simple_format @destination.toknow_title %>
-                    </a>
-                  </h4>
-                </div>
-                <div id="to-know" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                  <div class="panel-body">
-                    <ol>
-                      <li><p><%= simple_format @destination.toknow_line1 %></p></li>
-                      <% if @destination.toknow_line2.length > 0 %>
-                        <li><p><%= simple_format @destination.toknow_line2 %></p></li>
-                      <% end %>
-                      <% if @destination.toknow_line3.length > 0 %>
-                        <li><p><%= simple_format @destination.toknow_line3 %></p></li>
-                      <% end %>
-                      <% if @destination.toknow_line4.length > 0 %>
-                        <li><p><%= simple_format @destination.toknow_line4 %></p></li>
-                      <% end %>
-                      <% if @destination.toknow_line5.length > 0 %>
-                        <li><p><%= simple_format @destination.toknow_line5 %></p></li>
-                      <% end %>
-                    </ol>
+                <div class="panel panel-default">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#to-know" aria-expanded="true" aria-controls="collapseFive">
+                    <div class="panel-heading" role="tab" id="headingFive">
+                      <h4 class="panel-title">
+                        <p><%= simple_format @destination.toknow_title %><i class="fa fa-angle-down"></i></p>
+                      </h4>
+                    </div>
+                  </a>
+                  <div id="to-know" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                    <div class="panel-body">
+                      <p><%= simple_format @destination.toknow_line1 %></p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div> -->
-      <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2">
-          <h3><%= simple_format @destination.enter_title %></h3>
-          <ul>
-            <li><p><%= simple_format @destination.enter_line1 %></p></li>
-            <% if @destination.enter_line2.length > 0 %>
-              <li><p><%= simple_format @destination.enter_line2 %></p></li>
-            <% end %>
-            <% if @destination.enter_line3.length > 0 %>
-              <li><p><%= simple_format @destination.enter_line3 %></p></li>
-            <% end %>
-          </ul>
-          <br>
-          <h3><%= simple_format @destination.visit_time_title %></h3>
-          <ul>
-            <li><p><%= simple_format @destination.visit_line1 %></p></li>
-            <% if @destination.visit_line2.length > 0 %>
-              <li><p><%= simple_format @destination.visit_line2 %></p></li>
-            <% end %>
-            <% if @destination.visit_line3.length > 0 %>
-              <li><p><%= simple_format @destination.visit_line3 %></p></li>
-            <% end %>
-          </ul>
-          <br>
-          <h3><%= simple_format @destination.security_title %></h3>
-          <ul>
-            <li><p><%= simple_format @destination.security_line1 %></p></li>
-            <% if @destination.security_line2.length > 0 %>
-              <li><p><%= simple_format @destination.security_line2 %></p></li>
-            <% end %>
-          </ul>
-          <br>
-          <h3><%= simple_format @destination.transport_title %></h3>
-          <ul>
-            <li><p><%= simple_format @destination.transport_line1 %></p></li>
-            <% if @destination.transport_line2.length > 0 %>
-              <li><p><%= simple_format @destination.transport_line2 %></p></li>
-            <% end %>
-            <% if @destination.transport_line3.length > 0 %>
-              <li><p><%= simple_format @destination.transport_line3 %></p></li>
-            <% end %>
-            <% if @destination.transport_line4.length > 0 %>
-              <li><p><%= simple_format @destination.transport_line4 %></p></li>
-            <% end %>
-            <% if @destination.transport_line5.length > 0 %>
-              <li><p><%= simple_format @destination.transport_line5 %></p></li>
-            <% end %>
-          </ul>
-          <br>
-          <h3><%= simple_format @destination.toknow_title %></h3>
-          <ol>
-            <li><p><%= simple_format @destination.toknow_line1 %></p></li>
-            <% if @destination.toknow_line2.length > 0 %>
-              <li><p><%= simple_format @destination.toknow_line2 %></p></li>
-            <% end %>
-            <% if @destination.toknow_line3.length > 0 %>
-              <li><p><%= simple_format @destination.toknow_line3 %></p></li>
-            <% end %>
-            <% if @destination.toknow_line4.length > 0 %>
-              <li><p><%= simple_format @destination.toknow_line4 %></p></li>
-            <% end %>
-            <% if @destination.toknow_line5.length > 0 %>
-              <li><p><%= simple_format @destination.toknow_line5 %></p></li>
-            <% end %>
-          </ol>
-        </div>
       </div>
     </div>
+    <br><br>
   </div>
   <div class="destination-collapse">
     <div id="must-see" class="text-center">
-      <%= image_tag @destination.destination_pictures.third.picture.url(:banner) %>
-      <h2 class="no-margin title-destination-page">Découvrez les plus belles attractions</h2>
+      <%= image_tag @destination.destination_pictures.third.picture.url(:flat) %>
+      <h2 class="no-margin title-destination-page">Les incontournables</h2>
     </div>
   </div>
   <div class="" id="">
   <br>
   <br>
-     <div class="destination-content">
+    <div class="destination-content">
       <div class="container-fluid">
         <div class="row text-center">
-          <h3><%= @destination.name.capitalize %> - les incontournables</h3><br>
+<!--           <h3><%= @destination.name.capitalize %> - les incontournables</h3><br> -->
           <ol>
             <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
               <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
@@ -416,21 +201,31 @@
                         <%= raw experience.onesentence %>
                       </div>
                       <div class="experience-category">
-                       <!--  <p><b>Pour ceux qui veulent</b> :</p> -->
+
                         <% if experience.category_tab.include?('otbt') %>
-                          <i class="fa fa-compass"></i><p>  Hors des sentiers battus</p>
+                          <div class="experience-category-otbt text-center">
+                            <p><i class="fa fa-compass"></i>Hors des sentiers battus</p>
+                          </div>
                         <% end %>
                         <% if experience.category_tab.include?('nature') %>
-                          <i class="fa fa-tree"></i><p>  Nature</p>
+                          <div class="experience-category-nature text-center">
+                            <p><i class="fa fa-tree"></i>Nature</p>
+                          </div>
                         <% end %>
                         <% if experience.category_tab.include?('culture') %>
-                          <i class="fa fa-university"></i><p>  Villes et culture</p>
+                          <div class="experience-category-culture text-center">
+                            <p><i class="fa fa-university"></i>Villes et culture</p>
+                          </div>
                         <% end %>
                         <% if experience.category_tab.include?('sport') %>
-                          <i class="fa fa-bicycle"></i><p>  Sport</p>
+                          <div class="experience-category-sport text-center">
+                            <p><i class="fa fa-bicycle"></i>Sport</p>
+                          </div>
                         <% end %>
                         <% if experience.category_tab.include?('relax') %>
-                          <i class="fa fa-sun-o"></i><p>  Détente</p>
+                          <div class="experience-category-relax text-center">
+                            <p><i class="fa fa-sun-o"></i>Détente</p>
+                          </div>
                         <% end %>
                       </div>
                       <div class="experience-good-bad-points text-center">
@@ -472,11 +267,14 @@
             <% end %>
           </ol>
         </div>
-        <br><br><br>
+        <br>
         <div class="row text-center">
-          <h3>Les attractions préférées des Explorizers</h3><br>
-          <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
-            <% if experience.category_tab.exclude?('otbt') %>
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#otherexp" aria-expanded="false" aria-controls="otherexp">
+            <h3>Plus d'attractions   <i class="fa fa-angle-right"></i></h3><br>
+          </a>
+          <div id="otherexp" aria-labelledby="otherexp" class="collapse">
+            <p>Retrouvez ces attractions sur la carte interactive</p><br>
+            <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
               <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="experience-big-box">
                   <%= link_to modal_exp_path(@trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - incontournables', 'User clicks on experience #{experience.name} from explore_destination');" do %>
@@ -489,51 +287,56 @@
                       <small><%= experience.name %></small><br>
                     </div>
                     <div class="experience-one-sentence text-center">
-                      <small><%= experience.onesentence %><br>-<br>En savoir plus</small>
+                      <small><%= experience.onesentence %></small>
                     </div>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="row text-center">
-          <h3>Coup de projecteur sur les attractions hors des sentiers battus</h3><br>
-          <% Experience.where(destination: @destination, published:true, must_see:false, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
-            <% if experience.category_tab.include?('otbt') %>
-              <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="experience-big-box">
-                  <%= link_to modal_exp_path(@trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - incontournables', 'User clicks on experience #{experience.name} from explore_destination');" do %>
-                    <div class="experience-picture text-center">
-                      <% if experience.experience_pictures.first %>
-                        <%= image_tag experience.experience_pictures.first.picture.url(:medium), class: "img-responsive" %>
+                    <div class="other-experience-category text-center">
+                      <% if experience.category_tab.include?('otbt') %>
+                        <div class="experience-category-otbt text-center">
+                          <p><i class="fa fa-compass"></i>Hors des sentiers battus</p>
+                        </div>
+                      <% end %>
+                      <% if experience.category_tab.include?('nature') %>
+                        <div class="experience-category-nature text-center">
+                          <p><i class="fa fa-tree"></i>Nature</p>
+                        </div>
+                      <% end %>
+                      <% if experience.category_tab.include?('culture') %>
+                        <div class="experience-category-culture text-center">
+                          <p><i class="fa fa-university"></i>Villes et culture</p>
+                        </div>
+                      <% end %>
+                      <% if experience.category_tab.include?('sport') %>
+                        <div class="experience-category-sport text-center">
+                          <p><i class="fa fa-bicycle"></i>Sport</p>
+                        </div>
+                      <% end %>
+                      <% if experience.category_tab.include?('relax') %>
+                        <div class="experience-category-relax text-center">
+                          <p><i class="fa fa-sun-o"></i>Détente</p>
+                        </div>
                       <% end %>
                     </div>
-                    <div class="experience-name text-center">
-                      <small><%= experience.name %></small><br>
-                    </div>
-                    <div class="experience-one-sentence text-center">
-                      <small><%= experience.onesentence %><br>-<br>En savoir plus</small><br>
-                    </div>
                   <% end %>
                 </div>
               </div>
             <% end %>
-          <% end %>
+          </div>
+          <br>
         </div>
       </div>
     </div>
   </div>
   <div class="destination-collapse" >
-  <div id="recommended-trip" class="text-center destination-title">
-    <%= image_tag @destination.destination_pictures.fourth.picture.url(:banner) %>
-    <h2 class="no-margin title-destination-page">Trouvez l'inspiration avec nos itinéraires</h2>
-  </div>
+    <div id="recommended-trip" class="text-center destination-title">
+      <%= image_tag @destination.destination_pictures.fourth.picture.url(:flat) %>
+      <h2 class="no-margin title-destination-page">Les itinéraires</h2>
+    </div>
   </div>
   <div class="" id="">
     <div class="destination-content">
       <div class="destination-itineraries">
         <p class="text-center"><i>Ces itinéraires ont été conçus par nos experts. Sélectionnez l'un d'entre eux, puis <b>personnalisez-le selon vos envies</b>.</i></p>
+
         <ol>
           <div class="panel-group" id="accordion">
             <% RecommendedTrip.where(destination_id: @destination.id).sort_by {|rc| rc.id }.each_with_index do |rec_trip, index| %>
@@ -854,6 +657,17 @@
             <% end %>
           </div>
         </ol>
+
+
+
+
+
+        <div class="row text-center">
+          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+            <div class="block-separator"></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -914,7 +728,7 @@
           </div>
           <div id="category-buttons">
             <div class="btn-group btn-group-block btn-group-justified" role="group" aria-label="Category selection">
-              <a id="must" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on must-see button from explore destination');">
+              <a id="must" href="#" class="btn  no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on must-see button from explore destination');">
                 <i class="gold fa fa-star"></i><br>
                 <span class="hidden-xs">Incontournables</span>
               </a>
@@ -956,7 +770,7 @@
   <div class="vertical-spacer-xs"></div>
 </div>
 <%= render partial: 'shared/footer' %>
-
+</body>
 <!-- Experience Modal to display -->
 <div class="modal fade" id="myExperienceModal" tabindex="-1" role="dialog" aria-labelledby="myExperienceModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -970,7 +784,7 @@
     </div>
   </div>
 </div>
-</body>
+
 <%= content_for(:before_js) do %>
   <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false&libraries=places&amp;key=AIzaSyCf77HD5LQkLbAcZWkBXKj-DLkXQJ9vHEc" %>
   <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"%>
