@@ -109,8 +109,8 @@ require 'json'
 require 'rest_client'
 url_json = 'https://spreadsheets.google.com/feeds/list/1Pz8QHNiwdCvIJ4CEubxeUa6kzao8gHHKPksLuplIQZA/od6/public/values?alt=json'
 data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |exp_data|
-  Destination.find(exp_data['gsx$id']['$t'].to_i).update(
+data_hash['feed']['entry'].each do |dest_data|
+  Destination.find(dest_data['gsx$id']['$t'].to_i).update(
     intro_title: dest_data['gsx$introtitle']['$t'],
     sentence1: dest_data['gsx$sentence1']['$t'],
     sentence2: dest_data['gsx$sentence2']['$t'],
@@ -142,6 +142,7 @@ data_hash['feed']['entry'].each do |exp_data|
     toknow_line4: dest_data['gsx$toknowline4']['$t'],
     toknow_line5: dest_data['gsx$toknowline5']['$t'],
   )
+end
 
 # # Seed create recommended_trips
 # require 'json'

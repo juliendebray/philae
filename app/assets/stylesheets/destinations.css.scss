@@ -190,6 +190,10 @@
   .destination-intro {
     // background-color: #F4E8D8;
     background-color: #F9F9F9;
+    .row {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
     p {
       text-align: center;
       font-size: 17px;
@@ -203,38 +207,63 @@
   }
   .things-to-know {
     background-color: #FFFFFF;
-    .col-md-2 {
-      padding-left: 0;
-      padding-right: 0;
-    }
+    // .col-md-2 {
+    //   padding-left: 0;
+    //   padding-right: 0;
+    // }
     p {
-      font-size: 15px;
+      font-size: 16px;
     }
-    .to-know-box {
-      border-top-width: 1px;
-      border-top-color: #525252;
-      border-top-style: solid;
-      background-color: #FAFAFA;
-      height: 130px;
-      // width: 140%;
-    }
-    // .panel {
-    //   .panel-heading {
-    //     text-align: center;
+    // .to-know-box {
+    //   display: table;
+    //   height: 160px;
+    //   overflow: hidden;
+    //   border-top-width: 1px;
+    //   border-top-color: #525252;
+    //   border-top-style: solid;
+    //   background-color: #FAFAFA;
+    //   .text {
+    //     padding: 1%;
+    //     display: table-cell;
+    //     overflow: hidden;
     //     vertical-align: middle;
-    //     border-width: 1px;
-    //     border-color: lightgrey;
-    //     border-style: solid;
-    //     padding-bottom: 0px;
-    //     padding-top: 0px;
-    //     p {
-    //       font-size: 22px;
-    //       font-weight: 400;
-    //     }
     //   }
     // }
+    .panel {
+      margin-bottom: 15px;
+      .panel-heading {
+        text-align: center;
+        vertical-align: middle;
+        background-color: #F9F9F9;
+        // border-width: 1px;
+        // border-color: lightgrey;
+        // border-style: solid;
+        padding-bottom: 1px;
+        padding-top: 1px;
+        p {
+          display: inline-flex;
+          font-size: 22px;
+          font-weight: 400;
+          padding-bottom: 5px;
+          padding-top: 5px;
+          margin-bottom: 0;
+        }
+        .fa-angle-down {
+          position: relative;
+          font-size: 29px;
+          color: lightgrey;
+          margin-left: 20px;
+          vertical-align: middle;
+        }
+      }
+      .panel-heading:hover {
+        background-color: lightgrey;
+        .fa-angle-down {
+          color: white;
+        }
+      }
+    }
   }
-
   .experience-name {
     text-align: left;
     width: 100%;
@@ -283,7 +312,7 @@
       margin: auto;
       small {
         position: absolute;
-        top: 29%;
+        top: 40%;
         left: 0;
         right: 0;
         font-size: 20px;
@@ -298,8 +327,6 @@
       font-size: 1em;
       color: white;
       top: 40%;
-      // bottom: 0px;
-      // background: rgba(0,0,0,0.1);
       position: absolute;
       margin: auto;
       small {
@@ -308,6 +335,51 @@
         text-shadow: 0px 0px 1px white, 0px 0px 6px black;
       }
     }
+    .other-experience-category {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 66%;
+      display: inline-flex;
+      p {
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: 17px;
+        margin-bottom: 0;
+        font-weight: 300;
+        color: white;
+        .fa {
+          font-size: 20px;
+          margin-right: 5px;
+        }
+      }
+      .experience-category-otbt {
+        width: 100%;
+        background-color: #FCB941;
+      }
+      .experience-category-nature {
+        width: 100%;
+        background-color: #2CC990;
+      }
+      .experience-category-culture {
+        width: 100%;
+        // background-color: #EEE657;
+        background-color: #968D73;
+      }
+      .experience-category-sport {
+        width: 100%;
+        background-color: #FC6042;
+      }
+      .experience-category-relax {
+        width: 100%;
+        background-color: #2C82C9;
+      }
+    }
+
   }
   .experience-big-box:hover {
     -moz-box-sizing: border-box;
@@ -331,6 +403,27 @@
       -ms-transform: scale(1.05);
       transform: scale(1.05);
     }
+    .other-experience-category {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 66%;
+      display: inline-flex;
+      p {
+        width: 100%;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 17px;
+        margin-bottom: 0;
+        font-weight: 300;
+        color: white;
+        .fa {
+          font-size: 20px;
+          margin-right: 5px;
+        }
+      }
+    }
   }
   .experience-details {
     text-align: left;
@@ -343,9 +436,36 @@
       margin-bottom: 10px;
       p {
         margin-left: 15px;
+        margin-right: 15px;
         font-size: 15px;
-        margin-bottom: 0;
+        margin-bottom: 1px;
+        margin-top: 1px;
         font-weight: 300;
+        color: white;
+        .fa {
+          margin-right: 10px;
+        }
+      }
+      .experience-category-otbt {
+        width: 100%;
+        background-color: #FCB941;
+      }
+      .experience-category-nature {
+        width: 100%;
+        background-color: #2CC990;
+      }
+      .experience-category-culture {
+        width: 100%;
+        // background-color: #EEE657;
+        background-color: #968D73;
+      }
+      .experience-category-sport {
+        width: 100%;
+        background-color: #FC6042;
+      }
+      .experience-category-relax {
+        width: 100%;
+        background-color: #2C82C9;
       }
     }
     .experience-good-bad-points {
@@ -382,11 +502,12 @@
         font-weight: 300;
       }
     }
-    .experience-know-more
+    .experience-know-more {
       p {
         font-size: 14px;
         font-weight: 300;
       }
+    }
   }
 }
 .destination-collapse {
@@ -509,10 +630,30 @@ a#must-see-img:hover {
 }
 
 .itinerary_image {
+  // position: relative;
   margin-bottom: 30px;
   img {
-    // max-height: 250px;
     width: 100%;
+    filter: sepia(0.1);
+    -webkit-filter: sepia(0.1);
+    -moz-filter: sepia(0.1);
+    -o-filter: sepia(0.1);
+    -ms-filter: sepia(0.1);
+  }
+}
+.itinerary_image:hover, .itinerary_image.active, {
+  position: relative;
+  margin-bottom: 30px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  img {
+    width: 100%;
+    filter: sepia(0);
+    -webkit-filter: sepia(0);
+    -moz-filter: sepia(0);
+    -o-filter: sepia(0);
+    -ms-filter: sepia(0);
   }
 }
 .destination-itineraries {
@@ -521,6 +662,9 @@ a#must-see-img:hover {
   .panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
     border-top: none;
   }
+  .panel-group {
+    display: inline;
+  }
   .panel {
     .panel-heading {
       border-top-width: 1px;
@@ -528,6 +672,8 @@ a#must-see-img:hover {
       border-top-style: solid;
       padding-bottom: 0px;
       padding-top: 15px;
+      padding-right: 0;
+      padding-left: 0;
       .fa {
         position: relative;
         vertical-align: sub;
@@ -535,6 +681,8 @@ a#must-see-img:hover {
         font-size: 25px;
       }
       .itinerary-title {
+        // position: absolute;
+        // top: 40%;
         text-align: left;
         width: 100%;
         letter-spacing: 0px;
@@ -543,7 +691,7 @@ a#must-see-img:hover {
         bottom: 0px;
         margin: auto;
         p {
-          font-size: 22px;
+          font-size: 20px;
           font-weight: 400;
         }
       }

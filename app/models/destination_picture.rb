@@ -7,6 +7,7 @@ class DestinationPicture < ActiveRecord::Base
       medium: "430x223#",
       small: "260x174#",
       thumb: "160x100#",
+      flat: "851x220#",
     }
 
   validates_attachment_content_type :picture,

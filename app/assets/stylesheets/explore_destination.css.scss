@@ -6,15 +6,80 @@
 #category-buttons {
   position: absolute;
   top: 15px;
-  left: 8%;
-  right: 8%;
+  left: 5%;
+  right: 5%;
   i {
-    font-size: 22px;
-    color: #525252;
+    font-size: 25px;
   }
   span {
     font-size: 12px;
     color: #525252;
+  }
+  #must {
+    i {
+      color: gold;
+    }
+  }
+  #must:hover, #must.active {
+    i {
+      color: white;
+    }
+    background-color: gold;
+  }
+  #culture {
+    i {
+      color: #968D73;
+    }
+  }
+  #culture:hover, #culture.active {
+    i {
+      color: white;
+    }
+    background-color: #968D73;
+  }
+  #nature {
+    i {
+      color: #2CC990;
+    }
+  }
+  #nature:hover, #nature.active {
+    i {
+      color: white;
+    }
+    background-color: #2CC990;
+  }
+  #sport {
+    i {
+      color: #FC6042;
+    }
+  }
+  #sport:hover, #sport.active {
+    i {
+      color: white;
+    }
+    background-color: #FC6042;
+  }
+  #relax {
+    i {
+      color: #2C82C9;
+    }
+  }
+  #relax:hover, #relax.active {
+    i {
+      color: white;
+    }
+    background-color: #2C82C9;
+  }
+  #otbt {
+    i {
+      color: #FCB941;
+    }
+  }
+  #otbt:hover, #otbt.active {
+    i {
+      color: white;
+    }
+    background-color: #FCB941;
   }
   .gold {
     color: gold;
@@ -22,19 +87,64 @@
   a.category-btn:visited {
     background: white;
   }
-  .category-btn.active, .category-btn:hover, {
+  a.category-btn.active, .category-btn:hover, {
     i {
-    font-size: 22px;
+    font-size: 25px;
     color: white;
     }
     span {
-      font-size: 12px;
+      font-size: 13px;
       color: white;
     }
+    // #must {
+    //   background: gold;
+    // }
+    // #culture {
+    //   background-color: #968D73;
+    // }
+    // #nature {
+    //   background-color: #2CC990;
+    // }
+    // #sport {
+    //   background-color: #FC6042;
+    // }
+    // #relax {
+    //   background-color: #2C82C9;
+    // }
+    // #otbt {
+    //   background-color: #FCB941;
+    // }
   }
-  a.category-btn.active {
-    background: #2196F3;
-  }
+
+  // a.category-btn.active {
+  //   // background: #2196F3;
+  //   #culture {
+  //     background: #968D73;
+  //     i {
+  //       color: white;
+  //     }
+  //   }
+  //   #nature {
+  //     i {
+  //       color: #2CC990;
+  //     }
+  //   }
+  //   #sport {
+  //     i {
+  //       color: #FC6042;
+  //     }
+  //   }
+  //   #relax {
+  //     i {
+  //       color: #2C82C9;
+  //     }
+  //   }
+  //   #otbt {
+  //     i {
+  //       color: #FCB941;
+  //     }
+  //   }
+  // }
 }
 
 .map-title {
