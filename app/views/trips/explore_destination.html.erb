@@ -26,7 +26,7 @@
   <div class="destination-content">
     <div class="destination-intro">
       <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
           <h3 class="text-center"><%= @destination.intro_title %></h3>
           <br>
           <p class="text-center">1</p>
@@ -82,7 +82,7 @@
         </div>
         <div class="things-to-know">
           <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                   <a role="button" data-toggle="collapse" data-parent="#accordion" href="#visa" aria-expanded="false" aria-controls="visa">
@@ -177,7 +177,7 @@
 <!--           <h3><%= @destination.name.capitalize %> - les incontournables</h3><br> -->
           <ol>
             <% Experience.where(destination: @destination, published:true, must_see:true, landing_point:false).order(average_rating: :desc) {|experience| experience.average_rating }.each do |experience| %>
-              <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
+              <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                 <%= link_to modal_exp_path(@trip.id, experience.id), remote: true, onclick:"ga('send', 'event', 'User', 'Experience Detail from Que voir - incontournables', 'User clicks on experience #{experience.name} from explore_destination');" do %>
                   <div class="experience-name">
                     <li><p><%= experience.name %></p></li>
@@ -334,82 +334,94 @@
   </div>
   <div class="" id="">
     <div class="destination-content">
-      <div class="destination-itineraries">
-        <p class="text-center"><i>Ces itinéraires ont été conçus par nos experts. Sélectionnez l'un d'entre eux, puis <b>personnalisez-le selon vos envies</b>.</i></p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+          <div class="destination-itineraries">
+<!--             <p class="text-center"><i>Ces itinéraires ont été conçus par nos experts. Sélectionnez l'un d'entre eux, puis <b>personnalisez-le selon vos envies</b>.</i></p> -->
+    <!--         <ol> -->
+              <div class="panel-group" id="accordion">
+                <% RecommendedTrip.where(destination_id: @destination.id).sort_by {|rc| rc.id }.each_with_index do |rec_trip, index| %>
+                  <div class="panel">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
 
-        <ol>
-          <div class="panel-group" id="accordion">
-            <% RecommendedTrip.where(destination_id: @destination.id).sort_by {|rc| rc.id }.each_with_index do |rec_trip, index| %>
-              <div class="panel">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
-                      <div class="row">
-                        <div class="col-xs-12 col-sm-8">
-                          <div class="itinerary-title">
-                            <li><p><%= raw rec_trip.title %></p></li>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4">
-                          <div class="customize-trip-btn">
-                            <%= render('add_recommended_trip', {recommended_trip_id: rec_trip.id}) %>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                    </a>
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-4">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
-                          <div class="itinerary_image text-center">
-                            <%= image_tag rec_trip.picture.url(:banner) %>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="col-xs-12 col-sm-8">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
-                          <div class="rec-trip-duration">
-                            <% if rec_trip.duration && rec_trip.duration.length > 0 %>
-                              <p><%= raw rec_trip.duration %></p>
-                            <% end %>
-                          </div>
-                          <div class="rec-trip-description">
-                            <p><%= raw rec_trip.description %></p>
-                          </div>
-                          <div class="itinerary-good-points text-center">
-                            <div class="table-responsive">
-                              <table>
-                                <% if rec_trip.good_points && rec_trip.good_points.length > 0 %>
-                                  <tr>
-                                    <td>
-                                      <i class="fa fa-plus-circle"></i>
-                                    </td>
-                                    <td>
-                                      <p><%= simple_format rec_trip.good_points %></p>
-                                    </td>
-                                  </tr>
-                                <% end %>
-                              </table>
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-3">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
+                                <div class="itinerary_image text-center">
+                                  <%= image_tag rec_trip.picture.url(:banner) %>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
+                                <div class="itinerary-title">
+                                  <p><%= raw rec_trip.title %></p>
+                                </div>
+                                <div class="rec-trip-duration">
+                                  <% if rec_trip.duration && rec_trip.duration.length > 0 %>
+                                    <p>durée : <b><%= raw rec_trip.duration %></b></p>
+                                  <% end %>
+                                </div>
+                                <div class="rec-trip-suggested-by">
+                                  <% if rec_trip.suggested_by %>
+                                    <% if rec_trip.suggested_by.include?('Explorizers') %>
+                                      <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/users/Explorizers.png' %>
+                                    <% elsif rec_trip.suggested_by.include?('Charlotte') %>
+                                      <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/users/Charlotte.png' %>
+                                    <% elsif rec_trip.suggested_by.include?('Aurelia') %>
+                                      <%= image_tag 'https://s3-eu-west-1.amazonaws.com/philae-floju/users/Aurelia.png' %>
+                                    <% end %>
+                                    <p><i>Créé par </i><%= raw rec_trip.suggested_by %></p>
+                                  <% end %>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
+                              <div class="customize-trip-btn">
+                                <%= render('add_recommended_trip', {recommended_trip_id: rec_trip.id}) %>
+                              </div>
                             </div>
                           </div>
                         </a>
-                      </div>
+                        <!-- <div class="row">
+                          <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
+                              <div class="row text-center">
+                                <div class="see-rec-trip-detail">
+                                  <p>Voir le détail   <i class="fa fa-angle-right"></i></p>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div> -->
+                      </h4>
                     </div>
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
-                      <div class="row text-center">
-                        <div class="see-rec-trip-detail">
-                          <p>Voir le détail   <i class="fa fa-angle-right"></i></p>
-                        </div>
-                      </div>
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapse<%= index+1 %>" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1">
+                    <div id="collapse<%= index+1 %>" class="panel-collapse collapse">
+                      <div class="panel-body">
                         <div class="row">
-                          <div class="col-xs-12 col-sm-12 col-md-9">
+                          <div class="col-xs-12 rec-trip-info">
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-3">
+                                <div class="itinerary-good-points text-center">
+                                  <% if rec_trip.good_points && rec_trip.good_points.length > 0 %>
+                                    <i class="fa fa-plus-circle"></i>
+                                    <p><%= simple_format rec_trip.good_points %></p>
+                                  <% end %>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-9">
+                                <div class="rec-trip-description">
+                                  <p><i>Descriptif</i></p>
+                                  <p><%= raw rec_trip.description %></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12 col-md-9">
                             <ul>
                               <li><p><%= raw(rec_trip.step_1) %></p></li>
                               <li><p><%= raw(rec_trip.step_2) %></p></li>
@@ -650,33 +662,32 @@
                         </div>
                       </div>
                     </div>
-                    <%= render('add_recommended_trip', {recommended_trip_id: rec_trip.id}) %>
                   </div>
-                </div>
+                <% end %>
               </div>
-            <% end %>
-          </div>
-        </ol>
-
-
-
-
-
-        <div class="row text-center">
-          <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
-            <div class="block-separator"></div>
+    <!--         </ol> -->
+            <div class="row text-center">
+              <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+                <div class="block-separator"></div>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-  <div class="vertical-spacer-xs"></div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5">
+      <div id="block-separator"></div>
+    </div>
+  </div>
   <div id="my-trip">
-    <h2 class='text-center map-title'>Personnaliser mon voyage</h2>
+    <h2 class='text-center map-title'>Carte interactive</h2>
+    <br>
   </div>
   <div class="container destination-map-explanation">
     <div class="row text-center">
+      <p>Sélectionnez un itinéraire ci-dessus, ou sélectionnez les attractions une par une directement sur la carte.</p>
       <p>Rappel : à tout moment, revenez à votre parcours depuis votre espace personnel</p>
       <!-- <div class="col-xs-12 col-md-2 col-md-offset-1 text-center text-contrast">
         <div class="how-content">
@@ -750,7 +761,7 @@
               </a>
               <a id="otbt" href="#" class="btn no-border btn-default category-btn" role="button" data-remote='true' onclick="ga('send', 'event', 'User', 'Filter clicked', 'User clicked on otbt button from explore destination');">
                 <i class="fa fa-compass"></i><br>
-                <span class="hidden-xs">Hors des sentiers battus</span>
+                <span class="hidden-xs">Aventure</span>
               </a>
             </div>
           </div>

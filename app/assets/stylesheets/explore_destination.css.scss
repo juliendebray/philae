@@ -5,9 +5,14 @@
 
 #category-buttons {
   position: absolute;
-  top: 15px;
+  top: 7px;
   left: 5%;
   right: 5%;
+  z-index: 1;
+  .btn {
+    padding-top: 2px;
+    padding-bottom: 0;
+  }
   i {
     font-size: 25px;
   }
