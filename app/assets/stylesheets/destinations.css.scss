@@ -688,35 +688,89 @@ a#must-see-img:hover {
         letter-spacing: 0px;
         font-size: 1em;
         color: #525252;
-        bottom: 0px;
         margin: auto;
         p {
-          font-size: 20px;
+          font-size: 17px;
           font-weight: 400;
+          margin-bottom: 0px;
         }
+      }
+      .itinerary_image {
+        margin-bottom: 0;
       }
       .customize-trip-btn {
         text-align: right;
+
         .select-trip {
-          font-size: 17px;
+          font-size: 15px;
+          white-space: normal;
         }
-      }
-      .rec-trip-description {
-        text-align: justify;
-        p {
-          font-size: 16px;
-          font-weight: 300;
-          color: #525252;
+        .remove-trip {
+          font-size: 15px;
+          white-space: normal;
+          p {
+            font-size: 15px;
+          }
         }
+
       }
       .rec-trip-duration {
         p {
-          font-size: 22px;
-          font-weight: 400;
+          font-size: 17px;
+          font-weight: 300;
           color: #525252;
+          margin-bottom: 0;
         }
       }
-      .itinerary-good-points {
+      .rec-trip-suggested-by {
+        display: inline-flex;
+        display: table;
+        margin-top: 5px;
+        p {
+          display: table-cell;
+          vertical-align: middle;
+          font-size: 15px;
+          font-weight: 300;
+          color: #525252;
+          margin-bottom: 0;
+        }
+        img {
+          display: table-cell;
+          vertical-align: middle;
+          border: 0px solid white;
+          box-shadow: 0 0 2px #c8c8c8;
+          height: 50px;
+          width: 50px;
+          margin-right: 10px;
+          border-radius: 100%;
+        }
+      }
+    }
+      .see-rec-trip-detail {
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+    .rec-trip-info {
+      background-color: #FAFAFA;
+      margin-bottom: 10px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .rec-trip-description {
+      text-align: justify;
+      padding: 5px;
+      p {
+        font-size: 17px;
+        font-weight: 300;
+        color: #525252;
+      }
+    }
+    .itinerary-good-points {
+      table {
+        margin: auto;
+      }
       td {
         padding-top: 5px;
       }
@@ -727,7 +781,7 @@ a#must-see-img:hover {
         font-weight: 300;
         padding-left: 10px;
         text-align: left;
-        text-align: justify;
+        // text-align: justify;
       }
       i {
         margin-top: 2px;
@@ -739,12 +793,11 @@ a#must-see-img:hover {
         color: green;
       }
     }
-      .see-rec-trip-detail {
-        p {
-          font-size: 15px;
-        }
-      }
-    }
+  .panel-title {
+    background-color: #F9F9F9;
+  }
+  .panel-body {
+    padding-top: 0px;
   }
 }
 
