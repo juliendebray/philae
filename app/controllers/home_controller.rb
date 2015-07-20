@@ -40,7 +40,7 @@ class HomeController < ApplicationController
       tag: true,
       title: 'Préparez votre voyage sans prise de tête',
       subtitle: 'Organisez le voyage parfait en toute simplicité avec les informations les plus fiables du web, des conseils terrain de voyageurs et des outils pratiques qui font gagner du temps',
-      description: "Explorizers simplifie l'organisation de votre voyage et vous permet de partir l'esprit tranquille avec un itinéraire complétement personalisé.",
+      description: "Explorizers simplifie l'organisation de votre voyage et vous permet de partir l'esprit tranquille avec un itinéraire complétement personnalisé.",
       item: {
         one: "<div class='how-header'><i class='fa fa-map-marker'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Selectionnez les <strong>meilleures expériences</strong> à vivre en fonction de vos envies et des recommandations des principaux sites de voyages.</div>",
         two: "<div class='how-header'><i class='fa fa-comment'></i></div><div class='vertical-spacer-xs'></div><div class='how-content'>Evitez les attrapes-touristes et autres galères en vous inspirant des <strong>conseils de vos amis et d'autres voyageurs</strong>.</div>",
