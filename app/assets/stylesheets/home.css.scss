@@ -194,7 +194,6 @@ i.fa-angle-down {
     font-size: 20px;
     line-height: 1.5;
   }
-
   .how-header {
     i {
       font-size: 6em;
@@ -207,6 +206,18 @@ i.fa-angle-down {
     font-style: normal;
     font-size: 20px;
     line-height: 1.5;
+  }
+}
+#onboarding-video {
+  position: relative;
+  width: 70%;
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 1%;
+  background-color: #F9F9F9;
+  .video_play {
+    position: absolute;
+    top: 5%;
   }
 }
 
