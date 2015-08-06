@@ -75,34 +75,34 @@
 
 
 # Update experiences
-# require 'json'
-# require 'rest_client'
-# url_json = 'https://spreadsheets.google.com/feeds/list/1fAehN-kU04f1Kw5MWbRkv9wLRhHIsS9-tQ79hd50H9o/od6/public/values?alt=json'
-# data_hash = JSON.parse(RestClient.get(url_json))
-# data_hash['feed']['entry'].each do |exp_data|
-#   Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
-#     country_code: exp_data['gsx$countrycode']['$t'],
-#     name: exp_data['gsx$name']['$t'],
-#     average_rating: exp_data['gsx$averagerating']['$t'].to_f,
-#     description: exp_data['gsx$descriptionfrench']['$t'],
-#     onesentence: exp_data['gsx$onesentence']['$t'],
-#     good_points: exp_data['gsx$goodpoints']['$t'],
-#     bad_points: exp_data['gsx$badpoints']['$t'],
-#     explorizers_tip: exp_data['gsx$explorizerstip']['$t'],
-#     where_to_eat: exp_data['gsx$wheretoeat']['$t'],
-#     timetospent: exp_data['gsx$timetospent']['$t'],
-#     wheretosleep: exp_data['gsx$wheretosleep']['$t'],
-#     transportation: exp_data['gsx$transportation']['$t'],
-#     category_tab: exp_data['gsx$categorytab']['$t'].split(", "),
-#     latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
-#     longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
-#     wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
-#     must_see: exp_data['gsx$mustsee']['$t'],
-#     unesco: exp_data['gsx$unesco']['$t'],
-#     thousand_places: exp_data['gsx$thousandplaces']['$t'],
-#     published: exp_data['gsx$published']['$t']
-#   )
-# end
+require 'json'
+require 'rest_client'
+url_json = 'https://spreadsheets.google.com/feeds/list/1fAehN-kU04f1Kw5MWbRkv9wLRhHIsS9-tQ79hd50H9o/od6/public/values?alt=json'
+data_hash = JSON.parse(RestClient.get(url_json))
+data_hash['feed']['entry'].each do |exp_data|
+  Experience.find(exp_data['gsx$experienceid']['$t'].to_i).update(
+    country_code: exp_data['gsx$countrycode']['$t'],
+    name: exp_data['gsx$name']['$t'],
+    average_rating: exp_data['gsx$averagerating']['$t'].to_f,
+    description: exp_data['gsx$descriptionfrench']['$t'],
+    onesentence: exp_data['gsx$onesentence']['$t'],
+    good_points: exp_data['gsx$goodpoints']['$t'],
+    bad_points: exp_data['gsx$badpoints']['$t'],
+    explorizers_tip: exp_data['gsx$explorizerstip']['$t'],
+    where_to_eat: exp_data['gsx$wheretoeat']['$t'],
+    timetospent: exp_data['gsx$timetospent']['$t'],
+    wheretosleep: exp_data['gsx$wheretosleep']['$t'],
+    transportation: exp_data['gsx$transportation']['$t'],
+    category_tab: exp_data['gsx$categorytab']['$t'].split(", "),
+    latitude: exp_data['gsx$latlng']['$t'].split(", ")[0].to_f,
+    longitude: exp_data['gsx$latlng']['$t'].split(", ")[1].to_f,
+    wikipedia_link: exp_data['gsx$wikipedialink']['$t'],
+    must_see: exp_data['gsx$mustsee']['$t'],
+    unesco: exp_data['gsx$unesco']['$t'],
+    thousand_places: exp_data['gsx$thousandplaces']['$t'],
+    published: exp_data['gsx$published']['$t']
+  )
+end
 
 # Update Destinations
 # require 'json'
@@ -650,48 +650,48 @@
 
 
 #create Destination
-require 'json'
-require 'rest_client'
-url_json = 'https://spreadsheets.google.com/feeds/list/1G0W56dbehp12KUpBnD6iVFNtbkVfE9nnqNurzp6QIgg/od6/public/values?alt=json'
-data_hash = JSON.parse(RestClient.get(url_json))
-data_hash['feed']['entry'].each do |dest_data|
-  destination = Destination.create(
-    name: dest_data['gsx$name']['$t'],
-    ne_lat: dest_data['gsx$nelat']['$t'].to_f,
-    ne_lng: dest_data['gsx$nelng']['$t'].to_f,
-    sw_lat: dest_data['gsx$swlat']['$t'].to_f,
-    sw_lng: dest_data['gsx$swlng']['$t'].to_f,
-    intro_title: dest_data['gsx$introtitle']['$t'],
-    sentence1: dest_data['gsx$sentence1']['$t'],
-    sentence2: dest_data['gsx$sentence2']['$t'],
-    sentence3: dest_data['gsx$sentence3']['$t'],
-    sentence4: dest_data['gsx$sentence4']['$t'],
-    sentence5: dest_data['gsx$sentence5']['$t'],
-    enter_title: dest_data['gsx$entertitle']['$t'],
-    enter_line1: dest_data['gsx$enterline1']['$t'],
-    enter_line2: dest_data['gsx$enterline2']['$t'],
-    enter_line3: dest_data['gsx$enterline3']['$t'],
-    visit_time_title: dest_data['gsx$visittimetitle']['$t'],
-    visit_line1: dest_data['gsx$visitline1']['$t'],
-    visit_line2: dest_data['gsx$visitline2']['$t'],
-    visit_line3: dest_data['gsx$visitline3']['$t'],
-    security_title: dest_data['gsx$securitytitle']['$t'],
-    security_line1: dest_data['gsx$securityline1']['$t'],
-    security_line2: dest_data['gsx$securityline2']['$t'],
-    security_line3: dest_data['gsx$securityline3']['$t'],
-    transport_title: dest_data['gsx$transporttitle']['$t'],
-    transport_line1: dest_data['gsx$transportline1']['$t'],
-    transport_line2: dest_data['gsx$transportline2']['$t'],
-    transport_line3: dest_data['gsx$transportline3']['$t'],
-    transport_line4: dest_data['gsx$transportline4']['$t'],
-    transport_line5: dest_data['gsx$transportline5']['$t'],
-    toknow_title: dest_data['gsx$toknowtitle']['$t'],
-    toknow_line1: dest_data['gsx$toknowline1']['$t'],
-    toknow_line2: dest_data['gsx$toknowline2']['$t'],
-    toknow_line3: dest_data['gsx$toknowline3']['$t'],
-    toknow_line4: dest_data['gsx$toknowline4']['$t'],
-    toknow_line5: dest_data['gsx$toknowline5']['$t'],
-  )
+# require 'json'
+# require 'rest_client'
+# url_json = 'https://spreadsheets.google.com/feeds/list/1G0W56dbehp12KUpBnD6iVFNtbkVfE9nnqNurzp6QIgg/od6/public/values?alt=json'
+# data_hash = JSON.parse(RestClient.get(url_json))
+# data_hash['feed']['entry'].each do |dest_data|
+#   destination = Destination.create(
+#     name: dest_data['gsx$name']['$t'],
+#     ne_lat: dest_data['gsx$nelat']['$t'].to_f,
+#     ne_lng: dest_data['gsx$nelng']['$t'].to_f,
+#     sw_lat: dest_data['gsx$swlat']['$t'].to_f,
+#     sw_lng: dest_data['gsx$swlng']['$t'].to_f,
+#     intro_title: dest_data['gsx$introtitle']['$t'],
+#     sentence1: dest_data['gsx$sentence1']['$t'],
+#     sentence2: dest_data['gsx$sentence2']['$t'],
+#     sentence3: dest_data['gsx$sentence3']['$t'],
+#     sentence4: dest_data['gsx$sentence4']['$t'],
+#     sentence5: dest_data['gsx$sentence5']['$t'],
+#     enter_title: dest_data['gsx$entertitle']['$t'],
+#     enter_line1: dest_data['gsx$enterline1']['$t'],
+#     enter_line2: dest_data['gsx$enterline2']['$t'],
+#     enter_line3: dest_data['gsx$enterline3']['$t'],
+#     visit_time_title: dest_data['gsx$visittimetitle']['$t'],
+#     visit_line1: dest_data['gsx$visitline1']['$t'],
+#     visit_line2: dest_data['gsx$visitline2']['$t'],
+#     visit_line3: dest_data['gsx$visitline3']['$t'],
+#     security_title: dest_data['gsx$securitytitle']['$t'],
+#     security_line1: dest_data['gsx$securityline1']['$t'],
+#     security_line2: dest_data['gsx$securityline2']['$t'],
+#     security_line3: dest_data['gsx$securityline3']['$t'],
+#     transport_title: dest_data['gsx$transporttitle']['$t'],
+#     transport_line1: dest_data['gsx$transportline1']['$t'],
+#     transport_line2: dest_data['gsx$transportline2']['$t'],
+#     transport_line3: dest_data['gsx$transportline3']['$t'],
+#     transport_line4: dest_data['gsx$transportline4']['$t'],
+#     transport_line5: dest_data['gsx$transportline5']['$t'],
+#     toknow_title: dest_data['gsx$toknowtitle']['$t'],
+#     toknow_line1: dest_data['gsx$toknowline1']['$t'],
+#     toknow_line2: dest_data['gsx$toknowline2']['$t'],
+#     toknow_line3: dest_data['gsx$toknowline3']['$t'],
+#     toknow_line4: dest_data['gsx$toknowline4']['$t'],
+#     toknow_line5: dest_data['gsx$toknowline5']['$t'],
+#   )
   # gen_url = "http://philae-floju.s3.amazonaws.com/photos_thailande/"
   # name = dest_data['gsx$name']['$t']
   # (1..4).each do |i|
@@ -703,7 +703,7 @@ data_hash['feed']['entry'].each do |dest_data|
   #   end
   #   destination.destination_pictures.create(picture: complete_url)
   # end
-end
+# end
 
 
 # Seed experiences
