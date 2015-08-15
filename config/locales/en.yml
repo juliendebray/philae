@@ -34,7 +34,7 @@ en:
   my_profile: "My profile"
   my_travels: "My travels"
 
-  about: "About Explorizers"
+  about: "How can we help you today?"
   nav_destinations: "List of destinations"
   allexperiences: "All experiences"
   press: "Press"
@@ -229,7 +229,7 @@ en:
       searchplaceholder: "Where are you going?"
       searchbutton: "Travel"
     index:
-      title: "Experiences"
+      title: "The World's most beautiful places and experiences"
   exp_share_text1: "Contribute to Explorizers: share your tips!"
   expbuttonadd: "Share"
 
