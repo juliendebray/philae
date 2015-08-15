@@ -26,6 +26,7 @@ class ExperiencesController < ApplicationController
     lat = @experience.latitude
     lng = @experience.longitude
     @trip_comments = TripComment.near([lat, lng], 0.5)
+    @near_experiences = Experience.near([lat, lng], 100).where(landing_point: false, published: true)
   end
 
   # GET /experiences/new

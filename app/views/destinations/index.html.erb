@@ -47,6 +47,30 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="destination-box">
+            <%= link_to destination_path(@destination.find(12)), target: "_blank" do %>
+              <div class="destination-picture text-center">
+                <%= image_tag @destination.find(12).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+              </div>
+              <div class="destination-name text-center">
+                <small><%= @destination.find(12).name.capitalize %></small><br>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="destination-box">
+            <%= link_to destination_path(@destination.find(11)), target: "_blank" do %>
+              <div class="destination-picture text-center">
+                <%= image_tag @destination.find(11).destination_pictures.first.picture.url(:small), class: "img-responsive" %>
+              </div>
+              <div class="destination-name text-center">
+                <small><%= @destination.find(11).name.capitalize %></small><br>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="destination-box">
             <%= link_to destination_path(@destination.find(7)), target: "_blank" do %>
               <div class="destination-picture text-center">
                 <%= image_tag @destination.find(7).destination_pictures.first.picture.url(:small), class: "img-responsive" %>

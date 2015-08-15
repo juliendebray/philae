@@ -50,6 +50,20 @@
       line-height: 1.0769;
       font-weight: 300;
     }
+    .experience-links {
+      font-size: 15px;
+      font-weight: 300;
+      #unesco_logo {
+        img {
+          max-width: 25%;
+        }
+      }
+      #thousandplaces_logo {
+        img {
+          max-width: 55%;
+        }
+      }
+    }
     .experience-details {
       i {
         font-size: 25px;
@@ -122,7 +136,7 @@
       p {
         margin-bottom: 5px;
         font-size:  16px;
-        text-align: left;
+        text-align: center;
         font-weight: 300;
       }
       .fa {
