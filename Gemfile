@@ -100,8 +100,7 @@ gem 'unicorn'
 # Newrelic
 gem 'newrelic_rpm'
 
-# Active admin
-gem 'activeadmin', github: 'activeadmin'
+
 
 # rest-client
 gem 'rest-client', '~> 1.7.2'
@@ -114,3 +113,6 @@ gem 'browser'
 
 
 
+# Active admin
+#gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre2'
